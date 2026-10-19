@@ -5,6 +5,11 @@ import { buildSiteEntityJsonLd } from '@/seo/entity';
 import '@fontsource-variable/inter/opsz.css';
 import '@fontsource-variable/manrope/wght.css';
 import '@fontsource-variable/geist-mono/wght.css';
+// Same content-hashed files the Fontsource CSS references for the Latin subset;
+// preloading them lets text render in its final face before the first layout,
+// instead of swapping (and shifting) once the CSS discovers them.
+import interLatinFontUrl from '@fontsource-variable/inter/files/inter-latin-opsz-normal.woff2?url';
+import manropeLatinFontUrl from '@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url';
 import '@/styles/main.scss';
 import Header from '@/components/Header/Header.astro';
 import type { HeaderWidth } from '@/components/Header/types';
@@ -42,9 +47,8 @@ interface Props {
   disableTopOffset?: boolean;
   locale?: Locale;
   /**
-   * Desktop width of the header pill. Pages in the wider blog container pass
-   * `wide`, standalone landings with their own style `compact`; everything
-   * else lines up with the 60rem content container.
+   * The shared header matches the homepage width. The movies and TV landing
+   * uses `compact` for its standalone design.
    */
   headerWidth?: HeaderWidth;
   /**
@@ -168,7 +172,17 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preload" href={interLatinFontUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={manropeLatinFontUrl} as="font" type="font/woff2" crossorigin />
     <meta name="color-scheme" content={forcedTheme ?? 'light dark'} />
+
+    {/* middleware.js sets this cookie where checkout is unavailable; mark the
+        document before first paint so pricing never flashes. */}
+    <script is:inline>
+      if (/(?:^|;\s*)zush_pricing_hidden=1(?:;|$)/.test(document.cookie)) {
+        document.documentElement.setAttribute('data-pricing-hidden', '');
+      }
+    </script>
 
     <script is:inline>
       (() => {
@@ -373,6 +387,8 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
       )}
       {includeChrome && <ScrollToTopButton />}
       <script>
+        import { bindEmailAccessPolicy } from '@/utils/emailAccessPolicy';
+        bindEmailAccessPolicy();
         import { bindDownloadTracking, bindProClickTracking, bindProPlanClickTracking } from '@/utils/download';
         import { bindCheckoutAutoOpen } from '@/utils/checkoutAutoOpen';
         import { bindPricingCheckout } from '@/utils/pricingCheckout';
@@ -540,6 +556,15 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
 
 <style is:global>
   html[data-theme-forced] [data-theme-toggle] {
+    display: none !important;
+  }
+
+  html[data-pricing-hidden] :is(
+    #pricing,
+    a[href$='#pricing'],
+    [data-site-footer] a[href='/pricing'],
+    [data-site-footer] li:has(> a[href='/pricing'])
+  ) {
     display: none !important;
   }
 

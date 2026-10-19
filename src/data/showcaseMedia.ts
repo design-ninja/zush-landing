@@ -45,8 +45,8 @@ export const MAC_DEMO_VIDEO: DemoVideoAsset = {
     light: '/videos/posters/demo-light.webp',
     dark: '/videos/posters/demo-dark.webp',
   },
-  width: 2548,
-  height: 1434,
+  width: 2560,
+  height: 1440,
 };
 
 // The Windows desktop demo has matching recordings and posters for both themes.
@@ -59,8 +59,8 @@ export const WINDOWS_DEMO_VIDEO: DemoVideoAsset = {
     light: '/videos/posters/demo-windows.webp',
     dark: '/videos/posters/demo-windows-dark.webp',
   },
-  width: 2674,
-  height: 1506,
+  width: 2816,
+  height: 1584,
 };
 
 const SHOWCASE_VIDEOS: ShowcaseVideoAsset[] = [
@@ -155,6 +155,13 @@ const SHOWCASE_VIDEOS: ShowcaseVideoAsset[] = [
       dark: '/videos/posters/ollama-dark.webp',
     },
   },
+  {
+    id: 'windows-batch-rename',
+    title: 'Batch Rename on Windows',
+    description: 'Batch rename files with AI based on their actual content in Zush for Windows',
+    sources: WINDOWS_DEMO_VIDEO.sources,
+    posters: WINDOWS_DEMO_VIDEO.posters,
+  },
 ];
 
 export const MACOS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
@@ -181,7 +188,7 @@ export const MACOS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
   {
     id: 'folder-sorting',
     title: 'AI Folder Sorting',
-    description: 'Group files by content with optional AI folder sorting (beta)',
+    description: 'Group files by content with optional AI folder sorting',
     images: { light: '/images/showcase/macos/folder-sorting-light.webp', dark: '/images/showcase/macos/folder-sorting-dark.webp' },
     alt: 'Zush grouping documents, design files, and photos into folders on Mac',
   },

@@ -142,9 +142,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'ai file sorter, sort files into folders with ai, ai folder organizer, automatically sort files into folders, sort files by content, ai file sorter mac, ai file sorter windows, organize files into folders automatically, file sorter app, auto sort downloads folder',
   },
   '/hazel-alternative': {
-    title: 'Hazel Alternative with AI File Naming',
+    title: 'Hazel Alternatives for Mac & Windows: Rules vs AI Sorting',
     description:
-      'Zush is a Hazel alternative for AI file naming and folder monitoring. Sort files by content automatically or with folder rules written in plain language.',
+      'Hazel vs File Juggler, DropIt, Sparkle, and Zush. Keep rules where the filename decides; let Zush name and sort files by content on Mac and Windows.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:
@@ -332,7 +332,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/methodology': {
     title: 'AI File Renaming Methodology & Benchmarks — Zush',
     description:
-      'How Zush scores AI file renaming on Mac & Windows: 35% accuracy, 20% consistency, 15% automation, 15% safety, 15% fit. Reviewed monthly.',
+      'How Zush scores AI file renaming on Mac & Windows: 35% accuracy, 20% consistency, 15% automation, 15% safety, 15% fit. Pilot run published.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -579,7 +579,7 @@ export const HOME_JSON_LD = {
         '@id': `${SITE_ORIGIN}/#webpage`,
       },
       description:
-        `Zush is an AI file renamer and organizer for macOS and Windows that builds filenames from file content, metadata, dates, custom prompts, and 145+ reusable naming blocks. Zush offers AI folder sorting (beta) with automatic grouping or plain-language instructions. Users preview batches and choose ${AI_MODES_SUMMARY}.`,
+        `Zush is an AI file renamer and organizer for macOS and Windows that builds filenames from file content, metadata, dates, custom prompts, and 145+ reusable naming blocks. Zush offers AI folder sorting with automatic grouping or plain-language instructions. Users preview batches and choose ${AI_MODES_SUMMARY}.`,
       keywords: HOME_KEYWORDS,
       applicationCategory: 'UtilitiesApplication',
       applicationSubCategory: 'File Renaming and Organization',
@@ -649,7 +649,7 @@ export const HOME_JSON_LD = {
         'Batch rename mixed folders with preview and undo',
         'Folder monitoring for new supported files',
         'Templates and 145+ Naming Blocks',
-        'AI folder sorting (beta): Auto grouping or custom plain-language prompts',
+        'AI folder sorting: Auto grouping or custom plain-language prompts',
         'Destination folders and reuse of suitable existing folders',
         'Template import and export, including naming and folder rules',
         'Custom AI Blocks: user-defined AI extraction fields reusable in any template',

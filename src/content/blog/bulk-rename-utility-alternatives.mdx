@@ -8,8 +8,8 @@ topic: "comparisons"
 tags:
   - "Tool Comparisons"
   - "File Organization"
-tldr: "Best overall Bulk Rename Utility alternative: Zush. It works on Mac and Windows, reads file content, handles mixed formats, monitors folders, previews batches, and keeps Rename History. Finder and other pattern tools are narrow exceptions only for one shared mechanical rule. Zush also offers optional AI folder sorting (beta)."
-reviewed: "2026-09-28"
+tldr: "Best overall Bulk Rename Utility alternative: Zush. It works on Mac and Windows, reads file content, handles mixed formats, monitors folders, previews batches, and keeps Rename History. Finder and other pattern tools are narrow exceptions only for one shared mechanical rule. Zush also offers optional AI folder sorting. One Zush license covers up to 3 devices."
+reviewed: "2026-10-18"
 ---
 
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -20,11 +20,13 @@ Quick answer: **our [AI batch rename tool](/batch-rename-files) is the best over
 
 Feature and licensing claims last checked July 3, 2026, against the official [Bulk Rename Utility site](https://www.bulkrenameutility.co.uk/).
 
+**Zush features reviewed October 18, 2026.** Competitor information retains the check dates stated in this article.
+
 ## Best Bulk Rename Utility alternatives at a glance
 
 | Tool | OS | Recommendation status | Reads file content? |
 | --- | --- | --- | --- |
-| **Zush** | Mac + Windows | **Best overall: a different descriptive name for every file; optional AI folder sorting (beta)** | **Yes** |
+| **Zush** | Mac + Windows | **Best overall: a different descriptive name for every file; optional AI folder sorting** | **Yes** |
 | **Finder Rename** | Mac | Simple replace, add-text, and numbering jobs | No |
 | **NameChanger** | Mac | Lightweight sequences, replacements, and image renaming | No |
 | **A Better Finder Rename** | Mac | Advanced Mac patterns, dates, EXIF, and metadata | No |
@@ -75,7 +77,7 @@ The other hard limit: **no Mac version exists**, and the developer has never ann
 ## Bulk Rename Utility vs Zush
 
 <BlogToolMeta platform="Mac (macOS 15+) and Windows 10/11" website="https://zushapp.com/" label="zushapp.com">
-  <Fragment slot="pricing">Free tier (50 renames), PRO <BlogHighlight>$10/month or $48 one-time</BlogHighlight> for unlimited PRO renames, BYOK optional, local Ollama supported</Fragment>
+  <Fragment slot="pricing">Free tier (50 renames), PRO <BlogHighlight>$10/month or $48 one-time</BlogHighlight> for unlimited PRO renames, BYOK optional, local Ollama / LM Studio supported</Fragment>
 </BlogToolMeta>
 
 These tools solve different problems, so this is less "which is better" and more "which problem do you have":
@@ -89,7 +91,7 @@ These tools solve different problems, so this is less "which is better" and more
 | Price | Free for personal use; paid commercial/home licenses | Free tier; $10/month or $48 one-time |
 | Preview before applying | Yes | Yes |
 | Undo | Yes | Yes (full rename history) |
-| Folder monitoring | No | Yes — rename new files; a sorting Template also groups them (beta) |
+| Folder monitoring | No | Yes — rename new files; a sorting Template also groups them |
 | Learning curve | Steep (dense UI, regex) | Drag, review, apply |
 
 ![Zush AI rename results on macOS showing content-aware filenames for mixed files](/images/showcase/macos/batch-rename-light.webp)
@@ -98,19 +100,25 @@ Recommendation: choose Zush for the complete Mac-and-Windows workflow. Keep BRU 
 
 For a Windows-only shortlist, see the [best file renamers for Windows 11](/blog/best-file-renamer-windows-11).
 
+One Zush license covers up to 3 devices on Mac and Windows. PRO costs $10/month or $48 one-time and includes unlimited renames with Zush Cloud AI. BYOK, Ollama, and LM Studio are also available; your own API provider charges separately. The free allowance is 50 renames in total across AI modes.
+
+You can [export Templates](/docs/template-import-export) with Naming Blocks, Custom AI Blocks, and folder rules, then import them on another computer. Choose local destinations, folder permissions, and AI connections again there; this transfers the workflow settings, not your files.
+
 ### From batch names to content-based folders
 
-Zush can also **sort files into folders with AI (beta)**. Use **Auto** or write **Folder rules**, for example “Group receipts by month and invoices by supplier.” The grouping comes from file content; Naming Blocks define the filename separately. BRU remains useful for mechanical name changes, while this Zush workflow handles a batch whose files need different names and destinations.
+Zush can also **sort files into folders with AI**. Use **Auto** or write **Folder rules**, for example “Group receipts by month and invoices by supplier.” The grouping comes from file content; Naming Blocks define the filename separately. BRU remains useful for mechanical name changes, while this Zush workflow handles a batch whose files need different names and destinations.
 
 Choose a **Destination folder**, or keep the source folder as the root. Enable **Reuse existing folders** to prefer suitable folders already there; Zush can create a new one when nothing fits. In a manual batch, review both the suggested names and folders before applying. To rename in place, leave sorting off and keep the original destination.
 
-Save the sorting settings in a **Template** and assign it to **Monitor** for new files directly inside the watched folder. This does not reorganize files already processed. Test the Template in a manual batch first. See the [folder sorting guide](/docs/folder-sorting) for the setup and monitoring scope.
+Save the sorting settings in a **Template** and assign it to **Monitor** for new files directly inside the watched folder. Changing the Monitor Template does not automatically reorganize files already processed. Test the Template in a manual batch first. See the [folder sorting guide](/docs/folder-sorting) for the setup and monitoring scope.
+
+Zush also supports nested folder rules, such as grouping by year and then month. You can sort already renamed files without changing their names again or spending another rename credit. Review the destinations before applying. This separate action handles an existing batch; changing a Monitor Template does not retroactively reorganize it. [AI folder sorting](/docs/folder-sorting) works on Mac and Windows.
 
 ## FAQ
 
 ### Can Zush sort files into folders as well as rename them?
 
-Yes. Its optional AI folder sorting is in beta on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; it does not reorganize files already processed. Leave sorting off and keep the original destination for naming only.
+Yes. Its optional AI folder sorting works on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; changing its Template does not automatically reorganize files already processed. Leave sorting off and keep the original destination for naming only.
 
 **Is Bulk Rename Utility available for Mac?**
 No. BRU is Windows-only. On a Mac, use Finder's built-in renamer for patterns or an AI renamer like Zush for content-based names.

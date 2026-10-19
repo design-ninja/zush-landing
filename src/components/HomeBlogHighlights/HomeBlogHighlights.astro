@@ -6,11 +6,14 @@ import blocks from '@/components/Blocks/Blocks.module.scss';
 import { getAllPosts } from '@/data/blog';
 import styles from './HomeBlogHighlights.module.scss';
 
+// The homepage itself answers "AI file renamer"; featuring the renamer
+// comparisons here would hand that anchor to the blog. They stay linked from
+// the FAQ, the platform pages, and the trust signals.
 const FEATURED_SLUGS = [
-  'best-ai-file-renamer-tools-windows-compared',
-  'best-ai-file-renamer-tools-mac-compared',
+  'batch-rename-files-on-mac-complete-guide',
+  'best-ai-file-organizers-windows',
+  'batch-rename-files-windows-11',
   'sort-files-into-folders-with-ai-mac',
-  'import-export-zush-templates',
 ] as const;
 
 const posts = await getAllPosts();
@@ -30,8 +33,8 @@ const featured = FEATURED_SLUGS.map((slug) => {
     <div class={styles.HomeBlogHighlights__Intro}>
       <Heading as="h2" id="home-blog-title">Guides and comparisons</Heading>
       <Text as="p" size="lg" color="subtle">
-        Compare file renamers for Mac and Windows, organize files into folders with AI,
-        and share reusable naming workflows.
+        Compare AI file renamers and organizers for Mac and Windows, and sort files into
+        folders with AI.
       </Text>
     </div>
     <a class={styles.HomeBlogHighlights__ActionLink} href="/blog">

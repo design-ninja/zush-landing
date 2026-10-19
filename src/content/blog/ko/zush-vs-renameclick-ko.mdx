@@ -10,8 +10,8 @@ topic: "comparisons"
 tags:
   - "AI 파일 이름 바꾸기"
   - "도구 비교"
-tldr: "이 비교에서 가장 유연한 이름 지정 워크플로를 원한다면 Zush를 선택하세요. 기본 제공 Templates, 145개 이상의 Naming Blocks, Custom AI Blocks, 배치 복원이 되는 Rename History에 더해 평소 말투의 나만의 규칙을 따르는 AI 폴더 분류가 있습니다. RenameClick은 미리 정한 카테고리로 분류하며 공개된 지원 범위가 더 좁아 RAW, 디자인 파일, iWork, 동영상을 지원하지 않습니다. 로컬 AI와 실행 취소는 둘 다 있습니다."
-reviewed: "2026-10-13"
+tldr: "이 비교에서 가장 유연한 이름 지정 워크플로를 원한다면 Zush를 선택하세요. 기본 제공 Templates, 145개 이상의 Naming Blocks, Custom AI Blocks, 배치 복원이 되는 Rename History에 더해 평소 말투의 나만의 규칙을 따르는 AI 폴더 분류가 있습니다. RenameClick은 미리 정한 카테고리로 분류하며 공개된 지원 범위가 더 좁아 RAW, 디자인 파일, iWork, 동영상을 지원하지 않습니다. 로컬 AI와 실행 취소는 둘 다 있습니다. Zush 라이선스 하나로 최대 3대에서 사용할 수 있습니다."
+reviewed: "2026-10-18"
 featuredOrder: 5
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -38,6 +38,8 @@ Zush는 Mac과 Windows에서 중첩 폴더와 추가 이름 변경 크레딧 없
 
 두 제품 모두 Mac과 Windows용 데스크톱 앱을 제공하고, 로컬 AI, 폴더 모니터링, 폴더 분류, 실행 취소 기록, 일회성 결제를 지원합니다. 이는 동등한 기능입니다. Zush는 이름 제어, 복원의 세부 정보, 혼합 파일 지원 범위, 그리고 고정된 카테고리 목록 대신 평소 말투의 규칙으로 분류한다는 점에서 앞섭니다. RenameClick만의 용도는 AI Search 작업 공간이며, 지원 형식은 더 좁습니다.
 
+**Zush 기능 확인일: 2026년 10월 18일.** 경쟁 제품 정보에는 본문에 명시된 기존 확인 날짜가 적용됩니다.
+
 ## RenameClick 대 Zush: 빠른 판단
 
 |차원| Zush | RenameClick |
@@ -46,8 +48,8 @@ Zush는 Mac과 Windows에서 중첩 폴더와 추가 이름 변경 크레딧 없
 |무료 등급|시작하려면 이름을 50개 바꿔야 합니다.|무제한 AI 분석, 100 적용 크레딧/월|
 |5년 비용(일회성 경로)| <BlogHighlight>총 $48</BlogHighlight> |총액 $36+ VAT|
 |플랫폼|맥 + Windows|맥 +Windows|
-|처리 옵션|클라우드 AI, 'BYOK' 또는 'Ollama'을 통한 오프라인 AI|기본적으로 로컬 AI 내장|
-|로컬 모델이 번들로 제공됨|아니요, 'Ollama' 설정을 사용하세요.|예, Qwen3-VL 로컬 모델 다운로드 후|
+|처리 옵션|클라우드 AI, 'BYOK' 또는 'Ollama / LM Studio'을 통한 오프라인 AI|기본적으로 로컬 AI 내장|
+|로컬 모델이 번들로 제공됨|아니요, 'Ollama / LM Studio' 설정을 사용하세요.|예, Qwen3-VL 로컬 모델 다운로드 후|
 |AI 제공업체|Zush Cloud AI; BYOK: Gemini, OpenRouter, OpenAI, Claude; LM Studio, Ollama|Qwen3-VL; LM Studio, Ollama; OpenAI, Gemini, Alibaba Cloud Qwen; OpenAI-compatible API (2.19, OpenRouter)|
 |이미지/디자인 형식|RAW, HEIC, AVIF, Sketch, Figma, AI, PSD를 포함한 41가지 이미지 형식 + 4가지 디자인 형식|JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF; 디자인 파일이 없습니다|
 |RAW 지원| <BlogHighlight>예(CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, SR2)</BlogHighlight> |공개적으로 나열되지 않음|
@@ -55,7 +57,7 @@ Zush는 Mac과 Windows에서 중첩 폴더와 추가 이름 변경 크레딧 없
 |비디오 형식|Zush는 Mac과 Windows에서 MP4, MOV, MKV, AVI, WMV 등의 동영상을 지원합니다.|문서별로 지원되지 않음|
 |오디오 형식|MP3, M4A, WAV, FLAC, OGG, WebM, MPGA|MP3, WAV, FLAC, M4A, AAC(로컬 음성 전사 포함)|
 |폴더 모니터링|예|예, 자동 흐름|
-|파일 정렬/이동| AI 폴더 분류(베타): 평소 말투의 폴더 규칙 또는 Auto, 대상 폴더, 기존 폴더 재사용 | 미리 정한 목록의 AI Categories, Metadata Folders 또는 Match Folders(기존 최상위 폴더 최대 50개) |
+|파일 정렬/이동| AI 폴더 분류: 평소 말투의 폴더 규칙 또는 Auto, 대상 폴더, 기존 폴더 재사용 | 미리 정한 목록의 AI Categories, Metadata Folders 또는 Match Folders(기존 최상위 폴더 최대 50개) |
 |AI 콘텐츠로 검색|전용 AI 검색이 없습니다. Finder 태그 + Spotlight 메타데이터|전용 AI 검색 작업 공간|
 |회복| <BlogHighlight>전체 Rename History: 원본/새 이름, 폴더, 타임스탬프, 일괄 되돌리기</BlogHighlight> |문서별로 전체 실행 취소/다시 실행|
 |명명 컨트롤| <BlogHighlight>기성품 Templates, 145개 이상의 Naming Blocks, Custom AI Blocks, 형식화, 현지화, 메타데이터</BlogHighlight> |형식 패턴, EXIF ​​자리 표시자, 사용자 정의 지침|
@@ -75,7 +77,7 @@ Zush는 Mac과 Windows에서 중첩 폴더와 추가 이름 변경 크레딧 없
 
 ## Zush
 
-<BlogToolMeta platform="Mac(macOS 15+) 및 Windows 10/11" website="https://zushapp.com/" label="zushapp.com"><Fragment slot="pricing">무료 등급(50개 이름 변경), Pro<BlogHighlight>월 $10 또는 일회성 $48</BlogHighlight>무제한 PRO 이름 변경의 경우, API 비용으로 'BYOK' 옵션(Gemini/OpenRouter/OpenAI/Claude), 'Ollama'을 통한 오프라인 AI</Fragment></BlogToolMeta>
+<BlogToolMeta platform="Mac(macOS 15+) 및 Windows 10/11" website="https://zushapp.com/" label="zushapp.com"><Fragment slot="pricing">무료 등급(50개 이름 변경), Pro<BlogHighlight>월 $10 또는 일회성 $48</BlogHighlight>무제한 PRO 이름 변경의 경우, API 비용으로 'BYOK' 옵션(Gemini/OpenRouter/OpenAI/Claude), 'Ollama / LM Studio'을 통한 오프라인 AI</Fragment></BlogToolMeta>
 
 ![이름 전후에 설명이 포함된 파일과 녹색 확인 표시가 있는 'Zush' AI 이름 변경 결과](/images/showcase/macos/batch-rename-light.webp)
 
@@ -84,6 +86,12 @@ Zush는 Mac과 Windows에서 중첩 폴더와 추가 이름 변경 크레딧 없
 이 비교에서 중요한 부분은 'Zush'이 파일 유형 사일로를 강제로 적용하지 않는다는 것입니다. `IMG_4821.HEIC`, `_DSC0019.NEF`, `checkout-flow.fig`, `voice-memo.m4a`, `client-brief.pages`, `recording.mov` 및 `invoice.pdf`가 포함된 폴더는 하나의 워크플로에 머물 수 있습니다.
 
 가격은 간단합니다. 월 $10 또는 PRO의 경우 일회성 $48입니다. 두 유료 요금제 모두 Cloud AI, 'BYOK' 및 오프라인 AI 전반에 걸쳐 이름 변경 제한을 제거합니다. 'Templates', 'Naming Blocks' 및 사용자 정의 프롬프트가 무료로 포함되어 있습니다.
+
+Zush 라이선스 하나로 Mac과 Windows를 합해 최대 3대에서 사용할 수 있습니다.
+
+Naming Blocks, Custom AI Blocks, 폴더 규칙을 포함한 [Templates를 내보내고](/docs/template-import-export) 다른 컴퓨터에서 가져올 수 있습니다. 대상 폴더, 접근 권한, AI 연결은 새 컴퓨터에서 다시 설정해야 합니다. 파일 자체가 아닌 설정을 옮기는 기능입니다.
+
+Zush는 연도 아래 월을 두는 식의 중첩 폴더 규칙도 지원합니다. 이미 이름을 바꾼 파일은 이름을 다시 변경하거나 추가 이름 변경 크레딧을 쓰지 않고 분류할 수 있습니다. 적용 전에 대상 경로를 확인하세요. 이 작업은 Monitor와 별개이며, Template을 바꿔도 이전 파일을 자동으로 다시 정리하지는 않습니다. [AI 폴더 정리](/docs/folder-sorting)는 Mac과 Windows에서 사용할 수 있습니다.
 
 ## RenameClick
 
@@ -126,7 +134,7 @@ Zush는 월 $10 또는 평생 $48입니다. RenameClick은 월 $8 또는 평생 
 
 두 제품 모두 로컬 모델을 실행할 수 있으므로 오프라인 처리가 고유한 장점은 아닙니다. 'RenameClick'는 다중 GB 다운로드 후 모델을 번들로 제공합니다. 'Zush'은 'Ollama'에 연결됩니다. 더 중요한 차이점은 작업 흐름의 나머지 부분입니다. 'Zush'는 이미 만들어진 'Templates', 145개 이상의 'Naming Blocks', 'Custom AI Blocks', 더욱 풍부한 현지화 및 메타데이터 제어, 지속적인 'Rename History'를 문서화합니다.
 
-다양한 파일 형식, 정밀한 이름 템플릿, 변경 기록, 기본 제공 클라우드 AI가 필요하다면 Zush가 적합합니다. BYOK, LM Studio, Ollama도 지원합니다. OpenRouter 지원은 Zush만의 장점이 아닙니다. [Zush](https://zushapp.com/docs/ai-modes/).
+다양한 파일 형식, 정밀한 이름 템플릿, 변경 기록, 기본 제공 클라우드 AI가 필요하다면 Zush가 적합합니다. BYOK, LM Studio, Ollama도 지원합니다. OpenRouter 지원은 Zush만의 장점이 아닙니다. [Zush](https://zushapp.com/docs/ai-modes).
 
 선택은 간단합니다. 이름 지정의 깊이, 복원 세부 정보, 혼합 파일 지원, 프롬프트 기반 폴더 분류를 원한다면 Zush입니다. RenameClick은 AI Search 작업 공간이 RAW, 디자인 파일, iWork, 동영상 미지원보다 중요할 때만 고려하세요.
 

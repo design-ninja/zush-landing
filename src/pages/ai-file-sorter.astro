@@ -9,6 +9,6 @@ const seo = getSeoForPath('/ai-file-sorter');
 const page = SEARCH_LANDING_PAGES['ai-file-sorter'];
 ---
 
-<BaseLayout seo={seo} headerWidth="container" jsonLd={[page.jsonLd, buildFeatureBreadcrumbJsonLd(page.h1, '/ai-file-sorter')]}>
+<BaseLayout seo={seo} jsonLd={[page.jsonLd, buildFeatureBreadcrumbJsonLd(page.h1, '/ai-file-sorter')]}>
   <FeatureLandingPageShell {...page} />
 </BaseLayout>

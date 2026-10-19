@@ -5,9 +5,7 @@ export const PRIMARY_AUTHOR = {
   alternateName: 'lirik',
   role: 'Founder, designer, and developer of Zush',
   url: `${SITE_ORIGIN}/authors/kirill-isachenko`,
-  externalUrl: 'https://lirik.pro/en',
   image: `${SITE_ORIGIN}/images/authors/lirik-ava-fancy.webp`,
-  sameAs: ['https://lirik.pro/en'],
 } as const;
 
 export function getPrimaryAuthorJsonLd() {
@@ -18,7 +16,6 @@ export function getPrimaryAuthorJsonLd() {
     alternateName: PRIMARY_AUTHOR.alternateName,
     url: PRIMARY_AUTHOR.url,
     image: PRIMARY_AUTHOR.image,
-    sameAs: PRIMARY_AUTHOR.sameAs,
     jobTitle: 'Founder, designer, and software developer',
     worksFor: {
       '@id': `${SITE_ORIGIN}/#organization`,

@@ -1,3 +1,4 @@
+import { accessPolicyMessage } from "@/utils/accessPolicyMessage";
 // Exports are read through dynamic import() destructuring in pricingCheckout.ts
 // and checkoutAutoOpen.ts, which static analysis does not follow.
 // fallow-ignore-file unused-export
@@ -26,6 +27,9 @@ interface PaddleEvent extends CheckoutAnalyticsEvent {
     discount?: { id?: string } | null;
     customer?: {
       email?: string;
+      address?: {
+        country_code?: string;
+      } | null;
     };
   };
 }
@@ -52,6 +56,7 @@ declare global {
       Initialize: (config: PaddleConfig) => void;
       Checkout: {
         open: (options: PaddleCheckoutOptions) => void;
+        close: () => void;
       };
     };
   }
@@ -65,6 +70,13 @@ let activeCheckoutSource = "landing";
 let activeCheckoutPriceId: string | null = null;
 const paddleEventListeners = new Set<PaddleEventListener>();
 const CHECKOUT_PRICE_ID_KEY = "zush_checkout_price_id";
+// Paddle.js emits these once checkout has collected the buyer's country,
+// before the payment step.
+const CHECKOUT_COUNTRY_EVENTS = new Set([
+  "checkout.loaded",
+  "checkout.customer.created",
+  "checkout.customer.updated",
+]);
 
 function trackCheckoutOpenError(stage: string): void {
   trackAnalyticsEvent("checkout_error", {
@@ -117,6 +129,82 @@ function getPaddleConfig() {
   }
 
   return { paddleEnv, paddleToken };
+}
+
+interface CheckoutCountryResponse {
+  code?: string;
+  allowed?: boolean;
+  message?: string;
+}
+
+// The backend owns the availability policy and cancels the unpaid
+// transaction when checkout is not allowed. Verification errors close checkout
+// as well, so a failed request does not silently authorize payment.
+let lastVerifiedCheckoutCustomer: string | null = null;
+
+async function verifyCheckoutCountry(event: PaddleEvent): Promise<void> {
+  const checkoutSession = activeCheckoutSession;
+  const customer = event.data?.customer;
+  if (!checkoutSession || !customer?.email) return;
+
+  // checkout.loaded, customer.created and customer.updated often carry the
+  // same customer; check each distinct email/country once per session.
+  const fingerprint = JSON.stringify([
+    checkoutSession,
+    customer.email,
+    customer.address?.country_code,
+  ]);
+  if (fingerprint === lastVerifiedCheckoutCustomer) return;
+  lastVerifiedCheckoutCustomer = fingerprint;
+
+  const body = JSON.stringify({
+    checkout_session: checkoutSession,
+    email: customer.email,
+    country_code: customer.address?.country_code,
+  });
+  let response: Response | null = null;
+  let result: CheckoutCountryResponse = {};
+  // One retry absorbs a transient network or server error. Only an explicit
+  // denial or a second failure closes the checkout.
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    try {
+      response = await fetch(
+        `${SUPABASE_URL}/functions/v1/verify-checkout-country`,
+        {
+          method: "POST",
+          signal: AbortSignal.timeout(15000),
+          headers: { "Content-Type": "application/json" },
+          body,
+        },
+      );
+      result = (await response.json().catch(() => ({}))) as
+        CheckoutCountryResponse;
+      if (response.ok || response.status === 403) break;
+    } catch (error) {
+      console.error("[Paddle] Checkout availability check failed:", error);
+      response = null;
+      result = {};
+    }
+  }
+
+  if (checkoutSession !== activeCheckoutSession) return;
+  if (response?.ok && result.allowed === true) return;
+
+  if (response?.status === 403) {
+    trackAnalyticsEvent("checkout_error", {
+      provider: "paddle",
+      source: activeCheckoutSource,
+      paddle_price_id: activeCheckoutPriceId,
+      stage: "country_check",
+      error_code: "checkout_unavailable",
+    });
+  } else {
+    trackCheckoutOpenError("access_policy_unavailable");
+  }
+  activeCheckoutSession = null;
+  sessionStorage.removeItem("zush_checkout_session");
+  window.Paddle?.Checkout.close();
+  window.alert(accessPolicyMessage(response?.status === 403 ? result.code : undefined));
 }
 
 function notifyPaddleEventListeners(event: PaddleEvent): void {
@@ -212,6 +300,10 @@ function initializePaddle(): boolean {
         });
       }
       notifyPaddleEventListeners(event);
+
+      if (CHECKOUT_COUNTRY_EVENTS.has(event.name)) {
+        void verifyCheckoutCountry(event);
+      }
 
       if (event.name === "checkout.completed") {
         const email = event.data?.customer?.email || "";

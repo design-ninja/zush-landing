@@ -9,9 +9,9 @@ tags:
   - "File Organization"
   - "Tool Comparisons"
   - "Automation"
-tldr: "Zush leest bestanden, stelt namen voor en verplaatst ze na controle naar mappen. Beschrijf de indeling of gebruik Auto. Mac, Windows, audio, video en lokale AI; PRO zonder maandelijks bestandsquotum. Sortio ondersteunt ook Linux."
+tldr: "Zush leest bestanden, stelt namen voor en verplaatst ze na controle naar mappen. Beschrijf de indeling of gebruik Auto. Mac, Windows, audio, video en lokale AI; PRO zonder maandelijks bestandsquotum. Sortio ondersteunt ook Linux. Eén Zush-licentie geldt voor maximaal 3 apparaten."
 earlyTaskExample: false
-reviewed: "2026-09-28"
+reviewed: "2026-10-18"
 locale: "nl"
 translationOf: "best-ai-file-sorters"
 ---
@@ -22,9 +22,11 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 Voor sorteren op inhoud kiezen we **<BlogHighlight>[Zush](/ai-file-sorter)</BlogHighlight>**. Schrijf “Facturen per bedrijf en bonnetjes per maand” of gebruik Auto. PDF, scans, foto’s, schermafbeeldingen, video en audio krijgen voorgestelde namen en mappen vóór u de batch bevestigt.
 
-**Gegevens van het Engelse origineel gecontroleerd op 27 september 2026; productherziening op 28 september.** Geschreven door de maker van Zush. Concurrentgegevens komen uit officiële pagina’s; controleer prijzen bij aankoop.
+**Gegevens van het Engelse origineel gecontroleerd op 27 september 2026; productherziening op 28 september.** Geschreven door de maker van [Zush, de AI-bestandssorteerder voor Mac en Windows](/nl/ai-file-sorter). Concurrentgegevens komen uit officiële pagina’s; controleer prijzen bij aankoop.
 
 <BlogCTA placement='inline' platform='general' />
+
+**Zush-functies gecontroleerd op 18 oktober 2026.** Voor informatie over concurrenten blijven de controledatums in dit artikel gelden.
 
 ## Hoe de map wordt gekozen
 
@@ -50,9 +52,17 @@ Kies de **Destination folder** als hoofdmap voor de voorgestelde mappen.
 
 **Folder rules** accepteert maximaal 2.000 tekens; leeg maakt Auto enkele brede, herbruikbare groepen. Het **Template** bepaalt datum, leverancier, bedrag, klant of onderwerp in de naam; Folder rules bepaalt de locatie. Beide worden samen gecontroleerd. Omdat Zush bestanden zowel benoemt als in mappen zet, is het eerder een [AI-bestandsorganizer](/ai-file-organizer) dan alleen een sorteerder.
 
+![Folder rules-venster in Zush met de instructie om facturen per bedrijf en bonnen per maand te groeperen, plus voorbeeldregels](/images/showcase/macos/folder-rules-light.webp)
+
 Leest PDF en beeldscans, RAW, HEIC, schermafbeeldingen, Office, iWork, ontwerpbestanden, 16 videoformaten en audio. Video wordt aan de hand van beelden geanalyseerd. **Reuse existing folders** gebruikt geschikte mappen en maakt nieuwe als niets past. **Monitor** past een Template toe op nieuwe bestanden en onthoudt gemaakte mappen. LM Studio en Ollama houden analyse en planning lokaal. PRO omvat Zush Cloud AI zonder maandelijks bestandsquotum.
 
 Sortering is in bèta en maakt mappen onder de bestemming; geneste mappen, zoals jaar en dan maand, vragen om een expliciete regel. Controleer onduidelijke bestanden. Handleidingen voor [Mac](/blog/sort-files-into-folders-with-ai-mac) en [Windows](/blog/sort-files-into-folders-with-ai-windows).
+
+![Zush voor Windows met een voorbeeld van voorgestelde bestandsnamen en mapgroepen vóór Rename & sort](/images/showcase/windows/folder-sorting-light.webp)
+
+Eén Zush-licentie geldt voor maximaal 3 Mac- of Windows-apparaten.
+
+U kunt [Templates exporteren](/docs/template-import-export) met Naming Blocks, Custom AI Blocks en mapregels en ze op een andere computer importeren. Stel daar de lokale doelmappen, toegangsrechten en AI-verbindingen opnieuw in. De overdracht bevat de instellingen, niet uw bestanden.
 
 ## 2. Sortio
 
@@ -62,6 +72,8 @@ Sortering is in bèta en maakt mappen onder de bestemming; geneste mappen, zoals
 
 [RenameClick](https://rename.click/) biedt AI Categories, Metadata Folders uit datums of EXIF en Match Folders uit maximaal 50 mappen op het hoogste niveau. Auto Flow bewaakt en kopieert of verplaatst terwijl de app draait. Onbeperkte analyse en 100 geslaagde hernoemingen of verplaatsingen per maand gratis; lokaal model inbegrepen. Video, RAW en ontwerpformaten ontbreken in de gepubliceerde lijst. Voor vaste categorieën; Zush voor groepering vanuit inhoud. [Vergelijking](/blog/zush-vs-renameclick).
 
+![RenameClick (Mac-versie getoond) sorteert hernoemde bestanden in Legal Documents, Medical Documents en Uncategorized vóór Rename & Move](/images/blog/competitors/renameclick.webp)
+
 ## 4. Sparkle
 
 [Sparkle](https://makeitsparkle.co/) ordent Bureaublad, Downloads en Documenten volgens een schema, bouwt een AI Library, accepteert instructies en ruimt duplicaten en oude schermafbeeldingen eerst naar de prullenmand op. Alleen Mac; ook in Every. Hernoemt niet. Voor automatisch persoonlijk opruimen; Zush als namen, Windows of expliciete maplogica belangrijk zijn. [Alternatieven](/blog/sparkle-alternatives).
@@ -70,19 +82,23 @@ Sortering is in bèta en maakt mappen onder de bestemming; geneste mappen, zoals
 
 [NameQuick](https://www.namequick.app/) hernoemt documenten op inhoud en voert Rules uit voor verplaatsen, tags, kleurlabels of archiveren. Managed begint bij $12/maand voor 500 hernoemingen. Self-Managed voor $69 vereist een API-sleutel of lokaal model. Elke bestemming vraagt een regel. [Vergelijking](/blog/zush-vs-namequick).
 
+![Promotieafbeelding van NameQuick met gescande facturen, bonnen en contracten hernoemd met datum en leverancier](/images/blog/competitors/namequick.webp)
+
 ## 6. AI File Sorter
 
 [AI File Sorter](https://github.com/hyperfield/ai-file-sorter) is gratis met AGPL-licentie. Stelt categorieën, optionele subcategorieën en namen voor; ondersteunt toegestane lijsten, lokale beeldherkenning en tekstextractie. Lokale modellen of eigen API-sleutel; laatste uitvoering ongedaan maken. Geen vrije groeperingsinstructie of bewaking. Audio en video worden op ingebedde metadata ingedeeld. Voor eenmalig opruimen met modelconfiguratie.
 
 ## 7. Hazel, File Juggler en DropIt
 
-[Hazel](https://www.noodlesoft.com/) ($42, Mac), [File Juggler](https://www.filejuggler.com/) (ongeveer $40, Windows) en [DropIt](https://www.dropitproject.com/) (gratis, Windows) bewaken naam, extensie, datum of tekst. Betrouwbaar voor voorspelbare bestanden, maar begrijpen geen foto’s, scans of video. AI-namen kunnen regels eenvoudiger maken. [Hazel-alternatief](/hazel-alternative), [Windows-opties](/blog/hazel-for-windows-alternatives).
+[Hazel](https://www.noodlesoft.com/) ($42, Mac), [File Juggler](https://www.filejuggler.com/) ($50, Windows) en [DropIt](https://www.dropitproject.com/) (gratis, Windows) bewaken naam, extensie, datum of tekst. Betrouwbaar voor voorspelbare bestanden, maar begrijpen geen foto’s, scans of video. AI-namen kunnen regels eenvoudiger maken. [Hazel-alternatief](/hazel-alternative), [Windows-opties](/blog/hazel-for-windows-alternatives).
 
 ## Kiezen en testen
 
 Zush voor vrije instructies en veel formaten; Sortio voor Linux en teams; RenameClick voor vaste categorieën; Sparkle voor Mac-opruimen zonder hernoemen; AI File Sorter als gratis optie; Hazel, File Juggler of DropIt voor exacte patronen.
 
 Kopieer eerst 20 gemengde bestanden: facturen, bonnetjes, foto’s, screenshot, scan en video. Geef een echte instructie, controleer mappen en locaties, pas toe en test herstel. Gebruik daarna pas Downloads of een echt archief. [30 instructies](/blog/ai-folder-sorting-prompts), [documentatie](/docs/folder-sorting), [prijzen](/pricing).
+
+Zush ondersteunt geneste mappen, bijvoorbeeld per jaar en daarbinnen per maand. U kunt al hernoemde bestanden sorteren zonder hun namen opnieuw te wijzigen of nog een hernoemcredit te gebruiken. Controleer de bestemmingen voordat u de wijzigingen toepast. Dit staat los van Monitor: een gewijzigd Template sorteert eerdere bestanden niet opnieuw. [AI-mapsortering](/docs/folder-sorting) is in bèta op Mac en Windows.
 
 ## Veelgestelde vragen
 

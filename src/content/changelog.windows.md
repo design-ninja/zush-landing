@@ -1,5 +1,38 @@
 # Changelog
 
+## [3.13.2.0] - 2026-10-18
+
+### Improved
+- Clearer messages when PRO checkout is unavailable for your region or email, or service availability cannot be verified.
+
+### Fixed
+- PRO checkout no longer closes because an earlier availability check fails after you update your email or billing country.
+
+## [3.13.1.0] - 2026-10-17
+
+### Improved
+- Refreshed the PRO plan cards with clearer pricing and license benefits.
+- Simplified the collapsed template bar in AI Rename.
+- Clearer feedback when the analysis service is temporarily unavailable during regeneration.
+
+### Fixed
+- Fixed text extraction from EPUB books whose chapters include a document type declaration.
+
+
+## [3.13.0.0] - 2026-10-15
+
+### Added
+- Sort files into folders while keeping their current names, both in AI Rename and monitored folders.
+
+### Improved
+- Turn on folder sorting after analysis without updating the suggested names. Zush prepares the extra file descriptions in the background.
+- A clearer Sort menu brings automatic and custom rules, keeping current names, and reusing existing folders together.
+- Switching to automatic sorting remembers your custom rule for later.
+- Clearer explanations when a PRO purchase cannot start, with purchase buttons locked while a completed payment is being activated.
+
+### Fixed
+- The template editor remembers whether you left it expanded or collapsed more reliably when its settings file is temporarily busy.
+
 ## [3.12.1.0] - 2026-10-13
 
 ### Added

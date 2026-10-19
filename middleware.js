@@ -8,6 +8,23 @@ const POSTHOG_COUNTRY_OPTOUT_VALUE = '1';
 const POSTHOG_COUNTRY_OPTOUT_MAX_AGE_SECONDS = 60 * 60 * 24 * 7;
 const POSTHOG_COUNTRY_OPTOUT_COUNTRIES = new Set(['TH']);
 const COUNTRY_VARY_HEADER = 'x-vercel-ip-country';
+const PRICING_HIDDEN_COOKIE = 'zush_pricing_hidden';
+const PRICING_HIDDEN_VALUE = '1';
+const PRICING_HIDDEN_MAX_AGE_SECONDS = 60 * 60 * 24;
+// The backend owns the country policy (app_config) and answers per country,
+// so the list is never shipped with the site.
+const CHECKOUT_AVAILABILITY_URL = `${
+  globalThis.process?.env?.PUBLIC_SUPABASE_URL || 'https://sjzrgmvinyxjzvshfvjy.supabase.co'
+}/functions/v1/checkout-availability`;
+const CHECKOUT_AVAILABILITY_TTL_MS = 10 * 60 * 1000;
+const CHECKOUT_AVAILABILITY_RETRY_MS = 60 * 1000;
+const CHECKOUT_AVAILABILITY_TIMEOUT_MS = 1000;
+const FULL_PAGE_TIMEOUT_MS = 5000;
+const PRICING_PAGE_PATTERN = /^\/(?:[a-z]{2}(?:-[a-z]{2})?\/)?pricing\/?$/;
+// Search crawlers always get the pricing page: prices are already public in
+// /pricing.md and llms.txt, and a geo-dependent 404 must never reach the index.
+const SEARCH_CRAWLER_PATTERN = /\b(?:Googlebot|Google-InspectionTool|bingbot|Applebot|DuckDuckBot)\b/i;
+const checkoutAvailabilityCache = new Map();
 const LEGACY_POSTHOG_PROXY_HOST = 'e.zushapp.com';
 const CANONICAL_HOST = 'zushapp.com';
 const POSTHOG_PROXY_PATH = '/e';
@@ -29,23 +46,143 @@ function getCookieValue(cookieHeader, name) {
   return undefined;
 }
 
-function buildPostHogCountryOptOutCookie(enabled) {
-  const value = enabled ? POSTHOG_COUNTRY_OPTOUT_VALUE : '';
-  const maxAge = enabled ? POSTHOG_COUNTRY_OPTOUT_MAX_AGE_SECONDS : 0;
-  const expires = enabled ? '' : '; Expires=Thu, 01 Jan 1970 00:00:00 GMT';
-
+function buildCountryCookie(name, value, enabled, maxAgeSeconds) {
   return [
-    `${POSTHOG_COUNTRY_OPTOUT_COOKIE}=${value}`,
-    `Max-Age=${maxAge}`,
+    `${name}=${enabled ? value : ''}`,
+    `Max-Age=${enabled ? maxAgeSeconds : 0}`,
     'Path=/',
     'SameSite=Lax',
     'Secure',
-  ].join('; ') + expires;
+  ].join('; ') + (enabled ? '' : '; Expires=Thu, 01 Jan 1970 00:00:00 GMT');
+}
+
+function buildPostHogCountryOptOutCookie(enabled) {
+  return buildCountryCookie(
+    POSTHOG_COUNTRY_OPTOUT_COOKIE,
+    POSTHOG_COUNTRY_OPTOUT_VALUE,
+    enabled,
+    POSTHOG_COUNTRY_OPTOUT_MAX_AGE_SECONDS,
+  );
 }
 
 function getVisitorCountry(request) {
   const country = geolocation(request).country ?? request.headers.get(COUNTRY_VARY_HEADER);
   return country?.toUpperCase();
+}
+
+// Unknown or failed lookups keep pricing visible: checkout itself re-checks
+// the buyer's country on the backend.
+function isCheckoutAvailable(country) {
+  const cached = checkoutAvailabilityCache.get(country);
+  if (cached && cached.expiresAt > Date.now()) return cached.available;
+
+  const lookup = fetch(
+    `${CHECKOUT_AVAILABILITY_URL}?country=${encodeURIComponent(country)}`,
+    { signal: AbortSignal.timeout(CHECKOUT_AVAILABILITY_TIMEOUT_MS) },
+  )
+    .then(async (response) => {
+      const body = response.ok ? await response.json() : null;
+      return typeof body?.checkout_available === 'boolean'
+        ? body.checkout_available
+        : null;
+    })
+    .catch(() => null)
+    .then((available) => {
+      checkoutAvailabilityCache.set(country, {
+        available: available ?? true,
+        expiresAt: Date.now() + (available === null
+          ? CHECKOUT_AVAILABILITY_RETRY_MS
+          : CHECKOUT_AVAILABILITY_TTL_MS),
+      });
+      return available ?? true;
+    });
+  checkoutAvailabilityCache.set(country, {
+    available: lookup,
+    expiresAt: Date.now() + CHECKOUT_AVAILABILITY_TIMEOUT_MS,
+  });
+  return lookup;
+}
+
+async function getPricingHiddenCookie(request, country) {
+  if (!country || !/^[A-Z]{2}$/.test(country)) {
+    return { hidden: false, cookie: undefined };
+  }
+
+  const hidden = !(await isCheckoutAvailable(country));
+  const current = getCookieValue(request.headers.get('cookie'), PRICING_HIDDEN_COOKIE);
+  // Only send the cookie when it changes: revalidated pages keep the existing
+  // one, and a change takes the full-page path in nextWithCountryCookies.
+  if (hidden) {
+    return {
+      hidden,
+      cookie: current === PRICING_HIDDEN_VALUE ? undefined : buildCountryCookie(
+        PRICING_HIDDEN_COOKIE,
+        PRICING_HIDDEN_VALUE,
+        true,
+        PRICING_HIDDEN_MAX_AGE_SECONDS,
+      ),
+    };
+  }
+
+  return {
+    hidden,
+    cookie: current === PRICING_HIDDEN_VALUE
+      ? buildCountryCookie(PRICING_HIDDEN_COOKIE, '', false, 0)
+      : undefined,
+  };
+}
+
+async function pricingNotFoundResponse(url, cookies) {
+  const headers = new Headers({
+    'Cache-Control': 'private, no-store',
+    'Content-Type': 'text/html; charset=utf-8',
+  });
+  let body = 'Not Found';
+  try {
+    const page = await fetch(new URL('/404', url), {
+      signal: AbortSignal.timeout(CHECKOUT_AVAILABILITY_TIMEOUT_MS),
+    });
+    if (page.ok) body = await page.text();
+  } catch {
+    // The plain body still answers 404.
+  }
+
+  return withCountryCookies(new Response(body, { status: 404, headers }), cookies);
+}
+
+// Vercel answers a browser revalidation with 304 from the client's
+// conditional headers and drops Set-Cookie, so a page cached before the
+// visitor's country changed would never get the new cookie. When a cookie
+// changes on a conditional request, return the full page from here instead.
+async function nextWithCountryCookies(request, cookies) {
+  if (!cookies.length) return undefined;
+
+  const conditional = request.headers.has('if-none-match') ||
+    request.headers.has('if-modified-since');
+  if (!conditional) return withCountryCookies(next(), cookies);
+
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.delete('if-none-match');
+  requestHeaders.delete('if-modified-since');
+  try {
+    const page = await fetch(request.url, {
+      headers: requestHeaders,
+      redirect: 'manual',
+      signal: AbortSignal.timeout(FULL_PAGE_TIMEOUT_MS),
+    });
+    const headers = new Headers(page.headers);
+    // fetch already decoded the body; validators would let Vercel turn this
+    // response back into a cookie-less 304.
+    for (const name of ['content-encoding', 'content-length', 'etag', 'last-modified', 'set-cookie']) {
+      headers.delete(name);
+    }
+    return withCountryCookies(
+      new Response(page.body, { headers, status: page.status, statusText: page.statusText }),
+      cookies,
+    );
+  } catch {
+    return withCountryCookies(next(), cookies);
+  }
 }
 
 function getRequestHost(request) {
@@ -70,11 +207,13 @@ function buildLegacyPostHogProxyRedirectUrl(requestUrl) {
 
 function getPostHogCountryOptOutCookie(request) {
   const country = getVisitorCountry(request);
+  const currentOptOut = getCookieValue(request.headers.get('cookie'), POSTHOG_COUNTRY_OPTOUT_COOKIE);
   if (country && POSTHOG_COUNTRY_OPTOUT_COUNTRIES.has(country)) {
-    return buildPostHogCountryOptOutCookie(true);
+    return currentOptOut === POSTHOG_COUNTRY_OPTOUT_VALUE
+      ? undefined
+      : buildPostHogCountryOptOutCookie(true);
   }
 
-  const currentOptOut = getCookieValue(request.headers.get('cookie'), POSTHOG_COUNTRY_OPTOUT_COOKIE);
   if (country && currentOptOut === POSTHOG_COUNTRY_OPTOUT_VALUE) {
     return buildPostHogCountryOptOutCookie(false);
   }
@@ -95,11 +234,13 @@ function addVaryHeader(headers, value) {
   }
 }
 
-function withPostHogCountryOptOutCookie(response, cookie) {
-  if (!cookie) return response;
+function withCountryCookies(response, cookies) {
+  if (!cookies.length) return response;
 
   const headers = new Headers(response.headers);
-  headers.append('Set-Cookie', cookie);
+  for (const cookie of cookies) {
+    headers.append('Set-Cookie', cookie);
+  }
   addVaryHeader(headers, COUNTRY_VARY_HEADER);
 
   return new Response(response.body, {
@@ -109,19 +250,27 @@ function withPostHogCountryOptOutCookie(response, cookie) {
   });
 }
 
-export default function middleware(request) {
+export default async function middleware(request) {
   const url = new URL(request.url);
 
   if (getRequestHost(request) === LEGACY_POSTHOG_PROXY_HOST) {
     return Response.redirect(buildLegacyPostHogProxyRedirectUrl(url), 308);
   }
 
-  const postHogCountryOptOutCookie = getPostHogCountryOptOutCookie(request);
+  const pricing = await getPricingHiddenCookie(request, getVisitorCountry(request));
+  const cookies = [getPostHogCountryOptOutCookie(request), pricing.cookie]
+    .filter(Boolean);
+
+  if (
+    pricing.hidden
+    && PRICING_PAGE_PATTERN.test(url.pathname)
+    && !SEARCH_CRAWLER_PATTERN.test(request.headers.get('user-agent') ?? '')
+  ) {
+    return pricingNotFoundResponse(url, cookies);
+  }
 
   if (url.pathname !== '/') {
-    return postHogCountryOptOutCookie
-      ? withPostHogCountryOptOutCookie(next(), postHogCountryOptOutCookie)
-      : undefined;
+    return nextWithCountryCookies(request, cookies);
   }
 
   let changed = false;
@@ -140,13 +289,8 @@ export default function middleware(request) {
   }
 
   if (!changed) {
-    return postHogCountryOptOutCookie
-      ? withPostHogCountryOptOutCookie(next(), postHogCountryOptOutCookie)
-      : undefined;
+    return nextWithCountryCookies(request, cookies);
   }
 
-  return withPostHogCountryOptOutCookie(
-    Response.redirect(url, 308),
-    postHogCountryOptOutCookie,
-  );
+  return withCountryCookies(Response.redirect(url, 308), cookies);
 }

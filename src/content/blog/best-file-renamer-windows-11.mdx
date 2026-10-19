@@ -9,8 +9,8 @@ tags:
   - "File Naming"
   - "Tool Comparisons"
   - "AI File Renaming"
-tldr: "For pattern jobs (add a date, replace text, number a sequence), PowerRename is free and good enough; Bulk Rename Utility and Advanced Renamer go deeper. For files that each need a different, descriptive name, like screenshots, scans, and photos, use an AI renamer such as Zush, which reads each file before naming it. Zush also offers optional AI folder sorting (beta)."
-reviewed: "2026-09-28"
+tldr: "For pattern jobs (add a date, replace text, number a sequence), PowerRename is free and good enough; Bulk Rename Utility and Advanced Renamer go deeper. For files that each need a different, descriptive name, like screenshots, scans, and photos, use an AI renamer such as Zush, which reads each file before naming it. Zush also offers optional AI folder sorting. One Zush license covers up to 3 devices."
+reviewed: "2026-10-18"
 ---
 
 import BlogCTA from '@/components/blog/BlogCTA.astro';
@@ -21,7 +21,9 @@ Quick answer: if every file gets the same kind of change, such as a prefix, a da
 
 That split decides everything else. Pattern tools are fast and precise, but they only transform the name a file already has. `IMG_4382.jpg` can become `Vacation_001.jpg`, never `lisbon-tram-at-night.jpg`.
 
-**Last checked: September 22, 2026.** Written by the maker of Zush. Other tools' details come from their official pages.
+**Last checked: September 22, 2026.** Written by the maker of [Zush, the AI file renamer for Mac and Windows](/). Other tools' details come from their official pages.
+
+**Zush features reviewed October 18, 2026.** Competitor information retains the check dates stated in this article.
 
 ## The six options at a glance
 
@@ -32,7 +34,7 @@ That split decides everything else. Pattern tools are fast and precise, but they
 | Bulk Rename Utility | Heavy pattern work, 100k+ files | No (EXIF, ID3 fields) | Generates an undo batch file | Free for personal use |
 | Advanced Renamer | Metadata and GPS-based names | No (EXIF, ID3, GPS, video fields) | Full batch undo | Free for light personal use; $25 personal, $45 commercial |
 | ReNamer | Chains of rules, scripting | No (meta tags) | Undo supported | Lite free for non-commercial use; paid Pro |
-| **Zush** | <BlogHighlight>A different descriptive name for every file; optional AI folder sorting (beta)</BlogHighlight> | Yes, with AI | Full Rename History | 50 free renames; $10/mo or $48 one-time |
+| **Zush** | <BlogHighlight>A different descriptive name for every file; optional AI folder sorting</BlogHighlight> | Yes, with AI | Full Rename History | 50 free renames; $10/mo or $48 one-time |
 
 ## 1. File Explorer: fine for five files
 
@@ -88,13 +90,19 @@ AI can run through Zush Cloud AI, your own API key, or locally with Ollama or LM
 
 <BlogCTA placement='inline' platform='windows' />
 
+One Zush license covers up to 3 devices on Mac and Windows.
+
+You can [export Templates](/docs/template-import-export) with Naming Blocks, Custom AI Blocks, and folder rules, then import them on another computer. Choose local destinations, folder permissions, and AI connections again there; this transfers the workflow settings, not your files.
+
 ### Sort the renamed files into folders
 
-On Windows, Zush can also **sort files into folders with AI (beta)**. Choose **Auto** grouping or write **Folder rules** such as “Group invoices by company and receipts by month.” Review the suggested folder groups alongside the filenames; a pattern renamer is still sufficient when all you need is the same text change across a batch.
+On Windows, Zush can also **sort files into folders with AI**. Choose **Auto** grouping or write **Folder rules** such as “Group invoices by company and receipts by month.” Review the suggested folder groups alongside the filenames; a pattern renamer is still sufficient when all you need is the same text change across a batch.
 
 Choose a **Destination folder**, or keep the source folder as the root. Enable **Reuse existing folders** to prefer suitable folders already there; Zush can create a new one when nothing fits. In a manual batch, review both the suggested names and folders before applying. To rename in place, leave sorting off and keep the original destination.
 
-Save the sorting settings in a **Template** and assign it to **Monitor** for new files directly inside the watched folder. This does not reorganize files already processed. Test the Template in a manual batch first. See the [folder sorting guide](/docs/folder-sorting) for the setup and monitoring scope.
+Save the sorting settings in a **Template** and assign it to **Monitor** for new files directly inside the watched folder. Changing the Monitor Template does not automatically reorganize files already processed. Test the Template in a manual batch first. See the [folder sorting guide](/docs/folder-sorting) for the setup and monitoring scope.
+
+Zush also supports nested folder rules, such as grouping by year and then month. You can sort already renamed files without changing their names again or spending another rename credit. Review the destinations before applying. This separate action handles an existing batch; changing a Monitor Template does not retroactively reorganize it. [AI folder sorting](/docs/folder-sorting) works on Mac and Windows.
 
 ## Which renamer should you use?
 
@@ -120,7 +128,7 @@ Plenty of people keep both kinds. PowerRename for quick mechanical fixes, Zush f
 
 ### Can Zush sort files into folders as well as rename them?
 
-Yes. Its optional AI folder sorting is in beta on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; it does not reorganize files already processed. Leave sorting off and keep the original destination for naming only.
+Yes. Its optional AI folder sorting works on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; changing its Template does not automatically reorganize files already processed. Leave sorting off and keep the original destination for naming only.
 
 ### What is the best free file renamer for Windows 11?
 

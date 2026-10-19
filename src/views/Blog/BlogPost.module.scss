@@ -77,12 +77,15 @@
     @include chip-interactive;
   }
 
+  // Same register as article blockquotes: a primary rule on the left, no box.
   &__Tldr {
-    @include callout('note');
+    border-left: 3px solid var(--primary);
+    padding-left: 1.25rem;
     max-width: 46rem;
     margin-bottom: 2rem;
     font-size: 0.95rem;
     line-height: 1.6;
+    font-weight: 500;
     color: var(--foreground);
   }
 
@@ -139,6 +142,8 @@
       font-size: 0.8125rem;
       line-height: 1.6;
     }
+    // Center the 65ch caption block under the centered image, not just its text.
+    :global(.markdown-figure figcaption) { margin-inline: auto; }
     :global(.article-note) {
       @include callout;
       margin: 1.5rem 0 2rem;

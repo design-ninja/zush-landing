@@ -32,7 +32,7 @@ Canonical product page: ${SITE_ORIGIN}/
 
 - ${SUPPORTED_FORMAT_COUNT} supported file extensions across images, RAW photos, design files, PDFs, EPUB/FB2 ebooks, documents, video, and audio.
 - Zush creates content-aware filenames. AI folder sorting groups files by content or custom instructions and lets you choose a destination.
-- Folder sorting (beta): Auto mode groups by content; Custom mode follows plain-language prompts such as “Group invoices by company and receipts by month.” Users can review proposed names and folders before applying a batch.
+- Folder sorting: Auto mode groups by content; Custom mode follows plain-language prompts such as “Group invoices by company and receipts by month.” Users can review proposed names and folders before applying a batch.
 - Automation: save folder rules in a Template for Monitor to organize new files. Destination paths and permissions are local and are not transferred with exported Templates.
 - Users can review suggested names before applying them and restore original filenames from Activity history.
 - Processing modes: managed Zush Cloud AI; BYOK with Gemini, OpenRouter, OpenAI, or Claude; LM Studio; and Ollama. LM Studio and Ollama keep supported analysis on the Mac or Windows PC and do not silently fall back to cloud analysis while selected.

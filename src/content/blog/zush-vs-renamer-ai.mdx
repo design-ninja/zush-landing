@@ -8,8 +8,8 @@ topic: "comparisons"
 tags:
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "Zush offers 145+ Naming Blocks, broad RAW/design/media coverage, and unmetered paid renames for $10/month or $48 one-time. Renamer.ai v5 also supports Local, BYOK, folder templates, preview, and undo. Its published cloud plans still have monthly file allowances, and its format list does not document camera RAW, Sketch, Figma, or PSD."
-reviewed: "2026-10-05"
+tldr: "Zush offers 145+ Naming Blocks, broad RAW/design/media coverage, and unmetered paid renames for $10/month or $48 one-time. Renamer.ai v5 also supports Local, BYOK, folder templates, preview, and undo. Its published cloud plans still have monthly file allowances, and its format list does not document camera RAW, Sketch, Figma, or PSD. One Zush license covers up to 3 devices."
+reviewed: "2026-10-18"
 featuredOrder: 2
 ---
 
@@ -19,7 +19,7 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 Quick answer: [Zush](/) suits mixed Mac and Windows folders that need reusable filename conventions, RAW/design/media support, and unmetered paid renames. Renamer.ai v5 now offers Cloud, Local, BYOK, reusable folder structures, and richer previews. Local AI and folder organization are shared capabilities; the practical differences are documented formats, naming controls, cloud allowances, and the one-time purchase option.
 
-**Last verified: October 5, 2026.** Written by the maker of Zush. This is a comparison of published capabilities, not an independent performance or network test.
+**Last verified: October 5, 2026.** Written by the maker of [Zush, the AI file renamer for Mac and Windows](/). This is a comparison of published capabilities, not an independent performance or network test.
 
 Sources: [Zush documentation](/docs), [Renamer.ai pricing and format FAQ](https://renamer.ai/), and [Renamer.ai v5.0.0 changelog, September 25, 2026](https://renamer.ai/changelog). Older Renamer.ai FAQ text describes server processing without separating the newer modes; the v5 release notes explicitly document Local and BYOK. Check the selected mode before processing sensitive files.
 
@@ -36,6 +36,8 @@ If you are searching "Zush vs Renamer.ai", you are usually deciding between two 
   ]}
 />
 
+**Zush features reviewed October 18, 2026.** Competitor information retains the check dates stated in this article.
+
 ## TL;DR comparison
 
 | Dimension | Zush | Renamer.ai |
@@ -51,7 +53,7 @@ If you are searching "Zush vs Renamer.ai", you are usually deciding between two 
 | OCR | Yes | Yes (advertised core) |
 | Folder monitoring | Yes | Yes (Magic Folders) |
 | Undo / rollback | Yes (full history) | Yes |
-| Naming control | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight>; optional AI folder sorting (beta) | Synced naming templates, Template Gallery, reusable nested folder structures |
+| Naming control | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight>; optional AI folder sorting | Synced naming templates, Template Gallery, reusable nested folder structures |
 | BYOK | <BlogHighlight>Available on every plan</BlogHighlight> | OpenAI or Gemini in v5 |
 | Languages | 60+ | 20+ |
 | Local AI | LM Studio and Ollama on Mac and Windows | Downloadable on-device models in v5; hardware compatibility checks |
@@ -69,13 +71,19 @@ Zush's strongest advantage is naming control. Ready-made Templates cover recurri
 
 Pricing has two PRO options: <BlogHighlight>$10/month</BlogHighlight> for flexibility or <BlogHighlight>$48 one-time</BlogHighlight> for lifetime access. FREE includes 50 renames shared across Zush Cloud AI, BYOK, LM Studio, and Ollama; both PRO options remove that limit. BYOK supports Gemini, OpenRouter, OpenAI, and Claude, while both local routes work on Mac and Windows.
 
+One Zush license covers up to 3 devices on Mac and Windows.
+
+You can [export Templates](/docs/template-import-export) with Naming Blocks, Custom AI Blocks, and folder rules, then import them on another computer. Choose local destinations, folder permissions, and AI connections again there; this transfers the workflow settings, not your files.
+
 ### AI folder sorting in Zush
 
-Zush also **sorts files into folders with AI (beta)**. Choose **Auto** grouping or write **Folder rules**, for example “Group invoices by supplier and videos by topic.” This works alongside filename Templates and Naming Blocks: naming fields set the convention, while folder instructions decide the groups. It is part of Zush’s desktop workflow, not a browser workflow.
+Zush also **sorts files into folders with AI**. Choose **Auto** grouping or write **Folder rules**, for example “Group invoices by supplier and videos by topic.” This works alongside filename Templates and Naming Blocks: naming fields set the convention, while folder instructions decide the groups. It is part of Zush’s desktop workflow, not a browser workflow.
 
 Choose a **Destination folder**, or keep the source folder as the root. Enable **Reuse existing folders** to prefer suitable folders already there; Zush can create a new one when nothing fits. In a manual batch, review both the suggested names and folders before applying. To rename in place, leave sorting off and keep the original destination.
 
-Save the sorting settings in a **Template** and assign it to **Monitor** for new files directly inside the watched folder. This does not reorganize files already processed. Test the Template in a manual batch first. See the [folder sorting guide](/docs/folder-sorting) for the setup and monitoring scope.
+Save the sorting settings in a **Template** and assign it to **Monitor** for new files directly inside the watched folder. Changing the Monitor Template does not automatically reorganize files already processed. Test the Template in a manual batch first. See the [folder sorting guide](/docs/folder-sorting) for the setup and monitoring scope.
+
+Zush also supports nested folder rules, such as grouping by year and then month. You can sort already renamed files without changing their names again or spending another rename credit. Review the destinations before applying. This separate action handles an existing batch; changing a Monitor Template does not retroactively reorganize it. [AI folder sorting](/docs/folder-sorting) works on Mac and Windows.
 
 ## Renamer.ai
 
@@ -83,7 +91,7 @@ Save the sorting settings in a **Template** and assign it to **Monitor** for new
   <Fragment slot="pricing">Starter free (25 files/month), Pro $9.95/mo (200 files), Power User $29.95/mo (1,000 files), Ultimate $99.95/mo (5,000 files); annual billing offers a 15% discount</Fragment>
 </BlogToolMeta>
 
-![Renamer.ai desktop app screenshot (image: renamer.ai)](/images/blog/competitors/renamer-ai.png)
+![Renamer.ai desktop app screenshot (image: renamer.ai)](/images/blog/competitors/renamer-ai.webp)
 
 Renamer.ai is a desktop and web tool focused on document-heavy workflows. It lists 30+ formats, including PDFs, Office files, common photos, vectors, and email. Its v5 release adds downloadable local models, OpenAI/Gemini BYOK, account-synced templates, a Template Gallery, sample-file tests, reusable nested folder structures, and destination previews. Camera RAW, Sketch, Figma, and PSD are still absent from its published format list; that is a documentation boundary, not proof that every unlisted file fails.
 
@@ -173,7 +181,7 @@ Still comparing options? See all [Renamer.ai alternatives](/blog/renamer-ai-alte
 
 ### Can Zush sort files into folders as well as rename them?
 
-Yes. Its optional AI folder sorting is in beta on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; it does not reorganize files already processed. Leave sorting off and keep the original destination for naming only.
+Yes. Its optional AI folder sorting works on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; changing its Template does not automatically reorganize files already processed. Leave sorting off and keep the original destination for naming only.
 
 ### Is Zush cheaper than Renamer.ai?
 

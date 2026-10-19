@@ -9,9 +9,9 @@ tags:
   - "Tool Comparisons"
   - "AI File Renaming"
   - "File Organization"
-tldr: "混合文件夹首选 Zush：按内容命名、Naming Blocks、预览、文件夹监控与撤销。免费规则工具和元数据工具适合范围明确的任务。AI 文件夹分类为可选的测试版功能。"
+tldr: "混合文件夹首选 Zush：按内容命名、Naming Blocks、预览、文件夹监控与撤销。免费规则工具和元数据工具适合范围明确的任务。AI 文件夹分类为可选功能。 一个 Zush 许可证最多可用于 3 台设备。"
 earlyTaskExample: false
-reviewed: "2026-09-28"
+reviewed: "2026-10-18"
 locale: "zh-cn"
 translationOf: "best-file-renamer-tools"
 ---
@@ -23,6 +23,8 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 如果每个文件都需要不同的描述性名称，我们在 Mac 和 Windows 上推荐 **<BlogHighlight>[Zush](/)</BlogHighlight>**。如果统一的替换、前缀或编号就能解决整个批次，免费规则工具也够用。关键是所需信息位于原文件名、元数据还是实际内容中。
 
 <BlogCTA placement='inline' platform='general' />
+
+**Zush 功能核查日期：2026 年 10 月 18 日。** 竞品信息仍以文中原有的核查日期为准。
 
 ## 快速对比
 
@@ -56,11 +58,17 @@ Advanced Renamer 和 A Better Finder Rename 利用 EXIF 日期、GPS、ID3 标�
 
 免费 50 次由四种模式共享。PRO 每月 $10 或一次性 $48，不限制重命名次数。在线可用 Zush Cloud AI 和 BYOK，Mac 与 Windows 也支持 LM Studio 和 Ollama。[AI 工具综合对比](/blog/best-ai-file-renamer-tools-2026)还包括 FilesDesk、RenameClick、Renamer.ai 和 NameQuick。
 
+一个 Zush 许可证最多可用于 3 台 Mac 或 Windows 设备。
+
+可以[导出 Templates](/docs/template-import-export)，将 Naming Blocks、Custom AI Blocks 和文件夹规则一起导入另一台电脑。目标文件夹、访问权限和 AI 连接需要在新电脑上重新设置。转移的是工作流程设置，不是文件本身。
+
 ### 也可按文件夹分类
 
-可选的 AI 分类处于测试版。选择 Auto，或在 **Folder rules** 中写“截图按项目、发票按公司分组”。文件夹规则独立于 Naming Blocks。选择 **Destination folder**，或以源文件夹作为根目录。**Reuse existing folders** 优先使用合适的现有文件夹，必要时创建新文件夹。先确认名称和去向，再应用。
+也可以使用可选的 AI 分类。选择 Auto，或在 **Folder rules** 中写“截图按项目、发票按公司分组”。文件夹规则独立于 Naming Blocks。选择 **Destination folder**，或以源文件夹作为根目录。**Reuse existing folders** 优先使用合适的现有文件夹，必要时创建新文件夹。先确认名称和去向，再应用。
 
 将设置保存到 **Template**，先手动测试，再分配给 **Monitor**。它处理监控文件夹直接包含的新文件，不重新整理已处理的文件。只在原位改名时，关闭分类并保留原目的地。[分类文档](/docs/folder-sorting)。
+
+Zush 支持嵌套文件夹规则，例如先按年份、再按月份分类。已经重命名的文件可以单独分类，无需再次改名或消耗另一次重命名额度。应用前请核对目标路径。这与 Monitor 是两个操作：修改 Template 不会自动重新整理之前的文件。[AI 文件夹分类](/docs/folder-sorting)在 Mac 和 Windows 上均可使用。
 
 ## 30 秒选择方法
 
@@ -69,7 +77,7 @@ Advanced Renamer 和 A Better Finder Rename 利用 EXIF 日期、GPS、ID3 标�
 ## 常见问题
 
 ### Zush 能移动文件到文件夹吗？
-可以，使用可选测试版功能，先检查名称和分组。测试过的 Template 可通过 Monitor 处理新文件。
+可以，使用可选功能，先检查名称和分组。测试过的 Template 可通过 Monitor 处理新文件。
 
 ### 免费工具选哪个？
 统一规则可用 Mac 的 Finder、Windows 的 PowerRename。Zush 提供 50 次 AI 重命名。[免费 AI 指南](/blog/rename-files-with-ai-free)介绍 Cloud AI、BYOK、LM Studio、Ollama 和本地命令行工具。
@@ -85,7 +93,7 @@ AI 读取实际文本和图像，包括没有文本层的扫描件。传统规�
 
 <BlogProductIntro
   title="开始使用 Zush"
-  description="混合文件夹首选 Zush：按内容命名、Naming Blocks、预览、文件夹监控与撤销。免费规则工具和元数据工具适合范围明确的任务。AI 文件夹分类为可选的测试版功能。"
+  description="混合文件夹首选 Zush：按内容命名、Naming Blocks、预览、文件夹监控与撤销。免费规则工具和元数据工具适合范围明确的任务。AI 文件夹分类为可选功能。"
   links={[{"href":"/ai-file-sorter","label":"AI 文件分类"},{"href":"/blog/ai-folder-sorting-prompts","label":"指令示例"},{"href":"/docs/folder-sorting","label":"分类文档"},{"href":"/pricing","label":"价格"}]}
 />
 

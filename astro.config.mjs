@@ -62,6 +62,7 @@ export default defineConfig({
     starlight({
       title: 'Zush Docs',
       description: 'Documentation for Zush AI file renaming on Mac and Windows.',
+      routeMiddleware: './src/starlightRoute.ts',
       // Starlight emits og:title/description but no image, so shared docs links
       // render without a preview. Reuse the site-wide social card.
       head: [

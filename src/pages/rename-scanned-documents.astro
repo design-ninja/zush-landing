@@ -9,6 +9,6 @@ const seo = getSeoForPath('/rename-scanned-documents');
 const page = SEARCH_LANDING_PAGES['rename-scanned-documents'];
 ---
 
-<BaseLayout seo={seo} headerWidth="container" jsonLd={[page.jsonLd, buildFeatureBreadcrumbJsonLd(page.h1, '/rename-scanned-documents')]}>
+<BaseLayout seo={seo} jsonLd={[page.jsonLd, buildFeatureBreadcrumbJsonLd(page.h1, '/rename-scanned-documents')]}>
   <FeatureLandingPageShell {...page} />
 </BaseLayout>

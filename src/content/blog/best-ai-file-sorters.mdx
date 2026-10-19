@@ -9,9 +9,9 @@ tags:
   - "File Organization"
   - "Tool Comparisons"
   - "Automation"
-tldr: "Zush is the best AI file sorter for most people on Mac and Windows: you describe the folders in plain language or use Auto, and Zush reads each file, renames it, and moves it into the right folder after review. It covers video and audio, runs on local AI, and PRO has no file meter. Sortio is the closest alternative if you need Linux."
+tldr: "Zush is the best AI file sorter for most people on Mac and Windows: you describe the folders in plain language or use Auto, and Zush reads each file, renames it, and moves it into the right folder after review. It covers video and audio, runs on local AI, and PRO has no file meter. Sortio is the closest alternative if you need Linux. One Zush license covers up to 3 devices."
 earlyTaskExample: false
-reviewed: "2026-09-28"
+reviewed: "2026-10-18"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -19,7 +19,9 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 Quick answer: for sorting files into folders by what they contain, choose the [Zush AI file sorter](/ai-file-sorter). You write the folder logic in plain language, such as "Group invoices by company and receipts by month," or leave it on Auto. Zush reads each PDF, scan, photo, screenshot, video, or audio file, gives it a descriptive name, and moves it into the matching folder after you review the batch. It runs on Mac and Windows, works with local AI, and paid PRO has no monthly file meter.
 
-**Last checked: September 27, 2026.** Written by the maker of Zush. Competitor facts come from official product, pricing, and documentation pages. Verify prices at checkout.
+**Last checked: September 27, 2026.** Written by the maker of [Zush, the AI file sorter for Mac and Windows](/ai-file-sorter). Competitor facts come from official product, pricing, and documentation pages. Verify prices at checkout.
+
+**Zush features reviewed October 18, 2026.** Competitor information retains the check dates stated in this article.
 
 ## How AI file sorters decide where a file goes
 
@@ -51,6 +53,8 @@ Windows users who want naming, monitoring, recovery, and folder movement compare
 
 Zush combines two jobs in one reviewed batch: it names each file by its content and sorts it into a folder, which is why we call it an [AI file organizer](/ai-file-organizer) rather than only a sorter. You decide how the folders work in **Folder rules**, a plain-language field that accepts up to 2,000 characters. Leave it empty and Auto groups files by content into a few broad, reusable folders.
 
+![Zush Folder rules dialog with the instruction to group invoices by company and receipts by month, plus example rules](/images/showcase/macos/folder-rules-light.webp)
+
 What makes Zush different:
 
 - **It reads more kinds of files.** Zush understands PDFs and image-only scans, photos including RAW and HEIC, screenshots, Office and iWork documents, design files, 16 video formats, and audio. "Group videos by topic" works because Zush looks at video frames, not just the filename.
@@ -60,9 +64,15 @@ What makes Zush different:
 - **Sorting can run offline.** With LM Studio or Ollama, both analysis and folder planning stay on your computer.
 - **Unmetered pricing.** PRO is $10 a month or $48 one-time, with no monthly file cap, including the managed Zush Cloud AI.
 
-Limits to know: folder sorting is labeled beta. Folders are created inside the destination you pick; nested folders, such as year and then month, need an explicit Folder rule. Review ambiguous files before applying. Step-by-step setup: the [Mac guide](/blog/sort-files-into-folders-with-ai-mac) and the [Windows guide](/blog/sort-files-into-folders-with-ai-windows).
+Limits to know: folders are created inside the destination you pick; nested folders, such as year and then month, need an explicit Folder rule. Review ambiguous files before applying. Step-by-step setup: the [Mac guide](/blog/sort-files-into-folders-with-ai-mac) and the [Windows guide](/blog/sort-files-into-folders-with-ai-windows).
+
+![Zush for Windows previewing content-based folder groups and proposed filenames before Rename & sort](/images/showcase/windows/folder-sorting-light.webp)
 
 <BlogCTA placement='inline' platform='general' />
+
+One Zush license covers up to 3 devices on Mac and Windows.
+
+You can [export Templates](/docs/template-import-export) with Naming Blocks, Custom AI Blocks, and folder rules, then import them on another computer. Choose local destinations, folder permissions, and AI connections again there; this transfers the workflow settings, not your files.
 
 ## 2. Sortio: closest alternative, plus Linux
 
@@ -75,6 +85,8 @@ Choose Sortio if you need Linux or team seats. Choose Zush for video and audio s
 ## 3. RenameClick: sort into categories you define
 
 [RenameClick](https://rename.click/) offers three sorting methods: **AI Categories**, where the AI picks from a preset list of category names you write; **Metadata Folders** built from dates or EXIF fields; and **Match Folders**, which chooses among up to 50 existing top-level folders. Auto Flow watches a folder and moves or copies files while the app is running.
+
+![RenameClick (Mac version shown) sorting renamed files into Legal Documents, Medical Documents, and Uncategorized before Rename & Move](/images/blog/competitors/renameclick.webp)
 
 The free plan includes unlimited analysis and 100 successful renames or moves a month. Pro was $8 plus VAT per month or $36 plus VAT lifetime when checked. RenameClick bundles a local model, which is convenient offline. Video, RAW, and design files are not in its published format list.
 
@@ -92,6 +104,8 @@ Choose Sparkle for set-and-forget cleanup of a personal Mac. Choose Zush when fi
 
 [NameQuick](https://www.namequick.app/) renames documents by content and then runs conditional Rules that can move a file into a folder, add tags, set a color label, or archive it. That makes it strong for predictable document workflows on a Mac.
 
+![NameQuick promo image showing scanned invoices, receipts, and contracts renamed with dates and vendor names](/images/blog/competitors/namequick.webp)
+
 Managed plans start at $12 a month for 500 renames and meter usage; the $69 Self-Managed license needs your own API key or local model. Sorting is condition-based, so each destination needs a rule.
 
 Choose NameQuick if you want if/then routing after AI naming. See [Zush vs NameQuick](/blog/zush-vs-namequick).
@@ -106,7 +120,7 @@ Choose AI File Sorter for a free, one-off cleanup when you are comfortable setti
 
 ## 7. Hazel, File Juggler, and DropIt: rules without AI
 
-[Hazel](https://www.noodlesoft.com/) ($42, Mac), [File Juggler](https://www.filejuggler.com/) (about $40, Windows), and [DropIt](https://www.dropitproject.com/) (free, Windows) watch folders and act on conditions: name patterns, extensions, dates, or matched text. They are reliable when files are predictable.
+[Hazel](https://www.noodlesoft.com/) ($42, Mac), [File Juggler](https://www.filejuggler.com/) ($50 + tax, Windows), and [DropIt](https://www.dropitproject.com/) (free, Windows) watch folders and act on conditions: name patterns, extensions, dates, or matched text. They are reliable when files are predictable.
 
 They do not understand what a photo, scan, or video shows, so every case needs its own rule. Many people pair them with an AI renamer: descriptive names make rules easier to write. Or replace the rule set with one Zush prompt. See the [Hazel alternative](/hazel-alternative) page and [Hazel for Windows alternatives](/blog/hazel-for-windows-alternatives).
 

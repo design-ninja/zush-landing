@@ -1,8 +1,11 @@
 ---
 import SectionHeader from '@/components/SectionHeader';
+import AppleIcon from '@/components/AppleIcon';
 import StarRating from '@/components/StarRating';
 import Text from '@/components/Text';
+import WindowsIcon from '@/components/WindowsIcon';
 import buttonStyles from '@/components/Button/Button.module.scss';
+import { Check } from 'lucide-react';
 import { PRO_ONE_TIME_PROMOTION } from '@/constants/promotion';
 import { PRICING_PLANS, PRO_FEATURES } from './constants';
 import styles from './Pricing.module.scss';
@@ -49,11 +52,10 @@ const titleHtml = rawTitle.replace(
   /\bPRO\b/,
   `<span class="${styles.Pricing__TitlePro}">PRO</span>`,
 );
-const proFeature = {
-  ...PRO_FEATURES[0],
-  title: copy?.features[0]?.title ?? PRO_FEATURES[0].title,
-};
-const ProFeatureIcon = proFeature.icon;
+const proFeatures = PRO_FEATURES.map((feature, index) => ({
+  ...feature,
+  title: copy?.features[index]?.title ?? feature.title,
+}));
 const plans = PRICING_PLANS.map((plan) => {
   const planCopy: PlanCopy | undefined =
     plan.id === 'monthly' ? copy?.monthlyPlan : copy?.oneTimePlan;
@@ -134,7 +136,7 @@ const plans = PRICING_PLANS.map((plan) => {
         </svg>
       </div>
 
-      <div class={styles.Pricing__Plans}>
+      <div class={styles.Pricing__Plans} data-pricing-plans>
         {plans.map((plan) => (
         <article
           class:list={[styles.PricingCard, plan.featured && styles.PricingCard_featured]}
@@ -206,10 +208,21 @@ const plans = PRICING_PLANS.map((plan) => {
             )}
           </div>
 
-          <div class={styles.PricingCard__Benefit}>
-            <ProFeatureIcon size={18} aria-hidden="true" />
-            <span>{proFeature.title}</span>
-          </div>
+          <ul class={styles.PricingCard__Benefits}>
+            {proFeatures.map((feature) => (
+                <li class={styles.PricingCard__Benefit}>
+                  <Check className={styles.PricingCard__Check} size={16} strokeWidth={2.5} aria-hidden="true" />
+                  <span>{feature.title}</span>
+                  {feature.platforms && (
+                    <span class={styles.PricingCard__Platforms} role="img" aria-label="Mac, Windows">
+                      <AppleIcon />
+                      <span class={styles.PricingCard__PlatformsPlus} aria-hidden="true">+</span>
+                      <WindowsIcon />
+                    </span>
+                  )}
+                </li>
+            ))}
+          </ul>
 
           <div class={styles.PricingCard__ButtonWrapper}>
             <button
@@ -236,3 +249,50 @@ const plans = PRICING_PLANS.map((plan) => {
     </Text>
   </div>
 </section>
+
+<script>
+  // A plain #pricing jump puts the section heading under the navbar and the plan
+  // buttons below the fold. Scroll just far enough that the cards, buttons
+  // included, end inside the viewport; when they cannot fit (stacked on phones),
+  // start the cards right under the navbar instead.
+  const BOTTOM_GAP = 24;
+
+  const getPricingTarget = (): number | null => {
+    const section = document.getElementById('pricing');
+    const plans = section?.querySelector<HTMLElement>('[data-pricing-plans]');
+    if (!section || !plans) return null;
+    const offset = parseFloat(getComputedStyle(section).scrollMarginTop) || 0;
+    const sectionTop = section.getBoundingClientRect().top + window.scrollY - offset;
+    const plansRect = plans.getBoundingClientRect();
+    const plansTop = plansRect.top + window.scrollY - offset;
+    const plansBottom = plansRect.bottom + window.scrollY;
+    const alignBottom = plansBottom + BOTTOM_GAP - window.innerHeight;
+    return Math.max(sectionTop, Math.min(alignBottom, plansTop));
+  };
+
+  const scrollToPricing = (behavior: ScrollBehavior) => {
+    const top = getPricingTarget();
+    if (top === null) return;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top, behavior: reduced ? 'auto' : behavior });
+  };
+
+  document.addEventListener('click', (event) => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = (event.target as Element | null)?.closest<HTMLAnchorElement>('a[href$="#pricing"]');
+    if (!link) return;
+    const url = new URL(link.href, window.location.href);
+    if (url.pathname !== window.location.pathname || !document.getElementById('pricing')) return;
+    event.preventDefault();
+    if (window.location.hash !== '#pricing') history.pushState(null, '', '#pricing');
+    scrollToPricing('smooth');
+  });
+
+  // Arriving from another page with #pricing: the browser has already jumped to
+  // the section; nudge it once layout has settled.
+  if (window.location.hash === '#pricing') {
+    const settle = () => requestAnimationFrame(() => scrollToPricing('auto'));
+    if (document.readyState === 'complete') settle();
+    else window.addEventListener('load', settle, { once: true });
+  }
+</script>

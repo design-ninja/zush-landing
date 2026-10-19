@@ -226,6 +226,12 @@
             margin-right: auto;
         }
 
+        // Homepage only (the wave hero): a narrower measure so the second
+        // sentence starts on its own line.
+        &.Hero_wave .Hero__Subtitle {
+            max-width: 33rem;
+        }
+
     }
 
     &__Intro {

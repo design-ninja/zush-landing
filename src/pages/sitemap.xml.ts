@@ -24,7 +24,14 @@ const CONTENT_SOURCE_PREFIXES = ['data', 'i18n', 'views', 'content'];
 // Sits in a content directory but holds routing/locale plumbing, not copy: it is
 // imported by nearly every page, so letting it contribute a date would restamp the
 // whole sitemap on an unrelated edit.
-const EXCLUDED_CONTENT_SOURCES = new Set([join(SRC_DIR, 'i18n', 'config.ts')]);
+// The changelogs are rendered on the home and landing pages as a "latest version"
+// line, so a changelog-only commit would otherwise restamp ~135 URLs at once.
+// /changelog and /changelog/windows still date from them via their own page files.
+const EXCLUDED_CONTENT_SOURCES = new Set([
+  join(SRC_DIR, 'i18n', 'config.ts'),
+  join(SRC_DIR, 'content', 'changelog.md'),
+  join(SRC_DIR, 'content', 'changelog.windows.md'),
+]);
 
 // Page-specific markup that holds copy inline rather than importing it, so it
 // cannot be discovered through the content-module rule above.
@@ -33,6 +40,8 @@ const EXTRA_ROUTE_DEPENDENCIES: Record<string, string[]> = {
   '/mac': [join(SRC_DIR, 'components', 'PlatformLandingPage', 'PlatformLandingPage.astro')],
   '/windows': [join(SRC_DIR, 'components', 'PlatformLandingPage', 'PlatformLandingPage.astro')],
   '/methodology': [join(SRC_DIR, 'components', 'MethodologyPage', 'MethodologyPage.astro')],
+  '/changelog': [join(SRC_DIR, 'content', 'changelog.md')],
+  '/changelog/windows': [join(SRC_DIR, 'content', 'changelog.windows.md')],
 };
 
 const IMPORT_SPECIFIER_PATTERN = /(?:from\s*|import\s*\(\s*)['"]([^'"]+)['"]/g;
@@ -200,8 +209,11 @@ function getLatestDate(...dates: (string | null | undefined)[]): string {
 }
 
 function getBlogPostSourceFile(post: BlogPost): string {
-  // `id` is the collection path without extension, so this resolves translations
-  // living in a locale subdirectory as well as flat English posts.
+  // The loader id comes from the frontmatter slug, so translations living in
+  // blog/<locale>/ cannot be rebuilt from it; prefer the loader's own file path.
+  if (post.sourcePath) {
+    return post.sourcePath.startsWith('/') ? post.sourcePath : join(process.cwd(), post.sourcePath);
+  }
   return join(BLOG_CONTENT_DIR, `${post.id}.mdx`);
 }
 

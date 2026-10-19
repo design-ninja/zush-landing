@@ -9,13 +9,13 @@ tags:
   - "File Organization"
   - "Automation"
   - "File Explorer"
-tldr: "Use Storage Sense for cleanup and Zush for content-aware naming and AI folder sorting (beta). Auto mode groups by content; custom prompts describe your own folder rules. Preview a small batch before assigning the Template to Monitor."
+tldr: "Use Storage Sense for cleanup and Zush for content-aware naming and AI folder sorting. Auto mode groups by content; custom prompts describe your own folder rules. Preview a small batch before assigning the Template to Monitor."
 reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: Windows 11 can clean up on its own with **Storage Sense**, but it cannot name or sort files by what they are. Use [Zush](/windows) to rename by content and sort files into folders with AI (beta). A rule tool remains an option for deterministic moves.
+Quick answer: Windows 11 can clean up on its own with **Storage Sense**, but it cannot name or sort files by what they are. Use [Zush](/windows) to rename by content and sort files into folders with AI. A rule tool remains an option for deterministic moves.
 
 The trick is doing it in that order. Rules need something predictable to match. `Document(3).pdf` gives them nothing. `2026-09-12_acme_invoice_1042.pdf` gives them everything.
 
@@ -25,7 +25,7 @@ The trick is doing it in that order. Rules need something predictable to match. 
 |---|---|---|---|
 | 1. Clean | Delete old downloads, temp files, recycle bin | Storage Sense | Built in |
 | 2. Name | Give every new file a descriptive name | Zush folder monitoring | 50 free renames, then $10/mo or $48 |
-| 3. Move | Route files into folders by name | File Juggler, DropIt, or PowerShell | About $40 / free / free |
+| 3. Move | Route files into folders by name | File Juggler, DropIt, or PowerShell | $50 + tax / free / free |
 
 You do not need all three on day one. Most people get the biggest win from layer 2 on the Downloads folder alone.
 
@@ -64,7 +64,7 @@ To set it up:
 
 Monitor several folders with different Templates: Downloads with Smart Rename, a scanner folder with Bookkeeper Expenses, your Screenshots folder with Screenshots.
 
-Zush can rename in place or sort files into folders with AI (beta). Auto mode groups by content. For your own structure, enter folder instructions such as “Group invoices by company and receipts by month.” Review the suggested names, groups, and destination before applying. Save the rules in a Template for Monitor. Moving files changes paths; leave sorting off when the current locations must be preserved. Full walkthrough: [sort files into folders automatically on Windows 11](/blog/sort-files-into-folders-with-ai-windows).
+Zush can rename in place or sort files into folders with AI. Auto mode groups by content. For your own structure, enter folder instructions such as “Group invoices by company and receipts by month.” Review the suggested names, groups, and destination before applying. Save the rules in a Template for Monitor. Moving files changes paths; leave sorting off when the current locations must be preserved. Full walkthrough: [sort files into folders automatically on Windows 11](/blog/sort-files-into-folders-with-ai-windows).
 
 <BlogCTA placement='inline' platform='windows' />
 
@@ -72,7 +72,7 @@ Zush can rename in place or sort files into folders with AI (beta). Auto mode gr
 
 Once names are predictable, moving them is easy. Pick one:
 
-**File Juggler** ([filejuggler.com](https://www.filejuggler.com/)): watch Downloads, and if a name contains `_invoice`, move it to `Documents\Finance\Invoices`. About $40 one-time, 30-day trial.
+**File Juggler** ([filejuggler.com](https://www.filejuggler.com/)): watch Downloads, and if a name contains `_invoice`, move it to `Documents\Finance\Invoices`. $50 one-time plus tax, 30-day trial.
 
 **DropIt** ([dropitproject.com](https://www.dropitproject.com/)): free and open source. Rules by name pattern, monitored folders scanned on a timer. Last updated in 2018.
 
@@ -140,7 +140,7 @@ Use folder monitoring in Zush: add your Downloads folder under Monitor and pick 
 
 ### What is the best app to organize files on Windows?
 
-It depends on the job. Zush combines descriptive filenames and AI folder sorting (beta). File Juggler handles deterministic moves, while Sortio provides another AI organizing workflow. See [the best AI file organizers for Windows](/blog/best-ai-file-organizers-windows).
+It depends on the job. Zush combines descriptive filenames and AI folder sorting. File Juggler handles deterministic moves, while Sortio provides another AI organizing workflow. See [the best AI file organizers for Windows](/blog/best-ai-file-organizers-windows).
 
 ### Is it safe to automate file organization?
 

@@ -45,7 +45,6 @@ export function buildBlogPostingJsonLd(
       name: PRIMARY_AUTHOR.name,
       alternateName: PRIMARY_AUTHOR.alternateName,
       url: PRIMARY_AUTHOR.url,
-      sameAs: PRIMARY_AUTHOR.sameAs,
       image: PRIMARY_AUTHOR.image,
       worksFor: ORGANIZATION_REF,
     },
@@ -316,6 +315,7 @@ export function buildFeatureBreadcrumbJsonLd(
   pageTitle: string,
   pagePath: string,
   homeLabel = 'Home',
+  homePath = '/',
 ) {
   return {
     '@context': 'https://schema.org',
@@ -325,7 +325,7 @@ export function buildFeatureBreadcrumbJsonLd(
         '@type': 'ListItem',
         position: 1,
         name: homeLabel,
-        item: SITE_ORIGIN,
+        item: homePath === '/' ? SITE_ORIGIN : `${SITE_ORIGIN}${homePath}`,
       },
       {
         '@type': 'ListItem',

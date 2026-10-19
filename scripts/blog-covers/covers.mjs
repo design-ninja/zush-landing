@@ -16,12 +16,14 @@ export const COVERS = {
   'best-ai-file-renamer-tools-mac-compared': compare('apple'),
   'best-ai-file-renamer-tools-windows-compared': compare('windows'),
   'best-ai-file-sorters': compare('FolderTree'),
+  'best-ai-document-organizers': compare('FileText'),
   'best-file-renamer-tools': compare('TextCursorInput'),
   'best-file-renamer-windows-11': compare('windows'),
   'best-photo-organizer-windows-11': compare('windows'),
   'best-photo-organizing-software-mac': compare('apple'),
   'bulk-rename-utility-alternatives': compare('Layers'),
   'hazel-for-windows-alternatives': compare('windows'),
+  'file-juggler-alternatives': compare('Workflow'),
   'namethispic-alternatives': compare('Image'),
   'renameclick-alternatives': compare('Layers'),
   'renamer-ai-alternatives': compare('Layers'),
@@ -36,6 +38,7 @@ export const COVERS = {
   'zush-vs-renamed-to': versus('Cloud'),
   'zush-vs-renamer-ai': versus('CalendarDays'),
   'zush-vs-sortio': versus('FolderOpen'),
+  'zush-vs-wisfile': versus('FileSearch'),
 
   // Renaming a kind of file
   'ai-document-renamer-guide': rename('FileText'),

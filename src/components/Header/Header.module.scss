@@ -5,10 +5,8 @@
 // Frosted white glass pill: geometry follows revone.app's nav, surface is white
 // so the purple bloom behind it stays behind it instead of tinting the panel.
 //
-// Width comes from the `width` prop, not from the route: the pill spans a
-// container and pushes its groups to the edges, so it lines up with the page
-// content underneath it. `default` matches the 60rem content container;
-// `_wide` matches the 72rem blog container.
+// Every shared header matches the homepage's page container. The movies and
+// TV landing keeps its compact override.
 .Header {
     position: fixed;
     top: 0.875rem;
@@ -16,7 +14,7 @@
     right: 0;
     margin-inline: auto;
     width: calc(100% - 1.5rem);
-    max-width: $content-max-width;
+    max-width: $container-max-width;
     z-index: 1000;
     height: $navbar-height;
     background-color: oklch(1 0 0 / 0.72);
@@ -26,23 +24,12 @@
     // so the blur vanished on prod while dev (unminified) was fine.
     // No outline: the frosted fill alone separates the pill from the page.
     border: 0;
-    border-radius: $radius-md;
+    border-radius: $radius-full;
     box-shadow: none;
     // No overflow clipping: the language menu drops out below the pill.
 
     :global(html[data-theme='dark']) & {
         background-color: oklch(0.17 0.008 285 / 0.72);
-    }
-
-    // Blog posts and the archive sit in the wider 72rem container.
-    &_wide {
-        max-width: $blog-container-max-width;
-    }
-
-    // Feature landings: the hero grid sits in the full 80rem page container,
-    // so the pill matches it edge-to-edge.
-    &_container {
-        max-width: $container-max-width;
     }
 
     @include mobile {
@@ -52,7 +39,7 @@
         top: 0.5rem;
         width: calc(100% - 1rem);
         max-width: none;
-        border-radius: $radius-md;
+        border-radius: $radius-full;
     }
 
     &__Container {
@@ -63,8 +50,7 @@
         justify-content: space-between;
         height: 100%;
         gap: 1.25rem;
-        // Concept: padding 0 8px 0 14px.
-        padding: 0 0.5rem 0 0.875rem;
+        padding: 0 var(--header-padding-right, 0.875rem) 0 0.875rem;
 
         // The logo is the only direct anchor child.
         > a {
@@ -270,8 +256,8 @@
         > a,
         > button {
             gap: 0.4rem;
-            padding-left: 1.25rem;
-            padding-right: 1.25rem;
+            padding-left: var(--header-download-padding, 1.25rem);
+            padding-right: var(--header-download-padding, 1.25rem);
             min-height: 2.5rem;
             border-radius: $radius-button;
             font-size: 0.875rem;
@@ -284,16 +270,16 @@
 
             > a,
             > button {
-                padding-left: 0.7rem;
-                padding-right: 1rem;
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
             }
         }
 
         @media (max-width: 390px) {
             > a,
             > button {
-                padding-left: 0.6rem;
-                padding-right: 0.8rem;
+                padding-left: 1rem;
+                padding-right: 1rem;
             }
         }
 
@@ -303,8 +289,8 @@
             > a,
             > button {
                 gap: 0.3rem;
-                padding-left: 0.5rem;
-                padding-right: 0.65rem;
+                padding-left: 0.875rem;
+                padding-right: 0.875rem;
                 font-size: 0.75rem;
             }
         }
@@ -363,6 +349,14 @@
         color: var(--foreground);
         cursor: pointer;
         transition: background-color $transition-fast, color $transition-fast;
+        position: relative;
+
+        // Keep the 35px pill but give it a 44px tap target.
+        &::after {
+            content: '';
+            position: absolute;
+            inset: -0.3rem;
+        }
 
         @include mobile {
             display: inline-flex;
@@ -461,7 +455,7 @@
         align-items: center;
         border-radius: 0.5rem;
         color: inherit;
-        font-size: 1rem;
+        font-size: 0.875rem;
         padding: 0.7rem 0.65rem;
         text-decoration: none;
         transition: background-color $transition-fast, color $transition-fast;
@@ -491,7 +485,7 @@
         color: inherit;
         cursor: pointer;
         font-family: var(--font-family);
-        font-size: 0.9rem;
+        font-size: 0.875rem;
         font-weight: $font-weight-link;
         padding: 0.6rem 0.65rem;
         transition: background-color $transition-fast, color $transition-fast;
@@ -512,7 +506,7 @@
         border-radius: 0.5rem;
         color: inherit;
         cursor: pointer;
-        font-size: 0.9rem;
+        font-size: 0.875rem;
         font-weight: $font-weight-link;
         padding: 0.6rem 0.65rem;
         transition: background-color $transition-fast, color $transition-fast;
@@ -559,16 +553,11 @@
         }
     }
 
-    // Standalone landings with their own art direction: a narrow, fully
-    // rounded pill. Last in the block so it outranks the base and mobile radii;
-    // the controls inside round with it.
+    // The movies and TV landing keeps its narrower pill and original padding.
     &_compact {
+        --header-padding-right: 0.5rem;
+        --header-download-padding: 1.25rem;
         max-width: 40rem;
-        border-radius: $radius-full;
-
-        @include mobile {
-            border-radius: $radius-full;
-        }
     }
 
     &_compact &__DownloadBtn > a,

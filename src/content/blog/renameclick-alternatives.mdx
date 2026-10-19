@@ -8,8 +8,8 @@ topic: "comparisons"
 tags:
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "RenameClick is good for offline renaming of images, documents, and audio. Its standard Rename history is in-memory, while eligible Auto Flow records persist across restarts. If you need video, RAW photos, design files, persistent history for every rename batch, or more control over the naming pattern, Zush is the closest alternative at $48 one-time."
-reviewed: "2026-10-08"
+tldr: "RenameClick is good for offline renaming of images, documents, and audio. Its standard Rename history is in-memory, while eligible Auto Flow records persist across restarts. If you need video, RAW photos, design files, persistent history for every rename batch, or more control over the naming pattern, Zush is the closest alternative at $48 one-time. One Zush license covers up to 3 devices."
+reviewed: "2026-10-18"
 ---
 
 import BlogCTA from '@/components/blog/BlogCTA.astro';
@@ -18,7 +18,9 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 RenameClick is a capable app. Its bundled local model means offline renaming works right after install. The reasons people look for an alternative are usually specific, so this guide starts with those.
 
-<aside class="article-note">Pricing and RenameClick recovery behavior checked October 8, 2026. Written by the maker of Zush; competitor facts come from official pricing and documentation pages.</aside>
+<aside class="article-note">Pricing and RenameClick recovery behavior checked October 8, 2026. Written by the maker of [Zush, the AI file renamer for Mac and Windows](/); competitor facts come from official pricing and documentation pages.</aside>
+
+**Zush features reviewed October 18, 2026.** Competitor information retains the check dates stated in this article.
 
 ## Where RenameClick falls short
 
@@ -64,13 +66,19 @@ The main differences from RenameClick:
 - **Choice of AI.** Zush Cloud AI works without setup. BYOK connects your own Gemini, OpenRouter, OpenAI, or Claude key. Ollama or LM Studio keep analysis on your machine.
 - **Optional AI folder sorting.** Choose Auto grouping or write Folder rules such as “Group invoices by company and receipts by month.” Select a Destination folder and optionally Reuse existing folders; review names and folders before applying. Leave sorting off and keep the original destination to rename in place.
 
-Save the grouping settings in a Template and assign it to Monitor for new files directly inside the watched folder. This does not reorganize already processed files. See [AI folder sorting (beta)](/docs/folder-sorting).
+Save the grouping settings in a Template and assign it to Monitor for new files directly inside the watched folder. Changing the Monitor Template does not automatically reorganize already processed files. See [AI folder sorting](/docs/folder-sorting).
+
+Zush also supports nested folder rules, such as grouping by year and then month. You can sort already renamed files without changing their names again or spending another rename credit. Review the destinations before applying. This separate action handles an existing batch; changing a Monitor Template does not retroactively reorganize it. [AI folder sorting](/docs/folder-sorting) works on Mac and Windows.
 
 RenameClick has a dedicated AI Search workspace for finding files by content; Zush relies on searchable names plus Finder tags and Spotlight metadata instead. Full comparison: [Zush vs RenameClick](/blog/zush-vs-renameclick).
 
 ![The Zush naming editor on Mac: choose the fields, order, and formatting before generating a batch](/images/showcase/macos/naming-light.webp)
 
 <BlogCTA placement='inline' platform='general' title='Try your own files before choosing a plan' description='Preview a small batch on Mac or Windows. Zush includes 50 free renames in total across all AI modes.' />
+
+One Zush license covers up to 3 devices on Mac and Windows.
+
+You can [export Templates](/docs/template-import-export) with Naming Blocks, Custom AI Blocks, and folder rules, then import them on another computer. Choose local destinations, folder permissions, and AI connections again there; this transfers the workflow settings, not your files.
 
 ## 2. FilesDesk: credits or bring your own key
 
@@ -116,7 +124,7 @@ Best for recurring PDFs, receipts, and contracts on a Mac. See [Zush vs NameQuic
 
 ### Can Zush sort files into folders as well as rename them?
 
-Yes. Its optional AI folder sorting is in beta on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; it does not reorganize files already processed. Leave sorting off and keep the original destination for naming only.
+Yes. Its optional AI folder sorting works on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; changing its Template does not automatically reorganize files already processed. Leave sorting off and keep the original destination for naming only.
 
 ### What is the best RenameClick alternative?
 
@@ -132,4 +140,4 @@ Zush works offline with Ollama or LM Studio on Mac and Windows. FilesDesk and Na
 
 ### Can I use RenameClick and Zush together?
 
-Yes, though most people pick one. Both rename by content and can sort files into folders. RenameClick adds a dedicated AI Search workspace; Zush combines optional folder sorting (beta), broader formats, persistent history, and structured filename control. Test the grouping settings on copies before automating either tool.
+Yes, though most people pick one. Both rename by content and can sort files into folders. RenameClick adds a dedicated AI Search workspace; Zush combines optional folder sorting, broader formats, persistent history, and structured filename control. Test the grouping settings on copies before automating either tool.

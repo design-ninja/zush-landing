@@ -23,6 +23,7 @@ import { PLATFORM_LANDING_CONTENT } from '@/data/platformLanding';
 import { getPlatformLandingSections } from '@/data/platformLandingSections';
 import { PLATFORM_SPECIFICS_CONTENT } from '@/data/platformSpecifics';
 import { WINDOWS_COMPARISON } from '@/data/windowsComparison';
+import { MAC_COMPARISON } from '@/data/macComparison';
 import {
   MAC_DEMO_VIDEO,
   WINDOWS_DEMO_VIDEO,
@@ -190,6 +191,7 @@ const softwareJsonLd = {
   applicationCategory: 'UtilitiesApplication',
   applicationSubCategory: 'File Renaming and Organization',
   applicationSuite: 'Zush',
+  isPartOf: { '@id': `${SITE_ORIGIN}/#software` },
   publisher: ORGANIZATION_REF,
   operatingSystem: page.operatingSystem,
   ...(processorSpec ? { processorRequirements: processorSpec } : {}),
@@ -227,18 +229,18 @@ const softwareJsonLd = {
       description: `One-time purchase with unlimited renames across ${AI_MODES_SUMMARY}.`,
     },
   ],
-  featureList: [...localizedPage.features, ORGANIZATION_FEATURES[locale].sortingAnswer],
+  featureList: [...localizedPage.features, ORGANIZATION_FEATURES[locale].sortingTitle],
 };
 
-const WINDOWS_BATCH_RENAME_VIDEO_UPLOAD_DATE = '2026-04-29T00:00:00+00:00';
+const WINDOWS_BATCH_RENAME_VIDEO_UPLOAD_DATE = '2026-10-19T00:00:00+00:00';
 const windowsVideoJsonLd = platform === 'windows' && locale === DEFAULT_LOCALE
   ? {
       '@context': 'https://schema.org',
       '@type': 'VideoObject',
       '@id': `${SITE_ORIGIN}${pagePath}#batch-rename-video`,
-      name: 'AI batch rename workflow on Windows',
+      name: 'AI batch rename and folder sorting on Windows',
       description:
-        'A Windows demo showing File Explorer files analyzed by AI, reviewed in a batch rename list, and applied with undo history available.',
+        'A Windows demo showing a desktop folder renamed by AI and sorted into folders, then an Invoices template with a Custom AI Block that renames invoices and groups them by vendor.',
       thumbnailUrl: `${SITE_ORIGIN}${WINDOWS_SHOWCASE_SCREENSHOTS[0].images.light}`,
       uploadDate: WINDOWS_BATCH_RENAME_VIDEO_UPLOAD_DATE,
       contentUrl: `${SITE_ORIGIN}${WINDOWS_SHOWCASE_SCREENSHOTS[0].video?.light ?? '/videos/windows/zush-batch-rename.mp4'}`,
@@ -285,9 +287,12 @@ const webPageJsonLd = buildWebPageJsonLd({
 
 const jsonLdItems = [
   webPageJsonLd,
+  // The full product node stays on the canonical English page; locales reference it by @id.
   ...(locale === DEFAULT_LOCALE ? [softwareJsonLd] : []),
   howToJsonLd,
-  buildFeatureBreadcrumbJsonLd(localizedPage.breadcrumbLabel, pagePath),
+  locale === DEFAULT_LOCALE
+    ? buildFeatureBreadcrumbJsonLd(localizedPage.breadcrumbLabel, pagePath)
+    : buildFeatureBreadcrumbJsonLd(localizedPage.breadcrumbLabel, pagePath, 'Zush', getLocalizedPath('/', locale)),
   buildFAQPageJsonLd(faqItems),
   ...(windowsVideoJsonLd ? [windowsVideoJsonLd] : []),
 ];
@@ -359,6 +364,7 @@ const jsonLdItems = [
   )}
   <Testimonials locale={locale} />
   {platform === 'mac' && locale === DEFAULT_LOCALE && <MacSeoSection />}
+  {platform === 'mac' && locale === DEFAULT_LOCALE && <ComparisonTable {...MAC_COMPARISON} />}
   {platform === 'windows' && locale === DEFAULT_LOCALE && <WindowsSeoSection />}
   {platform === 'windows' && locale === DEFAULT_LOCALE && <ComparisonTable {...WINDOWS_COMPARISON} />}
   <PlatformSpecifics platform={platform} locale={locale} scenarioLimit={4} />

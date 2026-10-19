@@ -9,9 +9,9 @@ tags:
   - "File Organization"
   - "Tool Comparisons"
   - "Automation"
-tldr: "Zushは内容を読み、名前とフォルダを提案し、確認後に移動します。自然言語の指示かAutoを使用。Mac・Windows、音声・動画、ローカルAIに対応し、PROに月間ファイル上限はありません。LinuxにはSortioも候補です。"
+tldr: "Zushは内容を読み、名前とフォルダを提案し、確認後に移動します。自然言語の指示かAutoを使用。Mac・Windows、音声・動画、ローカルAIに対応し、PROに月間ファイル上限はありません。LinuxにはSortioも候補です。 Zushは1ライセンスで最大3台まで利用できます。"
 earlyTaskExample: false
-reviewed: "2026-09-28"
+reviewed: "2026-10-18"
 locale: "ja"
 translationOf: "best-ai-file-sorters"
 ---
@@ -25,6 +25,8 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 **英語原文の確認日：2026年9月27日。製品の再確認：9月28日。** Zushの開発者による記事です。競合情報は公式ページに基づきます。購入時の価格を確認してください。
 
 <BlogCTA placement='inline' platform='general' />
+
+**Zushの機能確認日：2026年10月18日。** 競合製品の情報には、記事内に記載した従来の確認日が適用されます。
 
 ## 分類先を決める3方式
 
@@ -50,9 +52,17 @@ Windowsで命名、監視、復元、フォルダ移動をまとめて比較す�
 
 **Folder rules**は最大2,000文字。空ならAutoが少数の汎用的なフォルダにまとめます。**Template**は日付、会社、金額、顧客、題材などの名前を指定し、Folder rulesは保存先を指定します。両方を同じプレビューで確認できます。Zushは名前付けとフォルダ分類を同時に行うため、単なる分類ツールではなく[AIファイル整理ツール](/ai-file-organizer)として使えます。
 
+![請求書を会社別、領収書を月別にまとめる指示と例が入ったZushのFolder rulesダイアログ](/images/showcase/macos/folder-rules-light.webp)
+
 PDF、画像だけのスキャン、RAW、HEIC、Office、iWork、デザイン、16種類の動画形式、音声に対応。動画はフレームを解析します。**Reuse existing folders**で適切な既存フォルダを使い、必要なら新設。**Monitor**は新着ファイルへTemplateを適用し、作成したフォルダを記憶します。LM StudioとOllamaなら解析と分類計画を端末内に保てます。PROはZush Cloud AIを含め月間ファイル上限なしです。
 
-分類はベータで、保存先の下にフォルダを作ります。年→月のような入れ子フォルダは、ルールで明示すると作成できます。曖昧なファイルは確認してください。[Mac手順](/blog/sort-files-into-folders-with-ai-mac)、[Windows手順](/blog/sort-files-into-folders-with-ai-windows)。
+分類では保存先の下にフォルダを作ります。年→月のような入れ子フォルダは、ルールで明示すると作成できます。曖昧なファイルは確認してください。[Mac手順](/blog/sort-files-into-folders-with-ai-mac)、[Windows手順](/blog/sort-files-into-folders-with-ai-windows)。
+
+![Windows版ZushでRename & sortを実行する前にファイル名とフォルダグループをプレビュー](/images/showcase/windows/folder-sorting-light.webp)
+
+Zushは1ライセンスでMac・Windowsを合わせて最大3台まで利用できます。
+
+Naming Blocks、Custom AI Blocks、フォルダルールを含む[Templatesをエクスポート](/docs/template-import-export)し、別のパソコンに読み込めます。移動先フォルダ、アクセス権、AI接続は移行先で設定し直します。移すのは設定であり、ファイル自体ではありません。
 
 ## 2. Sortio
 
@@ -62,6 +72,8 @@ PDF、画像だけのスキャン、RAW、HEIC、Office、iWork、デザイン�
 
 [RenameClick](https://rename.click/)はAI Categories、日付やEXIFのMetadata Folders、最大50個の最上位フォルダから選ぶMatch Foldersを提供。Auto Flowはアプリ起動中に監視、移動、コピーします。解析は無制限、成功した名前変更または移動は月100回無料。ローカルモデル同梱。動画、RAW、デザインは公開形式一覧にありません。固定カテゴリには便利ですが、内容から会社別などのグループを作るならZushです。[比較](/blog/zush-vs-renameclick)。
 
+![RenameClick（Mac版）がリネーム後のファイルをRename & Moveの前にLegal Documents、Medical Documents、Uncategorizedに振り分ける画面](/images/blog/competitors/renameclick.webp)
+
 ## 4. Sparkle
 
 [Sparkle](https://makeitsparkle.co/)はデスクトップ、ダウンロード、書類を定期整理し、AI Libraryを作り、指示文にも対応。重複や古いスクリーンショットはまずゴミ箱へ送ります。Mac専用でEveryにも含まれます。名前変更はしません。個人Macの自動清掃向け。名前、Windows、明示的なフォルダ規則が必要ならZush。[代替](/blog/sparkle-alternatives)。
@@ -70,17 +82,21 @@ PDF、画像だけのスキャン、RAW、HEIC、Office、iWork、デザイン�
 
 [NameQuick](https://www.namequick.app/)は文書を内容で命名した後、Rulesで移動、タグ、色、アーカイブを実行。Managedは月500回で$12から。$69のSelf-Managedには自分のAPIキーかローカルモデルが必要です。保存先ごとに条件を作ります。[比較](/blog/zush-vs-namequick)。
 
+![NameQuickの宣伝画像：スキャンした請求書・領収書・契約書が日付と取引先入りの名前に変わる](/images/blog/competitors/namequick.webp)
+
 ## 6. AI File Sorter
 
 [AI File Sorter](https://github.com/hyperfield/ai-file-sorter)は無料のAGPLアプリ。カテゴリ、任意のサブカテゴリ、名前を提案し、許可一覧、ローカル視覚モデル、文書の文字抽出に対応。ローカルモデルか自分のキーを使用し、直前の処理を取り消せます。自由な分類指示や監視はありません。音声・動画は埋め込みメタデータで分類。モデルを設定できる人の単発整理向けです。
 
 ## 7. Hazel、File Juggler、DropIt
 
-[Hazel](https://www.noodlesoft.com/)（Mac、$42）、[File Juggler](https://www.filejuggler.com/)（Windows、約$40）、[DropIt](https://www.dropitproject.com/)（Windows、無料）は名前、拡張子、日付、文字条件を監視します。予測可能なファイルには便利ですが、写真やスキャン、動画の意味は理解しません。AIで付けた名前なら規則を簡単にできます。[Hazel代替](/hazel-alternative)、[Windows向け](/blog/hazel-for-windows-alternatives)。
+[Hazel](https://www.noodlesoft.com/)（Mac、$42）、[File Juggler](https://www.filejuggler.com/)（Windows、$50）、[DropIt](https://www.dropitproject.com/)（Windows、無料）は名前、拡張子、日付、文字条件を監視します。予測可能なファイルには便利ですが、写真やスキャン、動画の意味は理解しません。AIで付けた名前なら規則を簡単にできます。[Hazel代替](/hazel-alternative)、[Windows向け](/blog/hazel-for-windows-alternatives)。
 
 ## 選び方と少量テスト
 
 自由な指示と多形式ならZush、LinuxやチームはSortio、固定カテゴリはRenameClick、Macの清掃はSparkle、無料はAI File Sorter、厳密な規則はHazelなど。請求書、領収書、写真、スクリーンショット、スキャン、動画を20個コピーして試します。必要な指示を書き、フォルダ名と配置を確認し、適用後に取り消しも試してから本番フォルダへ進みます。[30の指示例](/blog/ai-folder-sorting-prompts)、[説明](/docs/folder-sorting)、[料金](/pricing)。
+
+Zushは「年、その下に月」のような階層フォルダにも対応します。すでに名前を変更したファイルは、再度名前を変えたり追加の名前変更クレジットを使ったりせずに分類できます。適用前に移動先を確認してください。この操作はMonitorとは別で、Templateを変更しても過去のファイルが自動で再分類されるわけではありません。[AIフォルダ分類](/docs/folder-sorting)はMacとWindowsで利用できます。
 
 ## よくある質問
 

@@ -43,6 +43,8 @@ export interface BlogPost {
   locale: BlogLocale;
   /** For a translated post: the English slug it translates. */
   translationOf?: string;
+  /** Source file of the entry as reported by the content loader. */
+  sourcePath?: string;
 }
 
 export interface BlogPostDetails {
@@ -233,6 +235,7 @@ function toBlogPost(entry: BlogEntry): BlogPost {
 
   return {
     id: entry.id,
+    sourcePath: entry.filePath,
     slug: entry.data.slug,
     title: entry.data.title,
     description: entry.data.description,
