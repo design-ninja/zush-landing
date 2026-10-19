@@ -23,6 +23,16 @@ const faqItems = [
       'Yes. Zush supports custom naming patterns where you can define templates like date-type-client or category-title. The AI follows your pattern while still generating context-aware names for each file.',
   },
   {
+    question: 'Which Word and Excel formats can Zush rename?',
+    answer:
+      'Zush renames Word and OpenDocument text files (DOC, DOCX, DOCM, DOTX, DOTM, ODT, RTF) and Excel and OpenDocument spreadsheets (XLS, XLSX, XLSM, XLTX, XLTM, ODS), plus CSV and TSV. For Word files it reads headings, the opening text, and key entities; for spreadsheets it reads column headers, sheet names, and the data, so Book1.xlsx becomes Q2 Marketing Budget.xlsx and meeting_notes_FINAL_v2.docx becomes Q1 Board Meeting Notes.docx.',
+  },
+  {
+    question: 'Will renaming break links to my Word or Excel files?',
+    answer:
+      'It can. Other workbooks, Power Query connections, macros, mail merges, and intranet pages point to a file by its path, and Zush does not update those references. Rename closed copies, check Data > Edit Links in any workbook that pulls numbers from the renamed files, and use Rename History if a name needs to go back.',
+  },
+  {
     question: 'Can I use a separate workflow for PDFs and scans?',
     answer:
       'Yes. Zush has a dedicated PDF workflow for invoices, contracts, and scans at the PDF page, while this page focuses on EPUB, FB2, DOCX, XLSX, PPTX, TXT, CSV, subtitle files, email exports, and other document-heavy files.',
@@ -56,6 +66,7 @@ const jsonLd = buildFeaturePageJsonLd({
       'AI document renamer that reads EPUB, FB2, DOCX, XLSX, PPTX, Pages, Numbers, Keynote, TXT, CSV, JSON, subtitles, OpenDocument, and email files to generate searchable filenames automatically.',
     featureList: [
       'Rename 40 document, PDF, and ebook formats including EPUB, FB2, DOCX, XLSX, PPTX, Pages, Numbers, Keynote, TXT, CSV, JSON, SRT, VTT, and EML',
+      'Rename Word (DOC, DOCX, RTF, ODT) and Excel (XLS, XLSX, ODS, CSV) files by their content',
       'Extract document text, spreadsheet headers, and slide titles',
       'Batch rename document-heavy folders',
       'Custom naming patterns for client, date, and category',
@@ -73,6 +84,50 @@ const RenameDocumentsWithAI = () => (
     category="document"
     definitionTitle="What Is AI Document Renaming?"
     definitionText="Rename documents and ebooks with AI using Zush to read EPUB and FB2 books, reports, proposals, spreadsheets, iWork files, slide decks, and email exports, then generate filenames that match their content."
+    directAnswerSection={{
+      heading: 'How do I rename a folder of Word and Excel files by what is in them?',
+      answer:
+        'Add the DOCX, XLSX, and other files to Zush, pick a Template such as Date + AI Title, and review the suggestions before applying. Zush reads the document text and the spreadsheet headers, sheet names, and cell data, so Document1.docx becomes Client Proposal – Acme Redesign.docx and export (3).csv becomes March Sales Pipeline.csv. That avoids two common traps: Word suggests a filename from the first line you typed, and the built-in Title property is often left over from the template the file started from.',
+      steps: [
+        'Close the files. Check whether a mail merge, a linked Excel chart, Power Query, or another workbook points to any of them by path, since a rename breaks that link.',
+        'Drop the folder into Zush and pick a Template. Contracts read well as Counterparty + Document Type + Date, finance sheets as Period + Department + AI Title, exports as Source + Date + AI Title.',
+        'Review the suggestions. Replace a version tag such as final_v3 with a date, and watch for generic sheet names such as Sheet1, which give the AI less to work with.',
+        'Apply the batch, reopen one renamed file and any dependent workbook to confirm links, and keep Rename History for anything you need to restore.',
+      ],
+    }}
+    comparison={{
+      eyebrow: 'Document renaming methods',
+      title: 'Which way to rename Word and Excel files',
+      intro: 'Word and Excel rename only the file you have open. For a folder of drafts and spreadsheets, the method depends on how many files you have and whether the name should come from what is inside them.',
+      headers: { tool: 'Method', bestFor: 'Best for', gap: 'Where it stops' },
+      rows: [
+        {
+          tool: 'Word or Excel Save As',
+          bestFor: 'The one document or workbook you are editing right now',
+          gap: 'One file at a time; Save As leaves the old copy behind, and Word suggests the first line, not the subject.',
+        },
+        {
+          tool: 'Finder / File Explorer',
+          bestFor: 'Adding the same prefix, date, or number to a selection',
+          gap: 'Applies one rule to every file without opening any of them, so it cannot tell a budget from a payroll export.',
+        },
+        {
+          tool: 'Scripts (VBA, PowerShell, Shortcuts)',
+          bestFor: 'A fixed rule built from a cell value or field in a predictable template',
+          gap: 'Breaks when the layout differs and needs maintenance.',
+        },
+        {
+          tool: 'Document properties',
+          bestFor: 'Searching by Title or Author inside Office and SharePoint',
+          gap: 'Properties are often stale and do not change the filename people see in folders and email.',
+        },
+        {
+          tool: 'Zush',
+          bestFor: 'Mixed DOCX, DOC, RTF, ODT, XLSX, XLS, ODS, and CSV files that each need a name from their content, with preview and undo',
+          gap: 'It does not edit document properties or update links in other files; rename closed copies and refresh dependent files afterwards.',
+        },
+      ],
+    }}
     showcaseSlides={[
       {
         files: [
@@ -107,9 +162,8 @@ const RenameDocumentsWithAI = () => (
     ]}
     faqItems={faqItems}
     relatedPages={[
-      { title: 'Rename Word Documents with AI', href: '/rename-word-documents-with-ai' },
-      { title: 'Rename Excel Files with AI', href: '/rename-excel-files-with-ai' },
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
+      { title: 'Batch Rename Files with AI', href: '/batch-rename-files' },
       { title: 'Rename Videos with AI', href: '/rename-videos-with-ai' },
       { title: 'Rename Screenshots with AI', href: '/rename-screenshots-with-ai' },
       { title: 'AI file renamer for Mac', href: '/mac' },

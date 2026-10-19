@@ -49,7 +49,7 @@ const STATIC_JSX_OVERRIDES: Record<string, React.ReactNode> = {
   'Is Zush a PowerRename alternative?': (
     <>
       Yes, for content-aware renaming. PowerRename in Microsoft PowerToys rewrites filenames with search-and-replace and regular expressions and never looks inside a file, while Zush reads the content of each file and suggests a descriptive name you review before applying. Use PowerRename for uniform mechanical changes and Zush when each file needs its own meaningful name.{' '}
-      <AppLink href="/powerrename-alternative">See the full PowerRename comparison →</AppLink>
+      <AppLink href="/windows">See how Zush compares on Windows →</AppLink>
     </>
   ),
   'Can Zush rename invoices and receipts on Mac?': (

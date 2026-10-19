@@ -82,7 +82,7 @@ const taskExample = currentLocale === DEFAULT_LOCALE ? RENAME_TASK_EXAMPLES[curr
 const landingWorkflow = getLandingWorkflow(currentRoute, currentLocale);
 const showPdfScenariosEarly = currentRoute === '/rename-pdf-with-ai';
 // Pages about sorting show the sorting block inside the features block.
-const sortingRoute = ['/ai-file-organizer', '/ai-file-sorter', '/automate-downloads-folder', '/hazel-alternative'].includes(currentRoute);
+const sortingRoute = ['/ai-file-organizer', '/ai-file-sorter', '/hazel-alternative'].includes(currentRoute);
 const macVersion = parseLatestVersion(macChangelogSource) ?? undefined;
 const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
 const relatedPageHref = (href: string) =>
