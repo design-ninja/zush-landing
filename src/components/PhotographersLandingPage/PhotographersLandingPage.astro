@@ -5,6 +5,7 @@ import audiencePhotographerImage from '@/assets/landing/photographers-audience-p
 import audienceStudioImage from '@/assets/landing/photographers-audience-studio.webp';
 import audienceVideographerImage from '@/assets/landing/photographers-audience-videographer.webp';
 import CloudFolders from '@/components/CloudFolders';
+import ComparisonTable from '@/components/ComparisonTable/ComparisonTable.astro';
 import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import FAQ from '@/components/FAQ';
@@ -18,6 +19,7 @@ import testimonialStyles from '@/components/Testimonials/Testimonials.module.scs
 import {
   PHOTOGRAPHERS_AUDIENCES,
   PHOTOGRAPHERS_FAQ,
+  PHOTOGRAPHERS_METHODS_COMPARISON,
   PHOTOGRAPHERS_MEDIA_TYPES,
   PHOTOGRAPHERS_NAMING_RECIPES,
   PHOTOGRAPHERS_OUTCOMES,
@@ -161,6 +163,8 @@ const AUDIENCE_IMAGES = {
     </div>
   </div>
 </section>
+
+<ComparisonTable {...PHOTOGRAPHERS_METHODS_COMPARISON} />
 
 <section class={styles.Comparison} aria-labelledby="photographers-tool-comparison-title">
   <div class={styles.Comparison__Container}>

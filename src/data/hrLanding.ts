@@ -1,7 +1,7 @@
 import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
 export const HR_PAGE_PATH = '/for-hr';
-export const HR_PAGE_TITLE = 'HR Document Management with Offline AI File Renaming';
+export const HR_PAGE_TITLE = 'AI File Renamer for HR & People Teams';
 
 export const HR_HERO = {
   eyebrow: 'For HR and people teams',

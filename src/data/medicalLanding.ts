@@ -9,7 +9,7 @@ import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 // is previewed before it is applied in place.
 
 export const MEDICAL_PAGE_PATH = '/for-medical';
-export const MEDICAL_PAGE_TITLE = 'Healthcare Document Management with Offline AI File Renaming';
+export const MEDICAL_PAGE_TITLE = 'Offline AI File Renamer for Medical Practices';
 
 export const MEDICAL_HERO = {
   eyebrow: 'Healthcare document management for medical practices',
