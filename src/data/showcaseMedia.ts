@@ -59,8 +59,8 @@ export const WINDOWS_DEMO_VIDEO: DemoVideoAsset = {
     light: '/videos/posters/demo-windows.webp',
     dark: '/videos/posters/demo-windows-dark.webp',
   },
-  width: 2674,
-  height: 1506,
+  width: 2816,
+  height: 1584,
 };
 
 const SHOWCASE_VIDEOS: ShowcaseVideoAsset[] = [

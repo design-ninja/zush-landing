@@ -230,15 +230,15 @@ const softwareJsonLd = {
   featureList: [...localizedPage.features, ORGANIZATION_FEATURES[locale].sortingAnswer],
 };
 
-const WINDOWS_BATCH_RENAME_VIDEO_UPLOAD_DATE = '2026-04-29T00:00:00+00:00';
+const WINDOWS_BATCH_RENAME_VIDEO_UPLOAD_DATE = '2026-10-19T00:00:00+00:00';
 const windowsVideoJsonLd = platform === 'windows' && locale === DEFAULT_LOCALE
   ? {
       '@context': 'https://schema.org',
       '@type': 'VideoObject',
       '@id': `${SITE_ORIGIN}${pagePath}#batch-rename-video`,
-      name: 'AI batch rename workflow on Windows',
+      name: 'AI batch rename and folder sorting on Windows',
       description:
-        'A Windows demo showing File Explorer files analyzed by AI, reviewed in a batch rename list, and applied with undo history available.',
+        'A Windows demo showing a desktop folder renamed by AI and sorted into folders, then an Invoices template with a Custom AI Block that renames invoices and groups them by vendor.',
       thumbnailUrl: `${SITE_ORIGIN}${WINDOWS_SHOWCASE_SCREENSHOTS[0].images.light}`,
       uploadDate: WINDOWS_BATCH_RENAME_VIDEO_UPLOAD_DATE,
       contentUrl: `${SITE_ORIGIN}${WINDOWS_SHOWCASE_SCREENSHOTS[0].video?.light ?? '/videos/windows/zush-batch-rename.mp4'}`,
