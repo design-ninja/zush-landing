@@ -151,6 +151,16 @@ function verifyAutoOpenFlow() {
     "Auto-open no longer defers checkout opening after page load",
   );
   assertMatch(
+    src,
+    /isPaddleTransactionId\(getCheckoutParam\(["']_ptxn["']\)\)|getCheckoutParam\(["']_ptxn["']\)[\s\S]*isPaddleTransactionId\(transactionId\)/,
+    "Auto-open no longer opens the app's Paddle payment link (_ptxn)",
+  );
+  assertMatch(
+    read("src/utils/paddle.ts"),
+    /export async function openPaddleTransactionCheckout[\s\S]*?Checkout\.open\(checkoutOptions\)/,
+    "The app's Paddle payment link no longer opens its own transaction",
+  );
+  assertMatch(
     layoutSrc,
     /bindCheckoutAutoOpen\(\)/,
     "Base layout no longer binds checkout auto-open flow",

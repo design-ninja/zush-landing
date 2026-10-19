@@ -66,6 +66,9 @@ let paddleLoaded = false;
 let paddleInitialized = false;
 let paddleScriptPromise: Promise<void> | null = null;
 let activeCheckoutSession: string | null = null;
+// Set instead of a session when checkout opens the app's payment link (`_ptxn`),
+// so the country check can still identify the checkout.
+let activeCheckoutTransactionId: string | null = null;
 let activeCheckoutSource = "landing";
 let activeCheckoutPriceId: string | null = null;
 const paddleEventListeners = new Set<PaddleEventListener>();
@@ -144,13 +147,18 @@ let lastVerifiedCheckoutCustomer: string | null = null;
 
 async function verifyCheckoutCountry(event: PaddleEvent): Promise<void> {
   const checkoutSession = activeCheckoutSession;
+  const transactionId = checkoutSession ? null : activeCheckoutTransactionId;
   const customer = event.data?.customer;
-  if (!checkoutSession || !customer?.email) return;
+  if ((!checkoutSession && !transactionId) || !customer?.email) return;
+  const isStillActive = () =>
+    checkoutSession
+      ? checkoutSession === activeCheckoutSession
+      : transactionId === activeCheckoutTransactionId;
 
   // checkout.loaded, customer.created and customer.updated often carry the
   // same customer; check each distinct email/country once per session.
   const fingerprint = JSON.stringify([
-    checkoutSession,
+    checkoutSession ?? transactionId,
     customer.email,
     customer.address?.country_code,
   ]);
@@ -158,7 +166,9 @@ async function verifyCheckoutCountry(event: PaddleEvent): Promise<void> {
   lastVerifiedCheckoutCustomer = fingerprint;
 
   const body = JSON.stringify({
-    checkout_session: checkoutSession,
+    ...(checkoutSession
+      ? { checkout_session: checkoutSession }
+      : { transaction_id: transactionId }),
     email: customer.email,
     country_code: customer.address?.country_code,
   });
@@ -187,7 +197,7 @@ async function verifyCheckoutCountry(event: PaddleEvent): Promise<void> {
     }
   }
 
-  if (checkoutSession !== activeCheckoutSession) return;
+  if (!isStillActive()) return;
   if (response?.ok && result.allowed === true) return;
 
   if (response?.status === 403) {
@@ -202,6 +212,7 @@ async function verifyCheckoutCountry(event: PaddleEvent): Promise<void> {
     trackCheckoutOpenError("access_policy_unavailable");
   }
   activeCheckoutSession = null;
+  activeCheckoutTransactionId = null;
   sessionStorage.removeItem("zush_checkout_session");
   window.Paddle?.Checkout.close();
   window.alert(accessPolicyMessage(response?.status === 403 ? result.code : undefined));
@@ -432,6 +443,40 @@ async function beforeCheckoutOpen(
   await waitForBrowserPaint();
 }
 
+// The Windows app falls back to this page with the transaction its checkout already created, in
+// Paddle's payment-link parameter `_ptxn`. Paddle.js opens such a link by itself only when it is on
+// the page from the start; here it loads on demand, so open that transaction explicitly instead of
+// waiting for a pricing button and creating a second one.
+export async function openPaddleTransactionCheckout(
+  transactionId: string,
+): Promise<boolean> {
+  activeCheckoutSource = "app";
+  activeCheckoutPriceId = null;
+  activeCheckoutSession = null;
+  activeCheckoutTransactionId = transactionId;
+
+  try {
+    const ready = await ensurePaddleReady();
+    if (!ready || !window.Paddle) {
+      console.error("[Paddle] Paddle.js not ready");
+      trackCheckoutOpenError("sdk_load");
+      return false;
+    }
+
+    const checkoutOptions: PaddleCheckoutOptions = { transactionId };
+    const settings = buildCheckoutSettings();
+    if (settings) {
+      checkoutOptions.settings = settings;
+    }
+
+    window.Paddle.Checkout.open(checkoutOptions);
+    return true;
+  } catch (error) {
+    trackCheckoutOpenError("open");
+    throw error;
+  }
+}
+
 export async function openPaddleCheckout(
   deviceId?: string | null,
   priceId?: string | null,
@@ -454,6 +499,7 @@ async function openPaddleCheckoutInternal(
   activeCheckoutSource = deviceId ? "app" : "landing";
   activeCheckoutPriceId = priceId ?? null;
   activeCheckoutSession = null;
+  activeCheckoutTransactionId = null;
 
   if (!priceId) {
     console.error("[Paddle] Price ID not provided");
