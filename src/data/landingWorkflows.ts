@@ -54,7 +54,7 @@ const workflows: Record<string, LandingWorkflow> = {
     setupOptions: [
       { title: 'Rename in place', instructions: 'Keep Sort off. Files stay in their folder and get names built from content, dates, and your Naming Blocks.', href: '/batch-rename-files', label: 'Batch rename files with AI' },
       { title: 'Rename and sort', instructions: 'Turn on Sort. Auto groups files by content, or Folder rules describe the folders, including nested ones such as year and month.', href: '/ai-file-sorter', label: 'Write AI file sorter rules' },
-      { title: 'Organize new files', instructions: 'Assign the Template to folder monitoring. New files in Downloads or a scanner folder are named, and sorted if the Template sorts.', href: '/automate-downloads-folder', label: 'Automate your Downloads folder' },
+      { title: 'Organize new files', instructions: 'Assign the Template to folder monitoring. New files in Downloads or a scanner folder are named, and sorted if the Template sorts.', href: '/docs/folder-monitoring', label: 'Set up folder monitoring' },
     ],
     steps: [
       'Choose one Downloads or client folder and decide which details you will search for later, such as project, document type, and date. Save those fields as a Template.',
