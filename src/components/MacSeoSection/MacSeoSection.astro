@@ -8,6 +8,8 @@ import {
   WandSparkles,
 } from 'lucide-react';
 import PlatformSeoSection, { type PlatformSeoCard } from '@/components/PlatformSeoSection/PlatformSeoSection.astro';
+import { APP_CONFIG, SUPPORTED_FORMAT_COUNT } from '@/constants';
+import { PRO_PRICING_SUMMARY } from '@/constants/pricing';
 
 const docsLinks = [
   { href: '/hazel-alternative', label: 'Hazel alternative' },
@@ -67,7 +69,7 @@ const rows: [string, string, string][] = [
 <PlatformSeoSection
   eyebrow="Mac file organizing"
   title="Automatic file organizer for Mac"
-  intro="Zush is built for Mac users who need an AI file renamer, batch rename tool, and practical file organizer for messy Finder folders — Downloads, screenshots, photos, PDFs, and scans."
+  intro={`Zush is an AI file renamer and organizer for macOS 15 and later. It reads ${SUPPORTED_FORMAT_COUNT} formats, from screenshots and HEIC or RAW photos to PDFs, scans, Office files, video, and audio, and gives each file a descriptive name you review before applying. It can sort files into folders by your own plain-language rules and keep Downloads tidy with folder monitoring. Start with ${APP_CONFIG.free_tier_limit} free renames; PRO is ${PRO_PRICING_SUMMARY}.`}
   cards={cards}
   comparisonTitle="When Zush is a Hazel alternative for Mac"
   tableLabel="Mac file organizing comparison"

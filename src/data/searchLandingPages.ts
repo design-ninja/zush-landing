@@ -364,6 +364,11 @@ const fileSorterFaq = [
       'An AI file sorter reads what each file contains and moves it into a folder that matches its content, instead of sorting by extension or filename pattern. Zush is an AI file sorter for Mac and Windows: it reads PDFs, scans, photos, screenshots, documents, videos, and audio, suggests folders, and renames each file in the same reviewed batch.',
   },
   {
+    question: 'Is Zush the same as the open-source AI File Sorter app?',
+    answer:
+      'No. AI File Sorter is a separate open-source project for Windows, macOS, and Linux that suggests categories from a whitelist you define. Zush is a different app: it sorts by your own plain-language Folder rules or Auto grouping, renames each file with Templates and Naming Blocks, and can sort new files automatically with Monitor. Both show suggestions for review before files move.',
+  },
+  {
     question: 'Can I tell Zush how to sort my files in my own words?',
     answer:
       'Yes. Write Folder rules in plain language, up to 2,000 characters, for example “Group invoices by company and receipts by month, name month folders YYYY-MM.” Leave the field empty to use Auto, which groups files by content into a few broad, reusable folders. No conditions, regex, or scripts are needed.',
@@ -704,6 +709,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     relatedBlogPosts: [
       { title: 'Rename Files by Content', href: 'rename-files-by-content-guide' },
       { title: 'Mac batch rename methods', href: 'batch-rename-files-on-mac-complete-guide' },
+      { title: 'Batch rename files on Windows 11', href: 'batch-rename-files-windows-11' },
       { title: 'Preview and Undo a Batch Rename Safely', href: 'how-to-safely-batch-rename-files' },
       { title: 'Auto Rename Files on Mac', href: 'auto-rename-files-mac-guide' },
     ],
@@ -795,6 +801,40 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       'Zush is an AI file organizer for Mac and Windows. It reads each file and gives it a searchable name, files it into folders when you turn on AI folder sorting, and keeps Downloads or client folders in order with folder monitoring. Review every batch before applying it; undo restores names and folders.',
     showcaseSlides: sharedSlides,
     faqItems: fileOrganizerFaq,
+    comparison: {
+      eyebrow: 'AI file organizers compared',
+      title: 'The best AI file organizer depends on what decides where a file goes',
+      intro:
+        `For mixed folders on Mac and Windows, our pick is Zush: it reads ${SUPPORTED_FORMAT_COUNT} formats including scans, video, and audio, gives each file a descriptive name, and sorts it by your plain-language Folder rules or Auto grouping, with a preview before anything moves and undo afterwards. Rule engines fit when the condition is already in the filename or date; Sparkle fits hands-off Mac cleanup. Competitor details were checked on vendor pages on September 27, 2026.`,
+      headers: { tool: 'Organizer', bestFor: 'Best for', gap: 'Where it stops' },
+      rows: [
+        {
+          tool: 'Zush',
+          bestFor: 'Naming and sorting mixed files by content in one reviewed batch, with Templates, Naming Blocks, folder monitoring, and local AI on Mac and Windows',
+          gap: 'Not a disk cleaner or document-management system; it does not delete duplicates or replace a photo library.',
+        },
+        {
+          tool: 'Sparkle',
+          bestFor: 'Hands-off cleanup of Desktop, Downloads, and Documents on a schedule',
+          gap: 'Mac only and subscription based; it builds its own library structure rather than a naming convention you control.',
+        },
+        {
+          tool: 'Sortio',
+          bestFor: 'A plain-language prompt that renames and routes files on Mac, Windows, and Linux',
+          gap: 'Pro is $14.99/month or $99/year with a monthly AI allowance; free plan is a one-time AI trial.',
+        },
+        {
+          tool: 'RenameClick',
+          bestFor: 'AI Categories picked from a preset list you define, or matching up to 50 existing top-level folders',
+          gap: 'You maintain the category list rather than describing the grouping; video is not in its format list.',
+        },
+        {
+          tool: 'Hazel, File Juggler, DropIt',
+          bestFor: 'Deterministic rules on name, extension, date, or matched text',
+          gap: 'Every condition must be written by hand, and none of them understand what a photo, video, or scan shows.',
+        },
+      ],
+    },
     relatedPages: [
       { title: 'AI File Sorter', href: '/ai-file-sorter' },
       { title: 'AI Folder Sorting: Auto and Custom Rules', href: '/docs/folder-sorting' },
@@ -867,13 +907,18 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       eyebrow: 'File sorters compared',
       title: 'Rules, categories, or a prompt: how file sorters decide',
       intro:
-        `Every sorter needs a way to decide where a file goes. Rule engines match names and dates, category sorters pick from a list you maintain, and prompt-based sorters follow instructions you write. Zush follows your prompt, reads ${SUPPORTED_FORMAT_COUNT} formats including video and audio, and renames each file in the same batch. Competitor details were checked on vendor pages on September 27, 2026.`,
+        `Every sorter needs a way to decide where a file goes. Rule engines match names and dates, category sorters pick from a list you maintain, and prompt-based sorters follow instructions you write. Zush follows your prompt, reads ${SUPPORTED_FORMAT_COUNT} formats including video and audio, and renames each file in the same batch. Competitor details were checked on vendor pages on September 27, 2026, and for the open-source AI File Sorter on October 19, 2026.`,
       headers: { tool: 'Sorter', bestFor: 'How it decides', gap: 'Where it stops' },
       rows: [
         {
           tool: 'Zush',
           bestFor: 'Your plain-language Folder rules, or Auto grouping by content. Reads PDFs, scans, photos, screenshots, documents, video, and audio, then renames and sorts in one reviewed batch on Mac and Windows.',
           gap: 'Review ambiguous files before applying. Nested folders, such as year and then month, come from an explicit Folder rule.',
+        },
+        {
+          tool: 'AI File Sorter (open source)',
+          bestFor: 'A free AGPL app for Windows, macOS, and Linux that suggests categories, subcategories, and filenames from file content, with built-in local models or your own API key',
+          gap: 'You pick from category whitelists rather than writing your own folder rules; there are no naming Templates or folder monitoring, so each run starts with Analyze.',
         },
         {
           tool: 'Sortio',
@@ -964,6 +1009,51 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       'Hazel is a rule engine for macOS: it watches folders and acts on files based on conditions you write, such as name patterns, dates, or kind. Zush works the other way around — it reads what each file actually contains and suggests a descriptive, searchable name. Zush can also sort files into folders: instead of building conditions, you describe the folders in plain language, such as “Group invoices by company and receipts by month.” Monitor applies the same rules to new files, every batch stays in undo history, and Zush runs on Mac and Windows, while Hazel is macOS-only. Rules ask where a file came from; AI asks what is inside it.',
     showcaseSlides: sharedSlides,
     faqItems: hazelAlternativeFaq,
+    directAnswerSection: {
+      heading: 'What is the best Hazel alternative?',
+      answer:
+        'It depends on your platform and on what decides the destination. If the rule is already visible in the filename, extension, or date, a rule engine is enough: File Juggler and DropIt are the closest Hazel equivalents on Windows. If the right name or folder depends on what is inside the file, such as the vendor on an invoice or the subject of a photo, use Zush: it reads the file, names it, and sorts it by plain-language rules on Mac and Windows. Many Mac users keep Hazel for path-based housekeeping and use Zush for naming and content-based sorting.',
+      steps: [
+        'List the Hazel rules you rely on and mark the ones that only check names, kinds, or dates. Those can stay rule-based.',
+        'For folders where you rename or sort by hand after reading the file, add a sample batch to Zush and choose a Template for the filenames.',
+        'Turn on Sort and describe the folders, such as “Group invoices by company and receipts by month,” then review the proposed names and folders.',
+        'Once the result is reliable, assign the Template to Monitor so new files in that folder are named and sorted as they arrive.',
+      ],
+    },
+    comparison: {
+      eyebrow: 'Hazel alternatives compared',
+      title: 'Rule engines vs content-aware organizers',
+      intro:
+        'Hazel and its Windows counterparts act on conditions you write. AI organizers read the file itself. Choose by what has to decide the name or folder. Competitor details were checked on vendor pages on September 27, 2026.',
+      headers: { tool: 'Tool', bestFor: 'Best for', gap: 'Where it stops' },
+      rows: [
+        {
+          tool: 'Hazel',
+          bestFor: 'Mac automation built from conditions on name, kind, date, or source, with actions such as move, tag, or run a script',
+          gap: 'macOS only; every rule is written by hand, and a condition cannot tell what a photo, scan, or video shows.',
+        },
+        {
+          tool: 'Zush',
+          bestFor: 'Naming and sorting by what each file contains, with plain-language Folder rules, Monitor for new files, and undo on Mac and Windows',
+          gap: 'Not a general automation engine: no shell-script actions or disk cleanup rules like Hazel.',
+        },
+        {
+          tool: 'File Juggler',
+          bestFor: 'Hazel-style rules on Windows, including conditions on text found in PDF, Word, and Excel files',
+          gap: 'Windows only; rules match text and metadata rather than understanding photos or video.',
+        },
+        {
+          tool: 'DropIt',
+          bestFor: 'Free, open-source sorting on Windows by name, extension, size, or date',
+          gap: 'Rules only; it does not read file content or suggest names.',
+        },
+        {
+          tool: 'Sparkle',
+          bestFor: 'Hands-off cleanup of Desktop, Downloads, and Documents on a schedule',
+          gap: 'Mac only and subscription based; it builds its own library structure rather than a naming convention you control.',
+        },
+      ],
+    },
     relatedPages: [
       { title: 'AI File Sorter', href: '/ai-file-sorter' },
       { title: 'AI File Organizer', href: '/ai-file-organizer' },
@@ -1166,6 +1256,45 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       'AI receipt renaming turns IMG_2041.jpg into "Whole Foods – 2026-06-03 Receipt", pulling the store, date, and amount from receipt photos and PDFs.',
     showcaseSlides: receiptSlides,
     faqItems: receiptRenameFaq,
+    directAnswerSection: {
+      heading: 'How do I rename receipts so they are easy to find at tax time?',
+      answer:
+        'Use one pattern for every receipt, with the date first: 2026-06-03 – Whole Foods – 84 USD – Meals.jpg sorts by day, shows the store, and makes the amount searchable. Zush reads receipt photos, HEIC images, and PDFs, proposes the date, merchant, total, and an expense category, and waits for your review. Check the purchase date rather than the card posting date, and the total rather than the subtotal or tip line.',
+      steps: [
+        'Collect a week of receipts in one intake folder, including photos from your phone and PDF receipts from email.',
+        'In Zush, build a Template from Detected Date, Vendor, Amount, and a Custom AI Block for the expense category you report on.',
+        'Review each suggestion against the receipt. Fix faded or cropped photos by hand, and leave the amount out when it is not readable.',
+        'Apply the batch, then assign the Template to folder monitoring so new receipts are named the same way as they arrive.',
+      ],
+    },
+    comparison: {
+      eyebrow: 'Receipt filing methods',
+      title: 'Which way to file receipts',
+      intro: 'Expense apps track spending; a folder of well-named files is the record you keep. Many people use both. Choose by whether you need the file itself to say what it is.',
+      headers: { tool: 'Method', bestFor: 'Best for', gap: 'Where it stops' },
+      rows: [
+        {
+          tool: 'Renaming by hand',
+          bestFor: 'A few receipts a month',
+          gap: 'Slow and inconsistent once photos, PDFs, and email receipts pile up.',
+        },
+        {
+          tool: 'Expense and accounting apps',
+          bestFor: 'Approvals, reimbursement, and syncing totals into bookkeeping',
+          gap: 'The original image often stays inside the app with a generic name, so your own folder copy stays hard to search.',
+        },
+        {
+          tool: 'Scanner app naming',
+          bestFor: 'Adding a date or counter at the moment of scanning',
+          gap: 'Names come from the scan time, not the store or amount on the receipt.',
+        },
+        {
+          tool: 'Zush',
+          bestFor: 'A folder of receipt photos and PDFs that each need date, merchant, and amount in the name, with preview, monitoring, and undo',
+          gap: 'It names files; it does not submit expenses, check totals, or replace the records your tax rules require you to keep.',
+        },
+      ],
+    },
     relatedPages: [
       { title: 'Rename & Organize Invoices with AI', href: '/rename-invoices-with-ai' },
       { title: 'Rename Photos with AI', href: '/rename-photos-with-ai' },

@@ -23,6 +23,7 @@ import { PLATFORM_LANDING_CONTENT } from '@/data/platformLanding';
 import { getPlatformLandingSections } from '@/data/platformLandingSections';
 import { PLATFORM_SPECIFICS_CONTENT } from '@/data/platformSpecifics';
 import { WINDOWS_COMPARISON } from '@/data/windowsComparison';
+import { MAC_COMPARISON } from '@/data/macComparison';
 import {
   MAC_DEMO_VIDEO,
   WINDOWS_DEMO_VIDEO,
@@ -363,6 +364,7 @@ const jsonLdItems = [
   )}
   <Testimonials locale={locale} />
   {platform === 'mac' && locale === DEFAULT_LOCALE && <MacSeoSection />}
+  {platform === 'mac' && locale === DEFAULT_LOCALE && <ComparisonTable {...MAC_COMPARISON} />}
   {platform === 'windows' && locale === DEFAULT_LOCALE && <WindowsSeoSection />}
   {platform === 'windows' && locale === DEFAULT_LOCALE && <ComparisonTable {...WINDOWS_COMPARISON} />}
   <PlatformSpecifics platform={platform} locale={locale} scenarioLimit={4} />

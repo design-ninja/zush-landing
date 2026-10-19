@@ -67,7 +67,9 @@ const localizedProps = Astro.props as FeatureLandingPageProps & LocalizedProps;
 const currentLocale = localizedProps.locale ?? DEFAULT_LOCALE;
 const currentCopy = getCopy(currentLocale);
 const pageCopy = localizedProps.localizedCopy;
-const resolvedDirectAnswerSection = pageCopy?.directAnswerSection ?? directAnswerSection;
+// English-only answers stay off localized pages unless a translation is provided.
+const resolvedDirectAnswerSection = pageCopy?.directAnswerSection
+  ?? (currentLocale === DEFAULT_LOCALE ? directAnswerSection : undefined);
 const heroSlides = pageCopy?.showcaseSlides ?? (currentLocale === DEFAULT_LOCALE ? showcaseSlides : currentCopy.home.showcaseSlides);
 const breadcrumbItems = [
   { label: currentLocale === DEFAULT_LOCALE ? 'Home' : 'Zush', href: getLocalizedPath('/', currentLocale) },

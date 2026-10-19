@@ -95,6 +95,45 @@ const RenameExcelFilesWithAI = () => (
         ],
       },
     ]}
+    directAnswerSection={{
+      heading: 'How do I rename a folder of Excel files by what is in them?',
+      answer:
+        'Add the spreadsheets to Zush, pick a Template such as Date + AI Title, and review the suggestions before applying. Zush reads the column headers, sheet names, and cell data, so Book1.xlsx becomes Q2 Marketing Budget.xlsx and export (3).csv becomes March Sales Pipeline.csv. Rename closed copies first: other workbooks, Power Query connections, and macros can point to a workbook by its path, and a rename breaks those links until you update them.',
+      steps: [
+        'Close the workbooks and check Data > Edit Links in any file that pulls numbers from them, so you know which references to update afterwards.',
+        'Drop the folder into Zush and choose a Template. For finance files, Period + Department + AI Title keeps months in order; for exports, Source + Date + AI Title works well.',
+        'Review the list. Watch for generic sheet names such as Sheet1, which give the AI less to work with, and correct any period the data does not show.',
+        'Apply the batch, reopen a dependent workbook to confirm its links, and use Rename History if a name needs to go back.',
+      ],
+    }}
+    comparison={{
+      eyebrow: 'Spreadsheet renaming methods',
+      title: 'Which way to rename spreadsheets',
+      intro: 'Excel itself only renames the file you have open. Choose the method by how many files you have and whether the name depends on what is inside them.',
+      headers: { tool: 'Method', bestFor: 'Best for', gap: 'Where it stops' },
+      rows: [
+        {
+          tool: 'Excel Save As',
+          bestFor: 'One workbook you are already editing, when you know the right name',
+          gap: 'One file at a time, and Save As leaves the old copy behind.',
+        },
+        {
+          tool: 'Finder / File Explorer',
+          bestFor: 'Adding the same prefix, date, or number to a selection',
+          gap: 'The rule is the same for every file; it cannot tell a budget from a payroll export.',
+        },
+        {
+          tool: 'Scripts (VBA, PowerShell, Shortcuts)',
+          bestFor: 'A fixed rule built from a cell value in a predictable template',
+          gap: 'Breaks when the cell moves or the layout differs, and needs maintenance.',
+        },
+        {
+          tool: 'Zush',
+          bestFor: 'Mixed XLSX, XLS, ODS, and CSV files that each need a descriptive name, with preview and undo',
+          gap: 'It does not update links in other workbooks; rename closed copies and refresh dependent files afterwards.',
+        },
+      ],
+    }}
     faqItems={faqItems}
     relatedPages={[
       { title: 'Rename Documents with AI', href: '/rename-documents-with-ai' },
