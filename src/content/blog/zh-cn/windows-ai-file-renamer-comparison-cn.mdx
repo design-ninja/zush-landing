@@ -32,7 +32,7 @@ import BlogCTA from '@/components/blog/BlogCTA.astro';
 | 选择分析运行的位置 | 选择托管云、BYOK、Ollama 或 LM Studio |
 | 审核与恢复 | 预览批处理，应用选定的结果，然后测试 Rename History |
 | 定期的“下载”或扫描仪文件 | 将经过测试的模板分配给 Monitor |
-| 在一个工作流中完成名称和文件夹处理 | 启用 AI 文件夹排序（beta）并同时审核目标位置 |
+| 在一个工作流中完成名称和文件夹处理 | 启用 AI 文件夹排序并同时审核目标位置 |
 
 请对照你的实际工作负载检查[支持的文件类型](/docs/supported-file-types)。支持的扩展名并不能保证对每个文件都能进行准确解释，尤其是清晰度不佳的扫描件或模棱两可的日期。
 
@@ -40,7 +40,7 @@ import BlogCTA from '@/components/blog/BlogCTA.astro';
 
 可以[导出 Templates](/docs/template-import-export)，将 Naming Blocks、Custom AI Blocks 和文件夹规则一起导入另一台电脑。目标文件夹、访问权限和 AI 连接需要在新电脑上重新设置。转移的是工作流程设置，不是文件本身。
 
-Zush 支持嵌套文件夹规则，例如先按年份、再按月份分类。已经重命名的文件可以单独分类，无需再次改名或消耗另一次重命名额度。应用前请核对目标路径。这与 Monitor 是两个操作：修改 Template 不会自动重新整理之前的文件。[AI 文件夹分类](/docs/folder-sorting)在 Mac 和 Windows 上仍处于 beta 阶段。
+Zush 支持嵌套文件夹规则，例如先按年份、再按月份分类。已经重命名的文件可以单独分类，无需再次改名或消耗另一次重命名额度。应用前请核对目标路径。这与 Monitor 是两个操作：修改 Template 不会自动重新整理之前的文件。[AI 文件夹分类](/docs/folder-sorting)在 Mac 和 Windows 上均可使用。
 
 ## 在选择付费计划之前先测试十个文件
 
@@ -73,7 +73,7 @@ BYOK 是云端处理，并非离线模式。本地选项需要进行设置并具
 
 ![Zush for Windows 在“重命名并排序”之前预览建议的文件夹和文件名](/images/showcase/windows/folder-sorting-light.webp)
 
-文件夹排序功能目前处于 beta 阶段。在应用之前审核每个目标位置，并测试从历史记录中恢复名称和文件夹。避免处理被活动项目引用的文件。启用了排序功能的模板随后可以分配给 Monitor；自动到达的文件不一定像你的第一批文件那样需要相同的手动批准。请参阅[Windows 排序指南](/blog/sort-files-into-folders-with-ai-windows)。
+在应用之前审核每个目标位置，并测试从历史记录中恢复名称和文件夹。避免处理被活动项目引用的文件。启用了排序功能的模板随后可以分配给 Monitor；自动到达的文件不一定像你的第一批文件那样需要相同的手动批准。请参阅[Windows 排序指南](/blog/sort-files-into-folders-with-ai-windows)。
 
 ## 与其他 Windows 方法的简要对比
 

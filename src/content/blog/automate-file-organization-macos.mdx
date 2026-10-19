@@ -8,7 +8,7 @@ topic: "organization"
 tags:
   - "Automation"
   - "File Organization"
-tldr: "Zush names mixed files by content and can sort them into folders with AI (beta). Preview a manual batch, save the destination and Folder rules in a Template, then assign it to Monitor for new arrivals. Smart Folders provide saved views; Automator and Hazel support deterministic routing and scripts."
+tldr: "Zush names mixed files by content and can sort them into folders with AI. Preview a manual batch, save the destination and Folder rules in a Template, then assign it to Monitor for new arrivals. Smart Folders provide saved views; Automator and Hazel support deterministic routing and scripts."
 reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
@@ -31,7 +31,7 @@ The recommended setup begins with Zush on a copied test folder so files receive 
 
 <BlogProductIntro
   title="Need AI naming before routing?"
-  description="Zush for Mac proposes content-aware names and optional AI folder groups (beta). Preview proposed names before applying them and use History to undo completed rename operations."
+  description="Zush for Mac proposes content-aware names and optional AI folder groups. Preview proposed names before applying them and use History to undo completed rename operations."
   links={[
     { href: '/ai-file-organizer', label: 'AI file organizer' },
     { href: '/mac', label: 'Mac AI renamer' },
@@ -78,9 +78,9 @@ If you want one app to name, file, and watch a folder, start with the [Zush AI f
 | Automator | Yes | Yes (Folder Actions) | Yes | Yes (patterns) | No |
 | Shortcuts | Yes | Yes (triggers) | Yes | Yes (patterns) | No |
 | Hazel | No ($42) | Yes | Yes | Yes (rules) | No |
-| [AI file renamer for Mac](/mac) | No | Yes | Yes, optional AI folder sorting (beta) | Yes (AI) | Yes |
+| [AI file renamer for Mac](/mac) | No | Yes | Yes, optional AI folder sorting | Yes (AI) | Yes |
 
-Zush is the recommended core because naming makes every downstream search or rule more useful. Zush can also handle content-based folder groups (beta); the other tools provide saved views, deterministic conditions, or scripts.
+Zush is the recommended core because naming makes every downstream search or rule more useful. Zush can also handle content-based folder groups; the other tools provide saved views, deterministic conditions, or scripts.
 
 <BlogSafetyNote
   title="Build the automation in reversible layers"
@@ -95,7 +95,7 @@ Zush is the recommended core because naming makes every downstream search or rul
 
 ## Sort mixed files into folders with AI
 
-The [Zush AI file sorter](/ai-file-sorter) can give supported files descriptive names and group them into real folders by content in the same batch. **AI folder sorting is in beta on Mac and Windows.** Leave **Folder rules** empty for Auto grouping, or describe the groups in plain language. For mixed files, try:
+The [Zush AI file sorter](/ai-file-sorter) can give supported files descriptive names and group them into real folders by content in the same batch. **AI folder sorting works on Mac and Windows.** Leave **Folder rules** empty for Auto grouping, or describe the groups in plain language. For mixed files, try:
 
 > Group invoices by company and receipts by month.
 
@@ -345,7 +345,7 @@ After a week of running this setup, look at what is still falling through the cr
 
 | Task | Recommendation | Why |
 |---|---|---|
-| Name and group mixed files by content | **Zush — overall pick** | AI names, optional folder sorting (beta), monitoring with a Template, preview, and history |
+| Name and group mixed files by content | **Zush — overall pick** | AI names, optional folder sorting, monitoring with a Template, preview, and history |
 | Find files without moving them | Smart Folders (optional) | Virtual, no restructuring needed |
 | Sort files by type into folders | Automator or Hazel | Extension-based rules are simple |
 | Archive old files automatically | Hazel | Date-based conditions with background monitoring |
@@ -407,6 +407,6 @@ If Hazel and an Automator Folder Action both watch the same folder, they can rac
 
 To automate file organization on macOS effectively, let simple rules handle simple decisions and let AI handle visual ambiguity. That balance gives you a system that is actually maintainable.
 
-Start with Zush for content-aware names, optional AI folder sorting (beta), and recovery. Save a tested sorting setup in a Template for Monitor. Use Smart Folders for saved views, and Automator or Hazel for deterministic rules or scripts. Review weekly and expand gradually.
+Start with Zush for content-aware names, optional AI folder sorting, and recovery. Save a tested sorting setup in a Template for Monitor. Use Smart Folders for saved views, and Automator or Hazel for deterministic rules or scripts. Review weekly and expand gradually.
 
 The goal is not a perfect system. The goal is a system where you spend five minutes a week on file organization instead of thirty.

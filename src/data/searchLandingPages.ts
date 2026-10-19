@@ -313,7 +313,7 @@ const fileOrganizerFaq = [
   {
     question: 'Is Zush AI file and folder naming software?',
     answer:
-      'Yes. Zush creates content-aware filenames on Mac and Windows. AI folder sorting (beta) also suggests folder names and moves files into those groups. Use Auto mode or write a prompt such as “Group invoices by company and receipts by month.” You can reuse suitable existing folders or choose a destination. This does not bulk-rename existing folders.',
+      'Yes. Zush creates content-aware filenames on Mac and Windows. AI folder sorting also suggests folder names and moves files into those groups. Use Auto mode or write a prompt such as “Group invoices by company and receipts by month.” You can reuse suitable existing folders or choose a destination. This does not bulk-rename existing folders.',
   },
   {
     question: 'Can Zush automatically organize my Downloads folder?',
@@ -549,7 +549,7 @@ const downloadsFolderFaq = [
   {
     question: 'Does Zush move downloads into folders?',
     answer:
-      'Zush can sort new downloads into folders with AI (beta), your own folder rules, and an optional destination folder. Keep sorting off to rename in place. Test a small batch before changing a workflow that relies on file paths.',
+      'Zush can sort new downloads into folders with AI, your own folder rules, and an optional destination folder. Keep sorting off to rename in place. Test a small batch before changing a workflow that relies on file paths.',
   },
   {
     question: 'Which kinds of downloads work best?',
@@ -580,7 +580,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     category: 'general',
     definitionTitle: 'What Does Automating the Downloads Folder Mean?',
     definitionText:
-      'Zush watches Downloads on Mac and Windows and renames new files by content. Save Auto sorting or custom folder instructions in a Template so Monitor can also group new downloads into folders. AI folder sorting is in beta.',
+      'Zush watches Downloads on Mac and Windows and renames new files by content. Save Auto sorting or custom folder instructions in a Template so Monitor can also group new downloads into folders.',
     showcaseSlides: downloadsFolderSlides,
     faqItems: downloadsFolderFaq,
     comparison: {
@@ -608,7 +608,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
         {
           tool: 'Zush folder monitoring',
           bestFor: 'Naming every new file by what it contains, the moment it lands, with undo history for the whole folder',
-          gap: 'AI folder sorting is optional and currently in beta; review the proposed groups and use folder rules to guide the result.',
+          gap: 'AI folder sorting is optional; review the proposed groups and use folder rules to guide the result.',
         },
       ],
     },
@@ -647,7 +647,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
           'Folder monitoring on macOS and Windows',
           'Invoice, receipt, screenshot, and document naming',
           'Per-folder templates with Naming Blocks',
-          'Rename in place or enable AI folder sorting (beta)',
+          'Rename in place or enable AI folder sorting',
           'Undo and rename history',
         ],
       },
@@ -792,7 +792,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     category: 'general',
     definitionTitle: 'What Is an AI File Organizer?',
     definitionText:
-      'Zush is an AI file organizer for Mac and Windows. It reads each file and gives it a searchable name, files it into folders when you turn on AI folder sorting (beta), and keeps Downloads or client folders in order with folder monitoring. Review every batch before applying it; undo restores names and folders.',
+      'Zush is an AI file organizer for Mac and Windows. It reads each file and gives it a searchable name, files it into folders when you turn on AI folder sorting, and keeps Downloads or client folders in order with folder monitoring. Review every batch before applying it; undo restores names and folders.',
     showcaseSlides: sharedSlides,
     faqItems: fileOrganizerFaq,
     relatedPages: [
@@ -828,11 +828,11 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     jsonLd: buildFeaturePageJsonLd({
       howTo: {
         name: 'Organize files with AI',
-        description: 'Use Zush to create descriptive, consistent filenames for Mac and Windows folders with optional AI folder sorting (beta).',
+        description: 'Use Zush to create descriptive, consistent filenames for Mac and Windows folders with optional AI folder sorting.',
         steps: [
           { name: 'Drop a messy folder into Zush', text: 'Add Downloads, a screenshots folder, a client folder, or any mixed batch of files.' },
           { name: 'Pick a naming convention', text: 'Use an AI title or combine dates, clients, categories, counters, and metadata with templates and Naming Blocks.' },
-          { name: 'Choose Auto or custom folder rules', text: 'Enable AI folder sorting (beta). Let Auto group files by content, or write plain-language instructions. Choose a destination and optionally reuse suitable existing folders.' },
+          { name: 'Choose Auto or custom folder rules', text: 'Enable AI folder sorting. Let Auto group files by content, or write plain-language instructions. Choose a destination and optionally reuse suitable existing folders.' },
           { name: 'Review, apply, and automate', text: 'Preview the names and suggested folders before applying the batch. Save the rules in a Template for Monitor to process new files.' },
         ],
       },
@@ -840,11 +840,11 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       page: {
         pagePath: '/ai-file-organizer',
         description:
-          'AI file organizer for Mac and Windows. Zush names files in place by content, keeps folders consistent with templates and Naming Blocks, monitors folders, and supports full undo with optional AI folder sorting (beta).',
+          'AI file organizer for Mac and Windows. Zush names files in place by content, keeps folders consistent with templates and Naming Blocks, monitors folders, and supports full undo with optional AI folder sorting.',
         featureList: [
           'AI file organizer for Mac and Windows',
           'Name files by content, not just by pattern',
-          'Rename in place or use optional AI folder sorting (beta)',
+          'Rename in place or use optional AI folder sorting',
           'Organize screenshots, PDFs, invoices, photos, documents, audio, and videos',
           'Automatic naming for Downloads via folder monitoring',
           'Consistent naming conventions with templates and 145+ Naming Blocks',
@@ -873,7 +873,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
         {
           tool: 'Zush',
           bestFor: 'Your plain-language Folder rules, or Auto grouping by content. Reads PDFs, scans, photos, screenshots, documents, video, and audio, then renames and sorts in one reviewed batch on Mac and Windows.',
-          gap: 'Folder sorting is in beta, so review ambiguous files before applying. Nested folders, such as year and then month, come from an explicit Folder rule.',
+          gap: 'Review ambiguous files before applying. Nested folders, such as year and then month, come from an explicit Folder rule.',
         },
         {
           tool: 'Sortio',
