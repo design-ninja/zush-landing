@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.14.0.0] - 2026-10-20
+
+### Added
+- Czech interface and Microsoft Store listing.
+- Undo All now lists restored files and files that need attention, with an option to restore under a new name when the original location is occupied.
+
+### Improved
+- More responsive batch updates when changing naming settings or refreshing suggestions.
+- Clearer messages when Cloud AI is temporarily unavailable for a new installation.
+
+### Fixed
+- When several files receive the same suggested name, the original keeps the plain name and numbered copies follow File Explorer order.
+- TypeScript source files with the .ts extension are analyzed as text instead of video.
+- More reliable reading of Office documents saved with a mismatched extension, with clearer handling of encrypted documents.
+- Undo All no longer shows an earlier failure after a later retry successfully restores the file.
+
+
 ## [3.13.2.0] - 2026-10-18
 
 ### Improved
