@@ -113,7 +113,7 @@ const targets = {
     platform: 'win',
     source: 'windows',
     viewport: { width: 1920, height: 1080 },
-    // 2880x1620: the Windows capture (about 1780 px wide) is drawn at 1680 px,
+    // 2880x1620: the Windows capture (about 1780 px wide) is drawn at 1590 px,
     // a slight downscale. 3840x2160 would upscale it and soften the UI.
     scale: 1.5,
     defaultOutputDir: path.resolve(repoRoot, '../zush-assets/Microsoft Store/Windows'),
