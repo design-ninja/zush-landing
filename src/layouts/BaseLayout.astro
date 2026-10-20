@@ -362,7 +362,7 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
     <meta name="twitter:creator" content="@zush_app" />
 
   </head>
-  <body>
+  <body data-paddle-retain={isHomePage ? 'true' : undefined}>
     <div class="site-shell">
       <a class="skip-link" href="#main-content">{layoutCopy.header.skipToContent ?? 'Skip to content'}</a>
       {includeChrome && (
@@ -392,6 +392,7 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
         import { bindDownloadTracking, bindProClickTracking, bindProPlanClickTracking } from '@/utils/download';
         import { bindCheckoutAutoOpen } from '@/utils/checkoutAutoOpen';
         import { bindPricingCheckout } from '@/utils/pricingCheckout';
+        import { bindPaddleRetain } from '@/utils/paddleRetain';
         import { bindPromoCodeCopy } from '@/utils/promoCode';
         import { bindScrollReveal } from '@/utils/scrollReveal';
         import { bindScrollToTopButton } from '@/utils/scrollToTop';
@@ -474,6 +475,7 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
           bindProClickTracking();
           bindProPlanClickTracking();
           bindPricingCheckout();
+          bindPaddleRetain();
           bindPromoCodeCopy();
           bindScrollToTopButton();
           bindStoreLinks();

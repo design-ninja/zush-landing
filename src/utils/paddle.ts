@@ -1,6 +1,6 @@
 import { accessPolicyMessage } from "@/utils/accessPolicyMessage";
-// Exports are read through dynamic import() destructuring in pricingCheckout.ts
-// and checkoutAutoOpen.ts, which static analysis does not follow.
+// Exports are read through dynamic import() destructuring in pricingCheckout.ts,
+// checkoutAutoOpen.ts and paddleRetain.ts, which static analysis does not follow.
 // fallow-ignore-file unused-export
 import { getAnalyticsDistinctId, trackAnalyticsEvent } from "@/utils/analytics";
 import { getCheckoutAnalyticsEvent, type CheckoutAnalyticsEvent } from "@/utils/checkoutAnalytics";
