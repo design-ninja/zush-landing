@@ -2,17 +2,30 @@
 
 ## [3.18.0] - 2026-10-20
 
+### New
+
 - Added Czech language support.
 - Undo All now shows restored files and files that need attention, with an option to restore conflicting files under a new name.
+
+### Improved
+
 - Improved folder sorting for large collections and naming of duplicate files.
 - Improved audio analysis reliability.
+
+### Fixed
+
 - Fixed image statistics for SVG files.
 
 ## [3.17.1] - 2026-10-18
 
+### Improved
+
 - Improved AI analysis of images and documents.
 - More reliable cloud AI and faster analysis.
 - Clearer PRO plans, pricing, and benefits.
+
+### Fixed
+
 - Fixed an error when switching plans during checkout.
 
 ## [3.17.0] - 2026-10-15
