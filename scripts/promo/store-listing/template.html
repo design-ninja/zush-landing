@@ -74,10 +74,9 @@
       0 24px 48px -12px rgba(17, 17, 24, 0.14),
       0 50px 110px -30px rgba(17, 17, 24, 0.16);
   }
+  /* Both platforms' captures carry transparent corners (Windows ones are cut
+     by the renderer), so the image is not clipped here. */
   .window img { display: block; width: 100%; height: auto; }
-  /* macOS captures carry their own transparent corners; Windows captures are
-     rectangular, so clip them to the Windows 11 radius. */
-  body.win .window img { border-radius: inherit; }
 
   /* Mac App Store, 16:10. */
   body.mac {
@@ -95,7 +94,7 @@
     --pad-left: 124px; --pad-right: 96px;
     --copy-width: 540px; --copy-center: 44%;
     --title-size: 80px; --sub-size: 32px; --gap: 34px;
-    --win-width: 1060px; --win-radius: 8px;
+    --win-width: 1060px; --win-radius: 9px;
     --scrim-pos: 19% 42%;
   }
 </style>

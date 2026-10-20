@@ -124,19 +124,35 @@ function argValue(name) {
   return process.argv.find((arg) => arg.startsWith(`${name}=`))?.slice(name.length + 1);
 }
 
-// Windows captures include the window frame's dark 1-2 px border and opaque
-// corners. Shave the border (measured from the capture, so any display scale
-// works); the template clips the corners to the Windows 11 radius.
-function shaveWindowsFrame(windowPath, outputPath) {
-  const height = Number(run('magick', ['identify', '-format', '%h', windowPath]));
+function grayRow(imagePath, width, x, y) {
   const row = run('magick', [
-    windowPath, '-crop', `12x1+0+${Math.round(height / 2)}`, '+repage',
+    imagePath, '-crop', `${width}x1+${x}+${y}`, '+repage',
     '-colorspace', 'Gray', '-depth', '8', 'txt:-',
   ]);
-  const levels = row.split('\n').slice(1).map((line) => Number(line.match(/\((\d+)/)?.[1] ?? 255));
-  const border = levels.findIndex((level) => level > 128);
+  return row.split('\n').slice(1).map((line) => Number(line.match(/\((\d+)/)?.[1] ?? 255));
+}
+
+// Windows captures include the window frame's dark 1-2 px border and opaque
+// dark pixels outside the rounded corners. Both are measured from the capture,
+// so any display scale works: shave the border, then cut the corners with a
+// transparent rounded mask a little wider than the dark corner run.
+function prepareWindowsCapture(windowPath, outputPath) {
+  const height = Number(run('magick', ['identify', '-format', '%h', windowPath]));
+  const border = grayRow(windowPath, 12, 0, Math.round(height / 2)).findIndex((level) => level > 128);
   if (border < 0 || border > 6) throw new Error(`Unexpected window frame in ${windowPath}`);
-  run('magick', [windowPath, '-shave', `${border}x${border}`, outputPath]);
+  const shavedPath = `${outputPath}.shaved.png`;
+  run('magick', [windowPath, '-shave', `${border}x${border}`, shavedPath]);
+
+  const [width, shavedHeight] = run('magick', ['identify', '-format', '%w %h', shavedPath]).split(' ').map(Number);
+  const cornerRun = grayRow(shavedPath, 40, 0, 0).findIndex((level) => level > 200);
+  if (cornerRun < 0) throw new Error(`Could not measure the window corner in ${windowPath}`);
+  const radius = cornerRun + 3;
+  run('magick', [
+    shavedPath,
+    '(', '-size', `${width}x${shavedHeight}`, 'xc:black', '-fill', 'white',
+    '-draw', `roundrectangle 0,0 ${width - 1},${shavedHeight - 1} ${radius},${radius}`, ')',
+    '-alpha', 'off', '-compose', 'CopyOpacity', '-composite', outputPath,
+  ]);
   return outputPath;
 }
 
@@ -191,7 +207,7 @@ try {
       const windowPath = path.resolve(sourceDirs[config.source], `${slide[config.source]}-light.png`);
       if (!fs.existsSync(windowPath)) throw new Error(`Missing window capture: ${windowPath}`);
       const shotPath = config.platform === 'win'
-        ? shaveWindowsFrame(windowPath, path.join(tempRoot, `${slide.name}-window.png`))
+        ? prepareWindowsCapture(windowPath, path.join(tempRoot, `${slide.name}-window.png`))
         : windowPath;
 
       const subtitle = typeof slide.subtitle === 'string' ? slide.subtitle : slide.subtitle[config.source];
