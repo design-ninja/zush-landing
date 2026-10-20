@@ -143,19 +143,6 @@ const SHOWCASE_VIDEOS: ShowcaseVideoAsset[] = [
     },
   },
   {
-    id: 'offline-ai',
-    title: 'Offline AI mode',
-    description: 'Process supported files offline after Ollama setup checks pass',
-    sources: {
-      light: '/videos/zush-ollama.mp4',
-      dark: '/videos/zush-ollama-dark.mp4',
-    },
-    posters: {
-      light: '/videos/posters/ollama.webp',
-      dark: '/videos/posters/ollama-dark.webp',
-    },
-  },
-  {
     id: 'windows-batch-rename',
     title: 'Batch Rename on Windows',
     description: 'Batch rename files with AI based on their actual content in Zush for Windows',
@@ -396,12 +383,12 @@ export const WINDOWS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
   {
     id: 'offline-ai',
     title: 'Offline AI mode',
-    description: 'Process supported files offline with private local models via Ollama',
+    description: 'Process supported files offline with private local models via LM Studio or Ollama',
     images: {
       light: '/images/showcase/windows/offline-ai-light.webp',
-      dark: '/images/showcase/windows/offline-ai-light.webp',
+      dark: '/images/showcase/windows/offline-ai-dark.webp',
     },
-    alt: 'Offline AI setup in Zush for Windows',
+    alt: 'LM Studio selected in Zush for Windows AI Modes',
   },
   {
     id: 'template-transfer',

@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!--
+  One store listing slide: feature title and benefit on the left, the app window
+  on the right, over the homepage hero's white page and point wave. Tokens and
+  type mirror src/styles/_variables.scss and the Hero_wave styles. The page is
+  filled in by store-listing-screenshots.mjs through the query string.
+-->
+<style>
+  :root {
+    --background: #ffffff;
+    --foreground: #111118;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: var(--w); height: var(--h); overflow: hidden; }
+  body {
+    position: relative;
+    background: var(--background);
+    font-family: 'Inter Variable', -apple-system, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wave {
+    position: absolute;
+    inset: 14% 0 0 0;
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 86%, transparent 100%);
+  }
+  .wave canvas { display: block; width: 100%; height: 100%; }
+  /* The hero's soft pool of page colour under the copy. */
+  .scrim {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 30% 30% at var(--scrim-pos),
+      color-mix(in oklch, var(--background) 82%, transparent) 0%,
+      color-mix(in oklch, var(--background) 82%, transparent) 45%,
+      transparent 100%
+    );
+  }
+  .copy {
+    position: absolute;
+    left: var(--pad-left);
+    top: var(--copy-center);
+    transform: translateY(-50%);
+    width: var(--copy-width);
+  }
+  h1 {
+    font-family: 'Manrope Variable', 'Inter Variable', sans-serif;
+    font-weight: 700;
+    font-size: var(--title-size);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    color: var(--foreground);
+    text-wrap: balance;
+  }
+  p {
+    margin-top: var(--gap);
+    font-size: var(--sub-size);
+    line-height: 1.5;
+    color: color-mix(in oklch, var(--foreground) 78%, var(--background));
+    text-wrap: pretty;
+  }
+  .window {
+    position: absolute;
+    right: var(--pad-right);
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--win-width);
+    border-radius: var(--win-radius);
+    box-shadow:
+      0 0 0 1px rgba(17, 17, 24, 0.08),
+      0 2px 6px rgba(17, 17, 24, 0.05),
+      0 24px 48px -12px rgba(17, 17, 24, 0.14),
+      0 50px 110px -30px rgba(17, 17, 24, 0.16);
+  }
+  .window img { display: block; width: 100%; height: auto; }
+  /* macOS captures carry their own transparent corners; Windows captures are
+     rectangular, so clip them to the Windows 11 radius. */
+  body.win .window img { border-radius: inherit; }
+
+  /* Mac App Store, 16:10. */
+  body.mac {
+    --w: 1440px; --h: 900px;
+    --pad-left: 92px; --pad-right: 64px;
+    --copy-width: 440px; --copy-center: 50%;
+    --title-size: 72px; --sub-size: 25px; --gap: 28px;
+    --win-width: 812px; --win-radius: 26px;
+    --scrim-pos: 19% 48%;
+  }
+  /* Microsoft Store, 16:9. Text stays in the top two-thirds, where the Store
+     never overlays captions. */
+  body.win {
+    --w: 1920px; --h: 1080px;
+    --pad-left: 124px; --pad-right: 96px;
+    --copy-width: 580px; --copy-center: 44%;
+    --title-size: 92px; --sub-size: 32px; --gap: 34px;
+    --win-width: 1120px; --win-radius: 8px;
+    --scrim-pos: 19% 42%;
+  }
+</style>
+</head>
+<body>
+  <div class="wave"><canvas id="wave"></canvas></div>
+  <div class="scrim"></div>
+  <div class="copy">
+    <h1 id="title"></h1>
+    <p id="subtitle"></p>
+  </div>
+  <div class="window"><img id="shot" alt=""></div>
+  <script>
+    const q = new URLSearchParams(location.search);
+    document.body.className = q.get('platform');
+    document.getElementById('title').textContent = q.get('title');
+    document.getElementById('subtitle').textContent = q.get('subtitle');
+    document.getElementById('shot').src = q.get('shot');
+
+    const fontFace = (family, url, weights) => {
+      const style = document.createElement('style');
+      style.textContent = `@font-face { font-family: '${family}'; src: url('${url}') format('woff2'); font-weight: ${weights}; }`;
+      document.head.append(style);
+    };
+    fontFace('Manrope Variable', q.get('manrope'), '200 800');
+    fontFace('Inter Variable', q.get('inter'), '100 900');
+
+    // A still frame of src/scripts/hero-wave.ts in the light theme: same
+    // shaders, grid, camera and colours, without the animation loop.
+    const VERT = `
+attribute vec3 aPos;
+uniform mat4 uProj;
+uniform mat4 uView;
+uniform float uTime;
+uniform float uPR;
+varying float vAlpha;
+varying float vMix;
+varying float vGlow;
+void main() {
+  vec3 p = aPos;
+  float w = sin(p.x * 0.28 + uTime * 0.6) * 0.7
+          + sin(p.z * 0.42 + uTime * 0.45) * 0.55
+          + sin((p.x + p.z) * 0.18 - uTime * 0.32) * 0.95;
+  float r = length(p.xz - vec2(0.0, -8.0));
+  w += sin(r * 0.55 - uTime * 1.2) * 0.45 * smoothstep(26.0, 4.0, r);
+  float band = sin(aPos.x * 0.1 + aPos.z * 0.07 - uTime * 0.9);
+  vGlow = smoothstep(0.72, 1.0, band);
+  p.y += w + vGlow * 0.35;
+  vec4 mv = uView * vec4(p, 1.0);
+  gl_Position = uProj * mv;
+  gl_PointSize = (1.7 + (w + 2.2) * 0.5 + vGlow * 1.0) * uPR * (22.0 / -mv.z);
+  float edge = 1.0 - smoothstep(20.0, 31.0, abs(aPos.x));
+  vAlpha = smoothstep(58.0, 12.0, -mv.z) * edge;
+  vMix = clamp((w + 2.2) / 4.4, 0.0, 1.0);
+}`;
+    const FRAG = `
+precision mediump float;
+uniform vec3 uA;
+uniform vec3 uB;
+uniform vec3 uC;
+uniform float uOpacity;
+varying float vAlpha;
+varying float vMix;
+varying float vGlow;
+void main() {
+  float d = length(gl_PointCoord - 0.5);
+  if (d > 0.5) discard;
+  float a = smoothstep(0.5, 0.05, d) * vAlpha * uOpacity * (1.0 + vGlow * 0.35);
+  vec3 col = mix(mix(uA, uB, vMix), uC, vGlow * 0.6);
+  a = min(a, 1.0);
+  float coverage = a * a;
+  gl_FragColor = vec4(col * coverage * a, coverage);
+}`;
+    const rgb = (hex) => { const n = parseInt(hex.slice(1), 16); return [(n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255]; };
+    function perspective(fovy, aspect, near, far) {
+      const f = 1 / Math.tan(fovy / 2), nf = 1 / (near - far);
+      return new Float32Array([f / aspect, 0, 0, 0, 0, f, 0, 0, 0, 0, (far + near) * nf, -1, 0, 0, 2 * far * near * nf, 0]);
+    }
+    function lookAt(e, c) {
+      let zx = e[0] - c[0], zy = e[1] - c[1], zz = e[2] - c[2];
+      let l = Math.hypot(zx, zy, zz); zx /= l; zy /= l; zz /= l;
+      let xx = zz, xz = -zx; const xy = 0;
+      l = Math.hypot(xx, xy, xz); xx /= l; xz /= l;
+      const yx = zy * xz - zz * xy, yy = zz * xx - zx * xz, yz = zx * xy - zy * xx;
+      return new Float32Array([xx, yx, zx, 0, xy, yy, zy, 0, xz, yz, zz, 0,
+        -(xx * e[0] + xy * e[1] + xz * e[2]), -(yx * e[0] + yy * e[1] + yz * e[2]), -(zx * e[0] + zy * e[1] + zz * e[2]), 1]);
+    }
+    const canvas = document.getElementById('wave');
+    const dpr = window.devicePixelRatio || 1;
+    const cw = canvas.clientWidth, ch = canvas.clientHeight;
+    canvas.width = Math.round(cw * dpr);
+    canvas.height = Math.round(ch * dpr);
+    const gl = canvas.getContext('webgl', { alpha: true, antialias: true, preserveDrawingBuffer: true });
+    const shader = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; };
+    const prog = gl.createProgram();
+    gl.attachShader(prog, shader(gl.VERTEX_SHADER, VERT));
+    gl.attachShader(prog, shader(gl.FRAGMENT_SHADER, FRAG));
+    gl.linkProgram(prog);
+    gl.useProgram(prog);
+    const COLS = 240, ROWS = 110, W = 66, D = 44;
+    const pos = new Float32Array(COLS * ROWS * 3);
+    let i = 0;
+    for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+      pos[i++] = (c / (COLS - 1) - 0.5) * W; pos[i++] = 0; pos[i++] = 8 - (r / (ROWS - 1)) * D;
+    }
+    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+    gl.bufferData(gl.ARRAY_BUFFER, pos, gl.STATIC_DRAW);
+    const aPos = gl.getAttribLocation(prog, 'aPos');
+    gl.enableVertexAttribArray(aPos);
+    gl.vertexAttribPointer(aPos, 3, gl.FLOAT, false, 0, 0);
+    const u = (n) => gl.getUniformLocation(prog, n);
+    gl.uniformMatrix4fv(u('uView'), false, lookAt([0, 5.2, 19], [0, -0.6, -6]));
+    gl.uniformMatrix4fv(u('uProj'), false, perspective(42 * Math.PI / 180, cw / ch, 0.1, 200));
+    gl.uniform1f(u('uTime'), 6);
+    gl.uniform1f(u('uPR'), dpr);
+    gl.uniform3fv(u('uA'), rgb('#7b6bf5'));
+    gl.uniform3fv(u('uB'), rgb('#b0a6ff'));
+    gl.uniform3fv(u('uC'), rgb('#6e5cf3'));
+    gl.uniform1f(u('uOpacity'), 0.75);
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+    gl.disable(gl.DEPTH_TEST);
+    gl.clearColor(0, 0, 0, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.drawArrays(gl.POINTS, 0, COLS * ROWS);
+  </script>
+</body>
+</html>

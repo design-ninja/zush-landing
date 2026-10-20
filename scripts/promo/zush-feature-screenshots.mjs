@@ -19,8 +19,6 @@ const sortingAssetRoot = process.env.ZUSH_PROMO_SORTING_SOURCE_FILES ??
   '/Users/lirik/Projects/zush/zush-assets/#test files/Files 2';
 const backendEnvironment = process.env.ZUSH_PROMO_BACKEND_ENVIRONMENT ?? 'local';
 const promoGeminiApiKey = process.env.ZUSH_PROMO_GEMINI_API_KEY?.trim();
-const promoOllamaEndpoint = process.env.ZUSH_PROMO_OLLAMA_ENDPOINT ?? 'http://127.0.0.1:11434';
-const promoOllamaModel = process.env.ZUSH_PROMO_OLLAMA_MODEL ?? 'qwen3.5:4b';
 const promoLMStudioEndpoint =
   process.env.ZUSH_PROMO_LM_STUDIO_ENDPOINT ?? 'http://127.0.0.1:1234';
 const promoLMStudioCLI =
@@ -83,7 +81,6 @@ const features = [
   { id: 'custom-prompts', fixture: 'custom-prompts', captureZushExtras: true, landingOnly: true },
   { id: 'zush-cloud-ai', fixture: 'zush-cloud-ai' },
   { id: 'byok', fixture: 'byok' },
-  { id: 'ollama', fixture: 'ollama' },
   { id: 'lm-studio', fixture: 'lm-studio' },
 ];
 const realAnalysisFixtures = new Set(['batch-rename', 'activity']);
@@ -103,6 +100,11 @@ const landingOutputDirArg = process.argv
   ?.split('=')[1];
 const appStoreOutputDirArg = process.argv
   .find((arg) => arg.startsWith('--app-store-output-dir='))
+  ?.split('=')[1];
+// Optional copy of each lossless window capture (alpha corners, no wallpaper),
+// used as the source for store listing screenshots.
+const windowOutputDirArg = process.argv
+  .find((arg) => arg.startsWith('--window-output-dir='))
   ?.split('=')[1];
 const targetArg =
   process.argv.find((arg) => arg.startsWith('--targets='))?.split('=')[1] ??
@@ -132,7 +134,6 @@ const selectedFeatures = onlyFeatures.size > 0
     )
   : features;
 let activeZushPid = null;
-let startedOllamaProcess = null;
 let startedLMStudioServer = false;
 let loadedLMStudioModel = false;
 
@@ -165,7 +166,6 @@ const appStoreNames = {
   'naming-blocks': '06-naming-blocks',
   naming: '07-smart-rename',
   'zush-cloud-ai': '01-zush-cloud-ai',
-  ollama: '04-ollama',
   'lm-studio': '05-lm-studio',
   byok: '09-byok',
   'custom-ai-blocks': '10-custom-ai-blocks',
@@ -239,50 +239,6 @@ function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function fetchOllamaModels() {
-  try {
-    const response = await fetch(`${promoOllamaEndpoint.replace(/\/$/, '')}/api/tags`, {
-      signal: AbortSignal.timeout(2500),
-    });
-    if (!response.ok) {
-      return null;
-    }
-    const payload = await response.json();
-    return Array.isArray(payload.models)
-      ? payload.models.map((model) => model?.name).filter(Boolean)
-      : [];
-  } catch {
-    return null;
-  }
-}
-
-async function prepareOllamaForPromo() {
-  let models = await fetchOllamaModels();
-  if (!models) {
-    if (!commandExists('ollama')) {
-      throw new Error('Ollama is not running and the ollama executable was not found.');
-    }
-    console.log('Starting Ollama with "ollama serve" for Offline AI screenshots...');
-    startedOllamaProcess = spawn('ollama', ['serve'], { stdio: 'ignore' });
-    for (let attempt = 0; attempt < 40 && !models; attempt += 1) {
-      await wait(750);
-      models = await fetchOllamaModels();
-    }
-  }
-
-  if (!models) {
-    stopStartedOllama();
-    throw new Error(`Timed out waiting for Ollama at ${promoOllamaEndpoint}.`);
-  }
-  if (!models.includes(promoOllamaModel)) {
-    stopStartedOllama();
-    throw new Error(
-      `Ollama model ${promoOllamaModel} is not installed. Installed models: ${models.join(', ') || 'none'}.`,
-    );
-  }
-  console.log(`Ollama is ready with ${promoOllamaModel}.`);
-}
-
 async function fetchLMStudioModels() {
   try {
     const response = await fetch(`${promoLMStudioEndpoint.replace(/\/$/, '')}/api/v1/models`, {
@@ -341,14 +297,6 @@ async function prepareLMStudioForPromo() {
     throw new Error(`LM Studio model ${promoLMStudioModel} did not finish loading.`);
   }
   console.log(`LM Studio is ready with ${promoLMStudioModel}.`);
-}
-
-function stopStartedOllama() {
-  if (!startedOllamaProcess) {
-    return;
-  }
-  startedOllamaProcess.kill('SIGTERM');
-  startedOllamaProcess = null;
 }
 
 function stopPreparedLMStudio() {
@@ -575,7 +523,6 @@ let userInfo: [String: Any] = [
     "assetRoot": ${JSON.stringify(assetRoot)},
     "runId": ${JSON.stringify(runId)},
     "backendEnvironment": ${JSON.stringify(backendEnvironment)},
-    "ollamaModel": ${JSON.stringify(promoOllamaModel)},
     "lmStudioModel": ${JSON.stringify(promoLMStudioModel)}${completionMarkerEntry}
 ]
 DistributedNotificationCenter.default().postNotificationName(
@@ -917,10 +864,9 @@ async function captureFeature({ feature, theme, runId, assetRoot, reuseCurrentFi
     const fixtureDelay =
       feature.fixture === 'custom-prompts'
         ? 1600
-        : feature.fixture === 'local-ai'
-          ? 12000
-          : feature.fixture === 'ollama' || feature.fixture === 'lm-studio'
-            ? 3500
+        : feature.fixture === 'lm-studio'
+          // The fixture probes LM Studio before the AI Modes form scrolls to it.
+          ? 6000
           : feature.fixture === 'statistics'
             ? 1800
             : 1100;
@@ -974,6 +920,12 @@ async function captureFeature({ feature, theme, runId, assetRoot, reuseCurrentFi
   const captureDir = path.join(tempRoot, runId, `${feature.id}-${theme}`);
   fs.mkdirSync(captureDir, { recursive: true });
   const captures = captureWindowsForFeature(feature, captureDir);
+  if (windowOutputDirArg) {
+    const windowOutputDir = path.resolve(windowOutputDirArg);
+    fs.mkdirSync(windowOutputDir, { recursive: true });
+    const main = captures.find((capture) => capture.role === 'main');
+    fs.copyFileSync(main.path, path.join(windowOutputDir, `${feature.id}-${theme}.png`));
+  }
   const outputs = [];
 
   for (const target of selectedTargets) {
@@ -1006,9 +958,6 @@ async function main() {
 
   ensureBuilt();
 
-  if (selectedFeatures.some((feature) => feature.id === 'ollama')) {
-    await prepareOllamaForPromo();
-  }
   if (selectedFeatures.some((feature) => feature.id === 'lm-studio')) {
     await prepareLMStudioForPromo();
   }
@@ -1033,8 +982,11 @@ async function main() {
         await wait(2500);
       }
       for (const theme of selectedThemes) {
+        // LM Studio's scroll position does not survive the theme switch, so the
+        // dark shot re-applies the fixture to scroll again.
         const reuseCurrentFixture =
           !feature.captureMenu &&
+          feature.fixture !== 'lm-studio' &&
           theme === 'dark' &&
           previousCapture?.featureId === feature.id &&
           previousCapture?.theme === 'light';
@@ -1056,7 +1008,6 @@ async function main() {
     closeFinderInfoWindows();
     setSystemDarkMode(originalDarkMode);
     if (!args.has('--keep-open')) app.kill();
-    stopStartedOllama();
     stopPreparedLMStudio();
   }
 
