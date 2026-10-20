@@ -19,9 +19,11 @@ fixture, so a fixture cannot reset the capture back to the local backend.
 The `app-store` target writes ten light-theme, lossless PNG screenshots at
 2880×1800 pixels to `../zush-assets/App Store` by default.
 
-When Offline AI is selected, the script checks Ollama at `http://127.0.0.1:11434`,
-starts `ollama serve` when necessary, and waits for the screenshot model. Override
-the defaults with `ZUSH_PROMO_OLLAMA_ENDPOINT` and `ZUSH_PROMO_OLLAMA_MODEL`.
+Offline Mode is shown with LM Studio. When `lm-studio` is selected, the script
+starts the LM Studio server with `lms` and loads the screenshot model when
+necessary, then stops whatever it started. Override the defaults with
+`ZUSH_PROMO_LM_STUDIO_ENDPOINT`, `ZUSH_PROMO_LM_STUDIO_CLI`, and
+`ZUSH_PROMO_LM_STUDIO_MODEL` (default `google/gemma-4-e4b`).
 
 ## Windows
 
@@ -126,3 +128,25 @@ must remain unlocked while the capture runs; the original theme is restored.
 The new scenarios are landing-only and do not change the App Store selection.
 Windows 3.9.6.0 does not have these features, so no Windows screenshots should be
 fabricated from the Mac fixtures.
+
+## Store listing screenshots
+
+The App Store and Microsoft Store sets show each feature as a slide: title and
+benefit on the left, the app window on the right, over the homepage hero's white
+page and point wave. Copy and slide order live in
+`scripts/promo/store-listing-screenshots.mjs`; the layout is
+`scripts/promo/store-listing/template.html`.
+
+Capture lossless windows first with `--window-output-dir`, then render on macOS
+(the renderer uses headless Chrome and ImageMagick):
+
+```sh
+pnpm promo:feature-screenshots --target=landing --theme=light --window-output-dir=/tmp/zush-windows/mac
+# on Windows: pnpm promo:windows-feature-screenshots --target=landing --theme=light --window-output-dir=...
+pnpm promo:store-listing-screenshots --mac-windows-dir=/tmp/zush-windows/mac --windows-windows-dir=/tmp/zush-windows/windows
+```
+
+App Store slides are 2880×1800 (the largest accepted 16:10 size). Microsoft Store
+slides are 2880×1620, so the roughly 1780 px Windows capture is slightly
+downscaled instead of upscaled to 4K. Both are opaque RGB PNGs, ten per store.
+

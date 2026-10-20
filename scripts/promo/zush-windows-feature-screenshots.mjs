@@ -70,8 +70,8 @@ const featureOrder = [
   },
   {
     id: 'offline-ai',
-    fixture: 'offline-ai',
-    title: 'Offline AI mode',
+    fixture: 'lm-studio',
+    title: 'Offline Mode',
     storeName: '10-offline-ai',
   },
   {
@@ -229,6 +229,8 @@ const themeArg = argValue('--theme');
 const outputDirArg = argValue('--output-dir');
 const landingOutputDirArg = argValue('--landing-output-dir');
 const storeOutputDirArg = argValue('--store-output-dir') ?? argValue('--microsoft-store-output-dir');
+// Optional copy of each lossless window capture, the source for store listing screenshots.
+const windowOutputDirArg = argValue('--window-output-dir');
 const targetArg = argValue('--targets') ?? argValue('--target');
 const appExeArg = argValue('--app-exe');
 const buildConfig = argValue('--configuration') ?? 'Debug';
@@ -248,13 +250,14 @@ const selectedFeatures = only
   ? featureOrder.filter((feature) => only.split(',').some((id) => feature.id === id || feature.fixture === id))
   : featureOrder;
 const needsCloudByok = selectedFeatures.some((feature) => feature.fixture === 'byok');
-const needsOllama = selectedFeatures.some((feature) =>
-  feature.fixture === 'offline-ai' || feature.fixture === 'byok',
-);
+// BYOK also shows the Offline section, so it probes Ollama for a connected status.
+const needsOllama = selectedFeatures.some((feature) => feature.fixture === 'byok');
+const needsLMStudio = selectedFeatures.some((feature) => feature.fixture === 'lm-studio');
 const promoCloudCredentials = resolvePromoCloudCredentials({
   required: needsCloudByok && !captureDir && !args.has('--dry-run'),
 });
 let promoOllamaConfig = null;
+let promoLMStudioConfig = null;
 let startedOllamaPid = null;
 const outputDirs = {
   landing: path.resolve(
@@ -332,6 +335,9 @@ async function main() {
   if (!captureDir && needsOllama) {
     promoOllamaConfig = await prepareOllamaForPromo();
   }
+  if (!captureDir && needsLMStudio) {
+    promoLMStudioConfig = await assertLMStudioForPromo();
+  }
 
   const runId = `zush-windows-promo-${process.pid}-${Date.now()}`;
   const assetRoot = captureDir ? null : copyFixtureAssets(runId);
@@ -344,6 +350,11 @@ async function main() {
         const capture = captureDir
           ? { path: path.resolve(captureDir, `${feature.fixture}-${theme}.png`) }
           : await captureFeature({ appExe, feature, theme, runId, assetRoot });
+        if (windowOutputDirArg && !captureDir) {
+          const windowOutputDir = path.resolve(windowOutputDirArg);
+          fs.mkdirSync(windowOutputDir, { recursive: true });
+          fs.copyFileSync(capture.path, path.join(windowOutputDir, `${feature.id}-${theme}.png`));
+        }
         for (const target of selectedTargets) {
           if (!themesByTarget[target].includes(theme) || (target === 'microsoft-store' && feature.store === false)) {
             continue;
@@ -376,6 +387,7 @@ Options:
   --target=landing,microsoft-store   Targets to generate. Default: both.
   --only=batch-rename,folder-sorting  Generate selected features by id.
   --capture-dir=PATH                Render existing <fixture>-<theme>.png captures without launching the app.
+  --window-output-dir=PATH          Also save each lossless window capture as <id>-<theme>.png.
   --theme=light|dark                 Theme override. Landing defaults to light,dark; Store defaults to light.
   --landing-output-dir=PATH          Default: public/images/showcase/windows
   --store-output-dir=PATH            Default: ../zush-assets/Microsoft Store/Windows
@@ -400,6 +412,8 @@ Environment:
   ZUSH_WINDOWS_PROMO_OLLAMA_ENDPOINT  Ollama endpoint. Default: http://127.0.0.1:11434
   ZUSH_WINDOWS_PROMO_OLLAMA_MODEL     Preferred local model. Defaults to gemma3, or the first installed model.
   ZUSH_WINDOWS_PROMO_OLLAMA_EXE       Optional ollama executable path.
+  ZUSH_WINDOWS_PROMO_LM_STUDIO_ENDPOINT LM Studio endpoint for Offline Mode. Default: http://127.0.0.1:1234
+  ZUSH_WINDOWS_PROMO_LM_STUDIO_MODEL  LM Studio model key. Default: the model LM Studio reports as selected.
   ZUSH_WINDOWS_PROMO_LIGHT_WALLPAPER Windows 11 light wallpaper path.
   ZUSH_WINDOWS_PROMO_DARK_WALLPAPER  Windows 11 dark wallpaper path.
 `);
@@ -523,6 +537,22 @@ async function prepareOllamaForPromo() {
   return { endpoint, model };
 }
 
+// The script does not install or start LM Studio: the server must already be
+// running with a vision model loaded, as the app requires for Offline Mode.
+async function assertLMStudioForPromo() {
+  const endpoint = normalizeUrl(envValue('ZUSH_WINDOWS_PROMO_LM_STUDIO_ENDPOINT') ?? 'http://127.0.0.1:1234');
+  try {
+    const response = await fetchWithTimeout(`${endpoint}/api/v1/models`, {}, 5_000);
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+  } catch (error) {
+    throw new Error(`LM Studio is not reachable at ${endpoint} (${error.message}). Start its server with a vision model loaded.`);
+  }
+  console.log(`LM Studio is reachable at ${endpoint}.`);
+  return { endpoint, model: envValue('ZUSH_WINDOWS_PROMO_LM_STUDIO_MODEL') ?? '' };
+}
+
 function startOllamaServer() {
   const ollamaExe = findOllamaExecutable();
   if (!ollamaExe) {
@@ -621,9 +651,14 @@ function promoEnvironmentForFeature(feature) {
     env.ZUSH_PROMO_SCREENSHOT_BYOK_API_KEY = promoCloudCredentials.apiKey;
   }
 
-  if ((feature.fixture === 'offline-ai' || feature.fixture === 'byok') && promoOllamaConfig) {
+  if (feature.fixture === 'byok' && promoOllamaConfig) {
     env.ZUSH_PROMO_SCREENSHOT_LOCAL_AI_ENDPOINT = promoOllamaConfig.endpoint;
     env.ZUSH_PROMO_SCREENSHOT_LOCAL_AI_MODEL = promoOllamaConfig.model;
+  }
+
+  if (feature.fixture === 'lm-studio' && promoLMStudioConfig) {
+    env.ZUSH_PROMO_SCREENSHOT_LM_STUDIO_ENDPOINT = promoLMStudioConfig.endpoint;
+    env.ZUSH_PROMO_SCREENSHOT_LM_STUDIO_MODEL = promoLMStudioConfig.model;
   }
 
   return env;
