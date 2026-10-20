@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.18.0] - 2026-10-20
+
+- Added Czech language support.
+- Undo All now shows restored files and files that need attention, with an option to restore conflicting files under a new name.
+- Improved folder sorting for large collections and naming of duplicate files.
+- Improved audio analysis reliability.
+- Fixed image statistics for SVG files.
+
 ## [3.17.1] - 2026-10-18
 
 - Improved AI analysis of images and documents.
