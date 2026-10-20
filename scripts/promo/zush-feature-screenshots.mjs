@@ -865,8 +865,7 @@ async function captureFeature({ feature, theme, runId, assetRoot, reuseCurrentFi
       feature.fixture === 'custom-prompts'
         ? 1600
         : feature.fixture === 'lm-studio'
-          // The fixture probes LM Studio before the AI Modes form scrolls to it.
-          ? 6000
+          ? 3500
           : feature.fixture === 'statistics'
             ? 1800
             : 1100;

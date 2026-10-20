@@ -124,6 +124,22 @@ function argValue(name) {
   return process.argv.find((arg) => arg.startsWith(`${name}=`))?.slice(name.length + 1);
 }
 
+// Windows captures include the window frame's dark 1-2 px border and opaque
+// corners. Shave the border (measured from the capture, so any display scale
+// works); the template clips the corners to the Windows 11 radius.
+function shaveWindowsFrame(windowPath, outputPath) {
+  const height = Number(run('magick', ['identify', '-format', '%h', windowPath]));
+  const row = run('magick', [
+    windowPath, '-crop', `12x1+0+${Math.round(height / 2)}`, '+repage',
+    '-colorspace', 'Gray', '-depth', '8', 'txt:-',
+  ]);
+  const levels = row.split('\n').slice(1).map((line) => Number(line.match(/\((\d+)/)?.[1] ?? 255));
+  const border = levels.findIndex((level) => level > 128);
+  if (border < 0 || border > 6) throw new Error(`Unexpected window frame in ${windowPath}`);
+  run('magick', [windowPath, '-shave', `${border}x${border}`, outputPath]);
+  return outputPath;
+}
+
 function run(command, args) {
   const result = spawnSync(command, args, { encoding: 'utf8' });
   if (result.status !== 0) {
@@ -174,13 +190,16 @@ try {
       if (onlySlides && !onlySlides.includes(slide.name)) continue;
       const windowPath = path.resolve(sourceDirs[config.source], `${slide[config.source]}-light.png`);
       if (!fs.existsSync(windowPath)) throw new Error(`Missing window capture: ${windowPath}`);
+      const shotPath = config.platform === 'win'
+        ? shaveWindowsFrame(windowPath, path.join(tempRoot, `${slide.name}-window.png`))
+        : windowPath;
 
       const subtitle = typeof slide.subtitle === 'string' ? slide.subtitle : slide.subtitle[config.source];
       const query = new URLSearchParams({
         platform: config.platform,
         title: slide.title,
         subtitle,
-        shot: pathToFileURL(windowPath).href,
+        shot: pathToFileURL(shotPath).href,
         manrope: pathToFileURL(fontFiles.manrope).href,
         inter: pathToFileURL(fontFiles.inter).href,
       });
