@@ -53,6 +53,27 @@ const {
       });
     };
 
+    const isKnownThirdPartyNoise = (event) => {
+      if (event.event !== '$exception') return false;
+      const exceptions = event.properties?.$exception_list;
+      if (!Array.isArray(exceptions) || exceptions.length === 0) return false;
+
+      return exceptions.every((exception) => {
+        const frames = exception.stacktrace?.frames;
+        // Cross-origin scripts (extensions, in-app browsers) report only this opaque message.
+        const isOpaqueScriptError =
+          exception.type === 'Error' &&
+          exception.value === 'Script error.' &&
+          (!Array.isArray(frames) || frames.length === 0);
+        // Brave iOS wallet injection; the site never touches window.ethereum.
+        const isBraveWalletError =
+          exception.type === 'TypeError' &&
+          typeof exception.value === 'string' &&
+          exception.value.includes('window.ethereum.selectedAddress');
+        return isOpaqueScriptError || isBraveWalletError;
+      });
+    };
+
     if (!posthogProjectKey || !TRACKED_HOSTS.has(window.location.hostname)) {
       return;
     }
@@ -262,7 +283,7 @@ const {
           }
 
           if (!event) return event;
-          if (isKnownSafariExtensionError(event)) return null;
+          if (isKnownSafariExtensionError(event) || isKnownThirdPartyNoise(event)) return null;
           return {
             ...event,
             properties: sanitizeNavigationProperties({

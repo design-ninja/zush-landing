@@ -14,11 +14,13 @@ export function bindTour(root: HTMLElement): () => void {
   const groups = Array.from(root.querySelectorAll<HTMLElement>('[data-tour-platform]'));
   const group = groups.find(node => node.dataset.tourPlatform === platform) ?? groups[0];
   if (!group) return () => abort.abort();
-  groups.forEach(node => { node.hidden = node !== group; });
   const images = Array.from(group.querySelectorAll<HTMLImageElement>('[data-tour-image]'));
   const captions = Array.from(group.querySelectorAll<HTMLElement>('[data-tour-description]'));
   const tabs = Array.from(group.querySelectorAll<HTMLButtonElement>('[data-tour-tab]'));
-  const tabList = group.querySelector<HTMLElement>('[data-tour-tabs]')!;
+  const tabList = group.querySelector<HTMLElement>('[data-tour-tabs]');
+  // Extensions can insert a stripped copy of the player; leave its server HTML static.
+  if (!tabList || images.length === 0) return () => abort.abort();
+  groups.forEach(node => { node.hidden = node !== group; });
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   let active = 0;
   let visible = 0;
