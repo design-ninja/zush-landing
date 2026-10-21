@@ -145,10 +145,6 @@ export function buildFeaturePageJsonLd(data: FeaturePageJsonLdData) {
           name: step.name,
           text: step.text,
         })),
-        speakable: {
-          '@type': 'SpeakableSpecification',
-          cssSelector: ['h1', 'meta[name="description"]'],
-        },
       },
       buildFAQPageJsonLd(data.faqItems),
     ],

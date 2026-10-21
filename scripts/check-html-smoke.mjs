@@ -329,6 +329,11 @@ for (const loc of locs) {
   }
 
   const html = readFileSync(filePath, 'utf8');
+  for (const item of parsedJsonLdItems(html, pathname, true)) {
+    if (hasJsonLdType(item, 'HowTo') && Object.hasOwn(item, 'speakable')) {
+      fail(`HowTo does not support the speakable property on ${pathname}`);
+    }
+  }
   if (WORKFLOW_LANDING_ROUTES.has(pathname)) {
     const isPdf = pathname.endsWith('/rename-pdf-with-ai');
     const marker = isPdf ? 'data-pdf-scenarios' : 'data-landing-workflow';
