@@ -1,5 +1,21 @@
 # Changelog
 
+## [3.15.0.0] - 2026-10-22
+
+### Added
+- Sequence Number naming block with a custom starting number and leading zeros. Number files in AI Rename, monitored folders, and Quick Rename, continuing the sequence separately in each destination folder.
+
+### Improved
+- More compact naming block options with localized Text Before and Text After fields.
+- Manage an existing subscription even when a payment needs attention, directly from About or the checkout message.
+
+### Fixed
+- More reliable numbering when selecting files, regenerating suggestions, sorting into new folders, or sharing a folder between AI Rename and monitoring.
+- Correct rename credit accounting when sequence numbers change the final filename.
+- Better reading of Word XML documents and Office packages with unusual internal layouts.
+- Custom folder sorting can continue when the requested detail is absent from the files.
+- Portable installations add the application folder to PATH more reliably.
+
 ## [3.14.0.0] - 2026-10-20
 
 ### Added
