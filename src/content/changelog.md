@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.19.0] - 2026-10-22
+
+### New
+
+- Add sequence numbers to filenames, with your own starting number and leading zeros. Numbering continues separately in each folder.
+
+### Improved
+
+- More compact naming block options, with text before and after the value on one row.
+- More reliable folder sorting when a local AI model returns incomplete details.
+
+### Fixed
+
+- Fixed slow or unresponsive file previews and renaming on network drives.
+- You can now manage a subscription when a renewal payment needs attention.
+- Fixed an issue that could duplicate built-in templates on launch.
+
 ## [3.18.0] - 2026-10-20
 
 ### New
