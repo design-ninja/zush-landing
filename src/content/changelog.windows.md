@@ -1,6 +1,6 @@
 # Changelog
 
-## [3.15.0.0] - 2026-10-22
+## [3.15.0.0] - 2026-10-23
 
 ### Added
 - Sequence Number naming block with a custom starting number and leading zeros. Number files in AI Rename, monitored folders, and Quick Rename, continuing the sequence separately in each destination folder.
