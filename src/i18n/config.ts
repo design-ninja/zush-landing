@@ -171,6 +171,7 @@ export const INDEXABLE_LOCALIZED_ROUTES = [
   '/for-real-estate',
   '/batch-rename-files',
   '/ai-file-sorter',
+  '/ai-file-organizer',
   '/mac',
   '/windows',
   '/methodology',
@@ -237,6 +238,7 @@ const LANDING_LOCALIZED_ROUTES = [
   '/for-hr',
   '/for-real-estate',
   '/ai-file-sorter',
+  '/ai-file-organizer',
   '/mac',
   '/windows',
 ] as const;

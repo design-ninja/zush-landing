@@ -8,6 +8,9 @@ import type { BlogPlatform } from '@/data/blogSchema';
 import BlogOSIcon from '@/components/blog/BlogOSIcon.astro';
 import styles from '@/components/BlogCTA/BlogCTA.module.scss';
 import { PRO_PRICING_SUMMARY } from '@/constants/pricing';
+import { stripLocaleFromPath } from '@/i18n/config';
+import { getCopy } from '@/i18n/copy';
+import { getBlogCtaCopy } from '@/i18n/blogCtaCopy';
 
 type BlogCTAPlacement = 'early' | 'inline' | 'footer';
 
@@ -19,6 +22,12 @@ interface Props {
 }
 
 const { placement = 'footer', platform = 'general', title, description } = Astro.props;
+const { locale } = stripLocaleFromPath(Astro.url.pathname);
+const localizedCta = getBlogCtaCopy(locale);
+const downloadLabel = locale === 'en' ? 'Download' : getCopy(locale).header.download;
+const downloadHint = (os: 'mac' | 'windows') => localizedCta
+  ? localizedCta.hint.replace('{requirements}', getShortRequirements(os))
+  : `Free · 50 AI renames · ${getShortRequirements(os)} · No signup`;
 
 const placementTitles: Record<BlogCTAPlacement, (osLabel: string) => string> = {
   early: (os) => `Batch rename files with AI on ${os}`,
@@ -34,6 +43,13 @@ const placementDescriptions: Record<BlogCTAPlacement, string> = {
   footer:
     `AI batch renaming, automatic folder monitoring, and search-friendly names. 50 free renames to start — PRO from ${PRO_PRICING_SUMMARY}.`,
 };
+
+const resolvedTitle = (os: string) => title
+  ?? localizedCta?.titles[placement].replace('{os}', os)
+  ?? placementTitles[placement](os);
+const resolvedDescription = description
+  ?? localizedCta?.descriptions[placement].replace('{pricing}', PRO_PRICING_SUMMARY)
+  ?? placementDescriptions[placement];
 
 const titleClasses = [headingStyles.Heading, headingStyles.Heading_h3, styles.BlogCTA__Title].join(' ');
 const descriptionClasses = [
@@ -62,12 +78,12 @@ const hintClasses = [
         <h3
           class={titleClasses}
           data-blog-cta-title
-          data-title-mac={title ?? placementTitles[placement]('Mac')}
-          data-title-windows={title ?? placementTitles[placement]('Windows')}
+          data-title-mac={resolvedTitle('Mac')}
+          data-title-windows={resolvedTitle('Windows')}
         >
-          {title ?? placementTitles[placement]('Mac')}
+          {resolvedTitle('Mac')}
         </h3>
-        <p class={descriptionClasses}>{description ?? placementDescriptions[placement]}</p>
+        <p class={descriptionClasses}>{resolvedDescription}</p>
         <div class={styles.BlogCTA__Buttons}>
           <div
             class={[
@@ -97,17 +113,17 @@ const hintClasses = [
               <span class={styles.BlogCTA__ButtonIcon} data-blog-cta-icon='windows' hidden>
                 <BlogOSIcon os='windows' />
               </span>
-              <span data-blog-cta-label>Download</span>
+              <span data-blog-cta-label>{downloadLabel}</span>
             </a>
           </div>
         </div>
         <p
           class={hintClasses}
           data-blog-cta-hint
-          data-hint-mac={`Free · 50 AI renames · ${getShortRequirements('mac')} · No signup`}
-          data-hint-windows={`Free · 50 AI renames · ${getShortRequirements('windows')} · No signup`}
+          data-hint-mac={downloadHint('mac')}
+          data-hint-windows={downloadHint('windows')}
         >
-          {`Free · 50 AI renames · ${getShortRequirements('mac')} · No signup`}
+          {downloadHint('mac')}
         </p>
       </div>
     </aside>
@@ -115,9 +131,9 @@ const hintClasses = [
     <aside class={styles.BlogCTA} data-placement={placement}>
       <div class={styles.BlogCTA__Content}>
         <h3 class={titleClasses}>
-          {title ?? placementTitles[placement](getOSLabel(platform === 'windows' ? 'windows' : 'mac'))}
+          {resolvedTitle(getOSLabel(platform === 'windows' ? 'windows' : 'mac'))}
         </h3>
-        <p class={descriptionClasses}>{description ?? placementDescriptions[placement]}</p>
+        <p class={descriptionClasses}>{resolvedDescription}</p>
         <div class={styles.BlogCTA__Buttons}>
           <div
             class={[
@@ -142,14 +158,12 @@ const hintClasses = [
               target={platform === 'windows' ? '_blank' : undefined}
             >
               <BlogOSIcon os={platform === 'windows' ? 'windows' : 'mac'} />
-              <span>Download</span>
+              <span>{downloadLabel}</span>
             </a>
           </div>
         </div>
         <p class={hintClasses}>
-          {`Free · 50 AI renames · ${getShortRequirements(
-            platform === 'windows' ? 'windows' : 'mac',
-          )} · No signup`}
+          {downloadHint(platform === 'windows' ? 'windows' : 'mac')}
         </p>
       </div>
     </aside>

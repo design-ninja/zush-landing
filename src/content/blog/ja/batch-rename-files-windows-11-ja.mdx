@@ -1,0 +1,166 @@
+---
+title: "Windows 11 でファイル名を一括変更する方法:5つの方法(うち3つは標準機能)(2026年版)"
+description: "Windows 11 または 10 で複数のファイル名を一度に一括変更します。File Explorer、コマンドプロンプト、PowerShell ならインストール不要で、PowerRename と AI を使えばさらに多くのことができます。"
+date: "2026-09-22"
+slug: "batch-rename-files-windows-11-ja"
+locale: "ja"
+translationOf: "batch-rename-files-windows-11"
+platform: "windows"
+topic: "automation"
+tags:
+  - "ファイル命名"
+  - "File Explorer"
+  - "自動化"
+tldr: "File Explorer でファイルを選択して F2 キーを押せば、連番の名前をすぐに付けられます。検索と置換、日付、正規表現をプレビュー付きで使いたいときは PowerRename を使います。スクリプトで処理できることなら PowerShell が使えます。ファイルごとに内容に基づいた説明的な名前が必要なときは、Zush のような AI リネームツールを使います。"
+reviewed: "2026-09-22"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+結論から言うと、Windows 11 で複数のファイル名を一度に変更するには、File Explorer でファイルを選択して **F2** を押し、名前を入力して **Enter** を押します。Windows は `Name (1)`、`Name (2)` のように名前を付けていきます。テキストの置換、日付の追加、ファイルごとの適切な名前付けなど、もっと高度なことをしたい場合は、以下の4つの方法のいずれかを使ってください。
+
+| 方法 | 最適な用途 | プレビュー | 元に戻す |
+|---|---|---|---|
+| File Explorer (F2) | 手早く連番の名前を付ける | なし | 実行直後に Ctrl+Z |
+| PowerRename | 検索と置換、日付、正規表現 | あり | Explorer で Ctrl+Z |
+| コマンドプロンプト | 拡張子の変更 | なし | なし |
+| PowerShell | スクリプトで処理できることすべて | `-WhatIf` を使用 | なし |
+| Zush (AI) | ファイルごとの説明的な名前 | あり | 完全な Rename History |
+
+一括リネームを行う前に、いくつかのファイルをテスト用フォルダーにコピーして、まずそこで試してください。
+
+## 1. File Explorer:F2 で連番を付ける
+
+1. フォルダーを開いてファイルを選択します。すべて選択するには **Ctrl+A**、個別に選ぶには **Ctrl+クリック** を使います。
+2. **F2** を押します(または右クリックして **名前の変更** を選びます。Windows 11 ではテキストカーソルのアイコンです)。
+3. 新しい名前(例:`Lisbon trip`)を入力し、**Enter** を押します。
+
+`Lisbon trip (1).jpg`、`Lisbon trip (2).jpg` のようになります。番号は現在の並べ替え順に従うため、順序が重要な場合は先に **更新日時** で並べ替えてください。元に戻すには、すぐに **Ctrl+Z** を押します。
+
+**ヒント:** ファイル名を1つずつ続けて変更するには、最初のファイルで F2 を押して名前を入力し、**Tab** を押して次のファイルに移動します。
+
+## 2. PowerRename:プレビュー付きの検索と置換
+
+PowerRename は、[PowerToys](https://learn.microsoft.com/en-us/windows/powertoys/powerrename) に含まれる Microsoft 製の無料ツールです。Microsoft Store から PowerToys をインストールしたら、次の手順で使います。
+
+1. File Explorer でファイルを選択して右クリックし、**PowerRename で名前を変更** を選びます(Windows 11 では **その他のオプションを表示** の中にある場合があります)。
+2. **検索する文字列** に検索したい文字列、**置換後の文字列** に置き換えたい文字列を入力します。
+3. 右側のプレビューを確認して、**適用** をクリックします。
+
+便利なレシピ:
+
+| 目的 | 検索する文字列 | 置換後の文字列 | オプション |
+|---|---|---|---|
+| スペースをハイフンに | ` `(スペース) | `-` | すべての一致を対象にする |
+| 接頭辞を追加 | `^` | `2026_` | 正規表現を使用 |
+| 日付の並び替え `29-03-2026` → `2026-03-29` | `(\d{2})-(\d{2})-(\d{4})` | `$3-$2-$1` | 正規表現、すべての一致 |
+| ファイルに連番を付ける | `.*` | `Photo_${padding=3;start=1}` | 正規表現、項目を列挙する、ファイル名のみに適用 |
+| 写真の撮影日 | `^` | `$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD-` | 正規表現、メタデータのソースに EXIF/XMP |
+
+PowerRename では、大文字・小文字の切り替え(小文字、大文字、タイトルケース)や、拡張子のみの変更もできます。
+
+## 3. コマンドプロンプト:拡張子をすばやく変更する
+
+従来の `ren` コマンドは、拡張子の一括変更という1つの用途に便利です。
+
+```bat
+cd "C:\Users\You\Pictures\Export"
+ren *.jpeg *.jpg
+```
+
+これは、フォルダー内のすべての `.jpeg` ファイルを `.jpg` に変更します。事前の確認はなく、元に戻すこともできないため、コピーで試してください。
+
+## 4. PowerShell:スクリプトによるリネーム
+
+PowerShell なら、言葉で説明できるパターンはどんなものでも処理できます。**ターミナル**(スタートボタンを右クリック)を開き、`cd` でフォルダーに移動します。どのコマンドも末尾に `-WhatIf` を付けると、実際には名前を変更せずにプレビューできます。
+
+すべての JPG に接頭辞を追加する:
+
+```powershell
+(Get-ChildItem *.jpg) | Rename-Item -NewName { "Lisbon_" + $_.Name }
+```
+
+スペースをハイフンに置き換える:
+
+```powershell
+(Get-ChildItem) | Rename-Item -NewName { $_.Name -replace ' ', '-' }
+```
+
+すべての PDF の先頭に更新日を追加する:
+
+```powershell
+(Get-ChildItem *.pdf) | Rename-Item -NewName { $_.LastWriteTime.ToString('yyyy-MM-dd') + '_' + $_.Name }
+```
+
+日付順に `Trip_001.jpg`、`Trip_002.jpg` のように連番を付ける:
+
+```powershell
+$i = 1
+Get-ChildItem *.jpg | Sort-Object LastWriteTime | ForEach-Object {
+  Rename-Item $_ -NewName ('Trip_{0:D3}{1}' -f $i++, $_.Extension)
+}
+```
+
+`Get-ChildItem` を囲む括弧は重要です。リネームを始める前にファイル一覧を取得しておくため、名前を変更したファイルが二重に処理されることがありません。
+
+## 5. AI:ファイルごとに固有の名前を付ける
+
+上の4つの方法はいずれも、ファイルがすでに持っている名前を変換するものです。情報はファイル名ではなくファイルの中にあるため、`scan_0042.pdf` を `2026-09-12_acme_invoice_1042.pdf` に変えることはできません。
+
+それを行うのが AI リネームツールです。[Zush for Windows](/windows) は、各ファイル(PDF のテキスト、スクリーンショットに写っているもの、写真の場面、Word や Excel ファイルの内容)を読み取り、説明的な名前を提案します。
+
+1. [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X) から Zush をインストールします。
+2. フォルダー、または選択したファイルをドラッグして取り込みます。
+3. Screenshots や Bookkeeper Expenses などの Template を選ぶか、`{Created Date}_{Vendor}_{Document Type}` のような Naming Blocks からパターンを作ります。
+4. 提案された名前を確認します。どの名前もダブルクリックで編集できます。
+5. **Rename** をクリックします。後で気が変わった場合は、Rename History からバッチを復元できます。
+
+| 変更前 | 変更後 |
+|---|---|
+| `Screenshot 2026-09-18 141203.png` | `github-pull-request-review-comments.png` |
+| `scan_0042.pdf` | `2026-09-12_acme_invoice_1042.pdf` |
+| `Document1.docx` | `q3-marketing-plan-draft.docx` |
+
+フォルダー監視を有効にすると、ダウンロードフォルダーやスキャナーのフォルダーに届いた新しいファイルが、届いた時点で自動的にリネームされます。最初の 50 回の AI リネームは無料です。
+
+<BlogCTA placement='inline' platform='windows' />
+
+## よくある問題
+
+**「ファイル名が長すぎます。」** Windows のパスは、既定で 260 文字に制限されています。新しい名前を短くするか、フォルダーをドライブのルートに近い場所へ移動してください。
+
+**PowerShell でファイルがスキップされる、または二重にリネームされる。** 上の例のように、`Get-ChildItem` を括弧で囲んでください。
+
+**PowerRename が右クリックメニューに表示されない。** PowerToys の設定を開いて PowerRename がオンになっていることを確認し、Windows 11 では **その他のオプションを表示** も確認してください。
+
+**番号の順序が正しくない。** File Explorer と PowerRename は、現在の並べ替え順にファイルへ番号を付けます。リネームする前に、日付または名前で並べ替えてください。
+
+**ファイルが「使用中」と表示される。** そのファイルを開いているアプリ(多くは写真ビューアーや Word)を閉じてから、もう一度試してください。
+
+<BlogProductIntro
+  title="Photo (1)、Photo (2) ではなく、本当の名前が必要ですか?"
+  description="Zush は Windows 上で各ファイルを読み取り、わかりやすく検索しやすい名前を提案します。まず確認してから、バッチ全体をワンクリックで適用できます。"
+  links={[
+    { href: '/windows', label: 'Zush for Windows' },
+    { href: '/blog/best-file-renamer-windows-11', label: 'Windows 11 向けのおすすめファイルリネームツール' },
+    { href: '/batch-rename-files', label: 'AI でファイル名を一括変更' },
+  ]}
+/>
+
+## よくある質問
+
+### Windows 11 で複数のファイル名を一度に変更するには?
+
+File Explorer でファイルを選択して F2 を押し、名前を入力して Enter を押します。Windows は各ファイルに (1)、(2)、(3) を追加します。検索と置換や日付を使いたい場合は、Microsoft PowerToys の PowerRename を使ってください。
+
+### Windows で一括リネームを元に戻すには?
+
+リネームの直後に File Explorer で Ctrl+Z を押します。これは F2 と PowerRename で有効です。コマンドプロンプトと PowerShell でのリネームは元に戻せません。Zush は Rename History を保持しており、いつでもそこから復元できます。
+
+### 何もインストールせずにファイル名を一括変更できますか?
+
+はい。File Explorer (F2)、コマンドプロンプト(`ren`)、PowerShell(`Rename-Item`)は、いずれも Windows 11 と 10 に標準搭載されています。
+
+### Windows でファイルの内容に基づいて名前を変更するには?
+
+標準のツールではファイルの内容を読み取れません。Zush のような AI リネームツールを使うと、各ファイルを分析し、含まれている内容に基づいた名前を提案してくれます。

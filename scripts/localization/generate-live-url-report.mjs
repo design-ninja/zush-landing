@@ -41,6 +41,10 @@ const lines = [
   `- [English homepage](${origin}/)`,
   ...locales.map((locale) => `- [${locale} homepage](${origin}/${locale})`),
   '',
+  '## Localized AI file organizer pages',
+  '',
+  ...locales.map((locale) => `- [${locale} AI file organizer](${origin}/${locale}/ai-file-organizer)`),
+  '',
   '## Localized profession pages',
   '',
   ...locales.flatMap((locale) =>

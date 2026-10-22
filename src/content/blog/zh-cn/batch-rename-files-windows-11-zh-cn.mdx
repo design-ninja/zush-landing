@@ -1,0 +1,166 @@
+---
+title: "如何在 Windows 11 中批量重命名文件：5 种方法，其中 3 种为系统内置（2026）"
+description: "在 Windows 11 或 10 中一次性批量重命名多个文件。File Explorer、命令提示符和 PowerShell 无需安装；PowerRename 和 AI 提供更多功能。"
+date: "2026-09-22"
+slug: "batch-rename-files-windows-11-zh-cn"
+locale: "zh-cn"
+translationOf: "batch-rename-files-windows-11"
+platform: "windows"
+topic: "automation"
+tags:
+  - "文件命名"
+  - "File Explorer"
+  - "自动化"
+tldr: "在 File Explorer 中选中文件并按 F2，即可快速生成带编号的序列名称。需要查找替换、添加日期和正则表达式并带预览时，使用 PowerRename。任何可以脚本化的需求，使用 PowerShell。当每个文件都需要根据其内容获得专属的描述性名称时，使用 Zush 这样的 AI 重命名工具。"
+reviewed: "2026-09-22"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+快速回答：要在 Windows 11 中一次性重命名多个文件，请在 File Explorer 中选中它们，按 **F2**，输入名称，然后按 **Enter**。Windows 会将它们命名为 `Name (1)`、`Name (2)`，依此类推。如果需要更智能的操作，例如替换文本、添加日期，或者为每个文件起一个真正有意义的名称，请使用下面四种方法之一。
+
+| 方法 | 最适合 | 预览 | 撤销 |
+|---|---|---|---|
+| File Explorer (F2) | 快速生成带编号的名称 | 否 | 操作后立即按 Ctrl+Z |
+| PowerRename | 查找替换、日期、正则表达式 | 是 | 在资源管理器中按 Ctrl+Z |
+| 命令提示符 | 修改扩展名 | 否 | 否 |
+| PowerShell | 任何可脚本化的需求 | 使用 `-WhatIf` | 否 |
+| Zush (AI) | 为每个文件生成描述性名称 | 是 | 完整的重命名历史记录 |
+
+在进行任何批量重命名之前，先将几个文件复制到测试文件夹，并在那里先试用该方法。
+
+## 1. File Explorer：用 F2 生成编号序列
+
+1. 打开文件夹并选中文件。使用 **Ctrl+A** 全选，或使用 **Ctrl+点击** 逐个选择。
+2. 按 **F2**（或右键单击并选择 **重命名**，在 Windows 11 中是一个文本光标图标）。
+3. 输入新名称，例如 `Lisbon trip`，然后按 **Enter**。
+
+你会得到 `Lisbon trip (1).jpg`、`Lisbon trip (2).jpg`，依此类推。编号遵循当前的排序顺序，因此如果顺序很重要，请先按 **日期** 排序。如需撤销，请立即按 **Ctrl+Z**。
+
+**提示：** 若要逐个重命名文件，先对第一个文件按 F2，输入其名称，然后按 **Tab** 跳转到下一个文件。
+
+## 2. PowerRename：带预览的查找替换
+
+PowerRename 是 [PowerToys](https://learn.microsoft.com/en-us/windows/powertoys/powerrename) 中由 Microsoft 提供的免费工具。请先从 Microsoft Store 安装 PowerToys，然后：
+
+1. 在 File Explorer 中选中文件，右键单击，选择 **使用 PowerRename 重命名**（在 Windows 11 中，它可能位于 **显示更多选项** 下）。
+2. 在 **搜索** 中输入要查找的内容，在 **替换为** 中输入要替换成的内容。
+3. 查看右侧的预览，然后单击 **应用**。
+
+实用示例：
+
+| 目标 | 搜索 | 替换为 | 选项 |
+|---|---|---|---|
+| 将空格替换为连字符 | ` `（一个空格） | `-` | 匹配所有出现项 |
+| 添加前缀 | `^` | `2026_` | 使用正则表达式 |
+| 调整日期顺序 `29-03-2026` → `2026-03-29` | `(\d{2})-(\d{2})-(\d{4})` | `$3-$2-$1` | 正则表达式，匹配所有 |
+| 给文件编号 | `.*` | `Photo_${padding=3;start=1}` | 正则表达式，枚举项目，仅应用于文件名 |
+| 照片拍摄日期 | `^` | `$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD-` | 正则表达式，EXIF/XMP 元数据来源 |
+
+PowerRename 还可以切换大小写（小写、大写、标题式大小写），并且只重命名扩展名。
+
+## 3. 命令提示符：快速修改扩展名
+
+老式的 `ren` 命令适合做一件事，即批量修改扩展名：
+
+```bat
+cd "C:\Users\You\Pictures\Export"
+ren *.jpeg *.jpg
+```
+
+这会将文件夹中每个 `.jpeg` 文件重命名为 `.jpg`。它不会事先询问，也无法撤销，所以请先在副本上试用。
+
+## 4. PowerShell：可脚本化的重命名
+
+PowerShell 可以实现任何你能描述出来的命名模式。打开 **终端**（右键单击“开始”按钮），并使用 `cd` 进入你的文件夹。在任何命令末尾添加 `-WhatIf`，即可在不重命名任何文件的情况下预览结果。
+
+为每个 JPG 添加前缀：
+
+```powershell
+(Get-ChildItem *.jpg) | Rename-Item -NewName { "Lisbon_" + $_.Name }
+```
+
+将空格替换为连字符：
+
+```powershell
+(Get-ChildItem) | Rename-Item -NewName { $_.Name -replace ' ', '-' }
+```
+
+在每个 PDF 前面添加修改日期：
+
+```powershell
+(Get-ChildItem *.pdf) | Rename-Item -NewName { $_.LastWriteTime.ToString('yyyy-MM-dd') + '_' + $_.Name }
+```
+
+按日期给文件编号，例如 `Trip_001.jpg`、`Trip_002.jpg`：
+
+```powershell
+$i = 1
+Get-ChildItem *.jpg | Sort-Object LastWriteTime | ForEach-Object {
+  Rename-Item $_ -NewName ('Trip_{0:D3}{1}' -f $i++, $_.Extension)
+}
+```
+
+`Get-ChildItem` 外面的括号很重要：它们会在重命名开始之前先收集文件列表，因此已重命名的文件不会被重复处理。
+
+## 5. AI：为每个文件起专属名称
+
+上面四种方法都是对文件已有的名称进行转换。它们无法把 `scan_0042.pdf` 变成 `2026-09-12_acme_invoice_1042.pdf`，因为这些信息在文件内部，而不在文件名里。
+
+这正是 AI 重命名工具所做的事。[Zush for Windows](/windows) 会读取每个文件（PDF 的文字、截图所显示的内容、照片中的场景、Word 或 Excel 文件的内容），并建议一个描述性名称：
+
+1. 从 [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X) 安装 Zush。
+2. 拖入一个文件夹或一组选中的文件。
+3. 选择一个模板，例如 Screenshots 或 Bookkeeper Expenses，或者用 Naming Blocks 拼出一个模式，例如 `{Created Date}_{Vendor}_{Document Type}`。
+4. 查看建议的名称。双击即可编辑其中任何一个。
+5. 单击 **重命名**。如果之后改变主意，可从重命名历史记录中恢复这批文件。
+
+| 之前 | 之后 |
+|---|---|
+| `Screenshot 2026-09-18 141203.png` | `github-pull-request-review-comments.png` |
+| `scan_0042.pdf` | `2026-09-12_acme_invoice_1042.pdf` |
+| `Document1.docx` | `q3-marketing-plan-draft.docx` |
+
+开启文件夹监控后，“下载”文件夹或扫描仪文件夹中的新文件会在到达时被自动重命名。前 50 次 AI 重命名免费。
+
+<BlogCTA placement='inline' platform='windows' />
+
+## 常见问题
+
+**“文件名太长。”** Windows 路径默认限制为 260 个字符。请缩短新名称，或将文件夹移到更靠近驱动器根目录的位置。
+
+**PowerShell 中文件被跳过或被重复重命名。** 请像上面的示例那样，用括号包住 `Get-ChildItem`。
+
+**右键菜单中找不到 PowerRename。** 打开 PowerToys 设置，确认 PowerRename 已开启，并在 Windows 11 上检查 **显示更多选项**。
+
+**编号顺序不对。** File Explorer 和 PowerRename 会按当前排序顺序给文件编号。请在重命名之前先按日期或名称排序。
+
+**文件“正在使用”。** 关闭打开该文件的应用（通常是图片查看器或 Word），然后重试。
+
+<BlogProductIntro
+  title="需要的是真正的名称，而不是 Photo (1)、Photo (2)？"
+  description="Zush 会在 Windows 上读取每个文件，并建议清晰、便于搜索的名称。先审阅，再一键应用整批重命名。"
+  links={[
+    { href: '/windows', label: 'Zush for Windows' },
+    { href: '/blog/best-file-renamer-windows-11', label: 'Windows 11 最佳文件重命名工具' },
+    { href: '/batch-rename-files', label: '使用 AI 批量重命名' },
+  ]}
+/>
+
+## FAQ
+
+### 如何在 Windows 11 中一次性重命名多个文件？
+
+在 File Explorer 中选中文件，按 F2，输入名称，然后按 Enter。Windows 会为每个文件添加 (1)、(2)、(3)。如需查找替换或添加日期，请使用 Microsoft PowerToys 中的 PowerRename。
+
+### 如何在 Windows 中撤销批量重命名？
+
+重命名后立即在 File Explorer 中按 Ctrl+Z；这对 F2 和 PowerRename 都有效。命令提示符和 PowerShell 的重命名无法撤销。Zush 会保留重命名历史记录，你可以随时从中恢复。
+
+### 不安装任何软件也能批量重命名文件吗？
+
+可以。File Explorer (F2)、命令提示符 (`ren`) 和 PowerShell (`Rename-Item`) 都内置于 Windows 11 和 10 中。
+
+### 如何在 Windows 中按文件内容重命名文件？
+
+内置工具无法读取文件内容。请使用 Zush 这样的 AI 重命名工具，它会分析每个文件，并根据其包含的内容建议名称。

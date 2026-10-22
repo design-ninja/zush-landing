@@ -1,0 +1,160 @@
+---
+title: "File Jugglerの代替5選：Windows向けファイル整理ツール（2026年版）"
+description: "File JugglerはルールでWindowsのファイルを自動化します。無料のものを含む5つの代替ツールを比較：AIによる命名と仕分けのZush、DropIt、Sortio、Wisfile、PowerShell。"
+date: "2026-10-16"
+slug: "file-juggler-alternatives-ja"
+locale: "ja"
+translationOf: "file-juggler-alternatives"
+platform: "windows"
+topic: "comparisons"
+tags:
+  - "ファイル整理"
+  - "ツール比較"
+  - "自動化"
+tldr: "File Jugglerは有料で、継続的にメンテナンスされているWindows向けルールエンジンです。価格は税別の買い切り$50で、30日間は全機能を試せます。説明できるパターンに沿ったファイルなら、そのまま使い続けてよいでしょう。スクリーンショット、スキャン、写真のようにマッチさせるパターンがないファイルには、Zushへの乗り換えがおすすめです。Zushは1つ1つのファイルを読み取って名前を付け、フォルダへ仕分けることもできます。DropItとPowerShellは無料のルールベースの選択肢で、WisfileはPDFとWord文書に限り無料です。Zushのライセンス1つで最大3台のデバイスで使えます。"
+earlyTaskExample: false
+reviewed: "2026-10-18"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+結論から言うと、ファイルにパターンがないためにルールが何度もファイルを取りこぼすなら、File Jugglerの代替として最適なのは[Windows版Zush](/windows)です。1つ1つのファイルを読み取って内容がわかる名前を付け、平易な言葉で書いた1つの指示でバッチ全体をフォルダへ仕分けられます。別のルールエンジンが良ければ、DropItは無料で、SortioはルールにAIを加えています。File Juggler自体も今なお優れたツールです。メンテナンスが続いていて、価格も手頃で、動作も予測しやすいからです。
+
+**最終確認日：2026年10月16日。** 執筆は[Zush – MacとWindows向けAIファイルリネームツール](/)の開発元です。File Jugglerの詳細は[公式サイト](https://www.filejuggler.com/)、[FAQ](https://www.filejuggler.com/faq/)、[リリースノート](https://www.filejuggler.com/news/)に基づいています。ほかのツールについては、各セクションにリンクした公式ページを参照しています。
+
+**Zushの機能は2026年10月18日に確認しました。** 競合ツールの情報は、この記事に記載した確認日のままです。
+
+## File Jugglerの優れている点
+
+[File Juggler](https://www.filejuggler.com/)は、デンマークの個人開発者が作ったWindows用の自動化ツールです。ルールは次の3つの要素で作ります。
+
+1. **監視フォルダ**：ダウンロード、デスクトップ、スキャナー用フォルダなど。
+2. **条件**：ファイル名とパス、ファイル内のテキスト、サイズ、作成日・更新日。
+3. **アクション**：移動、コピー、名前変更、拡張子の変更、削除またはごみ箱への移動、アーカイブの展開、zipへの追加、コマンドの実行、Evernoteへのアップロード。
+
+タイマーでスキャンするのではなくフォルダの変更通知を購読しているため、ほぼ即座に反応します。PDF、Word、Excelファイル内のテキストを読み取り、見つけた単語や日付を新しいファイル名に再利用できます。バージョン3.1.7は2026年9月にリリースされ、10月には3.1.8のベータ版が続いたので、放置されているわけではありません。
+
+料金はシンプルで、チェックアウト時に税別の買い切り$50、今後のアップグレードもすべて対象です。1つのライセンスで、1人が複数のPCで使うことも、1台のPCを複数人で共有することもできます。30日間のトライアルでは全機能が使え、期間が終わると購入を促すリマインダーが表示されますが、アプリは動き続けます。
+
+## 代替ツールを探す理由
+
+- **AIがない。** ルールはすべて手で書く必要があります。名前にもテキストにもそのファイルが何かを示すものがないため、`Screenshot 2026-10-02 141203.png`や`IMG_4382.jpg`のようなファイルはルールで捕まえられません。
+- **OCRがない。** File JugglerのFAQによると、画像だけのスキャンには検索可能なテキストがないため、内容ルールでマッチさせるには別のOCRプログラムが必要です。
+- **Windows専用。** Mac版はありません。Macで同等のツールは[Hazel](/hazel-alternative)です。
+- **サービスではない。** ユーザーがログインしている間だけ動作するため、サーバーには向きません。
+- **価格。** ファイルの種類ごとの単純な仕分けしか必要ない場合は割高です。それなら無料のツールがいくつもあります。
+
+## File Jugglerの代替ツール一覧
+
+| ツール | 向いている用途 | ファイル内容の読み取り | フォルダ監視 | 元に戻す | 価格 |
+|---|---|---|---|---|---|
+| **Zush** | <BlogHighlight>パターンのないファイル：AIによる命名とフォルダ仕分け</BlogHighlight> | あり（AI）：スキャン、写真、スクリーンショット、Office、PDF、動画、音声 | あり（Monitor） | Rename History | 50回まで無料で名前変更。月額$10または買い切り$48 |
+| DropIt | 名前・サイズ・日付による無料のルール | 基本的なフィルター | あり（タイマーによるスキャン） | なし | 無料、オープンソース |
+| Sortio | AIによるフォルダ計画と従来型のルール | あり（AI） | あり（Smart Folders） | あり | 無料プランあり。Proは月額$14.99または年額$99 |
+| Wisfile | PDFとWordファイルの無料の一回限りの整理 | PDFとWord、ローカルAI | なし | なし | 無料 |
+| PowerShell + タスクスケジューラ | スクリプトで書けることなら何でも | コードで書いた内容次第 | スケジュール実行 | 自作した場合のみ | 無料 |
+| File Juggler | 名前変更と移動を行う厳密なルール | PDF、Word、Excelのテキスト。OCRなし | あり（即時） | ドキュメントに記載なし | 買い切り$50＋税 |
+
+## 1. Zush：ルールで説明できないファイルのために
+
+[Windows版Zush](/windows)は、[Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X)から入手でき、Windows 10と11で動作します。条件にマッチさせる代わりに、ファイルそのものを読み取ります。PDFやスキャンのテキスト、写真やスクリーンショットの内容、動画のフレームなどです。そのうえで、`2026-09-12_acme_invoice_1042.pdf`や`stripe-revenue-dashboard-september.png`のような名前を提案します。
+
+![内容に基づいて混在したバッチの名前を変更するWindows版Zush。バッチを適用する前に、提案されたすべてのファイル名が表示される](/videos/windows/zush-batch-rename.mp4)
+
+File Jugglerでは振り分け先ごとにルールが1つ必要ですが、Zushでは**Folder rules**に「請求書は会社別、領収書は月別にまとめる」のような一文を書くだけです。あるいはAutoで内容ごとにファイルをグループ化します。何かが移動する前に、提案された名前とフォルダをまとめて確認できます。判断が分かれるファイルは適用前に確認してください。
+
+![Rename & sortの前に、内容に基づくフォルダのグループと提案されたファイル名をプレビューするWindows版Zush](/images/showcase/windows/folder-sorting-light.webp)
+
+File Jugglerの常時稼働の部分は、設定をTemplateに保存して**Monitor**に割り当てることで代替できます。ダウンロードやスキャナー用フォルダに届いた新しいファイルは、届くたびに名前変更と仕分けが行われます。Rename Historyには変更前と変更後の名前が残るので、失敗したバッチは元に戻せます。AIは、Zush Cloud AI、ご自身のAPIキー、またはファイルをPC内にとどめたい場合はOllamaやLM Studioを使ってローカルで動かせます。
+
+![ScreenshotsフォルダとDownloadsフォルダを監視し、新しいファイルが届くたびに名前を変更するWindows版ZushのMonitorタブ](/images/showcase/windows/monitor-light.webp)
+
+ルールの一覧が増え続けてもまだファイルを取りこぼすなら、Zushを選びましょう。手順は、[WindowsでAIを使ってファイルをフォルダに仕分ける方法](/blog/sort-files-into-folders-with-ai-windows)と[すぐ使えるフォルダルール30選](/blog/ai-folder-sorting-prompts)で解説しています。
+
+<BlogCTA placement='inline' platform='windows' />
+
+Zushのライセンス1つで、MacとWindowsを合わせて最大3台のデバイスで使えます。
+
+Naming Blocks、Custom AI Blocks、フォルダルールを含む[Templateをエクスポート](/docs/template-import-export)して、別のコンピュータにインポートできます。ローカルの保存先、フォルダのアクセス許可、AI接続は、移行先で設定し直してください。移行されるのはワークフローの設定であり、ファイルそのものではありません。
+
+Zushは、年別、その中で月別にまとめるといった入れ子のフォルダルールにも対応しています。すでに名前を変更したファイルを、名前を変えずに、名前変更クレジットも追加で使わずに仕分けることもできます。適用前に振り分け先を確認してください。この別アクションは既存のバッチを処理するものです。Monitorで使うTemplateを変更しても、過去のファイルが遡って整理し直されることはありません。[AIフォルダ仕分け](/docs/folder-sorting)はMacとWindowsで使えます。
+
+## 2. DropIt：無料のルールエンジン
+
+[DropIt](https://www.dropitproject.com/)は無料のオープンソースです。ルールは名前、サイズ、日付、プロパティ、正規表現でファイルにマッチし、21種類のアクションが移動、コピー、名前変更、圧縮、展開などをカバーします。ファイルを浮かぶターゲットにドラッグするか、タイマーで監視フォルダをスキャンさせて使います。
+
+最新リリースの8.5.1は2018年10月のものです。今でも動作しますが、新機能やAIは期待できません。
+
+「PDFはここ、画像はあそこ」程度で足り、お金を払うという選択肢がない場合は、DropItを選びましょう。
+
+## 3. Sortio：ルールを土台にしたAIプラン
+
+[Sortio](https://www.getsortio.com/)は両方のアプローチを組み合わせています。従来型のルールを書くことも、平易な英語で整理方法を説明してプランを確認し、名前変更、フォルダ作成、ファイルの移動を任せることもできます。Smart Foldersは、新しく届いたファイルにもそのプランを適用し続けます。Windows、macOS、Linuxで動作します。
+
+無料プランには、最大5つのルールによるルールベースの仕分け、監視フォルダ、元に戻す機能、一回限りのAIトライアルが含まれます。Proは月額$14.99または年額$99で、毎月のAI利用枠が付きます。Ollamaを使えば処理はローカルのままです。
+
+File Jugglerのようなルールと、AIを1つのアプリで使いたい場合や、Linuxが必要な場合は、Sortioを選びましょう。詳しい比較は[Zush vs Sortio](/blog/zush-vs-sortio)をご覧ください。
+
+## 4. Wisfile：書類向けの無料のAI整理
+
+[Wisfile](https://www.wisfile.ai/)は無料で、MacとWindowsでローカルに動作し、`Author-Year-Title`のようなテンプレートで書類の名前を内容から付け直します。バッチをトピック別のフォルダにまとめることもできます。FAQでは、対応形式としてWordとPDFが挙げられています。
+
+フォルダの監視やスケジュール実行はなく、毎回ファイルをドラッグして実行します。FAQには組み込みの元に戻す機能もないと書かれているため、まずコピーでテストしてください。
+
+紙の書類や文書アーカイブを一度だけ整理したいなら、Wisfileを選びましょう。詳しくは[Zush vs Wisfile](/blog/zush-vs-wisfile)をご覧ください。
+
+## 5. PowerShellとタスクスケジューラ：自作ルート
+
+Windowsは、追加ソフトなしでもFile Jugglerの基本的な作業をこなせます。PowerShellがファイルの移動と名前変更を行い、タスクスケジューラがログイン時や数分おきにスクリプトを実行します。
+
+```powershell
+Get-ChildItem "$env:USERPROFILE\Downloads" -Filter *.pdf |
+  Move-Item -Destination "$env:USERPROFILE\Documents\PDFs"
+```
+
+無料で、スクリプトの腕しだいで柔軟に対応できます。一方で、名前の重複、ロックされたファイル、ログ記録、元に戻す機能は自分で面倒を見ることになります。ほかの方法は、[Windowsでダウンロードフォルダを整理する方法](/blog/organize-downloads-folder-windows)をご覧ください。
+
+<BlogProductIntro
+  title="ルールではスクリーンショットを読めません。Zushなら読めます。"
+  description="Zushは、Windowsのファイルを中身に基づいて命名し、1つの指示でフォルダに仕分け、監視フォルダに届く新しいファイルにも同じ処理を続けます。"
+  links={[
+    { href: '/windows', label: 'Windows版Zush' },
+    { href: '/ai-file-sorter', label: 'AIファイル仕分けツール' },
+    { href: '/docs/folder-monitoring', label: 'フォルダ監視のドキュメント' },
+  ]}
+/>
+
+## File Jugglerを使い続ける？ それとも乗り換える？
+
+- ファイルが決まったパターンに従っている（同じ銀行、同じレイアウト、同じ名前の接頭辞）：**File Jugglerを使い続ける**。
+- スクリーンショット、スキャン、スマートフォンの写真、意味のない名前のランダムなダウンロード：**Zush**。
+- 拡張子や名前による無料の仕分け：**DropIt**または**PowerShell**。
+- ルールとAIを1つのツールで、またはLinux：**Sortio**。
+- PDFとWordファイルを無料で一度だけ整理：**Wisfile**。
+
+両方を併用することもできます。Zushがダウンロードフォルダを監視して`2026-10-02_acme_invoice.pdf`のような予測しやすい名前を付け、File Jugglerが`*_invoice.pdf`を決まったFinanceフォルダに移動します。それぞれのツールが得意な部分を担当します。どの構成でも、まずコピーでテストしてください。確認すべき点は、[ファイル名を安全に一括変更する方法](/blog/how-to-safely-batch-rename-files)のチェックリストにまとめています。
+
+AIツールをより幅広く比較したい場合は、[Windows 11向けおすすめAIファイル整理ツール](/blog/best-ai-file-organizers-windows)をご覧ください。
+
+## よくある質問
+
+### File Jugglerの無料の代替ツールはありますか？
+
+あります。DropItは無料のオープンソースですが、2018年以降更新されていません。Sortioの無料プランには最大5つのルールが含まれます。スクリプトが書けるなら、PowerShellとタスクスケジューラは無料です。ファイル名のわかりにくさが問題なら、Zushには50回分の無料のAI名前変更が含まれています。
+
+### File Jugglerは今もメンテナンスされていますか？
+
+はい。リリースノートによると、バージョン3.1.7は2026年9月に、3.1.8のベータ版は2026年10月にリリースされました。
+
+### File JugglerはAIを使っていますか？
+
+いいえ。PDFやOfficeファイルの中にある単語を含め、自分で書いた条件にマッチさせる仕組みです。別途OCRを使わない限り、画像だけのスキャンは読み取れません。
+
+### Mac版のFile Jugglerはありますか？
+
+いいえ、File JugglerはWindows専用です。ルールという点で最も近いMacのツールはHazelで、AIによる命名とフォルダ仕分けはMac版Zushがカバーします。[Hazelの代替](/hazel-alternative)のページをご覧ください。
+
+### ZushはFile Jugglerを完全に置き換えられますか？
+
+内容に基づくファイル名の付け方とフォルダへの仕分けについては、監視フォルダも含めて置き換えられます。File Jugglerには、コマンドの実行、アーカイブの展開、Evernoteへのアップロードなど、Zushにはないアクションがまだあります。それらに頼っている場合は、Zushと併用して残してください。

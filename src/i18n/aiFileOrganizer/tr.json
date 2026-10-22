@@ -1,0 +1,216 @@
+{
+  "seo": {
+    "title": "Mac ve Windows için Yapay Zekâ Dosya Düzenleyici: İçeriğe Göre Adlandırın | Zush",
+    "description": "Zush her dosyayı içeriğine göre adlandırır, istediğinizde klasörlere yerleştirir ve Monitor ile yeni dosyaları düzenli tutar. Mac ve Windows için, önizleme ve geri alma ile."
+  },
+  "h1": "Yapay Zekâ Dosya Düzenleyici: Dosyaları İçeriğe Göre Adlandırın ve Sıralayın",
+  "accent": "Adlandırın ve Sıralayın",
+  "definitionText": "Zush, Mac ve Windows için bir yapay zekâ dosya düzenleyicisidir. Her dosyayı okuyup ona aranabilir bir ad verir, yapay zekâ klasör sıralamasını açtığınızda dosyaları klasörlere yerleştirir ve klasör izleme ile İndirilenler veya müşteri klasörlerinizi düzenli tutar. Uygulamadan önce her toplu işlemi gözden geçirin; geri alma adları ve klasörleri eski haline getirir.",
+  "faqTitle": "Sık Sorulan Sorular",
+  "relatedToolsTitle": "İlgili Araçlar",
+  "relatedGuidesTitle": "İlgili Rehberler",
+  "faqItems": [
+    {
+      "question": "Yapay zekâ dosya düzenleyici nedir?",
+      "answer": "Yapay zekâ dosya düzenleyici, her dosyanın içeriğini okur ve bunu temiz, aranabilir dosya adlarına ve tutarlı adlandırma kurallarına dönüştürür. Yalnızca desen kurallarına göre sıralamak yerine Zush; ekran görüntülerini, PDF'leri, fotoğrafları, belgeleri, videoları, ses dosyalarını ve tasarım dosyalarını analiz eder, ardından her birini içeriğine göre adlandırır; böylece Finder, Spotlight ve Windows Arama onları gerçekten bulabilir."
+    },
+    {
+      "question": "Yapay zekâ dosya düzenleyici, yapay zekâ dosya sıralayıcıdan nasıl farklıdır?",
+      "answer": "Yapay zekâ dosya sıralayıcı, dosyaları içeriğe göre klasörlere ayırır; yapay zekâ dosya yeniden adlandırıcı ise her dosyaya açıklayıcı bir ad verir. Zush ikisini tek bir gözden geçirilen toplu işlemde birleştirir: Otomatik mod grup önerir ya da kendi klasör kurallarınızı sade bir dille tarif edebilirsiniz."
+    },
+    {
+      "question": "Zush, yapay zekâ destekli dosya ve klasör adlandırma yazılımı mı?",
+      "answer": "Evet. Zush, Mac ve Windows'ta içeriğe duyarlı dosya adları oluşturur. Yapay zekâ klasör sıralaması ayrıca klasör adları önerir ve dosyaları bu gruplara taşır. Otomatik modu kullanın veya “Faturaları şirkete, makbuzları aya göre grupla.” gibi bir istem yazın. Uygun mevcut klasörleri yeniden kullanabilir veya bir hedef seçebilirsiniz. Bu, mevcut klasörleri toplu olarak yeniden adlandırmaz."
+    },
+    {
+      "question": "Zush İndirilenler klasörümü otomatik olarak düzenleyebilir mi?",
+      "answer": "Evet. Klasör izlemeyi İndirilenler klasörüne yönlendirin; Zush yeni ekran görüntülerini, faturaları, makbuzları ve dışa aktarımları, seçtiğiniz şablonu kullanarak geldikleri anda içeriğe göre adlandırsın. Her değişiklik yeniden adlandırma geçmişinde kalır, böylece herhangi bir toplu işlemi geri alabilirsiniz."
+    },
+    {
+      "question": "Yapay zekâ dosya düzenleyici hem Mac'te hem Windows'ta çalışır mı?",
+      "answer": "Evet. Zush'un yerel bir Mac uygulaması (macOS 15+) ve Microsoft Store'da bir Windows sürümü vardır. İkisi de içeriğe duyarlı adlandırmayı, şablonları, Naming Blocks'u, klasör izlemeyi ve geri alma geçmişini destekler. Klasör sıralaması, otomatik gruplamayı veya özel talimatları ve bir hedef klasörü destekler."
+    },
+    {
+      "question": "Yapay zekâ dosyalarımı düzenlerken verilerim gizli kalır mı?",
+      "answer": "Modu siz seçersiniz: yönetilen Bulut yapay zekâsı, kendi sağlayıcı anahtarınızla BYOK, ya da desteklenen analizin cihazınızda kalması için LM Studio veya Ollama. Dosyalar diskinizde kalır; kullanıcılar isterlerse dosyaları yapay zekânın önerdiği klasörlere taşıyabilir."
+    }
+  ],
+  "workflow": {
+    "heading": "Bir klasörü üç adımda düzenleyin: adlandırın, yerleştirin, otomatikleştirin",
+    "answer": "Bir düzenleyici, dosya taşıyıcıdan fazlasıdır. Zush önce her dosyaya içeriğinden aranabilir bir ad verir, ardından isteğe bağlı olarak onu klasörlere yerleştirir, sonra yeni dosyalar geldikçe klasörü düzenli tutar. Ne kadar ileri gideceğinizi siz seçersiniz; hiçbir şey değişmeden önce adları ve klasörleri gözden geçirirsiniz.",
+    "setupOptions": [
+      {
+        "title": "Yerinde yeniden adlandırma",
+        "instructions": "Sıralamayı kapalı tutun. Dosyalar kendi klasöründe kalır ve içerikten, tarihlerden ve Naming Blocks'unuzdan oluşturulan adlar alır.",
+        "href": "/batch-rename-files",
+        "label": "Dosyaları yapay zekâ ile toplu yeniden adlandırın"
+      },
+      {
+        "title": "Yeniden adlandırma ve sıralama",
+        "instructions": "Sıralamayı açın. Otomatik mod dosyaları içeriğe göre gruplar; Klasör kuralları ise yıl ve ay gibi iç içe olanlar dahil klasörleri tarif eder.",
+        "href": "/ai-file-sorter",
+        "label": "Yapay zekâ dosya sıralayıcı kuralları yazın"
+      },
+      {
+        "title": "Yeni dosyaları düzenleme",
+        "instructions": "Şablonu klasör izlemeye atayın. İndirilenler veya tarayıcı klasöründeki yeni dosyalar adlandırılır; şablon sıralama yapıyorsa sıralanır da.",
+        "href": "/docs/folder-monitoring",
+        "label": "Klasör izlemeyi kurun"
+      }
+    ],
+    "steps": [
+      "Bir İndirilenler veya müşteri klasörü seçin ve daha sonra hangi ayrıntıları arayacağınıza karar verin; örneğin proje, belge türü ve tarih. Bu alanları bir Şablon olarak kaydedin.",
+      "Sıralamayı açın. Otomatik mod için Klasör kurallarını boş bırakın veya gruplamayı tarif edin; örneğin “Faturaları şirkete, makbuzları aya göre grupla.” Bir hedef seçin veya özgün klasörü koruyun.",
+      "Önerilen adları ve klasörleri gözden geçirin, ardından uygulayın. Sonuç güvenilir olduğunda, Şablonu klasör izlemeye atayın; böylece yeni dosyalar geldikçe adlandırılır ve sıralanır."
+    ],
+    "example": {
+      "before": "Downloads/document.pdf",
+      "after": "Clients/Acme/Acme_Service-Agreement.pdf",
+      "caption": "Örnek yol: Clients seçilen hedeftir, Acme ise yapay zekânın “Müşteri belgelerini şirkete göre grupla.” gibi bir kuraldan önerdiği klasördür. Uygulamadan önce önerilen her klasörü gözden geçirin."
+    },
+    "image": {
+      "src": "/images/showcase/macos/folder-sorting-light.webp",
+      "alt": "Mac için Zush, değişiklikler uygulanmadan önce yeniden adlandırılmış bir dosya grubunu önerilen klasörlere ayrılmış hâlde gösteriyor.",
+      "caption": "Mac için Zush: önerilen klasöre göre gruplanmış önerilen dosya adları. Toplu işlemi uygulayana kadar hiçbir şey taşınmaz."
+    },
+    "limit": "Yapay zekâ klasör sıralaması dosyaları taşır; bu yüzden önce bir kopya üzerinde deneyin ve diğer uygulamaların yol üzerinden başvurduğu klasörlerde kapalı tutun. Zush yinelenen dosyaları silmez, disk alanını temizlemez ve bir belge yönetim sisteminin yerini almaz. Geri alma, özgün adı ve klasörü geri yükler.",
+    "links": [
+      {
+        "href": "/ai-file-sorter",
+        "label": "Kendi klasör kurallarınızla yapay zekâ dosya sıralayıcı"
+      },
+      {
+        "href": "/docs/folder-sorting",
+        "label": "Klasör sıralama belgeleri"
+      },
+      {
+        "href": "/docs/folder-monitoring",
+        "label": "Klasör izlemeyi kurun"
+      }
+    ]
+  },
+  "relatedPages": [
+    {
+      "title": "Yapay Zekâ Dosya Sıralayıcı",
+      "href": "/ai-file-sorter"
+    },
+    {
+      "title": "Yapay Zekâ Klasör Sıralama: Otomatik ve Özel Kurallar",
+      "href": "/docs/folder-sorting"
+    },
+    {
+      "title": "Klasör İzleme Belgeleri",
+      "href": "/docs/folder-monitoring"
+    },
+    {
+      "title": "Şablonlar Rehberi",
+      "href": "/docs/templates"
+    },
+    {
+      "title": "Naming Blocks Rehberi",
+      "href": "/docs/naming-blocks"
+    },
+    {
+      "title": "Dosyaları Yapay Zekâ ile Toplu Yeniden Adlandırın",
+      "href": "/batch-rename-files"
+    },
+    {
+      "title": "Çevrimdışı Yapay Zekâ Dosya Yeniden Adlandırıcı",
+      "href": "/offline-ai-file-renamer"
+    },
+    {
+      "title": "Yapay Zekâ Dosya Yeniden Adlandırıcı ve Düzenleyici",
+      "href": "/"
+    },
+    {
+      "title": "Mac için yapay zekâ dosya yeniden adlandırıcı",
+      "href": "/mac"
+    },
+    {
+      "title": "Windows için yapay zekâ dosya yeniden adlandırıcı",
+      "href": "/windows"
+    }
+  ],
+  "relatedBlogPosts": [
+    {
+      "title": "Mac'te Yapay Zekâ ile Dosyaları Klasörlere Ayırın",
+      "href": "sort-files-into-folders-with-ai-mac"
+    },
+    {
+      "title": "Windows'ta Yapay Zekâ ile Dosyaları Klasörlere Ayırın",
+      "href": "sort-files-into-folders-with-ai-windows"
+    },
+    {
+      "title": "Mac ve Windows için En İyi Yapay Zekâ Dosya Sıralayıcılar",
+      "href": "best-ai-file-sorters"
+    },
+    {
+      "title": "Windows 11 için En İyi Yapay Zekâ Dosya Düzenleyiciler",
+      "href": "best-ai-file-organizers-windows"
+    },
+    {
+      "title": "Mac için En İyi Yapay Zekâ Dosya Düzenleyiciler",
+      "href": "best-ai-file-organizers-mac"
+    },
+    {
+      "title": "En İyi Yapay Zekâ Belge Düzenleyiciler",
+      "href": "best-ai-document-organizers"
+    },
+    {
+      "title": "Mac için Otomatik Dosya Düzenleyici",
+      "href": "automate-file-organization-macos"
+    },
+    {
+      "title": "Mac'te Fotoğrafları Düzenlemenin En İyi Yolları",
+      "href": "best-ways-to-organize-photos-on-mac"
+    },
+    {
+      "title": "Mac'inizi Sadeleştirin: Dosya Temizleme Rehberi",
+      "href": "declutter-your-mac-file-cleanup-guide"
+    }
+  ],
+  "contextualGuideLink": {
+    "before": "Bir iş akışı seçmeden önce uygulamaları mı karşılaştırıyorsunuz? Yeniden adlandırma, taşıma, yerel yapay zekâ, geri alma ve fiyatlandırma konusunda doğrulama odaklı bir döküm için",
+    "label": "Mac için en iyi yapay zekâ dosya düzenleyicileri",
+    "href": "/blog/best-ai-file-organizers-mac",
+    "after": "yazımıza göz atın."
+  },
+  "howTo": {
+    "@type": "HowTo",
+    "name": "Dosyaları yapay zekâ ile düzenleyin",
+    "description": "Mac ve Windows klasörleri için açıklayıcı, tutarlı dosya adları oluşturmak üzere Zush'u kullanın; isteğe bağlı yapay zekâ klasör sıralaması ile.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Dağınık bir klasörü Zush'a bırakın",
+        "text": "İndirilenler, bir ekran görüntüleri klasörü, bir müşteri klasörü veya karışık herhangi bir dosya grubu ekleyin."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Bir adlandırma kuralı seçin",
+        "text": "Bir yapay zekâ başlığı kullanın veya tarihleri, müşterileri, kategorileri, sayaçları ve meta verileri şablonlar ve Naming Blocks ile birleştirin."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Otomatik veya özel klasör kurallarını seçin",
+        "text": "Yapay zekâ klasör sıralamasını etkinleştirin. Otomatik modun dosyaları içeriğe göre gruplamasına izin verin veya sade dille talimatlar yazın. Bir hedef seçin ve isteğe bağlı olarak uygun mevcut klasörleri yeniden kullanın."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Gözden geçirin, uygulayın ve otomatikleştirin",
+        "text": "Toplu işlemi uygulamadan önce adları ve önerilen klasörleri önizleyin. Monitor'ün yeni dosyaları işlemesi için kuralları bir Şablona kaydedin."
+      }
+    ],
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [
+        "h1",
+        "meta[name=\"description\"]"
+      ]
+    }
+  }
+}

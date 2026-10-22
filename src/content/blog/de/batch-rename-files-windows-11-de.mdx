@@ -1,0 +1,166 @@
+---
+title: "So benennen Sie Dateien in Windows 11 im Stapel um: 5 Wege, 3 davon integriert (2026)"
+description: "Benennen Sie mehrere Dateien in Windows 11 oder 10 gleichzeitig um. File Explorer, Eingabeaufforderung und PowerShell erfordern keine Installation; PowerRename und KI bieten noch mehr."
+date: "2026-09-22"
+slug: "batch-rename-files-windows-11-de"
+locale: "de"
+translationOf: "batch-rename-files-windows-11"
+platform: "windows"
+topic: "automation"
+tags:
+  - "Dateibenennung"
+  - "File Explorer"
+  - "Automatisierung"
+tldr: "Wählen Sie Dateien im File Explorer aus und drücken Sie F2 für eine schnelle nummerierte Folge. Nutzen Sie PowerRename für Suchen und Ersetzen, Datumsangaben und Regex mit Vorschau. Nutzen Sie PowerShell für alles, was sich skripten lässt. Nutzen Sie einen KI-Umbenenner wie Zush, wenn jede Datei anhand ihres Inhalts einen eigenen aussagekräftigen Namen braucht."
+reviewed: "2026-09-22"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Kurze Antwort: Um in Windows 11 mehrere Dateien gleichzeitig umzubenennen, wählen Sie sie im File Explorer aus, drücken **F2**, geben einen Namen ein und drücken **Enter**. Windows benennt sie dann `Name (1)`, `Name (2)` und so weiter. Für alles Anspruchsvollere, etwa Text ersetzen, Datumsangaben hinzufügen oder jeder Datei einen echten Namen geben, nutzen Sie eine der vier folgenden Methoden.
+
+| Methode | Am besten für | Vorschau | Rückgängig |
+|---|---|---|---|
+| File Explorer (F2) | Schnelle nummerierte Namen | Nein | Strg+Z direkt danach |
+| PowerRename | Suchen und Ersetzen, Datumsangaben, Regex | Ja | Strg+Z im Explorer |
+| Eingabeaufforderung | Dateiendungen ändern | Nein | Nein |
+| PowerShell | Alles, was sich skripten lässt | Mit `-WhatIf` | Nein |
+| Zush (KI) | Ein aussagekräftiger Name für jede Datei | Ja | Vollständiger Umbenennungsverlauf |
+
+Kopieren Sie vor jeder Stapelumbenennung ein paar Dateien in einen Testordner und probieren Sie die Methode zuerst dort aus.
+
+## 1. File Explorer: F2 für eine nummerierte Folge
+
+1. Öffnen Sie den Ordner und wählen Sie die Dateien aus. Verwenden Sie **Strg+A** für alle oder **Strg+Klick** zur Einzelauswahl.
+2. Drücken Sie **F2** (oder klicken Sie mit der rechten Maustaste und wählen Sie **Umbenennen**, in Windows 11 das Symbol mit einem Textcursor).
+3. Geben Sie den neuen Namen ein, zum Beispiel `Lisbon trip`, und drücken Sie **Enter**.
+
+Sie erhalten `Lisbon trip (1).jpg`, `Lisbon trip (2).jpg` und so weiter. Die Nummerierung folgt der aktuellen Sortierreihenfolge. Sortieren Sie daher zuerst nach **Datum**, wenn die Reihenfolge wichtig ist. Drücken Sie sofort **Strg+Z**, um den Vorgang rückgängig zu machen.
+
+**Tipp:** Um Dateien nacheinander umzubenennen, drücken Sie bei der ersten Datei F2, geben ihren Namen ein und springen dann mit **Tab** zur nächsten Datei.
+
+## 2. PowerRename: Suchen und Ersetzen mit Vorschau
+
+PowerRename ist ein kostenloses Microsoft-Tool in [PowerToys](https://learn.microsoft.com/en-us/windows/powertoys/powerrename). Installieren Sie PowerToys aus dem Microsoft Store und gehen Sie dann so vor:
+
+1. Wählen Sie Dateien im File Explorer aus, klicken Sie mit der rechten Maustaste und wählen Sie **Mit PowerRename umbenennen** (in Windows 11 finden Sie den Eintrag möglicherweise unter **Weitere Optionen anzeigen**).
+2. Geben Sie unter **Suchen nach** ein, was gefunden werden soll, und unter **Ersetzen durch**, was stattdessen eingefügt werden soll.
+3. Prüfen Sie die Vorschau auf der rechten Seite und klicken Sie dann auf **Anwenden**.
+
+Nützliche Rezepte:
+
+| Ziel | Suchen nach | Ersetzen durch | Optionen |
+|---|---|---|---|
+| Leerzeichen zu Bindestrichen | ` ` (ein Leerzeichen) | `-` | Alle Vorkommen abgleichen |
+| Präfix hinzufügen | `^` | `2026_` | Reguläre Ausdrücke verwenden |
+| Datum umstellen `29-03-2026` → `2026-03-29` | `(\d{2})-(\d{2})-(\d{4})` | `$3-$2-$1` | Regex, alle Vorkommen abgleichen |
+| Dateien nummerieren | `.*` | `Photo_${padding=3;start=1}` | Regex, Elemente aufzählen, nur auf Dateinamen anwenden |
+| Aufnahmedatum des Fotos | `^` | `$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD-` | Regex, EXIF-/XMP-Metadatenquelle |
+
+PowerRename kann außerdem die Groß- und Kleinschreibung ändern (Kleinbuchstaben, Großbuchstaben, Titelschreibweise) und nur die Dateiendung umbenennen.
+
+## 3. Eingabeaufforderung: Dateiendungen schnell ändern
+
+Der alte Befehl `ren` eignet sich gut für eine Aufgabe, nämlich das Ändern von Dateiendungen im Stapel:
+
+```bat
+cd "C:\Users\You\Pictures\Export"
+ren *.jpeg *.jpg
+```
+
+Damit wird jede `.jpeg`-Datei im Ordner in `.jpg` umbenannt. Es erfolgt keine Rückfrage und es gibt kein Rückgängigmachen, probieren Sie es also an Kopien aus.
+
+## 4. PowerShell: skriptbasierte Umbenennungen
+
+PowerShell beherrscht jedes Muster, das Sie beschreiben können. Öffnen Sie das **Terminal** (Rechtsklick auf die Start-Schaltfläche) und wechseln Sie mit `cd` in Ihren Ordner. Hängen Sie `-WhatIf` ans Ende eines beliebigen Befehls an, um eine Vorschau zu sehen, ohne dass etwas umbenannt wird.
+
+Ein Präfix zu jeder JPG-Datei hinzufügen:
+
+```powershell
+(Get-ChildItem *.jpg) | Rename-Item -NewName { "Lisbon_" + $_.Name }
+```
+
+Leerzeichen durch Bindestriche ersetzen:
+
+```powershell
+(Get-ChildItem) | Rename-Item -NewName { $_.Name -replace ' ', '-' }
+```
+
+Das Änderungsdatum vor jede PDF-Datei setzen:
+
+```powershell
+(Get-ChildItem *.pdf) | Rename-Item -NewName { $_.LastWriteTime.ToString('yyyy-MM-dd') + '_' + $_.Name }
+```
+
+Dateien nach Datum nummerieren, als `Trip_001.jpg`, `Trip_002.jpg`:
+
+```powershell
+$i = 1
+Get-ChildItem *.jpg | Sort-Object LastWriteTime | ForEach-Object {
+  Rename-Item $_ -NewName ('Trip_{0:D3}{1}' -f $i++, $_.Extension)
+}
+```
+
+Die Klammern um `Get-ChildItem` sind wichtig: Sie sammeln die Dateiliste, bevor das Umbenennen beginnt, sodass eine bereits umbenannte Datei nicht ein zweites Mal erfasst wird.
+
+## 5. KI: Jeder Datei einen eigenen Namen geben
+
+Alle vier oben genannten Methoden verändern den Namen, den eine Datei bereits hat. Sie können `scan_0042.pdf` nicht in `2026-09-12_acme_invoice_1042.pdf` verwandeln, weil die Information in der Datei steckt und nicht in ihrem Namen.
+
+Genau das leistet ein KI-Umbenenner. [Zush für Windows](/windows) liest jede Datei (den Text eines PDFs, den Inhalt eines Screenshots, die Szene in einem Foto, den Inhalt einer Word- oder Excel-Datei) und schlägt einen aussagekräftigen Namen vor:
+
+1. Installieren Sie Zush aus dem [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X).
+2. Ziehen Sie einen Ordner oder eine Auswahl von Dateien hinein.
+3. Wählen Sie eine Vorlage, etwa Screenshots oder Bookkeeper Expenses, oder erstellen Sie ein Muster mit Naming Blocks wie `{Created Date}_{Vendor}_{Document Type}`.
+4. Prüfen Sie die vorgeschlagenen Namen. Bearbeiten Sie jeden davon per Doppelklick.
+5. Klicken Sie auf **Umbenennen**. Wenn Sie es sich später anders überlegen, stellen Sie den Stapel aus dem Umbenennungsverlauf wieder her.
+
+| Vorher | Nachher |
+|---|---|
+| `Screenshot 2026-09-18 141203.png` | `github-pull-request-review-comments.png` |
+| `scan_0042.pdf` | `2026-09-12_acme_invoice_1042.pdf` |
+| `Document1.docx` | `q3-marketing-plan-draft.docx` |
+
+Aktivieren Sie die Ordnerüberwachung, dann werden neue Dateien in Downloads oder in einem Scanner-Ordner beim Eintreffen umbenannt. Die ersten 50 KI-Umbenennungen sind kostenlos.
+
+<BlogCTA placement='inline' platform='windows' />
+
+## Häufige Probleme
+
+**„Der Dateiname ist zu lang.“** Windows-Pfade sind standardmäßig auf 260 Zeichen begrenzt. Kürzen Sie die neuen Namen oder verschieben Sie den Ordner näher an das Stammverzeichnis des Laufwerks.
+
+**Dateien werden in PowerShell übersprungen oder doppelt umbenannt.** Setzen Sie `Get-ChildItem` wie in den obigen Beispielen in Klammern.
+
+**PowerRename fehlt im Kontextmenü.** Öffnen Sie die PowerToys-Einstellungen, stellen Sie sicher, dass PowerRename aktiviert ist, und prüfen Sie unter Windows 11 den Eintrag **Weitere Optionen anzeigen**.
+
+**Die Nummern stehen in der falschen Reihenfolge.** File Explorer und PowerRename nummerieren Dateien in der aktuellen Sortierreihenfolge. Sortieren Sie vor dem Umbenennen nach Datum oder Name.
+
+**Eine Datei ist „in Verwendung“.** Schließen Sie die App, in der sie geöffnet ist (oft ein Fotobetrachter oder Word), und versuchen Sie es erneut.
+
+<BlogProductIntro
+  title="Sie brauchen echte Namen statt Foto (1), Foto (2)?"
+  description="Zush liest jede Datei unter Windows und schlägt einen klaren, gut durchsuchbaren Namen vor. Erst prüfen, dann den gesamten Stapel mit einem Klick anwenden."
+  links={[
+    { href: '/windows', label: 'Zush für Windows' },
+    { href: '/blog/best-file-renamer-windows-11', label: 'Die besten Datei-Umbenenner für Windows 11' },
+    { href: '/batch-rename-files', label: 'Stapelumbenennung mit KI' },
+  ]}
+/>
+
+## Häufig gestellte Fragen
+
+### Wie benenne ich in Windows 11 mehrere Dateien gleichzeitig um?
+
+Wählen Sie die Dateien im File Explorer aus, drücken Sie F2, geben Sie einen Namen ein und drücken Sie Enter. Windows hängt jeweils (1), (2), (3) an. Für Suchen und Ersetzen oder Datumsangaben nutzen Sie PowerRename aus Microsoft PowerToys.
+
+### Wie mache ich eine Stapelumbenennung in Windows rückgängig?
+
+Drücken Sie direkt nach dem Umbenennen Strg+Z im File Explorer; das funktioniert bei F2 und PowerRename. Umbenennungen in der Eingabeaufforderung und in PowerShell lassen sich nicht rückgängig machen. Zush führt einen Umbenennungsverlauf, aus dem Sie jederzeit wiederherstellen können.
+
+### Kann ich Dateien im Stapel umbenennen, ohne etwas zu installieren?
+
+Ja. File Explorer (F2), Eingabeaufforderung (`ren`) und PowerShell (`Rename-Item`) sind alle in Windows 11 und 10 integriert.
+
+### Wie benenne ich Dateien in Windows anhand ihres Inhalts um?
+
+Integrierte Tools können Dateiinhalte nicht lesen. Nutzen Sie einen KI-Umbenenner wie Zush, der jede Datei analysiert und einen Namen vorschlägt, der auf ihrem Inhalt basiert.

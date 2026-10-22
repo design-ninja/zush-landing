@@ -149,7 +149,7 @@ function countWords(content: string, locale: BlogLocale = DEFAULT_BLOG_LOCALE): 
 }
 
 function isFAQHeading(line: string): boolean {
-  return /^##\s+(?:faq|frequently asked questions)\s*$/i.test(line.trim());
+  return /^##\s+(?:faq|sss|frequently asked questions|häufig(?:e| gestellte) fragen|questions fréquentes|foire aux questions|preguntas frecuentes|perguntas frequentes|domande frequenti|veelgestelde vragen|sık(?:ça)? sorulan sorular|よくある質問|자주 묻는 질문|常见问题|常问问题)(?:\s*\(FAQ\))?\s*$/i.test(line.trim());
 }
 
 function isTopLevelHeading(line: string): boolean {
@@ -158,7 +158,16 @@ function isTopLevelHeading(line: string): boolean {
 
 function extractFAQ(content: string): FAQItem[] {
   const lines = content.split('\n');
-  const faqStartIndex = lines.findIndex(isFAQHeading);
+  const faqStartIndex = lines.findIndex((line, index) => {
+    if (!isFAQHeading(line)) return false;
+    // A localized "Common problems" heading can have the same wording as FAQ.
+    // Only select a section that actually contains question subheadings.
+    for (const next of lines.slice(index + 1)) {
+      if (isTopLevelHeading(next)) return false;
+      if (/^###\s+/.test(next)) return true;
+    }
+    return false;
+  });
 
   if (faqStartIndex < 0) return [];
 

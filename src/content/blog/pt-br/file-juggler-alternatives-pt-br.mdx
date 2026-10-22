@@ -1,0 +1,160 @@
+---
+title: "Alternativas ao File Juggler: 5 organizadores para Windows (2026)"
+description: "O File Juggler automatiza arquivos no Windows com regras. Compare cinco alternativas, incluindo gratuitas: Zush para nomeação e organização com IA, DropIt, Sortio, Wisfile e PowerShell."
+date: "2026-10-16"
+slug: "file-juggler-alternatives-pt-br"
+locale: "pt-br"
+translationOf: "file-juggler-alternatives"
+platform: "windows"
+topic: "comparisons"
+tags:
+  - "Organização de arquivos"
+  - "Comparações de ferramentas"
+  - "Automação"
+tldr: "O File Juggler é um mecanismo de regras para Windows, pago e com manutenção ativa: $50 em pagamento único antes dos impostos, com teste completo de 30 dias. Continue com ele se seus arquivos seguem padrões que você consegue descrever. Mude para o Zush quando os arquivos não tiverem padrão para ser identificado, como capturas de tela, digitalizações e fotos, porque o Zush lê cada arquivo, dá um nome a ele e pode organizá-lo em pastas. DropIt e PowerShell são as opções gratuitas baseadas em regras, e o Wisfile é gratuito para PDFs e documentos do Word. Uma licença do Zush cobre até 3 dispositivos."
+earlyTaskExample: false
+reviewed: "2026-10-18"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Resposta rápida: se suas regras continuam deixando arquivos de fora porque eles não têm padrão, a melhor alternativa ao File Juggler é o [Zush para Windows](/windows). Ele lê cada arquivo, escreve um nome descritivo e pode organizar o lote em pastas a partir de uma única instrução em linguagem natural. Se você prefere outro mecanismo de regras, o DropIt é gratuito e o Sortio adiciona IA sobre as regras. O File Juggler em si continua sendo uma boa ferramenta: tem manutenção ativa, é barato e previsível.
+
+**Última verificação: 16 de outubro de 2026.** Escrito pelo criador do [Zush – renomeador de arquivos com IA para Mac e Windows](/). Os detalhes do File Juggler vêm do [site](https://www.filejuggler.com/), do [FAQ](https://www.filejuggler.com/faq/) e das [notas de versão](https://www.filejuggler.com/news/); as outras ferramentas, de suas páginas oficiais, linkadas em cada seção.
+
+**Recursos do Zush revisados em 18 de outubro de 2026.** As informações sobre concorrentes mantêm as datas de verificação indicadas neste artigo.
+
+## O que o File Juggler faz bem
+
+O [File Juggler](https://www.filejuggler.com/) é uma ferramenta de automação para Windows criada por um desenvolvedor independente na Dinamarca. Você cria regras a partir de três partes:
+
+1. **Pastas monitoradas**, como Downloads, Área de Trabalho ou uma pasta de scanner.
+2. **Condições**: nome e caminho do arquivo, texto dentro do arquivo, tamanho e data de criação ou modificação.
+3. **Ações**: mover, copiar, renomear, alterar a extensão, excluir ou enviar para a Lixeira, extrair arquivos compactados, adicionar a um zip, executar um comando ou enviar para o Evernote.
+
+Ele reage quase instantaneamente porque assina as notificações de alteração de pastas em vez de fazer varreduras em intervalos. Consegue ler texto em arquivos PDF, Word e Excel e reaproveitar palavras e datas encontradas em um novo nome de arquivo. A versão 3.1.7 foi lançada em setembro de 2026 e uma beta 3.1.8 veio em outubro, então ele não foi abandonado.
+
+O preço é simples: $50 em pagamento único antes dos impostos no checkout, válido para todas as atualizações futuras. Uma licença cobre uma pessoa em vários PCs, ou um PC compartilhado por várias pessoas. O teste de 30 dias tem todos os recursos e, depois que termina, o app lembra você de comprar, mas continua funcionando.
+
+## Por que as pessoas procuram uma alternativa
+
+- **Sem IA.** Toda regra precisa ser escrita à mão. Uma regra não consegue capturar `Screenshot 2026-10-02 141203.png` ou `IMG_4382.jpg`, porque nada no nome ou no texto diz o que o arquivo é.
+- **Sem OCR.** O FAQ do File Juggler diz que digitalizações compostas só de imagem não têm texto pesquisável, então você precisa de um programa de OCR separado para que as regras de conteúdo consigam identificá-las.
+- **Somente Windows.** Não há versão para Mac. No Mac, o equivalente é o [Hazel](/hazel-alternative).
+- **Não é um serviço.** Ele roda enquanto um usuário está conectado, então não é adequado para servidores.
+- **O preço**, se você só precisa de uma organização simples por tipo de arquivo. Várias ferramentas gratuitas fazem isso.
+
+## Alternativas ao File Juggler em resumo
+
+| Ferramenta | Ideal para | Lê o conteúdo do arquivo | Monitora pastas | Desfazer | Preço |
+|---|---|---|---|---|---|
+| **Zush** | <BlogHighlight>Arquivos sem padrão: nomeação com IA mais organização em pastas</BlogHighlight> | Sim, com IA: digitalizações, fotos, capturas de tela, Office, PDFs, vídeo, áudio | Sim (Monitor) | Rename History | 50 renomeações grátis; $10/mês ou $48 pagamento único |
+| DropIt | Regras gratuitas por nome, tamanho, data | Filtros básicos | Sim, varreduras programadas | Não | Gratuito, código aberto |
+| Sortio | Planos de pastas com IA mais regras clássicas | Sim, com IA | Sim (Smart Folders) | Sim | Plano gratuito; Pro $14.99/mês ou $99/ano |
+| Wisfile | Limpeza única e gratuita de PDFs e arquivos do Word | PDFs e Word, IA local | Não | Não | Gratuito |
+| PowerShell + Agendador de Tarefas | Tudo o que você conseguir criar com script | O que você programar | Em horários programados | Só se você construir | Gratuito |
+| File Juggler | Regras exatas que renomeiam e movem | Texto de PDF, Word, Excel; sem OCR | Sim, instantâneo | Não documentado | $50 pagamento único + impostos |
+
+## 1. Zush: para os arquivos que regras não conseguem descrever
+
+O [Zush para Windows](/windows) roda no Windows 10 e 11 pela [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X). Em vez de comparar condições, ele lê o arquivo: o texto de um PDF ou digitalização, o conteúdo de uma foto ou captura de tela, os quadros de um vídeo. Depois propõe um nome como `2026-09-12_acme_invoice_1042.pdf` ou `stripe-revenue-dashboard-september.png`.
+
+![Zush para Windows renomeando um lote misto pelo conteúdo, com cada nome de arquivo proposto exibido antes de o lote ser aplicado](/videos/windows/zush-batch-rename.mp4)
+
+Onde o File Juggler precisa de uma regra por destino, o Zush aceita uma frase em **Folder rules**, como "Agrupe faturas por empresa e recibos por mês", ou agrupa os arquivos por conteúdo no modo Auto. Você revisa os nomes e as pastas propostos juntos antes de qualquer coisa ser movida. Confira os arquivos ambíguos antes de aplicar as alterações.
+
+![Zush para Windows exibindo uma prévia dos grupos de pastas por conteúdo e dos nomes de arquivo propostos antes de Rename & sort](/images/showcase/windows/folder-sorting-light.webp)
+
+Para a parte sempre ativa do File Juggler, salve a configuração em um Template e atribua-o ao **Monitor**. Os novos arquivos em Downloads ou em uma pasta de scanner são então renomeados e organizados assim que chegam. O Rename History guarda os nomes antigos e novos, então um lote ruim pode ser revertido. A IA roda pelo Zush Cloud AI, pela sua própria chave de API ou localmente com Ollama ou LM Studio quando os arquivos devem ficar no PC.
+
+![Aba Monitor do Zush para Windows observando as pastas Screenshots e Downloads e renomeando novos arquivos assim que chegam](/images/showcase/windows/monitor-light.webp)
+
+Escolha o Zush quando sua lista de regras não para de crescer e ainda assim deixa arquivos de fora. Passo a passo: [organize arquivos em pastas com IA no Windows](/blog/sort-files-into-folders-with-ai-windows) e [30 regras de pasta prontas](/blog/ai-folder-sorting-prompts).
+
+<BlogCTA placement='inline' platform='windows' />
+
+Uma licença do Zush cobre até 3 dispositivos entre Mac e Windows.
+
+Você pode [exportar Templates](/docs/template-import-export) com Naming Blocks, Custom AI Blocks e regras de pasta, e importá-los em outro computador. Escolha novamente lá os destinos locais, as permissões de pasta e as conexões de IA; isso transfere as configurações do fluxo de trabalho, não os seus arquivos.
+
+O Zush também aceita regras de pasta aninhadas, como agrupar por ano e depois por mês. Você pode organizar arquivos já renomeados sem alterar seus nomes de novo nem gastar outro crédito de renomeação. Revise os destinos antes de aplicar. Essa ação separada trata um lote existente; alterar um Template do Monitor não reorganiza retroativamente o que já foi processado. A [organização de pastas com IA](/docs/folder-sorting) funciona no Mac e no Windows.
+
+## 2. DropIt: o mecanismo de regras gratuito
+
+O [DropIt](https://www.dropitproject.com/) é gratuito e de código aberto. As regras identificam arquivos por nome, tamanho, data, propriedades ou expressões regulares, e 21 ações cobrem mover, copiar, renomear, compactar, extrair e mais. Você arrasta arquivos para um alvo flutuante ou deixa que ele varra pastas monitoradas em intervalos programados.
+
+A versão mais recente, 8.5.1, é de outubro de 2018. Ela ainda funciona, mas não espere novos recursos nem IA.
+
+Escolha o DropIt quando você só precisa de "PDFs vão aqui, imagens vão ali" e pagar não é uma opção.
+
+## 3. Sortio: planos com IA e regras por baixo
+
+O [Sortio](https://www.getsortio.com/) mistura as duas abordagens. Você pode escrever regras clássicas ou descrever a organização em inglês simples, revisar um plano e deixar que ele renomeie, crie pastas e mova arquivos. As Smart Folders continuam aplicando o plano aos novos arquivos que chegam. Ele roda no Windows, no macOS e no Linux.
+
+O plano gratuito inclui organização baseada em regras com até cinco regras, pastas monitoradas, desfazer e um teste único de IA. O Pro custa $14.99 por mês ou $99 por ano, com uma cota mensal de IA; o Ollama mantém o processamento local.
+
+Escolha o Sortio se quiser regras no estilo do File Juggler e IA em um só app, ou se precisar de Linux. Compare em detalhes: [Zush vs Sortio](/blog/zush-vs-sortio).
+
+## 4. Wisfile: limpeza gratuita de documentos com IA
+
+O [Wisfile](https://www.wisfile.ai/) é gratuito, roda localmente no Mac e no Windows e renomeia documentos a partir do conteúdo, com modelos como `Author-Year-Title`. Ele também pode agrupar um lote em pastas por tema. O FAQ dele lista Word e PDF como os formatos compatíveis.
+
+Não há monitoramento de pastas nem agendamento: você arrasta os arquivos e o executa a cada vez. O FAQ dele também diz que não há desfazer integrado, então teste primeiro em cópias.
+
+Escolha o Wisfile para uma limpeza única de um arquivo de papéis ou documentos. Veja [Zush vs Wisfile](/blog/zush-vs-wisfile) para uma análise mais detalhada.
+
+## 5. PowerShell e Agendador de Tarefas: o caminho faça você mesmo
+
+O Windows consegue fazer as tarefas básicas do File Juggler sem software extra. O PowerShell move e renomeia arquivos; o Agendador de Tarefas executa o script no login ou a cada poucos minutos:
+
+```powershell
+Get-ChildItem "$env:USERPROFILE\Downloads" -Filter *.pdf |
+  Move-Item -Destination "$env:USERPROFILE\Documents\PDFs"
+```
+
+É gratuito e tão flexível quanto o seu script. Mas você também fica responsável por nomes duplicados, arquivos bloqueados, registro de log e desfazer. Mais opções: [como organizar sua pasta Downloads no Windows](/blog/organize-downloads-folder-windows).
+
+<BlogProductIntro
+  title="Regras não leem uma captura de tela. O Zush lê."
+  description="O Zush dá nomes aos arquivos do Windows pelo que há dentro deles, organiza-os em pastas a partir de uma instrução e continua fazendo isso com os novos arquivos de uma pasta monitorada."
+  links={[
+    { href: '/windows', label: 'Zush para Windows' },
+    { href: '/ai-file-sorter', label: 'Organizador de arquivos com IA' },
+    { href: '/docs/folder-monitoring', label: 'Documentação de monitoramento de pastas' },
+  ]}
+/>
+
+## Manter o File Juggler ou trocar?
+
+- Seus arquivos seguem padrões fixos (mesmo banco, mesmo layout, mesmo prefixo de nome): **mantenha o File Juggler**.
+- Capturas de tela, digitalizações, fotos do celular e downloads aleatórios com nomes sem sentido: **Zush**.
+- Organização gratuita por extensão ou nome: **DropIt** ou **PowerShell**.
+- Regras e IA em uma só ferramenta, ou Linux: **Sortio**.
+- Uma passada única e gratuita em PDFs e arquivos do Word: **Wisfile**.
+
+Você também pode usar os dois. O Zush monitora Downloads e escreve nomes previsíveis como `2026-10-02_acme_invoice.pdf`, e o File Juggler move `*_invoice.pdf` para uma pasta fixa Finance. Cada ferramenta faz a parte em que é boa. Teste qualquer configuração primeiro em cópias; nossa lista de verificação sobre [como renomear arquivos em lote com segurança](/blog/how-to-safely-batch-rename-files) mostra o que conferir.
+
+Para uma comparação mais ampla de ferramentas de IA, veja os [melhores organizadores de arquivos com IA para Windows 11](/blog/best-ai-file-organizers-windows).
+
+## Perguntas frequentes
+
+### Existe uma alternativa gratuita ao File Juggler?
+
+Sim. O DropIt é gratuito e de código aberto, mas não é atualizado desde 2018. O plano gratuito do Sortio inclui até cinco regras. O PowerShell com o Agendador de Tarefas é gratuito se você souber criar scripts. O Zush inclui 50 renomeações grátis com IA se o seu problema for nomes de arquivo pouco claros.
+
+### O File Juggler ainda tem manutenção?
+
+Sim. A versão 3.1.7 foi lançada em setembro de 2026 e uma beta 3.1.8 em outubro de 2026, segundo as notas de versão.
+
+### O File Juggler usa IA?
+
+Não. Ele compara condições que você escreve, incluindo palavras encontradas dentro de PDFs e arquivos do Office. Não consegue ler digitalizações compostas só de imagem sem um OCR separado.
+
+### Existe um File Juggler para Mac?
+
+Não, o File Juggler é somente para Windows. O Hazel é o equivalente mais próximo no Mac para regras, e o Zush para Mac cobre a nomeação com IA e a organização em pastas. Veja nossa página de [alternativa ao Hazel](/hazel-alternative).
+
+### O Zush pode substituir completamente o File Juggler?
+
+Para nomear arquivos pelo conteúdo e organizá-los em pastas, sim, incluindo pastas monitoradas. O File Juggler ainda tem ações que o Zush não oferece, como executar um comando, extrair arquivos compactados ou enviar para o Evernote. Se você depende delas, mantenha-o ao lado do Zush.

@@ -1,4 +1,5 @@
-import type { Locale } from '@/i18n/config';
+import { getLocalizedPath, isLocalizedRoute, type Locale } from '@/i18n/config';
+import { AI_FILE_ORGANIZER_LOCALIZED } from '@/i18n/aiFileOrganizerLocalized';
 
 export interface LandingWorkflow {
   heading: string;
@@ -223,6 +224,15 @@ const germanBatch: LandingWorkflow = {
 };
 
 export function getLandingWorkflow(route: string, locale: Locale): LandingWorkflow | undefined {
+  if (route === '/ai-file-organizer' && locale !== 'en') {
+    const workflow = AI_FILE_ORGANIZER_LOCALIZED[locale].workflow;
+    const localize = (href: string) => isLocalizedRoute(href) ? getLocalizedPath(href, locale) : href;
+    return {
+      ...workflow,
+      links: workflow.links.map((link) => ({ ...link, href: localize(link.href) })),
+      setupOptions: workflow.setupOptions?.map((option) => ({ ...option, href: localize(option.href) })),
+    };
+  }
   if (route === '/rename-documents-with-ai') return documents[locale];
   if (route === '/batch-rename-files' && locale === 'de') return germanBatch;
   return locale === 'en' ? workflows[route] : undefined;

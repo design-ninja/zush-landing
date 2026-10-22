@@ -1,0 +1,216 @@
+{
+  "seo": {
+    "title": "KI-Dateiorganizer für Mac & Windows: Benennung nach Inhalt | Zush",
+    "description": "Zush benennt jede Datei nach ihrem Inhalt, legt sie auf Wunsch in Ordnern ab und hält neue Dateien mit Monitor in Ordnung. Mac und Windows, mit Vorschau und Rückgängig."
+  },
+  "h1": "KI-Dateiorganizer: Dateien benennen und sortieren – nach Inhalt",
+  "accent": "Dateien benennen und sortieren",
+  "definitionText": "Zush ist ein KI-Dateiorganizer für Mac und Windows. Er liest jede Datei und gibt ihr einen durchsuchbaren Namen, legt sie in Ordnern ab, wenn Sie die KI-Ordnersortierung aktivieren, und hält Downloads oder Kundenordner mit der Ordnerüberwachung in Ordnung. Prüfen Sie jeden Stapel, bevor Sie ihn anwenden; „Rückgängig“ stellt Namen und Ordner wieder her.",
+  "faqTitle": "Häufig gestellte Fragen",
+  "relatedToolsTitle": "Verwandte Tools",
+  "relatedGuidesTitle": "Verwandte Anleitungen",
+  "faqItems": [
+    {
+      "question": "Was ist ein KI-Dateiorganizer?",
+      "answer": "Ein KI-Dateiorganizer liest, was jede Datei enthält, und macht daraus saubere, durchsuchbare Dateinamen und einheitliche Benennungskonventionen. Statt nur nach Musterregeln zu sortieren, analysiert Zush Screenshots, PDFs, Fotos, Dokumente, Videos, Audiodateien und Designdateien und benennt jede nach ihrem Inhalt, damit Finder, Spotlight und die Windows-Suche sie tatsächlich finden."
+    },
+    {
+      "question": "Worin unterscheidet sich ein KI-Dateiorganizer von einem KI-Dateisortierer?",
+      "answer": "Ein KI-Dateisortierer gruppiert Dateien anhand ihres Inhalts in Ordnern; ein KI-Dateiumbenenner gibt jeder Datei einen aussagekräftigen Namen. Zush kombiniert beides in einem geprüften Stapel: Der Auto-Modus schlägt Gruppen vor, oder Sie beschreiben Ihre eigenen Ordnerregeln in einfacher Sprache."
+    },
+    {
+      "question": "Ist Zush eine KI-Software zur Benennung von Dateien und Ordnern?",
+      "answer": "Ja. Zush erstellt inhaltsbezogene Dateinamen auf Mac und Windows. Die KI-Ordnersortierung schlägt außerdem Ordnernamen vor und verschiebt Dateien in diese Gruppen. Nutzen Sie den Auto-Modus oder schreiben Sie einen Prompt wie „Rechnungen nach Firma und Belege nach Monat gruppieren.“ Sie können passende vorhandene Ordner wiederverwenden oder ein Ziel wählen. Vorhandene Ordner werden dabei nicht per Stapel umbenannt."
+    },
+    {
+      "question": "Kann Zush meinen Downloads-Ordner automatisch organisieren?",
+      "answer": "Ja. Richten Sie die Ordnerüberwachung auf Downloads, und Zush benennt neue Screenshots, Rechnungen, Belege und Exporte nach Inhalt, sobald sie eintreffen – mit der Vorlage, die Sie wählen. Jede Änderung bleibt im Umbenennungsverlauf erhalten, sodass Sie jeden Stapel rückgängig machen können."
+    },
+    {
+      "question": "Funktioniert der KI-Dateiorganizer sowohl auf Mac als auch auf Windows?",
+      "answer": "Ja. Zush gibt es als native Mac-App (macOS 15+) und als Windows-Version im Microsoft Store. Beide unterstützen inhaltsbezogene Benennung, Vorlagen, Naming Blocks, Ordnerüberwachung und den Rückgängig-Verlauf. Die Ordnersortierung unterstützt automatische Gruppierung oder eigene Anweisungen sowie einen Zielordner."
+    },
+    {
+      "question": "Sind meine Daten privat, wenn KI meine Dateien organisiert?",
+      "answer": "Sie wählen den Modus: verwaltete Cloud-KI, BYOK mit Ihrem eigenen Anbieterschlüssel, LM Studio oder Ollama, damit unterstützte Analysen auf Ihrem Gerät bleiben. Die Dateien bleiben auf Ihrer Festplatte; Nutzer können sie optional in von der KI vorgeschlagene Ordner verschieben."
+    }
+  ],
+  "workflow": {
+    "heading": "Einen Ordner in drei Schritten organisieren: benennen, ablegen, automatisieren",
+    "answer": "Ein Organizer ist mehr als ein Verschieber. Zush gibt zuerst jeder Datei einen durchsuchbaren Namen aus ihrem Inhalt, legt sie dann optional in Ordnern ab und hält den Ordner anschließend in Ordnung, wenn neue Dateien eintreffen. Sie entscheiden, wie weit Sie gehen; Namen und Ordner prüfen Sie, bevor sich etwas ändert.",
+    "setupOptions": [
+      {
+        "title": "Am Ort umbenennen",
+        "instructions": "Lassen Sie „Sortieren“ deaktiviert. Die Dateien bleiben in ihrem Ordner und erhalten Namen, die aus Inhalt, Datum und Ihren Naming Blocks aufgebaut werden.",
+        "href": "/batch-rename-files",
+        "label": "Dateien per KI im Stapel umbenennen"
+      },
+      {
+        "title": "Umbenennen und sortieren",
+        "instructions": "Aktivieren Sie „Sortieren“. Auto gruppiert Dateien nach Inhalt, oder Ordnerregeln beschreiben die Ordner, auch verschachtelte wie Jahr und Monat.",
+        "href": "/ai-file-sorter",
+        "label": "Regeln für den KI-Dateisortierer schreiben"
+      },
+      {
+        "title": "Neue Dateien organisieren",
+        "instructions": "Weisen Sie die Vorlage der Ordnerüberwachung zu. Neue Dateien in Downloads oder in einem Scanner-Ordner werden benannt und sortiert, sofern die Vorlage sortiert.",
+        "href": "/docs/folder-monitoring",
+        "label": "Ordnerüberwachung einrichten"
+      }
+    ],
+    "steps": [
+      "Wählen Sie einen Downloads- oder Kundenordner und legen Sie fest, nach welchen Details Sie später suchen werden, etwa Projekt, Dokumenttyp und Datum. Speichern Sie diese Felder als Vorlage.",
+      "Aktivieren Sie „Sortieren“. Lassen Sie die Ordnerregeln für Auto leer oder beschreiben Sie die Gruppierung, zum Beispiel „Rechnungen nach Firma und Belege nach Monat gruppieren.“ Wählen Sie ein Ziel oder behalten Sie den ursprünglichen Ordner bei.",
+      "Prüfen Sie die vorgeschlagenen Namen und Ordner und wenden Sie sie dann an. Sobald das Ergebnis zuverlässig ist, weisen Sie die Vorlage der Ordnerüberwachung zu, damit neue Dateien beim Eintreffen benannt und sortiert werden."
+    ],
+    "example": {
+      "before": "Downloads/document.pdf",
+      "after": "Clients/Acme/Acme_Service-Agreement.pdf",
+      "caption": "Beispielpfad zur Veranschaulichung: Clients ist das gewählte Ziel, Acme ist der Ordner, den die KI aus einer Regel wie „Kundendokumente nach Firma gruppieren“ vorgeschlagen hat. Prüfen Sie jeden vorgeschlagenen Ordner, bevor Sie ihn anwenden."
+    },
+    "image": {
+      "src": "/images/showcase/macos/folder-sorting-light.webp",
+      "alt": "Zush für Mac zeigt einen Stapel umbenannter Dateien, gruppiert in vorgeschlagene Ordner, bevor die Änderungen angewendet werden.",
+      "caption": "Zush für Mac: vorgeschlagene Dateinamen, gruppiert nach vorgeschlagenem Ordner. Nichts wird verschoben, bis Sie den Stapel anwenden."
+    },
+    "limit": "Die KI-Ordnersortierung verschiebt Dateien. Testen Sie sie daher zuerst an einer Kopie und lassen Sie sie für Ordner deaktiviert, auf die andere Apps per Pfad verweisen. Zush löscht keine Duplikate, bereinigt keinen Speicherplatz und ersetzt kein Dokumentenmanagementsystem. „Rückgängig“ stellt den ursprünglichen Namen und Ordner wieder her.",
+    "links": [
+      {
+        "href": "/ai-file-sorter",
+        "label": "KI-Dateisortierer mit Ihren eigenen Ordnerregeln"
+      },
+      {
+        "href": "/docs/folder-sorting",
+        "label": "Dokumentation zur Ordnersortierung"
+      },
+      {
+        "href": "/docs/folder-monitoring",
+        "label": "Ordnerüberwachung einrichten"
+      }
+    ]
+  },
+  "relatedPages": [
+    {
+      "title": "KI-Dateisortierer",
+      "href": "/ai-file-sorter"
+    },
+    {
+      "title": "KI-Ordnersortierung: Auto und eigene Regeln",
+      "href": "/docs/folder-sorting"
+    },
+    {
+      "title": "Dokumentation zur Ordnerüberwachung",
+      "href": "/docs/folder-monitoring"
+    },
+    {
+      "title": "Leitfaden zu Vorlagen",
+      "href": "/docs/templates"
+    },
+    {
+      "title": "Leitfaden zu Naming Blocks",
+      "href": "/docs/naming-blocks"
+    },
+    {
+      "title": "Dateien per KI im Stapel umbenennen",
+      "href": "/batch-rename-files"
+    },
+    {
+      "title": "Offline-KI-Dateiumbenenner",
+      "href": "/offline-ai-file-renamer"
+    },
+    {
+      "title": "KI-Dateiumbenenner und -Organizer",
+      "href": "/"
+    },
+    {
+      "title": "KI-Dateiumbenenner für Mac",
+      "href": "/mac"
+    },
+    {
+      "title": "KI-Dateiumbenenner für Windows",
+      "href": "/windows"
+    }
+  ],
+  "relatedBlogPosts": [
+    {
+      "title": "Dateien mit KI auf dem Mac in Ordner sortieren",
+      "href": "sort-files-into-folders-with-ai-mac"
+    },
+    {
+      "title": "Dateien mit KI unter Windows in Ordner sortieren",
+      "href": "sort-files-into-folders-with-ai-windows"
+    },
+    {
+      "title": "Die besten KI-Dateisortierer für Mac und Windows",
+      "href": "best-ai-file-sorters"
+    },
+    {
+      "title": "Die besten KI-Dateiorganizer für Windows 11",
+      "href": "best-ai-file-organizers-windows"
+    },
+    {
+      "title": "Die besten KI-Dateiorganizer für Mac",
+      "href": "best-ai-file-organizers-mac"
+    },
+    {
+      "title": "Die besten KI-Dokumentenorganizer",
+      "href": "best-ai-document-organizers"
+    },
+    {
+      "title": "Automatischer Dateiorganizer für Mac",
+      "href": "automate-file-organization-macos"
+    },
+    {
+      "title": "Die besten Wege, Fotos auf dem Mac zu organisieren",
+      "href": "best-ways-to-organize-photos-on-mac"
+    },
+    {
+      "title": "Mac entrümpeln: Leitfaden zur Dateibereinigung",
+      "href": "declutter-your-mac-file-cleanup-guide"
+    }
+  ],
+  "contextualGuideLink": {
+    "before": "Sie vergleichen Apps, bevor Sie sich für einen Workflow entscheiden? Dann lesen Sie",
+    "label": "die besten KI-Dateiorganizer für Mac",
+    "href": "/blog/best-ai-file-organizers-mac",
+    "after": "– mit einer auf Überprüfbarkeit ausgerichteten Aufschlüsselung zu Umbenennen, Verschieben, lokaler KI, Rückgängig und Preisen."
+  },
+  "howTo": {
+    "@type": "HowTo",
+    "name": "Dateien mit KI organisieren",
+    "description": "Mit Zush erstellen Sie aussagekräftige, einheitliche Dateinamen für Ordner auf Mac und Windows, optional mit KI-Ordnersortierung.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Einen unaufgeräumten Ordner in Zush ziehen",
+        "text": "Fügen Sie Downloads, einen Screenshot-Ordner, einen Kundenordner oder einen beliebigen gemischten Dateistapel hinzu."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Eine Benennungskonvention wählen",
+        "text": "Verwenden Sie einen KI-Titel oder kombinieren Sie Datum, Kunden, Kategorien, Zähler und Metadaten mit Vorlagen und Naming Blocks."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Auto oder eigene Ordnerregeln wählen",
+        "text": "Aktivieren Sie die KI-Ordnersortierung. Lassen Sie Auto die Dateien nach Inhalt gruppieren oder schreiben Sie Anweisungen in einfacher Sprache. Wählen Sie ein Ziel und verwenden Sie optional passende vorhandene Ordner wieder."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Prüfen, anwenden und automatisieren",
+        "text": "Sehen Sie sich die Namen und vorgeschlagenen Ordner in der Vorschau an, bevor Sie den Stapel anwenden. Speichern Sie die Regeln in einer Vorlage, damit Monitor neue Dateien verarbeitet."
+      }
+    ],
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [
+        "h1",
+        "meta[name=\"description\"]"
+      ]
+    }
+  }
+}

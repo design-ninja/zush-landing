@@ -113,7 +113,7 @@ for (const [id, owners] of contentIdOwners) {
 for (const locale of locales) {
   const translations = localeTranslations(locale);
 
-  for (const { slug, translationSync } of targets) {
+  for (const { slug, translationSync, preserveTechnicalExamples } of targets) {
     const item = translations.get(slug);
     if (!item) {
       missing.push(`${locale}: ${slug}`);
@@ -139,11 +139,40 @@ for (const locale of locales) {
     if (/\[[^\]\n]*\s+\]\(/.test(item.source)) {
       invalid.push(`${locale}/${item.name}: trailing whitespace inside Markdown link label`);
     }
-    if (/\)\s+[.,;:!?]/.test(item.source)) {
+    // French typography uses a space before a colon, semicolon, ! and ?.
+    const invalidLinkPunctuation = locale === 'fr' ? /\)\s+[.,]/ : /\)\s+[.,;:!?]/;
+    if (invalidLinkPunctuation.test(item.source)) {
       invalid.push(`${locale}/${item.name}: whitespace before punctuation after Markdown link`);
     }
 
     const englishSource = readFileSync(join(blogRoot, `${slug}.mdx`), 'utf8');
+    if (preserveTechnicalExamples) {
+      const productNames = ['Naming Blocks', 'LM Studio', 'Paperless-ngx', 'DEVONthink', 'File Juggler', 'DropIt', 'Sortio', 'Wisfile', 'PowerShell', 'PowerToys'];
+      if (slug === 'batch-rename-files-windows-11') productNames.push('Screenshots', 'Bookkeeper Expenses');
+      for (const term of productNames) {
+        if (englishSource.includes(term) && !item.source.includes(term)) {
+          invalid.push(`${locale}/${item.name}: missing protected product or preset name ${term}`);
+        }
+      }
+      for (const [label, pattern] of [
+        ['code fences', /```[^\n]*\n[\s\S]*?```/g],
+        ['inline code', /`[^`\n]+`/g],
+      ]) {
+        const expected = [...englishSource.matchAll(pattern)].map(([match]) => match);
+        const actual = [...item.source.matchAll(pattern)].map(([match]) => match);
+        if (JSON.stringify(actual) !== JSON.stringify(expected)) {
+          invalid.push(`${locale}/${item.name}: ${label} differ from English technical examples`);
+        }
+      }
+      for (const [label, pattern] of [
+        ['table rows', /^\|/gm],
+        ['numbered steps', /^\d+\.\s+/gm],
+      ]) {
+        if (countMatches(item.source, pattern) !== countMatches(englishSource, pattern)) {
+          invalid.push(`${locale}/${item.name}: ${label} differ from English source`);
+        }
+      }
+    }
     if (importLines(item.source) !== importLines(englishSource)) {
       invalid.push(`${locale}/${item.name}: MDX imports differ from English source`);
     }

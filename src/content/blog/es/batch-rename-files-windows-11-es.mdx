@@ -1,0 +1,166 @@
+---
+title: "Cómo renombrar archivos por lotes en Windows 11: 5 formas, 3 integradas (2026)"
+description: "Renombra varios archivos a la vez en Windows 11 o 10. File Explorer, el Símbolo del sistema y PowerShell no requieren instalar nada; PowerRename y la IA aportan más."
+date: "2026-09-22"
+slug: "batch-rename-files-windows-11-es"
+locale: "es"
+translationOf: "batch-rename-files-windows-11"
+platform: "windows"
+topic: "automation"
+tags:
+  - "Nombres de archivo"
+  - "File Explorer"
+  - "Automatización"
+tldr: "Selecciona los archivos en File Explorer y pulsa F2 para obtener una secuencia numerada rápida. Usa PowerRename para buscar y reemplazar, añadir fechas y usar expresiones regulares con vista previa. Usa PowerShell para todo lo que se pueda automatizar con scripts. Usa un renombrador con IA como Zush cuando cada archivo necesite su propio nombre descriptivo basado en su contenido."
+reviewed: "2026-09-22"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Respuesta rápida: para renombrar varios archivos a la vez en Windows 11, selecciónalos en File Explorer, pulsa **F2**, escribe un nombre y pulsa **Intro**. Windows los nombrará `Name (1)`, `Name (2)`, etc. Para algo más inteligente, como reemplazar texto, añadir fechas o dar a cada archivo un nombre de verdad, usa uno de los cuatro métodos siguientes.
+
+| Método | Ideal para | Vista previa | Deshacer |
+|---|---|---|---|
+| File Explorer (F2) | Nombres numerados rápidos | No | Ctrl+Z justo después |
+| PowerRename | Buscar y reemplazar, fechas, regex | Sí | Ctrl+Z en el Explorador |
+| Símbolo del sistema | Cambiar extensiones | No | No |
+| PowerShell | Todo lo que se pueda automatizar con scripts | Con `-WhatIf` | No |
+| Zush (IA) | Un nombre descriptivo para cada archivo | Sí | Historial de renombrado completo |
+
+Antes de cualquier renombrado por lotes, copia unos cuantos archivos a una carpeta de prueba y prueba primero el método allí.
+
+## 1. File Explorer: F2 para una secuencia numerada
+
+1. Abre la carpeta y selecciona los archivos. Usa **Ctrl+A** para seleccionarlos todos, o **Ctrl+clic** para elegirlos uno a uno.
+2. Pulsa **F2** (o haz clic derecho y elige **Cambiar nombre**, el icono de un cursor de texto en Windows 11).
+3. Escribe el nuevo nombre, por ejemplo `Lisbon trip`, y pulsa **Intro**.
+
+Obtendrás `Lisbon trip (1).jpg`, `Lisbon trip (2).jpg`, etc. La numeración sigue el orden actual, así que ordena primero por **Fecha** si el orden importa. Pulsa **Ctrl+Z** inmediatamente para deshacer.
+
+**Consejo:** para renombrar archivos uno tras otro, pulsa F2 en el primero, escribe su nombre y luego pulsa **Tab** para saltar al siguiente archivo.
+
+## 2. PowerRename: buscar y reemplazar con vista previa
+
+PowerRename es una herramienta gratuita de Microsoft incluida en [PowerToys](https://learn.microsoft.com/en-us/windows/powertoys/powerrename). Instala PowerToys desde Microsoft Store y luego:
+
+1. Selecciona archivos en File Explorer, haz clic derecho y elige **Cambiar nombre con PowerRename** (en Windows 11, puede estar en **Mostrar más opciones**).
+2. Escribe lo que quieres buscar en **Buscar** y lo que quieres poner en su lugar en **Reemplazar por**.
+3. Revisa la vista previa a la derecha y luego haz clic en **Aplicar**.
+
+Recetas útiles:
+
+| Objetivo | Buscar | Reemplazar por | Opciones |
+|---|---|---|---|
+| Espacios a guiones | ` ` (un espacio) | `-` | Coincidir con todas las apariciones |
+| Añadir un prefijo | `^` | `2026_` | Usar expresiones regulares |
+| Reordenar una fecha `29-03-2026` → `2026-03-29` | `(\d{2})-(\d{2})-(\d{4})` | `$3-$2-$1` | Regex, coincidir con todas |
+| Numerar archivos | `.*` | `Photo_${padding=3;start=1}` | Regex, enumerar elementos, aplicar solo al nombre de archivo |
+| Fecha de captura de la foto | `^` | `$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD-` | Regex, origen de metadatos EXIF/XMP |
+
+PowerRename también puede cambiar entre mayúsculas y minúsculas (minúsculas, mayúsculas, formato de título) y renombrar solo la extensión.
+
+## 3. Símbolo del sistema: cambiar extensiones rápidamente
+
+El veterano comando `ren` resulta útil para una sola tarea: cambiar extensiones en bloque:
+
+```bat
+cd "C:\Users\You\Pictures\Export"
+ren *.jpeg *.jpg
+```
+
+Eso renombra todos los archivos `.jpeg` de la carpeta a `.jpg`. No pregunta antes y no tiene función de deshacer, así que pruébalo con copias.
+
+## 4. PowerShell: renombrados con scripts
+
+PowerShell puede aplicar cualquier patrón que sepas describir. Abre **Terminal** (clic derecho en el botón Inicio) y ve a tu carpeta con `cd`. Añade `-WhatIf` al final de cualquier comando para previsualizarlo sin renombrar nada.
+
+Añadir un prefijo a todos los JPG:
+
+```powershell
+(Get-ChildItem *.jpg) | Rename-Item -NewName { "Lisbon_" + $_.Name }
+```
+
+Reemplazar los espacios por guiones:
+
+```powershell
+(Get-ChildItem) | Rename-Item -NewName { $_.Name -replace ' ', '-' }
+```
+
+Añadir la fecha de modificación al principio de cada PDF:
+
+```powershell
+(Get-ChildItem *.pdf) | Rename-Item -NewName { $_.LastWriteTime.ToString('yyyy-MM-dd') + '_' + $_.Name }
+```
+
+Numerar archivos por fecha, como `Trip_001.jpg`, `Trip_002.jpg`:
+
+```powershell
+$i = 1
+Get-ChildItem *.jpg | Sort-Object LastWriteTime | ForEach-Object {
+  Rename-Item $_ -NewName ('Trip_{0:D3}{1}' -f $i++, $_.Extension)
+}
+```
+
+Los paréntesis alrededor de `Get-ChildItem` son importantes: recogen la lista de archivos antes de que empiece el renombrado, de modo que un archivo ya renombrado no se procese dos veces.
+
+## 5. IA: dar a cada archivo su propio nombre
+
+Los cuatro métodos anteriores transforman el nombre que un archivo ya tiene. No pueden convertir `scan_0042.pdf` en `2026-09-12_acme_invoice_1042.pdf`, porque la información está dentro del archivo, no en su nombre.
+
+Eso es lo que hace un renombrador con IA. [Zush para Windows](/windows) lee cada archivo (el texto de un PDF, lo que muestra una captura de pantalla, la escena de una foto, el contenido de un archivo de Word o Excel) y sugiere un nombre descriptivo:
+
+1. Instala Zush desde [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X).
+2. Arrastra una carpeta o una selección de archivos.
+3. Elige una plantilla, como Screenshots o Bookkeeper Expenses, o crea un patrón a partir de Naming Blocks como `{Created Date}_{Vendor}_{Document Type}`.
+4. Revisa los nombres sugeridos. Edita cualquiera de ellos con un doble clic.
+5. Haz clic en **Renombrar**. Si más tarde cambias de opinión, restaura el lote desde el Historial de renombrado.
+
+| Antes | Después |
+|---|---|
+| `Screenshot 2026-09-18 141203.png` | `github-pull-request-review-comments.png` |
+| `scan_0042.pdf` | `2026-09-12_acme_invoice_1042.pdf` |
+| `Document1.docx` | `q3-marketing-plan-draft.docx` |
+
+Activa la supervisión de carpetas y los archivos nuevos de Descargas o de una carpeta del escáner se renombrarán a medida que lleguen. Los primeros 50 renombrados con IA son gratuitos.
+
+<BlogCTA placement='inline' platform='windows' />
+
+## Problemas comunes
+
+**"El nombre de archivo es demasiado largo."** Las rutas de Windows están limitadas a 260 caracteres de forma predeterminada. Acorta los nuevos nombres o mueve la carpeta más cerca de la raíz de la unidad.
+
+**Archivos omitidos o renombrados dos veces en PowerShell.** Envuelve `Get-ChildItem` entre paréntesis, como en los ejemplos anteriores.
+
+**PowerRename no aparece en el menú contextual.** Abre la configuración de PowerToys, asegúrate de que PowerRename esté activado y marca **Mostrar más opciones** en Windows 11.
+
+**Los números están en el orden equivocado.** File Explorer y PowerRename numeran los archivos según el orden actual. Ordena por fecha o por nombre antes de renombrar.
+
+**Un archivo está "en uso".** Cierra la aplicación que lo tiene abierto (a menudo un visor de fotos o Word) e inténtalo de nuevo.
+
+<BlogProductIntro
+  title="¿Necesitas nombres reales, no Foto (1), Foto (2)?"
+  description="Zush lee cada archivo en Windows y sugiere un nombre claro y fácil de buscar. Revisa primero y luego aplica todo el lote con un solo clic."
+  links={[
+    { href: '/windows', label: 'Zush para Windows' },
+    { href: '/blog/best-file-renamer-windows-11', label: 'Los mejores renombradores de archivos para Windows 11' },
+    { href: '/batch-rename-files', label: 'Renombrado por lotes con IA' },
+  ]}
+/>
+
+## Preguntas frecuentes
+
+### ¿Cómo renombro varios archivos a la vez en Windows 11?
+
+Selecciona los archivos en File Explorer, pulsa F2, escribe un nombre y pulsa Intro. Windows añade (1), (2), (3) a cada uno. Para buscar y reemplazar o para añadir fechas, usa PowerRename de Microsoft PowerToys.
+
+### ¿Cómo deshago un renombrado por lotes en Windows?
+
+Pulsa Ctrl+Z en File Explorer justo después de renombrar; esto funciona con F2 y con PowerRename. Los renombrados hechos con el Símbolo del sistema y PowerShell no se pueden deshacer. Zush conserva un Historial de renombrado desde el que puedes restaurar en cualquier momento.
+
+### ¿Puedo renombrar archivos por lotes sin instalar nada?
+
+Sí. File Explorer (F2), el Símbolo del sistema (`ren`) y PowerShell (`Rename-Item`) vienen integrados en Windows 11 y 10.
+
+### ¿Cómo renombro archivos según su contenido en Windows?
+
+Las herramientas integradas no pueden leer el contenido de los archivos. Usa un renombrador con IA como Zush, que analiza cada archivo y sugiere un nombre basado en lo que contiene.

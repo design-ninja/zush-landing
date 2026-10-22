@@ -1,4 +1,6 @@
 ---
+import { getLocalizedPath, stripLocaleFromPath } from '@/i18n/config';
+import { getBlogCtaCopy } from '@/i18n/blogCtaCopy';
 
 interface Link {
   href: string;
@@ -23,11 +25,14 @@ const {
     { href: '/rename-photos-with-ai', label: 'Photos' },
   ],
 } = Astro.props;
+const { locale } = stripLocaleFromPath(Astro.url.pathname);
+const homeHref = getLocalizedPath('/', locale);
+const homeLabel = getBlogCtaCopy(locale)?.homepage ?? 'Zush homepage';
 ---
 
 <aside class='blog-product-intro'>
   <div class='blog-product-intro__row'>
-    <a class='blog-product-intro__logo' href='/' aria-label='Zush homepage'>
+    <a class='blog-product-intro__logo' href={homeHref} aria-label={homeLabel}>
       <img
         src='/logo-96.webp'
         width='56'

@@ -39,6 +39,8 @@ import { getLocalizedContent } from '@/i18n/localizedContent';
 import { getLocalizedProfessionKeyForRoute } from '@/i18n/professions/types';
 import { enhanceLocalizedProfessionPage } from '@/i18n/professions/seoAdditions';
 import { AI_FILE_SORTER_LOCALIZED } from '@/i18n/aiFileSorterLocalized';
+import { AI_FILE_ORGANIZER_LOCALIZED } from '@/i18n/aiFileOrganizerLocalized';
+import { getTranslationsBySlug } from '@/data/blog';
 
 const FEATURE_VIEWS = {
   '/rename-pdf-with-ai': RenamePDFWithAI,
@@ -125,6 +127,23 @@ const serviceSeo = isServiceLocalizedRoute(route)
 const localizedHomeHref = getLocalizedPath('/', locale);
 const batchRenamePage = SEARCH_LANDING_PAGES['batch-rename-files'];
 const fileSorterPage = SEARCH_LANDING_PAGES['ai-file-sorter'];
+const fileOrganizerPage = SEARCH_LANDING_PAGES['ai-file-organizer'];
+const organizer = route === '/ai-file-organizer'
+  ? AI_FILE_ORGANIZER_LOCALIZED[locale]
+  : undefined;
+const localizedBlogHref = async (slug: string) => {
+  const translation = (await getTranslationsBySlug(slug))[locale];
+  return translation ? `/${locale}/blog/${translation.slug}` : `/blog/${slug}`;
+};
+const organizerBlogPosts = organizer
+  ? await Promise.all(organizer.relatedBlogPosts.map(async (post) => ({
+      title: post.title,
+      href: await localizedBlogHref(post.href),
+    })))
+  : undefined;
+const organizerContextualLink = organizer
+  ? { ...organizer.contextualGuideLink, href: await localizedBlogHref('best-ai-file-organizers-mac') }
+  : undefined;
 const professionKey = getLocalizedProfessionKeyForRoute(route);
 const professionPage = professionKey
   ? enhanceLocalizedProfessionPage(
@@ -357,6 +376,43 @@ const professionHeaderNav = professionPage
           {...localizedPage}
           locale={locale}
           localizedCopy={localizedCopy}
+        />
+      </BaseLayout>
+    );
+  })()
+}
+{
+  route === '/ai-file-organizer' && organizer && (() => {
+    const pageJsonLd = buildFeaturePageJsonLd({
+      pageName: organizer.h1,
+      inLanguage: locale,
+      howTo: {
+        name: organizer.howTo.name,
+        description: organizer.howTo.description,
+        steps: organizer.howTo.step.map(({ name, text }) => ({ name, text })),
+      },
+      faqItems: organizer.faqItems,
+      page: {
+        pagePath: localizedPath,
+        description: organizer.seo.description,
+        featureList: [organizer.h1, ...(organizer.workflow.setupOptions ?? []).map((option) => option.title)],
+      },
+    });
+
+    return (
+      <BaseLayout
+        seo={seo}
+        locale={locale}
+        chromeBasePath={localizedHomeHref}
+        jsonLd={[pageJsonLd, buildFeatureBreadcrumbJsonLd(organizer.h1, localizedPath)]}
+      >
+        <FeatureLandingPageShell
+          {...fileOrganizerPage}
+          relatedPages={organizer.relatedPages}
+          localizedBlogPosts={organizerBlogPosts}
+          localizedContextualGuideLink={organizerContextualLink}
+          locale={locale}
+          localizedCopy={organizer}
         />
       </BaseLayout>
     );

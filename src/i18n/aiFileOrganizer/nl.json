@@ -1,0 +1,216 @@
+{
+  "seo": {
+    "title": "AI-bestandsorganizer voor Mac & Windows: Benoemen op inhoud | Zush",
+    "description": "Zush geeft elk bestand een naam op basis van de inhoud, plaatst het desgewenst in mappen en houdt nieuwe bestanden op orde met Monitor. Mac en Windows, met voorbeeld en ongedaan maken."
+  },
+  "h1": "AI-bestandsorganizer: bestanden benoemen en sorteren op inhoud",
+  "accent": "bestanden benoemen en sorteren",
+  "definitionText": "Zush is een AI-bestandsorganizer voor Mac en Windows. Het leest elk bestand en geeft het een doorzoekbare naam, plaatst het in mappen wanneer je AI-mapsortering inschakelt, en houdt Downloads of klantmappen op orde met mapmonitoring. Controleer elke batch voordat je die toepast; ongedaan maken herstelt namen en mappen.",
+  "faqTitle": "Veelgestelde vragen",
+  "relatedToolsTitle": "Gerelateerde tools",
+  "relatedGuidesTitle": "Gerelateerde handleidingen",
+  "faqItems": [
+    {
+      "question": "Wat is een AI-bestandsorganizer?",
+      "answer": "Een AI-bestandsorganizer leest wat elk bestand bevat en zet dat om in nette, doorzoekbare bestandsnamen en consistente naamgevingsconventies. In plaats van alleen op basis van patroonregels te sorteren, analyseert Zush screenshots, pdf's, foto's, documenten, video's, audio en ontwerpbestanden en geeft het elk bestand een naam op basis van de inhoud, zodat Finder, Spotlight en Windows Search het echt kunnen vinden."
+    },
+    {
+      "question": "Hoe verschilt een AI-bestandsorganizer van een AI-bestandssorteerder?",
+      "answer": "Een AI-bestandssorteerder groepeert bestanden in mappen op basis van inhoud; een AI-bestandshernoemer geeft elk bestand een beschrijvende naam. Zush combineert beide in één gecontroleerde batch: de modus Auto stelt groepen voor, of je beschrijft je eigen maprichtlijnen in gewone taal."
+    },
+    {
+      "question": "Is Zush software voor AI-naamgeving van bestanden en mappen?",
+      "answer": "Ja. Zush maakt inhoudsbewuste bestandsnamen op Mac en Windows. AI-mapsortering stelt daarnaast mapnamen voor en verplaatst bestanden naar die groepen. Gebruik de modus Auto of schrijf een prompt zoals “Groepeer facturen per bedrijf en bonnetjes per maand.” Je kunt geschikte bestaande mappen hergebruiken of een bestemming kiezen. Bestaande mappen worden hiermee niet in bulk hernoemd."
+    },
+    {
+      "question": "Kan Zush mijn map Downloads automatisch organiseren?",
+      "answer": "Ja. Richt mapmonitoring op Downloads en Zush benoemt nieuwe screenshots, facturen, bonnetjes en exports op inhoud zodra ze binnenkomen, met het sjabloon dat je kiest. Elke wijziging blijft in de hernoemgeschiedenis staan, zodat je elke batch ongedaan kunt maken."
+    },
+    {
+      "question": "Werkt de AI-bestandsorganizer op zowel Mac als Windows?",
+      "answer": "Ja. Zush heeft een native Mac-app (macOS 15+) en een Windows-versie in de Microsoft Store. Beide ondersteunen inhoudsbewuste naamgeving, sjablonen, Naming Blocks, mapmonitoring en de geschiedenis voor ongedaan maken. Mapsortering ondersteunt automatische groepering of eigen instructies en een bestemmingsmap."
+    },
+    {
+      "question": "Zijn mijn gegevens privé wanneer AI mijn bestanden organiseert?",
+      "answer": "Jij kiest de modus: beheerde Cloud AI, BYOK met je eigen sleutel van een provider, LM Studio of Ollama, zodat ondersteunde analyse op je eigen apparaat blijft. Bestanden blijven op je schijf; gebruikers kunnen ze optioneel naar door AI voorgestelde mappen verplaatsen."
+    }
+  ],
+  "workflow": {
+    "heading": "Organiseer een map in drie stappen: benoemen, indelen, automatiseren",
+    "answer": "Een organizer is meer dan een verplaatser. Zush geeft eerst elk bestand een doorzoekbare naam op basis van de inhoud, plaatst het daarna desgewenst in mappen en houdt de map vervolgens op orde zodra er nieuwe bestanden binnenkomen. Kies hoe ver je gaat; je controleert namen en mappen voordat er iets verandert.",
+    "setupOptions": [
+      {
+        "title": "Ter plekke hernoemen",
+        "instructions": "Laat Sorteren uit. Bestanden blijven in hun map staan en krijgen namen die zijn opgebouwd uit inhoud, datums en je Naming Blocks.",
+        "href": "/batch-rename-files",
+        "label": "Bestanden in bulk hernoemen met AI"
+      },
+      {
+        "title": "Hernoemen en sorteren",
+        "instructions": "Zet Sorteren aan. Auto groepeert bestanden op inhoud, of Maprichtlijnen beschrijven de mappen, ook geneste mappen zoals jaar en maand.",
+        "href": "/ai-file-sorter",
+        "label": "Regels voor de AI-bestandssorteerder schrijven"
+      },
+      {
+        "title": "Nieuwe bestanden organiseren",
+        "instructions": "Wijs het sjabloon toe aan mapmonitoring. Nieuwe bestanden in Downloads of een scannermap worden benoemd en, als het sjabloon sorteert, ook ingedeeld.",
+        "href": "/docs/folder-monitoring",
+        "label": "Mapmonitoring instellen"
+      }
+    ],
+    "steps": [
+      "Kies één map Downloads of klantmap en bepaal welke gegevens je later wilt kunnen zoeken, zoals project, documenttype en datum. Sla die velden op als sjabloon.",
+      "Zet Sorteren aan. Laat Maprichtlijnen leeg voor Auto, of beschrijf de groepering, bijvoorbeeld “Groepeer facturen per bedrijf en bonnetjes per maand.” Kies een bestemming of behoud de oorspronkelijke map.",
+      "Controleer de voorgestelde namen en mappen en pas ze daarna toe. Wanneer het resultaat betrouwbaar is, wijs je het sjabloon toe aan mapmonitoring, zodat nieuwe bestanden bij binnenkomst worden benoemd en gesorteerd."
+    ],
+    "example": {
+      "before": "Downloads/document.pdf",
+      "after": "Clients/Acme/Acme_Service-Agreement.pdf",
+      "caption": "Illustratief pad: Clients is de gekozen bestemming, Acme is de map die AI voorstelde op basis van een regel zoals “Groepeer klantdocumenten per bedrijf.” Controleer elke voorgestelde map voordat je toepast."
+    },
+    "image": {
+      "src": "/images/showcase/macos/folder-sorting-light.webp",
+      "alt": "Zush voor Mac met een batch hernoemde bestanden, gegroepeerd in voorgestelde mappen voordat de wijzigingen worden toegepast.",
+      "caption": "Zush voor Mac: voorgestelde bestandsnamen gegroepeerd per voorgestelde map. Er wordt niets verplaatst totdat je de batch toepast."
+    },
+    "limit": "AI-mapsortering verplaatst bestanden. Test daarom eerst op een kopie en houd de functie uit voor mappen waarnaar andere apps via het pad verwijzen. Zush verwijdert geen duplicaten, ruimt geen schijfruimte op en vervangt geen documentbeheersysteem. Ongedaan maken herstelt de oorspronkelijke naam en map.",
+    "links": [
+      {
+        "href": "/ai-file-sorter",
+        "label": "AI-bestandssorteerder met je eigen maprichtlijnen"
+      },
+      {
+        "href": "/docs/folder-sorting",
+        "label": "Documentatie over mapsortering"
+      },
+      {
+        "href": "/docs/folder-monitoring",
+        "label": "Mapmonitoring instellen"
+      }
+    ]
+  },
+  "relatedPages": [
+    {
+      "title": "AI-bestandssorteerder",
+      "href": "/ai-file-sorter"
+    },
+    {
+      "title": "AI-mapsortering: Auto en eigen regels",
+      "href": "/docs/folder-sorting"
+    },
+    {
+      "title": "Documentatie over mapmonitoring",
+      "href": "/docs/folder-monitoring"
+    },
+    {
+      "title": "Handleiding voor sjablonen",
+      "href": "/docs/templates"
+    },
+    {
+      "title": "Handleiding voor Naming Blocks",
+      "href": "/docs/naming-blocks"
+    },
+    {
+      "title": "Bestanden in bulk hernoemen met AI",
+      "href": "/batch-rename-files"
+    },
+    {
+      "title": "Offline AI-bestandshernoemer",
+      "href": "/offline-ai-file-renamer"
+    },
+    {
+      "title": "AI-bestandshernoemer en -organizer",
+      "href": "/"
+    },
+    {
+      "title": "AI-bestandshernoemer voor Mac",
+      "href": "/mac"
+    },
+    {
+      "title": "AI-bestandshernoemer voor Windows",
+      "href": "/windows"
+    }
+  ],
+  "relatedBlogPosts": [
+    {
+      "title": "Bestanden met AI in mappen sorteren op Mac",
+      "href": "sort-files-into-folders-with-ai-mac"
+    },
+    {
+      "title": "Bestanden met AI in mappen sorteren op Windows",
+      "href": "sort-files-into-folders-with-ai-windows"
+    },
+    {
+      "title": "Beste AI-bestandssorteerders voor Mac en Windows",
+      "href": "best-ai-file-sorters"
+    },
+    {
+      "title": "Beste AI-bestandsorganizers voor Windows 11",
+      "href": "best-ai-file-organizers-windows"
+    },
+    {
+      "title": "Beste AI-bestandsorganizers voor Mac",
+      "href": "best-ai-file-organizers-mac"
+    },
+    {
+      "title": "Beste AI-documentorganizers",
+      "href": "best-ai-document-organizers"
+    },
+    {
+      "title": "Automatische bestandsorganizer voor Mac",
+      "href": "automate-file-organization-macos"
+    },
+    {
+      "title": "Beste manieren om foto's op de Mac te organiseren",
+      "href": "best-ways-to-organize-photos-on-mac"
+    },
+    {
+      "title": "Je Mac opruimen: gids voor bestandsopruiming",
+      "href": "declutter-your-mac-file-cleanup-guide"
+    }
+  ],
+  "contextualGuideLink": {
+    "before": "Vergelijk je apps voordat je een workflow kiest? Bekijk dan de",
+    "label": "beste AI-bestandsorganizers voor Mac",
+    "href": "/blog/best-ai-file-organizers-mac",
+    "after": "voor een overzicht dat uitgaat van verificatie, met hernoemen, verplaatsen, lokale AI, ongedaan maken en prijzen."
+  },
+  "howTo": {
+    "@type": "HowTo",
+    "name": "Bestanden organiseren met AI",
+    "description": "Gebruik Zush om beschrijvende, consistente bestandsnamen te maken voor mappen op Mac en Windows, met optionele AI-mapsortering.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Sleep een rommelige map naar Zush",
+        "text": "Voeg Downloads, een map met screenshots, een klantmap of een willekeurige gemengde batch bestanden toe."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Kies een naamgevingsconventie",
+        "text": "Gebruik een AI-titel of combineer datums, klanten, categorieën, tellers en metadata met sjablonen en Naming Blocks."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Kies Auto of eigen maprichtlijnen",
+        "text": "Schakel AI-mapsortering in. Laat Auto bestanden op inhoud groeperen of schrijf instructies in gewone taal. Kies een bestemming en hergebruik eventueel geschikte bestaande mappen."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Controleren, toepassen en automatiseren",
+        "text": "Bekijk een voorbeeld van de namen en voorgestelde mappen voordat je de batch toepast. Sla de regels op in een sjabloon zodat Monitor nieuwe bestanden kan verwerken."
+      }
+    ],
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [
+        "h1",
+        "meta[name=\"description\"]"
+      ]
+    }
+  }
+}

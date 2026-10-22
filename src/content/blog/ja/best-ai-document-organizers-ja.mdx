@@ -1,0 +1,159 @@
+---
+title: "PDFとスキャン書類に最適なAI書類整理ツール(2026年版)"
+description: "Mac、Windows、セルフホスト向けのAI書類整理ツール6種を比較:Zush、Paperless-ngx、DEVONthink、NameQuick、Wisfile、File Juggler。OCR、ファイル名付け、フォルダ振り分け、ローカルAI、価格を解説します。"
+date: "2026-10-16"
+slug: "best-ai-document-organizers-ja"
+locale: "ja"
+translationOf: "best-ai-document-organizers"
+platform: "general"
+topic: "comparisons"
+tags:
+  - "PDF・書類"
+  - "ツール比較"
+  - "ファイル整理"
+tldr: "PDF、スキャン、請求書、Officeファイルを内容に基づいて命名し、MacやWindowsの通常のフォルダに振り分けたいなら、最適なAI書類整理ツールはZushです。検索可能なアーカイブをセルフホストできるなら、無料で使えるPaperless-ngxが最良の選択肢です。DEVONthinkは本格的な書類データベースを求めるMacユーザーに向いています。NameQuick、Wisfile、File Jugglerは、より限定的な書類ワークフローに対応します。Zushのライセンス1つで最大3台のデバイスで使えます。"
+earlyTaskExample: false
+reviewed: "2026-10-18"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+結論から言うと、ほとんどの人にとって最適なAI書類整理ツールは[Zush](/ai-file-organizer)です。PDF、スキャン、請求書、レシート、Officeファイルを1件ずつ読み取り、`2026-09-12_acme_invoice_1042.pdf` のような名前を付け、MacやWindows PC上の通常のフォルダに振り分けることもできます。書類を検索可能なアーカイブサーバーに移したい場合は、無料でセルフホストできる**Paperless-ngx**を使いましょう。Macでは、**DEVONthink**が最も完成度の高い書類データベースです。
+
+**最終確認日:2026年10月16日。** [Zush – MacとWindows向けAIファイルリネームツール](/)の開発元が執筆しています。競合ツールの詳細は各ベンダーのサイトまたはドキュメントに基づいており、各セクションにリンクを掲載しています。これは情報源に基づく比較であり、共通のベンチマークではありません。
+
+**Zushの機能は2026年10月18日に確認しました。** 競合ツールの情報は、この記事に記載した確認日のままです。
+
+## AIで書類を整理する2つの方法
+
+AI書類整理ツールは2つのグループに分かれ、この選択は機能一覧よりも重要です。
+
+1. **フォルダベースのツール**は、ファイルが今ある場所でリネームと移動を行います。書類はFinder、File Explorer、iCloud、OneDrive、Dropbox上の通常のファイルのままです。Zush、NameQuick、Wisfile、File Jugglerがこの方式です。
+2. **アーカイブ型のツール**は、書類を独自のライブラリやサーバーに取り込み、タグ、全文検索、メタデータを追加します。Paperless-ngxとDEVONthinkがこの方式です。
+
+会計士、チーム、ほかのアプリとフォルダを共有しているなら、フォルダベースのツールを選びましょう。すべてを1か所で検索したく、そのアプリの中で作業しても構わないなら、アーカイブ型を選びましょう。
+
+## クイック比較
+
+| ツール | タイプ | 対応プラットフォーム | スキャンの読み取り | ファイル名付け | フォルダへの振り分け | ローカルAI | 価格 |
+|---|---|---|---|---|---|---|---|
+| **Zush** | フォルダベース | Mac、Windows | <BlogHighlight>対応(画像のみのスキャンも可)</BlogHighlight> | テンプレート+145種以上のNaming Blocks | 対応。AutoまたはFolder rules | Ollama、LM Studio | 無料リネーム50回、月額$10または買い切り$48 |
+| Paperless-ngx | アーカイブサーバー | セルフホスト(Docker) | 対応(Tesseract OCR) | 設定可能な保存名 | 管理されたストレージパス | 任意(Ollama経由) | 無料、オープンソース |
+| DEVONthink | アーカイブデータベース | Mac(iOSコンパニオンあり) | ProとServerでOCR対応 | データベース内 | データベース内のグループ | Ollama、LM Studio | $99、$199、または$499 |
+| NameQuick | フォルダベース | Mac | 対応 | プリセット | 条件付きルール | Self-Managedプラン | 月額$12から、または買い切り$69 |
+| Wisfile | フォルダベース | Mac、Windows | 対応(FAQによる) | テンプレート | ワンクリックのトピックフォルダ | 内蔵 | 無料 |
+| File Juggler | ルールベース、AIなし | Windows | OCRなし | ルール | ルール | AIではない | 買い切り$50+税 |
+
+## 1. Zush:普段使っているフォルダに最適なAI書類整理ツール
+
+[Zush](/ai-file-organizer)はMacとWindowsで動作します。PDF、スキャン、レシート、契約書、Word、Excel、Pagesファイルが入ったフォルダをドロップすると、テキストレイヤーのない画像のみのスキャンも含めて1件ずつ読み取ります。そのうえで、日付、取引先、金額、クライアント、書類の種類、請求書番号といった重要な項目から組み立てた名前を提案します。
+
+![混在したフォルダに対して、一括適用の前に各ファイル名の提案を表示しているMac版Zush](/images/showcase/macos/batch-rename-light.webp)
+
+名前はTemplateに従うため、AIが即興で付けた名前ではなく、すべての請求書が同じ形式になります。Bookkeeper Expensesは用意されているTemplateの1つで、145種以上のNaming Blocksを使って独自のパターンを作成できます。
+
+書類の振り分けも行うには、**Folder rules**に「請求書は会社ごと、レシートは月ごとにグループ化する」のような文を書くか、Autoのままにします。何かが移動する前に、名前とフォルダを1つのプレビューで確認できます。
+
+![請求書は会社ごと、レシートは月ごとにグループ化するという指示と、ルールの例を表示しているZushのFolder rulesダイアログ](/images/showcase/macos/folder-rules-light.webp)
+
+届いたばかりの書類には、スキャナーまたはダウンロードフォルダの**Monitor**にTemplateを割り当てます。新しい書類は届くたびに命名・振り分けされます。Rename Historyを使えば、適用済みのバッチを元に戻せます。機密性の高いファイルは、OllamaまたはLM Studioを使ってコンピュータ内にとどめられます。Zush Cloud AIと自分のAPIキーも選択肢です。
+
+書類を共有フォルダから誰でも開ける通常のファイルのままにしたいなら、Zushを選びましょう。役立つガイド:[スキャンした書類を自動でリネームする](/blog/rename-scanned-documents-automatically)、[AIで請求書をリネームする](/rename-invoices-with-ai)、[AIでレシートをリネームする](/rename-receipts-with-ai)。
+
+<BlogCTA placement='inline' platform='general' />
+
+Zushのライセンス1つで、MacとWindowsの最大3台のデバイスで使えます。
+
+Naming Blocks、Custom AI Blocks、フォルダルールを含む[Templateをエクスポート](/docs/template-import-export)して、別のコンピュータにインポートできます。ローカルの保存先、フォルダの権限、AI接続は移行先で再度設定してください。これで移行されるのはワークフローの設定であり、ファイルそのものではありません。
+
+Zushは、年ごと、さらに月ごとにグループ化するような入れ子のフォルダルールにも対応しています。すでにリネーム済みのファイルは、名前を再度変更したり、追加のリネームクレジットを消費したりせずに振り分けられます。適用する前に保存先を確認してください。この独立した操作は既存のバッチを処理するもので、Monitor Templateを変更しても、過去に処理した分が遡って再整理されることはありません。[AIフォルダ振り分け](/docs/folder-sorting)はMacとWindowsで使えます。
+
+## 2. Paperless-ngx:無料でセルフホストできる最適なアーカイブ
+
+[Paperless-ngx](https://github.com/paperless-ngx/paperless-ngx)は、オープンソース(GPL-3.0)の文書管理システムで、通常はDockerを使って自分のサーバーやNASで動かします。100以上の言語でTesseractによるOCRを実行し、元のファイルをPDF/Aのアーカイブコピーと並べて保管します。また、機械学習でタグ、通信相手、書類の種類を提案します。メールから書類を取り込むこともできます。
+
+最近のバージョンでは、デフォルトでオフの任意のAI機能が追加されています。書類の提案、書類とのチャット、類似書類の検索です。これらはOllamaを通じてローカルで、またはOpenAI互換APIを通じて実行できます。Paperlessはファイル名とフォルダを、設定可能な形式で自分で管理します。
+
+セルフホストに抵抗がなく、家庭や小規模オフィス向けに検索可能な紙書類のアーカイブがほしいなら、Paperless-ngxを選びましょう。ファイルを既存のフォルダ構造のままにしたいなら、見送りましょう。
+
+## 3. DEVONthink:Mac向けの最適な書類データベース
+
+[DEVONthink](https://www.devontechnologies.com/apps/devonthink)は、書類の保存、検索、分類を行う、長い歴史を持つMacアプリです。バージョン4.4.2にはmacOS Ventura以降が必要です。どのエディションでも、過去に整理した内容に基づいて書類をグループに分類できます。ProとServerには、OCR付きのスキャナー連携と、チャット、要約、タグ付け、スマートルールによる一括処理といった生成AI機能が加わります。対応モデルにはChatGPT、Claude、Mistralのほか、OllamaまたはLM Studio経由のローカルモデルがあります。
+
+料金は、Standardが$99、Proが$199、Serverが$499(いずれも税別)で、それぞれ2シートと1年間のアップデートが付きます。
+
+Macで研究用途の書類ライブラリがほしく、書類をその中に置いておくことに抵抗がないなら、DEVONthinkを選びましょう。書類に名前を付けて整理するだけなら、多くの人には過剰です。
+
+## 4. NameQuick:条件付きルールを備えたMac向けリネーム
+
+[NameQuick](https://www.namequick.app/)は、Mac上の定期的なPDF、スキャン、レシート、請求書、契約書、Word文書、スプレッドシートに焦点を当てています。Presetsを使って内容に基づきリネームし、フォルダを監視し、命名後にファイルを移動、タグ付け、アーカイブする条件付きRulesを実行できます。
+
+![日付と取引先名でリネームされたスキャン済みの請求書、レシート、契約書を示すNameQuickのプロモーション画像](/images/blog/competitors/namequick.webp)
+
+マネージドプランは、500回のリネームで月額$12から、10,000回で月額$99までです。$69のSelf-Managedライセンスには、自分のAPIキーまたはローカルモデルが必要です。
+
+if/thenルールに基づくMac専用の書類ワークフローには、NameQuickを選びましょう。詳細な比較:[Zush vs NameQuick](/blog/zush-vs-namequick)。
+
+## 5. Wisfile:PDFとWord向けの無料ローカルリネーム
+
+[Wisfile](https://www.wisfile.ai/)は無料で、MacとWindowsでローカルに動作します。PDFとWord文書を内容に基づいてリネームし(たとえば研究論文なら `Author-Year-Title`)、ファイルをトピックごとのフォルダにまとめることもできます。
+
+![ランダムなPDF名を、日付付きで内容がわかる書類のファイル名に変えるWisfile自身のイラスト](/images/blog/competitors/wisfile.webp)
+
+FAQによると、フォルダの監視、スケジュール実行、組み込みの元に戻す機能はありません。予算をかけずに書類アーカイブを1回だけ整理したいなら、Wisfileを選びましょう。詳細:[Zush vs Wisfile](/blog/zush-vs-wisfile)。
+
+## 6. File Juggler:Windowsで定型書類を扱うためのルール
+
+[File Juggler](https://www.filejuggler.com/)はAIではありませんが、常に同じ見た目の書類を振り分ける確実な方法です。ルールは、PDF、Word、Excelファイル内の単語に一致させたり、テキスト内で見つかった日付を再利用したりして、ファイルをリネームして移動できます。別途OCRを使わない限り、画像のみのスキャンは読み取れません。
+
+価格は買い切り$50(税別)で、30日間のフル機能トライアルがあります。ある種類の書類がすべて同じレイアウトに従う場合に選びましょう。そうでない場合は、[File Jugglerの代替ツール](/blog/file-juggler-alternatives)をご覧ください。
+
+<BlogProductIntro
+  title="書類が scan_0042.pdf のまま溜まっていませんか?"
+  description="Zushは、PDF、スキャン、請求書、レシートを読み取り、選んだパターンで名前を付け、MacやWindowsで普段使っているフォルダに振り分けます。"
+  links={[
+    { href: '/rename-pdf-with-ai', label: 'PDFをリネーム' },
+    { href: '/rename-scanned-documents', label: 'スキャン書類' },
+    { href: '/rename-invoices-with-ai', label: '請求書' },
+    { href: '/rename-receipts-with-ai', label: 'レシート' },
+  ]}
+/>
+
+## あなたの書類にはどれが合う?
+
+- 共有フォルダ内の請求書、レシート、契約書:**Zush**。
+- 家庭やオフィス向けの検索可能なアーカイブで、セルフホストできる場合:**Paperless-ngx**。
+- Macでの研究用ライブラリ:**DEVONthink**。
+- Mac専用で、リネーム後にルールを適用したい場合:**NameQuick**。
+- 研究論文を、1回だけ無料で:**Wisfile**。
+- Windowsで同一形式の書類、AIなし:**File Juggler**。
+
+命名パターンを紹介する業種別ガイド:[税務書類を整理する](/blog/how-to-organize-tax-documents)、[法律事務所のファイル命名規則](/blog/legal-file-naming-conventions)、[小規模クリニックでスキャンした診療記録を整理する](/blog/how-to-organize-scanned-medical-records-small-practice)。
+
+## 実際の書類15件でテストする
+
+テスト用フォルダに15件の書類をコピーします。請求書またはレシート5件、テキストレイヤーのないスキャン3件、契約書2件、スプレッドシート2件、Wordファイル1件、銀行の取引明細書1件、手書きメモの写真1枚です。そのうえで次を確認します。
+
+1. ツールはスキャンを読み取ったか、それともスキップしたか。
+2. 名前に、検索に使う項目(日付、会社名、金額)が含まれているか。
+3. すべての変更を事前に確認でき、あとから元に戻せるか。
+4. ほかの全員にとって、ファイルが同じ共有フォルダから開けるままか。
+
+## よくある質問(FAQ)
+
+### 最適なAI書類整理ツールは何ですか?
+
+通常のフォルダに置いたままにしたい書類をMacやWindowsで扱うなら、Zushです。プレビューと元に戻す機能を備え、PDF、スキャン、Officeファイルを内容に基づいて命名・振り分けできるためです。セルフホストのアーカイブがほしい場合、無料の選択肢ではPaperless-ngxが最適です。
+
+### 無料のAI書類整理ツールはありますか?
+
+はい。Paperless-ngxは無料でオープンソースですが、サーバーが必要です。Wisfileは、MacとWindowsでPDFとWord文書に使える無料ツールです。Zushには50回分の無料AIリネームが含まれます。
+
+### AI書類整理ツールはスキャンしたPDFを読み取れますか?
+
+Zushは画像のみのスキャンを直接読み取ります。Paperless-ngxとDEVONthink ProはOCRを実行します。File Jugglerでは、先に別途OCRの手順が必要です。
+
+### 書類をアップロードせずにAIで整理できますか?
+
+はい。OllamaまたはLM Studioを使うZush、Wisfile、ローカルのOllamaバックエンドを使うPaperless-ngx、ローカルモデルを使うDEVONthinkは、いずれも書類を自分のハードウェア上にとどめます。

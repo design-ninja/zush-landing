@@ -47,9 +47,17 @@ const server = await createServer({
 });
 
 let home;
+let organizer;
 try {
   const { getCopy } = await server.ssrLoadModule('/src/i18n/copy.ts');
   const { getSeoForPath } = await server.ssrLoadModule('/src/seo/config.ts');
+  const { SEARCH_LANDING_PAGES } = await server.ssrLoadModule('/src/data/searchLandingPages.ts');
+  const { getLandingWorkflow } = await server.ssrLoadModule('/src/data/landingWorkflows.ts');
+  organizer = hash(JSON.stringify({
+    page: SEARCH_LANDING_PAGES['ai-file-organizer'],
+    seo: getSeoForPath('/ai-file-organizer'),
+    workflow: getLandingWorkflow('/ai-file-organizer', 'en'),
+  }));
   home = hash(JSON.stringify({
     copy: getCopy('en').home,
     seo: getSeoForPath('/'),
@@ -93,6 +101,7 @@ const blog = Object.fromEntries(
 
 const revisions = {
   home,
+  organizer,
   professions: hashFiles(professionSourcePaths),
   blog,
 };
@@ -106,7 +115,7 @@ if (write) {
   }
   const expected = JSON.parse(readFileSync(manifestPath, 'utf8'));
   if (JSON.stringify(revisions) !== JSON.stringify(expected)) {
-    for (const key of ['home', 'professions']) {
+    for (const key of ['home', 'organizer', 'professions']) {
       if (revisions[key] !== expected[key]) {
         console.error(`[check-localization-source-revisions] ${key}: expected ${expected[key]}, received ${revisions[key]}`);
       }

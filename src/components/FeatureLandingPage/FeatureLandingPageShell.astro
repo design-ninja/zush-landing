@@ -46,6 +46,8 @@ import faq from '@/components/FAQ/FAQ.module.scss';
 interface LocalizedProps {
   locale?: Locale;
   localizedCopy?: FeatureCopy;
+  localizedBlogPosts?: Array<{ title: string; href: string }>;
+  localizedContextualGuideLink?: FeatureLandingPageProps['contextualGuideLink'];
 }
 
 const {
@@ -67,6 +69,12 @@ const localizedProps = Astro.props as FeatureLandingPageProps & LocalizedProps;
 const currentLocale = localizedProps.locale ?? DEFAULT_LOCALE;
 const currentCopy = getCopy(currentLocale);
 const pageCopy = localizedProps.localizedCopy;
+const guideLinks = localizedProps.localizedBlogPosts
+  ?? (currentLocale === DEFAULT_LOCALE
+    ? relatedBlogPosts.map((post) => ({ ...post, href: `/blog/${post.href}` }))
+    : []);
+const resolvedContextualGuideLink = localizedProps.localizedContextualGuideLink
+  ?? (currentLocale === DEFAULT_LOCALE ? contextualGuideLink : undefined);
 // English-only answers stay off localized pages unless a translation is provided.
 const resolvedDirectAnswerSection = pageCopy?.directAnswerSection
   ?? (currentLocale === DEFAULT_LOCALE ? directAnswerSection : undefined);
@@ -186,12 +194,12 @@ const relatedPageTitle = (href: string, fallback: string) =>
     </>
   )}
 
-  {currentLocale === DEFAULT_LOCALE && contextualGuideLink && (
+  {resolvedContextualGuideLink && (
     <div class={styles.ContextualGuideLink}>
       <p>
-        {contextualGuideLink.before}{' '}
-        <a href={contextualGuideLink.href}>{contextualGuideLink.label}</a>
-        {contextualGuideLink.after ?? ''}
+        {resolvedContextualGuideLink.before}{' '}
+        <a href={resolvedContextualGuideLink.href}>{resolvedContextualGuideLink.label}</a>{' '}
+        {resolvedContextualGuideLink.after ?? ''}
       </p>
     </div>
   )}
@@ -218,7 +226,7 @@ const relatedPageTitle = (href: string, fallback: string) =>
   <Pricing copy={currentCopy.pricing} />
   {currentLocale === DEFAULT_LOCALE && <TrustSignals />}
 
-  {(relatedPages.length > 0 || relatedBlogPosts.length > 0) && (
+  {(relatedPages.length > 0 || guideLinks.length > 0) && (
     <section class={b.Section}>
       <div class={b.Columns}>
         {relatedPages.length > 0 && (
@@ -234,14 +242,14 @@ const relatedPageTitle = (href: string, fallback: string) =>
           </div>
         )}
 
-        {currentLocale === DEFAULT_LOCALE && relatedBlogPosts.length > 0 && (
+        {guideLinks.length > 0 && (
           <div class={b.Column}>
             <Heading as='h3' className={b.ColumnTitle}>
               {pageCopy?.relatedGuidesTitle ?? 'Related Guides'}
             </Heading>
             <div class={styles.RelatedLinks}>
-              {relatedBlogPosts.map((post) => (
-                <PillLink href={`/blog/${post.href}`} withArrow>{post.title}</PillLink>
+              {guideLinks.map((post) => (
+                <PillLink href={post.href} withArrow>{post.title}</PillLink>
               ))}
             </div>
           </div>

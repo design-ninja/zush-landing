@@ -1,0 +1,166 @@
+---
+title: "Windows 11'de Dosyaları Toplu Yeniden Adlandırma: 5 Yöntem, 3'ü Yerleşik (2026)"
+description: "Windows 11 veya 10'da birden fazla dosyayı aynı anda toplu olarak yeniden adlandırın. File Explorer, Komut İstemi ve PowerShell kurulum gerektirmez; PowerRename ve yapay zeka daha fazlasını sunar."
+date: "2026-09-22"
+slug: "batch-rename-files-windows-11-tr"
+locale: "tr"
+translationOf: "batch-rename-files-windows-11"
+platform: "windows"
+topic: "automation"
+tags:
+  - "Dosya Adlandırma"
+  - "File Explorer"
+  - "Otomasyon"
+tldr: "File Explorer'da dosyaları seçip hızlı bir numaralı dizi için F2'ye basın. Önizlemeyle bul-ve-değiştir, tarih ve regex işlemleri için PowerRename kullanın. Komut dosyasıyla yapılabilecek her şey için PowerShell kullanın. Her dosyanın içeriğine göre kendi açıklayıcı adına ihtiyacı olduğunda Zush gibi yapay zekâlı bir yeniden adlandırıcı kullanın."
+reviewed: "2026-09-22"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Kısa cevap: Windows 11'de birkaç dosyayı aynı anda yeniden adlandırmak için dosyaları File Explorer'da seçin, **F2**'ye basın, bir ad yazın ve **Enter**'a basın. Windows dosyalara `Name (1)`, `Name (2)` gibi adlar verir. Metin değiştirme, tarih ekleme veya her dosyaya gerçek bir ad verme gibi daha akıllı işlemler için aşağıdaki dört yöntemden birini kullanın.
+
+| Yöntem | En uygun olduğu durum | Önizleme | Geri alma |
+|---|---|---|---|
+| File Explorer (F2) | Hızlı numaralı adlar | Hayır | Hemen ardından Ctrl+Z |
+| PowerRename | Bul-ve-değiştir, tarihler, regex | Evet | Ctrl+Z (Explorer'da) |
+| Komut İstemi | Uzantıları değiştirme | Hayır | Hayır |
+| PowerShell | Komut dosyasıyla yapılabilecek her şey | `-WhatIf` ile | Hayır |
+| Zush (yapay zekâ) | Her dosya için açıklayıcı bir ad | Evet | Tam Yeniden Adlandırma Geçmişi |
+
+Herhangi bir toplu yeniden adlandırmadan önce birkaç dosyayı bir test klasörüne kopyalayın ve yöntemi önce orada deneyin.
+
+## 1. File Explorer: Numaralı dizi için F2
+
+1. Klasörü açın ve dosyaları seçin. Tümünü seçmek için **Ctrl+A**, tek tek seçmek için **Ctrl+tıklama** kullanın.
+2. **F2**'ye basın (veya sağ tıklayıp **Yeniden adlandır**'ı seçin; Windows 11'de bu, bir metin imleci simgesidir).
+3. Yeni adı yazın, örneğin `Lisbon trip`, ve **Enter**'a basın.
+
+`Lisbon trip (1).jpg`, `Lisbon trip (2).jpg` gibi adlar elde edersiniz. Numaralandırma geçerli sıralama düzenini izler; bu yüzden sıra önemliyse önce **Tarih**'e göre sıralayın. Geri almak için hemen **Ctrl+Z**'ye basın.
+
+**İpucu:** Dosyaları art arda yeniden adlandırmak için ilkinde F2'ye basın, adını yazın, ardından bir sonraki dosyaya geçmek için **Tab**'a basın.
+
+## 2. PowerRename: Önizlemeli bul-ve-değiştir
+
+PowerRename, [PowerToys](https://learn.microsoft.com/en-us/windows/powertoys/powerrename) içinde yer alan ücretsiz bir Microsoft aracıdır. PowerToys'u Microsoft Store'dan yükleyin, ardından:
+
+1. File Explorer'da dosyaları seçin, sağ tıklayın ve **PowerRename ile yeniden adlandır**'ı seçin (Windows 11'de bu seçenek **Daha fazla seçenek göster** altında olabilir).
+2. **Aranacak** alanına bulunacak metni, **Şununla değiştir** alanına yerine konacak metni yazın.
+3. Sağdaki önizlemeyi kontrol edin, ardından **Uygula**'ya tıklayın.
+
+Kullanışlı tarifler:
+
+| Hedef | Aranacak | Şununla değiştir | Seçenekler |
+|---|---|---|---|
+| Boşlukları tireye çevirme | ` ` (bir boşluk) | `-` | Tüm eşleşmeleri eşleştir |
+| Önek ekleme | `^` | `2026_` | Düzenli ifadeleri kullan |
+| Bir tarihi yeniden sıralama `29-03-2026` → `2026-03-29` | `(\d{2})-(\d{2})-(\d{4})` | `$3-$2-$1` | Regex, tüm eşleşmeleri eşleştir |
+| Dosyaları numaralandırma | `.*` | `Photo_${padding=3;start=1}` | Regex, öğeleri numaralandır, yalnızca dosya adına uygula |
+| Fotoğrafın çekilme tarihi | `^` | `$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD-` | Regex, EXIF/XMP meta veri kaynağı |
+
+PowerRename ayrıca harf büyüklüğünü değiştirebilir (küçük harf, büyük harf, başlık biçimi) ve yalnızca uzantıyı yeniden adlandırabilir.
+
+## 3. Komut İstemi: Uzantıları hızla değiştirme
+
+Eski `ren` komutu tek bir iş için kullanışlıdır: uzantıları toplu olarak değiştirmek:
+
+```bat
+cd "C:\Users\You\Pictures\Export"
+ren *.jpeg *.jpg
+```
+
+Bu komut, klasördeki her `.jpeg` dosyasını `.jpg` olarak yeniden adlandırır. Önceden sormaz ve geri alma özelliği yoktur; bu yüzden önce kopyalar üzerinde deneyin.
+
+## 4. PowerShell: Komut dosyasıyla yeniden adlandırma
+
+PowerShell, tarif edebileceğiniz her kalıbı uygulayabilir. **Terminal**'i açın (Başlat düğmesine sağ tıklayın) ve `cd` ile klasörünüze gidin. Herhangi bir şeyi yeniden adlandırmadan önizlemek için herhangi bir komutun sonuna `-WhatIf` ekleyin.
+
+Her JPG dosyasına önek ekleme:
+
+```powershell
+(Get-ChildItem *.jpg) | Rename-Item -NewName { "Lisbon_" + $_.Name }
+```
+
+Boşlukları tire ile değiştirme:
+
+```powershell
+(Get-ChildItem) | Rename-Item -NewName { $_.Name -replace ' ', '-' }
+```
+
+Her PDF'nin başına değiştirilme tarihini ekleme:
+
+```powershell
+(Get-ChildItem *.pdf) | Rename-Item -NewName { $_.LastWriteTime.ToString('yyyy-MM-dd') + '_' + $_.Name }
+```
+
+Dosyaları tarihe göre numaralandırma, `Trip_001.jpg`, `Trip_002.jpg` gibi:
+
+```powershell
+$i = 1
+Get-ChildItem *.jpg | Sort-Object LastWriteTime | ForEach-Object {
+  Rename-Item $_ -NewName ('Trip_{0:D3}{1}' -f $i++, $_.Extension)
+}
+```
+
+`Get-ChildItem` çevresindeki parantezler önemlidir: yeniden adlandırma başlamadan önce dosya listesini toplarlar, böylece yeniden adlandırılmış bir dosya iki kez alınmaz.
+
+## 5. Yapay zekâ: Her dosyaya kendi adını verin
+
+Yukarıdaki dört yöntemin hepsi, bir dosyanın zaten sahip olduğu adı dönüştürür. `scan_0042.pdf` adını `2026-09-12_acme_invoice_1042.pdf` adına çeviremezler, çünkü bilgi dosyanın adında değil, içindedir.
+
+Yapay zekâlı bir yeniden adlandırıcı tam olarak bunu yapar. [Windows için Zush](/windows) her dosyayı okur (bir PDF'nin metnini, bir ekran görüntüsünün gösterdiğini, bir fotoğraftaki sahneyi, bir Word veya Excel dosyasının içeriğini) ve açıklayıcı bir ad önerir:
+
+1. Zush'u [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X)'dan yükleyin.
+2. Bir klasörü veya seçtiğiniz dosyaları sürükleyip bırakın.
+3. Screenshots veya Bookkeeper Expenses gibi bir şablon seçin ya da Naming Blocks ile `{Created Date}_{Vendor}_{Document Type}` gibi bir kalıp oluşturun.
+4. Önerilen adları gözden geçirin. Herhangi birini çift tıklayarak düzenleyin.
+5. **Yeniden adlandır**'a tıklayın. Daha sonra fikrinizi değiştirirseniz toplu işlemi Yeniden Adlandırma Geçmişi'nden geri yükleyin.
+
+| Önce | Sonra |
+|---|---|
+| `Screenshot 2026-09-18 141203.png` | `github-pull-request-review-comments.png` |
+| `scan_0042.pdf` | `2026-09-12_acme_invoice_1042.pdf` |
+| `Document1.docx` | `q3-marketing-plan-draft.docx` |
+
+Klasör izlemeyi açın; İndirilenler'e veya bir tarayıcı klasörüne gelen yeni dosyalar geldikçe yeniden adlandırılsın. İlk 50 yapay zekâ ile yeniden adlandırma ücretsizdir.
+
+<BlogCTA placement='inline' platform='windows' />
+
+## Sık karşılaşılan sorunlar
+
+**"Dosya adı çok uzun."** Windows yolları varsayılan olarak 260 karakterle sınırlıdır. Yeni adları kısaltın veya klasörü sürücü köküne daha yakın bir yere taşıyın.
+
+**PowerShell'de dosyalar atlanıyor veya iki kez yeniden adlandırılıyor.** `Get-ChildItem` ifadesini yukarıdaki örneklerdeki gibi parantez içine alın.
+
+**PowerRename sağ tık menüsünde yok.** PowerToys ayarlarını açın, PowerRename'in açık olduğundan emin olun ve Windows 11'de **Daha fazla seçenek göster**'i kontrol edin.
+
+**Numaralar yanlış sırada.** File Explorer ve PowerRename dosyaları geçerli sıralama düzenine göre numaralandırır. Yeniden adlandırmadan önce tarihe veya ada göre sıralayın.
+
+**Bir dosya "kullanımda."** Dosyayı açık tutan uygulamayı (çoğunlukla bir fotoğraf görüntüleyici veya Word) kapatın ve yeniden deneyin.
+
+<BlogProductIntro
+  title="Fotoğraf (1), Fotoğraf (2) yerine gerçek adlara mı ihtiyacınız var?"
+  description="Zush, Windows'ta her dosyayı okur ve net, aranabilir bir ad önerir. Önce gözden geçirin, ardından tüm toplu işlemi tek tıkla uygulayın."
+  links={[
+    { href: '/windows', label: 'Windows için Zush' },
+    { href: '/blog/best-file-renamer-windows-11', label: 'Windows 11 için en iyi dosya yeniden adlandırıcılar' },
+    { href: '/batch-rename-files', label: 'Yapay zekâ ile toplu yeniden adlandırma' },
+  ]}
+/>
+
+## Sık Sorulan Sorular
+
+### Windows 11'de birden fazla dosyayı aynı anda nasıl yeniden adlandırırım?
+
+Dosyaları File Explorer'da seçin, F2'ye basın, bir ad yazın ve Enter'a basın. Windows her birine (1), (2), (3) ekler. Bul-ve-değiştir veya tarihler için Microsoft PowerToys'taki PowerRename'i kullanın.
+
+### Windows'ta toplu yeniden adlandırmayı nasıl geri alırım?
+
+Yeniden adlandırmanın hemen ardından File Explorer'da Ctrl+Z'ye basın; bu, F2 ve PowerRename için çalışır. Komut İstemi ve PowerShell ile yapılan yeniden adlandırmaların geri alma özelliği yoktur. Zush, istediğiniz zaman geri yükleyebileceğiniz bir Yeniden Adlandırma Geçmişi tutar.
+
+### Hiçbir şey yüklemeden dosyaları toplu olarak yeniden adlandırabilir miyim?
+
+Evet. File Explorer (F2), Komut İstemi (`ren`) ve PowerShell (`Rename-Item`) Windows 11 ve 10'a yerleşik olarak gelir.
+
+### Windows'ta dosyaları içeriğine göre nasıl yeniden adlandırırım?
+
+Yerleşik araçlar dosya içeriğini okuyamaz. Her dosyayı analiz edip içerdiğine göre bir ad öneren Zush gibi yapay zekâlı bir yeniden adlandırıcı kullanın.

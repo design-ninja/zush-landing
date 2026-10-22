@@ -1,0 +1,216 @@
+{
+  "seo": {
+    "title": "Organisateur de fichiers IA pour Mac et Windows : nommage par contenu | Zush",
+    "description": "Zush nomme chaque fichier selon son contenu, le range dans des dossiers si vous le souhaitez et garde vos nouveaux fichiers en ordre grâce à Monitor. Mac et Windows, avec aperçu et annulation."
+  },
+  "h1": "Organisateur de fichiers IA : nommez et triez vos fichiers selon leur contenu",
+  "accent": "nommez et triez vos fichiers",
+  "definitionText": "Zush est un organisateur de fichiers IA pour Mac et Windows. Il lit chaque fichier et lui donne un nom facilement retrouvable, le range dans des dossiers lorsque vous activez le tri de dossiers par IA, et garde en ordre vos dossiers Téléchargements ou vos dossiers clients grâce à la surveillance de dossiers. Vérifiez chaque lot avant de l'appliquer ; l'annulation rétablit les noms et les dossiers.",
+  "faqTitle": "Questions fréquentes",
+  "relatedToolsTitle": "Outils associés",
+  "relatedGuidesTitle": "Guides associés",
+  "faqItems": [
+    {
+      "question": "Qu'est-ce qu'un organisateur de fichiers IA ?",
+      "answer": "Un organisateur de fichiers IA lit le contenu de chaque fichier et le transforme en noms de fichiers clairs et faciles à rechercher, ainsi qu'en conventions de nommage cohérentes. Au lieu de trier uniquement selon des règles de motifs, Zush analyse les captures d'écran, PDF, photos, documents, vidéos, fichiers audio et fichiers de design, puis nomme chacun d'eux selon son contenu afin que le Finder, Spotlight et la recherche Windows puissent réellement le retrouver."
+    },
+    {
+      "question": "En quoi un organisateur de fichiers IA diffère-t-il d'un trieur de fichiers IA ?",
+      "answer": "Un trieur de fichiers IA regroupe les fichiers dans des dossiers selon leur contenu ; un renommeur de fichiers IA donne à chaque fichier un nom descriptif. Zush réunit les deux dans un même lot à vérifier : le mode Auto suggère des groupes, ou vous pouvez décrire vos propres règles de dossiers en langage courant."
+    },
+    {
+      "question": "Zush est-il un logiciel IA de nommage de fichiers et de dossiers ?",
+      "answer": "Oui. Zush crée des noms de fichiers adaptés au contenu sur Mac et Windows. Le tri de dossiers par IA suggère aussi des noms de dossiers et déplace les fichiers dans ces groupes. Utilisez le mode Auto ou rédigez une consigne telle que « Regrouper les factures par entreprise et les reçus par mois ». Vous pouvez réutiliser des dossiers existants appropriés ou choisir une destination. Cela ne renomme pas en masse les dossiers existants."
+    },
+    {
+      "question": "Zush peut-il organiser automatiquement mon dossier Téléchargements ?",
+      "answer": "Oui. Pointez la surveillance de dossiers vers Téléchargements et Zush nommera selon leur contenu les nouvelles captures d'écran, factures, reçus et exports dès leur arrivée, en utilisant le modèle de votre choix. Chaque modification est conservée dans l'historique des renommages, ce qui vous permet d'annuler n'importe quel lot."
+    },
+    {
+      "question": "L'organisateur de fichiers IA fonctionne-t-il à la fois sur Mac et sur Windows ?",
+      "answer": "Oui. Zush propose une application Mac native (macOS 15+) et une version Windows disponible dans le Microsoft Store. Les deux prennent en charge le nommage adapté au contenu, les modèles, les Naming Blocks, la surveillance de dossiers et l'historique d'annulation. Le tri de dossiers prend en charge le regroupement automatique ou des instructions personnalisées, ainsi qu'un dossier de destination."
+    },
+    {
+      "question": "Mes données restent-elles privées lorsque l'IA organise mes fichiers ?",
+      "answer": "Vous choisissez le mode : IA Cloud gérée, BYOK avec votre propre clé de fournisseur, LM Studio ou Ollama pour que l'analyse prise en charge reste sur votre appareil. Les fichiers restent sur votre disque ; les utilisateurs peuvent, s'ils le souhaitent, les déplacer dans des dossiers suggérés par l'IA."
+    }
+  ],
+  "workflow": {
+    "heading": "Organisez un dossier en trois étapes : nommer, ranger, automatiser",
+    "answer": "Un organisateur ne se contente pas de déplacer des fichiers. Zush commence par donner à chaque fichier un nom facile à rechercher à partir de son contenu, puis le range éventuellement dans des dossiers, et enfin garde le dossier en ordre à mesure que de nouveaux fichiers arrivent. Choisissez jusqu'où aller ; vous vérifiez les noms et les dossiers avant que quoi que ce soit ne change.",
+    "setupOptions": [
+      {
+        "title": "Renommer sur place",
+        "instructions": "Laissez le tri désactivé. Les fichiers restent dans leur dossier et reçoivent des noms construits à partir du contenu, des dates et de vos Naming Blocks.",
+        "href": "/batch-rename-files",
+        "label": "Renommer des fichiers par lot avec l'IA"
+      },
+      {
+        "title": "Renommer et trier",
+        "instructions": "Activez le tri. Auto regroupe les fichiers selon leur contenu, ou les règles de dossier décrivent les dossiers, y compris des dossiers imbriqués comme année et mois.",
+        "href": "/ai-file-sorter",
+        "label": "Rédiger des règles pour le trieur de fichiers IA"
+      },
+      {
+        "title": "Organiser les nouveaux fichiers",
+        "instructions": "Associez le modèle à la surveillance de dossiers. Les nouveaux fichiers dans Téléchargements ou dans un dossier de scanner sont nommés, et triés si le modèle inclut le tri.",
+        "href": "/docs/folder-monitoring",
+        "label": "Configurer la surveillance de dossiers"
+      }
+    ],
+    "steps": [
+      "Choisissez un dossier Téléchargements ou un dossier client et décidez quels détails vous rechercherez plus tard, comme le projet, le type de document et la date. Enregistrez ces champs dans un modèle.",
+      "Activez le tri. Laissez les règles de dossier vides pour le mode Auto, ou décrivez le regroupement, par exemple « Regrouper les factures par entreprise et les reçus par mois ». Choisissez une destination ou conservez le dossier d'origine.",
+      "Vérifiez les noms et dossiers proposés, puis appliquez. Une fois le résultat fiable, associez le modèle à la surveillance de dossiers afin que les nouveaux fichiers soient nommés et triés dès leur arrivée."
+    ],
+    "example": {
+      "before": "Downloads/document.pdf",
+      "after": "Clients/Acme/Acme_Service-Agreement.pdf",
+      "caption": "Chemin à titre d'illustration : Clients est la destination choisie, Acme est le dossier proposé par l'IA à partir d'une règle telle que « Regrouper les documents clients par entreprise ». Vérifiez chaque dossier proposé avant d'appliquer."
+    },
+    "image": {
+      "src": "/images/showcase/macos/folder-sorting-light.webp",
+      "alt": "Zush pour Mac affichant un lot de fichiers renommés et regroupés dans des dossiers suggérés avant l'application des modifications.",
+      "caption": "Zush pour Mac : noms de fichiers proposés, regroupés par dossier suggéré. Rien ne bouge tant que vous n'appliquez pas le lot."
+    },
+    "limit": "Le tri de dossiers par IA déplace des fichiers : testez d'abord sur une copie et laissez-le désactivé pour les dossiers que d'autres applications référencent par chemin. Zush ne supprime pas les doublons, ne libère pas d'espace disque et ne remplace pas un système de gestion documentaire. L'annulation rétablit le nom et le dossier d'origine.",
+    "links": [
+      {
+        "href": "/ai-file-sorter",
+        "label": "Trieur de fichiers IA avec vos propres règles de dossiers"
+      },
+      {
+        "href": "/docs/folder-sorting",
+        "label": "Documentation sur le tri de dossiers"
+      },
+      {
+        "href": "/docs/folder-monitoring",
+        "label": "Configurer la surveillance de dossiers"
+      }
+    ]
+  },
+  "relatedPages": [
+    {
+      "title": "Trieur de fichiers IA",
+      "href": "/ai-file-sorter"
+    },
+    {
+      "title": "Tri de dossiers par IA : règles automatiques et personnalisées",
+      "href": "/docs/folder-sorting"
+    },
+    {
+      "title": "Documentation sur la surveillance de dossiers",
+      "href": "/docs/folder-monitoring"
+    },
+    {
+      "title": "Guide des modèles",
+      "href": "/docs/templates"
+    },
+    {
+      "title": "Guide des Naming Blocks",
+      "href": "/docs/naming-blocks"
+    },
+    {
+      "title": "Renommer des fichiers par lot avec l'IA",
+      "href": "/batch-rename-files"
+    },
+    {
+      "title": "Renommeur de fichiers IA hors ligne",
+      "href": "/offline-ai-file-renamer"
+    },
+    {
+      "title": "Renommeur et organisateur de fichiers IA",
+      "href": "/"
+    },
+    {
+      "title": "Renommeur de fichiers IA pour Mac",
+      "href": "/mac"
+    },
+    {
+      "title": "Renommeur de fichiers IA pour Windows",
+      "href": "/windows"
+    }
+  ],
+  "relatedBlogPosts": [
+    {
+      "title": "Trier des fichiers dans des dossiers avec l'IA sur Mac",
+      "href": "sort-files-into-folders-with-ai-mac"
+    },
+    {
+      "title": "Trier des fichiers dans des dossiers avec l'IA sur Windows",
+      "href": "sort-files-into-folders-with-ai-windows"
+    },
+    {
+      "title": "Les meilleurs trieurs de fichiers IA pour Mac et Windows",
+      "href": "best-ai-file-sorters"
+    },
+    {
+      "title": "Les meilleurs organisateurs de fichiers IA pour Windows 11",
+      "href": "best-ai-file-organizers-windows"
+    },
+    {
+      "title": "Les meilleurs organisateurs de fichiers IA pour Mac",
+      "href": "best-ai-file-organizers-mac"
+    },
+    {
+      "title": "Les meilleurs organisateurs de documents IA",
+      "href": "best-ai-document-organizers"
+    },
+    {
+      "title": "Organisateur de fichiers automatique pour Mac",
+      "href": "automate-file-organization-macos"
+    },
+    {
+      "title": "Les meilleures façons d'organiser vos photos sur Mac",
+      "href": "best-ways-to-organize-photos-on-mac"
+    },
+    {
+      "title": "Désencombrer votre Mac : guide de nettoyage des fichiers",
+      "href": "declutter-your-mac-file-cleanup-guide"
+    }
+  ],
+  "contextualGuideLink": {
+    "before": "Vous comparez des applications avant de choisir un workflow ? Consultez les",
+    "label": "meilleurs organisateurs de fichiers IA pour Mac",
+    "href": "/blog/best-ai-file-organizers-mac",
+    "after": "pour une analyse axée sur la vérification du renommage, du déplacement, de l'IA locale, de l'annulation et des tarifs."
+  },
+  "howTo": {
+    "@type": "HowTo",
+    "name": "Organiser des fichiers avec l'IA",
+    "description": "Utilisez Zush pour créer des noms de fichiers descriptifs et cohérents pour vos dossiers Mac et Windows, avec un tri de dossiers par IA facultatif.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Déposez un dossier en désordre dans Zush",
+        "text": "Ajoutez Téléchargements, un dossier de captures d'écran, un dossier client ou n'importe quel lot de fichiers variés."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Choisissez une convention de nommage",
+        "text": "Utilisez un titre généré par l'IA ou combinez dates, clients, catégories, compteurs et métadonnées avec des modèles et des Naming Blocks."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Choisissez Auto ou des règles de dossier personnalisées",
+        "text": "Activez le tri de dossiers par IA. Laissez Auto regrouper les fichiers selon leur contenu, ou rédigez des instructions en langage courant. Choisissez une destination et, si vous le souhaitez, réutilisez des dossiers existants appropriés."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Vérifiez, appliquez et automatisez",
+        "text": "Prévisualisez les noms et les dossiers suggérés avant d'appliquer le lot. Enregistrez les règles dans un modèle pour que Monitor traite les nouveaux fichiers."
+      }
+    ],
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [
+        "h1",
+        "meta[name=\"description\"]"
+      ]
+    }
+  }
+}

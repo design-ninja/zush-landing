@@ -2,6 +2,7 @@ import { ORGANIZATION_FEATURES } from './organizationFeatures';
 import { LOCALIZED_TOUR_EXTRAS } from './tourItems';
 import type { Locale, LocalizedRoute } from '@/i18n/config';
 import { AI_FILE_SORTER_LOCALIZED, buildAiFileSorterSlides } from '@/i18n/aiFileSorterLocalized';
+import { AI_FILE_ORGANIZER_LOCALIZED } from '@/i18n/aiFileOrganizerLocalized';
 import { HOME_FAQ_DATA } from '@/data/homeFaq';
 import { VIDEO_PREVIEW_IMAGES } from '@/data/videoPreviewImages';
 import type { Slide } from '@/components/FileShowcase';
@@ -4795,11 +4796,13 @@ export function getCopy(locale: Locale): LocaleCopy {
   const copy = COPY[locale] ?? COPY.en;
   const organization = ORGANIZATION_FEATURES[locale];
   const sorter = locale === 'en' ? undefined : AI_FILE_SORTER_LOCALIZED[locale];
+  const organizer = locale === 'en' ? undefined : AI_FILE_ORGANIZER_LOCALIZED[locale];
   return {
     ...copy,
     ...(sorter && {
       featurePages: {
         ...copy.featurePages,
+        ...(organizer && { '/ai-file-organizer': organizer }),
         '/ai-file-sorter': {
           h1: sorter.h1,
           accent: sorter.accent,
@@ -4812,7 +4815,7 @@ export function getCopy(locale: Locale): LocaleCopy {
           showcaseSlides: buildAiFileSorterSlides(sorter.showcase),
         },
       },
-      seo: { ...copy.seo, '/ai-file-sorter': sorter.seo },
+      seo: { ...copy.seo, '/ai-file-sorter': sorter.seo, ...(organizer && { '/ai-file-organizer': organizer.seo }) },
     }),
     home: {
       ...copy.home,

@@ -1,0 +1,216 @@
+{
+  "seo": {
+    "title": "Organizador de archivos con IA para Mac y Windows: nombra por contenido | Zush",
+    "description": "Zush nombra cada archivo según su contenido, lo guarda en carpetas cuando lo quieras y mantiene los archivos nuevos en orden con Monitor. Mac y Windows, con vista previa y deshacer."
+  },
+  "h1": "Organizador de archivos con IA: nombra y ordena archivos por contenido",
+  "accent": "nombra y ordena archivos",
+  "definitionText": "Zush es un organizador de archivos con IA para Mac y Windows. Lee cada archivo y le da un nombre fácil de buscar, lo guarda en carpetas cuando activas la ordenación de carpetas con IA y mantiene en orden Descargas o las carpetas de clientes con la supervisión de carpetas. Revisa cada lote antes de aplicarlo; deshacer restaura los nombres y las carpetas.",
+  "faqTitle": "Preguntas frecuentes",
+  "relatedToolsTitle": "Herramientas relacionadas",
+  "relatedGuidesTitle": "Guías relacionadas",
+  "faqItems": [
+    {
+      "question": "¿Qué es un organizador de archivos con IA?",
+      "answer": "Un organizador de archivos con IA lee el contenido de cada archivo y lo convierte en nombres de archivo claros y fáciles de buscar, con convenciones de nomenclatura coherentes. En lugar de ordenar solo con reglas de patrones, Zush analiza capturas de pantalla, PDF, fotos, documentos, vídeos, audio y archivos de diseño, y nombra cada uno según su contenido para que Finder, Spotlight y la Búsqueda de Windows puedan encontrarlo de verdad."
+    },
+    {
+      "question": "¿En qué se diferencia un organizador de archivos con IA de un clasificador de archivos con IA?",
+      "answer": "Un clasificador de archivos con IA agrupa los archivos en carpetas según su contenido; un renombrador de archivos con IA da a cada archivo un nombre descriptivo. Zush combina ambas funciones en un único lote revisado: el modo Auto sugiere grupos, o puedes describir tus propias reglas de carpetas en lenguaje natural."
+    },
+    {
+      "question": "¿Es Zush un software de nomenclatura de archivos y carpetas con IA?",
+      "answer": "Sí. Zush crea nombres de archivo basados en el contenido en Mac y Windows. La ordenación de carpetas con IA también sugiere nombres de carpeta y mueve los archivos a esos grupos. Usa el modo Auto o escribe una instrucción como «Agrupa las facturas por empresa y los recibos por mes». Puedes reutilizar carpetas existentes adecuadas o elegir un destino. Esto no cambia en bloque el nombre de las carpetas existentes."
+    },
+    {
+      "question": "¿Puede Zush organizar automáticamente mi carpeta Descargas?",
+      "answer": "Sí. Apunta la supervisión de carpetas a Descargas y Zush nombrará por contenido las capturas de pantalla, facturas, recibos y exportaciones nuevos en cuanto lleguen, usando la plantilla que elijas. Todos los cambios quedan en el historial de renombrado, así que puedes deshacer cualquier lote."
+    },
+    {
+      "question": "¿El organizador de archivos con IA funciona tanto en Mac como en Windows?",
+      "answer": "Sí. Zush tiene una app nativa para Mac (macOS 15+) y una versión para Windows en la Microsoft Store. Ambas admiten nomenclatura basada en el contenido, plantillas, Naming Blocks, supervisión de carpetas e historial para deshacer. La ordenación de carpetas admite agrupación automática o instrucciones personalizadas y una carpeta de destino."
+    },
+    {
+      "question": "¿Están seguros mis datos cuando la IA organiza mis archivos?",
+      "answer": "Tú eliges el modo: IA en la nube gestionada, BYOK con la clave de tu propio proveedor, o LM Studio u Ollama para que el análisis compatible se quede en tu dispositivo. Los archivos permanecen en tu disco; los usuarios pueden moverlos opcionalmente a carpetas sugeridas por la IA."
+    }
+  ],
+  "workflow": {
+    "heading": "Organiza una carpeta en tres pasadas: nombrar, archivar, automatizar",
+    "answer": "Un organizador es más que un simple mover archivos. Zush primero da a cada archivo un nombre fácil de buscar a partir de su contenido, después lo guarda opcionalmente en carpetas y, por último, mantiene la carpeta en orden a medida que llegan archivos nuevos. Elige hasta dónde llegar; revisas los nombres y las carpetas antes de que cambie nada.",
+    "setupOptions": [
+      {
+        "title": "Renombrar en el sitio",
+        "instructions": "Deja Ordenar desactivado. Los archivos se quedan en su carpeta y reciben nombres construidos a partir del contenido, las fechas y tus Naming Blocks.",
+        "href": "/batch-rename-files",
+        "label": "Renombra archivos en lote con IA"
+      },
+      {
+        "title": "Renombrar y ordenar",
+        "instructions": "Activa Ordenar. Auto agrupa los archivos por contenido, o las Reglas de carpeta describen las carpetas, incluidas las anidadas, como año y mes.",
+        "href": "/ai-file-sorter",
+        "label": "Escribe reglas para el clasificador de archivos con IA"
+      },
+      {
+        "title": "Organizar archivos nuevos",
+        "instructions": "Asigna la Plantilla a la supervisión de carpetas. Los archivos nuevos en Descargas o en una carpeta de escáner se nombran y, si la Plantilla ordena, se clasifican.",
+        "href": "/docs/folder-monitoring",
+        "label": "Configura la supervisión de carpetas"
+      }
+    ],
+    "steps": [
+      "Elige una carpeta de Descargas o de un cliente y decide qué datos querrás buscar más adelante, como proyecto, tipo de documento y fecha. Guarda esos campos como una Plantilla.",
+      "Activa Ordenar. Deja las Reglas de carpeta vacías para usar Auto, o describe la agrupación, por ejemplo «Agrupa las facturas por empresa y los recibos por mes». Elige un destino o conserva la carpeta original.",
+      "Revisa los nombres y las carpetas propuestos y luego aplica. Cuando el resultado sea fiable, asigna la Plantilla a la supervisión de carpetas para que los archivos nuevos se nombren y se ordenen según lleguen."
+    ],
+    "example": {
+      "before": "Downloads/document.pdf",
+      "after": "Clients/Acme/Acme_Service-Agreement.pdf",
+      "caption": "Ruta ilustrativa: Clients es el destino elegido y Acme es la carpeta que la IA propuso a partir de una regla como «Agrupa los documentos de clientes por empresa». Revisa cada carpeta propuesta antes de aplicar."
+    },
+    "image": {
+      "src": "/images/showcase/macos/folder-sorting-light.webp",
+      "alt": "Zush para Mac mostrando un lote de archivos renombrados agrupados en carpetas sugeridas antes de aplicar los cambios.",
+      "caption": "Zush para Mac: nombres de archivo propuestos agrupados por carpeta sugerida. Nada se mueve hasta que apliques el lote."
+    },
+    "limit": "La ordenación de carpetas con IA mueve archivos, así que prueba primero con una copia y mantenla desactivada en las carpetas que otras apps referencian por ruta. Zush no elimina duplicados, no limpia espacio en disco ni sustituye a un sistema de gestión documental. Deshacer restaura el nombre y la carpeta originales.",
+    "links": [
+      {
+        "href": "/ai-file-sorter",
+        "label": "Clasificador de archivos con IA con tus propias reglas de carpetas"
+      },
+      {
+        "href": "/docs/folder-sorting",
+        "label": "Documentación de ordenación de carpetas"
+      },
+      {
+        "href": "/docs/folder-monitoring",
+        "label": "Configura la supervisión de carpetas"
+      }
+    ]
+  },
+  "relatedPages": [
+    {
+      "title": "Clasificador de archivos con IA",
+      "href": "/ai-file-sorter"
+    },
+    {
+      "title": "Ordenación de carpetas con IA: reglas automáticas y personalizadas",
+      "href": "/docs/folder-sorting"
+    },
+    {
+      "title": "Documentación de supervisión de carpetas",
+      "href": "/docs/folder-monitoring"
+    },
+    {
+      "title": "Guía de plantillas",
+      "href": "/docs/templates"
+    },
+    {
+      "title": "Guía de Naming Blocks",
+      "href": "/docs/naming-blocks"
+    },
+    {
+      "title": "Renombra archivos en lote con IA",
+      "href": "/batch-rename-files"
+    },
+    {
+      "title": "Renombrador de archivos con IA sin conexión",
+      "href": "/offline-ai-file-renamer"
+    },
+    {
+      "title": "Renombrador y organizador de archivos con IA",
+      "href": "/"
+    },
+    {
+      "title": "Renombrador de archivos con IA para Mac",
+      "href": "/mac"
+    },
+    {
+      "title": "Renombrador de archivos con IA para Windows",
+      "href": "/windows"
+    }
+  ],
+  "relatedBlogPosts": [
+    {
+      "title": "Ordena archivos en carpetas con IA en Mac",
+      "href": "sort-files-into-folders-with-ai-mac"
+    },
+    {
+      "title": "Ordena archivos en carpetas con IA en Windows",
+      "href": "sort-files-into-folders-with-ai-windows"
+    },
+    {
+      "title": "Los mejores clasificadores de archivos con IA para Mac y Windows",
+      "href": "best-ai-file-sorters"
+    },
+    {
+      "title": "Los mejores organizadores de archivos con IA para Windows 11",
+      "href": "best-ai-file-organizers-windows"
+    },
+    {
+      "title": "Los mejores organizadores de archivos con IA para Mac",
+      "href": "best-ai-file-organizers-mac"
+    },
+    {
+      "title": "Los mejores organizadores de documentos con IA",
+      "href": "best-ai-document-organizers"
+    },
+    {
+      "title": "Organizador automático de archivos para Mac",
+      "href": "automate-file-organization-macos"
+    },
+    {
+      "title": "Las mejores formas de organizar fotos en Mac",
+      "href": "best-ways-to-organize-photos-on-mac"
+    },
+    {
+      "title": "Despeja tu Mac: guía de limpieza de archivos",
+      "href": "declutter-your-mac-file-cleanup-guide"
+    }
+  ],
+  "contextualGuideLink": {
+    "before": "¿Estás comparando aplicaciones antes de elegir un flujo de trabajo? Consulta los",
+    "label": "mejores organizadores de archivos con IA para Mac",
+    "href": "/blog/best-ai-file-organizers-mac",
+    "after": "para ver un desglose centrado en la verificación de renombrado, movimiento, IA local, deshacer y precios."
+  },
+  "howTo": {
+    "@type": "HowTo",
+    "name": "Organiza archivos con IA",
+    "description": "Usa Zush para crear nombres de archivo descriptivos y coherentes en carpetas de Mac y Windows, con ordenación de carpetas con IA opcional.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Arrastra una carpeta desordenada a Zush",
+        "text": "Añade Descargas, una carpeta de capturas de pantalla, una carpeta de cliente o cualquier lote mixto de archivos."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Elige una convención de nomenclatura",
+        "text": "Usa un título generado por IA o combina fechas, clientes, categorías, contadores y metadatos con plantillas y Naming Blocks."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Elige Auto o reglas de carpeta personalizadas",
+        "text": "Activa la ordenación de carpetas con IA. Deja que Auto agrupe los archivos por contenido o escribe instrucciones en lenguaje natural. Elige un destino y, si quieres, reutiliza carpetas existentes adecuadas."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Revisa, aplica y automatiza",
+        "text": "Previsualiza los nombres y las carpetas sugeridas antes de aplicar el lote. Guarda las reglas en una Plantilla para que Monitor procese los archivos nuevos."
+      }
+    ],
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [
+        "h1",
+        "meta[name=\"description\"]"
+      ]
+    }
+  }
+}

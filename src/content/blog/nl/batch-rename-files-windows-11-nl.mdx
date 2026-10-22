@@ -1,0 +1,166 @@
+---
+title: "Bestanden in bulk hernoemen in Windows 11: 5 manieren, waarvan 3 ingebouwd (2026)"
+description: "Hernoem meerdere bestanden tegelijk in Windows 11 of 10. File Explorer, de opdrachtprompt en PowerShell vragen geen installatie; PowerRename en AI bieden meer."
+date: "2026-09-22"
+slug: "batch-rename-files-windows-11-nl"
+locale: "nl"
+translationOf: "batch-rename-files-windows-11"
+platform: "windows"
+topic: "automation"
+tags:
+  - "Bestanden benoemen"
+  - "File Explorer"
+  - "Automatisering"
+tldr: "Selecteer bestanden in File Explorer en druk op F2 voor een snelle genummerde reeks. Gebruik PowerRename voor zoeken en vervangen, datums en reguliere expressies met een voorbeeld. Gebruik PowerShell voor alles wat te scripten is. Gebruik een AI-hernoemer zoals Zush wanneer elk bestand een eigen beschrijvende naam nodig heeft op basis van de inhoud."
+reviewed: "2026-09-22"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Kort antwoord: om in Windows 11 meerdere bestanden tegelijk te hernoemen, selecteer je ze in File Explorer, druk je op **F2**, typ je een naam en druk je op **Enter**. Windows geeft ze dan de namen `Name (1)`, `Name (2)`, enzovoort. Voor slimmere acties, zoals tekst vervangen, datums toevoegen of elk bestand een echte naam geven, gebruik je een van de vier methoden hieronder.
+
+| Methode | Het beste voor | Voorbeeld | Ongedaan maken |
+|---|---|---|---|
+| File Explorer (F2) | Snelle genummerde namen | Nee | Ctrl+Z direct na afloop |
+| PowerRename | Zoeken en vervangen, datums, reguliere expressies | Ja | Ctrl+Z in Verkenner |
+| Opdrachtprompt | Extensies wijzigen | Nee | Nee |
+| PowerShell | Alles wat te scripten is | Met `-WhatIf` | Nee |
+| Zush (AI) | Een beschrijvende naam voor elk bestand | Ja | Volledige Rename History |
+
+Kopieer vóór elke bulkhernoeming een paar bestanden naar een testmap en probeer de methode daar eerst uit.
+
+## 1. File Explorer: F2 voor een genummerde reeks
+
+1. Open de map en selecteer de bestanden. Gebruik **Ctrl+A** voor alle bestanden, of **Ctrl+klik** om te kiezen.
+2. Druk op **F2** (of klik met de rechtermuisknop en kies **Naam wijzigen**, het pictogram van een tekstcursor in Windows 11).
+3. Typ de nieuwe naam, bijvoorbeeld `Lisbon trip`, en druk op **Enter**.
+
+Je krijgt `Lisbon trip (1).jpg`, `Lisbon trip (2).jpg`, enzovoort. De nummering volgt de huidige sorteervolgorde, dus sorteer eerst op **Datum** als de volgorde ertoe doet. Druk direct op **Ctrl+Z** om ongedaan te maken.
+
+**Tip:** om bestanden na elkaar te hernoemen, druk je op F2 bij het eerste bestand, typ je de naam en druk je op **Tab** om naar het volgende bestand te springen.
+
+## 2. PowerRename: zoeken en vervangen met voorbeeld
+
+PowerRename is een gratis hulpmiddel van Microsoft in [PowerToys](https://learn.microsoft.com/en-us/windows/powertoys/powerrename). Installeer PowerToys vanuit de Microsoft Store en ga dan als volgt te werk:
+
+1. Selecteer bestanden in File Explorer, klik met de rechtermuisknop en kies **Naam wijzigen met PowerRename** (in Windows 11 staat dit mogelijk onder **Meer opties weergeven**).
+2. Typ bij **Zoeken naar** wat je wilt vinden en bij **Vervangen door** wat er in de plaats moet komen.
+3. Controleer het voorbeeld aan de rechterkant en klik op **Toepassen**.
+
+Handige recepten:
+
+| Doel | Zoeken naar | Vervangen door | Opties |
+|---|---|---|---|
+| Spaties naar koppeltekens | ` ` (een spatie) | `-` | Alle overeenkomsten |
+| Een voorvoegsel toevoegen | `^` | `2026_` | Reguliere expressies gebruiken |
+| Een datum omdraaien `29-03-2026` → `2026-03-29` | `(\d{2})-(\d{2})-(\d{4})` | `$3-$2-$1` | Regex, alle overeenkomsten |
+| Bestanden nummeren | `.*` | `Photo_${padding=3;start=1}` | Regex, items nummeren, alleen op bestandsnaam toepassen |
+| Opnamedatum van foto | `^` | `$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD-` | Regex, EXIF/XMP-metadata als bron |
+
+PowerRename kan ook de hoofdletters wijzigen (kleine letters, hoofdletters, titelcase) en alleen de extensie hernoemen.
+
+## 3. Opdrachtprompt: extensies snel wijzigen
+
+De oude opdracht `ren` is handig voor één taak: extensies in bulk wijzigen:
+
+```bat
+cd "C:\Users\You\Pictures\Export"
+ren *.jpeg *.jpg
+```
+
+Daarmee wordt elk `.jpeg`-bestand in de map hernoemd naar `.jpg`. Er wordt niet eerst om bevestiging gevraagd en je kunt het niet ongedaan maken, dus probeer het op kopieën.
+
+## 4. PowerShell: scriptbare hernoemingen
+
+PowerShell kan elk patroon aan dat je kunt beschrijven. Open **Terminal** (klik met de rechtermuisknop op de Start-knop) en ga met `cd` naar je map. Voeg `-WhatIf` toe aan het einde van een opdracht om een voorbeeld te zien zonder dat er iets wordt hernoemd.
+
+Een voorvoegsel toevoegen aan elke JPG:
+
+```powershell
+(Get-ChildItem *.jpg) | Rename-Item -NewName { "Lisbon_" + $_.Name }
+```
+
+Spaties vervangen door koppeltekens:
+
+```powershell
+(Get-ChildItem) | Rename-Item -NewName { $_.Name -replace ' ', '-' }
+```
+
+De wijzigingsdatum vooraan toevoegen bij elke PDF:
+
+```powershell
+(Get-ChildItem *.pdf) | Rename-Item -NewName { $_.LastWriteTime.ToString('yyyy-MM-dd') + '_' + $_.Name }
+```
+
+Bestanden op datum nummeren, als `Trip_001.jpg`, `Trip_002.jpg`:
+
+```powershell
+$i = 1
+Get-ChildItem *.jpg | Sort-Object LastWriteTime | ForEach-Object {
+  Rename-Item $_ -NewName ('Trip_{0:D3}{1}' -f $i++, $_.Extension)
+}
+```
+
+De haakjes rond `Get-ChildItem` zijn belangrijk: ze verzamelen de bestandslijst voordat het hernoemen begint, zodat een al hernoemd bestand niet twee keer wordt opgepikt.
+
+## 5. AI: geef elk bestand een eigen naam
+
+Alle vier de methoden hierboven passen de naam aan die een bestand al heeft. Ze kunnen `scan_0042.pdf` niet omzetten in `2026-09-12_acme_invoice_1042.pdf`, omdat die informatie in het bestand zit en niet in de naam.
+
+Dat is wat een AI-hernoemer doet. [Zush voor Windows](/windows) leest elk bestand (de tekst van een pdf, wat een schermafbeelding toont, het tafereel op een foto, de inhoud van een Word- of Excel-bestand) en stelt een beschrijvende naam voor:
+
+1. Installeer Zush vanuit de [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X).
+2. Sleep een map of een selectie bestanden erin.
+3. Kies een Template, zoals Screenshots of Bookkeeper Expenses, of bouw een patroon op uit Naming Blocks zoals `{Created Date}_{Vendor}_{Document Type}`.
+4. Bekijk de voorgestelde namen. Pas er een aan met een dubbelklik.
+5. Klik op **Hernoemen**. Als je later van gedachten verandert, zet je de batch terug via Rename History.
+
+| Voor | Na |
+|---|---|
+| `Screenshot 2026-09-18 141203.png` | `github-pull-request-review-comments.png` |
+| `scan_0042.pdf` | `2026-09-12_acme_invoice_1042.pdf` |
+| `Document1.docx` | `q3-marketing-plan-draft.docx` |
+
+Schakel mapbewaking in en nieuwe bestanden in Downloads of een scannermap worden hernoemd zodra ze binnenkomen. De eerste 50 AI-hernoemingen zijn gratis.
+
+<BlogCTA placement='inline' platform='windows' />
+
+## Veelvoorkomende problemen
+
+**"De bestandsnaam is te lang."** Windows-paden zijn standaard beperkt tot 260 tekens. Maak de nieuwe namen korter of verplaats de map dichter naar de hoofdmap van de schijf.
+
+**Bestanden overgeslagen of twee keer hernoemd in PowerShell.** Zet `Get-ChildItem` tussen haakjes, zoals in de voorbeelden hierboven.
+
+**PowerRename ontbreekt in het rechtsklikmenu.** Open de instellingen van PowerToys, controleer of PowerRename is ingeschakeld en kijk in Windows 11 onder **Meer opties weergeven**.
+
+**De nummers staan in de verkeerde volgorde.** File Explorer en PowerRename nummeren bestanden in de huidige sorteervolgorde. Sorteer op datum of naam voordat je hernoemt.
+
+**Een bestand is "in gebruik".** Sluit de app waarin het geopend is (vaak een fotoviewer of Word) en probeer het opnieuw.
+
+<BlogProductIntro
+  title="Echte namen nodig in plaats van Foto (1), Foto (2)?"
+  description="Zush leest elk bestand op Windows en stelt een duidelijke, doorzoekbare naam voor. Bekijk eerst alles en pas dan de hele batch toe met één klik."
+  links={[
+    { href: '/windows', label: 'Zush voor Windows' },
+    { href: '/blog/best-file-renamer-windows-11', label: 'De beste bestandshernoemers voor Windows 11' },
+    { href: '/batch-rename-files', label: 'Bulkhernoemen met AI' },
+  ]}
+/>
+
+## Veelgestelde vragen
+
+### Hoe hernoem ik meerdere bestanden tegelijk in Windows 11?
+
+Selecteer de bestanden in File Explorer, druk op F2, typ een naam en druk op Enter. Windows voegt (1), (2), (3) toe aan elke naam. Voor zoeken en vervangen of datums gebruik je PowerRename van Microsoft PowerToys.
+
+### Hoe maak ik een bulkhernoeming ongedaan in Windows?
+
+Druk direct na het hernoemen op Ctrl+Z in File Explorer; dit werkt voor F2 en PowerRename. Hernoemingen via de opdrachtprompt en PowerShell kun je niet ongedaan maken. Zush bewaart een Rename History waaruit je op elk moment kunt terugzetten.
+
+### Kan ik bestanden in bulk hernoemen zonder iets te installeren?
+
+Ja. File Explorer (F2), de opdrachtprompt (`ren`) en PowerShell (`Rename-Item`) zijn allemaal ingebouwd in Windows 11 en 10.
+
+### Hoe hernoem ik bestanden op basis van hun inhoud in Windows?
+
+Ingebouwde hulpmiddelen kunnen de inhoud van bestanden niet lezen. Gebruik een AI-hernoemer zoals Zush, die elk bestand analyseert en een naam voorstelt op basis van wat erin staat.

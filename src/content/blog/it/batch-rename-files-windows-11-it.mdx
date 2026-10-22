@@ -1,0 +1,166 @@
+---
+title: "Come rinominare più file in blocco in Windows 11: 5 metodi, 3 integrati (2026)"
+description: "Rinomina più file in blocco in Windows 11 o 10. File Explorer, Prompt dei comandi e PowerShell non richiedono installazioni; PowerRename e l'AI offrono qualcosa in più."
+date: "2026-09-22"
+slug: "batch-rename-files-windows-11-it"
+locale: "it"
+translationOf: "batch-rename-files-windows-11"
+platform: "windows"
+topic: "automation"
+tags:
+  - "Denominazione dei file"
+  - "File Explorer"
+  - "Automazione"
+tldr: "Seleziona i file in File Explorer e premi F2 per una rapida sequenza numerata. Usa PowerRename per trova e sostituisci, date e regex con anteprima. Usa PowerShell per tutto ciò che si può automatizzare con uno script. Usa uno strumento di ridenominazione con AI come Zush quando ogni file ha bisogno di un nome descrittivo basato sul suo contenuto."
+reviewed: "2026-09-22"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Risposta rapida: per rinominare più file contemporaneamente in Windows 11, selezionali in File Explorer, premi **F2**, digita un nome e premi **Invio**. Windows li chiama `Name (1)`, `Name (2)` e così via. Per qualcosa di più intelligente, come sostituire testo, aggiungere date o dare a ogni file un nome vero, usa uno dei quattro metodi seguenti.
+
+| Metodo | Ideale per | Anteprima | Annulla |
+|---|---|---|---|
+| File Explorer (F2) | Nomi numerati rapidi | No | Ctrl+Z subito dopo |
+| PowerRename | Trova e sostituisci, date, regex | Sì | Ctrl+Z in Esplora risorse |
+| Prompt dei comandi | Cambiare le estensioni | No | No |
+| PowerShell | Tutto ciò che è automatizzabile | Con `-WhatIf` | No |
+| Zush (AI) | Un nome descrittivo per ogni file | Sì | Cronologia completa delle rinomine |
+
+Prima di qualsiasi ridenominazione in blocco, copia alcuni file in una cartella di prova e prova lì il metodo.
+
+## 1. File Explorer: F2 per una sequenza numerata
+
+1. Apri la cartella e seleziona i file. Usa **Ctrl+A** per selezionarli tutti, oppure **Ctrl+clic** per sceglierli uno a uno.
+2. Premi **F2** (oppure fai clic con il pulsante destro e scegli **Rinomina**, l'icona con il cursore di testo in Windows 11).
+3. Digita il nuovo nome, ad esempio `Lisbon trip`, e premi **Invio**.
+
+Otterrai `Lisbon trip (1).jpg`, `Lisbon trip (2).jpg` e così via. La numerazione segue l'ordinamento corrente, quindi se l'ordine conta ordina prima per **Data**. Premi subito **Ctrl+Z** per annullare.
+
+**Suggerimento:** per rinominare i file uno dopo l'altro, premi F2 sul primo, digita il suo nome, poi premi **Tab** per passare al file successivo.
+
+## 2. PowerRename: trova e sostituisci con anteprima
+
+PowerRename è uno strumento Microsoft gratuito incluso in [PowerToys](https://learn.microsoft.com/en-us/windows/powertoys/powerrename). Installa PowerToys dal Microsoft Store, poi:
+
+1. Seleziona i file in File Explorer, fai clic con il pulsante destro e scegli **Rinomina con PowerRename** (in Windows 11 potrebbe trovarsi sotto **Mostra altre opzioni**).
+2. Digita ciò che vuoi trovare in **Cerca** e ciò che vuoi inserire al suo posto in **Sostituisci con**.
+3. Controlla l'anteprima a destra, poi fai clic su **Applica**.
+
+Ricette utili:
+
+| Obiettivo | Cerca | Sostituisci con | Opzioni |
+|---|---|---|---|
+| Da spazi a trattini | ` ` (uno spazio) | `-` | Corrispondenza di tutte le occorrenze |
+| Aggiungere un prefisso | `^` | `2026_` | Usa espressioni regolari |
+| Riordinare una data `29-03-2026` → `2026-03-29` | `(\d{2})-(\d{2})-(\d{4})` | `$3-$2-$1` | Regex, tutte le occorrenze |
+| Numerare i file | `.*` | `Photo_${padding=3;start=1}` | Regex, enumera elementi, applica solo al nome del file |
+| Data di scatto della foto | `^` | `$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD-` | Regex, origine metadati EXIF/XMP |
+
+PowerRename può anche cambiare tra maiuscole e minuscole (minuscolo, maiuscolo, iniziali maiuscole) e rinominare solo l'estensione.
+
+## 3. Prompt dei comandi: cambiare le estensioni in fretta
+
+Il vecchio comando `ren` è comodo per un solo compito, cambiare le estensioni in blocco:
+
+```bat
+cd "C:\Users\You\Pictures\Export"
+ren *.jpeg *.jpg
+```
+
+Questo rinomina ogni file `.jpeg` della cartella in `.jpg`. Non chiede conferma e non si può annullare, quindi provalo su delle copie.
+
+## 4. PowerShell: ridenominazioni con script
+
+PowerShell può gestire qualsiasi schema tu sappia descrivere. Apri **Terminale** (clic con il pulsante destro sul pulsante Start) e vai nella tua cartella con `cd`. Aggiungi `-WhatIf` alla fine di qualsiasi comando per vederne l'anteprima senza rinominare nulla.
+
+Aggiungere un prefisso a ogni JPG:
+
+```powershell
+(Get-ChildItem *.jpg) | Rename-Item -NewName { "Lisbon_" + $_.Name }
+```
+
+Sostituire gli spazi con trattini:
+
+```powershell
+(Get-ChildItem) | Rename-Item -NewName { $_.Name -replace ' ', '-' }
+```
+
+Aggiungere la data di modifica all'inizio di ogni PDF:
+
+```powershell
+(Get-ChildItem *.pdf) | Rename-Item -NewName { $_.LastWriteTime.ToString('yyyy-MM-dd') + '_' + $_.Name }
+```
+
+Numerare i file per data, come `Trip_001.jpg`, `Trip_002.jpg`:
+
+```powershell
+$i = 1
+Get-ChildItem *.jpg | Sort-Object LastWriteTime | ForEach-Object {
+  Rename-Item $_ -NewName ('Trip_{0:D3}{1}' -f $i++, $_.Extension)
+}
+```
+
+Le parentesi attorno a `Get-ChildItem` sono importanti: raccolgono l'elenco dei file prima che inizi la ridenominazione, così un file rinominato non viene preso due volte.
+
+## 5. AI: dai a ogni file il suo nome
+
+Tutti e quattro i metodi precedenti trasformano il nome che un file ha già. Non possono trasformare `scan_0042.pdf` in `2026-09-12_acme_invoice_1042.pdf`, perché l'informazione è dentro il file, non nel suo nome.
+
+È quello che fa uno strumento di ridenominazione con AI. [Zush per Windows](/windows) legge ogni file (il testo di un PDF, ciò che mostra uno screenshot, la scena di una foto, il contenuto di un file Word o Excel) e suggerisce un nome descrittivo:
+
+1. Installa Zush dal [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X).
+2. Trascina una cartella o una selezione di file.
+3. Scegli un modello, come Screenshots o Bookkeeper Expenses, oppure crea uno schema con Naming Blocks, ad esempio `{Created Date}_{Vendor}_{Document Type}`.
+4. Controlla i nomi suggeriti. Modifica quelli che vuoi con un doppio clic.
+5. Fai clic su **Rinomina**. Se più tardi cambi idea, ripristina il lotto dalla Cronologia rinomine.
+
+| Prima | Dopo |
+|---|---|
+| `Screenshot 2026-09-18 141203.png` | `github-pull-request-review-comments.png` |
+| `scan_0042.pdf` | `2026-09-12_acme_invoice_1042.pdf` |
+| `Document1.docx` | `q3-marketing-plan-draft.docx` |
+
+Attiva il monitoraggio delle cartelle e i nuovi file in Download o in una cartella dello scanner vengono rinominati man mano che arrivano. Le prime 50 ridenominazioni con AI sono gratuite.
+
+<BlogCTA placement='inline' platform='windows' />
+
+## Problemi comuni
+
+**"Il nome del file è troppo lungo."** Per impostazione predefinita i percorsi di Windows sono limitati a 260 caratteri. Accorcia i nuovi nomi o sposta la cartella più vicino alla radice dell'unità.
+
+**File saltati o rinominati due volte in PowerShell.** Racchiudi `Get-ChildItem` tra parentesi, come negli esempi precedenti.
+
+**PowerRename non compare nel menu del clic destro.** Apri le impostazioni di PowerToys, verifica che PowerRename sia attivato e controlla **Mostra altre opzioni** in Windows 11.
+
+**I numeri sono nell'ordine sbagliato.** File Explorer e PowerRename numerano i file secondo l'ordinamento corrente. Ordina per data o per nome prima di rinominare.
+
+**Un file è "in uso".** Chiudi l'app che lo tiene aperto (spesso un visualizzatore di foto o Word) e riprova.
+
+<BlogProductIntro
+  title="Servono nomi veri, non Foto (1), Foto (2)?"
+  description="Zush legge ogni file su Windows e suggerisce un nome chiaro e facile da cercare. Controlla prima, poi applica l'intero lotto con un clic."
+  links={[
+    { href: '/windows', label: 'Zush per Windows' },
+    { href: '/blog/best-file-renamer-windows-11', label: 'I migliori strumenti per rinominare file in Windows 11' },
+    { href: '/batch-rename-files', label: 'Rinomina in blocco con AI' },
+  ]}
+/>
+
+## Domande frequenti
+
+### Come rinomino più file contemporaneamente in Windows 11?
+
+Seleziona i file in File Explorer, premi F2, digita un nome e premi Invio. Windows aggiunge (1), (2), (3) a ciascuno. Per trova e sostituisci o per le date, usa PowerRename di Microsoft PowerToys.
+
+### Come annullo una ridenominazione in blocco in Windows?
+
+Premi Ctrl+Z in File Explorer subito dopo la ridenominazione; funziona per F2 e PowerRename. Le ridenominazioni con Prompt dei comandi e PowerShell non si possono annullare. Zush conserva una Cronologia rinomine da cui puoi ripristinare in qualsiasi momento.
+
+### Posso rinominare file in blocco senza installare nulla?
+
+Sì. File Explorer (F2), Prompt dei comandi (`ren`) e PowerShell (`Rename-Item`) sono tutti integrati in Windows 11 e 10.
+
+### Come rinomino i file in base al loro contenuto in Windows?
+
+Gli strumenti integrati non possono leggere il contenuto dei file. Usa uno strumento di ridenominazione con AI come Zush, che analizza ogni file e suggerisce un nome in base a ciò che contiene.
