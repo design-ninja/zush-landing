@@ -94,6 +94,12 @@
         }
     }
 
+    &__VersionRow {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
     // Qualified so it outweighs the shared Heading size class on the element.
     & &__Version {
         margin: 0;

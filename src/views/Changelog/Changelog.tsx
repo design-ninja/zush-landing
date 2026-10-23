@@ -110,12 +110,14 @@ const Changelog = ({ macSource, windowsSource, activePlatform }: ChangelogProps)
                         {releases.map((release, index) => (
                             <article key={`${activePlatform}-${release.version}`} className={styles.Changelog__Item}>
                                 <div className={styles.Changelog__ItemHeader}>
-                                    <Heading as='h2' className={styles.Changelog__Version}>
-                                        v{release.version}
-                                    </Heading>
-                                    {isLatest(index) && (
-                                        <span className={styles.Changelog__Badge}>Latest</span>
-                                    )}
+                                    <div className={styles.Changelog__VersionRow}>
+                                        <Heading as='h2' className={styles.Changelog__Version}>
+                                            v{release.version}
+                                        </Heading>
+                                        {isLatest(index) && (
+                                            <span className={styles.Changelog__Badge}>Latest</span>
+                                        )}
+                                    </div>
                                     <time className={styles.Changelog__Date}>{release.date}</time>
                                 </div>
                                 <div className={styles.Changelog__Content}>
