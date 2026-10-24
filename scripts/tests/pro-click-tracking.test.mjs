@@ -91,6 +91,32 @@ test('photo comparison serves library intent before the optional rename CTA and 
   assert.match(read('src/data/blogSchema.ts'), /earlyTaskExample: z.boolean\(\).default\(true\)/);
   assert.match(read('src/components/blog/BlogPostLayout.astro'), /taskExample && entry.data.earlyTaskExample &&/);
   const cta = read('src/components/blog/BlogCTA.astro');
-  assert.match(cta, /data-title-mac=\{title \?\?/);
-  assert.match(cta, /data-title-windows=\{title \?\?/);
+  const titleExpressions = ['mac', 'windows'].map(os => {
+    const match = cta.match(new RegExp(`data-title-${os}=\\{([^}]+)\\}`));
+    assert.ok(match, `Missing ${os} CTA title`);
+    return match[1];
+  });
+  const frontmatter = cta.split('---')[1].replace(/^import .*;\n/gm, '');
+  const script = ts.transpileModule(`${frontmatter}\nexports.titles = [${titleExpressions.join(',')}];`, {
+    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
+  }).outputText;
+  for (const locale of ['en', 'fr']) {
+    for (const title of [undefined, 'Try descriptive filenames on a copied photo folder']) {
+      const runtime = {
+        exports: {}, Astro: { props: { title }, url: new URL('https://example.test/') },
+        headingStyles: {}, textStyles: {}, styles: {}, PRO_PRICING_SUMMARY: 'test pricing',
+        stripLocaleFromPath: () => ({ locale }),
+        getCopy: () => ({ header: { download: 'Download' } }),
+        getBlogCtaCopy: () => locale === 'en' ? undefined : {
+          titles: { footer: 'Des noms sur {os}' }, descriptions: { footer: 'Description' },
+        },
+      };
+      vm.runInNewContext(script, runtime);
+      assert.deepEqual(Array.from(runtime.exports.titles), title
+        ? [title, title]
+        : locale === 'fr'
+          ? ['Des noms sur Mac', 'Des noms sur Windows']
+          : ['Stop renaming files by hand — get Zush for Mac', 'Stop renaming files by hand — get Zush for Windows']);
+    }
+  }
 });
