@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.16.0.0] - 2026-10-24
+
+### Added
+- Cloud AI can identify music without track tags and use a matching song title and artist when naming files.
+- Video analysis can use spoken content, embedded MKV text subtitles, and video metadata alongside preview frames.
+
+### Improved
+- Audio analysis distinguishes speech from music and sound effects, including speech after a musical intro, for more relevant filename suggestions.
+- Long audio recordings and videos use shorter speech excerpts for analysis.
+
+### Fixed
+- Music compilations use the track's contributing artist instead of a generic compilation or album artist.
+- Audio analysis preserves the original filename and available tags as naming context.
+- Monitored folders release removable drives when Windows requests safe removal and resume watching if removal is cancelled.
+
 ## [3.15.0.0] - 2026-10-23
 
 ### Added
