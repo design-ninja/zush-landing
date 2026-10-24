@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.20.0] - 2026-10-24
+
+### New
+
+- Monitor folders on external drives, including after reconnecting a drive.
+- Name videos using speech, embedded subtitles, and metadata, including supported MKV files.
+
+### Improved
+
+- Long audio files use a short excerpt for analysis.
+- More reliable audio naming, with fewer incorrect titles from music or silence.
+- Faster, more accurate automatic folder sorting.
+
 ## [3.19.0] - 2026-10-22
 
 ### New
