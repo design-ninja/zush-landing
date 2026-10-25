@@ -1,0 +1,46 @@
+---
+title: How Zush Analyzes Audio and Video
+description: Understand how Zush uses media metadata, sampled frames, subtitles, speech excerpts, and music recognition to name audio and video files on Mac and Windows.
+lastUpdated: 2026-10-25
+---
+
+Zush combines the evidence available in a media file to suggest a name. It does not need to understand every moment of a recording, and a filename is not a full transcript.
+
+## Audio files
+
+Zush can use embedded track metadata, an available transcript, music recognition, or speech analysis. The route depends on the file and your selected [AI mode](/docs/ai-modes).
+
+For cloud speech analysis, Zush uses an excerpt from the **first two minutes** of an audio file. A long recording may cover topics outside that excerpt, so review the suggested name before applying it.
+
+Music recognition can identify a track when there is a reliable catalog match. It is not guaranteed for every recording, remix, live performance, or noisy clip. Zush can use metadata or other available context when no match is found.
+
+## Video files
+
+Video naming can combine:
+
+- sampled frames for visible subjects and scenes
+- embedded metadata
+- readable subtitles, including supported subtitle tracks in MKV files
+- a speech excerpt from the **first five minutes**, when the cloud route supports it and speech is detected
+- music recognition when available
+
+A matching song identifies the audio source; it does not establish who is visible or where the video was recorded. Review those details in the proposed name.
+
+## Cloud, BYOK, and local differences
+
+| Mode | What to expect |
+| --- | --- |
+| Zush Cloud AI | Managed analysis can use bounded audio excerpts for transcription, alongside visual or text evidence. |
+| BYOK | Media handling depends on the provider. Gemini can process supported audio directly; supported OpenAI, OpenRouter, and Anthropic routes use a transcription step. |
+| Ollama or LM Studio | The local model uses available text, metadata, and image previews. Zush does not send raw audio to these local models or switch to cloud transcription automatically. On-device speech support varies by platform and available components. |
+
+Local modes also skip online music catalog recognition. If a local result lacks the spoken subject, try adding a transcript or use the available metadata in your [Naming Blocks](/docs/naming-blocks).
+
+## Build a useful media workflow
+
+- For recordings and clips, start with **Title** and add a date or project only when useful.
+- For a library of films and episodes, use the [Movies & TV Template guide](/docs/templates/movies-tv).
+- For repeatable names, save the pattern as a [Template](/docs/templates).
+- Test representative files before assigning a media folder to [Monitor](/docs/folder-monitoring).
+
+See [Supported file types](/docs/supported-file-types) for containers and the codec caveat, and [Privacy and security](/docs/privacy-security) for what cloud processing sends.

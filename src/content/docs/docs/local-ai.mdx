@@ -1,7 +1,7 @@
 ---
-title: Local AI with LM Studio or Ollama
-description: Connect Zush to LM Studio or Ollama for private, local file analysis on Mac and Windows. Supported files are analyzed on your device, not in the cloud.
-lastUpdated: 2026-08-31
+title: Local AI with Ollama or LM Studio
+description: Connect Zush to Ollama or LM Studio for private, local file analysis on Mac and Windows. Supported files are analyzed on your device, not in the cloud.
+lastUpdated: 2026-10-25
 sidebar:
   order: 32
   label: Local AI
@@ -9,23 +9,23 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Zush runs local analysis through [LM Studio](/docs/lm-studio) or [Ollama](/docs/offline-ai) on Mac and Windows. You choose and run a compatible model in the local server, then connect Zush to it. Supported analysis stays on your computer while the local mode is selected.
+Zush runs local analysis through [Ollama](/docs/offline-ai) or [LM Studio](/docs/lm-studio) on Mac and Windows. You choose and run a compatible model in the local server, then connect Zush to it. Supported analysis stays on your computer while the local mode is selected.
 
 ## Requirements
 
 - the latest Zush version for Mac or Windows
 - macOS 15 or later, or Windows 10/11
-- LM Studio or Ollama installed on the same computer
-- a compatible local model with enough disk space and memory for your hardware
+- enough disk space and memory for a compatible local model
+- Ollama or LM Studio on the same computer; the setup guides below cover installation
 - internet access for installation and model download; analysis can run offline afterward
 
 ## Set up local AI
 
 <Steps>
 1. Open Zush Settings and select **AI Modes**.
-2. Start LM Studio or Ollama and load a compatible model.
-3. In Zush, select **LM Studio** or **Ollama**.
-4. Confirm the local server address and model.
+2. Choose **Ollama** or **LM Studio**.
+3. Follow the matching setup guide below. For Ollama, Zush provides buttons to download Ollama, start it, and download the first model. For LM Studio, install and load a vision-capable model in LM Studio.
+4. Confirm the selected model and use **Test** to check the connection.
 5. Open **AI Rename** and test a small representative batch.
 </Steps>
 
@@ -33,25 +33,29 @@ Zush runs local analysis through [LM Studio](/docs/lm-studio) or [Ollama](/docs/
 
 | Option | Use it when |
 | --- | --- |
+| [Ollama](/docs/offline-ai) | You want guided setup using Zush’s Download and Start buttons, or already use Ollama |
 | [LM Studio](/docs/lm-studio) | You want a desktop model catalog and server controls |
-| [Ollama](/docs/offline-ai) | You already manage local models through Ollama or prefer its command-line workflow |
 
 <Aside type="note">
-LM Studio and Ollama normally listen on a local address on your Mac or Windows PC. Zush does not silently fall back to cloud analysis while either local mode is selected.
+Ollama and LM Studio normally listen on a local address on your Mac or Windows PC. Zush does not silently fall back to cloud analysis while either local mode is selected.
 </Aside>
+
+## What local AI can analyze
+
+Local modes use the previews, extracted text, and metadata Zush can prepare. They do not send raw audio to the local model or automatically use cloud transcription. See [Audio and video analysis](/docs/audio-video) before choosing a mode for recordings.
 
 ## Troubleshooting
 
 | Problem | What to do |
 | --- | --- |
-| Zush cannot connect | Confirm that LM Studio or Ollama is running and that the server address matches Zush Settings |
-| The model is not listed | Load or pull a compatible model in LM Studio or Ollama, then refresh the model list in Zush |
+| Zush cannot connect | Confirm that Ollama or LM Studio is running and that the server address matches Zush Settings |
+| The model is not listed | Load or pull a compatible model in Ollama or LM Studio, then refresh the model list in Zush |
 | Analysis is slow | Try a smaller compatible model or close other memory-intensive apps |
 | A file type fails | Test a supported file with a vision-capable model and check the relevant local-server logs |
 
 ## Related docs
 
 - [AI modes](/docs/ai-modes)
-- [LM Studio](/docs/lm-studio)
 - [Ollama](/docs/offline-ai)
+- [LM Studio](/docs/lm-studio)
 - [Privacy and security](/docs/privacy-security)

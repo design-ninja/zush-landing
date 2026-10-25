@@ -1,7 +1,7 @@
 ---
 title: AI File Renaming Privacy and Security
-description: Understand what Zush processes in Zush Cloud AI, BYOK, LM Studio, and Ollama modes, including file previews, extracted text, provider requests, and local processing.
-lastUpdated: 2026-09-05
+description: Understand what Zush processes in Zush Cloud AI, BYOK, Ollama, and LM Studio modes, including file previews, extracted text, provider requests, and local processing.
+lastUpdated: 2026-10-25
 sidebar:
   order: 33
   label: Privacy and security
@@ -23,9 +23,15 @@ In [Zush Cloud AI](/docs/zush-cloud-ai) and [BYOK](/docs/byok) modes, Zush may p
 
 Original full-resolution files and local folder paths are not sent as separate fields in normal cloud operation, except where a bounded audio payload or temporary document preview is required for analysis.
 
+## Cloud providers
+
+Managed processing can use Google Gemini, OpenRouter and its upstream providers (including DeepSeek), Alibaba Cloud Model Studio (Qwen), and Groq for speech transcription. The route can differ between file analysis, fallback analysis, and folder planning.
+
+Qwen requests may use a Global service deployment scope where encrypted transient inference data can be processed outside the selected US region, including within or outside China; static request data remains in the selected US region.
+
 ## Local AI processing
 
-[LM Studio](/docs/lm-studio) and [Ollama](/docs/offline-ai) use models managed by those local applications. In both modes, supported file analysis content is processed on your Mac or Windows PC instead of by Zush Cloud AI or a third-party cloud AI provider. Zush may still contact backend services for licensing, updates, support, or operational checks.
+[Ollama](/docs/offline-ai) and [LM Studio](/docs/lm-studio) use models managed by those local applications. In both modes, supported file analysis content is processed on your Mac or Windows PC instead of by Zush Cloud AI or a third-party cloud AI provider. Zush may still contact backend services for licensing, updates, support, or operational checks.
 
 ## BYOK keys
 
@@ -39,11 +45,11 @@ Zush does not use your file content or custom prompt text to train Zush-owned mo
 
 If you handle documents under confidentiality or regulatory obligations — patient records, client files, financial statements — choose the AI mode that matches your posture:
 
-- **LM Studio and Ollama** process supported files on your Mac with local models. Nothing about the file content is sent to a cloud AI provider while either mode is selected.
+- **Ollama and LM Studio** process supported files on your Mac or Windows PC with local models. Nothing about the file content is sent to a cloud AI provider while either mode is selected.
 - **BYOK** sends analysis through your own Google Gemini, OpenRouter, OpenAI, or Anthropic account. When OpenRouter is selected, it routes the request to the upstream provider serving the selected model, so review both providers' terms for that workflow.
-- **Cloud mode** uses Zush's managed AI processing through Groq, Google Gemini, or Alibaba Cloud Model Studio (Qwen) and is designed for general files, not documents you are obligated to keep in-house. Qwen requests may use a Global service deployment scope where encrypted transient inference data can be processed outside the selected US region, including within or outside China; static request data remains in the selected US region.
+- **Cloud mode** uses the managed providers described above. Choose a local mode instead when file content must stay in-house.
 
-In every mode, renaming happens in place on your disk: Zush never uploads, moves, or stores your files, and filenames and folder structure stay local.
+File operations happen on your disk. A rename changes the filename; choosing a destination or enabling folder sorting can also move the file. Zush does not store your original files as a hosted library. Cloud and BYOK processing send the analysis content described above; local AI modes keep supported analysis content on your computer.
 
 Two practical caveats. First, an AI mode does not replace your organization's security, access, retention, or naming policies. Second, filenames can surface in sync logs, attachment lines, and search indexes, so keep details that do not need to appear in a folder listing inside the document. The [medical records workflow](/for-medical) shows how to combine this with local processing or organization-controlled BYOK.
 
@@ -56,6 +62,6 @@ This page is a practical product summary. For the legal version, read the [Priva
 - [AI modes](/docs/ai-modes)
 - [Zush Cloud AI](/docs/zush-cloud-ai)
 - [Local AI overview](/docs/local-ai)
-- [LM Studio](/docs/lm-studio)
-- [BYOK](/docs/byok)
 - [Ollama](/docs/offline-ai)
+- [BYOK](/docs/byok)
+- [LM Studio](/docs/lm-studio)

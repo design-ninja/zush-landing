@@ -1,7 +1,7 @@
 ---
 title: BYOK Setup for AI File Renaming
 description: Set up Bring Your Own Key in Zush with Gemini, OpenRouter, OpenAI, or Claude, then test cloud AI file renaming with your own provider key.
-lastUpdated: 2026-09-02
+lastUpdated: 2026-10-25
 sidebar:
   order: 31
   label: BYOK
@@ -32,7 +32,7 @@ With BYOK enabled, Zush still handles the file workflow:
 The main difference is the provider and billing path. Your AI provider bills usage under its current API pricing and account limits. Check the provider's pricing, quota, and model permissions before running a very large batch.
 
 <Aside type="note">
-The free plan includes 50 renames shared across Zush Cloud AI, BYOK, LM Studio, and Ollama. PRO removes the Zush rename limit. BYOK is optional on every plan; use it when you specifically want your own provider account and API key.
+The free plan includes 50 renames shared across Zush Cloud AI, BYOK, Ollama, and LM Studio. PRO removes the Zush rename limit. BYOK is optional on every plan; use it when you specifically want your own provider account and API key.
 </Aside>
 
 ## Supported providers
@@ -110,13 +110,13 @@ Once the test batch looks right, you can use the same AI setup with [Templates](
 
 Your API key is stored locally in secure platform storage. Zush can send it directly to the selected provider to load compatible models and run **Test**. It is also sent transiently to Zush backend when BYOK is enabled and when BYOK analysis is processed; the backend forwards analysis requests to the provider. With OpenRouter, OpenRouter and the upstream provider serving the selected model may both process the request. Zush does not permanently store the key or retain file content after normal processing.
 
-For local model processing instead of cloud provider processing, use [LM Studio](/docs/lm-studio) or [Ollama](/docs/offline-ai). The [local AI overview](/docs/local-ai) compares both routes.
+For local model processing instead of cloud provider processing, use [Ollama](/docs/offline-ai) or [LM Studio](/docs/lm-studio). The [local AI overview](/docs/local-ai) compares both routes.
 
 ## Related docs
 
 - [AI modes](/docs/ai-modes)
 - [Local AI overview](/docs/local-ai)
-- [LM Studio](/docs/lm-studio)
 - [Ollama / Offline AI](/docs/offline-ai)
+- [LM Studio](/docs/lm-studio)
 - [Privacy and security](/docs/privacy-security)
 - [Pricing and limits](/docs/pricing-limits)

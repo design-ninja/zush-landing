@@ -1,7 +1,7 @@
 ---
 title: Supported File Types for AI File Renaming
 description: See the 100+ formats Zush supports across images, RAW photos, PDFs, ebooks, documents, design files, video, audio, subtitles, and structured files.
-lastUpdated: 2026-10-13
+lastUpdated: 2026-10-25
 sidebar:
   order: 40
   label: Supported file types
@@ -10,6 +10,12 @@ sidebar:
 Zush is built for mixed folders. You can [batch rename files](/docs/batch-rename-files) from ordinary Mac and Windows folders without separating screenshots, ebooks, PDFs, photos, design files, video, and audio into different tools.
 
 Support depends on what can be extracted from the file: visual previews, text, metadata, subtitles, transcript context, sampled frames, or compact summaries.
+
+## Mac and Windows differences
+
+Most listed formats work on both platforms. **Sketch, Figma, Pages, Numbers, and Keynote files are supported on Mac; they are not supported inputs in the Windows app.** Export them to a supported format such as PDF or an image before using Zush on Windows.
+
+Format support also differs from AI capability. A local model can use available previews and text without receiving the original audio. See [Audio and video analysis](/docs/audio-video) for mode-specific behavior.
 
 ## Images and screenshots
 
@@ -33,7 +39,7 @@ Zush supports video files on Mac and Windows, including MP4, MOV, QT, M4V, MPEG,
 
 Container support does not guarantee that every codec, damaged file, or protected video can be analyzed. Try representative files before processing a library.
 
-Supported audio formats include MP3, M4A, WAV, FLAC, OGG, WEBM, and MPGA. Audio can use metadata, recognition, and transcript context when available.
+Supported audio formats include MP3, M4A, WAV, FLAC, OGG, WEBM, and MPGA. Audio can use metadata, recognition, and transcript context when available. The [audio and video guide](/docs/audio-video) explains excerpt lengths and local-mode limits.
 
 ## Structured and text files
 

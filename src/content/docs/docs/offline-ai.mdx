@@ -1,7 +1,7 @@
 ---
-title: Local AI File Renaming with Ollama
-description: Set up the Ollama AI mode in Zush, download a vision-capable local model, test the connection, and rename supported files locally.
-lastUpdated: 2026-08-24
+title: Set Up Ollama for Local AI
+description: Set up Ollama using Download and Start buttons in Zush, download your first local model, and test file renaming. Terminal commands are available as an alternative.
+lastUpdated: 2026-10-25
 sidebar:
   order: 32
   label: Ollama
@@ -9,115 +9,102 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-The Ollama AI mode lets Zush process supported file analysis through a local Ollama model instead of a cloud AI provider. It is useful when privacy or offline work matters more than cloud speed.
+Use Ollama when you want supported file analysis to run on your computer. Zush guides you through installing Ollama, starting it, and downloading your first model from **Settings → AI Modes → Ollama**. You do not need Terminal for the default setup.
 
-Use this guide when you want to install Ollama, download a local vision model, connect Zush to it, and test Offline AI mode before using it on real files.
+## What you need
 
-<figure>
-  <img src="/images/showcase/macos/lm-studio-light.webp" alt="Offline options in Zush AI Modes, with Ollama and LM Studio listed." width="2560" height="1440" loading="lazy" decoding="async" />
-  <figcaption>Install and start Ollama first, then select Ollama in Settings → AI Modes and choose an installed model.</figcaption>
-</figure>
+- Zush for Mac or Windows, on Free or PRO. Free includes 50 renames shared across all AI modes; [PRO removes the rename limit](/docs/pricing-limits).
+- Internet access to install Ollama and download a model.
+- Enough disk space and memory for the model. Zush shows the download size when it is available.
 
-## What Offline AI mode means
-
-When Offline AI mode is enabled, supported file analysis runs through your local Ollama server. Zush does not send analysis content to Zush cloud or third-party AI providers in this mode.
-
-You still control:
-
-- which Ollama model is installed
-- where Ollama stores local models
-- when the Ollama app or server is running
-- whether Zush uses Offline AI, BYOK, or managed cloud processing
-
-<Aside type="note">
-Offline AI mode is separate from BYOK. BYOK uses your own cloud provider key. Offline AI uses Ollama on your device.
-</Aside>
-
-## Requirements
-
-- A Zush Free or PRO plan. Free includes 50 renames shared across Zush Cloud AI, BYOK, LM Studio, and Ollama; [PRO removes the limit](/docs/pricing-limits).
-- Mac or Windows
-- [Ollama](https://ollama.com/download) installed locally
-- at least one installed Ollama model; use a vision-capable model for images and file previews
-- enough memory and disk space for the model you choose
-
-Zush works best with vision-capable models because many rename jobs involve images, screenshots, PDFs, scans, video frames, or document previews.
+Ollama and a model are installed during the steps below. If you already have them, Zush lets you use your existing setup.
 
 ## Set up Ollama for Zush
 
 <Steps>
-1. Download Ollama from the [official Ollama download page](https://ollama.com/download).
-2. Install Ollama and open it so the local server starts.
-3. Download a vision-capable model. A compact first choice is:
+1. Open Zush **Settings → AI Modes** and choose **Ollama**.
+2. If Zush shows **Download Ollama**, click it to open the official download page. Install the Ollama app, then return to Zush.
+3. If Zush shows **Start Ollama**, click it and wait for the local server to become available.
+4. If no model is installed, click **Download** followed by the model name. Zush downloads its suggested model and shows the progress. You can use **Cancel** to stop the download.
+5. Wait for the download and connection check to finish. Zush selects the downloaded model and enables Ollama mode when setup succeeds.
+6. Open **AI Rename** and test a few representative files before using the setup on a large batch or monitored folder.
+</Steps>
+
+The Download button shows the model currently suggested by Zush.
+
+### If Ollama is already set up
+
+When Ollama is running and models are installed, Zush shows the **Model** picker instead of the first-model download. Choose an installed vision-capable model, refresh the list if needed, and use **Test** to check the connection. Confirm that **Ollama** is the selected AI mode.
+
+<figure>
+  <img src="/images/showcase/macos/lm-studio-light.webp" alt="Local AI options in Zush AI Modes, including Ollama and LM Studio." width="2560" height="1440" loading="lazy" decoding="async" />
+  <figcaption>Once Ollama is ready, the Model picker and Test control are available in AI Modes.</figcaption>
+</figure>
+
+The default **Ollama host** is `http://127.0.0.1:11434`. Keep it unless you intentionally configured another server. The Start button is for a local Ollama installation; a custom server address must already be reachable.
+
+## Troubleshooting
+
+| What you see | What to do |
+| --- | --- |
+| Download Ollama | Install Ollama from the page opened by the button, then return to Zush. |
+| Start Ollama | Click the button, or open the Ollama app yourself, then return to Zush. |
+| Download followed by a model name | Ollama is running but has no installed models. Use the button to download the suggested model. |
+| Model download fails | Check the connection and free disk space, then try the download again. On Mac, use **Try again** when shown. |
+| An installed model is missing from the picker | Refresh the model list and check the host address. The optional Terminal checks below can also help. |
+| Test fails | Make sure Ollama is running and that the host and selected model are correct. |
+| Analysis is slow or inaccurate | Test a smaller or different vision model and check its memory requirements. |
+
+## Alternative: Terminal setup
+
+Use this route if you prefer to manage Ollama yourself or want a model other than the one offered by Zush. The buttons above are enough for the default setup.
+
+<Steps>
+1. Install Ollama from the [official download page](https://ollama.com/download) and open it.
+2. In Terminal, download a vision-capable model. For example:
 
    ```bash
    ollama pull qwen2.5vl:3b
    ```
 
-4. If Ollama is not already running, start its server from Terminal:
+3. If the Ollama server is not already running, start it:
 
    ```bash
    ollama serve
    ```
 
-5. Open Zush and select **AI Modes** in Settings.
-6. Wait for Zush to detect Ollama. If needed, click refresh next to the model list.
-7. Select the installed local model.
-8. Click **Test** to verify the current host and model.
-9. Select **Ollama**. Zush checks that the local endpoint is reachable and that the selected model is installed before enabling it.
-10. Run a small batch before using Offline AI on important folders.
+4. Confirm that the model is installed:
+
+   ```bash
+   ollama list
+   ```
+
+5. Return to **Zush Settings → AI Modes → Ollama**, refresh the model list, select the model, and click **Test**. Select Ollama mode, then try a small batch.
 </Steps>
+
+You do not need to run `ollama serve` when the Ollama app is already serving the same local endpoint.
 
 ## Recommended models
 
-These vision-capable models are practical starting points for Zush:
+Start with the model offered by Zush's Download button. For a different setup, these vision-capable models are alternatives you can install yourself:
 
-| Model | Best for | Command | Notes |
-| --- | --- | --- | --- |
-| [`qwen2.5vl:3b`](https://ollama.com/library/qwen2.5vl:3b) | General visual analysis | `ollama pull qwen2.5vl:3b` | Compact Qwen vision model for screenshots and images |
-| [`gemma3:4b`](https://ollama.com/library/gemma3:4b) | General and multilingual vision | `ollama pull gemma3:4b` | Vision-capable 4B Gemma 3 model |
-| [`granite3.2-vision:2b`](https://ollama.com/library/granite3.2-vision:2b) | Visual documents | `ollama pull granite3.2-vision:2b` | Compact model designed for documents, tables, charts, and diagrams |
+| Model | Intended use | Terminal command |
+| --- | --- | --- |
+| [`qwen2.5vl:3b`](https://ollama.com/library/qwen2.5vl:3b) | Images and screenshots | `ollama pull qwen2.5vl:3b` |
+| [`gemma3:4b`](https://ollama.com/library/gemma3:4b) | Visual and multilingual content | `ollama pull gemma3:4b` |
+| [`granite3.2-vision:2b`](https://ollama.com/library/granite3.2-vision:2b) | Documents, tables, and charts | `ollama pull granite3.2-vision:2b` |
 
-You can also choose another vision-capable model from the [Ollama model catalog](https://ollama.com/search?c=vision). Model availability and quality change over time, so test with your own files before automating a large workflow.
+You can browse other vision-capable models in the [Ollama catalog](https://ollama.com/search?c=vision). Test any model with your own files before automating a large workflow.
 
-## Verify Ollama from Terminal
+## Privacy and limits
 
-Use Terminal to confirm Ollama has a model installed:
+With the default local endpoint, supported analysis stays on your computer. Zush does not silently fall back to cloud AI while Ollama mode is selected. Licensing, update, and other operational checks may still use the network.
 
-```bash
-ollama list
-```
+Local results depend on the model and the evidence Zush can extract. See [Audio and video analysis](/docs/audio-video) for recordings: local models do not receive raw audio for cloud-style transcription.
 
-If the list is empty, pull a model first:
-
-```bash
-ollama pull qwen2.5vl:3b
-```
-
-If the Zush connection test fails, make sure Ollama is running and that the local host is:
-
-```text
-http://127.0.0.1:11434
-```
-
-## Test before monitoring a folder
-
-Start with a small [batch rename](/docs/batch-rename-files) and compare the suggested names with Cloud AI or BYOK if accuracy matters. Local models can be excellent for private workflows, but smaller models may be slower or less precise on complex PDFs, mixed media, or long documents.
-
-Once the results look reliable, assign the workflow to [folder monitoring](/docs/folder-monitoring) or save the setup as a [Template](/docs/templates).
-
-## Troubleshooting
-
-| Problem | What to check |
-| --- | --- |
-| Zush does not see models | Run `ollama list`. If the list is empty, pull a model, then refresh the model list in Zush |
-| Connection test fails | Make sure Ollama is running and reachable at `http://127.0.0.1:11434` |
-| Processing is too slow | Choose a smaller installed model, close memory-heavy apps, or switch to Cloud AI for large batches |
-| Results are weak | Try `gemma3:4b` or another vision-capable model and test with representative files |
-
-## Limits
-
-Offline AI support depends on file type, model capability, and local hardware. For the broadest mixed-folder accuracy across images, PDFs, audio, video, documents, and design files, compare Offline AI results with managed Cloud AI or [BYOK](/docs/byok).
+<Aside type="tip">
+Test the naming setup in [AI Rename](/docs/batch-rename-files) first. Once the results look right, save it as a [Template](/docs/templates) or use it with [folder monitoring](/docs/folder-monitoring).
+</Aside>
 
 ## Related docs
 

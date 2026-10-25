@@ -1,83 +1,84 @@
 ---
 title: Zush Documentation
-description: Learn Zush AI file renaming on Mac and Windows with batch review, folder monitoring, templates, cloud or local AI, metadata, and undo.
-lastUpdated: 2026-09-26
+description: Start renaming files with Zush on Mac or Windows. Find guides for reviewing batches, automatic monitoring, folder sorting, naming templates, and cloud or local AI.
+lastUpdated: 2026-10-25
 sidebar:
   order: 1
   label: Overview
 ---
 
-import { CardGrid, LinkCard, Aside } from '@astrojs/starlight/components';
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
-Zush is an AI file renamer for Mac and Windows. It renames files by content, helps you review a batch before applying changes, monitors folders for new files, and keeps rename history so you can undo a batch.
+Zush names files from their content and can sort them into folders. Start with a small batch you can review, then save your settings for the next batch or automate a folder.
 
-<figure>
-  <video class="zush-demo-video" data-demo-theme="light" controls controlslist="nodownload" muted playsInline preload="metadata" poster="/videos/posters/demo-light.webp" width="2560" height="1440" aria-label="A Zush overview demo showing AI renaming with automatic folder sorting, then an Invoices Template with Naming Blocks, a Custom AI Block, and invoices sorted into folders by vendor.">
-    <source src="/videos/demo-light.mp4" type="video/mp4" />
-  </video>
-  <video class="zush-demo-video" data-demo-theme="dark" controls controlslist="nodownload" muted playsInline preload="metadata" poster="/videos/posters/demo-dark.webp" width="2560" height="1440" aria-label="A Zush overview demo showing AI renaming with automatic folder sorting, then an Invoices Template with Naming Blocks, a Custom AI Block, and invoices sorted into folders by vendor.">
-    <source src="/videos/demo-dark.mp4" type="video/mp4" />
-  </video>
-  <figcaption>Rename mixed files with automatic folder sorting, then build an Invoices workflow with Naming Blocks and a Custom AI Block and sort invoices into folders by vendor.</figcaption>
-</figure>
+## Start here
 
 <CardGrid>
-  <LinkCard title="Get started" href="/docs/get-started" description="Run your first safe rename batch from Finder or File Explorer." />
-  <LinkCard title="Batch rename files" href="/docs/batch-rename-files" description="Rename mixed folders with AI suggestions, inline edits, and undo history." />
-  <LinkCard title="Folder monitoring" href="/docs/folder-monitoring" description="Automatically rename new supported files in Downloads, Screenshots, iCloud, OneDrive, and project folders." />
-  <LinkCard title="Templates" href="/docs/templates" description="Save repeatable rename setups for recurring batches and monitored folders." />
-  <LinkCard title="Naming Blocks" href="/docs/naming-blocks" description="Build consistent filenames from dates, projects, document fields, media context, and AI fields." />
-  <LinkCard title="Custom AI Blocks" href="/docs/custom-ai-blocks" description="Describe any value AI should extract from a file and reuse it as your own naming block." />
-  <LinkCard title="Custom prompts" href="/docs/custom-prompts" description="Guide filename style, tags, and metadata with workflow-specific AI instructions." />
-  <LinkCard title="AI modes" href="/docs/ai-modes" description="Compare Zush Cloud AI, BYOK, LM Studio, and Ollama." />
-  <LinkCard title="Zush Cloud AI" href="/docs/zush-cloud-ai" description="Start renaming with managed cloud analysis and no API key or local model setup." />
-  <LinkCard title="Local AI overview" href="/docs/local-ai" description="Compare private local analysis through LM Studio and Ollama on Mac or Windows." />
-  <LinkCard title="LM Studio" href="/docs/lm-studio" description="Connect a vision-capable LM Studio model and local server to Zush." />
-  <LinkCard title="BYOK" href="/docs/byok" description="Connect your own Gemini, OpenRouter, OpenAI, or Claude API key for cloud renaming." />
-  <LinkCard title="Ollama" href="/docs/offline-ai" description="Use an installed Ollama model for supported local file analysis." />
-  <LinkCard title="Supported file types" href="/docs/supported-file-types" description="Check the image, PDF, document, design, video, audio, and text formats Zush can analyze." />
-  <LinkCard title="Privacy and security" href="/docs/privacy-security" description="Understand what Zush processes, where data goes, and how keys are stored." />
+  <LinkCard title="Your first rename" href="/docs/get-started" description="Install Zush, add a few files, review their new names, and apply the changes." />
+  <LinkCard title="Rename a batch" href="/docs/batch-rename-files" description="Work through a folder of files with editable names and a preview before applying." />
+  <LinkCard title="Automate a folder" href="/docs/folder-monitoring" description="Have Monitor rename new arrivals automatically after you test the setup." />
+  <LinkCard title="Sort files into folders" href="/docs/folder-sorting" description="Choose a destination and group files with AI, with or without changing their names." />
 </CardGrid>
 
-## What Zush can do
+Need the app first? See [Install and update](/docs/install-update). For the free allowance and PRO, see [Pricing and limits](/docs/pricing-limits).
 
-- Batch rename files with AI-generated names based on file content.
-- Monitor folders and rename new supported files as they arrive.
-- Save repeatable workflows with Templates.
-- Build consistent filenames from 145+ Naming Blocks.
-- Create Custom AI Blocks for workflow-specific details that built-in blocks do not cover.
-- Add custom rename and tagging prompts.
-- Generate searchable filenames, tags, and metadata.
-- Process images, screenshots, RAW photos, PDFs, Office and iWork documents, design files, subtitles, video, and audio.
-- Choose Zush Cloud AI, BYOK, LM Studio, or Ollama.
-- Review every result before applying changes and revert from rename history.
+## Rename and organize files
 
-<Aside type="note">
-Zush is a naming workflow. It does not replace Finder, File Explorer, Spotlight, Windows Search, or a full digital asset management system. It makes those tools more useful by turning vague filenames into readable, searchable filenames.
-</Aside>
+- [Batch rename](/docs/batch-rename-files) — review and edit suggested filenames before applying changes.
+- [Quick Rename](/docs/quick-rename) — rename selected files with a shortcut or the Mac Finder action.
+- [Folder monitoring](/docs/folder-monitoring) — automatically process new files in a watched folder.
+- [Folder sorting](/docs/folder-sorting) — move files into suggested folders, use nested rules, or keep current names.
+- [Undo history](/docs/undo-history) — restore names and locations, and handle files that cannot be restored immediately.
+- [Find files later](/docs/file-search) — make filenames useful in Finder, File Explorer, and system search.
 
-## Choose a workflow
+## Set up your filenames
 
-| If you want to... | Start here |
-| --- | --- |
-| Clean a messy folder once | [Batch rename files](/docs/batch-rename-files) |
-| Keep Downloads or Screenshots clean | [Folder monitoring](/docs/folder-monitoring) |
-| Keep names consistent across folders | [Templates](/docs/templates) and [Naming Blocks](/docs/naming-blocks) |
-| Prepare a movie and TV collection | [Movies & TV setup guide](/docs/templates/movies-tv) |
-| Extract a workflow-specific detail | [Custom AI Blocks](/docs/custom-ai-blocks) |
-| Start without configuring a provider | [Zush Cloud AI](/docs/zush-cloud-ai) |
-| Compare local model connections | [Local AI overview](/docs/local-ai) |
-| Use models managed in LM Studio | [LM Studio](/docs/lm-studio) |
-| Use your own AI provider key | [BYOK](/docs/byok) |
-| Use models managed in Ollama | [Ollama](/docs/offline-ai) |
-| Understand what data is processed | [Privacy and security](/docs/privacy-security) |
+Start with **Smart Rename**, the default naming setup. Save a separate Template when a workflow needs different names or sorting rules.
 
-## Product pages
+- [Templates](/docs/templates) — save a setup and use it in a batch or monitored folder.
+- [Naming Blocks](/docs/naming-blocks) — combine titles, dates, sequence numbers, and file details.
+- [Custom AI Blocks](/docs/custom-ai-blocks) — create a field for a detail you want AI to extract.
+- [Custom prompts](/docs/custom-prompts) — guide the wording of names and tags.
+- [Metadata and tags](/docs/metadata-tags) — add extra context, with different storage options on Mac and Windows.
+- [Import and export Templates](/docs/template-import-export) — back up a setup or share it with another computer.
 
-- [Zush for Mac](/mac)
-- [Zush for Windows](/windows)
-- [Pricing](/#pricing)
+## Choose where AI runs
 
-## AI folder sorting and Template sharing
+**Zush Cloud AI** is the starting point if you do not want to configure a provider. Choose a local mode when supported analysis content needs to stay on your computer. The AI mode is shared across workflows; it is not saved per Template or monitored folder.
 
-[AI folder sorting and destination folders](/docs/folder-sorting) organize renamed files into subfolders. [Template import and export](/docs/template-import-export) lets you share or back up naming workflows.
+- [Compare AI modes](/docs/ai-modes) — choose managed cloud, your own API key, or a local server.
+- [Zush Cloud AI](/docs/zush-cloud-ai) — start without an API key or local model.
+- [Your own API key (BYOK)](/docs/byok) — connect Gemini, OpenRouter, OpenAI, or Anthropic.
+- [Local AI overview](/docs/local-ai) — understand local setup and limitations.
+- [Ollama setup](/docs/offline-ai) — download and start Ollama, then set up a local model using Zush’s buttons.
+- [LM Studio setup](/docs/lm-studio) — connect a vision-capable LM Studio model.
+- [Privacy and security](/docs/privacy-security) — understand what is processed and where it goes.
+
+## Follow a workflow example
+
+Use a guide to build or adapt a Template for your files:
+
+- [Invoices](/docs/templates/invoices)
+- [Receipts and expenses](/docs/templates/receipts-expenses)
+- [Medical records](/docs/templates/medical-records)
+- [Legal documents](/docs/templates/legal-documents)
+- [Movies and TV shows](/docs/templates/movies-tv)
+
+## Check formats and processing details
+
+- [Supported file types](/docs/supported-file-types) — check formats and Mac/Windows differences.
+- [Audio and video analysis](/docs/audio-video) — understand speech excerpts, subtitles, music recognition, and local-mode limits.
+
+## See Zush in action
+
+<figure>
+  <video class="zush-demo-video" data-demo-theme="light" controls controlslist="nodownload" muted playsInline preload="metadata" poster="/videos/posters/demo-light.webp" width="2560" height="1440" aria-label="Zush demo showing AI renaming, folder sorting, and an invoice naming Template.">
+    <source src="/videos/demo-light.mp4" type="video/mp4" />
+  </video>
+  <video class="zush-demo-video" data-demo-theme="dark" controls controlslist="nodownload" muted playsInline preload="metadata" poster="/videos/posters/demo-dark.webp" width="2560" height="1440" aria-label="Zush demo showing AI renaming, folder sorting, and an invoice naming Template.">
+    <source src="/videos/demo-dark.mp4" type="video/mp4" />
+  </video>
+  <figcaption>Rename a mixed batch, then use an invoice Template to build names and sort files by vendor.</figcaption>
+</figure>
+
+Product information: [Zush for Mac](/mac), [Zush for Windows](/windows), [pricing](/#pricing), and [support](mailto:support@zushapp.com).

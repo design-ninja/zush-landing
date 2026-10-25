@@ -1,7 +1,7 @@
 ---
 title: Templates for Reusable File Renaming Workflows
 description: Create, edit, and apply Zush Templates for repeatable AI file renaming in batch rename, Smart Rename, and folder monitoring workflows.
-lastUpdated: 2026-09-26
+lastUpdated: 2026-10-25
 sidebar:
   order: 20
   label: Templates
@@ -52,8 +52,9 @@ Open Smart Rename when you want to change the default behavior for general file 
 | Localization | Language and date format used in generated names |
 | [Custom prompts](/docs/custom-prompts) | The instructions Zush uses when generating AI parts of a filename |
 | Smart Metadata | Finder tags and Spotlight metadata added to renamed files |
-| Monitoring options | File type behavior and rules used by monitored folders |
-| [AI mode](/docs/ai-modes) | The AI provider or local/cloud setup used for the workflow |
+| Folder sorting | Destination, automatic or custom folder rules, existing-folder reuse, and keeping current filenames |
+
+The [AI mode](/docs/ai-modes), provider keys, and local model connection are global settings. Templates do not save a separate AI mode. Monitor's source folder, subfolder scope, and filename filters are configured on the monitored folder itself.
 
 ## Create or edit a Template
 
@@ -148,6 +149,11 @@ The template gallery walks through complete setups for common professional workf
 - [Receipts & expenses](/docs/templates/receipts-expenses) — store, date, amount, category
 - [Medical records](/docs/templates/medical-records) — identifier, date of service, record type
 - [Legal documents](/docs/templates/legal-documents) — matter number, date, type, party
+- [Movies & TV](/docs/templates/movies-tv) — movie titles, years, shows, seasons, and episodes
+
+## Folder sorting and Template transfer
+
+Templates can now save [AI folder sorting rules](/docs/folder-sorting), existing-folder reuse, and a destination folder. You can also [import and export Templates](/docs/template-import-export) as `.zushtemplates` files. Sorting rules transfer with the Template; local destination paths do not.
 
 ## Related docs
 
@@ -155,7 +161,3 @@ The template gallery walks through complete setups for common professional workf
 - [Batch rename files](/docs/batch-rename-files)
 - [Folder monitoring](/docs/folder-monitoring)
 - [Custom prompts](/docs/custom-prompts)
-
-## Folder sorting and Template transfer
-
-Templates can now save [AI folder sorting rules](/docs/folder-sorting), existing-folder reuse, and a destination folder. You can also [import and export Templates](/docs/template-import-export) as `.zushtemplates` files. Sorting rules transfer with the Template; local destination paths do not.

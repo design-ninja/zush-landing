@@ -1,0 +1,56 @@
+---
+title: Quick Rename from Finder or File Explorer
+description: Rename selected files with a keyboard shortcut on Mac or Windows, or use the Mac Finder action. Learn how Quick Rename differs from a reviewed batch.
+lastUpdated: 2026-10-25
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Quick Rename processes selected files using your current Smart Rename settings and AI mode. Use it for a few files when you have already tested the naming setup.
+
+<Aside type="caution">
+Quick Rename applies names automatically. To review and edit suggestions first, use [AI Rename](/docs/batch-rename-files).
+</Aside>
+
+## Prepare the naming setup
+
+1. Open **Templates → Smart Rename** and check the Naming Blocks, language, and metadata settings.
+2. Choose the [AI mode](/docs/ai-modes) you want to use.
+3. Test those settings on a small batch in **AI Rename**.
+
+Quick Rename uses the default Smart Rename setup, rather than the Template selected for a separate manual batch.
+
+## On Mac
+
+Select supported files in Finder, open the context menu, and choose **Rename with Zush**. Depending on your Finder menu, the action may be under **Services**.
+
+To use a keyboard shortcut:
+
+<Steps>
+1. Open Zush Settings and find **Quick Rename**.
+2. Turn on **Enable Shortcut** and choose the shortcut.
+3. Select files in Finder and press the shortcut.
+4. Check the renamed files or open **Activity** to inspect the results.
+</Steps>
+
+The direct-download app reads your Finder selection; allow access to Finder if macOS asks. The Mac App Store app opens a file picker instead, where you select the files to rename.
+
+## On Windows
+
+<Steps>
+1. Open **Preferences** and find **Quick Rename Shortcut**.
+2. Enable the shortcut and use the shortcut button to change it if needed.
+3. Select supported files in File Explorer and press the shortcut.
+4. Wait for processing, then inspect the names in File Explorer or **Activity**.
+</Steps>
+
+Windows Quick Rename processes up to 10 supported files from the selection per invocation. Use [AI Rename](/docs/batch-rename-files) for a larger batch.
+
+## If nothing happens
+
+- Keep Zush running and make sure an AI mode is enabled.
+- Select files, rather than a folder, and check [format support](/docs/supported-file-types).
+- Check the connection for your selected AI mode and your remaining [free allowance](/docs/pricing-limits).
+- On Mac, use the file picker when running the App Store version's shortcut.
+
+To restore a processed file, use [Undo in Activity](/docs/undo-history).

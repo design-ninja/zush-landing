@@ -1,7 +1,7 @@
 ---
 title: Metadata and Tags
 description: Use Zush metadata and tags to make renamed files easier to browse, organize, and find in Mac and Windows workflows.
-lastUpdated: 2026-07-01
+lastUpdated: 2026-10-25
 sidebar:
   order: 24
   label: Metadata and tags
@@ -35,7 +35,14 @@ Zush can generate useful tags and metadata alongside filenames where the workflo
 
 ## Platform notes
 
-On Mac, renamed files and tags can work with Finder and Spotlight workflows. On Windows, descriptive names can help File Explorer and Windows Search when the folder is indexed. Support depends on file type and operating system behavior. For filename-first search workflows, use the [searchable filenames guide](/docs/file-search).
+| Platform | What Zush writes |
+| --- | --- |
+| Mac | Optional Finder tags and Spotlight metadata, using the settings in Smart Rename or the selected Template. |
+| Windows | Title, description, and keywords where supported: PNG, JPEG/TIFF photos, PDF, and supported Office documents. Storage depends on the format. |
+
+Windows does not use Finder tags or Spotlight. Files outside its supported metadata formats can still be renamed, but do not receive the same metadata. Zush does not create a new metadata sidecar as a substitute for those unsupported formats.
+
+Search results also depend on your operating system and whether the folder is indexed. For filename-first search workflows, use the [searchable filenames guide](/docs/file-search).
 
 ## Related docs
 

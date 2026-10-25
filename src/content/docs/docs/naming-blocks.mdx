@@ -1,7 +1,7 @@
 ---
 title: Naming Blocks for Consistent Filenames
 description: Build consistent AI filenames in Zush with Naming Blocks for dates, titles, original names, counters, documents, media, clients, projects, and metadata.
-lastUpdated: 2026-07-01
+lastUpdated: 2026-10-25
 sidebar:
   order: 21
   label: Naming Blocks
@@ -55,6 +55,8 @@ The structure stays consistent, while the AI-generated parts still describe what
 
 Click a block chip to change how that part of the name is formatted. For text blocks, you can choose case style and word separator options. Use this to keep names consistent across a folder.
 
+Use **Text Before** and **Text After** to add text around a block's value, such as `INV-` before an invoice number.
+
 Common choices include:
 
 - **Title Case** for readable names such as `Client Meeting Notes`
@@ -66,6 +68,14 @@ Common choices include:
   <img src="/images/docs/templates-naming-blocks/block-format-menu.webp" alt="A Naming Block formatting menu showing case style and word separator options." width="1400" height="1174" loading="lazy" decoding="async" />
   <figcaption>Formatting options let one AI title become different filename styles depending on the Template.</figcaption>
 </figure>
+
+## Add sequence numbers
+
+Add the **Sequence Number** block to number files in order. Click the block to set **Start at** and **Digits**. For example, a start of `1` with three digits produces `001`, `002`, and `003`.
+
+Numbering continues separately in each folder, including destination folders created by sorting. Monitor and Quick Rename also continue the sequence for that folder. Review the final names when you change a batch selection or destination.
+
+A pattern such as `{Sequence Number}-{Title}` can produce `001-client-contract.pdf`. Use leading zeros when you want alphabetical sorting to follow the number order.
 
 ## Use the preview before saving
 

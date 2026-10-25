@@ -1,7 +1,7 @@
 ---
 title: Folder Monitoring for Automatic File Renaming
 description: Use Zush folder monitoring to rename new supported files automatically in Downloads, Screenshots, iCloud, OneDrive, and project folders on Mac and Windows.
-lastUpdated: 2026-09-28
+lastUpdated: 2026-10-25
 sidebar:
   order: 11
   label: Folder monitoring
@@ -32,9 +32,12 @@ Folder monitoring lets Zush watch selected folders and rename new supported file
 1. Open the monitoring workflow in Zush.
 2. Add the folder you want to watch.
 3. Choose included and excluded file types.
-4. Pick the [Template](/docs/templates), [Naming Blocks](/docs/naming-blocks), [custom prompt](/docs/custom-prompts), and [AI mode](/docs/ai-modes) for that folder.
-5. Keep review and [undo](/docs/undo-history) enabled until the workflow is proven.
+4. Choose a [Template](/docs/templates) for that folder, or use Smart Rename. The Template supplies its Naming Blocks, prompts, metadata, and sorting settings.
+5. Check the [AI mode](/docs/ai-modes) in Settings. This mode applies across Zush, including all monitored folders.
+6. Test the same Template in [AI Rename](/docs/batch-rename-files), where you can review names before applying them. Then turn monitoring on.
 </Steps>
+
+Monitor applies changes automatically; it has no review-before-rename switch. Use **Activity** to inspect completed work and [undo a change](/docs/undo-history). Keep Zush running for monitoring to process new arrivals.
 
 ## Best practices
 
@@ -46,13 +49,21 @@ Use exclusions for temporary files, application caches, installer folders, and f
 A sorting-enabled Template can rename and group new files with [AI folder sorting](/docs/folder-sorting). Monitor is not a general conditional action engine for scripts, archive extraction, or uploads. Test the Template on a manual batch before enabling automatic processing.
 </Aside>
 
+## Sort new arrivals into folders
+
+Assign a Template with [AI folder sorting](/docs/folder-sorting) enabled to rename and sort new files directly inside a monitored folder. Choose a destination, reuse suitable existing folders, and add custom folder rules. Changes apply to new files, not to files already processed.
+
+Enable **Keep current names** in the sorting setup when you only want to move incoming files into folders.
+
+## External drives on Mac
+
+Zush for Mac can monitor folders on external drives and resume monitoring when a drive reconnects. A disconnected drive cannot be processed; leave the folder configured and reconnect the drive to continue.
+
+When you select the root of an external drive, Zush watches for new files without scanning the entire drive on startup. To organize files already on the drive, add them to a manual batch in **AI Rename**.
+
 ## Related docs
 
 - [Templates](/docs/templates)
 - [Custom prompts](/docs/custom-prompts)
 - [Undo history](/docs/undo-history)
 - [Privacy and security](/docs/privacy-security)
-
-## Sort new arrivals into folders on Mac
-
-Assign a Template with [AI folder sorting](/docs/folder-sorting) enabled to rename and sort new files directly inside a monitored folder. Choose a destination, reuse suitable existing folders, and add custom folder rules. Changes apply to new files, not to files already processed.

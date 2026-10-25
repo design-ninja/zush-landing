@@ -1,7 +1,7 @@
 ---
-title: Undo History and Safe Rename Review
-description: Use Zush rename history to inspect previous batch rename actions and revert filenames on Mac or Windows when a batch needs another pass.
-lastUpdated: 2026-07-01
+title: Undo Renames and Folder Moves
+description: Restore filenames, original locations, and saved metadata from Activity. Use Undo All and resolve conflicts with Restore with New Name on Mac or Windows.
+lastUpdated: 2026-10-25
 sidebar:
   order: 13
   label: Undo history
@@ -9,39 +9,48 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Zush is designed around review before apply. Rename history adds a second layer of safety after a [batch rename](/docs/batch-rename-files) has already been applied.
+Open **Activity** to see completed renames and folder moves. You can undo an individual file or use **Undo All** to work through the saved history.
 
 <figure>
-  <img src="/images/showcase/macos/activity-light-1600.webp" alt="The Zush Activity screen showing previous rename actions and status details." width="1600" height="900" loading="lazy" decoding="async" />
-  <figcaption>Activity keeps a record of rename work so you can inspect what happened after a batch runs.</figcaption>
+  <img src="/images/showcase/macos/activity-light-1600.webp" alt="Zush Activity showing processed files and their original and new names." width="1600" height="900" loading="lazy" decoding="async" />
+  <figcaption>Activity records completed work from manual batches, Monitor, and Quick Rename.</figcaption>
 </figure>
 
-## What history records
-
-For each rename action, Zush stores the original filename, new filename, folder, and timestamp. This lets you inspect what changed and revert the action when needed.
-
-## Undo a batch
+## Undo one file
 
 <Steps>
-1. Open the activity or history view in Zush.
-2. Select the batch you want to inspect.
-3. Review the original and new filenames.
-4. Use revert to restore the previous filenames.
+1. Open **Activity** and find the file.
+2. Check its original name and current name or location.
+3. Choose **Undo** for that item.
+4. Check the result in Activity or your file browser.
 </Steps>
 
-## Safer batch workflows
+Undo restores the original filename and folder when the file and destination are available. If Zush renamed a file and later sorted it, undo can follow those steps back to the original location. Saved metadata is restored where supported.
 
-- Start with a small folder when testing a new [Template](/docs/templates) or [prompt](/docs/custom-prompts).
-- Regenerate weak names individually instead of rerunning the whole batch.
-- Keep review enabled for [monitored folders](/docs/folder-monitoring) until the naming pattern is stable.
-- Avoid applying large batches to shared folders before teammates agree on the naming convention.
+## Undo all saved changes
 
-<Aside type="tip">
-A 20-file test folder is usually enough to validate the naming style before applying it to hundreds of files.
+Choose **Undo All** and confirm the action. This applies to the saved history, so check the confirmation before continuing.
+
+When it finishes, Zush shows restored files and any files that still need attention. A partial result does not mean that every file failed: inspect the individual results before retrying.
+
+## Resolve a conflict
+
+Zush cannot restore a file to a location that another file already occupies. For eligible items, choose **Restore with New Name** to put the file back under an available name without overwriting the existing file.
+
+Other problems can require action outside Zush:
+
+| Problem | What to do |
+| --- | --- |
+| The drive or source folder is unavailable | Reconnect the drive or restore access, then retry. |
+| The file was moved or deleted outside Zush | Locate or restore the file before trying again. |
+| The destination is locked or not writable | Make the destination available and retry. |
+
+<Aside type="note">
+Undo uses the files that still exist on disk. Rename history is not a backup of file contents.
 </Aside>
 
-## Related docs
+## Before automating a folder
 
-- [Batch rename files](/docs/batch-rename-files)
-- [Folder monitoring](/docs/folder-monitoring)
-- [Templates](/docs/templates)
+Test the Template in [AI Rename](/docs/batch-rename-files), where names can be reviewed before applying. [Monitor](/docs/folder-monitoring) and [Quick Rename](/docs/quick-rename) apply names automatically; inspect their results in Activity afterward.
+
+For folder moves, see [Folder sorting](/docs/folder-sorting). For metadata differences, see [Metadata and tags](/docs/metadata-tags).

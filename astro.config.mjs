@@ -97,28 +97,42 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Rename workflows',
+          label: 'Rename and organize',
           items: [
             { label: 'Batch rename files', link: '/docs/batch-rename-files' },
+            { label: 'Quick Rename', link: '/docs/quick-rename' },
             { label: 'Folder monitoring', link: '/docs/folder-monitoring' },
-            { label: 'Find files later', link: '/docs/file-search' },
+            { label: 'Folder sorting', link: '/docs/folder-sorting' },
             { label: 'Undo history', link: '/docs/undo-history' },
+            { label: 'Find files later', link: '/docs/file-search' },
           ],
         },
         {
-          label: 'Naming control',
+          label: 'Set up filenames',
           items: [
             { label: 'Templates', link: '/docs/templates' },
-            { label: 'AI folder sorting', link: '/docs/folder-sorting' },
-            { label: 'Import & export Templates', link: '/docs/template-import-export' },
             { label: 'Naming Blocks', link: '/docs/naming-blocks' },
             { label: 'Custom AI Blocks', link: '/docs/custom-ai-blocks' },
             { label: 'Custom prompts', link: '/docs/custom-prompts' },
             { label: 'Metadata and tags', link: '/docs/metadata-tags' },
+            { label: 'Import & export Templates', link: '/docs/template-import-export' },
           ],
         },
         {
-          label: 'Template gallery',
+          label: 'Choose your AI',
+          items: [
+            { label: 'AI modes', link: '/docs/ai-modes' },
+            { label: 'Zush Cloud AI', link: '/docs/zush-cloud-ai' },
+            { label: 'Your own API key (BYOK)', link: '/docs/byok' },
+            { label: 'Local AI overview', link: '/docs/local-ai' },
+            { label: 'Ollama setup', link: '/docs/offline-ai' },
+            { label: 'LM Studio setup', link: '/docs/lm-studio' },
+            { label: 'Privacy and security', link: '/docs/privacy-security' },
+          ],
+        },
+        {
+          label: 'Workflow examples',
+          collapsed: true,
           items: [
             { label: 'Invoices', link: '/docs/templates/invoices' },
             { label: 'Receipts & expenses', link: '/docs/templates/receipts-expenses' },
@@ -128,21 +142,10 @@ export default defineConfig({
           ],
         },
         {
-          label: 'AI and privacy',
-          items: [
-            { label: 'AI modes', link: '/docs/ai-modes' },
-            { label: 'Zush Cloud AI', link: '/docs/zush-cloud-ai' },
-            { label: 'Local AI', link: '/docs/local-ai' },
-            { label: 'LM Studio', link: '/docs/lm-studio' },
-            { label: 'BYOK', link: '/docs/byok' },
-            { label: 'Ollama', link: '/docs/offline-ai' },
-            { label: 'Privacy and security', link: '/docs/privacy-security' },
-          ],
-        },
-        {
           label: 'Reference',
           items: [
             { label: 'Supported file types', link: '/docs/supported-file-types' },
+            { label: 'Audio and video analysis', link: '/docs/audio-video' },
           ],
         },
         {
