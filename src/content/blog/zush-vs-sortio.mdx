@@ -11,7 +11,7 @@ tags:
   - "AI File Renaming"
 tldr: "Zush and Sortio both sort files into folders from a plain-language prompt. Choose Zush for video, audio, RAW, and design files, precise filename Templates, and an unmetered $48 one-time option. Choose Sortio if you need Linux, team seats, or unlimited free rule-based sorting. One Zush license covers up to 3 devices."
 earlyTaskExample: false
-reviewed: "2026-10-18"
+reviewed: "2026-10-25"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -19,9 +19,12 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 Quick answer: [Zush](/ai-file-sorter) and Sortio both sort files into folders from a plain-language prompt and rename them in the same pass. Zush also offers optional AI folder sorting. Pick Zush if you sort more than documents and images (video, audio, RAW photos, design files), want exact control over filenames, or prefer a one-time $48 license with no file meter. Pick Sortio if you need Linux, shared team workspaces, or free rule-based sorting.
 
-**Last checked: October 5, 2026.** Written by the maker of [Zush, the AI file renamer for Mac and Windows](/). Sources: [Sortio pricing and data flow](https://www.getsortio.com/#pricing), [Mac/Windows/Linux downloads](https://www.getsortio.com/download), and [security and recovery documentation](https://www.getsortio.com/docs/security). This compares published features, not independently measured performance. Verify checkout prices and your processing mode.
+**Earlier competitor review: October 5, 2026.** Written by the maker of [Zush, the AI file renamer for Mac and Windows](/). Sources: [Sortio pricing and data flow](https://www.getsortio.com/#pricing), [Mac/Windows/Linux downloads](https://www.getsortio.com/download), and [security and recovery documentation](https://www.getsortio.com/docs/security). This compares published features, not independently measured performance. Verify checkout prices and your processing mode.
 
-**Zush features reviewed October 18, 2026.** Competitor information retains the check dates stated in this article.
+**Zush reviewed October 25, 2026**, against the [Mac 3.20 release notes](/changelog) and [Windows 3.16 release notes](/changelog/windows). Competitor checks are dated separately; this is a comparison of published capabilities, not a new performance test.
+
+
+**Platform and AI-mode limits:** Sketch, Figma, Pages, Numbers, and Keynote inputs are supported on Mac, not Windows. Export them to PDF or images for Windows. Local Ollama/LM Studio use text, metadata, and image previews; they do not receive raw audio or automatically switch to cloud transcription. [Zush: formats](/docs/supported-file-types#mac-and-windows-differences) · [Zush: audio/video](/docs/audio-video).
 
 ## Zush vs Sortio at a glance
 
@@ -57,6 +60,12 @@ One Zush license covers up to 3 devices on Mac and Windows.
 You can [export Templates](/docs/template-import-export) with Naming Blocks, Custom AI Blocks, and folder rules, then import them on another computer. Choose local destinations, folder permissions, and AI connections again there; this transfers the workflow settings, not your files.
 
 Zush also supports nested folder rules, such as grouping by year and then month. You can sort already renamed files without changing their names again or spending another rename credit. Review the destinations before applying. This separate action handles an existing batch; changing a Monitor Template does not retroactively reorganize it. [AI folder sorting](/docs/folder-sorting) works on Mac and Windows.
+
+Zush’s [Sequence Number block](/docs/naming-blocks#add-sequence-numbers) adds a starting number and leading zeros, with numbering continuing separately in each folder. For a client archive, that means each destination can keep its own numbered series while the other blocks preserve the document date, client, and title.
+
+[Undo All](/docs/undo-history#resolve-a-conflict) now separates restored files from files needing attention. If the original location is occupied, Zush offers restoration under a new name. That is useful when a batch has already been followed by new downloads or edits; review any unresolved entries rather than assuming every file was restored.
+
+Zush can use video speech, embedded subtitles, and metadata as well as preview frames, including supported MKV files. On Windows, Cloud AI can also identify untagged music and suggest a matching artist and song title. Music identification is not a promise for every recording or every AI mode. See [media support and platform details](/docs/supported-file-types#video-and-audio).
 
 ## Where Sortio is stronger
 
@@ -109,6 +118,8 @@ Both have a free start. Run the same 20 files through each and compare the plans
     { href: '/offline-ai-file-renamer', label: 'Offline AI' },
   ]}
 />
+
+To organize files whose names are already useful, Zush can **keep current names** while sorting in AI Rename or Monitor on both platforms. You do not need to rename them first. Preview a manual batch before enabling the same setup for new arrivals; a Template change does not reorganize earlier files. See [sorting without renaming](/docs/folder-sorting#sort-without-renaming).
 
 ## FAQ
 
