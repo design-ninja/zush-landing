@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Pick Zush for the most configurable and recoverable workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and full Rename History. Both AI Renamer products lack documented folder monitoring and undo; local AI is available in Zush too and is not a unique competitor advantage. Zush also offers optional AI folder sorting. One Zush license covers up to 3 devices."
-reviewed: "2026-10-25"
+reviewed: "2026-10-18"
 featuredOrder: 4
 ---
 
@@ -17,7 +17,7 @@ import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
-Quick answer: [Zush](/) combines repeatable naming with batch recovery: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, monitored folders, preview, and Rename History with batch revert. The two unrelated AI Renamer products have different documented limits: the Desktop app has no documented monitoring, recovery, or granular format matrix; the CLI has no GUI, document parsing, monitoring, or undo.
+Quick answer: [Zush](/) gives you a complete naming system rather than a prompt box: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, monitored folders, preview, and Rename History with batch revert. The two unrelated AI Renamer products both require compromises: the Desktop app has no documented monitoring, recovery, or granular format matrix; the CLI has no GUI, document parsing, monitoring, or undo.
 
 **Last verified: August 24, 2026**, against Zush's current documentation, airenamer.app's pricing page, and the `ozgrozer/ai-renamer` repository.
 
@@ -36,10 +36,7 @@ If you are searching "Zush vs AI Renamer", first know the comparison covers two 
   ]}
 />
 
-**Zush reviewed October 25, 2026**, against the [Mac 3.20 release notes](/changelog) and [Windows 3.16 release notes](/changelog/windows). Competitor checks are dated separately; this is a comparison of published capabilities, not a new performance test.
-
-
-**Platform and AI-mode limits:** Sketch, Figma, Pages, Numbers, and Keynote inputs are supported on Mac, not Windows. Export them to PDF or images for Windows. Local Ollama/LM Studio use text, metadata, and image previews; they do not receive raw audio or automatically switch to cloud transcription. [Zush: formats](/docs/supported-file-types#mac-and-windows-differences) · [Zush: audio/video](/docs/audio-video).
+**Zush features reviewed October 18, 2026.** Competitor information retains the check dates stated in this article.
 
 ## TL;DR comparison
 
@@ -53,7 +50,7 @@ If you are searching "Zush vs AI Renamer", first know the comparison covers two 
 | Video formats | 16 common formats | Not listed | Yes (with ffmpeg) |
 | RAW support | <BlogHighlight>Yes (11 variants)</BlogHighlight> | <BlogHighlight>No</BlogHighlight> | <BlogHighlight>No</BlogHighlight> |
 | Folder monitoring | <BlogHighlight>Yes</BlogHighlight> | <BlogHighlight>No</BlogHighlight> | <BlogHighlight>No</BlogHighlight> |
-| Undo / rollback | <BlogHighlight>Persistent history and conflict-aware batch recovery</BlogHighlight> | Not documented | Not documented |
+| Undo / rollback | <BlogHighlight>Yes (full history)</BlogHighlight> | <BlogHighlight>No</BlogHighlight> | <BlogHighlight>No</BlogHighlight> |
 | BYOK | Available on every plan (Gemini/OpenRouter/OpenAI/Claude) | OpenAI/custom model support listed for Local Mode | OpenAI key support |
 | Local AI | LM Studio and Ollama on Mac and Windows | Yes | Yes (Ollama, LM Studio) |
 | Languages | 60+ | Multilingual | Configurable |
@@ -74,10 +71,6 @@ Zush is a complete desktop AI file renamer for Mac and Windows. Its clearest adv
 One Zush license covers up to 3 devices on Mac and Windows.
 
 You can [export Templates](/docs/template-import-export) with Naming Blocks, Custom AI Blocks, and folder rules, then import them on another computer. Choose local destinations, folder permissions, and AI connections again there; this transfers the workflow settings, not your files.
-
-Zush’s [Sequence Number block](/docs/naming-blocks#add-sequence-numbers) adds a starting number and leading zeros, with numbering continuing separately in each folder. For a client archive, that means each destination can keep its own numbered series while the other blocks preserve the document date, client, and title.
-
-[Undo All](/docs/undo-history#resolve-a-conflict) now separates restored files from files needing attention. If the original location is occupied, Zush offers restoration under a new name. That is useful when a batch has already been followed by new downloads or edits; review any unresolved entries rather than assuming every file was restored.
 
 ### Zush can sort as well as rename
 
@@ -117,9 +110,7 @@ Zush handles PDFs, Office files, iWork files, OpenDocument files, text, Markdown
 
 ### Video: Zush and the CLI
 
-The AI Renamer CLI can rename videos by extracting frames with ffmpeg and feeding them to the AI. Zush supports common video formats from the desktop app, using sampled frames and optional sidecar subtitles as context. AI Renamer Desktop's pricing copy says all file types, but the feature page does not publish a video-specific workflow.
-
-Zush can use video speech, embedded subtitles, and metadata as well as preview frames, including supported MKV files. On Windows, Cloud AI can also identify untagged music and suggest a matching artist and song title. Music identification is not a promise for every recording or every AI mode. See [media support and platform details](/docs/supported-file-types#video-and-audio).
+The AI Renamer CLI can rename videos by extracting frames with ffmpeg and feeding them to the AI. Zush 3.0 now supports common video formats from the desktop app, using sampled frames and optional sidecar subtitles as context. AI Renamer Desktop's pricing copy says all file types, but the feature page does not publish a video-specific workflow.
 
 ## Features that differ
 
@@ -161,7 +152,7 @@ For privacy-first users, the AI Renamer CLI's local-only Ollama path is lightwei
 - You are comfortable validating its current all-file statement against your own folders
 - You explicitly do not need folder monitoring, granular format documentation, or undo
 
-AI Renamer Desktop is the harder choice for mixed folders because the gaps affect safety and repeatability: no public folder monitoring, no public Rename History, and no granular public list for RAW, iWork, design, audio, or video workflows. Its lower local-license price can suit a simple workflow; verify your formats and recovery needs before choosing it.
+AI Renamer Desktop is the harder choice for mixed folders because the gaps affect safety and repeatability: no public folder monitoring, no public Rename History, and no granular public list for RAW, iWork, design, audio, or video workflows. Its lower sticker price is not treated as a product advantage.
 
 ## Setup effort
 
@@ -169,11 +160,9 @@ Zush installs as a native Mac or Windows app via signed Mac download, Mac App St
 
 AI Renamer Desktop installs the same way (commercial download).
 
-AI Renamer CLI requires: Node.js, npm/npx, Ollama, a vision-capable local model, and terminal comfort. Setup time and disk space depend on the model, download speed, and existing tools; no setup-time benchmark was run for this comparison.
+AI Renamer CLI requires: Node.js, npm/npx, Ollama, a vision-capable local model, and terminal comfort. The setup itself takes 15–30 minutes if you have not done it before, plus the time and disk space needed for the model you choose.
 
 For a broader price comparison, see [how much AI file renaming costs](/blog/ai-file-renaming-cost) with nine tools side by side.
-
-To organize files whose names are already useful, Zush can **keep current names** while sorting in AI Rename or Monitor on both platforms. You do not need to rename them first. Preview a manual batch before enabling the same setup for new arrivals; a Template change does not reorganize earlier files. See [sorting without renaming](/docs/folder-sorting#sort-without-renaming).
 
 ## FAQ
 

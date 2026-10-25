@@ -11,7 +11,7 @@ tags:
   - "File Organization"
 tldr: "Wisfile is free, fully local, and good at renaming PDFs and Word documents such as research papers, with optional topic folders. Zush costs $10 a month or $48 one-time after 50 free renames, and adds 100+ supported formats, folder monitoring, Rename History with undo, a choice of cloud or local AI, and detailed naming Templates. Use Wisfile for a one-off document cleanup; use Zush for mixed folders and ongoing automation. One Zush license covers up to 3 devices."
 earlyTaskExample: false
-reviewed: "2026-10-25"
+reviewed: "2026-10-18"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -19,12 +19,9 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 Quick answer: pick **Wisfile** if you have a folder of PDFs or Word documents, want them renamed once, and do not want to pay. Pick [Zush](/) if your folders also hold screenshots, photos, scans, spreadsheets, or video, if new files keep arriving, or if you need to undo a batch later. Both run on Mac and Windows and both can keep processing on your computer.
 
-**Targeted check: October 25, 2026.** Written by the maker of [Zush, the AI file renamer for Mac and Windows](/). Wisfile details come from [its website](https://www.wisfile.ai/), [downloads page](https://www.wisfile.ai/downloads), and [format FAQ](https://www.wisfile.ai/faq/what-file-formats-does-wisfile-support-for-recognition-and-renaming), [undo FAQ](https://www.wisfile.ai/faq/can-i-undo-file-renaming-operations-in-wisfile), and [automation FAQ](https://www.wisfile.ai/faq/can-i-schedule-automated-file-sorting-with-wisfile). This compares published features, not a shared benchmark.
+**Last checked: October 16, 2026.** Written by the maker of [Zush, the AI file renamer for Mac and Windows](/). Wisfile details come from [its website](https://www.wisfile.ai/), [downloads page](https://www.wisfile.ai/downloads), and [FAQ](https://www.wisfile.ai/faq). This compares published features, not a shared benchmark.
 
-**Zush reviewed October 25, 2026**, against the [Mac 3.20 release notes](/changelog) and [Windows 3.16 release notes](/changelog/windows). Competitor checks are dated separately; this is a comparison of published capabilities, not a new performance test.
-
-
-**Platform and AI-mode limits:** Sketch, Figma, Pages, Numbers, and Keynote inputs are supported on Mac, not Windows. Export them to PDF or images for Windows. Local Ollama/LM Studio use text, metadata, and image previews; they do not receive raw audio or automatically switch to cloud transcription. [Zush: formats](/docs/supported-file-types#mac-and-windows-differences) · [Zush: audio/video](/docs/audio-video).
+**Zush features reviewed October 18, 2026.** Competitor information retains the check dates stated in this article.
 
 ## Zush vs Wisfile at a glance
 
@@ -75,10 +72,6 @@ You can [export Templates](/docs/template-import-export) with Naming Blocks, Cus
 
 Zush also supports nested folder rules, such as grouping by year and then month. You can sort already renamed files without changing their names again or spending another rename credit. Review the destinations before applying. This separate action handles an existing batch; changing a Monitor Template does not retroactively reorganize it. [AI folder sorting](/docs/folder-sorting) works on Mac and Windows.
 
-Zush’s [Sequence Number block](/docs/naming-blocks#add-sequence-numbers) adds a starting number and leading zeros, with numbering continuing separately in each folder. For a client archive, that means each destination can keep its own numbered series while the other blocks preserve the document date, client, and title.
-
-[Undo All](/docs/undo-history#resolve-a-conflict) now separates restored files from files needing attention. If the original location is occupied, Zush offers restoration under a new name. That is useful when a batch has already been followed by new downloads or edits; review any unresolved entries rather than assuming every file was restored.
-
 ## Folder sorting: both do it, differently
 
 Wisfile's AI Foldering detects a subject, field, or journal and groups similar files into shared folders. It is a quick one-click pass.
@@ -91,10 +84,10 @@ More on setup: [sort files into folders with AI on Mac](/blog/sort-files-into-fo
 
 ## Same folder in both apps
 
-Consider this illustrative workload, not a measured test: 30 PDFs, 20 screenshots, a few phone photos, two spreadsheets, and a screen recording.
+Take a typical work folder: 30 PDFs, 20 screenshots, a few phone photos, two spreadsheets, and a screen recording.
 
-- **Wisfile** renames the PDFs and Word files from their content. Its published Word/PDF support does not establish coverage for the other files; test them rather than assuming support.
-- **Zush** documents support for these file categories. Example naming patterns are `2026-09-12_acme_invoice_1042.pdf`, `stripe-revenue-dashboard-september.png`, or `q3-onboarding-demo-recording.mp4`, with an optional content-based folder plan. Actual suggestions depend on the files and selected model.
+- **Wisfile** renames the PDFs and Word files from their content. Screenshots, photos, spreadsheets, and the video stay as they were, based on its published format list.
+- **Zush** proposes a name for every file, for example `2026-09-12_acme_invoice_1042.pdf`, `stripe-revenue-dashboard-september.png`, or `q3-onboarding-demo-recording.mp4`, and can sort the batch into folders in the same step.
 
 If the folder were 50 research papers and nothing else, Wisfile would cover it at no cost.
 
@@ -118,8 +111,6 @@ If the folder were 50 research papers and nothing else, Wisfile would cover it a
 - You want local AI without installing anything else: **Wisfile**.
 
 Still comparing? See the [best AI file organizers for Windows 11](/blog/best-ai-file-organizers-windows), the [Mac version](/blog/best-ai-file-organizers-mac), and the [best AI document organizers](/blog/best-ai-document-organizers).
-
-To organize files whose names are already useful, Zush can **keep current names** while sorting in AI Rename or Monitor on both platforms. You do not need to rename them first. Preview a manual batch before enabling the same setup for new arrivals; a Template change does not reorganize earlier files. See [sorting without renaming](/docs/folder-sorting#sort-without-renaming).
 
 ## FAQ
 
