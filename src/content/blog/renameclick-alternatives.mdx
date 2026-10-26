@@ -8,8 +8,8 @@ topic: "comparisons"
 tags:
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "RenameClick is good for offline renaming of images, documents, and audio. Its standard Rename history is in-memory, while eligible Auto Flow records persist across restarts. If you need video, RAW photos, design files, persistent history for every rename batch, or more control over the naming pattern, Zush is the closest alternative at $48 one-time. One Zush license covers up to 3 devices."
-reviewed: "2026-10-18"
+tldr: "RenameClick is good for offline renaming of images, documents, and audio. Its standard Rename history is in-memory, while eligible Auto Flow records persist across restarts. Version 3.1 added side-panel editors for naming formats, instructions, and folder sets. If you need video, RAW photos, design files, persistent history for every rename batch, or more control over the naming pattern, Zush is the closest alternative at $48 one-time. One Zush license covers up to 3 devices."
+reviewed: "2026-10-26"
 ---
 
 import BlogCTA from '@/components/blog/BlogCTA.astro';
@@ -18,20 +18,20 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 RenameClick is a capable app. Its bundled local model means offline renaming works right after install. The reasons people look for an alternative are usually specific, so this guide starts with those.
 
-<aside class="article-note">Pricing and RenameClick recovery behavior checked October 8, 2026. Written by the maker of [Zush, the AI file renamer for Mac and Windows](/); competitor facts come from official pricing and documentation pages.</aside>
+<aside class="article-note">RenameClick's version, naming editors, and folder matching rechecked October 26, 2026 against its public changelog and documentation; pricing and recovery behavior checked October 8, 2026. Written by the maker of [Zush, the AI file renamer for Mac and Windows](/); competitor facts come from official pricing and documentation pages.</aside>
 
-**Zush features reviewed October 18, 2026.** Competitor information retains the check dates stated in this article.
+**Zush features reviewed October 26, 2026.** Competitor information retains the check dates stated in this article.
 
 ## Where RenameClick falls short
 
-[RenameClick](https://rename.click/) renames images, documents, and audio (with local speech transcription), and its Auto Flow can rename and move new files. The free plan has unlimited analysis and 100 successful renames or moves a month. Pro is $8 plus VAT per month or $36 plus VAT lifetime; verify the live checkout.
+RenameClick renames images, documents, and audio (with local speech transcription), and its Auto Flow can rename and move new files. Its current release is 3.1.0, published October 15, 2026. The free plan has unlimited analysis and 100 successful renames or moves a month. Pro is $8 plus VAT per month or $36 plus VAT lifetime; verify the live checkout.
 
 Common reasons to look elsewhere:
 
 - **Video is not supported**, and RAW photos and design files are not in its published format list.
 - **Recovery differs by workspace.** Standard Rename keeps up to 10 undo entries in memory and clears them on restart; Auto Flow saves eligible applied records and supports Undo/Redo across restarts.
 - **The local model is a multi-gigabyte download** that needs spare memory to run well.
-- **Naming control** is format patterns, EXIF placeholders, and custom instructions rather than a structured pattern builder.
+- **Naming control** is format patterns, EXIF placeholders, and custom instructions, now editable in a side panel with a preview on a real file. It does not have Zush's ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, or numbering that continues separately in each folder.
 
 If none of those affect you, RenameClick may be the right tool already.
 
@@ -43,7 +43,7 @@ If none of those affect you, RenameClick may be the right tool already.
 | Lifetime | $48 | $36 + VAT |
 | Free allowance | 50 renames total, across all AI modes | 100 successful renames or moves each month |
 
-Zush’s existing **ZUSH25** promotion reduces its $48 lifetime price to **$36** before applicable tax. That is a discounted price, not the regular price. BYOK provider charges are separate. See [Zush pricing](/pricing) and [RenameClick’s official pricing](https://rename.click/#pricing) before buying.
+Zush’s existing **ZUSH25** promotion reduces its $48 lifetime price to **$36** before applicable tax. That is a discounted price, not the regular price. BYOK provider charges are separate. See [Zush pricing](/pricing) and RenameClick's own pricing page before buying.
 
 ## Alternatives at a glance
 
@@ -57,7 +57,7 @@ Zush’s existing **ZUSH25** promotion reduces its $48 lifetime price to **$36**
 
 ## 1. Zush: broader formats and persistent history
 
-[Zush](/) reads each file and proposes a descriptive name, then waits for you to approve the batch. It handles 100+ formats: photos including RAW and HEIC, PDFs and Office and iWork documents, PSD, Figma, Sketch and Illustrator files, 16 video formats, and audio.
+[Zush](/) reads each file and proposes a descriptive name, then waits for you to approve the batch. It handles 100+ formats: photos including RAW and HEIC, PDFs and Office and iWork documents, PSD, Figma, Sketch and Illustrator files, video formats including MP4, MOV, MKV, AVI and WMV, and audio.
 
 The main differences from RenameClick:
 
@@ -82,23 +82,23 @@ You can [export Templates](/docs/template-import-export) with Naming Blocks, Cus
 
 ## 2. FilesDesk: credits or bring your own key
 
-[FilesDesk](https://filesdesk.app/) charges 1 credit per filename suggestion: $8 a month for 500 or $20 for 2,000. The $40 lifetime plan is unmetered but needs your own API key or a local model. It supports images, documents, video, and audio, with Watch Folders and undo through Processing History.
+FilesDesk charges 1 credit per filename suggestion: $8 a month for 500 or $20 for 2,000. The $40 lifetime plan is unmetered but needs your own API key or a local model. It supports images, documents, video, and audio, with Watch Folders and undo through Processing History.
 
 Good if you already pay for an AI provider. See [Zush vs FilesDesk](/blog/zush-vs-filesdesk).
 
 ## 3. NameQuick: rules after renaming
 
-[NameQuick](https://www.namequick.app/) adds conditional Rules that move, tag, or archive files once they are renamed. Managed plans start at $12 a month and meter renames; the $69 Self-Managed license is unmetered with your own key or local models.
+NameQuick adds conditional Rules that move, tag, or archive files once they are renamed. Managed plans start at $12 a month and meter renames; the $69 Self-Managed license is unmetered with your own key or local models.
 
 Best for recurring PDFs, receipts, and contracts on a Mac. See [Zush vs NameQuick](/blog/zush-vs-namequick).
 
 ## 4. Renamer.ai: document-first, subscription only
 
-**Renamer.ai facts rechecked October 5, 2026.** [Renamer.ai](https://renamer.ai/) focuses on OCR-heavy documents and has desktop and web interfaces. Its [v5 release](https://renamer.ai/changelog) adds downloadable local models, OpenAI/Gemini BYOK, and reusable folder structures. The published cloud plans have monthly allowances of 200, 1,000, or 5,000 files; separate Local/BYOK license limits need confirmation. Its public list does not document camera RAW, PSD, Sketch, or Figma. See [Renamer.ai alternatives](/blog/renamer-ai-alternatives). Other vendor facts retain their September 30 review.
+**Renamer.ai facts rechecked October 5, 2026.** Renamer.ai focuses on OCR-heavy documents and has desktop and web interfaces. Its its published v5 changelog adds downloadable local models, OpenAI/Gemini BYOK, and reusable folder structures. The published cloud plans have monthly allowances of 200, 1,000, or 5,000 files; separate Local/BYOK license limits need confirmation. Its public list does not document camera RAW, PSD, Sketch, or Figma. See [Renamer.ai alternatives](/blog/renamer-ai-alternatives). Other vendor facts retain their September 30 review.
 
 ## 5. AI Renamer: simple and cheap
 
-[AI Renamer](https://airenamer.app/) is a desktop app with a $19 one-time local mode or cloud credits at $10 per 200. It keeps things simple: custom prompts, common images and text documents. Folder monitoring and rename history are not documented. See [Zush vs AI Renamer](/blog/zush-vs-airenamer).
+AI Renamer is a desktop app with a $19 one-time local mode or cloud credits at $10 per 200. It keeps things simple: custom prompts, common images and text documents. Folder monitoring and rename history are not documented. See [Zush vs AI Renamer](/blog/zush-vs-airenamer).
 
 ## How to choose
 

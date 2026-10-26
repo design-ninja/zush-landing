@@ -55,7 +55,7 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 ## 2. Bulk Rename Utility
 
-[Bulk Rename Utility](https://www.bulkrenameutility.co.uk/) 同样可以读取 EXIF 数据，并让你对格式有更多控制。个人使用免费。
+Bulk Rename Utility 同样可以读取 EXIF 数据，并让你对格式有更多控制。个人使用免费。
 
 1. 在 Bulk Rename Utility 中打开文件夹并选中照片。
 2. 在 **Auto Date** 面板中选择 **Prefix**，并将类型设置为 **EXIF Date Picture Taken**（或你所用版本中等效的 EXIF 选项）。
@@ -66,7 +66,7 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 ## 3. ExifTool（精确，命令行）
 
-[ExifTool](https://exiftool.org/) 是摄影师信赖的元数据工具。安装后，在照片文件夹中打开 Terminal 并运行：
+ExifTool 是摄影师信赖的元数据工具。安装后，在照片文件夹中打开 Terminal 并运行：
 
 ```bat
 exiftool "-FileName<DateTimeOriginal" -d "%Y-%m-%d_%H%M%S%%-c.%%e" .

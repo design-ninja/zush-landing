@@ -13,7 +13,7 @@ tags:
   - "Organisation de fichiers"
 tldr: "Zush est le meilleur organisateur de documents IA si vous voulez que vos PDF, scans, factures et fichiers Office soient nommés d'après leur contenu et classés dans des dossiers ordinaires sur Mac ou Windows. Paperless-ngx est la meilleure option gratuite si vous pouvez auto-héberger une archive consultable. DEVONthink convient aux utilisateurs de Mac qui veulent une base de documents complète. NameQuick, Wisfile et File Juggler couvrent des flux de travail documentaires plus restreints. Une licence Zush couvre jusqu'à 3 appareils."
 earlyTaskExample: false
-reviewed: "2026-10-18"
+reviewed: "2026-10-26"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -23,7 +23,7 @@ Réponse rapide : pour la plupart des gens, le meilleur organisateur de document
 
 **Dernière vérification : 16 octobre 2026.** Rédigé par le créateur de [Zush – outil de renommage de fichiers par IA pour Mac et Windows](/). Les informations sur les concurrents proviennent du site ou de la documentation de chaque éditeur, liés dans sa section. Il s'agit d'une comparaison fondée sur des sources, et non d'un benchmark partagé.
 
-**Fonctionnalités de Zush revues le 18 octobre 2026.** Les informations sur les concurrents conservent les dates de vérification indiquées dans cet article.
+**Fonctionnalités de Zush revues le 26 octobre 2026.** Les informations sur les concurrents conservent les dates de vérification indiquées dans cet article.
 
 ## Deux façons d'organiser des documents avec l'IA
 
@@ -41,7 +41,7 @@ Si vous partagez des dossiers avec un comptable, une équipe ou une autre applic
 | **Zush** | Basé sur les dossiers | Mac, Windows | <BlogHighlight>Oui, y compris les scans composés uniquement d'images</BlogHighlight> | Templates + 145+ Naming Blocks | Oui, Auto ou Folder rules | Ollama, LM Studio | 50 renommages gratuits ; 10 $/mois ou 48 $ en une fois |
 | Paperless-ngx | Serveur d'archivage | Auto-hébergé (Docker) | Oui, OCR Tesseract | Noms de stockage configurables | Chemins de stockage gérés | Optionnelle, via Ollama | Gratuit, open source |
 | DEVONthink | Base d'archivage | Mac (compagnon iOS) | OCR dans Pro et Server | Dans sa base de données | Groupes dans sa base de données | Ollama, LM Studio | 99 $, 199 $ ou 499 $ |
-| NameQuick | Basé sur les dossiers | Mac | Oui | Presets | Règles conditionnelles | Offre Self-Managed | À partir de 12 $/mois ou 69 $ en une fois |
+| NameQuick | Basé sur les dossiers | Mac, Windows | Oui | Presets | Règles conditionnelles | Offre Self-Managed | À partir de 12 $/mois ou 69 $ en une fois |
 | Wisfile | Basé sur les dossiers | Mac, Windows | Oui, selon sa FAQ | Templates | Dossiers thématiques en un clic | Intégrée | Gratuit |
 | File Juggler | Règles, sans IA | Windows | Pas d'OCR | Règles | Règles | Pas d'IA | 50 $ en une fois + taxes |
 
@@ -71,7 +71,7 @@ Zush prend aussi en charge les règles de dossiers imbriquées, par exemple un r
 
 ## 2. Paperless-ngx : la meilleure archive auto-hébergée gratuite
 
-[Paperless-ngx](https://github.com/paperless-ngx/paperless-ngx) est un système de gestion de documents open source (GPL-3.0) que vous exécutez sur votre propre serveur ou NAS, généralement avec Docker. Il réalise l'OCR avec Tesseract dans plus de 100 langues, conserve l'original à côté d'une copie d'archive PDF/A, et utilise l'apprentissage automatique pour suggérer des étiquettes, des correspondants et des types de documents. Il peut aussi importer des documents depuis la messagerie.
+Paperless-ngx est un système de gestion de documents open source (GPL-3.0) que vous exécutez sur votre propre serveur ou NAS, généralement avec Docker. Il réalise l'OCR avec Tesseract dans plus de 100 langues, conserve l'original à côté d'une copie d'archive PDF/A, et utilise l'apprentissage automatique pour suggérer des étiquettes, des correspondants et des types de documents. Il peut aussi importer des documents depuis la messagerie.
 
 Les versions récentes ajoutent des fonctions d'IA optionnelles, désactivées par défaut : suggestions pour les documents, discussion avec vos documents et recherche de documents similaires. Elles peuvent fonctionner en local via Ollama ou via une API compatible OpenAI. Paperless gère lui-même les noms de fichiers et les dossiers, avec des formats configurables.
 
@@ -79,25 +79,25 @@ Choisissez Paperless-ngx si vous êtes à l'aise avec l'auto-hébergement et vou
 
 ## 3. DEVONthink : la meilleure base de documents pour Mac
 
-[DEVONthink](https://www.devontechnologies.com/apps/devonthink) est une application Mac de longue date pour stocker, rechercher et classer des documents. La version 4.4.2 nécessite macOS Ventura ou version ultérieure. Chaque édition peut classer des documents dans des groupes en fonction de ce que vous avez rangé auparavant. Pro et Server ajoutent l'intégration de scanners avec OCR et des fonctions d'IA générative comme la discussion, les résumés, l'étiquetage et le traitement par lots avec des règles intelligentes. Les modèles pris en charge incluent ChatGPT, Claude et Mistral, ainsi que des modèles locaux via Ollama ou LM Studio.
+DEVONthink est une application Mac de longue date pour stocker, rechercher et classer des documents. La version 4.4.2 nécessite macOS Ventura ou version ultérieure. Chaque édition peut classer des documents dans des groupes en fonction de ce que vous avez rangé auparavant. Pro et Server ajoutent l'intégration de scanners avec OCR et des fonctions d'IA générative comme la discussion, les résumés, l'étiquetage et le traitement par lots avec des règles intelligentes. Les modèles pris en charge incluent ChatGPT, Claude et Mistral, ainsi que des modèles locaux via Ollama ou LM Studio.
 
 Standard coûte 99 $, Pro 199 $ et Server 499 $, avant taxes, chacun avec deux postes et un an de mises à jour.
 
 Choisissez DEVONthink si vous voulez une bibliothèque de documents de niveau recherche sur Mac et que cela ne vous dérange pas d'y conserver vos documents. C'est plus que ce dont la plupart des gens ont besoin pour simplement nommer et classer leurs papiers.
 
-## 4. NameQuick : renommage sur Mac avec règles conditionnelles
+## 4. NameQuick : renommage de documents avec règles conditionnelles
 
-[NameQuick](https://www.namequick.app/) se concentre sur les PDF récurrents, les scans, les reçus, les factures, les contrats, les documents Word et les feuilles de calcul sur Mac. Il renomme d'après le contenu avec des Presets, surveille les dossiers et peut exécuter des Rules conditionnelles qui déplacent, étiquettent ou archivent les fichiers après le nommage.
+NameQuick se concentre sur les PDF récurrents, les scans, les reçus, les factures, les contrats, les documents Word et les feuilles de calcul sur Mac et Windows. Il renomme d'après le contenu avec des Presets, surveille les dossiers et peut exécuter des Rules conditionnelles qui déplacent, étiquettent ou archivent les fichiers après le nommage.
 
 ![Image promotionnelle de NameQuick montrant des factures, reçus et contrats numérisés renommés avec des dates et des noms de fournisseurs](/images/blog/competitors/namequick.webp)
 
 Les offres gérées commencent à 12 $ par mois pour 500 renommages et montent jusqu'à 99 $ par mois pour 10 000. La licence Self-Managed à 69 $ nécessite votre propre clé API ou un modèle local.
 
-Choisissez NameQuick pour un flux de travail documentaire exclusivement Mac, fondé sur des règles si/alors. Comparaison complète : [Zush vs NameQuick](/blog/zush-vs-namequick).
+Choisissez NameQuick pour un flux de travail documentaire fondé sur des règles si/alors ; MLX et les actions du Finder restent réservés au Mac. Comparaison complète : [Zush vs NameQuick](/blog/zush-vs-namequick).
 
 ## 5. Wisfile : renommage local gratuit pour PDF et Word
 
-[Wisfile](https://www.wisfile.ai/) est gratuit et fonctionne en local sur Mac et Windows. Il renomme les PDF et les documents Word d'après leur contenu, par exemple `Author-Year-Title` pour des articles de recherche, et peut regrouper les fichiers dans des dossiers thématiques.
+Wisfile est gratuit et fonctionne en local sur Mac et Windows. Il renomme les PDF et les documents Word d'après leur contenu, par exemple `Author-Year-Title` pour des articles de recherche, et peut regrouper les fichiers dans des dossiers thématiques.
 
 ![Illustration de Wisfile montrant des noms de PDF aléatoires transformés en noms de fichiers descriptifs et datés](/images/blog/competitors/wisfile.webp)
 
@@ -105,7 +105,7 @@ D'après sa FAQ, il n'y a ni surveillance de dossiers, ni planification, ni annu
 
 ## 6. File Juggler : des règles pour les documents prévisibles sur Windows
 
-[File Juggler](https://www.filejuggler.com/) n'est pas une IA, mais c'est un bon moyen d'acheminer des documents qui se présentent toujours de la même façon. Les règles peuvent repérer des mots dans les fichiers PDF, Word et Excel, réutiliser les dates trouvées dans le texte, puis renommer et déplacer le fichier. Il ne peut pas lire les scans composés uniquement d'images sans OCR séparé.
+File Juggler n'est pas une IA, mais c'est un bon moyen d'acheminer des documents qui se présentent toujours de la même façon. Les règles peuvent repérer des mots dans les fichiers PDF, Word et Excel, réutiliser les dates trouvées dans le texte, puis renommer et déplacer le fichier. Il ne peut pas lire les scans composés uniquement d'images sans OCR séparé.
 
 Il coûte 50 $ en une fois avant taxes, avec un essai complet de 30 jours. Choisissez-le lorsque chaque document d'un type suit la même mise en page. Dans le cas contraire, consultez les [alternatives à File Juggler](/blog/file-juggler-alternatives).
 
@@ -125,7 +125,7 @@ Il coûte 50 $ en une fois avant taxes, avec un essai complet de 30 jours. Chois
 - Factures, reçus et contrats dans des dossiers partagés : **Zush**.
 - Une archive consultable pour un foyer ou un bureau, si vous pouvez auto-héberger : **Paperless-ngx**.
 - Une bibliothèque de recherche sur Mac : **DEVONthink**.
-- Mac uniquement, avec des règles après le renommage : **NameQuick**.
+- Règles appliquées après le renommage : **NameQuick**.
 - Articles de recherche, en une seule fois, gratuitement : **Wisfile**.
 - Documents identiques sur Windows, sans IA : **File Juggler**.
 

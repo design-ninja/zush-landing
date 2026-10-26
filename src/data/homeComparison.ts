@@ -28,7 +28,7 @@ export const HOME_COMPARISON: ComparisonTableProps = {
     },
     {
       tool: 'RenameClick',
-      bestFor: 'Rename-and-move routing into preset categories',
+      bestFor: 'Rename-and-move routing into built-in or custom folder sets',
       gap: 'No documented RAW, design-file, or video support; prices are quoted before VAT.',
     },
     {

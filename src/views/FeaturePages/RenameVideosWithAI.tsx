@@ -6,12 +6,17 @@ const faqItems = [
   {
     question: 'Which video formats does Zush support?',
     answer:
-      'Zush supports common desktop video formats including MP4, MOV, M4V, MPEG, MPG, 3GP, DV, TS, MTS, M2TS, and VOB. It analyzes sampled frames and can use nearby SRT or VTT subtitle context when available.',
+      'Zush supports video on Mac and Windows, including MP4, MOV, QT, M4V, MPEG, MPG, M2V, 3GP, 3GPP, 3G2, 3GP2, DV, TS, MTS, M2TS, VOB, MKV, AVI, and WMV. It analyzes sampled frames and can read subtitles, including supported subtitle tracks inside MKV files.',
+  },
+  {
+    question: 'What does Zush read inside a video?',
+    answer:
+      'Four kinds of evidence: sampled frames, readable subtitles including supported subtitle tracks inside MKV files, a speech excerpt from the first five minutes when the cloud route supports it and speech is detected, and video metadata. Long videos are named from that excerpt, so review the suggestion before applying it.',
   },
   {
     question: 'Does Zush upload the whole video file?',
     answer:
-      'No. Zush prepares compact analysis context such as sampled frames, subtitles, and file metadata instead of sending the original full video file as part of normal cloud processing.',
+      'No. Zush prepares compact analysis context such as sampled frames, subtitles, a bounded speech excerpt, and file metadata instead of sending the original full video file as part of normal cloud processing.',
   },
   {
     question: 'Can Zush rename screen recordings?',
@@ -26,7 +31,7 @@ const faqItems = [
   {
     question: 'Can Zush rename audio-only files too?',
     answer:
-      'Yes. Zush supports MP3, M4A, WAV, FLAC, OGG, WebM, and MPGA audio files using metadata, recognition, and transcript context when available.',
+      'Yes. Zush supports MP3, M4A, WAV, FLAC, OGG, WebM, and MPGA audio files, using embedded metadata, music recognition, and a speech excerpt from the first two minutes when transcription is needed.',
   },
 ];
 
@@ -38,11 +43,11 @@ const jsonLd = buildFeaturePageJsonLd({
     steps: [
       {
         name: 'Import your videos',
-        text: 'Drag video files into Zush or select a folder. Zush supports common video formats including MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, and VOB.',
+        text: 'Drag video files into Zush or select a folder. Zush supports video on Mac and Windows, including MP4, MOV, M4V, MPEG, MPG, 3GP, TS, MTS, M2TS, DV, VOB, MKV, AVI, and WMV.',
       },
       {
         name: 'AI analyzes sampled context',
-        text: 'Zush samples video frames and can use subtitle context from SRT or VTT files to generate a concise, descriptive filename.',
+        text: 'Zush samples video frames and can read subtitles, including supported subtitle tracks inside MKV files, plus a speech excerpt and video metadata, to generate a concise, descriptive filename.',
       },
       {
         name: 'Review and apply',
@@ -54,11 +59,12 @@ const jsonLd = buildFeaturePageJsonLd({
   page: {
     pagePath: '/rename-videos-with-ai',
     description:
-      'AI video renamer that turns generic screen recordings, clips, and camera files into searchable filenames using sampled frames and subtitles.',
+      'AI video renamer that turns generic screen recordings, clips, and camera files into searchable filenames using sampled frames, subtitles, speech, and metadata.',
     featureList: [
-      'Rename MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, and VOB files',
+      'Rename MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB, MKV, AVI, and WMV files',
       'Analyze sampled frames instead of relying only on filenames',
-      'Use SRT and VTT subtitle context when available',
+      'Read subtitles, including supported subtitle tracks inside MKV files',
+      'Use a bounded speech excerpt and video metadata as naming evidence',
       'Batch rename videos alongside audio, images, and documents',
       'Custom naming patterns with dates and AI descriptions',
       'Full rename history with one-click revert',
@@ -72,7 +78,7 @@ const RenameVideosWithAI = () => (
     h1Accent="Rename Videos"
     category="video"
     definitionTitle="What Is AI Video Renaming?"
-    definitionText="Rename videos with AI using Zush to replace generic screen recording, camera, and export filenames with searchable names based on sampled frames, visible context, and subtitles. Zush renames files in place, with optional AI folder sorting."
+    definitionText="Rename videos with AI using Zush to replace generic screen recording, camera, and export filenames with searchable names based on sampled frames, visible context, subtitles including tracks inside MKV files, a speech excerpt, and video metadata. Zush renames files in place, with optional AI folder sorting."
     showcaseSlides={[
       {
         files: [

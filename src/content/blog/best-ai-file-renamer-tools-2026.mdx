@@ -39,7 +39,7 @@ If privacy is the main query, use the [Offline AI file renamer](/offline-ai-file
 
 **Targeted review: October 5, 2026.** Written by the maker of [Zush](/). Renamer.ai v5, NameQuick pricing/Windows details, and FilesDesk licensing/organization were rechecked against primary sources. Other tools retain their earlier source checks. This is a documented workflow comparison, not a shared hands-on benchmark.
 
-Sources checked for this update include official product, pricing, docs, or repository pages for [Zush](/), [FilesDesk](https://filesdesk.app/pricing), [FilesDesk docs](https://filesdesk.app/docs), [RenameClick](https://rename.click/) and its [supported file types docs](https://rename.click/docs/getting-started/supported-files), [NameQuick](https://www.namequick.app/), [Renamer.ai](https://renamer.ai/), [AI Renamer](https://airenamer.app/), the separate [ai-renamer CLI repository on GitHub](https://github.com/ozgrozer/ai-renamer), [Wisfile](https://www.wisfile.ai/), [Riffo](https://riffo.ai/), [Renamed.to](https://www.renamed.to/), and [File Renamer AI](https://filerenamerai.com/) with its [pricing page](https://filerenamerai.com/pricing).
+Sources checked for this update include official product, pricing, docs, or repository pages for [Zush](/), FilesDesk, FilesDesk docs, RenameClick and its supported file types docs, NameQuick, Renamer.ai, AI Renamer, the separate ai-renamer CLI repository on GitHub, Wisfile, Riffo, Renamed.to, and File Renamer AI with its pricing page.
 
 **Benchmark status:** this article is source-backed, not an independent product test. A public [benchmark simulation evidence pack](/benchmarks/ai-file-renamer-simulation-2026/README.md) demonstrates the proposed 300-record corpus, SHA-256 manifest, fixed settings, three-repeat raw-data format, aggregation, and limitations. The simulation did not execute Zush or any competitor and must not be used as a product score.
 
@@ -113,7 +113,7 @@ Before comparing tools, know what actually matters for daily use:
 
 ![Zush on Mac showing original filenames beside AI title suggestions for a mixed batch before applying changes](/images/showcase/macos/batch-rename-light.webp)
 
-[Zush file renamer for Mac and Windows](/) is the pick for users who work with a mix of file types and want one desktop workflow instead of separate rename tools for images, design files, documents, videos, and audio. It supports 100+ formats: 41 image formats (including HEIC, AVIF, SVG, and RAW), 4 design formats (Sketch, Figma .fig, Adobe Illustrator .ai, and PSD), 40 document and PDF-related formats (EPUB, FB2, PDF, Office, iWork, OpenDocument, text, data, email, and subtitle files), 16 video formats (including MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, and VOB), and 7 audio formats (including MP3, M4A, WAV, FLAC, OGG, WebM, and MPGA). That breadth matters because real workflows mix phone photos, camera RAW files, design assets, scanned PDFs, office documents, subtitles, screen recordings, and audio files in the same folders. Video is the category most of these tools skip entirely; [how to rename video files with AI](/blog/rename-video-files-with-ai) explains what a renamer actually reads from a clip.
+[Zush file renamer for Mac and Windows](/) is the pick for users who work with a mix of file types and want one desktop workflow instead of separate rename tools for images, design files, documents, videos, and audio. It supports 100+ formats: 41 image formats (including HEIC, AVIF, SVG, and RAW), 4 design formats (Sketch, Figma .fig, Adobe Illustrator .ai, and PSD), 40 document and PDF-related formats (EPUB, FB2, PDF, Office, iWork, OpenDocument, text, data, email, and subtitle files), video formats including MP4, MOV, MKV, AVI and WMV (including MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, and VOB), and 7 audio formats (including MP3, M4A, WAV, FLAC, OGG, WebM, and MPGA). That breadth matters because real workflows mix phone photos, camera RAW files, design assets, scanned PDFs, office documents, subtitles, screen recordings, and audio files in the same folders. Video is the category most of these tools skip entirely; [how to rename video files with AI](/blog/rename-video-files-with-ai) explains what a renamer actually reads from a clip.
 
 What makes Zush stand out next to the rest of this list:
 
@@ -168,7 +168,7 @@ FilesDesk is included because it targets a similar Mac + Windows workflow with m
 
 ### 3. RenameClick
 
-RenameClick is included for its AI Search and rename-plus-folder-routing workflow. It ships desktop apps for macOS and Windows with built-in local AI, Ollama, LM Studio, optional cloud providers, and Auto Flow. Local processing is not treated as an advantage because several products here, including Zush, support it. Its published coverage excludes camera RAW, design, and video files. Its [Rename workspace documentation](https://rename.click/docs/getting-started/how-it-works) limits Undo to 10 entries in memory, cleared on restart; this is not persistent history.
+RenameClick is included for its AI Search and rename-plus-folder-routing workflow. It ships desktop apps for macOS and Windows with built-in local AI, Ollama, LM Studio, optional cloud providers, and Auto Flow. Local processing is not treated as an advantage because several products here, including Zush, support it. Its published coverage excludes camera RAW, design, and video files. Its Rename workspace documentation limits Undo to 10 entries in memory, cleared on restart; this is not persistent history.
 
 ### 4. AI Renamer
 
@@ -176,13 +176,13 @@ Two separate projects share this name, and conflating them overstates what the p
 
 ### 5. Renamer.ai
 
-Renamer.ai [v5.0.0, September 25](https://renamer.ai/changelog), documents Cloud, downloadable on-device models, and OpenAI/Gemini BYOK. It also adds synced templates, a Template Gallery, reusable nested folder structures, and richer previews. Local AI and folder organization are shared capabilities, not reasons to exclude it.
+Renamer.ai v5.0.0, September 25, documents Cloud, downloadable on-device models, and OpenAI/Gemini BYOK. It also adds synced templates, a Template Gallery, reusable nested folder structures, and richer previews. Local AI and folder organization are shared capabilities, not reasons to exclude it.
 
 Its published cloud tiers remain metered, and its format list does not document camera RAW, PSD, Sketch, or Figma. Local/BYOK entitlements are not clearly separated in public pricing. Older generic server-upload wording should not be applied to all v5 modes. We have not independently tested network behavior. See [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai).
 
 ### 6. NameQuick
 
-NameQuick publishes Mac and Windows apps with Watch Folders, Rules, Quick Organize, inbox import, content search, undo, and 30+ formats. Its [Windows FAQ](https://www.namequick.app/) documents Managed, BYOK, Ollama, and LM Studio; MLX and Finder actions are Mac-only. Managed suggestions count even if unapplied, monthly allowance expires, and Self-Managed covers one computer. See [Zush vs NameQuick](/blog/zush-vs-namequick).
+NameQuick publishes Mac and Windows apps with Watch Folders, Rules, Quick Organize, inbox import, content search, undo, and 30+ formats. Its Windows FAQ documents Managed, BYOK, Ollama, and LM Studio; MLX and Finder actions are Mac-only. Managed suggestions count even if unapplied, monthly allowance expires, and Self-Managed covers one computer. See [Zush vs NameQuick](/blog/zush-vs-namequick).
 
 ### 7. Wisfile
 

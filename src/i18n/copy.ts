@@ -813,7 +813,7 @@ const localizedFullHomeFaqItems: Partial<Record<Exclude<Locale, 'en'>, FAQCopyIt
     { question: 'Welche Betriebssysteme werden unterstützt?', answer: 'Zush läuft auf macOS 15 Sequoia und neuer sowie Windows 10 / 11. Mac gibt es als signierte dmg, im Mac App Store und über Homebrew, Windows im Microsoft Store.' },
     { question: 'Welches KI-Modell nutzt die App?', answer: 'Zush verwendet moderne multimodale KI-Modelle für schnelle und genaue Analyse von Bildern, Videos und unterstützten Dokumenten. Das konkrete Modell kann sich durch Optimierungen ändern.' },
     { question: 'Funktioniert die App offline?', answer: 'Cloud-Verarbeitung benötigt Internet. Nutzer aller Pläne können nach Installation von Ollama und einem kompatiblen Modell Offline-KI aktivieren.' },
-    { question: 'Unterstützt ihr Audio- oder Videodateien?', answer: 'Zush 3.0 unterstützt Videoanalyse für MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV und VOB sowie Audiodateien wie MP3, M4A, WAV, FLAC, OGG, WebM und MPGA. Audio kann Metadaten, Erkennung und Transkriptkontext nutzen.' },
+    { question: 'Unterstützt ihr Audio- oder Videodateien?', answer: 'Zush unterstützt Videoanalyse für MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB, MKV, AVI und WMV sowie Audiodateien wie MP3, M4A, WAV, FLAC, OGG, WebM und MPGA. Audio kann Metadaten, Erkennung und Transkriptkontext nutzen.' },
     { question: 'Bekomme ich eine Rückerstattung, wenn es nicht passt?', answer: 'Ja. Zush bietet eine 14-Tage-Geld-zurück-Garantie. Details stehen in der Rückerstattungsrichtlinie.' },
   ],
   fr: [
@@ -833,7 +833,7 @@ const localizedFullHomeFaqItems: Partial<Record<Exclude<Locale, 'en'>, FAQCopyIt
     { question: 'Quels systèmes d’exploitation sont pris en charge ?', answer: 'Zush fonctionne sur macOS 15 Sequoia et versions récentes, ainsi que Windows 10 / 11. Mac est disponible en dmg signé, sur le Mac App Store et via Homebrew, Windows via Microsoft Store.' },
     { question: 'Quel modèle IA utilise l’app ?', answer: 'Zush utilise des modèles IA multimodaux modernes pour analyser rapidement et précisément les images, vidéos et documents pris en charge. Le modèle exact peut évoluer.' },
     { question: 'L’app fonctionne-t-elle hors ligne ?', answer: 'Le cloud nécessite internet. Les utilisateurs de toutes les offres peuvent activer l’IA hors ligne après installation d’Ollama et d’un modèle compatible.' },
-    { question: 'Prenez-vous en charge l’audio ou la vidéo ?', answer: 'Zush 3.0 prend en charge les vidéos MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV et VOB, ainsi que les fichiers audio MP3, M4A, WAV, FLAC, OGG, WebM et MPGA. L’audio peut utiliser les métadonnées, la reconnaissance et le contexte de transcription.' },
+    { question: 'Prenez-vous en charge l’audio ou la vidéo ?', answer: 'Zush prend en charge les vidéos MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB, MKV, AVI et WMV, ainsi que les fichiers audio MP3, M4A, WAV, FLAC, OGG, WebM et MPGA. L’audio peut utiliser les métadonnées, la reconnaissance et le contexte de transcription.' },
     { question: 'Puis-je être remboursé si cela ne me convient pas ?', answer: 'Oui. Zush propose une garantie de remboursement de 14 jours. Les détails sont dans la politique de remboursement.' },
   ],
   'pt-br': [
@@ -853,7 +853,7 @@ const localizedFullHomeFaqItems: Partial<Record<Exclude<Locale, 'en'>, FAQCopyIt
     { question: 'Quais sistemas operacionais são suportados?', answer: 'Zush funciona no macOS 15 Sequoia ou mais recente e no Windows 10 / 11. Mac tem dmg assinado, Mac App Store e Homebrew; Windows vem pela Microsoft Store.' },
     { question: 'Qual modelo de IA o app usa?', answer: 'Zush usa modelos multimodais modernos para analisar imagens, vídeos e documentos com rapidez e precisão. O modelo exato pode mudar com otimizações.' },
     { question: 'O app funciona offline?', answer: 'O modo cloud requer internet. Usuários de todos os planos podem ativar IA offline depois de instalar Ollama e um modelo compatível.' },
-    { question: 'Vocês suportam áudio ou vídeo?', answer: 'O Zush 3.0 suporta vídeos MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV e VOB, além de áudio MP3, M4A, WAV, FLAC, OGG, WebM e MPGA. O áudio pode usar metadados, reconhecimento e contexto de transcrição.' },
+    { question: 'Vocês suportam áudio ou vídeo?', answer: 'O Zush suporta vídeos MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB, MKV, AVI e WMV, além de áudio MP3, M4A, WAV, FLAC, OGG, WebM e MPGA. O áudio pode usar metadados, reconhecimento e contexto de transcrição.' },
     { question: 'Posso pedir reembolso se não servir para mim?', answer: 'Sim. O Zush oferece garantia de reembolso de 14 dias. Os detalhes estão na política de reembolso.' },
   ],
   es: [
@@ -873,7 +873,7 @@ const localizedFullHomeFaqItems: Partial<Record<Exclude<Locale, 'en'>, FAQCopyIt
     { question: '¿Qué sistemas operativos son compatibles?', answer: 'Zush funciona en macOS 15 Sequoia o posterior y Windows 10 / 11. Mac tiene dmg firmado, Mac App Store y Homebrew; Windows está en Microsoft Store.' },
     { question: '¿Qué modelo de IA usa la app?', answer: 'Zush usa modelos multimodales modernos para analizar imágenes, videos y documentos con rapidez y precisión. El modelo concreto puede cambiar con optimizaciones.' },
     { question: '¿La app funciona sin conexión?', answer: 'El modo cloud requiere internet. Los usuarios de todos los planes pueden activar IA offline tras instalar Ollama y un modelo compatible.' },
-    { question: '¿Soportan audio o video?', answer: 'Zush 3.0 admite videos MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV y VOB, además de audio MP3, M4A, WAV, FLAC, OGG, WebM y MPGA. El audio puede usar metadatos, reconocimiento y contexto de transcripción.' },
+    { question: '¿Soportan audio o video?', answer: 'Zush admite videos MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB, MKV, AVI y WMV, además de audio MP3, M4A, WAV, FLAC, OGG, WebM y MPGA. El audio puede usar metadatos, reconocimiento y contexto de transcripción.' },
     { question: '¿Puedo pedir un reembolso si no me sirve?', answer: 'Sí. Zush ofrece garantía de reembolso de 14 días. Los detalles están en la política de reembolso.' },
   ],
   nl: [
@@ -893,7 +893,7 @@ const localizedFullHomeFaqItems: Partial<Record<Exclude<Locale, 'en'>, FAQCopyIt
     { question: 'Welke besturingssystemen worden ondersteund?', answer: 'Zush werkt op macOS 15 Sequoia en nieuwer en Windows 10 / 11. Mac is er als ondertekende dmg, via de Mac App Store en via Homebrew; Windows via Microsoft Store.' },
     { question: 'Welk AI-model gebruikt de app?', answer: 'Zush gebruikt moderne multimodale AI-modellen voor snelle en nauwkeurige analyse van afbeeldingen, video’s en documenten. Het exacte model kan veranderen door optimalisaties.' },
     { question: 'Werkt de app offline?', answer: 'Cloudverwerking vereist internet. Gebruikers van elk abonnement kunnen offline AI activeren na installatie van Ollama en een compatibel model.' },
-    { question: 'Ondersteunen jullie audio of video?', answer: 'Zush 3.0 ondersteunt videoformaten zoals MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV en VOB, plus audio zoals MP3, M4A, WAV, FLAC, OGG, WebM en MPGA. Audio kan metadata, herkenning en transcriptcontext gebruiken.' },
+    { question: 'Ondersteunen jullie audio of video?', answer: 'Zush ondersteunt videoformaten zoals MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB, MKV, AVI en WMV, plus audio zoals MP3, M4A, WAV, FLAC, OGG, WebM en MPGA. Audio kan metadata, herkenning en transcriptcontext gebruiken.' },
     { question: 'Kan ik geld terugkrijgen als het niet past?', answer: 'Ja. Zush biedt een geld-terug-garantie van 14 dagen. Details staan in het terugbetalingsbeleid.' },
   ],
   it: [
@@ -913,7 +913,7 @@ const localizedFullHomeFaqItems: Partial<Record<Exclude<Locale, 'en'>, FAQCopyIt
     { question: 'Quali sistemi operativi sono supportati?', answer: 'Zush funziona su macOS 15 Sequoia e versioni successive e su Windows 10 / 11. Mac è disponibile come dmg firmato, su Mac App Store e via Homebrew, Windows su Microsoft Store.' },
     { question: 'Quale modello IA usa l’app?', answer: 'Zush usa modelli multimodali moderni per analizzare immagini, video e documenti in modo rapido e accurato. Il modello specifico può cambiare con le ottimizzazioni.' },
     { question: 'L’app funziona offline?', answer: 'La modalità cloud richiede internet. Gli utenti di tutti i piani possono attivare IA offline dopo aver installato Ollama e un modello compatibile.' },
-    { question: 'Supportate file audio o video?', answer: 'Zush 3.0 supporta video MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV e VOB, oltre ad audio MP3, M4A, WAV, FLAC, OGG, WebM e MPGA. L’audio può usare metadati, riconoscimento e contesto di trascrizione.' },
+    { question: 'Supportate file audio o video?', answer: 'Zush supporta video MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB, MKV, AVI e WMV, oltre ad audio MP3, M4A, WAV, FLAC, OGG, WebM e MPGA. L’audio può usare metadati, riconoscimento e contesto di trascrizione.' },
     { question: 'Posso ricevere un rimborso se non fa per me?', answer: 'Sì. Zush offre una garanzia di rimborso di 14 giorni. I dettagli sono nella policy di rimborso.' },
   ],
   ja: [
@@ -933,7 +933,7 @@ const localizedFullHomeFaqItems: Partial<Record<Exclude<Locale, 'en'>, FAQCopyIt
     { question: '対応 OS は？', answer: 'macOS 15 Sequoia 以降と Windows 10 / 11 に対応しています。Mac は署名済み dmg、Mac App Store、Homebrew、Windows は Microsoft Store で提供されます。' },
     { question: 'アプリはどの AI モデルを使いますか？', answer: '画像、動画、対応文書を高速かつ正確に分析するため、最新のマルチモーダル AI モデルを使います。具体的なモデルは最適化により変わる場合があります。' },
     { question: 'オフラインで使えますか？', answer: 'クラウド処理にはインターネットが必要です。すべてのプランのユーザーは Ollama と対応モデルを入れるとオフライン AI を有効化できます。' },
-    { question: '音声や動画ファイルに対応していますか？', answer: 'Zush 3.0 は MP4、MOV、M4V、MPEG、3GP、TS、MTS、M2TS、DV、VOB などの動画に加えて、MP3、M4A、WAV、FLAC、OGG、WebM、MPGA の音声にも対応します。音声はメタデータ、認識、文字起こし文脈を利用できます。' },
+    { question: '音声や動画ファイルに対応していますか？', answer: 'Zush は MP4、MOV、M4V、MPEG、3GP、TS、MTS、M2TS、DV、VOB、MKV、AVI、WMV などの動画に加えて、MP3、M4A、WAV、FLAC、OGG、WebM、MPGA の音声にも対応します。音声はメタデータ、認識、文字起こし文脈を利用できます。' },
     { question: '合わなかった場合は返金できますか？', answer: 'はい。Zush は 14 日間の返金保証を提供しています。詳細は返金ポリシーをご確認ください。' },
   ],
   ko: [
@@ -953,7 +953,7 @@ const localizedFullHomeFaqItems: Partial<Record<Exclude<Locale, 'en'>, FAQCopyIt
     { question: '지원 운영체제는 무엇인가요?', answer: 'macOS 15 Sequoia 이상과 Windows 10 / 11을 지원합니다. Mac은 서명된 dmg, Mac App Store, Homebrew로 제공되며 Windows는 Microsoft Store에서 제공됩니다.' },
     { question: '앱은 어떤 AI 모델을 사용하나요?', answer: '이미지, 비디오, 지원 문서를 빠르고 정확하게 분석하기 위해 최신 멀티모달 AI 모델을 사용합니다. 구체적인 모델은 최적화에 따라 바뀔 수 있습니다.' },
     { question: '오프라인으로 사용할 수 있나요?', answer: '클라우드 처리는 인터넷이 필요합니다. 모든 플랜의 사용자는 Ollama와 호환 모델을 설치한 뒤 오프라인 AI를 활성화할 수 있습니다.' },
-    { question: '오디오나 비디오 파일도 지원하나요?', answer: 'Zush 3.0은 MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB 비디오와 MP3, M4A, WAV, FLAC, OGG, WebM, MPGA 오디오를 지원합니다. 오디오는 메타데이터, 인식, 전사 맥락을 활용할 수 있습니다.' },
+    { question: '오디오나 비디오 파일도 지원하나요?', answer: 'Zush은 MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB, MKV, AVI, WMV 비디오와 MP3, M4A, WAV, FLAC, OGG, WebM, MPGA 오디오를 지원합니다. 오디오는 메타데이터, 인식, 전사 맥락을 활용할 수 있습니다.' },
     { question: '필요에 맞지 않으면 환불받을 수 있나요?', answer: '예. Zush는 14일 환불 보장을 제공합니다. 자세한 내용은 환불 정책에서 확인할 수 있습니다.' },
   ],
   tr: [
@@ -972,7 +972,7 @@ const localizedFullHomeFaqItems: Partial<Record<Exclude<Locale, 'en'>, FAQCopyIt
     { question: 'Hangi işletim sistemleri destekleniyor?', answer: 'Zush macOS 15 Sequoia ve daha yeni sürümlerde, ayrıca Windows 10 ve 11’de çalışır. Mac için imzalanmış dmg, Mac App Store ve Homebrew; Windows için Microsoft Store seçenekleri vardır.' },
     { question: 'Uygulama hangi yapay zekâ modelini kullanıyor?', answer: 'Zush görselleri, videoları ve desteklenen belgeleri hızlı ve doğru analiz etmek için modern çok modlu yapay zekâ modelleri kullanır. Belirli model, optimizasyonlarla birlikte değişebilir.' },
     { question: 'Uygulama çevrimdışı çalışır mı?', answer: 'Bulut işleme için internet gerekir. tüm planlardaki kullanıcılar Ollama ve uyumlu bir model kurduktan sonra Çevrimdışı Yapay Zekâ’yı etkinleştirebilir.' },
-    { question: 'Ses veya video dosyaları destekleniyor mu?', answer: 'Zush 3.0; MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV ve VOB videolarının yanı sıra MP3, M4A, WAV, FLAC, OGG, WebM ve MPGA ses dosyalarını destekler. Ses analizi meta verileri, tanımayı ve transkript bağlamını kullanabilir.' },
+    { question: 'Ses veya video dosyaları destekleniyor mu?', answer: 'Zush; MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB, MKV, AVI ve WMV videolarının yanı sıra MP3, M4A, WAV, FLAC, OGG, WebM ve MPGA ses dosyalarını destekler. Ses analizi meta verileri, tanımayı ve transkript bağlamını kullanabilir.' },
     { question: 'Uygulama bana uygun değilse para iadesi alabilir miyim?', answer: 'Evet. Zush 14 günlük para iade garantisi sunar. Ayrıntılar iade politikasında yer alır.' },
   ],
 };
@@ -3332,7 +3332,7 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       { question: '支持哪些操作系统？', answer: 'Zush 支持 macOS 15 Sequoia 及更新版本，以及 Windows 10 / 11。Mac 可使用签名 dmg、Mac App Store 或 Homebrew，Windows 可从 Microsoft Store 安装。' },
       { question: '应用使用哪个 AI 模型？', answer: 'Zush 使用先进的多模态 AI 模型来分析图片、视频和支持的文档。具体模型可能会随着速度和准确性优化而更新。' },
       { question: '应用可以离线使用吗？', answer: '云端处理需要网络。所有方案的用户都可以安装 Ollama 和兼容模型后启用离线 AI 模式。' },
-      { question: '支持音频或视频文件吗？', answer: 'Zush 3.0 支持 MP4、MOV、M4V、MPEG、3GP、TS、MTS、M2TS、DV、VOB 视频，以及 MP3、M4A、WAV、FLAC、OGG、WebM、MPGA 音频。音频可使用元数据、识别结果和转录上下文。' },
+      { question: '支持音频或视频文件吗？', answer: 'Zush 支持 MP4、MOV、M4V、MPEG、3GP、TS、MTS、M2TS、DV、VOB、MKV、AVI、WMV 视频，以及 MP3、M4A、WAV、FLAC、OGG、WebM、MPGA 音频。音频可使用元数据、识别结果和转录上下文。' },
       { question: '如果不适合我，可以退款吗？', answer: '可以。Zush 提供 14 天退款保证，详情可查看退款政策。' },
     ],
     featureCards: {

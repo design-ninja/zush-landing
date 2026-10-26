@@ -10,12 +10,17 @@ const faqItems = [
   {
     question: 'How does Zush understand audio files?',
     answer:
-      'Zush can use embedded metadata, recognition context, transcript context, and audio-specific Naming Blocks such as artist, title, album, BPM, duration, speaker, topic, and recording context when available.',
+      'Zush takes one of four routes per file: embedded track metadata, an available transcript, music recognition, or speech analysis. Cloud speech analysis uses an excerpt from the first two minutes, so a long recording may cover topics outside it. Audio-specific Naming Blocks such as artist, title, album, BPM, duration, speaker, topic, and recording context fill the filename itself.',
   },
   {
     question: 'Does Zush upload the whole audio file?',
     answer:
-      'Your original files stay on your computer. Cloud analysis sends only the payload needed for renaming, such as metadata, transcript context, or a bounded audio payload when transcription is required.',
+      'Your original files stay on your computer. Cloud analysis sends only the payload needed for renaming, such as metadata, transcript context, or a bounded audio excerpt from the first two minutes when transcription is required.',
+  },
+  {
+    question: 'Does music recognition work in every AI mode?',
+    answer:
+      'No. Music recognition needs a reliable catalog match and is not guaranteed for every remix, live take, or noisy clip. Ollama and LM Studio work from available text, metadata, and image previews, and skip online music catalog recognition; Zush does not send raw audio to a local model or switch to cloud transcription on its own.',
   },
   {
     question: 'Can I rename music and spoken audio in the same batch?',
@@ -33,7 +38,7 @@ const jsonLd = buildFeaturePageJsonLd({
   howTo: {
     name: 'Rename Audio with AI',
     description:
-      'Use Zush to automatically rename audio files based on metadata, recognition, and transcript context.',
+      'Use Zush to automatically rename audio files based on track metadata, music recognition, transcripts, and speech analysis.',
     steps: [
       {
         name: 'Add audio files',
@@ -41,7 +46,7 @@ const jsonLd = buildFeaturePageJsonLd({
       },
       {
         name: 'AI analyzes audio context',
-        text: 'Zush uses available metadata, transcript context, recognition, and audio-specific fields to understand what each file is about.',
+        text: 'Zush uses embedded track metadata, an available transcript, music recognition, or a speech excerpt from the first two minutes to understand what each file is about.',
       },
       {
         name: 'Review and apply names',
@@ -56,7 +61,8 @@ const jsonLd = buildFeaturePageJsonLd({
       'AI audio renamer that turns generic music tracks, voice memos, interviews, podcasts, and meeting recordings into searchable filenames.',
     featureList: [
       'Rename MP3, M4A, WAV, FLAC, OGG, WebM, and MPGA audio files',
-      'Use metadata, transcript context, recognition, and audio-specific fields',
+      'Use track metadata, transcripts, music recognition, or a bounded speech excerpt',
+      'Local modes work from text, metadata, and previews without online music recognition',
       'Templates for repeatable audio naming workflows',
       '145+ Naming Blocks for artist, title, topic, client, date, BPM, and more',
       'Batch rename audio alongside images, documents, PDFs, and videos',

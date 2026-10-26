@@ -13,7 +13,7 @@ tags:
   - "ファイル整理"
 tldr: "PDF、スキャン、請求書、Officeファイルを内容に基づいて命名し、MacやWindowsの通常のフォルダに振り分けたいなら、最適なAI書類整理ツールはZushです。検索可能なアーカイブをセルフホストできるなら、無料で使えるPaperless-ngxが最良の選択肢です。DEVONthinkは本格的な書類データベースを求めるMacユーザーに向いています。NameQuick、Wisfile、File Jugglerは、より限定的な書類ワークフローに対応します。Zushのライセンス1つで最大3台のデバイスで使えます。"
 earlyTaskExample: false
-reviewed: "2026-10-18"
+reviewed: "2026-10-26"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -23,7 +23,7 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 **最終確認日:2026年10月16日。** [Zush – MacとWindows向けAIファイルリネームツール](/)の開発元が執筆しています。競合ツールの詳細は各ベンダーのサイトまたはドキュメントに基づいており、各セクションにリンクを掲載しています。これは情報源に基づく比較であり、共通のベンチマークではありません。
 
-**Zushの機能は2026年10月18日に確認しました。** 競合ツールの情報は、この記事に記載した確認日のままです。
+**Zushの機能は2026年10月26日に確認しました。** 競合ツールの情報は、この記事に記載した確認日のままです。
 
 ## AIで書類を整理する2つの方法
 
@@ -41,7 +41,7 @@ AI書類整理ツールは2つのグループに分かれ、この選択は機�
 | **Zush** | フォルダベース | Mac、Windows | <BlogHighlight>対応(画像のみのスキャンも可)</BlogHighlight> | テンプレート+145種以上のNaming Blocks | 対応。AutoまたはFolder rules | Ollama、LM Studio | 無料リネーム50回、月額$10または買い切り$48 |
 | Paperless-ngx | アーカイブサーバー | セルフホスト(Docker) | 対応(Tesseract OCR) | 設定可能な保存名 | 管理されたストレージパス | 任意(Ollama経由) | 無料、オープンソース |
 | DEVONthink | アーカイブデータベース | Mac(iOSコンパニオンあり) | ProとServerでOCR対応 | データベース内 | データベース内のグループ | Ollama、LM Studio | $99、$199、または$499 |
-| NameQuick | フォルダベース | Mac | 対応 | プリセット | 条件付きルール | Self-Managedプラン | 月額$12から、または買い切り$69 |
+| NameQuick | フォルダベース | Mac、Windows | 対応 | プリセット | 条件付きルール | Self-Managedプラン | 月額$12から、または買い切り$69 |
 | Wisfile | フォルダベース | Mac、Windows | 対応(FAQによる) | テンプレート | ワンクリックのトピックフォルダ | 内蔵 | 無料 |
 | File Juggler | ルールベース、AIなし | Windows | OCRなし | ルール | ルール | AIではない | 買い切り$50+税 |
 
@@ -71,7 +71,7 @@ Zushは、年ごと、さらに月ごとにグループ化するような入れ�
 
 ## 2. Paperless-ngx:無料でセルフホストできる最適なアーカイブ
 
-[Paperless-ngx](https://github.com/paperless-ngx/paperless-ngx)は、オープンソース(GPL-3.0)の文書管理システムで、通常はDockerを使って自分のサーバーやNASで動かします。100以上の言語でTesseractによるOCRを実行し、元のファイルをPDF/Aのアーカイブコピーと並べて保管します。また、機械学習でタグ、通信相手、書類の種類を提案します。メールから書類を取り込むこともできます。
+Paperless-ngxは、オープンソース(GPL-3.0)の文書管理システムで、通常はDockerを使って自分のサーバーやNASで動かします。100以上の言語でTesseractによるOCRを実行し、元のファイルをPDF/Aのアーカイブコピーと並べて保管します。また、機械学習でタグ、通信相手、書類の種類を提案します。メールから書類を取り込むこともできます。
 
 最近のバージョンでは、デフォルトでオフの任意のAI機能が追加されています。書類の提案、書類とのチャット、類似書類の検索です。これらはOllamaを通じてローカルで、またはOpenAI互換APIを通じて実行できます。Paperlessはファイル名とフォルダを、設定可能な形式で自分で管理します。
 
@@ -79,25 +79,25 @@ Zushは、年ごと、さらに月ごとにグループ化するような入れ�
 
 ## 3. DEVONthink:Mac向けの最適な書類データベース
 
-[DEVONthink](https://www.devontechnologies.com/apps/devonthink)は、書類の保存、検索、分類を行う、長い歴史を持つMacアプリです。バージョン4.4.2にはmacOS Ventura以降が必要です。どのエディションでも、過去に整理した内容に基づいて書類をグループに分類できます。ProとServerには、OCR付きのスキャナー連携と、チャット、要約、タグ付け、スマートルールによる一括処理といった生成AI機能が加わります。対応モデルにはChatGPT、Claude、Mistralのほか、OllamaまたはLM Studio経由のローカルモデルがあります。
+DEVONthinkは、書類の保存、検索、分類を行う、長い歴史を持つMacアプリです。バージョン4.4.2にはmacOS Ventura以降が必要です。どのエディションでも、過去に整理した内容に基づいて書類をグループに分類できます。ProとServerには、OCR付きのスキャナー連携と、チャット、要約、タグ付け、スマートルールによる一括処理といった生成AI機能が加わります。対応モデルにはChatGPT、Claude、Mistralのほか、OllamaまたはLM Studio経由のローカルモデルがあります。
 
 料金は、Standardが$99、Proが$199、Serverが$499(いずれも税別)で、それぞれ2シートと1年間のアップデートが付きます。
 
 Macで研究用途の書類ライブラリがほしく、書類をその中に置いておくことに抵抗がないなら、DEVONthinkを選びましょう。書類に名前を付けて整理するだけなら、多くの人には過剰です。
 
-## 4. NameQuick:条件付きルールを備えたMac向けリネーム
+## 4. NameQuick:条件付きルールを備えた書類リネーム
 
-[NameQuick](https://www.namequick.app/)は、Mac上の定期的なPDF、スキャン、レシート、請求書、契約書、Word文書、スプレッドシートに焦点を当てています。Presetsを使って内容に基づきリネームし、フォルダを監視し、命名後にファイルを移動、タグ付け、アーカイブする条件付きRulesを実行できます。
+NameQuickは、MacとWindowsで定期的に発生するPDF、スキャン、レシート、請求書、契約書、Word文書、スプレッドシートに焦点を当てています。Presetsを使って内容に基づきリネームし、フォルダを監視し、命名後にファイルを移動、タグ付け、アーカイブする条件付きRulesを実行できます。
 
 ![日付と取引先名でリネームされたスキャン済みの請求書、レシート、契約書を示すNameQuickのプロモーション画像](/images/blog/competitors/namequick.webp)
 
 マネージドプランは、500回のリネームで月額$12から、10,000回で月額$99までです。$69のSelf-Managedライセンスには、自分のAPIキーまたはローカルモデルが必要です。
 
-if/thenルールに基づくMac専用の書類ワークフローには、NameQuickを選びましょう。詳細な比較:[Zush vs NameQuick](/blog/zush-vs-namequick)。
+if/thenルールに基づく書類ワークフローには、NameQuickを選びましょう。MLXとFinder関連の機能はMac限定です。詳細な比較:[Zush vs NameQuick](/blog/zush-vs-namequick)。
 
 ## 5. Wisfile:PDFとWord向けの無料ローカルリネーム
 
-[Wisfile](https://www.wisfile.ai/)は無料で、MacとWindowsでローカルに動作します。PDFとWord文書を内容に基づいてリネームし(たとえば研究論文なら `Author-Year-Title`)、ファイルをトピックごとのフォルダにまとめることもできます。
+Wisfileは無料で、MacとWindowsでローカルに動作します。PDFとWord文書を内容に基づいてリネームし(たとえば研究論文なら `Author-Year-Title`)、ファイルをトピックごとのフォルダにまとめることもできます。
 
 ![ランダムなPDF名を、日付付きで内容がわかる書類のファイル名に変えるWisfile自身のイラスト](/images/blog/competitors/wisfile.webp)
 
@@ -105,7 +105,7 @@ FAQによると、フォルダの監視、スケジュール実行、組み込�
 
 ## 6. File Juggler:Windowsで定型書類を扱うためのルール
 
-[File Juggler](https://www.filejuggler.com/)はAIではありませんが、常に同じ見た目の書類を振り分ける確実な方法です。ルールは、PDF、Word、Excelファイル内の単語に一致させたり、テキスト内で見つかった日付を再利用したりして、ファイルをリネームして移動できます。別途OCRを使わない限り、画像のみのスキャンは読み取れません。
+File JugglerはAIではありませんが、常に同じ見た目の書類を振り分ける確実な方法です。ルールは、PDF、Word、Excelファイル内の単語に一致させたり、テキスト内で見つかった日付を再利用したりして、ファイルをリネームして移動できます。別途OCRを使わない限り、画像のみのスキャンは読み取れません。
 
 価格は買い切り$50(税別)で、30日間のフル機能トライアルがあります。ある種類の書類がすべて同じレイアウトに従う場合に選びましょう。そうでない場合は、[File Jugglerの代替ツール](/blog/file-juggler-alternatives)をご覧ください。
 
@@ -125,7 +125,7 @@ FAQによると、フォルダの監視、スケジュール実行、組み込�
 - 共有フォルダ内の請求書、レシート、契約書:**Zush**。
 - 家庭やオフィス向けの検索可能なアーカイブで、セルフホストできる場合:**Paperless-ngx**。
 - Macでの研究用ライブラリ:**DEVONthink**。
-- Mac専用で、リネーム後にルールを適用したい場合:**NameQuick**。
+- リネーム後にルールを適用したい場合:**NameQuick**。
 - 研究論文を、1回だけ無料で:**Wisfile**。
 - Windowsで同一形式の書類、AIなし:**File Juggler**。
 

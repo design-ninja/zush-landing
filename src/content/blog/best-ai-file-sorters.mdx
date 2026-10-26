@@ -11,7 +11,7 @@ tags:
   - "Automation"
 tldr: "Zush is the best AI file sorter for most people on Mac and Windows: you describe the folders in plain language or use Auto, and Zush reads each file, renames it, and moves it into the right folder after review. It covers video and audio, runs on local AI, and PRO has no file meter. Sortio is the closest alternative if you need Linux. One Zush license covers up to 3 devices."
 earlyTaskExample: false
-reviewed: "2026-10-18"
+reviewed: "2026-10-26"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -57,7 +57,7 @@ Zush combines two jobs in one reviewed batch: it names each file by its content 
 
 What makes Zush different:
 
-- **It reads more kinds of files.** Zush understands PDFs and image-only scans, photos including RAW and HEIC, screenshots, Office and iWork documents, design files, 16 video formats, and audio. "Group videos by topic" works because Zush looks at video frames, not just the filename.
+- **It reads more kinds of files.** Zush understands PDFs and image-only scans, photos including RAW and HEIC, screenshots, Office and iWork documents, design files, video formats including MP4, MOV, MKV, AVI and WMV, and audio. "Group videos by topic" works because Zush looks at video frames, not just the filename.
 - **Names and folders are planned together.** Your Template sets the filename (date, vendor, amount, client, subject), Folder rules set the location. You see both before anything moves.
 - **It files into folders you already have.** With **Reuse existing folders** on, Zush matches files to suitable existing folders and creates a new one only when nothing fits.
 - **It keeps sorting new files.** Save the rules in a Template, assign it to Monitor, and new downloads or scans are renamed and sorted as they arrive. Monitor remembers the folders it created.
@@ -76,7 +76,7 @@ You can [export Templates](/docs/template-import-export) with Naming Blocks, Cus
 
 ## 2. Sortio: closest alternative, plus Linux
 
-[Sortio](https://www.getsortio.com/) is also prompt-driven: you describe the organization in plain English, it builds a plan, renames files, creates folders, and routes files. It can restrict sorting to a list of existing folders and send unmatched files to a fallback folder. It runs on macOS, Windows, and Linux.
+Sortio is also prompt-driven: you describe the organization in plain English, it builds a plan, renames files, creates folders, and routes files. It can restrict sorting to a list of existing folders and send unmatched files to a fallback folder. It runs on macOS, Windows, and Linux.
 
 The free plan includes unlimited rule-based sorting with up to five rules, watch folders, undo, and a one-time AI trial. Pro is $14.99 per month or $99 per year with a monthly AI allowance; BYOK and Ollama are available on every plan. Its site describes reading documents, images, PDFs, and spreadsheets, but it does not publish a full format list.
 
@@ -84,7 +84,7 @@ Choose Sortio if you need Linux or team seats. Choose Zush for video and audio s
 
 ## 3. RenameClick: sort into categories you define
 
-[RenameClick](https://rename.click/) offers three sorting methods: **AI Categories**, where the AI picks from a preset list of category names you write; **Metadata Folders** built from dates or EXIF fields; and **Match Folders**, which chooses among up to 50 existing top-level folders. Auto Flow watches a folder and moves or copies files while the app is running.
+RenameClick offers three sorting methods: **folder sets**, where the AI picks from a built-in set, an editable copy of one, or a set you create yourself; **Metadata Folders** built from dates or EXIF fields; and **Match Folders**, which reads the existing subfolders of your output folder up to three levels deep. Each file is offered 12 folders by default, and that cap can be raised to 50. Auto Flow watches a folder and moves or copies files while the app is running.
 
 ![RenameClick (Mac version shown) sorting renamed files into Legal Documents, Medical Documents, and Uncategorized before Rename & Move](/images/blog/competitors/renameclick.webp)
 
@@ -94,7 +94,7 @@ Choose RenameClick if your categories are fixed and known in advance. Choose Zus
 
 ## 4. Sparkle: hands-off cleanup for a Mac
 
-[Sparkle](https://makeitsparkle.co/) organizes Desktop, Downloads, Documents, and other folders on a schedule. It builds an AI Library of folders from patterns in your files, accepts natural-language requests, and also cleans up duplicates and old screenshots. Deleted items go to the Trash first.
+Sparkle organizes Desktop, Downloads, Documents, and other folders on a schedule. It builds an AI Library of folders from patterns in your files, accepts natural-language requests, and also cleans up duplicates and old screenshots. Deleted items go to the Trash first.
 
 It is Mac only. The marketing page lists plans from $9.25 a month and the plans page showed $119 a year when checked; Sparkle is also included in the Every bundle. Sparkle does not rename files.
 
@@ -102,7 +102,7 @@ Choose Sparkle for set-and-forget cleanup of a personal Mac. Choose Zush when fi
 
 ## 5. NameQuick: rules after renaming
 
-[NameQuick](https://www.namequick.app/) renames documents by content and then runs conditional Rules that can move a file into a folder, add tags, set a color label, or archive it. That makes it strong for predictable document workflows on a Mac.
+NameQuick renames documents by content and then runs conditional Rules that can move a file into a folder, add tags, set a color label, or archive it. That makes it strong for predictable document workflows on a Mac.
 
 ![NameQuick promo image showing scanned invoices, receipts, and contracts renamed with dates and vendor names](/images/blog/competitors/namequick.webp)
 
@@ -112,7 +112,7 @@ Choose NameQuick if you want if/then routing after AI naming. See [Zush vs NameQ
 
 ## 6. AI File Sorter: free and open source
 
-[AI File Sorter](https://github.com/hyperfield/ai-file-sorter) is a free, AGPL-licensed desktop app for Windows, macOS, and Linux. It suggests categories and optional subcategories for each file, supports whitelists of allowed categories, reads images with a local vision model and extracts text from documents, and can suggest new filenames. It runs on local models or your own API key and has an undo for the last run.
+AI File Sorter is a free, AGPL-licensed desktop app for Windows, macOS, and Linux. It suggests categories and optional subcategories for each file, supports whitelists of allowed categories, reads images with a local vision model and extracts text from documents, and can suggest new filenames. It runs on local models or your own API key and has an undo for the last run.
 
 There is no free-text prompt for the grouping and no watch folder. Audio and video are classified from embedded metadata rather than content.
 
@@ -120,7 +120,7 @@ Choose AI File Sorter for a free, one-off cleanup when you are comfortable setti
 
 ## 7. Hazel, File Juggler, and DropIt: rules without AI
 
-[Hazel](https://www.noodlesoft.com/) ($42, Mac), [File Juggler](https://www.filejuggler.com/) ($50 + tax, Windows), and [DropIt](https://www.dropitproject.com/) (free, Windows) watch folders and act on conditions: name patterns, extensions, dates, or matched text. They are reliable when files are predictable.
+Hazel ($42, Mac), File Juggler ($50 + tax, Windows), and DropIt (free, Windows) watch folders and act on conditions: name patterns, extensions, dates, or matched text. They are reliable when files are predictable.
 
 They do not understand what a photo, scan, or video shows, so every case needs its own rule. Many people pair them with an AI renamer: descriptive names make rules easier to write. Or replace the rule set with one Zush prompt. See the [Hazel alternative](/hazel-alternative) page and [Hazel for Windows alternatives](/blog/hazel-for-windows-alternatives).
 

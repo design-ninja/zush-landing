@@ -13,7 +13,7 @@ tags:
   - "文件整理"
 tldr: "如果你希望在 Mac 或 Windows 上按内容为 PDF、扫描件、发票和 Office 文件命名，并分类到普通文件夹中，Zush 是最佳 AI 文档整理工具。如果你可以自托管可搜索的档案库，Paperless-ngx 是最好的免费选择。DEVONthink 适合想要完整文档数据库的 Mac 用户。NameQuick、Wisfile 和 File Juggler 则覆盖范围更窄的文档工作流。一个 Zush 许可最多可用于 3 台设备。"
 earlyTaskExample: false
-reviewed: "2026-10-18"
+reviewed: "2026-10-26"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -23,7 +23,7 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 **最后核查：2026 年 10 月 16 日。** 本文由 [Zush – 适用于 Mac 和 Windows 的 AI 文件重命名工具](/) 的开发者撰写。竞品详情来自各厂商的网站或文档，并在对应章节中附有链接。这是一份基于来源的对比，而不是统一基准测试。
 
-**Zush 功能复核于 2026 年 10 月 18 日。** 竞品信息保留本文所注明的核查日期。
+**Zush 功能复核于 2026 年 10 月 26 日。** 竞品信息保留本文所注明的核查日期。
 
 ## 用 AI 整理文档的两种方式
 
@@ -41,7 +41,7 @@ AI 文档整理工具分为两类，这个选择比任何功能清单都更重�
 | **Zush** | 基于文件夹 | Mac、Windows | <BlogHighlight>支持，包括纯图像扫描件</BlogHighlight> | 模板 + 145+ 个Naming Blocks | 支持，自动或文件夹规则 | Ollama、LM Studio | 50 次免费重命名；$10/月 或 $48 一次性买断 |
 | Paperless-ngx | 档案服务器 | 自托管（Docker） | 支持，Tesseract OCR | 可配置的存储名称 | 受管理的存储路径 | 可选，通过 Ollama | 免费，开源 |
 | DEVONthink | 档案数据库 | Mac（配套 iOS 应用） | Pro 和 Server 版提供 OCR | 在其数据库内 | 在其数据库内按群组 | Ollama、LM Studio | $99、$199 或 $499 |
-| NameQuick | 基于文件夹 | Mac | 支持 | 预设 | 条件规则 | 自管理方案 | 起价 $12/月 或 $69 一次性买断 |
+| NameQuick | 基于文件夹 | Mac、Windows | 支持 | 预设 | 条件规则 | 自管理方案 | 起价 $12/月 或 $69 一次性买断 |
 | Wisfile | 基于文件夹 | Mac、Windows | 支持，据其 FAQ | 模板 | 一键生成主题文件夹 | 内置 | 免费 |
 | File Juggler | 规则，无 AI | Windows | 无 OCR | 规则 | 规则 | 非 AI | $50 一次性买断 + 税 |
 
@@ -71,7 +71,7 @@ Zush 还支持嵌套文件夹规则，例如先按年份再按月份分组。你
 
 ## 2. Paperless-ngx：最佳免费自托管档案库
 
-[Paperless-ngx](https://github.com/paperless-ngx/paperless-ngx) 是一个开源文档管理系统（GPL-3.0），你可以在自己的服务器或 NAS 上运行，通常使用 Docker。它使用 Tesseract 对 100 多种语言运行 OCR，会把原件与 PDF/A 归档副本保存在一起，并使用机器学习来建议标签、往来方和文档类型。它还可以从电子邮件导入文档。
+Paperless-ngx 是一个开源文档管理系统（GPL-3.0），你可以在自己的服务器或 NAS 上运行，通常使用 Docker。它使用 Tesseract 对 100 多种语言运行 OCR，会把原件与 PDF/A 归档副本保存在一起，并使用机器学习来建议标签、往来方和文档类型。它还可以从电子邮件导入文档。
 
 近期版本新增了可选的 AI 功能，默认关闭：文档建议、与文档聊天以及相似文档搜索。它们可以通过 Ollama 在本地运行，或通过兼容 OpenAI 的 API 运行。Paperless 会自行管理文件名和文件夹，并提供可配置的格式。
 
@@ -79,25 +79,25 @@ Zush 还支持嵌套文件夹规则，例如先按年份再按月份分组。你
 
 ## 3. DEVONthink：最佳 Mac 文档数据库
 
-[DEVONthink](https://www.devontechnologies.com/apps/devonthink) 是一款历史悠久的 Mac 应用，用于存储、搜索和分类文档。4.4.2 版需要 macOS Ventura 或更高版本。每个版本都能根据你之前的归档方式，将文档分类到群组中。Pro 和 Server 版增加了带 OCR 的扫描仪集成，以及生成式 AI 功能，如聊天、摘要、标签和智能规则批量处理。支持的模型包括 ChatGPT、Claude 和 Mistral，还可通过 Ollama 或 LM Studio 使用本地模型。
+DEVONthink 是一款历史悠久的 Mac 应用，用于存储、搜索和分类文档。4.4.2 版需要 macOS Ventura 或更高版本。每个版本都能根据你之前的归档方式，将文档分类到群组中。Pro 和 Server 版增加了带 OCR 的扫描仪集成，以及生成式 AI 功能，如聊天、摘要、标签和智能规则批量处理。支持的模型包括 ChatGPT、Claude 和 Mistral，还可通过 Ollama 或 LM Studio 使用本地模型。
 
 标准版 $99，Pro 版 $199，Server 版 $499，均不含税，每个版本包含两个席位和一年的更新。
 
 如果你想在 Mac 上拥有研究级的文档库，并且乐于把文档保留在其中，请选择 DEVONthink。对于仅仅命名和归档文件的需求来说，它超出了大多数人的需要。
 
-## 4. NameQuick：带条件规则的 Mac 重命名工具
+## 4. NameQuick：带条件规则的文档重命名工具
 
-[NameQuick](https://www.namequick.app/) 专注于 Mac 上反复出现的 PDF、扫描件、收据、发票、合同、Word 文档和电子表格。它通过预设按内容重命名，监视文件夹，并可运行条件规则，在命名后移动、标记或归档文件。
+NameQuick 专注于 Mac 和 Windows 上反复出现的 PDF、扫描件、收据、发票、合同、Word 文档和电子表格。它通过预设按内容重命名，监视文件夹，并可运行条件规则，在命名后移动、标记或归档文件。
 
 ![NameQuick 宣传图，展示已用日期和供应商名称重命名的扫描发票、收据和合同](/images/blog/competitors/namequick.webp)
 
 托管方案起价为每月 $12（500 次重命名），最高为每月 $99（10,000 次）。$69 的自管理许可需要你自己的 API 密钥或本地模型。
 
-如果你需要基于“如果/那么”规则的 Mac 专用文档工作流，请选择 NameQuick。完整对比：[Zush vs NameQuick](/blog/zush-vs-namequick)。
+如果你需要基于“如果/那么”规则的文档工作流，请选择 NameQuick。其中 MLX 和 Finder 相关功能仅限 Mac。完整对比：[Zush vs NameQuick](/blog/zush-vs-namequick)。
 
 ## 5. Wisfile：面向 PDF 和 Word 的免费本地重命名
 
-[Wisfile](https://www.wisfile.ai/) 免费，在 Mac 和 Windows 上本地运行。它根据内容重命名 PDF 和 Word 文档，例如为研究论文生成 `Author-Year-Title`，并可将文件分组到主题文件夹。
+Wisfile 免费，在 Mac 和 Windows 上本地运行。它根据内容重命名 PDF 和 Word 文档，例如为研究论文生成 `Author-Year-Title`，并可将文件分组到主题文件夹。
 
 ![Wisfile 官方插图，展示随机的 PDF 名称被转换为带日期、具描述性的文档文件名](/images/blog/competitors/wisfile.webp)
 
@@ -105,7 +105,7 @@ Zush 还支持嵌套文件夹规则，例如先按年份再按月份分组。你
 
 ## 6. File Juggler：适用于 Windows 上格式固定文档的规则工具
 
-[File Juggler](https://www.filejuggler.com/) 不是 AI，但对于外观始终一致的文档，它是可靠的分发方式。规则可以匹配 PDF、Word 和 Excel 文件中的字词，重用文本中找到的日期，然后重命名并移动文件。如果没有单独的 OCR，它无法读取纯图像扫描件。
+File Juggler 不是 AI，但对于外观始终一致的文档，它是可靠的分发方式。规则可以匹配 PDF、Word 和 Excel 文件中的字词，重用文本中找到的日期，然后重命名并移动文件。如果没有单独的 OCR，它无法读取纯图像扫描件。
 
 价格为一次性 $50，不含税，并提供 30 天完整试用。当某一类型的每份文档都采用相同版式时，请选择它。如果版式不同，请参阅 [File Juggler 替代品](/blog/file-juggler-alternatives)。
 
@@ -125,7 +125,7 @@ Zush 还支持嵌套文件夹规则，例如先按年份再按月份分组。你
 - 共享文件夹中的发票、收据和合同：**Zush**。
 - 面向家庭或办公室的可搜索档案库，且你可以自托管：**Paperless-ngx**。
 - Mac 上的研究资料库：**DEVONthink**。
-- 仅限 Mac，重命名后应用规则：**NameQuick**。
+- 重命名后应用规则：**NameQuick**。
 - 一次性处理研究论文，且免费：**Wisfile**。
 - Windows 上格式完全相同的文档，不需要 AI：**File Juggler**。
 

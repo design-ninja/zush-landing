@@ -55,7 +55,7 @@ Wil je ook de tijd toevoegen, gebruik dan `$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE
 
 ## 2. Bulk Rename Utility
 
-[Bulk Rename Utility](https://www.bulkrenameutility.co.uk/) leest ook EXIF-gegevens en geeft je meer controle over het formaat. Het is gratis voor persoonlijk gebruik.
+Bulk Rename Utility leest ook EXIF-gegevens en geeft je meer controle over het formaat. Het is gratis voor persoonlijk gebruik.
 
 1. Open de map in Bulk Rename Utility en selecteer de foto's.
 2. Kies in het paneel **Auto Date** voor **Prefix** en stel het type in op **EXIF Date Picture Taken** (of de gelijkwaardige EXIF-optie in jouw versie).
@@ -66,7 +66,7 @@ Het kan ook een batchbestand genereren dat de hernoeming ongedaan maakt.
 
 ## 3. ExifTool (nauwkeurig, via de opdrachtregel)
 
-[ExifTool](https://exiftool.org/) is de tool die fotografen vertrouwen voor metadata. Open na de installatie Terminal in je fotomap en voer uit:
+ExifTool is de tool die fotografen vertrouwen voor metadata. Open na de installatie Terminal in je fotomap en voer uit:
 
 ```bat
 exiftool "-FileName<DateTimeOriginal" -d "%Y-%m-%d_%H%M%S%%-c.%%e" .

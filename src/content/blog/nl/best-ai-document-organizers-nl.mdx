@@ -13,7 +13,7 @@ tags:
   - "Bestandsorganisatie"
 tldr: "Zush is de beste AI-documentorganizer als je pdf's, scans, facturen en Office-bestanden op inhoud wilt laten benoemen en in gewone mappen wilt laten sorteren op Mac of Windows. Paperless-ngx is de beste gratis optie als je een doorzoekbaar archief zelf kunt hosten. DEVONthink past bij Mac-gebruikers die een volledige documentendatabase willen. NameQuick, Wisfile en File Juggler dekken smallere documentworkflows af. Eén Zush-licentie geldt voor maximaal 3 apparaten."
 earlyTaskExample: false
-reviewed: "2026-10-18"
+reviewed: "2026-10-26"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -23,7 +23,7 @@ Kort antwoord: voor de meeste mensen is [Zush](/ai-file-organizer) de beste AI-d
 
 **Laatst gecontroleerd: 16 oktober 2026.** Geschreven door de maker van [Zush – AI-bestandshernoemer voor Mac en Windows](/). Details over concurrenten komen van de site of documentatie van elke leverancier, met een link in het betreffende onderdeel. Dit is een vergelijking op basis van bronnen, geen gezamenlijke benchmark.
 
-**Zush-functies beoordeeld op 18 oktober 2026.** Informatie over concurrenten behoudt de controledata die in dit artikel worden genoemd.
+**Zush-functies beoordeeld op 26 oktober 2026.** Informatie over concurrenten behoudt de controledata die in dit artikel worden genoemd.
 
 ## Twee manieren om documenten met AI te organiseren
 
@@ -41,7 +41,7 @@ Deel je mappen met een boekhouder, een team of een andere app, kies dan een mapg
 | **Zush** | Mapgebaseerd | Mac, Windows | <BlogHighlight>Ja, ook scans die alleen uit een afbeelding bestaan</BlogHighlight> | Templates + 145+ Naming Blocks | Ja, Auto of Folder rules | Ollama, LM Studio | 50 gratis hernoemingen; $10/mnd of $48 eenmalig |
 | Paperless-ngx | Archiefserver | Zelf gehost (Docker) | Ja, Tesseract OCR | Configureerbare opslagnamen | Beheerde opslagpaden | Optioneel, via Ollama | Gratis, open source |
 | DEVONthink | Archiefdatabase | Mac (iOS-app als aanvulling) | OCR in Pro en Server | Binnen de eigen database | Groepen in de eigen database | Ollama, LM Studio | $99, $199 of $499 |
-| NameQuick | Mapgebaseerd | Mac | Ja | Presets | Voorwaardelijke regels | Self-Managed-abonnement | Vanaf $12/mnd of $69 eenmalig |
+| NameQuick | Mapgebaseerd | Mac, Windows | Ja | Presets | Voorwaardelijke regels | Self-Managed-abonnement | Vanaf $12/mnd of $69 eenmalig |
 | Wisfile | Mapgebaseerd | Mac, Windows | Ja, volgens de FAQ | Templates | Onderwerpmappen met één klik | Ingebouwd | Gratis |
 | File Juggler | Regels, geen AI | Windows | Geen OCR | Regels | Regels | Geen AI | $50 eenmalig + btw |
 
@@ -71,7 +71,7 @@ Zush ondersteunt ook geneste mapregels, bijvoorbeeld groeperen op jaar en daarna
 
 ## 2. Paperless-ngx: beste gratis zelfgehoste archief
 
-[Paperless-ngx](https://github.com/paperless-ngx/paperless-ngx) is een open-source documentbeheersysteem (GPL-3.0) dat je op je eigen server of NAS draait, meestal met Docker. Het voert OCR uit met Tesseract in meer dan 100 talen, bewaart het origineel naast een PDF/A-archiefkopie en gebruikt machine learning om tags, correspondenten en documenttypen voor te stellen. Het kan ook documenten uit e-mail importeren.
+Paperless-ngx is een open-source documentbeheersysteem (GPL-3.0) dat je op je eigen server of NAS draait, meestal met Docker. Het voert OCR uit met Tesseract in meer dan 100 talen, bewaart het origineel naast een PDF/A-archiefkopie en gebruikt machine learning om tags, correspondenten en documenttypen voor te stellen. Het kan ook documenten uit e-mail importeren.
 
 Recente versies voegen optionele AI-functies toe, standaard uitgeschakeld: documentsuggesties, chatten met je documenten en zoeken naar vergelijkbare documenten. Ze kunnen lokaal draaien via Ollama of via een OpenAI-compatibele API. Paperless beheert bestandsnamen en mappen zelf, met configureerbare indelingen.
 
@@ -79,25 +79,25 @@ Kies Paperless-ngx als je zelf hosten prima vindt en een doorzoekbaar papierarch
 
 ## 3. DEVONthink: beste documentendatabase voor Mac
 
-[DEVONthink](https://www.devontechnologies.com/apps/devonthink) is een Mac-app met een lange geschiedenis voor het opslaan, doorzoeken en classificeren van documenten. Versie 4.4.2 vereist macOS Ventura of nieuwer. Elke editie kan documenten in groepen indelen op basis van wat je eerder hebt opgeslagen. Pro en Server voegen scannerintegratie met OCR toe, plus generatieve AI-functies zoals chat, samenvattingen, tagging en batchverwerking met slimme regels. Ondersteunde modellen zijn onder meer ChatGPT, Claude en Mistral, plus lokale modellen via Ollama of LM Studio.
+DEVONthink is een Mac-app met een lange geschiedenis voor het opslaan, doorzoeken en classificeren van documenten. Versie 4.4.2 vereist macOS Ventura of nieuwer. Elke editie kan documenten in groepen indelen op basis van wat je eerder hebt opgeslagen. Pro en Server voegen scannerintegratie met OCR toe, plus generatieve AI-functies zoals chat, samenvattingen, tagging en batchverwerking met slimme regels. Ondersteunde modellen zijn onder meer ChatGPT, Claude en Mistral, plus lokale modellen via Ollama of LM Studio.
 
 Standard kost $99, Pro $199 en Server $499, vóór btw, elk met twee seats en een jaar aan updates.
 
 Kies DEVONthink als je een documentenbibliotheek van onderzoeksniveau op een Mac wilt en het prima vindt om documenten erin te bewaren. Het is meer dan de meeste mensen nodig hebben om hun papieren alleen te benoemen en te archiveren.
 
-## 4. NameQuick: hernoemen op Mac met voorwaardelijke regels
+## 4. NameQuick: documenten hernoemen met voorwaardelijke regels
 
-[NameQuick](https://www.namequick.app/) richt zich op terugkerende pdf's, scans, bonnen, facturen, contracten, Word-documenten en spreadsheets op een Mac. Het hernoemt op inhoud met Presets, houdt mappen in de gaten en kan voorwaardelijke Rules uitvoeren die bestanden na het benoemen verplaatsen, taggen of archiveren.
+NameQuick richt zich op terugkerende pdf's, scans, bonnen, facturen, contracten, Word-documenten en spreadsheets op Mac en Windows. Het hernoemt op inhoud met Presets, houdt mappen in de gaten en kan voorwaardelijke Rules uitvoeren die bestanden na het benoemen verplaatsen, taggen of archiveren.
 
 ![Promotieafbeelding van NameQuick met gescande facturen, bonnen en contracten die zijn hernoemd met datums en namen van leveranciers](/images/blog/competitors/namequick.webp)
 
 Beheerde abonnementen beginnen bij $12 per maand voor 500 hernoemingen en lopen op tot $99 per maand voor 10.000. De Self-Managed-licentie van $69 vereist je eigen API-sleutel of een lokaal model.
 
-Kies NameQuick voor een documentworkflow alleen op Mac die is gebouwd op als/dan-regels. Volledige vergelijking: [Zush vs NameQuick](/blog/zush-vs-namequick).
+Kies NameQuick voor een documentworkflow die is gebouwd op als/dan-regels; MLX en de Finder-acties blijven alleen op Mac. Volledige vergelijking: [Zush vs NameQuick](/blog/zush-vs-namequick).
 
 ## 5. Wisfile: gratis lokaal hernoemen voor pdf's en Word
 
-[Wisfile](https://www.wisfile.ai/) is gratis en draait lokaal op Mac en Windows. Het hernoemt pdf's en Word-documenten op basis van hun inhoud, bijvoorbeeld `Author-Year-Title` voor wetenschappelijke artikelen, en kan bestanden groeperen in onderwerpmappen.
+Wisfile is gratis en draait lokaal op Mac en Windows. Het hernoemt pdf's en Word-documenten op basis van hun inhoud, bijvoorbeeld `Author-Year-Title` voor wetenschappelijke artikelen, en kan bestanden groeperen in onderwerpmappen.
 
 ![Eigen illustratie van Wisfile waarin willekeurige pdf-namen worden omgezet in gedateerde, beschrijvende documentbestandsnamen](/images/blog/competitors/wisfile.webp)
 
@@ -105,7 +105,7 @@ Volgens de FAQ is er geen mapbewaking, geen planning en geen ingebouwde ongedaan
 
 ## 6. File Juggler: regels voor voorspelbare documenten op Windows
 
-[File Juggler](https://www.filejuggler.com/) is geen AI, maar wel een degelijke manier om documenten door te sturen die er altijd hetzelfde uitzien. Regels kunnen woorden in pdf's, Word- en Excel-bestanden herkennen, datums uit de tekst hergebruiken en het bestand daarna hernoemen en verplaatsen. Scans die alleen uit een afbeelding bestaan kan het niet lezen zonder aparte OCR.
+File Juggler is geen AI, maar wel een degelijke manier om documenten door te sturen die er altijd hetzelfde uitzien. Regels kunnen woorden in pdf's, Word- en Excel-bestanden herkennen, datums uit de tekst hergebruiken en het bestand daarna hernoemen en verplaatsen. Scans die alleen uit een afbeelding bestaan kan het niet lezen zonder aparte OCR.
 
 Het kost eenmalig $50 vóór btw, met een volledige proefperiode van 30 dagen. Kies het wanneer elk document van een bepaald type dezelfde opmaak heeft. Is dat niet zo, kijk dan bij [alternatieven voor File Juggler](/blog/file-juggler-alternatives).
 
@@ -125,7 +125,7 @@ Het kost eenmalig $50 vóór btw, met een volledige proefperiode van 30 dagen. K
 - Facturen, bonnen en contracten in gedeelde mappen: **Zush**.
 - Een doorzoekbaar archief voor een huishouden of kantoor, en je kunt zelf hosten: **Paperless-ngx**.
 - Een onderzoeksbibliotheek op een Mac: **DEVONthink**.
-- Alleen Mac, regels na het hernoemen: **NameQuick**.
+- Regels na het hernoemen: **NameQuick**.
 - Wetenschappelijke artikelen, eenmalig en gratis: **Wisfile**.
 - Identieke documenten op Windows, geen AI: **File Juggler**.
 

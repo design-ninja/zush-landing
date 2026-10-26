@@ -55,7 +55,7 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 ## 2. Bulk Rename Utility
 
-[Bulk Rename Utility](https://www.bulkrenameutility.co.uk/)도 EXIF 데이터를 읽으며 형식을 더 세밀하게 제어할 수 있습니다. 개인 사용은 무료입니다.
+Bulk Rename Utility도 EXIF 데이터를 읽으며 형식을 더 세밀하게 제어할 수 있습니다. 개인 사용은 무료입니다.
 
 1. Bulk Rename Utility에서 폴더를 열고 사진을 선택합니다.
 2. **Auto Date** 패널에서 **Prefix**를 선택하고 유형을 **EXIF Date Picture Taken**(또는 사용 중인 버전의 동등한 EXIF 옵션)으로 설정합니다.
@@ -66,7 +66,7 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 ## 3. ExifTool (정밀함, 명령줄)
 
-[ExifTool](https://exiftool.org/)은 사진가들이 메타데이터 작업에 신뢰하는 도구입니다. 설치한 후 사진 폴더에서 터미널을 열고 다음을 실행하세요.
+ExifTool은 사진가들이 메타데이터 작업에 신뢰하는 도구입니다. 설치한 후 사진 폴더에서 터미널을 열고 다음을 실행하세요.
 
 ```bat
 exiftool "-FileName<DateTimeOriginal" -d "%Y-%m-%d_%H%M%S%%-c.%%e" .

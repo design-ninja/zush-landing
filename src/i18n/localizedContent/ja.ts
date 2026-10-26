@@ -409,7 +409,7 @@ export const home = {
     },
     {
       "question": "音声や動画ファイルに対応していますか？",
-      "answer": "Zush 3.0はMP4、MOV、M4V、MPEG、3GP、TS、MTS、M2TS、DV、VOBなどの動画に加え、MP3、M4A、WAV、FLAC、OGG、WebM、MPGAの音声にも対応しています。音声ファイルでは、メタデータ、音声認識、文字起こし結果をファイル名に利用できます。"
+      "answer": "ZushはMP4、MOV、M4V、MPEG、3GP、TS、MTS、M2TS、DV、VOB、MKV、AVI、WMVなどの動画に加え、MP3、M4A、WAV、FLAC、OGG、WebM、MPGAの音声にも対応しています。音声ファイルでは、メタデータ、音声認識、文字起こし結果をファイル名に利用できます。"
     },
     {
       "question": "合わなかった場合は返金できますか？",

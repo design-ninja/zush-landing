@@ -1,6 +1,6 @@
 ---
 title: "Rename Video Files with AI: MP4, MOV & Subtitles"
-description: "How AI video renaming works on MP4, MOV, and screen recordings: what it reads from frames and subtitles, and how sidecar files stay matched to their clips."
+description: "How AI video renaming works on MP4, MOV, MKV, and screen recordings: what it reads from frames, subtitles, speech, and metadata, and how sidecar files stay matched to their clips."
 date: "2026-05-09"
 slug: "rename-video-files-with-ai"
 platform: "general"
@@ -9,12 +9,12 @@ tags:
   - "AI File Renaming"
   - "Videos"
   - "File Naming"
-tldr: "AI video renaming works by sampling frames from a video, combining that visual context with subtitle files when available, and turning vague names like VID_20260507_184233.mp4 into searchable filenames."
-reviewed: "2026-10-13"
+tldr: "AI video renaming works by sampling frames from a video, combining that visual context with subtitles, a bounded speech excerpt, and file metadata, and turning vague names like VID_20260507_184233.mp4 into searchable filenames."
+reviewed: "2026-10-26"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: rename video files with AI by using a tool that can inspect sampled frames and optional subtitle context, then preview names before applying them. In [Zush](/) 3.0, MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB, and related video formats can be renamed alongside audio, photos, screenshots, PDFs, and documents.
+Quick answer: rename video files with AI by using a tool that can inspect sampled frames and optional subtitle context, then preview names before applying them. In [Zush](/), MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB, MKV, AVI, WMV, and related video formats can be renamed alongside audio, photos, screenshots, PDFs, and documents.
 
 Video files are often the worst named files in a working folder. Cameras create names like `VID_20260507_184233.mp4`. Screen recorders create names like `Screen Recording 2026-05-08 at 11.42.19.mov`. Export tools create names like `final_export_v7.mp4`. None of those names tell you what is in the clip.
 
@@ -43,6 +43,9 @@ AI video renaming uses visual understanding instead. A good workflow:
 
 - samples frames from the video timeline
 - reads sidecar subtitles such as `.srt` or `.vtt` when available
+- reads supported subtitle tracks stored inside the container, including MKV files
+- uses a speech excerpt from the first five minutes when the cloud route supports it and speech is detected
+- uses video metadata as a further naming field
 - asks a multimodal model to infer the subject, setting, and purpose
 - generates a short, searchable filename
 - lets you review the result before changing files on disk
@@ -72,7 +75,7 @@ Zush supports these video formats on Mac and Windows:
 
 See the [supported format list](/docs/supported-file-types) for the full file coverage. A supported container does not guarantee that every codec or protected file can be analyzed; test representative files before processing a library.
 
-That covers common phone videos, screen recordings, QuickTime exports, camera clips, transport stream files, and older DVD-style video sources. Zush also supports subtitle files such as `.srt` and `.vtt` through its document pipeline, so a folder can contain both the video and its subtitle context.
+That covers common phone videos, screen recordings, QuickTime exports, camera clips, transport stream files, and older DVD-style video sources. Zush also supports subtitle files such as `.srt` and `.vtt` through its document pipeline, so a folder can contain both the video and its subtitle context. Supported subtitle tracks stored inside MKV files are read from the container itself, so no sidecar is needed there.
 
 Zush also supports audio files: `mp3`, `m4a`, `wav`, `flac`, `ogg`, `webm`, and `mpga`. For music, podcasts, voice memos, and meeting recordings, see [Rename Audio with AI](/rename-audio-with-ai) and [How to Rename Audio Files with AI](/blog/rename-audio-files-with-ai).
 
@@ -93,6 +96,8 @@ For longer videos, the name should describe the whole file rather than one exact
 ## When subtitles help
 
 Subtitle sidecars can improve naming when the visuals are ambiguous. For example, a screen recording may show a presentation slide, while the subtitles explain that the topic is onboarding analytics. A talking-head video may have little visual variety, but the transcript gives the topic.
+
+Subtitles can also travel inside the file. Zush reads supported subtitle tracks in MKV containers, and where there is no subtitle at all it can fall back to a speech excerpt from the first five minutes, so a long talk is named from its opening rather than its conclusion. Review those names before applying them.
 
 Use subtitles as supporting context, not as the whole filename. Good names stay concise:
 
@@ -157,7 +162,7 @@ Yes. A practical video renamer samples representative frames and uses them as co
 
 ### Does Zush rename audio-only files?
 
-Yes. Zush 3.0 supports MP3, M4A, WAV, FLAC, OGG, WebM, and MPGA using metadata, recognition, and transcript context when available.
+Yes. Zush supports MP3, M4A, WAV, FLAC, OGG, WebM, and MPGA using embedded track metadata, music recognition, or a speech excerpt from the first two minutes when transcription is needed.
 
 ### Can I rename videos and documents together?
 

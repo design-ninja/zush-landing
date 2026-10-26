@@ -409,7 +409,7 @@ export const home = {
     },
     {
       "question": "Vocês suportam áudio ou vídeo?",
-      "answer": "O Zush 3.0 suporta vídeos MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV e VOB, além de áudio MP3, M4A, WAV, FLAC, OGG, WebM e MPGA. O áudio pode usar metadados, reconhecimento e contexto de transcrição."
+      "answer": "O Zush suporta vídeos MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB, MKV, AVI e WMV, além de áudio MP3, M4A, WAV, FLAC, OGG, WebM e MPGA. O áudio pode usar metadados, reconhecimento e contexto de transcrição."
     },
     {
       "question": "Posso pedir reembolso se não servir para mim?",

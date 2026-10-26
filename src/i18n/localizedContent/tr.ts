@@ -405,7 +405,7 @@ export const home = {
     },
     {
       "question": "Ses veya video dosyaları destekleniyor mu?",
-      "answer": "Zush 3.0; MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV ve VOB videolarının yanı sıra MP3, M4A, WAV, FLAC, OGG, WebM ve MPGA ses dosyalarını destekler. Ses analizi meta verileri, tanımayı ve transkript bağlamını kullanabilir."
+      "answer": "Zush; MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB, MKV, AVI ve WMV videolarının yanı sıra MP3, M4A, WAV, FLAC, OGG, WebM ve MPGA ses dosyalarını destekler. Ses analizi meta verileri, tanımayı ve transkript bağlamını kullanabilir."
     },
     {
       "question": "Uygulama bana uygun değilse para iadesi alabilir miyim?",

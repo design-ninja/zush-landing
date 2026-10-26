@@ -1,6 +1,6 @@
 ---
 title: "How to Rename Audio Files Automatically with AI"
-description: "Rename MP3, M4A, WAV, FLAC, and voice recordings with AI. Compare metadata and transcript-based naming, then use a safe batch workflow."
+description: "Rename MP3, M4A, WAV, FLAC, and voice recordings with AI. Compare metadata, music recognition, and speech-based naming across cloud, BYOK, and local modes, then use a safe batch workflow."
 date: "2026-05-16"
 slug: "rename-audio-files-with-ai"
 platform: "general"
@@ -10,7 +10,7 @@ tags:
   - "Audio"
   - "File Naming"
 tldr: "Rename audio files automatically by combining reliable metadata, transcript or recognition context, and a reusable filename template. Preview every batch before applying it, because AI should suggest names rather than silently overwrite your archive."
-reviewed: "2026-08-07"
+reviewed: "2026-10-26"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -32,6 +32,18 @@ An audio filename can be generated from three different information layers. The 
 | Audio recognition and file context | Loops, ambience, unnamed clips, and mixed folders | Content type, mood, instruments, folder clues | A model should not invent exact facts such as a person, location, or BPM |
 
 Use deterministic metadata when it is trustworthy. Use transcript context when the file is primarily speech. Treat recognition as a descriptive aid, not as proof of an exact identity.
+
+### How Zush chooses between them
+
+Zush picks one of four routes per file: embedded track metadata, an available transcript, music recognition, or speech analysis. Which route is open depends on the [AI mode](/docs/ai-modes) you selected:
+
+| Mode | What it can use for audio |
+|---|---|
+| Zush Cloud AI | Bounded audio excerpts for transcription, alongside metadata and text evidence |
+| BYOK | Depends on the provider: Gemini can process supported audio directly, while OpenAI, OpenRouter, and Anthropic routes use a transcription step |
+| Ollama or LM Studio | Available text, metadata, and image previews; no raw audio is sent to the local model and no automatic switch to cloud transcription |
+
+Two limits are worth planning around. Cloud speech analysis reads an excerpt from the **first two minutes**, so a two-hour recording is named from its opening. And music recognition needs a reliable catalog match, so remixes, live takes, and noisy clips often fall back to metadata; local modes skip online catalog recognition altogether. See [audio and video analysis](/docs/audio-video) for the current behavior.
 
 For example, a music file with valid ID3 tags can become `artist-album-03-track-title.mp3` without interpretation. A client interview may be better as `2026-08-07_acme-onboarding-interview.m4a`, using the date and client from your context plus the topic found in the recording.
 
@@ -193,7 +205,7 @@ Yes. When artist, album, title, and track fields are complete, a deterministic m
 
 ### Can AI rename a recording from its transcript?
 
-Yes, when the chosen tool can analyze speech or transcript context. Use the transcript to identify the main topic, then combine it with known fields such as date, client, guest, or episode number.
+Yes, when the chosen tool can analyze speech or transcript context. In Zush, cloud speech analysis uses an excerpt from the first two minutes, so use the transcript to identify the main topic, then combine it with known fields such as date, client, guest, or episode number, and review long recordings before applying.
 
 ### Does renaming change audio quality or content?
 

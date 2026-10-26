@@ -409,7 +409,7 @@ export const home: HomeCopy = {
     },
     {
       "question": "Ondersteunen jullie audio of video?",
-      "answer": "Zush 3.0 ondersteunt videoformaten zoals MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV en VOB, plus audio zoals MP3, M4A, WAV, FLAC, OGG, WebM en MPGA. Audio kan metadata, herkenning en transcriptcontext gebruiken."
+      "answer": "Zush ondersteunt videoformaten zoals MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB, MKV, AVI en WMV, plus audio zoals MP3, M4A, WAV, FLAC, OGG, WebM en MPGA. Audio kan metadata, herkenning en transcriptcontext gebruiken."
     },
     {
       "question": "Kan ik geld terugkrijgen als het niet past?",

@@ -55,7 +55,7 @@ Saati de eklemek için `$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD_$DATE_TAK
 
 ## 2. Bulk Rename Utility
 
-[Bulk Rename Utility](https://www.bulkrenameutility.co.uk/) de EXIF verilerini okur ve biçim üzerinde size daha fazla kontrol verir. Kişisel kullanım için ücretsizdir.
+Bulk Rename Utility de EXIF verilerini okur ve biçim üzerinde size daha fazla kontrol verir. Kişisel kullanım için ücretsizdir.
 
 1. Klasörü Bulk Rename Utility'de açın ve fotoğrafları seçin.
 2. **Auto Date** panelinde **Prefix** seçeneğini seçin ve türü **EXIF Date Picture Taken** olarak ayarlayın (veya sürümünüzdeki eşdeğer EXIF seçeneğini kullanın).
@@ -66,7 +66,7 @@ Ayrıca yeniden adlandırmayı geri alan bir toplu iş dosyası oluşturabilir.
 
 ## 3. ExifTool (hassas, komut satırı)
 
-[ExifTool](https://exiftool.org/), fotoğrafçıların meta veri için güvendiği araçtır. Yükledikten sonra fotoğraf klasörünüzde Terminal'i açın ve şunu çalıştırın:
+ExifTool, fotoğrafçıların meta veri için güvendiği araçtır. Yükledikten sonra fotoğraf klasörünüzde Terminal'i açın ve şunu çalıştırın:
 
 ```bat
 exiftool "-FileName<DateTimeOriginal" -d "%Y-%m-%d_%H%M%S%%-c.%%e" .

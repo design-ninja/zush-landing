@@ -405,7 +405,7 @@ export const home = {
     },
     {
       "question": "支持音频或视频文件吗？",
-      "answer": "Zush 3.0 支持 MP4、MOV、M4V、MPEG、3GP、TS、MTS、M2TS、DV、VOB 视频，以及 MP3、M4A、WAV、FLAC、OGG、WebM、MPGA 音频。音频可使用元数据、识别结果和转录上下文。"
+      "answer": "Zush 支持 MP4、MOV、M4V、MPEG、3GP、TS、MTS、M2TS、DV、VOB、MKV、AVI、WMV 视频，以及 MP3、M4A、WAV、FLAC、OGG、WebM、MPGA 音频。音频可使用元数据、识别结果和转录上下文。"
     },
     {
       "question": "如果不适合我，可以退款吗？",

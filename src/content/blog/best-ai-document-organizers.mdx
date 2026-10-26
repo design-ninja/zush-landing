@@ -11,7 +11,7 @@ tags:
   - "File Organization"
 tldr: "Zush is the best AI document organizer if you want PDFs, scans, invoices, and Office files named by content and sorted into ordinary folders on Mac or Windows. Paperless-ngx is the best free option if you can self-host a searchable archive. DEVONthink suits Mac users who want a full document database. NameQuick, Wisfile, and File Juggler cover narrower document workflows. One Zush license covers up to 3 devices."
 earlyTaskExample: false
-reviewed: "2026-10-18"
+reviewed: "2026-10-26"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -21,7 +21,7 @@ Quick answer: for most people the best AI document organizer is [Zush](/ai-file-
 
 **Last checked: October 16, 2026.** Written by the maker of [Zush, the AI file renamer for Mac and Windows](/). Competitor details come from each vendor's site or documentation, linked in its section. This is a source-backed comparison, not a shared benchmark.
 
-**Zush features reviewed October 18, 2026.** Competitor information retains the check dates stated in this article.
+**Zush features reviewed October 26, 2026.** Competitor information retains the check dates stated in this article.
 
 ## Two ways to organize documents with AI
 
@@ -39,7 +39,7 @@ If you share folders with an accountant, a team, or another app, choose a folder
 | **Zush** | Folder-based | Mac, Windows | <BlogHighlight>Yes, image-only scans included</BlogHighlight> | Templates + 145+ Naming Blocks | Yes, Auto or Folder rules | Ollama, LM Studio | 50 free renames; $10/mo or $48 one-time |
 | Paperless-ngx | Archive server | Self-hosted (Docker) | Yes, Tesseract OCR | Configurable storage names | Managed storage paths | Optional, via Ollama | Free, open source |
 | DEVONthink | Archive database | Mac (iOS companion) | OCR in Pro and Server | Inside its database | Groups in its database | Ollama, LM Studio | $99, $199, or $499 |
-| NameQuick | Folder-based | Mac | Yes | Presets | Conditional rules | Self-Managed plan | From $12/mo or $69 one-time |
+| NameQuick | Folder-based | Mac, Windows | Yes | Presets | Conditional rules | Self-Managed plan | From $12/mo or $69 one-time |
 | Wisfile | Folder-based | Mac, Windows | Yes, per its FAQ | Templates | One-click topic folders | Built in | Free |
 | File Juggler | Rules, no AI | Windows | No OCR | Rules | Rules | Not AI | $50 one-time + tax |
 
@@ -69,7 +69,7 @@ Zush also supports nested folder rules, such as grouping by year and then month.
 
 ## 2. Paperless-ngx: best free self-hosted archive
 
-[Paperless-ngx](https://github.com/paperless-ngx/paperless-ngx) is an open-source document management system (GPL-3.0) that you run on your own server or NAS, usually with Docker. It runs OCR with Tesseract in more than 100 languages, keeps the original next to a PDF/A archive copy, and uses machine learning to suggest tags, correspondents, and document types. It can also import documents from email.
+Paperless-ngx is an open-source document management system (GPL-3.0) that you run on your own server or NAS, usually with Docker. It runs OCR with Tesseract in more than 100 languages, keeps the original next to a PDF/A archive copy, and uses machine learning to suggest tags, correspondents, and document types. It can also import documents from email.
 
 Recent versions add optional AI features, off by default: document suggestions, chat with your documents, and similar-document search. They can run locally through Ollama or through an OpenAI-compatible API. Paperless manages filenames and folders itself, with configurable formats.
 
@@ -77,25 +77,25 @@ Choose Paperless-ngx if you are comfortable self-hosting and want a searchable p
 
 ## 3. DEVONthink: best document database for Mac
 
-[DEVONthink](https://www.devontechnologies.com/apps/devonthink) is a long-running Mac app for storing, searching, and classifying documents. Version 4.4.2 requires macOS Ventura or later. Every edition can classify documents into groups based on what you filed before. Pro and Server add scanner integration with OCR and generative AI features such as chat, summaries, tagging, and smart-rule batch processing. Supported models include ChatGPT, Claude, and Mistral, plus local models through Ollama or LM Studio.
+DEVONthink is a long-running Mac app for storing, searching, and classifying documents. Version 4.4.2 requires macOS Ventura or later. Every edition can classify documents into groups based on what you filed before. Pro and Server add scanner integration with OCR and generative AI features such as chat, summaries, tagging, and smart-rule batch processing. Supported models include ChatGPT, Claude, and Mistral, plus local models through Ollama or LM Studio.
 
 Standard costs $99, Pro $199, and Server $499, before tax, each with two seats and one year of updates.
 
 Choose DEVONthink if you want a research-grade document library on a Mac and are happy to keep documents inside it. It is more than most people need just to name and file their paperwork.
 
-## 4. NameQuick: Mac renaming with conditional rules
+## 4. NameQuick: document renaming with conditional rules
 
-[NameQuick](https://www.namequick.app/) focuses on recurring PDFs, scans, receipts, invoices, contracts, Word documents, and spreadsheets on a Mac. It renames by content with Presets, watches folders, and can run conditional Rules that move, tag, or archive files after naming.
+NameQuick focuses on recurring PDFs, scans, receipts, invoices, contracts, Word documents, and spreadsheets on Mac and Windows. It renames by content with Presets, watches folders, and can run conditional Rules that move, tag, or archive files after naming.
 
 ![NameQuick promo image showing scanned invoices, receipts, and contracts renamed with dates and vendor names](/images/blog/competitors/namequick.webp)
 
 Managed plans start at $12 per month for 500 renames and go up to $99 per month for 10,000. The $69 Self-Managed license needs your own API key or a local model.
 
-Choose NameQuick for a Mac-only document workflow built on if/then rules. Full comparison: [Zush vs NameQuick](/blog/zush-vs-namequick).
+Choose NameQuick for a document workflow built on if/then rules; its MLX and Finder actions remain Mac-only. Full comparison: [Zush vs NameQuick](/blog/zush-vs-namequick).
 
 ## 5. Wisfile: free local renaming for PDFs and Word
 
-[Wisfile](https://www.wisfile.ai/) is free and runs locally on Mac and Windows. It renames PDFs and Word documents from their content, for example `Author-Year-Title` for research papers, and can group files into topic folders.
+Wisfile is free and runs locally on Mac and Windows. It renames PDFs and Word documents from their content, for example `Author-Year-Title` for research papers, and can group files into topic folders.
 
 ![Wisfile's own illustration of random PDF names turned into dated, descriptive document filenames](/images/blog/competitors/wisfile.webp)
 
@@ -103,7 +103,7 @@ According to its FAQ there is no folder monitoring, no scheduling, and no built-
 
 ## 6. File Juggler: rules for predictable documents on Windows
 
-[File Juggler](https://www.filejuggler.com/) is not AI, but it is a solid way to route documents that always look the same. Rules can match words inside PDFs, Word, and Excel files, reuse dates found in the text, then rename and move the file. It cannot read image-only scans without separate OCR.
+File Juggler is not AI, but it is a solid way to route documents that always look the same. Rules can match words inside PDFs, Word, and Excel files, reuse dates found in the text, then rename and move the file. It cannot read image-only scans without separate OCR.
 
 It costs $50 one-time before tax, with a 30-day full trial. Choose it when every document of a type follows the same layout. If they do not, see [File Juggler alternatives](/blog/file-juggler-alternatives).
 
@@ -123,7 +123,7 @@ It costs $50 one-time before tax, with a 30-day full trial. Choose it when every
 - Invoices, receipts, and contracts in shared folders: **Zush**.
 - A searchable archive for a household or office, and you can self-host: **Paperless-ngx**.
 - A research library on a Mac: **DEVONthink**.
-- Mac-only, rules after renaming: **NameQuick**.
+- Rules applied after renaming: **NameQuick**.
 - Research papers, once, for free: **Wisfile**.
 - Identical documents on Windows, no AI: **File Juggler**.
 

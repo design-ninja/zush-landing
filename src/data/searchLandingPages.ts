@@ -660,7 +660,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
         },
         {
           tool: 'RenameClick',
-          bestFor: 'AI Categories picked from a preset list you define, or matching up to 50 existing top-level folders',
+          bestFor: 'Folder sets you pick, copy, or create, or matching existing subfolders up to three levels deep',
           gap: 'You maintain the category list rather than describing the grouping; video is not in its format list.',
         },
         {
@@ -761,7 +761,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
         },
         {
           tool: 'RenameClick',
-          bestFor: 'AI Categories picked from a preset list you define, or matching up to 50 existing top-level folders',
+          bestFor: 'Folder sets you pick, copy, or create, or matching existing subfolders up to three levels deep',
           gap: 'You maintain the category list rather than describing the grouping; video is not in its format list.',
         },
         {

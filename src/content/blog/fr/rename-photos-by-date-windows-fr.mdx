@@ -55,7 +55,7 @@ Pour ajouter aussi l'heure, utilisez `$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKE
 
 ## 2. Bulk Rename Utility
 
-[Bulk Rename Utility](https://www.bulkrenameutility.co.uk/) lit lui aussi les données EXIF et vous offre plus de contrôle sur le format. Il est gratuit pour un usage personnel.
+Bulk Rename Utility lit lui aussi les données EXIF et vous offre plus de contrôle sur le format. Il est gratuit pour un usage personnel.
 
 1. Ouvrez le dossier dans Bulk Rename Utility et sélectionnez les photos.
 2. Dans le panneau **Auto Date**, choisissez **Prefix** et réglez le type sur **EXIF Date Picture Taken** (ou l'option EXIF équivalente dans votre version).
@@ -66,7 +66,7 @@ Il peut aussi générer un fichier batch qui annule le renommage.
 
 ## 3. ExifTool (précis, en ligne de commande)
 
-[ExifTool](https://exiftool.org/) est l'outil de référence des photographes pour les métadonnées. Après l'avoir installé, ouvrez Terminal dans votre dossier de photos et exécutez :
+ExifTool est l'outil de référence des photographes pour les métadonnées. Après l'avoir installé, ouvrez Terminal dans votre dossier de photos et exécutez :
 
 ```bat
 exiftool "-FileName<DateTimeOriginal" -d "%Y-%m-%d_%H%M%S%%-c.%%e" .

@@ -409,7 +409,7 @@ export const home: HomeCopy = {
     },
     {
       "question": "Prenez-vous en charge l’audio ou la vidéo ?",
-      "answer": "Zush 3.0 prend en charge les vidéos MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV et VOB, ainsi que les fichiers audio MP3, M4A, WAV, FLAC, OGG, WebM et MPGA. L’audio peut utiliser les métadonnées, la reconnaissance et le contexte de transcription."
+      "answer": "Zush prend en charge les vidéos MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB, MKV, AVI et WMV, ainsi que les fichiers audio MP3, M4A, WAV, FLAC, OGG, WebM et MPGA. L’audio peut utiliser les métadonnées, la reconnaissance et le contexte de transcription."
     },
     {
       "question": "Puis-je être remboursé si cela ne me convient pas ?",

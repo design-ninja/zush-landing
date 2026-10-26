@@ -409,7 +409,7 @@ export const home: HomeCopy = {
     },
     {
       "question": "Unterstützt ihr Audio- oder Videodateien?",
-      "answer": "Zush 3.0 unterstützt Videoanalyse für MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV und VOB sowie Audiodateien wie MP3, M4A, WAV, FLAC, OGG, WebM und MPGA. Audio kann Metadaten, Erkennung und Transkriptkontext nutzen."
+      "answer": "Zush unterstützt Videoanalyse für MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB, MKV, AVI und WMV sowie Audiodateien wie MP3, M4A, WAV, FLAC, OGG, WebM und MPGA. Audio kann Metadaten, Erkennung und Transkriptkontext nutzen."
     },
     {
       "question": "Bekomme ich eine Rückerstattung, wenn es nicht passt?",

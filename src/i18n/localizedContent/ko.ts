@@ -409,7 +409,7 @@ export const home = {
     },
     {
       "question": "오디오나 비디오 파일도 지원하나요?",
-      "answer": "Zush 3.0은 MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB 비디오와 MP3, M4A, WAV, FLAC, OGG, WebM, MPGA 오디오를 지원합니다. 오디오는 메타데이터, 인식, 전사 맥락을 활용할 수 있습니다."
+      "answer": "Zush은 MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB, MKV, AVI, WMV 비디오와 MP3, M4A, WAV, FLAC, OGG, WebM, MPGA 오디오를 지원합니다. 오디오는 메타데이터, 인식, 전사 맥락을 활용할 수 있습니다."
     },
     {
       "question": "필요에 맞지 않으면 환불받을 수 있나요?",

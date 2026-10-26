@@ -13,7 +13,7 @@ tags:
   - "Dateiorganisation"
 tldr: "Zush ist das beste KI-Tool zur Dokumentenorganisation, wenn PDFs, Scans, Rechnungen und Office-Dateien auf Mac oder Windows nach Inhalt benannt und in normale Ordner einsortiert werden sollen. Paperless-ngx ist die beste kostenlose Option, wenn du ein durchsuchbares Archiv selbst hosten kannst. DEVONthink eignet sich für Mac-Nutzer, die eine vollständige Dokumentendatenbank möchten. NameQuick, Wisfile und File Juggler decken engere Dokumenten-Workflows ab. Eine Zush-Lizenz gilt für bis zu 3 Geräte."
 earlyTaskExample: false
-reviewed: "2026-10-18"
+reviewed: "2026-10-26"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -23,7 +23,7 @@ Kurz gesagt: Für die meisten Menschen ist [Zush](/ai-file-organizer) das beste 
 
 **Zuletzt geprüft: 16. Oktober 2026.** Geschrieben vom Entwickler von [Zush – KI-Dateiumbenenner für Mac und Windows](/). Die Angaben zu den Mitbewerbern stammen von der jeweiligen Website oder Dokumentation des Anbieters, die im jeweiligen Abschnitt verlinkt ist. Dies ist ein quellenbasierter Vergleich, kein gemeinsamer Benchmark.
 
-**Zush-Funktionen geprüft am 18. Oktober 2026.** Die Informationen zu den Mitbewerbern behalten die in diesem Artikel genannten Prüfdaten.
+**Zush-Funktionen geprüft am 26. Oktober 2026.** Die Informationen zu den Mitbewerbern behalten die in diesem Artikel genannten Prüfdaten.
 
 ## Zwei Wege, Dokumente mit KI zu organisieren
 
@@ -41,7 +41,7 @@ Wenn du Ordner mit einer Steuerberaterin, einem Team oder einer anderen App teil
 | **Zush** | Ordnerbasiert | Mac, Windows | <BlogHighlight>Ja, auch reine Bildscans</BlogHighlight> | Templates + 145+ Naming Blocks | Ja, Auto oder Folder rules | Ollama, LM Studio | 50 kostenlose Umbenennungen; $10/Monat oder $48 einmalig |
 | Paperless-ngx | Archivserver | Self-Hosting (Docker) | Ja, Tesseract-OCR | Konfigurierbare Speichernamen | Verwaltete Speicherpfade | Optional, über Ollama | Kostenlos, Open Source |
 | DEVONthink | Archivdatenbank | Mac (iOS-Begleiter-App) | OCR in Pro und Server | Innerhalb der Datenbank | Gruppen in der Datenbank | Ollama, LM Studio | $99, $199 oder $499 |
-| NameQuick | Ordnerbasiert | Mac | Ja | Presets | Bedingte Regeln | Self-Managed-Tarif | Ab $12/Monat oder $69 einmalig |
+| NameQuick | Ordnerbasiert | Mac, Windows | Ja | Presets | Bedingte Regeln | Self-Managed-Tarif | Ab $12/Monat oder $69 einmalig |
 | Wisfile | Ordnerbasiert | Mac, Windows | Ja, laut FAQ | Templates | Themenordner mit einem Klick | Integriert | Kostenlos |
 | File Juggler | Regeln, keine KI | Windows | Keine OCR | Regeln | Regeln | Keine KI | $50 einmalig + Steuer |
 
@@ -71,7 +71,7 @@ Zush unterstützt außerdem verschachtelte Ordnerregeln, etwa die Gruppierung na
 
 ## 2. Paperless-ngx: das beste kostenlose selbst gehostete Archiv
 
-[Paperless-ngx](https://github.com/paperless-ngx/paperless-ngx) ist ein quelloffenes Dokumentenmanagementsystem (GPL-3.0), das du auf deinem eigenen Server oder NAS betreibst, meist mit Docker. Es führt OCR mit Tesseract in mehr als 100 Sprachen aus, bewahrt das Original neben einer PDF/A-Archivkopie auf und schlägt per maschinellem Lernen Tags, Korrespondenten und Dokumenttypen vor. Außerdem kann es Dokumente aus E-Mails importieren.
+Paperless-ngx ist ein quelloffenes Dokumentenmanagementsystem (GPL-3.0), das du auf deinem eigenen Server oder NAS betreibst, meist mit Docker. Es führt OCR mit Tesseract in mehr als 100 Sprachen aus, bewahrt das Original neben einer PDF/A-Archivkopie auf und schlägt per maschinellem Lernen Tags, Korrespondenten und Dokumenttypen vor. Außerdem kann es Dokumente aus E-Mails importieren.
 
 Neuere Versionen ergänzen optionale KI-Funktionen, die standardmäßig deaktiviert sind: Dokumentvorschläge, Chat mit deinen Dokumenten und Suche nach ähnlichen Dokumenten. Sie können lokal über Ollama oder über eine OpenAI-kompatible API laufen. Paperless verwaltet Dateinamen und Ordner selbst, mit konfigurierbaren Formaten.
 
@@ -79,25 +79,25 @@ Wähle Paperless-ngx, wenn du mit Self-Hosting vertraut bist und ein durchsuchba
 
 ## 3. DEVONthink: die beste Dokumentendatenbank für den Mac
 
-[DEVONthink](https://www.devontechnologies.com/apps/devonthink) ist eine seit langem etablierte Mac-App zum Speichern, Durchsuchen und Klassifizieren von Dokumenten. Version 4.4.2 setzt macOS Ventura oder neuer voraus. Jede Edition kann Dokumente anhand dessen, was du zuvor abgelegt hast, in Gruppen einordnen. Pro und Server ergänzen Scanner-Integration mit OCR sowie generative KI-Funktionen wie Chat, Zusammenfassungen, Tagging und Stapelverarbeitung per Smart Rules. Zu den unterstützten Modellen gehören ChatGPT, Claude und Mistral sowie lokale Modelle über Ollama oder LM Studio.
+DEVONthink ist eine seit langem etablierte Mac-App zum Speichern, Durchsuchen und Klassifizieren von Dokumenten. Version 4.4.2 setzt macOS Ventura oder neuer voraus. Jede Edition kann Dokumente anhand dessen, was du zuvor abgelegt hast, in Gruppen einordnen. Pro und Server ergänzen Scanner-Integration mit OCR sowie generative KI-Funktionen wie Chat, Zusammenfassungen, Tagging und Stapelverarbeitung per Smart Rules. Zu den unterstützten Modellen gehören ChatGPT, Claude und Mistral sowie lokale Modelle über Ollama oder LM Studio.
 
 Standard kostet $99, Pro $199 und Server $499, jeweils vor Steuern, mit je zwei Lizenzplätzen und einem Jahr Updates.
 
 Wähle DEVONthink, wenn du eine Dokumentenbibliothek auf Forschungsniveau auf einem Mac möchtest und die Dokumente gern darin aufbewahrst. Es ist mehr, als die meisten Menschen brauchen, nur um ihren Papierkram zu benennen und abzulegen.
 
-## 4. NameQuick: Umbenennen auf dem Mac mit bedingten Regeln
+## 4. NameQuick: Dokumente umbenennen mit bedingten Regeln
 
-[NameQuick](https://www.namequick.app/) konzentriert sich auf wiederkehrende PDFs, Scans, Belege, Rechnungen, Verträge, Word-Dokumente und Tabellen auf einem Mac. Es benennt nach Inhalt mit Presets um, überwacht Ordner und kann bedingte Rules ausführen, die Dateien nach der Benennung verschieben, taggen oder archivieren.
+NameQuick konzentriert sich auf wiederkehrende PDFs, Scans, Belege, Rechnungen, Verträge, Word-Dokumente und Tabellen auf Mac und Windows. Es benennt nach Inhalt mit Presets um, überwacht Ordner und kann bedingte Rules ausführen, die Dateien nach der Benennung verschieben, taggen oder archivieren.
 
 ![NameQuick-Werbebild mit gescannten Rechnungen, Belegen und Verträgen, die mit Datum und Anbieternamen umbenannt wurden](/images/blog/competitors/namequick.webp)
 
 Die verwalteten Tarife beginnen bei $12 pro Monat für 500 Umbenennungen und reichen bis $99 pro Monat für 10.000. Die Self-Managed-Lizenz für $69 benötigt deinen eigenen API-Schlüssel oder ein lokales Modell.
 
-Wähle NameQuick für einen reinen Mac-Dokumenten-Workflow auf Basis von Wenn-dann-Regeln. Vollständiger Vergleich: [Zush vs NameQuick](/blog/zush-vs-namequick).
+Wähle NameQuick für einen Dokumenten-Workflow auf Basis von Wenn-dann-Regeln; MLX und die Finder-Aktionen bleiben Mac-exklusiv. Vollständiger Vergleich: [Zush vs NameQuick](/blog/zush-vs-namequick).
 
 ## 5. Wisfile: kostenloses lokales Umbenennen für PDFs und Word
 
-[Wisfile](https://www.wisfile.ai/) ist kostenlos und läuft lokal unter Mac und Windows. Es benennt PDFs und Word-Dokumente anhand ihres Inhalts um, zum Beispiel `Author-Year-Title` für Forschungsarbeiten, und kann Dateien in Themenordnern gruppieren.
+Wisfile ist kostenlos und läuft lokal unter Mac und Windows. Es benennt PDFs und Word-Dokumente anhand ihres Inhalts um, zum Beispiel `Author-Year-Title` für Forschungsarbeiten, und kann Dateien in Themenordnern gruppieren.
 
 ![Wisfiles eigene Illustration: zufällige PDF-Namen werden zu datierten, beschreibenden Dokumentdateinamen](/images/blog/competitors/wisfile.webp)
 
@@ -105,7 +105,7 @@ Laut seiner FAQ gibt es keine Ordnerüberwachung, keine Zeitplanung und kein int
 
 ## 6. File Juggler: Regeln für vorhersehbare Dokumente unter Windows
 
-[File Juggler](https://www.filejuggler.com/) ist keine KI, aber eine solide Möglichkeit, Dokumente zu verteilen, die immer gleich aussehen. Regeln können Wörter in PDF-, Word- und Excel-Dateien erkennen, im Text gefundene Daten wiederverwenden und die Datei dann umbenennen und verschieben. Reine Bildscans kann es ohne separate OCR nicht lesen.
+File Juggler ist keine KI, aber eine solide Möglichkeit, Dokumente zu verteilen, die immer gleich aussehen. Regeln können Wörter in PDF-, Word- und Excel-Dateien erkennen, im Text gefundene Daten wiederverwenden und die Datei dann umbenennen und verschieben. Reine Bildscans kann es ohne separate OCR nicht lesen.
 
 Es kostet $50 einmalig vor Steuern, mit einer 30-tägigen Vollversion zum Testen. Wähle es, wenn jedes Dokument eines Typs dasselbe Layout hat. Wenn nicht, siehe [File-Juggler-Alternativen](/blog/file-juggler-alternatives).
 
@@ -125,7 +125,7 @@ Es kostet $50 einmalig vor Steuern, mit einer 30-tägigen Vollversion zum Testen
 - Rechnungen, Belege und Verträge in gemeinsamen Ordnern: **Zush**.
 - Ein durchsuchbares Archiv für einen Haushalt oder ein Büro, und du kannst selbst hosten: **Paperless-ngx**.
 - Eine Forschungsbibliothek auf einem Mac: **DEVONthink**.
-- Nur Mac, Regeln nach dem Umbenennen: **NameQuick**.
+- Regeln nach dem Umbenennen: **NameQuick**.
 - Forschungsarbeiten, einmalig und kostenlos: **Wisfile**.
 - Identische Dokumente unter Windows, keine KI: **File Juggler**.
 
