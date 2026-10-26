@@ -1,5 +1,21 @@
 # Changelog
 
+## [3.16.1.0] - 2026-10-26
+
+### Added
+- Optional on-device speech recognition for Offline AI. Download it from AI settings to use spoken content from audio and video in filename suggestions, without uploading the recordings.
+
+### Improved
+- Offline AI reads excerpts across long documents, including later pages, spreadsheet sheets, presentation notes, charts, and embedded image text.
+- More efficient document and image analysis with Ollama and LM Studio, including models with smaller context windows.
+- Music identification handles batches more reliably when the recognition service is busy.
+
+### Fixed
+- Movie filenames retain recognizable titles and years without treating codec labels as part of the title or a year as an episode number.
+- Empty image files receive a clearer message when there is no content to analyze.
+
+
+
 ## [3.16.0.0] - 2026-10-24
 
 ### Added
