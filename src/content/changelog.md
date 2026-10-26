@@ -1,5 +1,21 @@
 # Changelog
 
+## [3.20.1] - 2026-10-26
+
+### New
+
+- Add speech recognition to Ollama and LM Studio to help name audio and video locally.
+
+### Improved
+
+- Better local analysis of PDFs and Office documents, including later sections and embedded images.
+- More accurate movie names and faster preparation of long audio files.
+
+### Fixed
+
+- More reliable file downloads from iCloud.
+- Fixed PRO activation when switching from the App Store to the direct version.
+
 ## [3.20.0] - 2026-10-24
 
 ### New
