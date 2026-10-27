@@ -49,6 +49,35 @@ export const MAC_DEMO_VIDEO: DemoVideoAsset = {
   height: 1440,
 };
 
+// Folder sorting demo (macOS): a mixed folder, a plain-language Folder rule, the
+// proposed folders, and the sorted result. Recorded with zush-app scripts/demo-video.
+export const FOLDER_SORTING_DEMO_VIDEO: DemoVideoAsset = {
+  sources: {
+    light: '/videos/folder-sorting-demo-light.mp4',
+    dark: '/videos/folder-sorting-demo-dark.mp4',
+  },
+  posters: {
+    light: '/videos/posters/folder-sorting-demo-light.webp',
+    dark: '/videos/posters/folder-sorting-demo-dark.webp',
+  },
+  width: 2560,
+  height: 1440,
+};
+
+// The same folder sorting story recorded in Zush for Windows.
+export const WINDOWS_FOLDER_SORTING_DEMO_VIDEO: DemoVideoAsset = {
+  sources: {
+    light: '/videos/windows/folder-sorting-demo-light.mp4',
+    dark: '/videos/windows/folder-sorting-demo-dark.mp4',
+  },
+  posters: {
+    light: '/videos/posters/folder-sorting-demo-windows-light.webp',
+    dark: '/videos/posters/folder-sorting-demo-windows-dark.webp',
+  },
+  width: 2816,
+  height: 1584,
+};
+
 // The Windows desktop demo has matching recordings and posters for both themes.
 export const WINDOWS_DEMO_VIDEO: DemoVideoAsset = {
   sources: {
