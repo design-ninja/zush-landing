@@ -1,4 +1,5 @@
 import { ORGANIZATION_FEATURES } from '@/i18n/organizationFeatures';
+import { getServicePageCopy, type ServiceLocalizedRoute } from '@/i18n/servicePages';
 import type { BlogPost } from '@/data/blog';
 import {
   AI_MODES_SUMMARY,
@@ -87,6 +88,12 @@ const PRIVATE_META: RouteSeoMeta = {
   ...DEFAULT_META,
   robots: 'noindex, nofollow',
 };
+
+/** Private service page with its own title, so it does not pose as the homepage. */
+const privateServiceMeta = (route: ServiceLocalizedRoute): RouteSeoMeta => ({
+  ...PRIVATE_META,
+  ...getServicePageCopy('en').seo[route],
+});
 
 const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/': {
@@ -407,11 +414,11 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     robots: 'index, follow',
     ogType: 'website',
   },
-  '/thank-you': PRIVATE_META,
-  '/recover': PRIVATE_META,
-  '/activate': PRIVATE_META,
-  '/manage-subscription': PRIVATE_META,
-  '/manage-subscription/confirm': PRIVATE_META,
+  '/thank-you': privateServiceMeta('/thank-you'),
+  '/recover': privateServiceMeta('/recover'),
+  '/activate': privateServiceMeta('/activate'),
+  '/manage-subscription': privateServiceMeta('/manage-subscription'),
+  '/manage-subscription/confirm': privateServiceMeta('/manage-subscription/confirm'),
 };
 
 const PRIVATE_ROUTES = [

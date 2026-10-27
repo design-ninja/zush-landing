@@ -401,6 +401,26 @@ const fileSorterFaq = [
     answer:
       `Folder sorting is part of Zush. The first ${APP_CONFIG.free_tier_limit} AI renames are free. PRO costs $10 per month or $48 one-time and has no monthly file meter, including with the managed Zush Cloud AI.`,
   },
+  {
+    question: 'What is the best app to sort files into folders with AI?',
+    answer:
+      'It depends on what decides the folder. If the destination depends on what is inside the file, such as the company on an invoice or the subject of a photo, Zush sorts by your plain-language Folder rules or Auto on Mac and Windows and renames each file in the same reviewed batch. If extension, name, or date is enough, a rule engine such as Hazel, File Juggler, or DropIt is simpler. Sortio also takes a prompt but is billed monthly or yearly with an AI allowance.',
+  },
+  {
+    question: 'Can AI organize my Downloads folder automatically on Windows?',
+    answer:
+      'Yes. In Zush for Windows 10 and 11, save a Template with Sort turned on and assign it to your Downloads folder in Monitor. New files that land directly in Downloads are read, renamed, and moved into folders by your Folder rules or Auto. The Mac app works the same way.',
+  },
+  {
+    question: 'Is there a one-time purchase alternative to Sortio or Sparkle?',
+    answer:
+      'Yes. Zush PRO is available as a $48 one-time purchase with no monthly file meter, and folder sorting is included. Sortio Pro is $14.99 per month or $99 per year with a monthly AI allowance, and Sparkle is a Mac-only subscription (vendor pages checked September 27, 2026).',
+  },
+  {
+    question: 'Can I undo AI folder sorting?',
+    answer:
+      'Yes. Undo restores the original filename and the original folder, including after a rename followed by sorting. Zush also shows every proposed name and folder before anything moves, so you can fix a group before applying the batch.',
+  },
 ];
 
 const hazelAlternativeFaq = [
