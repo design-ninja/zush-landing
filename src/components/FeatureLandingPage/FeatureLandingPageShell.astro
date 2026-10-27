@@ -13,7 +13,9 @@ import HeroWave from '@/components/HeroWave/HeroWave.astro';
 import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
 import {
   FOLDER_SORTING_DEMO_VIDEO,
+  VIDEO_RENAME_DEMO_VIDEO,
   WINDOWS_FOLDER_SORTING_DEMO_VIDEO,
+  WINDOWS_VIDEO_RENAME_DEMO_VIDEO,
   type DemoVideoAsset,
 } from '@/data/showcaseMedia';
 import Pricing from '@/components/Pricing/Pricing.astro';
@@ -111,6 +113,11 @@ const HERO_DEMO_VIDEOS: Record<string, { mac: DemoVideoAsset; windows?: DemoVide
     mac: FOLDER_SORTING_DEMO_VIDEO,
     windows: WINDOWS_FOLDER_SORTING_DEMO_VIDEO,
     subtitle: 'Zush reads each file, gives it a searchable name, and sorts it into folders on Mac and Windows. Review every batch first; undo restores names and folders.',
+  },
+  '/rename-videos-with-ai': {
+    mac: VIDEO_RENAME_DEMO_VIDEO,
+    windows: WINDOWS_VIDEO_RENAME_DEMO_VIDEO,
+    subtitle: 'Zush names screen recordings, camera clips, and exports by what they show: sampled frames, subtitles, and speech. Preview every name before applying.',
   },
   // forceOS is 'mac' on this page, so it never switches to the Windows recording.
   '/hazel-alternative': {

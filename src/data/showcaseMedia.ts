@@ -78,6 +78,34 @@ export const WINDOWS_FOLDER_SORTING_DEMO_VIDEO: DemoVideoAsset = {
   height: 1584,
 };
 
+// Video renaming demo: generic camera, screen-recording, and export names turned
+// into descriptive ones from sampled frames. Same story on Mac and Windows.
+export const VIDEO_RENAME_DEMO_VIDEO: DemoVideoAsset = {
+  sources: {
+    light: '/videos/video-rename-demo-light.mp4',
+    dark: '/videos/video-rename-demo-dark.mp4',
+  },
+  posters: {
+    light: '/videos/posters/video-rename-demo-light.webp',
+    dark: '/videos/posters/video-rename-demo-dark.webp',
+  },
+  width: 2560,
+  height: 1440,
+};
+
+export const WINDOWS_VIDEO_RENAME_DEMO_VIDEO: DemoVideoAsset = {
+  sources: {
+    light: '/videos/windows/video-rename-demo-light.mp4',
+    dark: '/videos/windows/video-rename-demo-dark.mp4',
+  },
+  posters: {
+    light: '/videos/posters/video-rename-demo-windows-light.webp',
+    dark: '/videos/posters/video-rename-demo-windows-dark.webp',
+  },
+  width: 2816,
+  height: 1584,
+};
+
 // The Windows desktop demo has matching recordings and posters for both themes.
 export const WINDOWS_DEMO_VIDEO: DemoVideoAsset = {
   sources: {
@@ -184,6 +212,13 @@ const SHOWCASE_VIDEOS: ShowcaseVideoAsset[] = [
     description: 'Sort a mixed folder into folders with a plain-language Folder rule in Zush for Windows',
     sources: WINDOWS_FOLDER_SORTING_DEMO_VIDEO.sources,
     posters: WINDOWS_FOLDER_SORTING_DEMO_VIDEO.posters,
+  },
+  {
+    id: 'video-rename',
+    title: 'AI Video Renaming',
+    description: 'Rename screen recordings, camera clips, and exports by what they show',
+    sources: VIDEO_RENAME_DEMO_VIDEO.sources,
+    posters: VIDEO_RENAME_DEMO_VIDEO.posters,
   },
   {
     id: 'windows-batch-rename',
