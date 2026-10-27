@@ -5,6 +5,8 @@ import { MAC_DEMO_VIDEO, type DemoVideoAsset } from '@/data/showcaseMedia';
 interface Props {
   label: string;
   media?: DemoVideoAsset;
+  /** Recording shown instead of `media` to visitors on Windows. */
+  windowsMedia?: DemoVideoAsset;
   autoplay?: boolean;
   preload?: 'none' | 'metadata' | 'auto';
 }
@@ -12,6 +14,7 @@ interface Props {
 const {
   label,
   media = MAC_DEMO_VIDEO,
+  windowsMedia,
   autoplay = true,
   preload = 'metadata',
 } = Astro.props as Props;
@@ -28,6 +31,15 @@ const {
 // Neither file has an audio track, which is also why the native controls show
 // no volume slider: browsers omit it when there is nothing to mute.
 const isThemeAware = media.sources.light !== media.sources.dark;
+const windowsAttributes = windowsMedia
+  ? {
+      'data-win-light-src': windowsMedia.sources.light,
+      'data-win-dark-src': windowsMedia.sources.dark,
+      'data-win-light-poster': windowsMedia.posters.light,
+      'data-win-dark-poster': windowsMedia.posters.dark,
+      'data-win-aspect': `${windowsMedia.width} / ${windowsMedia.height}`,
+    }
+  : {};
 
 const frameStyle = { '--demo-video-aspect-ratio': `${media.width} / ${media.height}` };
 ---
@@ -44,6 +56,7 @@ const frameStyle = { '--demo-video-aspect-ratio': `${media.width} / ${media.heig
         data-dark-src={isThemeAware ? media.sources.dark : media.sources.light}
         data-light-poster={media.posters.light}
         data-dark-poster={isThemeAware ? media.posters.dark : media.posters.light}
+        {...windowsAttributes}
         poster={media.posters.light}
         controls
         controlslist="nodownload"
@@ -59,10 +72,29 @@ const frameStyle = { '--demo-video-aspect-ratio': `${media.width} / ${media.heig
 </section>
 
 <script>
-  const applyDemoVideoTheme = (video: HTMLVideoElement) => {
+  import { detectFromUA, readPreferredOS } from '@/utils/detectOS';
+
+  // Videos with a Windows recording switch to it for visitors on Windows, and
+  // the frame takes that recording's aspect ratio.
+  const pickMedia = (video: HTMLVideoElement) => {
     const theme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
-    const nextSrc = theme === 'dark' ? video.dataset.darkSrc : video.dataset.lightSrc;
-    const nextPoster = theme === 'dark' ? video.dataset.darkPoster : video.dataset.lightPoster;
+    const { dataset } = video;
+    const windows = Boolean(dataset.winLightSrc) && (readPreferredOS() ?? detectFromUA()) === 'windows';
+    if (windows && dataset.winAspect) {
+      video.parentElement?.style.setProperty('--demo-video-aspect-ratio', dataset.winAspect);
+    }
+    if (windows) {
+      return theme === 'dark'
+        ? { src: dataset.winDarkSrc, poster: dataset.winDarkPoster }
+        : { src: dataset.winLightSrc, poster: dataset.winLightPoster };
+    }
+    return theme === 'dark'
+      ? { src: dataset.darkSrc, poster: dataset.darkPoster }
+      : { src: dataset.lightSrc, poster: dataset.lightPoster };
+  };
+
+  const applyDemoVideoTheme = (video: HTMLVideoElement) => {
+    const { src: nextSrc, poster: nextPoster } = pickMedia(video);
 
     if (!nextSrc || video.getAttribute('src') === nextSrc) return;
 
@@ -113,8 +145,7 @@ const frameStyle = { '--demo-video-aspect-ratio': `${media.width} / ${media.heig
 
   // Posters follow the theme right away; sources wait for the load event.
   const syncPoster = (video: HTMLVideoElement) => {
-    const theme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
-    const poster = theme === 'dark' ? video.dataset.darkPoster : video.dataset.lightPoster;
+    const { poster } = pickMedia(video);
     if (poster && video.getAttribute('poster') !== poster) video.poster = poster;
   };
 

@@ -9,6 +9,15 @@ import WaysToRun from '@/components/Features/WaysToRun.astro';
 import Heading from '@/components/Heading';
 import SectionHeader from '@/components/SectionHeader';
 import Hero from '@/components/Hero';
+import HeroWave from '@/components/HeroWave/HeroWave.astro';
+import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
+import {
+  FOLDER_SORTING_DEMO_VIDEO,
+  VIDEO_RENAME_DEMO_VIDEO,
+  WINDOWS_FOLDER_SORTING_DEMO_VIDEO,
+  WINDOWS_VIDEO_RENAME_DEMO_VIDEO,
+  type DemoVideoAsset,
+} from '@/data/showcaseMedia';
 import Pricing from '@/components/Pricing/Pricing.astro';
 import SupportedFormats from '@/components/SupportedFormats';
 import Tour from '@/components/Tour';
@@ -18,6 +27,7 @@ import TrustSignals from '@/components/TrustSignals';
 import type { FeatureLandingPageProps } from './FeatureLandingPage';
 import { getPdfDeepDiveCopy } from '@/data/pdfDeepDive';
 import FeatureFAQ from './FeatureFAQ';
+import { PRODUCT_FACTS_REVIEWED_AT } from '@/constants';
 import TaskWorkflow from './TaskWorkflow.astro';
 import LandingWorkflow from './LandingWorkflow.astro';
 import PdfScenarios from './PdfScenarios.astro';
@@ -91,6 +101,31 @@ const landingWorkflow = getLandingWorkflow(currentRoute, currentLocale);
 const showPdfScenariosEarly = currentRoute === '/rename-pdf-with-ai';
 // Pages about sorting show the sorting block inside the features block.
 const sortingRoute = ['/ai-file-organizer', '/ai-file-sorter', '/hazel-alternative'].includes(currentRoute);
+// Routes with a recording of their own get the homepage hero layout: a centered
+// intro over the point wave with the demo video below it, instead of the slides.
+const HERO_DEMO_VIDEOS: Record<string, { mac: DemoVideoAsset; windows?: DemoVideoAsset; subtitle?: string }> = {
+  '/ai-file-sorter': {
+    mac: FOLDER_SORTING_DEMO_VIDEO,
+    windows: WINDOWS_FOLDER_SORTING_DEMO_VIDEO,
+    subtitle: 'Describe your folders in plain language or let Auto group files by content. Zush reads, renames, and moves each file after you review the plan.',
+  },
+  '/ai-file-organizer': {
+    mac: FOLDER_SORTING_DEMO_VIDEO,
+    windows: WINDOWS_FOLDER_SORTING_DEMO_VIDEO,
+    subtitle: 'Zush reads each file, gives it a searchable name, and sorts it into folders on Mac and Windows. Review every batch first; undo restores names and folders.',
+  },
+  '/rename-videos-with-ai': {
+    mac: VIDEO_RENAME_DEMO_VIDEO,
+    windows: WINDOWS_VIDEO_RENAME_DEMO_VIDEO,
+    subtitle: 'Zush names screen recordings, camera clips, and exports by what they show: sampled frames, subtitles, and speech. Preview every name before applying.',
+  },
+  // forceOS is 'mac' on this page, so it never switches to the Windows recording.
+  '/hazel-alternative': {
+    mac: FOLDER_SORTING_DEMO_VIDEO,
+    subtitle: 'Hazel runs the conditions you write. Zush reads what each file shows, names it, and sorts it by rules you describe in plain language.',
+  },
+};
+const heroDemoVideo = HERO_DEMO_VIDEOS[currentRoute];
 const macVersion = parseLatestVersion(macChangelogSource) ?? undefined;
 const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
 const relatedPageHref = (href: string) =>
@@ -101,28 +136,62 @@ const relatedPageTitle = (href: string, fallback: string) =>
   isLocalizedRoute(href) ? currentCopy.featurePages[href]?.h1 ?? fallback : fallback;
 ---
 
-<Breadcrumbs items={breadcrumbItems} />
+<Breadcrumbs items={breadcrumbItems} align={heroDemoVideo ? 'center' : 'start'} />
 <article class={styles.Page}>
-  <Hero
-    as='header'
-    forceOS={forceOS}
-    title={pageCopy?.h1 ?? h1}
-    titleAccent={pageCopy?.accent ?? h1Accent}
-    subtitle={pageCopy?.definitionText ?? definitionText}
-    slides={heroSlides}
-    compactTopSpacing
-    buyLabel={currentCopy.home.buyPro}
-    downloadLabel={taskExample ? 'Try free — 50 renames' : currentCopy.header.download}
-    downloadMenu={currentCopy.downloadMenu}
-    trustSignals={currentCopy.home.trustSignals}
-    macVersion={macVersion}
-    windowsVersion={windowsVersion}
-    softpediaRatedByLabel={SOFTPEDIA_RATED_BY_LABELS[currentLocale]}
-    softpediaReviewAriaLabel={SOFTPEDIA_REVIEW_ARIA_LABELS[currentLocale]}
-    microsoftStoreRatedOnLabel={MICROSOFT_STORE_RATED_ON_LABELS[currentLocale]}
-    microsoftStoreRatingAriaLabel={MICROSOFT_STORE_RATING_ARIA_LABELS[currentLocale]}
-    client:visible
-  />
+  {heroDemoVideo ? (
+    <>
+      <HeroWave>
+        <Hero
+          as='header'
+          forceOS={forceOS}
+          title={pageCopy?.h1 ?? h1}
+          titleAccent={pageCopy?.accent ?? h1Accent}
+          subtitle={pageCopy?.definitionText ?? heroDemoVideo.subtitle ?? definitionText}
+          compactTopSpacing
+          buyLabel={currentCopy.home.buyPro}
+          downloadLabel={taskExample ? 'Try free — 50 renames' : currentCopy.header.download}
+          downloadMenu={currentCopy.downloadMenu}
+          trustSignals={currentCopy.home.trustSignals}
+          macVersion={macVersion}
+          windowsVersion={windowsVersion}
+          softpediaRatedByLabel={SOFTPEDIA_RATED_BY_LABELS[currentLocale]}
+          softpediaReviewAriaLabel={SOFTPEDIA_REVIEW_ARIA_LABELS[currentLocale]}
+          microsoftStoreRatedOnLabel={MICROSOFT_STORE_RATED_ON_LABELS[currentLocale]}
+          microsoftStoreRatingAriaLabel={MICROSOFT_STORE_RATING_ARIA_LABELS[currentLocale]}
+          client:visible
+          centered
+          splitByOS={!forceOS}
+          waveBackground
+        />
+      </HeroWave>
+      <DemoVideo
+        label={pageCopy?.h1 ?? h1}
+        media={heroDemoVideo.mac}
+        windowsMedia={forceOS === 'mac' ? undefined : heroDemoVideo.windows}
+      />
+    </>
+  ) : (
+    <Hero
+      as='header'
+      forceOS={forceOS}
+      title={pageCopy?.h1 ?? h1}
+      titleAccent={pageCopy?.accent ?? h1Accent}
+      subtitle={pageCopy?.definitionText ?? definitionText}
+      slides={heroSlides}
+      compactTopSpacing
+      buyLabel={currentCopy.home.buyPro}
+      downloadLabel={taskExample ? 'Try free — 50 renames' : currentCopy.header.download}
+      downloadMenu={currentCopy.downloadMenu}
+      trustSignals={currentCopy.home.trustSignals}
+      macVersion={macVersion}
+      windowsVersion={windowsVersion}
+      softpediaRatedByLabel={SOFTPEDIA_RATED_BY_LABELS[currentLocale]}
+      softpediaReviewAriaLabel={SOFTPEDIA_REVIEW_ARIA_LABELS[currentLocale]}
+      microsoftStoreRatedOnLabel={MICROSOFT_STORE_RATED_ON_LABELS[currentLocale]}
+      microsoftStoreRatingAriaLabel={MICROSOFT_STORE_RATING_ARIA_LABELS[currentLocale]}
+      client:visible
+    />
+  )}
 
   {taskExample && !(currentLocale === DEFAULT_LOCALE && ['/rename-pdf-with-ai', '/rename-audio-with-ai'].includes(currentRoute)) && <RenameTaskExample example={taskExample} />}
 
@@ -220,6 +289,11 @@ const relatedPageTitle = (href: string, fallback: string) =>
     <div class={faq.FAQ__Container}>
       <SectionHeader title={pageCopy?.faqTitle ?? 'Frequently Asked Questions'} />
       <FeatureFAQ faqItems={pageCopy?.faqItems ?? faqItems} />
+      {currentLocale === DEFAULT_LOCALE && (
+        <p class={styles.FactsReviewed}>
+          Product facts checked <time datetime={PRODUCT_FACTS_REVIEWED_AT}>{new Date(`${PRODUCT_FACTS_REVIEWED_AT}T00:00:00Z`).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time>.
+        </p>
+      )}
     </div>
   </section>
 

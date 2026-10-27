@@ -1,6 +1,7 @@
 import type { BlogPost, FAQItem } from '@/data/blog';
 import { toIsoDateTime } from '@/seo/config';
 import { PRIMARY_AUTHOR } from '@/data/author';
+import { PRODUCT_FACTS_REVIEWED_AT } from '@/constants';
 import { ORGANIZATION_REF, SOFTWARE_REF, WEBSITE_REF } from '@/seo/entity';
 import { getBlogThumbnail } from '@/data/blogThumbnails';
 
@@ -126,6 +127,7 @@ export function buildFeaturePageJsonLd(data: FeaturePageJsonLdData) {
         description: data.page.description,
         inLanguage: data.inLanguage ?? 'en',
         ...(data.keywords ? { keywords: data.keywords } : {}),
+        dateModified: PRODUCT_FACTS_REVIEWED_AT,
         isPartOf: WEBSITE_REF,
         publisher: ORGANIZATION_REF,
         mainEntity: SOFTWARE_REF,

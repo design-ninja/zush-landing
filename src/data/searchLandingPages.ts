@@ -103,6 +103,15 @@ const scannedDocumentFaq = [
     question: 'What about sensitive scans like medical or financial documents?',
     answer:
       'Zush supports private modes: BYOK sends analysis through your own provider account, while LM Studio and Ollama keep supported analysis on your device and work offline after setup. Filenames and folder structures always stay local.',
+  },  {
+    question: 'How do I rename a scanned PDF on Windows?',
+    answer:
+      'File Explorer only renames one file at a time by hand. In Zush for Windows 10 and 11, add the scanned PDFs or assign a Template to the folder your scanner saves into. Zush reads each page image, proposes a name from the document type, party, and date, and applies it after you review the batch.',
+  },
+  {
+    question: 'How do I rename a scanned PDF on Mac?',
+    answer:
+      'Finder can rename several files at once, but only by replacing text, adding text, or numbering them; it cannot read what a scan says. Zush on Mac reads each scanned page with AI vision and names it by document type, party, and date, so Scan0001.pdf becomes a name you can search for.',
   },
 ];
 

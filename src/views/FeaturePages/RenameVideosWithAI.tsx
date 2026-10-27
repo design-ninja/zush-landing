@@ -32,6 +32,15 @@ const faqItems = [
     question: 'Can Zush rename audio-only files too?',
     answer:
       'Yes. Zush supports MP3, M4A, WAV, FLAC, OGG, WebM, and MPGA audio files, using embedded metadata, music recognition, and a speech excerpt from the first two minutes when transcription is needed.',
+  },  {
+    question: 'How do I rename MP4 files in bulk?',
+    answer:
+      'Add the MP4 files, or a whole folder of them, to Zush on Mac or Windows and choose a Template, for example date plus subject. Zush suggests a name for each clip from sampled frames, subtitles, and metadata, you review the list, and apply the batch. Rename History can undo it later.',
+  },
+  {
+    question: 'Is there a video name changer for Windows?',
+    answer:
+      'Yes. Zush for Windows 10 and 11 renames MP4, MOV, MKV, AVI, WMV, and other video files by what they show, with the same Templates and preview as the Mac app. It installs from the Microsoft Store.',
   },
 ];
 

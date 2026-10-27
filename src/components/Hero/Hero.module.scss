@@ -232,6 +232,20 @@
             max-width: 33rem;
         }
 
+        // Landing pages reuse the wave hero under breadcrumbs: less air on top
+        // and a wider measure for a short one-paragraph intro.
+        &.Hero_wave.Hero_compactTopSpacing {
+            padding: 3.5rem 0 4.5rem;
+
+            @include mobile {
+                padding: 2.5rem 0 3rem;
+            }
+
+            .Hero__Subtitle {
+                max-width: 46rem;
+            }
+        }
+
     }
 
     &__Intro {

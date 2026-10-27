@@ -1,7 +1,7 @@
 ---
 title: How Zush Analyzes Audio and Video
 description: Understand how Zush uses media metadata, sampled frames, subtitles, speech excerpts, and music recognition to name audio and video files on Mac and Windows.
-lastUpdated: 2026-10-25
+lastUpdated: 2026-10-27
 ---
 
 Zush combines the evidence available in a media file to suggest a name. It does not need to understand every moment of a recording, and a filename is not a full transcript.
@@ -25,6 +25,26 @@ Video naming can combine:
 - music recognition when available
 
 A matching song identifies the audio source; it does not establish who is visible or where the video was recorded. Review those details in the proposed name.
+
+<figure>
+  <video class="zush-demo-video" data-demo-theme="light" controls controlslist="nodownload" muted playsInline preload="metadata" poster="/videos/posters/video-rename-demo-light.webp" width="2560" height="1440" aria-label="Zush for Mac renaming six videos with generic names into descriptive names based on what each clip shows.">
+    <source src="/videos/video-rename-demo-light.mp4" type="video/mp4" />
+  </video>
+  <video class="zush-demo-video" data-demo-theme="dark" controls controlslist="nodownload" muted playsInline preload="metadata" poster="/videos/posters/video-rename-demo-dark.webp" width="2560" height="1440" aria-label="Zush for Mac renaming six videos with generic names into descriptive names based on what each clip shows.">
+    <source src="/videos/video-rename-demo-dark.mp4" type="video/mp4" />
+  </video>
+  <figcaption>On Mac: six clips with camera, screen-recording, and export names get descriptive names after analysis.</figcaption>
+</figure>
+
+<figure>
+  <video class="zush-demo-video" data-demo-theme="light" controls controlslist="nodownload" muted playsInline preload="metadata" poster="/videos/posters/video-rename-demo-windows-light.webp" width="2816" height="1584" aria-label="Zush for Windows renaming six videos with generic names into descriptive names based on what each clip shows.">
+    <source src="/videos/windows/video-rename-demo-light.mp4" type="video/mp4" />
+  </video>
+  <video class="zush-demo-video" data-demo-theme="dark" controls controlslist="nodownload" muted playsInline preload="metadata" poster="/videos/posters/video-rename-demo-windows-dark.webp" width="2816" height="1584" aria-label="Zush for Windows renaming six videos with generic names into descriptive names based on what each clip shows.">
+    <source src="/videos/windows/video-rename-demo-dark.mp4" type="video/mp4" />
+  </video>
+  <figcaption>On Windows: the same clips renamed in Zush for Windows 10 and 11.</figcaption>
+</figure>
 
 ## Cloud, BYOK, and local differences
 

@@ -227,7 +227,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI file renamer for real estate, real estate file organization, rename real estate documents, property transaction file naming, organize closing documents, rename DocuSign files, real estate document renamer, property file naming software',
   },
   '/rename-scanned-documents': {
-    title: 'Rename Scanned Documents Automatically',
+    title: 'How to Rename Scanned Documents Automatically | Zush',
     description:
       'Turn Scan0001.pdf into a searchable filename. Zush reads each scan with AI vision — no OCR pass — and names it by document type, party, and date. Mac & Windows.',
     robots: 'index, follow',
