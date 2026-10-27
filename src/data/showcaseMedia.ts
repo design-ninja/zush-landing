@@ -172,6 +172,20 @@ const SHOWCASE_VIDEOS: ShowcaseVideoAsset[] = [
     },
   },
   {
+    id: 'folder-sorting',
+    title: 'AI Folder Sorting',
+    description: 'Sort a mixed folder into folders with a plain-language Folder rule',
+    sources: FOLDER_SORTING_DEMO_VIDEO.sources,
+    posters: FOLDER_SORTING_DEMO_VIDEO.posters,
+  },
+  {
+    id: 'windows-folder-sorting',
+    title: 'AI Folder Sorting on Windows',
+    description: 'Sort a mixed folder into folders with a plain-language Folder rule in Zush for Windows',
+    sources: WINDOWS_FOLDER_SORTING_DEMO_VIDEO.sources,
+    posters: WINDOWS_FOLDER_SORTING_DEMO_VIDEO.posters,
+  },
+  {
     id: 'windows-batch-rename',
     title: 'Batch Rename on Windows',
     description: 'Batch rename files with AI based on their actual content in Zush for Windows',

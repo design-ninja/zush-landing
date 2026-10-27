@@ -17,6 +17,13 @@
 }
 
 // One-line pointer to a deeper guide, between sections.
+.FactsReviewed {
+  margin: 1.5rem 0 0;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
 .ContextualGuideLink {
   @include container;
   padding-top: 3rem;

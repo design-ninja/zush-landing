@@ -25,6 +25,7 @@ import TrustSignals from '@/components/TrustSignals';
 import type { FeatureLandingPageProps } from './FeatureLandingPage';
 import { getPdfDeepDiveCopy } from '@/data/pdfDeepDive';
 import FeatureFAQ from './FeatureFAQ';
+import { PRODUCT_FACTS_REVIEWED_AT } from '@/constants';
 import TaskWorkflow from './TaskWorkflow.astro';
 import LandingWorkflow from './LandingWorkflow.astro';
 import PdfScenarios from './PdfScenarios.astro';
@@ -105,6 +106,16 @@ const HERO_DEMO_VIDEOS: Record<string, { mac: DemoVideoAsset; windows?: DemoVide
     mac: FOLDER_SORTING_DEMO_VIDEO,
     windows: WINDOWS_FOLDER_SORTING_DEMO_VIDEO,
     subtitle: 'Describe your folders in plain language or let Auto group files by content. Zush reads, renames, and moves each file after you review the plan.',
+  },
+  '/ai-file-organizer': {
+    mac: FOLDER_SORTING_DEMO_VIDEO,
+    windows: WINDOWS_FOLDER_SORTING_DEMO_VIDEO,
+    subtitle: 'Zush reads each file, gives it a searchable name, and sorts it into folders on Mac and Windows. Review every batch first; undo restores names and folders.',
+  },
+  // forceOS is 'mac' on this page, so it never switches to the Windows recording.
+  '/hazel-alternative': {
+    mac: FOLDER_SORTING_DEMO_VIDEO,
+    subtitle: 'Hazel runs the conditions you write. Zush reads what each file shows, names it, and sorts it by rules you describe in plain language.',
   },
 };
 const heroDemoVideo = HERO_DEMO_VIDEOS[currentRoute];
@@ -271,6 +282,11 @@ const relatedPageTitle = (href: string, fallback: string) =>
     <div class={faq.FAQ__Container}>
       <SectionHeader title={pageCopy?.faqTitle ?? 'Frequently Asked Questions'} />
       <FeatureFAQ faqItems={pageCopy?.faqItems ?? faqItems} />
+      {currentLocale === DEFAULT_LOCALE && (
+        <p class={styles.FactsReviewed}>
+          Product facts checked <time datetime={PRODUCT_FACTS_REVIEWED_AT}>{new Date(`${PRODUCT_FACTS_REVIEWED_AT}T00:00:00Z`).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time>.
+        </p>
+      )}
     </div>
   </section>
 
