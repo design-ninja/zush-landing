@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.16.2.0] - 2026-10-28
+
+### Fixed
+- More reliable closing and quitting while the app is still starting, including on slow connections.
+- Offline AI can name empty documents using their filename and metadata, with clearer messages when a document is damaged or cannot be read.
+- Folder sorting preserves company, person and place names from your files without abbreviating or translating them.
+
 ## [3.16.1.0] - 2026-10-26
 
 ### Added
