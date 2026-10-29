@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.17.0.0] - 2026-10-29
+
+- Faster batch analysis and name regeneration, with smoother updates when many files use cached results or local metadata.
+- New per-template option to retry unchanged names. It is off by default, so a name that already fits can stay as it is.
+- The Ollama model picker now labels models that can read images and avoids automatically selecting a text-only model.
+- More reliable folder sorting for large batches: later files can reuse folders proposed for earlier files, and readable parts can still be sorted when another part fails.
+- Offline speech model downloads resume after an interrupted connection.
+- Fixed PDF analysis for files stored in very long folder paths and improved handling of interrupted or unusable local AI replies.
+
 ## [3.16.2.0] - 2026-10-28
 
 ### Fixed
