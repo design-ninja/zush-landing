@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.21.0] - 2026-10-29
+### Improved
+- Faster batch renaming and more reliable folder sorting.
+- Clearer Ollama model choices, with text-only models now able to analyze text documents.
+### Fixed
+- Improved local analysis of empty documents.
+- More reliable speech recognition downloads after a connection drops.
+
 ## [3.20.1] - 2026-10-26
 
 ### New
