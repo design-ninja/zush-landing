@@ -498,6 +498,10 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
         });
       </script>
     </div>
+    <script>
+      import { initializeMicrosoftAds } from '@/utils/microsoftAds';
+      void initializeMicrosoftAds();
+    </script>
     {posthogProjectKey && (
       <PostHogAnalytics
         projectKey={posthogProjectKey}

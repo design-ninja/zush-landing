@@ -76,6 +76,10 @@ Wir teilen Daten mit folgenden Dienstleistern:
 
 Jeder Drittanbieter verarbeitet Daten gemäß seiner eigenen Datenschutzerklärung. Wir empfehlen dir, diese Richtlinien zu prüfen.
 
+### 4.1 Microsoft Advertising (UET)
+
+Für Besucher in den USA verwendet die Website Microsoft Universal Event Tracking (UET), um Besuche und Klicks auf Windows-Download-Schaltflächen Anzeigen zuzuordnen. Microsoft kann dabei IP-Adressen, Browserinformationen, Seiten-URLs sowie Werbeklick- und Cookie-Kennungen erhalten. UET wird außerhalb der USA, bei unbekanntem Land oder aktiviertem Global Privacy Control (GPC) bzw. Do Not Track nicht geladen. Ein Klick bestätigt keinen abgeschlossenen Download oder eine Installation. Es wird kein Einwilligungs-Popup angezeigt. Siehe die [Microsoft-Datenschutzerklärung](https://privacy.microsoft.com/privacystatement).
+
 ### 5. Datensicherheit
 
 Wir setzen angemessene Sicherheitsmaßnahmen ein, um deine Informationen vor unbefugtem Zugriff, Offenlegung oder Zerstörung zu schützen. BYOK-API-Schlüssel werden lokal im macOS-Schlüsselbund gespeichert und nicht dauerhaft im Zush-Backend gespeichert. Wenn BYOK verwendet wird, wird der Schlüssel nur übertragen, wenn es zur Validierung und zur Ausführung der ausgewählten Provider-Anfrage erforderlich ist. Keine Internetübertragung oder elektronische Speicherung ist jedoch zu 100% sicher.
@@ -255,6 +259,10 @@ Nous partageons des données avec les prestataires suivants :
 - **Analyse d’usage :** TelemetryDeck (analytics produit axés sur la confidentialité) et PostHog (analyse web respectueuse de la confidentialité).
 
 Chaque fournisseur tiers traite les données selon sa propre politique de confidentialité. Nous vous encourageons à les consulter.
+
+### 4.1 Microsoft Advertising (UET)
+
+Pour les visiteurs aux États-Unis, le site utilise Microsoft Universal Event Tracking (UET) pour attribuer les visites et clics sur les boutons de téléchargement Windows aux annonces. Microsoft peut recevoir les adresses IP, informations du navigateur, URL des pages et identifiants de clic publicitaire et de cookies. UET ne se charge pas hors des États-Unis, si le pays est inconnu ou si Global Privacy Control (GPC) ou Do Not Track est activé. Un clic ne confirme pas un téléchargement terminé ni une installation. Aucune fenêtre de consentement ne s’affiche. Voir la [Déclaration de confidentialité Microsoft](https://privacy.microsoft.com/privacystatement).
 
 ### 5. Sécurité des données
 
@@ -436,6 +444,10 @@ Compartilhamos dados com os seguintes provedores:
 
 Cada provedor terceirizado processa dados de acordo com suas próprias políticas de privacidade. Recomendamos que você as revise.
 
+### 4.1 Microsoft Advertising (UET)
+
+Para visitantes nos Estados Unidos, o site usa Microsoft Universal Event Tracking (UET) para atribuir visitas e cliques nos botões de download do Windows aos anúncios. A Microsoft pode receber endereços IP, informações do navegador, URLs das páginas e identificadores de cliques publicitários e cookies. O UET não é carregado fora dos Estados Unidos, quando o país é desconhecido ou quando Global Privacy Control (GPC) ou Do Not Track está ativado. Um clique não confirma o download concluído nem a instalação. Nenhum popup de consentimento é exibido. Consulte a [Declaração de Privacidade da Microsoft](https://privacy.microsoft.com/privacystatement).
+
 ### 5. Segurança dos dados
 
 Implementamos medidas de segurança razoáveis para proteger suas informações contra acesso, divulgação ou destruição não autorizados. Chaves de API BYOK são armazenadas localmente no macOS Keychain e não são armazenadas permanentemente no backend do Zush. Quando BYOK é usado, a chave é transmitida apenas quando necessário para validar a chave e concluir a solicitação do provedor selecionado. No entanto, nenhum método de transmissão pela Internet ou armazenamento eletrônico é 100% seguro.
@@ -615,6 +627,10 @@ Compartimos datos con los siguientes proveedores:
 - **Analítica de uso:** TelemetryDeck (analítica de producto centrada en privacidad) y PostHog (analítica web centrada en privacidad).
 
 Cada proveedor tercero procesa datos según sus propias políticas de privacidad. Te recomendamos revisarlas.
+
+### 4.1 Microsoft Advertising (UET)
+
+Para visitantes en Estados Unidos, el sitio usa Microsoft Universal Event Tracking (UET) para atribuir visitas y clics en los botones de descarga de Windows a los anuncios. Microsoft puede recibir direcciones IP, información del navegador, URL de páginas e identificadores de clics publicitarios y cookies. UET no se carga fuera de Estados Unidos, si el país es desconocido o si Global Privacy Control (GPC) o Do Not Track está activado. Un clic no confirma una descarga completada ni una instalación. No se muestra ningún popup de consentimiento. Consulta la [Declaración de privacidad de Microsoft](https://privacy.microsoft.com/privacystatement).
 
 ### 5. Seguridad de datos
 
@@ -796,6 +812,10 @@ We delen gegevens met de volgende dienstverleners:
 
 Elke derde partij verwerkt gegevens volgens haar eigen privacybeleid. We raden je aan die te bekijken.
 
+### 4.1 Microsoft Advertising (UET)
+
+Voor bezoekers in de Verenigde Staten gebruikt de website Microsoft Universal Event Tracking (UET) om bezoeken en klikken op Windows-downloadknoppen aan advertenties toe te schrijven. Microsoft kan IP-adressen, browserinformatie, pagina-URL’s en advertentieklik- en cookie-ID’s ontvangen. UET wordt niet geladen buiten de VS, bij een onbekend land of wanneer Global Privacy Control (GPC) of Do Not Track is ingeschakeld. Een klik bevestigt geen voltooide download of installatie. Er verschijnt geen toestemmingspopup. Zie de [Microsoft-privacyverklaring](https://privacy.microsoft.com/privacystatement).
+
 ### 5. Gegevensbeveiliging
 
 We nemen redelijke beveiligingsmaatregelen om je informatie te beschermen tegen ongeautoriseerde toegang, openbaarmaking of vernietiging. BYOK API-sleutels worden lokaal opgeslagen in macOS Keychain en niet permanent in de Zush-backend. Wanneer BYOK wordt gebruikt, wordt de sleutel alleen verzonden wanneer nodig om de sleutel te valideren en het verzoek bij de gekozen provider te voltooien. Geen enkele methode voor internetoverdracht of elektronische opslag is echter 100% veilig.
@@ -975,6 +995,10 @@ Condividiamo dati con i seguenti fornitori:
 - **Analytics d’uso:** TelemetryDeck (analytics prodotto orientate alla privacy) e PostHog (analytics del sito orientate alla privacy).
 
 Ogni fornitore terzo elabora i dati secondo la propria informativa privacy. Ti invitiamo a consultarle.
+
+### 4.1 Microsoft Advertising (UET)
+
+Per i visitatori negli Stati Uniti, il sito usa Microsoft Universal Event Tracking (UET) per attribuire visite e clic sui pulsanti di download per Windows agli annunci. Microsoft può ricevere indirizzi IP, informazioni sul browser, URL delle pagine e identificatori di clic pubblicitari e cookie. UET non viene caricato fuori dagli Stati Uniti, se il paese è sconosciuto o se Global Privacy Control (GPC) o Do Not Track è attivo. Un clic non conferma il completamento del download o l’installazione. Non viene mostrato alcun popup di consenso. Consulta l’[Informativa sulla privacy di Microsoft](https://privacy.microsoft.com/privacystatement).
 
 ### 5. Sicurezza dei dati
 
@@ -1156,6 +1180,10 @@ Zush はファイル分析ペイロードを第三者 AI サービスへ送信�
 
 各第三者プロバイダーは、それぞれのプライバシーポリシーに従ってデータを処理します。各ポリシーの確認を推奨します。
 
+### 4.1 Microsoft Advertising (UET)
+
+米国の訪問者に対し、当サイトは Microsoft Universal Event Tracking（UET）を使用して、訪問および Windows ダウンロードボタンのクリックを広告に関連付けます。Microsoft は IP アドレス、ブラウザー情報、ページ URL、広告クリック識別子、Cookie 識別子を受け取る場合があります。米国外、国が不明な場合、または Global Privacy Control（GPC）か Do Not Track が有効な場合、UET は読み込まれません。クリックはダウンロードの完了やインストールを証明しません。同意ポップアップは表示しません。[Microsoft のプライバシーに関する声明](https://privacy.microsoft.com/privacystatement)をご覧ください。
+
 ### 5. データセキュリティ
 
 当社は、不正アクセス、開示、破壊から情報を保護するために合理的なセキュリティ対策を実施します。BYOK API キーは macOS Keychain にローカル保存され、Zush バックエンドには永続保存されません。BYOK 使用時、キーは検証および選択されたプロバイダーへのリクエスト完了に必要な場合にのみ送信されます。ただし、インターネット送信または電子保存の方法が 100% 安全であるとは限りません。
@@ -1335,6 +1363,10 @@ Zush는 파일 분석 payload를 타사 AI 서비스로 전송합니다.
 - **사용 분석:** TelemetryDeck(개인정보 보호 중심 제품 분석) 및 PostHog(개인정보 보호 중심 웹사이트 분석).
 
 각 타사 제공자는 자체 개인정보 처리방침에 따라 데이터를 처리합니다. 해당 정책을 검토하시기를 권장합니다.
+
+### 4.1 Microsoft Advertising (UET)
+
+미국 방문자에 대해서는 Microsoft Universal Event Tracking(UET)을 사용하여 방문 및 Windows 다운로드 버튼 클릭을 광고와 연결합니다. Microsoft는 IP 주소, 브라우저 정보, 페이지 URL, 광고 클릭 식별자 및 쿠키 식별자를 받을 수 있습니다. 미국 외 지역, 국가를 알 수 없는 경우 또는 Global Privacy Control(GPC)이나 Do Not Track이 활성화된 경우 UET를 로드하지 않습니다. 클릭은 다운로드 완료나 설치를 확인하지 않습니다. 동의 팝업은 표시하지 않습니다. [Microsoft 개인정보처리방침](https://privacy.microsoft.com/privacystatement)을 참조하세요.
 
 ### 5. 데이터 보안
 
@@ -1516,6 +1548,10 @@ Zush 会将文件分析 payload 发送给第三方 AI 服务进行分析：
 - **使用分析：** TelemetryDeck（注重隐私的产品分析）和 PostHog（注重隐私的网站分析）。
 
 每个第三方提供商都会根据其自己的隐私政策处理数据。我们建议你查看这些政策。
+
+### 4.1 Microsoft Advertising (UET)
+
+对于位于美国的访客，网站使用 Microsoft Universal Event Tracking（UET）将访问和 Windows 下载按钮点击归因于广告。Microsoft 可能接收 IP 地址、浏览器信息、页面 URL、广告点击标识符和 Cookie 标识符。在美国以外、无法确定国家/地区或启用 Global Privacy Control（GPC）或 Do Not Track 时，不会加载 UET。点击不代表下载完成或安装成功。网站不显示同意弹窗。请参阅 [Microsoft 隐私声明](https://privacy.microsoft.com/privacystatement)。
 
 ### 5. 数据安全
 

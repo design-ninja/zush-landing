@@ -74,9 +74,15 @@ Each third-party provider processes data according to their own privacy policies
 
 ### 4.1 Website Analytics
 
-The website loads PostHog analytics automatically to measure visits, navigation, downloads, and verified purchases. It does not display a tracking consent popup. PostHog uses browser storage and identifiers to associate website activity and traffic sources. The website does not load advertising pixels or send advertising conversion events.
+The website loads PostHog analytics automatically to measure visits, navigation, downloads, and verified purchases. It does not display a tracking consent popup. PostHog uses browser storage and identifiers to associate website activity and traffic sources. Microsoft Advertising tracking is described below.
 
 PostHog retention is controlled in the account settings. See the [PostHog Privacy Policy](https://posthog.com/privacy) for provider details.
+
+### 4.2 Microsoft Advertising
+
+For visitors located in the United States, the website uses Microsoft Universal Event Tracking (UET) to measure visits and clicks on Windows download buttons and attribute them to ads. Microsoft may collect or receive personal data, including IP addresses, browser information, page URLs, advertising click identifiers and cookie identifiers, to provide Microsoft Advertising. See the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement).
+
+UET is not loaded outside the United States or when the visitor's country cannot be determined. We respect Global Privacy Control (GPC) and Do Not Track signals by not loading UET or sending download events when either signal is enabled. This tracking does not confirm a completed download or installation. No consent popup is displayed.
 
 ### 5. Data Security
 

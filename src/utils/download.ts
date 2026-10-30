@@ -1,3 +1,4 @@
+import { trackMicrosoftAdsDownload } from '@/utils/microsoftAds';
 import {
   APP_STORE_PROTOCOL_URL,
   APP_STORE_URL,
@@ -186,6 +187,7 @@ export function trackDownloadClick(
   attributionOverride?: DownloadEventAttributionProperties,
 ): void {
   const resolvedChannel = channel ?? (os === 'windows' ? 'microsoft-store' : 'direct');
+  trackMicrosoftAdsDownload(os, resolvedChannel, source);
 
   try {
     const attribution = attributionOverride ?? getDownloadEventAttribution();
