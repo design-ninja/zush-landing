@@ -26,7 +26,7 @@ test('global store binding leaves React links alone and binds static links only 
     closest: () => ({}),
     get dataset() { throw new Error('Global binder accessed React-owned link'); },
   };
-  const { bindStoreLinks } = loadUtility('storeLinks', { navigator: { platform: 'Win32' }, getMicrosoftStoreCampaignId: () => null, withMicrosoftStoreCampaign: url => url, trackAnalyticsEvent() {} });
+  const { bindStoreLinks } = loadUtility('storeLinks', { navigator: { platform: 'Win32' }, getMicrosoftStoreCampaignId: () => null, prepareMicrosoftStoreCampaign: () => Promise.resolve(null), withMicrosoftStoreCampaign: url => url, trackAnalyticsEvent() {} });
   const root = { querySelectorAll: () => [reactLink, staticLink] };
   bindStoreLinks(root);
   bindStoreLinks(root);

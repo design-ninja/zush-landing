@@ -1,4 +1,4 @@
-import { getMicrosoftStoreCampaignId, withMicrosoftStoreCampaign } from '@/utils/microsoftStoreCampaign';
+import { getMicrosoftStoreCampaignId, prepareMicrosoftStoreCampaign, withMicrosoftStoreCampaign } from '@/utils/microsoftStoreCampaign';
 import { getAnalyticsPageProperties, trackAnalyticsEvent } from '@/utils/analytics';
 
 export type StoreOS = 'mac' | 'windows';
@@ -155,7 +155,7 @@ export const bindStoreLink = (link: HTMLAnchorElement) => {
   const appUrl = link.dataset.storeAppUrl;
   const webUrl = link.dataset.storeWebUrl || link.href;
 
-  if ((os !== 'mac' && os !== 'windows') || !appUrl || link.dataset.storeLinkBound === 'true') {
+  if ((os !== 'mac' && os !== 'windows') || !appUrl) {
     return;
   }
 
@@ -168,6 +168,7 @@ export const bindStoreLink = (link: HTMLAnchorElement) => {
     webUrl,
   });
 
+  if (link.dataset.storeLinkBound === 'true') return;
   link.dataset.storeLinkBound = 'true';
   link.addEventListener('click', (event) => {
     handleStoreLinkClick(event as unknown as StoreLinkClickEvent, {
@@ -179,5 +180,7 @@ export const bindStoreLink = (link: HTMLAnchorElement) => {
 };
 
 export const bindStoreLinks = (root: ParentNode = document) => {
-  root.querySelectorAll<HTMLAnchorElement>('a[data-store-os][data-store-app-url]').forEach(bindStoreLink);
+  const bind = () => root.querySelectorAll<HTMLAnchorElement>('a[data-store-os][data-store-app-url]').forEach(bindStoreLink);
+  bind();
+  void prepareMicrosoftStoreCampaign().then(bind);
 };

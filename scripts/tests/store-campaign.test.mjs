@@ -65,3 +65,24 @@ test('only Zush Store targets are tagged and existing locale parameters survive'
   assert.equal(apply(webUrl,'personal-data'),webUrl);
   assert.equal(r.links.getPreferredStoreHref({os:'windows',webUrl,appUrl,runtimeOS:'windows',campaignId:'msads_search'}),`${appUrl}&cid=msads_search`);
 });
+
+test('opaque referral from the server is used for both Store targets and survives internal navigation', async()=>{
+  const clickId='a'.repeat(32),cid=`msads_525101967_${'b'.repeat(32)}`;
+  const r=runtime(`msclkid=${clickId}&utm_id=525101967`); const requests=[];
+  r.context.AbortSignal=AbortSignal;
+  r.context.fetch=async(url,options)=>{requests.push([url,JSON.parse(options.body)]);return {ok:true,json:async()=>({cid})};};
+  assert.equal(await r.campaign.prepareMicrosoftStoreCampaign(),cid);
+  assert.equal(requests[0][0],'/api/microsoft-ads-referral');
+  click(r);
+  assert.equal(new URL(r.assigned[0]).searchParams.get('cid'),cid);
+  r.timers[0]();assert.equal(new URL(r.assigned[1]).searchParams.get('cid'),cid);
+  assert.ok(!JSON.stringify([...r.data]).includes(clickId));
+  r.context.window.location.href='https://zushapp.com/windows';
+  assert.equal(r.campaign.getMicrosoftStoreCampaignId(),cid);
+});
+test('blocked referral creation preserves campaign-only Store navigation', async()=>{
+  const r=runtime(`msclkid=${'a'.repeat(32)}&utm_id=525101967`);r.context.AbortSignal=AbortSignal;
+  r.context.fetch=async()=>{throw Error('blocked');};
+  assert.equal(await r.campaign.prepareMicrosoftStoreCampaign(),'msads_525101967');
+  click(r);assert.equal(new URL(r.assigned[0]).searchParams.get('cid'),'msads_525101967');
+});
