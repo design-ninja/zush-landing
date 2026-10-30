@@ -1,3 +1,4 @@
+import { getMicrosoftStoreCampaignId, withMicrosoftStoreCampaign } from '@/utils/microsoftStoreCampaign';
 import { getAnalyticsPageProperties, trackAnalyticsEvent } from '@/utils/analytics';
 
 export type StoreOS = 'mac' | 'windows';
@@ -110,17 +111,29 @@ export const getPreferredStoreHref = ({
   os,
   runtimeOS,
   webUrl,
+  campaignId = null,
 }: {
+  campaignId?: string | null;
   appUrl?: string;
   os: StoreOS;
   runtimeOS?: string | null;
   webUrl: string;
-}) => (appUrl && runtimeOS === os ? appUrl : webUrl);
+}) => {
+  const href = appUrl && runtimeOS === os ? appUrl : webUrl;
+  return os === 'windows' ? withMicrosoftStoreCampaign(href, campaignId) : href;
+};
 
 export const handleStoreLinkClick = (
   event: StoreLinkClickEvent,
   { os, webUrl, appUrl }: StoreLinkTarget,
 ) => {
+  if (os === 'windows') {
+    const campaignId = getMicrosoftStoreCampaignId();
+    webUrl = withMicrosoftStoreCampaign(webUrl, campaignId);
+    appUrl = appUrl ? withMicrosoftStoreCampaign(appUrl, campaignId) : undefined;
+    event.currentTarget.href = getPreferredStoreHref({ os, webUrl, appUrl, runtimeOS: detectRuntimeStoreOS() });
+  }
+
   if (!appUrl || !shouldAttemptNativeStoreOpen(os) || isModifiedClick(event)) {
     return;
   }
@@ -151,6 +164,7 @@ export const bindStoreLink = (link: HTMLAnchorElement) => {
     os,
     appUrl,
     runtimeOS: detectRuntimeStoreOS(),
+    campaignId: getMicrosoftStoreCampaignId(),
     webUrl,
   });
 

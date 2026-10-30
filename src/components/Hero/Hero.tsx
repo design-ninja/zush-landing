@@ -1,3 +1,5 @@
+import { useMicrosoftStoreCampaign } from "@/hooks/useMicrosoftStoreCampaign";
+import { withMicrosoftStoreCampaign } from "@/utils/microsoftStoreCampaign";
 import { Fragment, useState, type ReactNode } from "react";
 import FileShowcase from "../FileShowcase";
 import type { Slide } from "../FileShowcase";
@@ -128,6 +130,7 @@ const Hero = ({
   microsoftStoreRatedOnLabel,
   microsoftStoreRatingAriaLabel,
 }: HeroProps) => {
+  const storeCampaignId = useMicrosoftStoreCampaign();
   const [showWindowsWebFallback, setShowWindowsWebFallback] = useState(false);
   const highlightText = titleHighlight ?? titleAccent;
   const finalTrustSignals = trustSignals;
@@ -258,7 +261,7 @@ const Hero = ({
                     {showWindowsWebFallback && (
                       <a
                         className={styles.Hero__StoreFallbackLink}
-                        href={WINDOWS_STORE_URL}
+                        href={withMicrosoftStoreCampaign(WINDOWS_STORE_URL, storeCampaignId)}
                         target="_blank"
                         rel="noopener noreferrer"
                         data-download-os="windows"

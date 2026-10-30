@@ -1,3 +1,4 @@
+import { useMicrosoftStoreCampaign } from '@/hooks/useMicrosoftStoreCampaign';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Check, Link2, Monitor, Share } from 'lucide-react';
@@ -30,6 +31,7 @@ const HANDOFF_CONFIRMATION_MS = 2500;
 const handoffUrl = () => (typeof window === 'undefined' ? DOWNLOAD_URL : window.location.href);
 
 const MobileDownloadModal = ({ isOpen, onClose }: MobileDownloadModalProps) => {
+  const campaignId = useMicrosoftStoreCampaign();
   const { os } = useOS();
   const [isRendered, setIsRendered] = useState(isOpen);
   const [isClosing, setIsClosing] = useState(false);
@@ -160,6 +162,7 @@ const MobileDownloadModal = ({ isOpen, onClose }: MobileDownloadModalProps) => {
       : styles.MobileDownloadModal__Content_enter
   }`;
   const windowsStoreHref = getPreferredStoreHref({
+    campaignId,
     os: 'windows',
     runtimeOS: os,
     appUrl: WINDOWS_STORE_PROTOCOL_URL,

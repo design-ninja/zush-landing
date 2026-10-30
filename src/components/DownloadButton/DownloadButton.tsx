@@ -1,3 +1,4 @@
+import { useMicrosoftStoreCampaign } from '@/hooks/useMicrosoftStoreCampaign';
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import AppleIcon from '@/components/AppleIcon';
@@ -98,6 +99,7 @@ const DownloadButton = ({
   menuCopy = DEFAULT_MENU_COPY,
   onPrimaryClick,
 }: DownloadButtonProps) => {
+  const campaignId = useMicrosoftStoreCampaign();
   const { downloadOS: detectedOS } = useOS();
   const downloadOS = forceOS ?? detectedOS;
   const isMobile = useIsMobile();
@@ -123,6 +125,7 @@ const DownloadButton = ({
     : downloadOS === 'windows'
       ? getPreferredStoreHref({
           os: 'windows',
+          campaignId,
           runtimeOS: detectedOS,
           appUrl: WINDOWS_STORE_PROTOCOL_URL,
           webUrl: WINDOWS_STORE_URL,
@@ -194,7 +197,7 @@ const DownloadButton = ({
     setIsOpen(false);
   };
 
-  const otherUrl = getDownloadUrl(otherOS);
+  const otherUrl = getPreferredStoreHref({ os: otherOS, webUrl: getDownloadUrl(otherOS), campaignId });
   const renderOtherOSMenuItem = () => (
     <a
       key='other-os'
