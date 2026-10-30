@@ -144,6 +144,7 @@ interface CheckoutCountryResponse {
 // transaction when checkout is not allowed. Verification errors close checkout
 // as well, so a failed request does not silently authorize payment.
 let lastVerifiedCheckoutCustomer: string | null = null;
+let checkoutCountryRequestVersion = 0;
 
 async function verifyCheckoutCountry(event: PaddleEvent): Promise<void> {
   const checkoutSession = activeCheckoutSession;
@@ -164,6 +165,7 @@ async function verifyCheckoutCountry(event: PaddleEvent): Promise<void> {
   ]);
   if (fingerprint === lastVerifiedCheckoutCustomer) return;
   lastVerifiedCheckoutCustomer = fingerprint;
+  const requestVersion = ++checkoutCountryRequestVersion;
 
   const body = JSON.stringify({
     ...(checkoutSession
@@ -175,7 +177,8 @@ async function verifyCheckoutCountry(event: PaddleEvent): Promise<void> {
   let response: Response | null = null;
   let result: CheckoutCountryResponse = {};
   // One retry absorbs a transient network or server error. Only an explicit
-  // denial or a second failure closes the checkout.
+  // denial (403), a transaction that can no longer be paid (409) or a second
+  // failure closes the checkout.
   for (let attempt = 0; attempt < 2; attempt += 1) {
     try {
       response = await fetch(
@@ -189,7 +192,9 @@ async function verifyCheckoutCountry(event: PaddleEvent): Promise<void> {
       );
       result = (await response.json().catch(() => ({}))) as
         CheckoutCountryResponse;
-      if (response.ok || response.status === 403) break;
+      if (response.ok || response.status === 403 || response.status === 409) {
+        break;
+      }
     } catch (error) {
       console.error("[Paddle] Checkout availability check failed:", error);
       response = null;
@@ -199,6 +204,10 @@ async function verifyCheckoutCountry(event: PaddleEvent): Promise<void> {
 
   if (!isStillActive()) return;
   if (response?.ok && result.allowed === true) return;
+  // A newer customer check owns transient failures. A block or a
+  // non-resumable transaction is final whichever check returns it.
+  const finalDenial = response?.status === 403 || response?.status === 409;
+  if (requestVersion !== checkoutCountryRequestVersion && !finalDenial) return;
 
   if (response?.status === 403) {
     trackAnalyticsEvent("checkout_error", {
@@ -209,7 +218,11 @@ async function verifyCheckoutCountry(event: PaddleEvent): Promise<void> {
       error_code: "checkout_unavailable",
     });
   } else {
-    trackCheckoutOpenError("access_policy_unavailable");
+    trackCheckoutOpenError(
+      response?.status === 409
+        ? "checkout_not_resumable"
+        : "access_policy_unavailable",
+    );
   }
   activeCheckoutSession = null;
   activeCheckoutTransactionId = null;

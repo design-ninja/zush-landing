@@ -7,6 +7,7 @@ const requests = [], analytics = [], alerts = [];
 let closed = 0;
 let allowed = false;
 let failNext = 0;
+let gates = null; // email -> {open, reply}: replies wait until the test opens them.
 const listeners = new Map();
 class Input { type = 'email'; value = 'buyer@example.com'; validity = {valid:true}; form; }
 class Select { value = 'BD'; form; }
@@ -22,7 +23,7 @@ const context = vm.createContext({
   document:{documentElement:{lang:'en',dataset:{}},addEventListener:(name,callback)=>listeners.set(name,callback)},
   window:{Paddle:{Checkout:{close:()=>closed++}},alert:message=>alerts.push(message)},
   sessionStorage:{removeItem(){}},
-  fetch:async (_url,options)=>{requests.push(JSON.parse(options.body));if(failNext>0){failNext--;throw new Error('offline');}return {ok:allowed,status:allowed?200:403,json:async()=>({allowed,code:'blocked_email'})};},
+  fetch:async (_url,options)=>{requests.push(JSON.parse(options.body));if(gates){const gate=gates[JSON.parse(options.body).email];return gate.opened.then(()=>gate.reply);}if(failNext>0){failNext--;throw new Error('offline');}return {ok:allowed,status:allowed?200:403,json:async()=>({allowed,code:'blocked_email'})};},
 });
 const stubs = {
   '@/utils/analytics': {trackAnalyticsEvent:(name,data)=>analytics.push({name,data}),getAnalyticsDistinctId:()=>null},
@@ -64,6 +65,31 @@ assert.equal(closed,closedBefore+1,'A blocked country closes the app payment lin
 paddle.setTestTransaction(null);beforeEvents=requests.length;
 await paddle.verifyCheckoutCountry({data:{customer:{email:'none@example.com',address:{country_code:'US'}}}});
 assert.equal(requests.length,beforeEvents,'Without a session or transaction there is nothing to check');
+
+// Replies for two customer snapshots of one checkout can arrive out of order.
+const reply=(status,code)=>({ok:status===200,status,json:async()=>(status===200?{allowed:true}:{allowed:false,code})});
+const gate=response=>{let open;const opened=new Promise(resolve=>{open=resolve;});return {opened,open,reply:response};};
+for (const [name,stale,current,closes] of [
+  ['stale transient failure after a newer allow keeps checkout open',reply(503,'policy_unavailable'),reply(200),false],
+  ['stale non-resumable transaction after a newer allow closes checkout',reply(409,'checkout_not_resumable'),reply(200),true],
+  ['stale block after a newer allow closes checkout',reply(403,'blocked_country'),reply(200),true],
+  ['current transient failure closes checkout after a stale allow',reply(200),reply(503,'policy_unavailable'),true],
+]) {
+  paddle.setTestSession(`race-${closed}-${requests.length}`);closedBefore=closed;
+  gates={'first@example.com':gate(stale),'second@example.com':gate(current)};
+  const first=paddle.verifyCheckoutCountry({data:{customer:{email:'first@example.com',address:{country_code:'BG'}}}});
+  const second=paddle.verifyCheckoutCountry({data:{customer:{email:'second@example.com',address:{country_code:'BG'}}}});
+  gates['second@example.com'].open();await second;
+  gates['first@example.com'].open();await first;
+  gates=null;
+  assert.equal(closed,closedBefore+(closes?1:0),name);
+}
+beforeEvents=requests.length;paddle.setTestSession('not-resumable');allowed=false;
+gates={'gone@example.com':gate(reply(409,'checkout_not_resumable'))};gates['gone@example.com'].open();
+await paddle.verifyCheckoutCountry({data:{customer:{email:'gone@example.com',address:{country_code:'US'}}}});
+gates=null;
+assert.equal(requests.length,beforeEvents+1,'A transaction that cannot be paid is not retried');
+assert.equal(JSON.stringify(analytics).includes('checkout_not_resumable'),true);
 
 const observer=await load('src/utils/emailAccessPolicy.ts');observer.bindEmailAccessPolicy();
 const form=new Form();const before=requests.length;
