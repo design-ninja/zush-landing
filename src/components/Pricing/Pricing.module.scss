@@ -106,15 +106,14 @@
 
 .PricingCard {
     // Flat card: 2px border, no glass, no shadow, no hover lift.
-    // 28px sides keep the one-line promo plate inside the card.
     padding: 2rem 1.75rem;
     border: 2px solid var(--border);
     border-radius: $radius-xl;
     background: transparent;
     display: grid;
-    // minmax(0, 1fr): a nowrap promo row must not widen the card past its column.
+    // minmax(0, 1fr): nowrap content must not widen the card past its column.
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto auto 1fr auto auto;
+    grid-template-rows: auto auto 1fr auto;
     row-gap: 0.75rem;
     height: 100%;
     min-height: 21.5rem;
@@ -186,15 +185,6 @@
         font-family: $font-family-heading;
     }
 
-    &__OriginalPrice {
-        color: var(--muted-foreground);
-        font-family: $font-family-heading;
-        font-size: 1.5rem;
-        font-weight: 500;
-        text-decoration-color: currentColor;
-        text-decoration-thickness: 2px;
-    }
-
     &__PricePeriod {
         color: var(--text-faint);
         font-size: 0.875rem;
@@ -256,134 +246,6 @@
         line-height: 1;
     }
 
-    &__PromotionSlot {
-        display: flex;
-        align-items: center;
-        align-self: stretch;
-        padding-bottom: 0.25rem;
-    }
-
-    &__Promotion {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        // "Limited Offer · 25% off with code [ZUSH25]" as one quiet line.
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        gap: 0.375rem;
-        // Light violet plate so the offer reads as one unit.
-        width: max-content;
-        max-width: 100%;
-        margin: 0;
-        padding: 0.5rem 0.625rem 0.5rem 0.875rem;
-        border: 0;
-        border-radius: 0.5rem;
-        background: color-mix(in oklch, var(--primary) 9%, transparent);
-    }
-
-    &__PromotionSaving {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.3rem;
-        padding: 0;
-        background: none;
-        color: var(--muted-foreground);
-        font-size: 0.875rem;
-        font-weight: 400;
-        line-height: 1.4;
-        white-space: nowrap;
-
-        > span[aria-hidden] {
-            display: none;
-        }
-
-        &::after {
-            content: '·';
-            margin-left: 0.3rem;
-        }
-    }
-
-    &__PromotionMessage {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.28rem;
-        color: var(--muted-foreground);
-        font-size: 0.875rem;
-        white-space: nowrap;
-
-        strong {
-            color: inherit;
-            font-weight: 400;
-        }
-    }
-
-    &__PromoCode {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.28rem;
-        min-height: 0;
-        padding: 0.1875rem 0.5625rem;
-        border: 1px dashed color-mix(in oklch, var(--primary) 35%, transparent);
-        border-radius: 0.3125rem;
-        background: transparent;
-        color: var(--primary);
-        transition: border-color $transition-fast, background-color $transition-fast, transform $transition-fast;
-
-        &:hover,
-        &:focus-visible {
-            border-color: var(--text-faint);
-        }
-
-        &:active {
-            transform: scale(0.98);
-        }
-
-        &[data-copy-state='copied'] .PricingCard__CopyIcon {
-            display: none;
-        }
-
-        &[data-copy-state='copied'] .PricingCard__CheckIcon {
-            display: block;
-        }
-    }
-
-    &__PromoCodeValue {
-        font-family: var(--font-mono);
-        font-size: 0.8125rem;
-        font-weight: 500;
-        letter-spacing: 0;
-    }
-
-    &__PromoCodeStatus {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-    }
-
-    &__CopyIcon,
-    &__CheckIcon {
-        width: 0.82rem;
-        height: 0.82rem;
-        flex-shrink: 0;
-    }
-
-    &__CheckIcon {
-        display: none;
-    }
-
-    // Copy glyph holds the slot the check mark takes after copying, so the
-    // chip keeps its width.
-    &__CopyIcon {
-        opacity: 0.6;
-    }
-
     &__ButtonWrapper {
         display: flex;
         flex-direction: column;
@@ -435,11 +297,5 @@
         justify-content: center;
         white-space: normal;
         text-align: center;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        &__PromoCode {
-            transition: none;
-        }
     }
 }
