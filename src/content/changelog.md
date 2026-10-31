@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.22.0] - 2026-10-31
+### New
+- Upgrade to PRO right from the batch limit message or after your last free credit.
+### Improved
+- Folder sorting follows nested rules to the full folder depth.
+- Folder names from your rules and files are kept exactly as written.
+- Faster folder sorting with custom rules and no long waits on slow responses.
+- Cleaner file names without random IDs copied from the original name.
+- Monitor starts on files already in the folder sooner.
+### Fixed
+- Monitor waits until images finish saving before renaming them.
+- The activation link in the purchase email now also works on your other Macs.
+- A payment is no longer interrupted by a temporary availability check error.
+- More reliable speech recognition in videos.
+
 ## [3.21.0] - 2026-10-29
 ### Improved
 - Faster batch renaming and more reliable folder sorting.
