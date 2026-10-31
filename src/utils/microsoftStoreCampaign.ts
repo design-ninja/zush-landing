@@ -1,12 +1,25 @@
+import { getMicrosoftAdsTagId } from '@/utils/microsoftAds';
+import { SUPABASE_ANON_KEY, SUPABASE_URL } from '@/utils/supabase';
+
 const STORAGE_KEY = 'zush_store_campaign_v1';
 const SESSION_MS = 30 * 60 * 1000;
 const CAMPAIGN_ID = '525101967';
+const CAMPAIGN_LABEL = `msads_${CAMPAIGN_ID}`;
 const CAMPAIGN_NAME = 'Search_Windows_AI-Renamer_EN_US-GB';
-const ALLOWED_IDS = new Set(['msads_search', `msads_${CAMPAIGN_ID}`]);
+const ALLOWED_IDS = new Set(['msads_search', CAMPAIGN_LABEL]);
+// Opaque per-click referral issued by the ad-acquisition-referral function.
+const REFERRAL_ID = new RegExp(`^${CAMPAIGN_LABEL}_[a-f0-9]{32}$`);
+const CLICK_ID = /^[a-f0-9]{32}$/i;
+// Covers the CORS preflight plus an Edge Function cold start and its queries.
+const REFERRAL_TIMEOUT_MS = 4000;
+const MAX_REFERRAL_ATTEMPTS = 2;
+const isReferralId = (value: unknown): value is string => typeof value === 'string' && REFERRAL_ID.test(value);
 const isAllowedId = (value: unknown): value is string => typeof value === 'string'
-  && (ALLOWED_IDS.has(value) || /^msads_525101967_[a-f0-9]{32}$/.test(value));
-let resolvedClick: string | null = null;
+  && (ALLOWED_IDS.has(value) || REFERRAL_ID.test(value));
+// Final outcome for the current click: an opaque CID, or null when declined.
+let settledClick: string | null = null;
 let resolvedCid: string | null = null;
+let referralAttempts = 0;
 let preparing: Promise<string | null> | null = null;
 
 // Store CIDs can appear in other publishers' reports. Only send fixed cohort
@@ -23,7 +36,7 @@ export function getMicrosoftStoreCampaignId(): string | null {
   const paid = Boolean(params.get('msclkid')) || (microsoftSource && /^(cpc|ppc|paid|paidsearch|paid_search)$/.test(medium));
   const knownCampaign = params.get('utm_id') === CAMPAIGN_ID
     || [CAMPAIGN_ID, CAMPAIGN_NAME].includes(params.get('utm_campaign') ?? '');
-  const current = paid ? (knownCampaign ? (resolvedClick === params.get('msclkid') && resolvedCid ? resolvedCid : `msads_${CAMPAIGN_ID}`) : 'msads_search') : null;
+  const current = paid ? (knownCampaign ? (settledClick === params.get('msclkid') && resolvedCid ? resolvedCid : CAMPAIGN_LABEL) : 'msads_search') : null;
 
   try {
     if (current) {
@@ -61,26 +74,42 @@ export function prepareMicrosoftStoreCampaign(): Promise<string | null> {
   const campaign = getMicrosoftStoreCampaignId();
   if (!campaign || typeof window === 'undefined') return Promise.resolve(campaign);
   const click = new URL(window.location.href).searchParams.get('msclkid');
-  if (!click || !/^[a-f0-9]{32}$/i.test(click) || !campaign.startsWith('msads_525101967')) return Promise.resolve(campaign);
-  if (resolvedClick === click) return Promise.resolve(resolvedCid);
+  if (!click || !CLICK_ID.test(click) || !campaign.startsWith(CAMPAIGN_LABEL)) return Promise.resolve(campaign);
+  if (settledClick === click || referralAttempts >= MAX_REFERRAL_ATTEMPTS || !SUPABASE_ANON_KEY) {
+    return Promise.resolve(campaign);
+  }
   if (preparing) return preparing;
+  referralAttempts += 1;
   preparing = (async () => {
     try {
-      const response = await fetch('/api/microsoft-ads-referral', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
+      // Reuse the server's US/GPC/DNT decision so other visitors' click IDs
+      // never leave the browser. Supabase sees the visitor's own IP, which
+      // keeps its per-IP referral quota per visitor.
+      if (!await getMicrosoftAdsTagId()) {
+        settledClick = click;
+        return campaign;
+      }
+      const response = await fetch(`${SUPABASE_URL}/functions/v1/ad-acquisition-referral`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` },
         body: JSON.stringify({ campaign_id: CAMPAIGN_ID, microsoft_click_id: click }),
-        signal: AbortSignal.timeout(1500),
+        signal: AbortSignal.timeout(REFERRAL_TIMEOUT_MS),
       });
-      if (!response.ok) return campaign;
-      const body = await response.json();
-      if (typeof body.cid !== 'string' || !/^msads_525101967_[a-f0-9]{32}$/.test(body.cid)) return campaign;
-      resolvedClick = click;
-      resolvedCid = body.cid;
+      // Server errors are transient; any other answer is final for this click.
+      if (response.status >= 500) return campaign;
+      const body = response.ok ? await response.json() : null;
+      settledClick = click;
+      resolvedCid = isReferralId(body?.cid) ? body.cid : null;
       return getMicrosoftStoreCampaignId();
     } catch {
       // Content blockers and unavailable advertising endpoints must not block Store access.
       return campaign;
     } finally { preparing = null; }
   })();
+  return preparing;
+}
+
+// Lets a Store click wait briefly for a referral that is already in flight.
+export function pendingMicrosoftStoreCampaign(): Promise<string | null> | null {
   return preparing;
 }
