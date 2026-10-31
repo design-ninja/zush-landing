@@ -1,4 +1,4 @@
-import { getMicrosoftStoreCampaignId, withMicrosoftStoreCampaign } from '@/utils/microsoftStoreCampaign';
+import { getMicrosoftStoreCampaignId, pendingMicrosoftStoreCampaign, prepareMicrosoftStoreCampaign, withMicrosoftStoreCampaign } from '@/utils/microsoftStoreCampaign';
 import { getAnalyticsPageProperties, trackAnalyticsEvent } from '@/utils/analytics';
 
 export type StoreOS = 'mac' | 'windows';
@@ -20,6 +20,9 @@ interface StoreLinkClickEvent {
 }
 
 const STORE_FALLBACK_DELAY_MS = 1500;
+// Short enough to stay inside the browser's user-activation window for the
+// protocol launch, long enough for a referral that is already in flight.
+const REFERRAL_CLICK_WAIT_MS = 1000;
 
 interface StoreAttemptAnalytics {
   os: StoreOS;
@@ -123,28 +126,47 @@ export const getPreferredStoreHref = ({
   return os === 'windows' ? withMicrosoftStoreCampaign(href, campaignId) : href;
 };
 
+const withStoreCampaign = ({ os, webUrl, appUrl }: StoreLinkTarget): StoreLinkTarget => {
+  if (os !== 'windows') return { os, webUrl, appUrl };
+  const campaignId = getMicrosoftStoreCampaignId();
+  return {
+    os,
+    webUrl: withMicrosoftStoreCampaign(webUrl, campaignId),
+    appUrl: appUrl ? withMicrosoftStoreCampaign(appUrl, campaignId) : undefined,
+  };
+};
+
+const waitForReferral = (pending: Promise<unknown>) => Promise.race([
+  pending.catch(() => null),
+  new Promise((resolve) => window.setTimeout(resolve, REFERRAL_CLICK_WAIT_MS)),
+]);
+
 export const handleStoreLinkClick = (
   event: StoreLinkClickEvent,
-  { os, webUrl, appUrl }: StoreLinkTarget,
+  target: StoreLinkTarget,
 ) => {
-  if (os === 'windows') {
-    const campaignId = getMicrosoftStoreCampaignId();
-    webUrl = withMicrosoftStoreCampaign(webUrl, campaignId);
-    appUrl = appUrl ? withMicrosoftStoreCampaign(appUrl, campaignId) : undefined;
-    event.currentTarget.href = getPreferredStoreHref({ os, webUrl, appUrl, runtimeOS: detectRuntimeStoreOS() });
+  const tagged = withStoreCampaign(target);
+  if (target.os === 'windows') {
+    event.currentTarget.href = getPreferredStoreHref({ ...tagged, runtimeOS: detectRuntimeStoreOS() });
   }
 
-  if (!appUrl || !shouldAttemptNativeStoreOpen(os) || isModifiedClick(event)) {
+  if (!tagged.appUrl || !shouldAttemptNativeStoreOpen(target.os) || isModifiedClick(event)) {
     return;
   }
 
   event.preventDefault();
-  attemptNativeStoreOpen({
-    appUrl,
-    webUrl,
-    os,
-    source: event.currentTarget.dataset.downloadSource,
-  });
+  const source = event.currentTarget.dataset.downloadSource;
+  const open = ({ os, webUrl, appUrl }: StoreLinkTarget) => {
+    if (appUrl) attemptNativeStoreOpen({ appUrl, webUrl, os, source });
+  };
+  const pending = target.os === 'windows' ? pendingMicrosoftStoreCampaign() : null;
+  if (!pending) {
+    open(tagged);
+    return;
+  }
+  // An early ad click must not leave with the campaign label while its opaque
+  // referral is moments away; the wait is capped, so blocked requests still open.
+  void waitForReferral(pending).then(() => open(withStoreCampaign(target)));
 };
 
 export const bindStoreLink = (link: HTMLAnchorElement) => {
@@ -155,7 +177,7 @@ export const bindStoreLink = (link: HTMLAnchorElement) => {
   const appUrl = link.dataset.storeAppUrl;
   const webUrl = link.dataset.storeWebUrl || link.href;
 
-  if ((os !== 'mac' && os !== 'windows') || !appUrl || link.dataset.storeLinkBound === 'true') {
+  if ((os !== 'mac' && os !== 'windows') || !appUrl) {
     return;
   }
 
@@ -168,6 +190,7 @@ export const bindStoreLink = (link: HTMLAnchorElement) => {
     webUrl,
   });
 
+  if (link.dataset.storeLinkBound === 'true') return;
   link.dataset.storeLinkBound = 'true';
   link.addEventListener('click', (event) => {
     handleStoreLinkClick(event as unknown as StoreLinkClickEvent, {
@@ -179,5 +202,7 @@ export const bindStoreLink = (link: HTMLAnchorElement) => {
 };
 
 export const bindStoreLinks = (root: ParentNode = document) => {
-  root.querySelectorAll<HTMLAnchorElement>('a[data-store-os][data-store-app-url]').forEach(bindStoreLink);
+  const bind = () => root.querySelectorAll<HTMLAnchorElement>('a[data-store-os][data-store-app-url]').forEach(bindStoreLink);
+  bind();
+  void prepareMicrosoftStoreCampaign().then(bind);
 };

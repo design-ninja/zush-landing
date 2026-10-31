@@ -49,6 +49,7 @@ test('real download action queues the matching UET goal before the vendor script
   assert.equal(c.calls[0].ti, '343281815');
   assert.deepEqual(c.calls[1], ['pageLoad']);
   await c.ads.initializeMicrosoftAds();
+  assert.equal(await c.ads.getMicrosoftAdsTagId(), '343281815');
   assert.equal(c.requests(), 1);
 });
 
@@ -65,6 +66,7 @@ test('privacy signals and non-production hosts prevent even the config request',
     const c = client(options);
     c.downloads.trackDownloadClick({ os: 'windows', source: 'hero' }, {});
     await settle();
+    assert.equal(await c.ads.getMicrosoftAdsTagId(), null);
     assert.equal(c.requests(), 0);
     assert.equal(c.scripts.length, 0);
   }

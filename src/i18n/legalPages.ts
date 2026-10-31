@@ -80,6 +80,8 @@ Jeder Drittanbieter verarbeitet Daten gemäß seiner eigenen Datenschutzerkläru
 
 Für Besucher in den USA verwendet die Website Microsoft Universal Event Tracking (UET), um Besuche und Klicks auf Windows-Download-Schaltflächen Anzeigen zuzuordnen. Microsoft kann dabei IP-Adressen, Browserinformationen, Seiten-URLs sowie Werbeklick- und Cookie-Kennungen erhalten. UET wird außerhalb der USA, bei unbekanntem Land oder aktiviertem Global Privacy Control (GPC) bzw. Do Not Track nicht geladen. Ein Klick bestätigt keinen abgeschlossenen Download oder eine Installation. Es wird kein Einwilligungs-Popup angezeigt. Siehe die [Microsoft-Datenschutzerklärung](https://privacy.microsoft.com/privacystatement).
 
+Für Microsoft-Ads-Besuche aus den USA speichern unsere Server die Microsoft-Klickkennung für 90 Tage und entfernen abgelaufene Kennungen bei der täglichen Bereinigung. Ein zufälliger Zuordnungscode wird an den Microsoft Store übergeben; er enthält weder die Klickkennung noch deine Identität. Der Browser hält den Code bis zu 30 Minuten im sessionStorage, ohne dafür neue Cookies anzulegen. Windows-Store-Versionen können den Code bei aktivierter Diagnose zusammen mit der Gerätekennung übermitteln, um erste Starts und bestätigte PRO-Zahlungen, Verlängerungen und Erstattungen über Paddle der Werbung zuzuordnen. Die Website-Zuordnung respektiert GPC und Do Not Track.
+
 ### 5. Datensicherheit
 
 Wir setzen angemessene Sicherheitsmaßnahmen ein, um deine Informationen vor unbefugtem Zugriff, Offenlegung oder Zerstörung zu schützen. BYOK-API-Schlüssel werden lokal im macOS-Schlüsselbund gespeichert und nicht dauerhaft im Zush-Backend gespeichert. Wenn BYOK verwendet wird, wird der Schlüssel nur übertragen, wenn es zur Validierung und zur Ausführung der ausgewählten Provider-Anfrage erforderlich ist. Keine Internetübertragung oder elektronische Speicherung ist jedoch zu 100% sicher.
@@ -263,6 +265,8 @@ Chaque fournisseur tiers traite les données selon sa propre politique de confid
 ### 4.1 Microsoft Advertising (UET)
 
 Pour les visiteurs aux États-Unis, le site utilise Microsoft Universal Event Tracking (UET) pour attribuer les visites et clics sur les boutons de téléchargement Windows aux annonces. Microsoft peut recevoir les adresses IP, informations du navigateur, URL des pages et identifiants de clic publicitaire et de cookies. UET ne se charge pas hors des États-Unis, si le pays est inconnu ou si Global Privacy Control (GPC) ou Do Not Track est activé. Un clic ne confirme pas un téléchargement terminé ni une installation. Aucune fenêtre de consentement ne s’affiche. Voir la [Déclaration de confidentialité Microsoft](https://privacy.microsoft.com/privacystatement).
+
+Pour les visites Microsoft Ads depuis les États-Unis, nos serveurs conservent l’identifiant de clic Microsoft pendant 90 jours, puis suppriment les identifiants expirés lors du nettoyage quotidien. Un code d’attribution aléatoire est transmis au Microsoft Store ; il ne contient ni l’identifiant de clic ni votre identité. Le navigateur conserve ce code jusqu’à 30 minutes dans sessionStorage, sans ajouter de cookies pour cette fonction. Lorsque les diagnostics sont activés, la version Windows du Store peut transmettre le code avec l’identifiant de l’appareil pour attribuer les premiers lancements ainsi que les paiements PRO, renouvellements et remboursements confirmés par Paddle. L’attribution sur le site respecte GPC et Do Not Track.
 
 ### 5. Sécurité des données
 
@@ -448,6 +452,8 @@ Cada provedor terceirizado processa dados de acordo com suas próprias política
 
 Para visitantes nos Estados Unidos, o site usa Microsoft Universal Event Tracking (UET) para atribuir visitas e cliques nos botões de download do Windows aos anúncios. A Microsoft pode receber endereços IP, informações do navegador, URLs das páginas e identificadores de cliques publicitários e cookies. O UET não é carregado fora dos Estados Unidos, quando o país é desconhecido ou quando Global Privacy Control (GPC) ou Do Not Track está ativado. Um clique não confirma o download concluído nem a instalação. Nenhum popup de consentimento é exibido. Consulte a [Declaração de Privacidade da Microsoft](https://privacy.microsoft.com/privacystatement).
 
+Para visitas do Microsoft Ads provenientes dos EUA, os nossos servidores guardam o identificador de clique da Microsoft durante 90 dias e eliminam os identificadores expirados na limpeza diária. É enviado à Microsoft Store um código de atribuição aleatório, que não contém o identificador de clique nem a sua identidade. O navegador mantém o código até 30 minutos no sessionStorage, sem adicionar cookies para esta função. Com os diagnósticos ativados, a versão Windows da Store pode enviar o código juntamente com o identificador do dispositivo para atribuir primeiros arranques e pagamentos PRO, renovações e reembolsos confirmados pela Paddle. A atribuição no site respeita GPC e Do Not Track.
+
 ### 5. Segurança dos dados
 
 Implementamos medidas de segurança razoáveis para proteger suas informações contra acesso, divulgação ou destruição não autorizados. Chaves de API BYOK são armazenadas localmente no macOS Keychain e não são armazenadas permanentemente no backend do Zush. Quando BYOK é usado, a chave é transmitida apenas quando necessário para validar a chave e concluir a solicitação do provedor selecionado. No entanto, nenhum método de transmissão pela Internet ou armazenamento eletrônico é 100% seguro.
@@ -631,6 +637,8 @@ Cada proveedor tercero procesa datos según sus propias políticas de privacidad
 ### 4.1 Microsoft Advertising (UET)
 
 Para visitantes en Estados Unidos, el sitio usa Microsoft Universal Event Tracking (UET) para atribuir visitas y clics en los botones de descarga de Windows a los anuncios. Microsoft puede recibir direcciones IP, información del navegador, URL de páginas e identificadores de clics publicitarios y cookies. UET no se carga fuera de Estados Unidos, si el país es desconocido o si Global Privacy Control (GPC) o Do Not Track está activado. Un clic no confirma una descarga completada ni una instalación. No se muestra ningún popup de consentimiento. Consulta la [Declaración de privacidad de Microsoft](https://privacy.microsoft.com/privacystatement).
+
+Para las visitas de Microsoft Ads desde Estados Unidos, nuestros servidores guardan el identificador de clic de Microsoft durante 90 días y eliminan los identificadores caducados en la limpieza diaria. Se envía a Microsoft Store un código de atribución aleatorio que no contiene el identificador de clic ni tu identidad. El navegador conserva el código hasta 30 minutos en sessionStorage, sin añadir cookies para esta función. Con los diagnósticos activados, la versión Windows de Store puede enviar el código junto con el identificador del dispositivo para atribuir primeros inicios y pagos PRO, renovaciones y reembolsos confirmados por Paddle. La atribución en la web respeta GPC y Do Not Track.
 
 ### 5. Seguridad de datos
 
@@ -816,6 +824,8 @@ Elke derde partij verwerkt gegevens volgens haar eigen privacybeleid. We raden j
 
 Voor bezoekers in de Verenigde Staten gebruikt de website Microsoft Universal Event Tracking (UET) om bezoeken en klikken op Windows-downloadknoppen aan advertenties toe te schrijven. Microsoft kan IP-adressen, browserinformatie, pagina-URL’s en advertentieklik- en cookie-ID’s ontvangen. UET wordt niet geladen buiten de VS, bij een onbekend land of wanneer Global Privacy Control (GPC) of Do Not Track is ingeschakeld. Een klik bevestigt geen voltooide download of installatie. Er verschijnt geen toestemmingspopup. Zie de [Microsoft-privacyverklaring](https://privacy.microsoft.com/privacystatement).
 
+Voor Microsoft Ads-bezoeken uit de VS bewaren onze servers de Microsoft-klik-ID 90 dagen; verlopen ID’s worden tijdens de dagelijkse opschoning verwijderd. Een willekeurige toewijzingscode gaat naar de Microsoft Store en bevat geen klik-ID of identiteit. De browser bewaart de code maximaal 30 minuten in sessionStorage, zonder hiervoor nieuwe cookies toe te voegen. Als diagnostiek is ingeschakeld, kan de Windows Store-versie de code met de apparaat-ID doorgeven om eerste starts en door Paddle bevestigde PRO-betalingen, verlengingen en terugbetalingen aan advertenties toe te wijzen. Toewijzing op de website respecteert GPC en Do Not Track.
+
 ### 5. Gegevensbeveiliging
 
 We nemen redelijke beveiligingsmaatregelen om je informatie te beschermen tegen ongeautoriseerde toegang, openbaarmaking of vernietiging. BYOK API-sleutels worden lokaal opgeslagen in macOS Keychain en niet permanent in de Zush-backend. Wanneer BYOK wordt gebruikt, wordt de sleutel alleen verzonden wanneer nodig om de sleutel te valideren en het verzoek bij de gekozen provider te voltooien. Geen enkele methode voor internetoverdracht of elektronische opslag is echter 100% veilig.
@@ -999,6 +1009,8 @@ Ogni fornitore terzo elabora i dati secondo la propria informativa privacy. Ti i
 ### 4.1 Microsoft Advertising (UET)
 
 Per i visitatori negli Stati Uniti, il sito usa Microsoft Universal Event Tracking (UET) per attribuire visite e clic sui pulsanti di download per Windows agli annunci. Microsoft può ricevere indirizzi IP, informazioni sul browser, URL delle pagine e identificatori di clic pubblicitari e cookie. UET non viene caricato fuori dagli Stati Uniti, se il paese è sconosciuto o se Global Privacy Control (GPC) o Do Not Track è attivo. Un clic non conferma il completamento del download o l’installazione. Non viene mostrato alcun popup di consenso. Consulta l’[Informativa sulla privacy di Microsoft](https://privacy.microsoft.com/privacystatement).
+
+Per le visite Microsoft Ads dagli Stati Uniti, i nostri server conservano l’identificativo del clic Microsoft per 90 giorni ed eliminano quelli scaduti durante la pulizia giornaliera. A Microsoft Store viene passato un codice di attribuzione casuale, che non contiene l’identificativo del clic né la tua identità. Il browser conserva il codice fino a 30 minuti in sessionStorage, senza aggiungere cookie per questa funzione. Con la diagnostica attiva, la versione Windows dello Store può inviare il codice con l’identificativo del dispositivo per attribuire primi avvii e pagamenti PRO, rinnovi e rimborsi confermati da Paddle. L’attribuzione sul sito rispetta GPC e Do Not Track.
 
 ### 5. Sicurezza dei dati
 
@@ -1184,6 +1196,8 @@ Zush はファイル分析ペイロードを第三者 AI サービスへ送信�
 
 米国の訪問者に対し、当サイトは Microsoft Universal Event Tracking（UET）を使用して、訪問および Windows ダウンロードボタンのクリックを広告に関連付けます。Microsoft は IP アドレス、ブラウザー情報、ページ URL、広告クリック識別子、Cookie 識別子を受け取る場合があります。米国外、国が不明な場合、または Global Privacy Control（GPC）か Do Not Track が有効な場合、UET は読み込まれません。クリックはダウンロードの完了やインストールを証明しません。同意ポップアップは表示しません。[Microsoft のプライバシーに関する声明](https://privacy.microsoft.com/privacystatement)をご覧ください。
 
+米国からの Microsoft Ads 経由のアクセスでは、当社サーバーが Microsoft のクリック ID を90日間保存し、期限切れの ID を毎日の処理で削除します。Microsoft Store にはランダムな計測コードを渡し、クリック ID や利用者の身元は含めません。ブラウザーはこのコードを sessionStorage に最大30分間保持し、この機能のために新しい Cookie を追加しません。診断が有効な Windows Store 版は、コードとデバイス ID を送信し、初回起動と Paddle で確認された PRO の支払い、更新、返金を広告に関連付けることがあります。Web サイトの広告計測は GPC と Do Not Track を尊重します。
+
 ### 5. データセキュリティ
 
 当社は、不正アクセス、開示、破壊から情報を保護するために合理的なセキュリティ対策を実施します。BYOK API キーは macOS Keychain にローカル保存され、Zush バックエンドには永続保存されません。BYOK 使用時、キーは検証および選択されたプロバイダーへのリクエスト完了に必要な場合にのみ送信されます。ただし、インターネット送信または電子保存の方法が 100% 安全であるとは限りません。
@@ -1367,6 +1381,8 @@ Zush는 파일 분석 payload를 타사 AI 서비스로 전송합니다.
 ### 4.1 Microsoft Advertising (UET)
 
 미국 방문자에 대해서는 Microsoft Universal Event Tracking(UET)을 사용하여 방문 및 Windows 다운로드 버튼 클릭을 광고와 연결합니다. Microsoft는 IP 주소, 브라우저 정보, 페이지 URL, 광고 클릭 식별자 및 쿠키 식별자를 받을 수 있습니다. 미국 외 지역, 국가를 알 수 없는 경우 또는 Global Privacy Control(GPC)이나 Do Not Track이 활성화된 경우 UET를 로드하지 않습니다. 클릭은 다운로드 완료나 설치를 확인하지 않습니다. 동의 팝업은 표시하지 않습니다. [Microsoft 개인정보처리방침](https://privacy.microsoft.com/privacystatement)을 참조하세요.
+
+미국에서 Microsoft Ads를 통해 방문한 경우 당사 서버는 Microsoft 클릭 ID를 90일 동안 보관하고 만료된 ID를 매일 정리합니다. Microsoft Store에는 클릭 ID나 사용자 신원이 포함되지 않은 무작위 기여도 코드를 전달합니다. 브라우저는 이 코드를 sessionStorage에 최대 30분 동안 보관하며 이 기능을 위해 새 쿠키를 추가하지 않습니다. 진단이 활성화된 Windows Store 버전은 코드와 기기 ID를 전송해 최초 실행 및 Paddle에서 확인된 PRO 결제, 갱신, 환불을 광고와 연결할 수 있습니다. 웹사이트 기여도 측정은 GPC 및 Do Not Track을 준수합니다.
 
 ### 5. 데이터 보안
 
@@ -1552,6 +1568,8 @@ Zush 会将文件分析 payload 发送给第三方 AI 服务进行分析：
 ### 4.1 Microsoft Advertising (UET)
 
 对于位于美国的访客，网站使用 Microsoft Universal Event Tracking（UET）将访问和 Windows 下载按钮点击归因于广告。Microsoft 可能接收 IP 地址、浏览器信息、页面 URL、广告点击标识符和 Cookie 标识符。在美国以外、无法确定国家/地区或启用 Global Privacy Control（GPC）或 Do Not Track 时，不会加载 UET。点击不代表下载完成或安装成功。网站不显示同意弹窗。请参阅 [Microsoft 隐私声明](https://privacy.microsoft.com/privacystatement)。
+
+对于来自美国的 Microsoft Ads 访问，我们的服务器会保存 Microsoft 点击 ID 90 天，并在每日清理时删除过期 ID。传递给 Microsoft Store 的是随机归因代码，不包含点击 ID 或您的身份。浏览器会在 sessionStorage 中保存该代码最多 30 分钟，不会为此功能新增 Cookie。启用诊断的 Windows Store 版本可将代码与设备 ID 一起发送，以便将首次启动以及 Paddle 确认的 PRO 付款、续费和退款归因于广告。网站归因遵循 GPC 和 Do Not Track。
 
 ### 5. 数据安全
 

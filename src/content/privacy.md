@@ -84,6 +84,8 @@ For visitors located in the United States, the website uses Microsoft Universal 
 
 UET is not loaded outside the United States or when the visitor's country cannot be determined. We respect Global Privacy Control (GPC) and Do Not Track signals by not loading UET or sending download events when either signal is enabled. This tracking does not confirm a completed download or installation. No consent popup is displayed.
 
+For Microsoft Ads visits from the US, our servers retain the Microsoft click ID for 90 days and remove expired IDs during daily cleanup. We pass a random attribution code to Microsoft Store; it contains neither the click ID nor your identity. The browser keeps the code in sessionStorage for up to 30 minutes, without adding cookies for this feature. Windows Store builds with diagnostics enabled can send the code with the device ID to associate first launches and confirmed Paddle PRO payments, renewals, and refunds with the advertising source. Website attribution respects GPC and Do Not Track.
+
 ### 5. Data Security
 
 We implement reasonable security measures to protect your information from unauthorized access, disclosure, or destruction. BYOK API keys are stored locally in macOS Keychain and are not permanently stored in the Zush backend. When BYOK is used, the key is transmitted only as needed to validate the key and complete the selected provider request. However, no method of transmission over the Internet or electronic storage is 100% secure.
