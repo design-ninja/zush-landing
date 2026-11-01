@@ -2,23 +2,32 @@
 
 ## [3.17.1.0] - 2026-10-31
 
+### Improved
 - Monitored folders wait until a file has finished downloading, copying or saving before analyzing it, and hold images that are still incomplete until they are fully written.
-- A file that is slow to open, such as one still syncing with the cloud, no longer holds up other files in monitored folders.
 - Faster folder sorting with custom rules on large batches.
-- Custom rules with nested folders place every file at the full depth the rule describes, instead of directly in a folder that has subfolders.
 - When the free batch limit shortens a selection, the alert offers an upgrade to PRO.
-- Titles suggested by Ollama and LM Studio no longer include random IDs copied from file names.
 - Clearer messages when Windows denies access to a file during renaming and when a checkout has already ended.
 - Faster startup, and the Rename button updates right away when folder sorting settings change.
 
+### Fixed
+- A file that is slow to open, such as one still syncing with the cloud, no longer holds up other files in monitored folders.
+- Custom rules with nested folders place every file at the full depth the rule describes, instead of directly in a folder that has subfolders.
+- Titles suggested by Ollama and LM Studio no longer include random IDs copied from file names.
+
 ## [3.17.0.0] - 2026-10-29
 
-- Faster batch analysis and name regeneration, with smoother updates when many files use cached results or local metadata.
+### Added
 - New per-template option to retry unchanged names. It is off by default, so a name that already fits can stay as it is.
+
+### Improved
+- Faster batch analysis and name regeneration, with smoother updates when many files use cached results or local metadata.
 - The Ollama model picker now labels models that can read images and avoids automatically selecting a text-only model.
 - More reliable folder sorting for large batches: later files can reuse folders proposed for earlier files, and readable parts can still be sorted when another part fails.
 - Offline speech model downloads resume after an interrupted connection.
-- Fixed PDF analysis for files stored in very long folder paths and improved handling of interrupted or unusable local AI replies.
+
+### Fixed
+- PDF analysis works for files stored in very long folder paths.
+- Better handling of interrupted or unusable local AI replies.
 
 ## [3.16.2.0] - 2026-10-28
 
