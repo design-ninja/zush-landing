@@ -17,6 +17,12 @@ function hash(value) {
   return createHash('sha256').update(value).digest('hex');
 }
 
+// Releases bump PRODUCT_FACTS_REVIEWED_AT, which only feeds JSON-LD
+// dateModified; that date is not translatable copy.
+function stableJson(value) {
+  return JSON.stringify(value, (key, field) => (key === 'dateModified' ? undefined : field));
+}
+
 function readSource(file) {
   return readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
 }
@@ -53,12 +59,12 @@ try {
   const { getSeoForPath } = await server.ssrLoadModule('/src/seo/config.ts');
   const { SEARCH_LANDING_PAGES } = await server.ssrLoadModule('/src/data/searchLandingPages.ts');
   const { getLandingWorkflow } = await server.ssrLoadModule('/src/data/landingWorkflows.ts');
-  organizer = hash(JSON.stringify({
+  organizer = hash(stableJson({
     page: SEARCH_LANDING_PAGES['ai-file-organizer'],
     seo: getSeoForPath('/ai-file-organizer'),
     workflow: getLandingWorkflow('/ai-file-organizer', 'en'),
   }));
-  home = hash(JSON.stringify({
+  home = hash(stableJson({
     copy: getCopy('en').home,
     seo: getSeoForPath('/'),
     professionsComponent: readSource(
