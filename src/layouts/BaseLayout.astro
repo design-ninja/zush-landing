@@ -393,6 +393,7 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
         import { bindCheckoutAutoOpen } from '@/utils/checkoutAutoOpen';
         import { bindPricingCheckout } from '@/utils/pricingCheckout';
         import { bindPaddleRetain } from '@/utils/paddleRetain';
+        import { bindPromoCodeCopy } from '@/utils/promoCode';
         import { bindScrollReveal } from '@/utils/scrollReveal';
         import { bindScrollToTopButton } from '@/utils/scrollToTop';
         import { bindStoreLinks } from '@/utils/storeLinks';
@@ -475,6 +476,7 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
           bindProPlanClickTracking();
           bindPricingCheckout();
           bindPaddleRetain();
+          bindPromoCodeCopy();
           bindScrollToTopButton();
           bindStoreLinks();
         };
