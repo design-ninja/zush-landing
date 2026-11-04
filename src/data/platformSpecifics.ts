@@ -135,7 +135,7 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
         { key: 'operatingSystem', label: 'Operating system', value: 'Windows 10 (build 19041+) and Windows 11' },
         { key: 'processor', label: 'Processor', value: 'x64 and ARM64 package support' },
         { key: 'memory', label: 'Memory', value: '4 GB minimum, 8 GB recommended for Local AI' },
-        { key: 'diskSpace', label: 'Disk space', value: '~250 MB for the app, additional space for Ollama models' },
+        { key: 'diskSpace', label: 'Disk space', value: '~200 MB for the app, additional space for Ollama models' },
         { key: 'network', label: 'Network', value: 'Required for cloud renaming; Local AI works offline after setup' },
         { key: 'permissions', label: 'Permissions', value: 'Folder access is requested when you add folders to rename or monitor' },
       ],

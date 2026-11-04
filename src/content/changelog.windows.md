@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.18.0.0] - 2026-11-04
+
+### Improved
+- Smaller download and install size: the app now takes about 200 MB on disk instead of about 350 MB.
+- More reliable naming with small Ollama and LM Studio models: a reply that is cut off or keeps repeating itself still gives a usable name instead of an error.
+- Folder sorting with Ollama and LM Studio asks the model once more about files its first answer left out, so fewer files stay unsorted.
+- Updated to .NET 10 and Windows App SDK 2.6.
+
+### Fixed
+- Custom folder rules keep reading file details such as dates and page counts for the other files on a drive when one file there is slow to open.
+
 ## [3.17.1.0] - 2026-10-31
 
 ### Improved

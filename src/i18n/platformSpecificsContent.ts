@@ -171,9 +171,7 @@ const REQUIREMENT_TEXT: Partial<Record<Locale, {
   },
 };
 
-function appSizeFor(platform: PlatformSpecificsKey): string {
-  return platform === 'mac' ? '~200 MB' : '~250 MB';
-}
+const APP_SIZE = '~200 MB';
 
 function localizedAfterNames(copy: LocaleCopy): string[] {
   return copy.home.showcaseSlides.flatMap((slide) => slide.files.map((file) => file.after));
@@ -201,7 +199,7 @@ export function getLocalizedPlatformSpecificsContent(
           row.key === 'memory'
             ? requirementText.memory
             : row.key === 'diskSpace'
-              ? requirementText.diskSpace(appSizeFor(platform))
+              ? requirementText.diskSpace(APP_SIZE)
               : row.key === 'network'
                 ? requirementText.network
                 : row.key === 'permissions'
