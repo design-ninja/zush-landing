@@ -11,6 +11,13 @@
         padding: $section-gap-mobile 0 0;
     }
 
+    // utils/landingPromo switches data-landing-promo from the backend
+    // `landing_promo_enabled` flag; the promo stays hidden until it says "on".
+    &[data-landing-promo='off'] [data-promo-only],
+    &[data-landing-promo='on'] [data-promo-hide] {
+        display: none;
+    }
+
     &__Container {
         @include container;
         max-width: 64rem;
