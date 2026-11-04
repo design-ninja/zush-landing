@@ -68,14 +68,14 @@ const plans = PRICING_PLANS.map((plan) => {
     description: planCopy?.description ?? plan.description,
     buttonText: planCopy?.buttonText ?? plan.buttonText,
     billing: planCopy?.billing ?? plan.billing,
+    // Rendered for every visitor and revealed only when the backend
+    // `landing_promo_enabled` flag is on (see utils/landingPromo).
     promotion: featured ? promotion : undefined,
-    // The regular pays-off note is hidden while the promotional price is active.
-    priceNote: featured ? undefined : plan.priceNote,
   };
 });
 ---
 
-<section id="pricing" class={styles.Pricing}>
+<section id="pricing" class={styles.Pricing} data-landing-promo="off">
   <div class={styles.Pricing__Container}>
     <img
       class={styles.Pricing__AppIcon}
@@ -161,23 +161,29 @@ const plans = PRICING_PLANS.map((plan) => {
           <div class={styles.PricingCard__Pricing}>
             <p class={styles.PricingCard__Price}>
               {plan.promotion && (
-                <s class={styles.PricingCard__OriginalPrice}>{plan.price}</s>
+                <s class={styles.PricingCard__OriginalPrice} data-promo-only>{plan.price}</s>
               )}
-              <span class={styles.PricingCard__PriceValue}>
-                {plan.promotion?.discountedPrice.label ?? plan.price}
+              <span class={styles.PricingCard__PriceValue} data-promo-hide={plan.promotion ? '' : undefined}>
+                {plan.price}
               </span>
+              {plan.promotion && (
+                <span class={styles.PricingCard__PriceValue} data-promo-only>
+                  {plan.promotion.discountedPrice.label}
+                </span>
+              )}
               {plan.billing && (
                 <span class={styles.PricingCard__PricePeriod}>{plan.billing} +VAT</span>
               )}
             </p>
             {plan.priceNote && (
-              <p class={styles.PricingCard__PriceNote}>{plan.priceNote}</p>
+              // The regular pays-off note is hidden while the promotional price is active.
+              <p class={styles.PricingCard__PriceNote} data-promo-hide={plan.promotion ? '' : undefined}>{plan.priceNote}</p>
             )}
           </div>
 
           <div class={styles.PricingCard__PromotionSlot}>
             {plan.promotion && (
-              <div class={styles.PricingCard__Promotion} aria-label={`${plan.promotion.discountPercent}% discount with promo code ${plan.promotion.code}`}>
+              <div class={styles.PricingCard__Promotion} data-promo-only aria-label={`${plan.promotion.discountPercent}% discount with promo code ${plan.promotion.code}`}>
                 <span class={styles.PricingCard__PromotionSaving}>
                   <span aria-hidden="true">✦</span>
                   Limited Offer
@@ -231,7 +237,9 @@ const plans = PRICING_PLANS.map((plan) => {
               data-paddle-checkout
               data-paddle-price-id={plan.paddlePriceId}
               data-pro-plan-id={plan.id}
-              data-pro-plan-price={plan.promotion?.discountedPrice.label ?? plan.price}
+              data-pro-plan-price={plan.price}
+              data-regular-plan-price={plan.price}
+              data-promo-plan-price={plan.promotion?.discountedPrice.label}
               data-pro-plan-billing={plan.billing}
             >
               <span class={styles.PricingCard__ButtonText}>

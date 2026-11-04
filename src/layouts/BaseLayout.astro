@@ -393,6 +393,7 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
         import { bindCheckoutAutoOpen } from '@/utils/checkoutAutoOpen';
         import { bindPricingCheckout } from '@/utils/pricingCheckout';
         import { bindPaddleRetain } from '@/utils/paddleRetain';
+        import { bindLandingPromo } from '@/utils/landingPromo';
         import { bindPromoCodeCopy } from '@/utils/promoCode';
         import { bindScrollReveal } from '@/utils/scrollReveal';
         import { bindScrollToTopButton } from '@/utils/scrollToTop';
@@ -490,9 +491,11 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
           globalThis.setTimeout(bindInteractiveControls, 0);
         };
 
+        bindLandingPromo();
         bindScrollReveal();
         scheduleInteractiveControls();
         document.addEventListener('astro:after-swap', () => {
+          bindLandingPromo();
           bindScrollReveal();
           scheduleInteractiveControls();
         });
