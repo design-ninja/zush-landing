@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.22.1] - 2026-11-05
+### Improved
+- Custom AI Blocks are less likely to make up a value when a file has none.
+- Ollama and LM Studio keep the finished title and description when a long reply is cut off.
+- Folder sorting with Ollama or LM Studio asks the model again about files it left unsorted.
+### Fixed
+- The template picker no longer grows past the screen with many templates and keeps the selected template in view.
+- When Zush AI is briefly unavailable, files are retried instead of asking you to check a provider account.
+
 ## [3.22.0] - 2026-10-31
 ### New
 - Upgrade to PRO right from the batch limit message or after your last free credit.
