@@ -184,8 +184,8 @@ const promoAssetSeeds = [
   {
     name: 'animated.mp4',
     candidates: [
-      path.join(repoRoot, 'public/videos/windows/zush-batch-rename.mp4'),
-      path.join(repoRoot, 'public/videos/zush-batch-rename.mp4'),
+      path.join(repoRoot, 'media/videos/windows/zush-batch-rename.mp4'),
+      path.join(repoRoot, 'media/videos/zush-batch-rename.mp4'),
     ],
   },
   {

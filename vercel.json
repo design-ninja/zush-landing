@@ -9,6 +9,16 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/videos/:file(.+\\.mp4)",
+      "destination": "https://sjzrgmvinyxjzvshfvjy.supabase.co/storage/v1/object/public/landing-media/videos/:file",
+      "permanent": false
+    },
+    {
+      "source": "/press/zush-press-kit.zip",
+      "destination": "https://sjzrgmvinyxjzvshfvjy.supabase.co/storage/v1/object/public/landing-media/press/zush-press-kit.zip?download=zush-press-kit.zip",
+      "permanent": false
+    },
+    {
       "source": "/rename-word-documents-with-ai",
       "destination": "/rename-documents-with-ai",
       "permanent": true

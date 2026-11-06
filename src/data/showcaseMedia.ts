@@ -1,3 +1,5 @@
+import { mediaUrl } from '@/utils/mediaUrl';
+
 export type ShowcaseTheme = 'light' | 'dark';
 
 interface ThemeAwareMedia {
@@ -489,7 +491,7 @@ export function resolveShowcaseVideoMedia(
   theme: ShowcaseTheme,
 ): ResolvedShowcaseVideoMedia {
   return {
-    source: asset.sources[theme],
+    source: mediaUrl(asset.sources[theme]),
     poster: asset.posters[theme],
   };
 }

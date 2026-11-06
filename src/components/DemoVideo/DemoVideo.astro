@@ -1,6 +1,7 @@
 ---
 import styles from './DemoVideo.module.scss';
 import { MAC_DEMO_VIDEO, type DemoVideoAsset } from '@/data/showcaseMedia';
+import { mediaUrl } from '@/utils/mediaUrl';
 
 interface Props {
   label: string;
@@ -33,8 +34,8 @@ const {
 const isThemeAware = media.sources.light !== media.sources.dark;
 const windowsAttributes = windowsMedia
   ? {
-      'data-win-light-src': windowsMedia.sources.light,
-      'data-win-dark-src': windowsMedia.sources.dark,
+      'data-win-light-src': mediaUrl(windowsMedia.sources.light),
+      'data-win-dark-src': mediaUrl(windowsMedia.sources.dark),
       'data-win-light-poster': windowsMedia.posters.light,
       'data-win-dark-poster': windowsMedia.posters.dark,
       'data-win-aspect': `${windowsMedia.width} / ${windowsMedia.height}`,
@@ -52,8 +53,8 @@ const frameStyle = { '--demo-video-aspect-ratio': `${media.width} / ${media.heig
       <video
         class={styles.DemoVideo__Video}
         data-demo-video
-        data-light-src={media.sources.light}
-        data-dark-src={isThemeAware ? media.sources.dark : media.sources.light}
+        data-light-src={mediaUrl(media.sources.light)}
+        data-dark-src={mediaUrl(isThemeAware ? media.sources.dark : media.sources.light)}
         data-light-poster={media.posters.light}
         data-dark-poster={isThemeAware ? media.posters.dark : media.posters.light}
         {...windowsAttributes}

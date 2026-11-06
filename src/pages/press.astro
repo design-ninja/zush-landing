@@ -23,6 +23,7 @@ import {
   WINDOWS_SHOWCASE_SCREENSHOTS,
 } from '@/data/showcaseMedia';
 import { getSeoForPath, SITE_ORIGIN } from '@/seo/config';
+import { mediaUrl } from '@/utils/mediaUrl';
 import styles from '@/views/Press/PressPage.module.scss';
 
 const seo = getSeoForPath('/press');
@@ -135,7 +136,7 @@ const productLinks = [
         <section class={styles.Press__Section}>
           <Heading as='h2' size='h3' className={styles.Press__SectionTitle}>Download assets</Heading>
           <div class={`${styles.Press__Body} ${styles.Press__Assets}`}>
-            <a class={styles.Press__Asset} href='/press/zush-press-kit.zip' download>
+            <a class={styles.Press__Asset} href={`${mediaUrl('/press/zush-press-kit.zip')}?download=zush-press-kit.zip`}>
               <span class={`${styles.Press__AssetMedia} ${styles.Press__AssetMedia_archive}`}>
                 <FileArchive aria-hidden='true' size={30} strokeWidth={1.6} />
               </span>
@@ -149,7 +150,7 @@ const productLinks = [
             </a>
 
             {demoVideos.map(({ name, video, meta }) => (
-              <a class={styles.Press__Asset} href={video.sources.light} download>
+              <a class={styles.Press__Asset} href={`${mediaUrl(video.sources.light)}?download`}>
                 <span class={styles.Press__AssetMedia}>
                   <img
                     class={styles.Press__AssetImg}

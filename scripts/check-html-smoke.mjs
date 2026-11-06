@@ -23,14 +23,16 @@ const NON_WATCH_VIDEO_ROUTES = new Set([
   '/rename-photos-with-ai',
   '/rename-screenshots-with-ai',
 ]);
+// Mirrors MEDIA_ORIGIN in src/utils/mediaUrl.ts.
+const MEDIA_ORIGIN = 'https://sjzrgmvinyxjzvshfvjy.supabase.co/storage/v1/object/public/landing-media';
 // Mirrors MAC_DEMO_VIDEO in src/data/showcaseMedia.ts, rendered by DemoVideo.
 const HOMEPAGE_DEMO_VIDEO = {
   light: {
-    source: '/videos/demo-light.mp4',
+    source: `${MEDIA_ORIGIN}/videos/demo-light.mp4`,
     poster: '/videos/posters/demo-light.webp',
   },
   dark: {
-    source: '/videos/demo-dark.mp4',
+    source: `${MEDIA_ORIGIN}/videos/demo-dark.mp4`,
     poster: '/videos/posters/demo-dark.webp',
   },
 };

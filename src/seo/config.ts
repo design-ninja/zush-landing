@@ -1,3 +1,4 @@
+import { mediaUrl } from '@/utils/mediaUrl';
 import { ORGANIZATION_FEATURES } from '@/i18n/organizationFeatures';
 import { getServicePageCopy, type ServiceLocalizedRoute } from '@/i18n/servicePages';
 import type { BlogPost } from '@/data/blog';
@@ -645,7 +646,7 @@ export const HOME_VIDEO_JSON_LD = {
     'A Zush demo showing mixed files analyzed by AI, reviewed with content-aware filename suggestions, and renamed as a batch on macOS.',
   thumbnailUrl: `${SITE_ORIGIN}/videos/posters/hero-batch-rename-mac-window-light.webp`,
   uploadDate: '2026-06-20T10:17:47+07:00',
-  contentUrl: `${SITE_ORIGIN}/videos/hero/zush-batch-rename-mac-window-light.mp4`,
+  contentUrl: mediaUrl('/videos/hero/zush-batch-rename-mac-window-light.mp4'),
   embedUrl: `${SITE_ORIGIN}/`,
   publisher: {
     '@id': `${SITE_ORIGIN}/#organization`,

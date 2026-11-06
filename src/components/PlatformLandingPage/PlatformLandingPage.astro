@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Hero from '@/components/Hero';
 import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
+import { mediaUrl } from '@/utils/mediaUrl';
 import Features from '@/components/Features/Features.astro';
 import WaysToRun from '@/components/Features/WaysToRun.astro';
 import EvidenceSignals from '@/components/EvidenceSignals/EvidenceSignals.astro';
@@ -242,7 +243,7 @@ const windowsVideoJsonLd = platform === 'windows' && locale === DEFAULT_LOCALE
         'A Windows demo showing a desktop folder renamed by AI and sorted into folders, then an Invoices template with a Custom AI Block that renames invoices and groups them by vendor.',
       thumbnailUrl: `${SITE_ORIGIN}${WINDOWS_SHOWCASE_SCREENSHOTS[0].images.light}`,
       uploadDate: WINDOWS_BATCH_RENAME_VIDEO_UPLOAD_DATE,
-      contentUrl: `${SITE_ORIGIN}${WINDOWS_SHOWCASE_SCREENSHOTS[0].video?.light ?? '/videos/windows/zush-batch-rename.mp4'}`,
+      contentUrl: mediaUrl(WINDOWS_SHOWCASE_SCREENSHOTS[0].video?.light ?? '/videos/windows/zush-batch-rename.mp4'),
       embedUrl: `${SITE_ORIGIN}${pagePath}`,
       publisher: ORGANIZATION_REF,
     }
