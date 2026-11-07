@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "dev:sandbox": "astro dev --mode sandbox",
-    "build": "node scripts/ensure-git-history.mjs && pnpm check:pricing && pnpm check:paddle-env && astro sync --force && astro build",
+    "build": "node scripts/ensure-git-history.mjs && pnpm check:pricing && pnpm check:paddle-env && astro sync --force && astro build && node scripts/patch-vercel-trailing-slash.mjs",
     "build:sandbox": "pnpm check:pricing && pnpm check:paddle-env:sandbox && astro build --mode sandbox",
     "preview": "astro preview",
     "lint": "eslint .",
