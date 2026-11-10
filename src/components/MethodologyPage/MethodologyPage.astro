@@ -3,6 +3,7 @@ import AppLink from '@/components/AppLink';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
 import PillLink from '@/components/PillLink';
+import { INDEX_PATH } from '@/data/fileRenamingIndex';
 
 export interface MethodologyFaq {
   question: string;
@@ -41,6 +42,7 @@ interface MethodologyCopy {
   evidenceStatusTitle?: string;
   evidenceStatusBody?: string;
   evidencePilotLabel?: string;
+  evidenceStatsLabel?: string;
   policyEyebrow: string;
   decisionPolicyTitle: string;
   decisionPolicyBody: string;
@@ -144,6 +146,7 @@ const defaultCopy: MethodologyCopy = {
   evidenceStatusBody:
     'This page publishes the evaluation protocol, not a completed benchmark leaderboard. Zush does not claim benchmark scores until the underlying controlled run, tested versions, review date, and evidence can be published together. The first real run is an eight-file Mac pilot with Zush 3.11.0 and RenamerX 1.2.2; its inputs, outputs, and limits are public.',
   evidencePilotLabel: 'Eight-file Mac pilot (5 September 2026)',
+  evidenceStatsLabel: 'AI file renaming statistics 2026',
   policyEyebrow: 'Policy',
   decisionPolicyTitle: 'Decision Policy',
   decisionPolicyBody:
@@ -303,6 +306,9 @@ const copy = Astro.props.copy ?? defaultCopy;
           {copy.evidencePilotLabel && (
             <div class="methodology__links">
               <PillLink href={PILOT_EVIDENCE_PATH} withArrow size="sm">{copy.evidencePilotLabel}</PillLink>
+              {copy.evidenceStatsLabel && (
+                <PillLink href={INDEX_PATH} withArrow size="sm">{copy.evidenceStatsLabel}</PillLink>
+              )}
             </div>
           )}
         </section>

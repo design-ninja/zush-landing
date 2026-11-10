@@ -1,0 +1,277 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.Index {
+  @include page-top-bloom;
+
+  &::before {
+    top: -18rem;
+
+    @include mobile {
+      top: -13.5rem;
+    }
+  }
+
+  padding: calc($navbar-height + $space-2xl) 0 $space-3xl;
+
+  @include mobile {
+    padding-top: calc($navbar-height + $space-xl);
+  }
+
+  &__Container {
+    @include container;
+
+    // Same width and left edge as the FAQ section below it.
+    position: relative;
+    z-index: 1;
+  }
+
+  &__Hero {
+    display: grid;
+    gap: $space-md;
+    max-width: $content-reading-width;
+  }
+
+  &__Flush {
+    margin: 0;
+  }
+
+  &__Meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-xs $space-md;
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: 0.875rem;
+  }
+
+  // Four headline figures. Each tile carries its own scope so a screenshot of
+  // one tile still says what it measures.
+  &__Tiles {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: $space-md;
+    margin-top: $space-2xl;
+
+    @include tablet {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__Tile {
+    display: grid;
+    align-content: start;
+    gap: $space-xs;
+    padding: $space-lg;
+    border: 1px solid var(--border);
+    border-radius: $radius-lg;
+    background: var(--card);
+  }
+
+  &__TileValue {
+    margin: 0;
+    color: var(--foreground);
+    font-family: $font-family-heading;
+    font-size: 2.25rem;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__TileText {
+    margin: 0;
+    color: var(--foreground);
+    font-size: 0.9375rem;
+    line-height: 1.45;
+  }
+
+  &__TileScope {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: 0.8125rem;
+    line-height: 1.4;
+  }
+
+  &__Sections {
+    display: grid;
+    margin-top: $space-xl;
+  }
+
+  &__Section {
+    padding: $space-xl 0;
+    border-top: 1px solid var(--border);
+
+    @include mobile {
+      padding: $space-lg 0;
+    }
+  }
+
+  &__SectionTitle {
+    margin: 0 0 $space-md;
+    max-width: $content-reading-width;
+  }
+
+  &__Body {
+    display: grid;
+    gap: $space-md;
+    max-width: $content-reading-width;
+  }
+
+  &__Copy {
+    margin: 0;
+  }
+
+  &__Findings {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-width: $content-reading-width;
+    counter-reset: finding;
+  }
+
+  &__Finding {
+    position: relative;
+    padding: $space-sm 0 $space-sm 2.5rem;
+    color: var(--foreground);
+    line-height: 1.55;
+    counter-increment: finding;
+
+    & + & {
+      border-top: 1px solid var(--border);
+    }
+
+    &::before {
+      content: counter(finding);
+      position: absolute;
+      top: $space-sm;
+      left: 0;
+      width: 1.75rem;
+      color: var(--muted-foreground);
+      font-variant-numeric: tabular-nums;
+      font-size: 0.875rem;
+      line-height: 1.75;
+    }
+  }
+
+  // Horizontal bars: label, track, value. Pure CSS so the numbers stay text.
+  &__Bars {
+    display: grid;
+    gap: $space-sm;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-width: $content-reading-width;
+  }
+
+  &__Bar {
+    display: grid;
+    grid-template-columns: minmax(0, 9rem) minmax(0, 1fr) 4rem;
+    align-items: center;
+    gap: $space-md;
+
+    @include mobile {
+      grid-template-columns: minmax(0, 1fr) 3.5rem;
+      gap: $space-2xs $space-sm;
+    }
+  }
+
+  &__BarLabel {
+    color: var(--foreground);
+    font-size: 0.9375rem;
+
+    small {
+      display: block;
+      color: var(--muted-foreground);
+      font-size: 0.75rem;
+    }
+  }
+
+  &__BarTrack {
+    height: 0.625rem;
+    border-radius: $radius-full;
+    background: var(--muted);
+    overflow: hidden;
+
+    @include mobile {
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
+  }
+
+  &__BarFill {
+    display: block;
+    height: 100%;
+    min-width: 2px;
+    border-radius: inherit;
+    background: var(--primary);
+  }
+
+  &__BarValue {
+    color: var(--foreground);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__TableWrap {
+    @include content-table-wrap;
+
+    max-width: $content-reading-width;
+  }
+
+  &__Table {
+    @include content-table;
+
+    td {
+      font-variant-numeric: tabular-nums;
+    }
+  }
+
+  &__Note {
+    margin: 0;
+    padding: $space-md;
+    border: 1px solid var(--note-border);
+    border-radius: $radius-md;
+    background: var(--note-bg);
+    color: var(--note-fg);
+    font-size: 0.875rem;
+    line-height: 1.55;
+  }
+
+  &__List {
+    display: grid;
+    gap: $space-sm;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--muted-foreground);
+  }
+
+  &__Cite {
+    margin: 0;
+    padding: $space-md;
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+    background: var(--code-bg);
+    color: var(--foreground);
+    font-family: $font-mono;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  &__Actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-sm $space-lg;
+  }
+}

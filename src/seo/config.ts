@@ -308,6 +308,15 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     robots: 'index, follow',
     ogType: 'website',
   },
+  // Statistics page: deliberately "statistics" intent, never "best"/"AI file
+  // renamer", so it does not compete with the comparison posts and /mac, /windows.
+  '/ai-file-renaming-statistics': {
+    title: 'AI File Renaming Statistics 2026: 1.2M Files — Zush',
+    description:
+      'Data from 1.2M files renamed with AI on Mac and Windows: file types, batch sizes, ~2 s per file analysis speed, and how often people edit AI names.',
+    robots: 'index, follow',
+    ogType: 'website',
+  },
   '/press': {
     title: 'Zush Press Kit | Assets, Facts, and Review Licenses',
     description:

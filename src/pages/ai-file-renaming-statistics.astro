@@ -1,0 +1,310 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AppLink from '@/components/AppLink';
+import FAQ from '@/components/FAQ';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import { PRIMARY_AUTHOR, getPrimaryAuthorJsonLd } from '@/data/author';
+import {
+  BATCH_SIZE_DISTRIBUTION,
+  FILE_TYPE_MIX,
+  HEADLINE_STATS,
+  INDEX_CSV_PATH,
+  INDEX_NAME,
+  INDEX_PATH,
+  INDEX_PERIOD,
+  INDEX_PUBLISHED,
+  INDEX_UPDATED,
+  KEY_FINDINGS,
+  SPEED_BY_BATCH,
+  SPEED_BY_TYPE,
+} from '@/data/fileRenamingIndex';
+import { ORGANIZATION_REF } from '@/seo/entity';
+import { getSeoForPath, SITE_ORIGIN, toIsoDateTime } from '@/seo/config';
+import styles from '@/views/FileRenamingIndex/FileRenamingIndex.module.scss';
+
+const seo = getSeoForPath(INDEX_PATH);
+const pageUrl = `${SITE_ORIGIN}${INDEX_PATH}`;
+const csvUrl = `${SITE_ORIGIN}${INDEX_CSV_PATH}`;
+const maxTypeShare = Math.max(...FILE_TYPE_MIX.map((row) => row.share));
+
+const updatedLabel = new Date(`${INDEX_UPDATED}T00:00:00Z`).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
+
+const citation = `Zush File Renaming Index 2026, ${pageUrl} (data: ${INDEX_PERIOD.label}).`;
+
+const faqs = [
+  {
+    question: 'How long does it take AI to rename a file?',
+    answer:
+      'With Zush Cloud AI the median is about 2 seconds per file, measured as the time a user waits. Larger batches are faster per file because files are analyzed in parallel: about 1.3 seconds per file for 11 to 200 files, and under a second per file above 200. A batch of around 90 files typically finishes in about 2 minutes.',
+  },
+  {
+    question: 'What kinds of files do people rename with AI most?',
+    answer:
+      'On Mac, documents (49% of AI-renamed files) and images (45%) make up almost everything. Video accounts for 4%, audio for 2%, and design files for under 1%.',
+  },
+  {
+    question: 'Do people trust AI-generated filenames?',
+    answer:
+      'In Zush, more than 4 in 5 active Mac users never edited a single AI-suggested filename before applying it, between September 18 and November 10, 2026. People who disagree with a suggestion can also skip applying it, which this figure does not capture.',
+  },
+  {
+    question: 'Where does this data come from, and does Zush see my filenames?',
+    answer:
+      'The figures are aggregates of anonymous product analytics (counts, file type groups and durations) and usage counters. Zush does not collect filenames or file contents for these statistics.',
+  },
+  {
+    question: 'Can I use these statistics in an article?',
+    answer:
+      'Yes. The figures are free to quote with attribution to the Zush File Renaming Index and a link to this page. A CSV with every figure is available for download.',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    getPrimaryAuthorJsonLd(),
+    {
+      '@type': 'WebPage',
+      '@id': `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: seo.title,
+      description: seo.description,
+      inLanguage: 'en',
+      datePublished: toIsoDateTime(INDEX_PUBLISHED),
+      dateModified: toIsoDateTime(INDEX_UPDATED),
+      isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
+      mainEntity: { '@id': `${pageUrl}#dataset` },
+      author: { '@id': `${PRIMARY_AUTHOR.url}#person` },
+      publisher: ORGANIZATION_REF,
+      breadcrumb: {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_ORIGIN },
+          { '@type': 'ListItem', position: 2, name: 'AI File Renaming Statistics', item: pageUrl },
+        ],
+      },
+    },
+    {
+      '@type': 'Dataset',
+      '@id': `${pageUrl}#dataset`,
+      name: INDEX_NAME,
+      alternateName: 'AI File Renaming Statistics 2026',
+      description:
+        'Aggregated, anonymized statistics on AI file renaming from the Zush app for Mac and Windows: files renamed, file type mix, batch sizes, AI analysis speed, manual edits of AI-suggested names, and rename reliability.',
+      url: pageUrl,
+      creator: ORGANIZATION_REF,
+      publisher: ORGANIZATION_REF,
+      datePublished: INDEX_PUBLISHED,
+      dateModified: INDEX_UPDATED,
+      temporalCoverage: `${INDEX_PERIOD.start}/${INDEX_PERIOD.end}`,
+      isAccessibleForFree: true,
+      license: 'https://creativecommons.org/licenses/by/4.0/',
+      keywords: ['file renaming statistics', 'AI file renaming', 'file organization', 'batch renaming', 'file naming'],
+      measurementTechnique: 'Aggregation of anonymous in-app product analytics and usage counters; medians for durations and batch sizes.',
+      variableMeasured: [
+        'Files renamed with AI',
+        'File type share',
+        'Batch size distribution',
+        'AI analysis time per file',
+        'Share of users who never edited an AI-suggested filename',
+        'Rename success rate',
+      ],
+      distribution: [
+        {
+          '@type': 'DataDownload',
+          encodingFormat: 'text/csv',
+          contentUrl: csvUrl,
+        },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${pageUrl}#faq`,
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+      })),
+    },
+  ],
+};
+---
+
+<BaseLayout seo={seo} jsonLd={jsonLd}>
+  <main class={styles.Index}>
+    <div class={styles.Index__Container}>
+      <header class={styles.Index__Hero}>
+        <Text as='p' size='sm' color='subtle' className={styles.Index__Flush}>{INDEX_NAME}</Text>
+        <Heading as='h1' className={styles.Index__Flush}>AI File Renaming Statistics 2026</Heading>
+        <Text as='p' size='xl' color='subtle' className={styles.Index__Flush}>
+          What 1.2 million files renamed with AI show about the files people rename, how long it takes, and how often they correct the AI. Anonymized data from the Zush app for Mac and Windows.
+        </Text>
+        <p class={styles.Index__Meta}>
+          <span>Data: {INDEX_PERIOD.label}</span>
+          <span>Updated {updatedLabel}</span>
+          <span><AppLink href={INDEX_CSV_PATH} variant='legal'>Download CSV</AppLink></span>
+        </p>
+      </header>
+
+      <div class={styles.Index__Tiles}>
+        {HEADLINE_STATS.map((stat) => (
+          <div class={styles.Index__Tile}>
+            <p class={styles.Index__TileValue}>{stat.value}</p>
+            <p class={styles.Index__TileText}>{stat.sentence}</p>
+            <p class={styles.Index__TileScope}>{stat.scope}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class={styles.Index__Sections}>
+        <section class={styles.Index__Section} id='key-statistics'>
+          <Heading as='h2' size='h3' className={styles.Index__SectionTitle}>Key AI file renaming statistics</Heading>
+          <ol class={styles.Index__Findings} role='list'>
+            {KEY_FINDINGS.map((finding) => <li class={styles.Index__Finding}>{finding}</li>)}
+          </ol>
+        </section>
+
+        <section class={styles.Index__Section} id='file-types'>
+          <Heading as='h2' size='h3' className={styles.Index__SectionTitle}>What kinds of files do people rename with AI?</Heading>
+          <div class={styles.Index__Body}>
+            <Text as='p' color='subtle' className={styles.Index__Copy}>
+              Documents and images make up 94% of everything renamed with AI on Mac. Documents lead slightly, at 49% of files: scans, invoices and downloads with names like <code>scan0001.pdf</code> that say nothing about what is inside.
+            </Text>
+            <ul class={styles.Index__Bars} role='list'>
+              {FILE_TYPE_MIX.map((row) => (
+                <li class={styles.Index__Bar}>
+                  <span class={styles.Index__BarLabel}>{row.label}<small>{row.note}</small></span>
+                  <span class={styles.Index__BarTrack} aria-hidden='true'>
+                    <span class={styles.Index__BarFill} style={`width: ${(row.share / maxTypeShare) * 100}%`}></span>
+                  </span>
+                  <span class={styles.Index__BarValue}>{row.share < 1 ? '<1%' : `${Math.round(row.share)}%`}</span>
+                </li>
+              ))}
+            </ul>
+            <Text as='p' color='subtle' className={styles.Index__Copy}>
+              8% of batches mix several file types in one go, for example a downloads folder with PDFs, screenshots and a video. Shares are by number of files, Mac only: the Windows app does not report file types.
+            </Text>
+          </div>
+        </section>
+
+        <section class={styles.Index__Section} id='batch-size'>
+          <Heading as='h2' size='h3' className={styles.Index__SectionTitle}>How many files do people rename at once?</Heading>
+          <div class={styles.Index__Body}>
+            <Text as='p' color='subtle' className={styles.Index__Copy}>
+              Most renaming is small: the median batch is 11 files, and 62% of batches contain 20 files or fewer. Large clean-ups are rare but carry most of the volume. Batches of more than 500 files are only 8% of all batches, yet they account for 67% of the files renamed.
+            </Text>
+            <div class={styles.Index__TableWrap}>
+              <table class={styles.Index__Table}>
+                <thead>
+                  <tr><th scope='col'>Batch size</th><th scope='col'>Share of batches</th><th scope='col'>Share of files renamed</th></tr>
+                </thead>
+                <tbody>
+                  {BATCH_SIZE_DISTRIBUTION.map((row) => (
+                    <tr><th scope='row'>{row.label}</th><td>{row.batches.toFixed(1)}%</td><td>{row.files.toFixed(1)}%</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class={styles.Index__Section} id='speed'>
+          <Heading as='h2' size='h3' className={styles.Index__SectionTitle}>How long does AI file renaming take?</Heading>
+          <div class={styles.Index__Body}>
+            <Text as='p' color='subtle' className={styles.Index__Copy}>
+              With cloud AI, the median is about 2 seconds per file. That is the time a person actually waits, from starting the analysis to having names for the whole batch, including the network. Bigger batches are faster per file because files are analyzed in parallel.
+            </Text>
+            <div class={styles.Index__TableWrap}>
+              <table class={styles.Index__Table}>
+                <thead>
+                  <tr><th scope='col'>Batch size</th><th scope='col'>Time per file (median)</th><th scope='col'>Typical batch</th></tr>
+                </thead>
+                <tbody>
+                  {SPEED_BY_BATCH.map((row) => (
+                    <tr><th scope='row'>{row.label}</th><td>{row.perFile}</td><td>{row.typicalBatch}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <Text as='p' color='subtle' className={styles.Index__Copy}>
+              By file type on Mac: images take {SPEED_BY_TYPE[0].perFile} per file, documents {SPEED_BY_TYPE[1].perFile} and videos {SPEED_BY_TYPE[2].perFile}, because a video needs frames, speech or subtitles before it can be named. Free and paid users get the same speed (2.1 vs 1.9 seconds per file). Applying the new names afterwards takes about 40 milliseconds per file.
+            </Text>
+            <p class={styles.Index__Note}>
+              Local models (Ollama, LM Studio) are not included in these timings: their speed depends on the computer and the model: typically several seconds per file, and more than half a minute at the slow end.
+            </p>
+          </div>
+        </section>
+
+        <section class={styles.Index__Section} id='edits'>
+          <Heading as='h2' size='h3' className={styles.Index__SectionTitle}>How often do people correct AI-generated filenames?</Heading>
+          <div class={styles.Index__Body}>
+            <Text as='p' color='subtle' className={styles.Index__Copy}>
+              Rarely. More than 4 in 5 active Mac users never edited a single AI-suggested name by hand before applying it. Every batch in Zush is shown as a preview first, and names can be changed with a double-click, so this measures people choosing not to, not people who could not.
+            </Text>
+            <Text as='p' color='subtle' className={styles.Index__Copy}>
+              Counted for Mac users who renamed at least 10 files between September 18 and November 10, 2026. Someone who dislikes a suggestion can also leave the file out instead of editing it; that case is not part of this figure.
+            </Text>
+          </div>
+        </section>
+
+        <section class={styles.Index__Section} id='reliability'>
+          <Heading as='h2' size='h3' className={styles.Index__SectionTitle}>How reliable is batch renaming?</Heading>
+          <div class={styles.Index__Body}>
+            <Text as='p' color='subtle' className={styles.Index__Copy}>
+              98.9% of files sent to batch renaming were renamed without an error. A file that fails keeps its original name and can be renamed again.
+            </Text>
+            <Text as='p' color='subtle' className={styles.Index__Copy}>
+              Among batches with a known AI mode, about 1 in 11 is processed by a local model running on the user's own computer instead of a cloud provider, mostly through Ollama and LM Studio.
+            </Text>
+          </div>
+        </section>
+
+        <section class={styles.Index__Section} id='methodology'>
+          <Heading as='h2' size='h3' className={styles.Index__SectionTitle}>Methodology and limitations</Heading>
+          <div class={styles.Index__Body}>
+            <ul class={styles.Index__List} role='list'>
+              <li>Source: anonymous product analytics from the Zush apps for Mac and Windows, plus aggregate usage counters. Only counts, file type groups and durations are used. No filenames or file contents are collected.</li>
+              <li>Period: {INDEX_PERIOD.label}, unless a figure says otherwise. Analysis timings start on October 5, 2026, and edit counts on September 18, 2026, when the app began reporting them.</li>
+              <li>Durations and batch sizes are medians, because a few very large batches and long videos would distort an average. Time per file is the wait for the whole batch divided by the number of files.</li>
+              <li>File type shares are Mac only. Developer test sessions are excluded.</li>
+              <li>This is first-party data published by the maker of Zush, not an independent study. For how Zush evaluates naming quality, see the <AppLink href='/methodology' variant='legal'>methodology page</AppLink>; for what the app sends and when, see the <AppLink href='/privacy-policy' variant='legal'>privacy policy</AppLink>.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class={styles.Index__Section} id='cite'>
+          <Heading as='h2' size='h3' className={styles.Index__SectionTitle}>How to cite this data</Heading>
+          <div class={styles.Index__Body}>
+            <Text as='p' color='subtle' className={styles.Index__Copy}>
+              The statistics on this page are free to use in articles, videos and research under CC BY 4.0. Please credit the Zush File Renaming Index and link to this page.
+            </Text>
+            <p class={styles.Index__Cite}>{citation}</p>
+            <div class={styles.Index__Actions}>
+              <AppLink href={INDEX_CSV_PATH} variant='legal'>Download all figures (CSV)</AppLink>
+              <AppLink href='mailto:support@zushapp.com' variant='legal'>Ask for a breakdown</AppLink>
+            </div>
+          </div>
+        </section>
+
+        <section class={styles.Index__Section} id='about-zush'>
+          <Heading as='h2' size='h3' className={styles.Index__SectionTitle}>About Zush</Heading>
+          <div class={styles.Index__Body}>
+            <Text as='p' color='subtle' className={styles.Index__Copy}>
+              Zush reads what is inside a file and suggests a name for it, then shows the whole batch as a preview before anything changes. It runs on <AppLink href='/mac' variant='legal'>Mac</AppLink> and <AppLink href='/windows' variant='legal'>Windows</AppLink>, with cloud AI or local models.
+            </Text>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <FAQ
+    items={faqs}
+    description='Common questions about AI file renaming, answered with data from the Zush File Renaming Index.'
+  />
+</BaseLayout>

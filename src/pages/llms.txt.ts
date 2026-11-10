@@ -149,6 +149,8 @@ export async function GET() {
     '## Evidence and Policies',
     '',
     `- [Methodology](${SITE_ORIGIN}/methodology)`,
+    `- [AI File Renaming Statistics 2026 — anonymized Zush usage data](${SITE_ORIGIN}/ai-file-renaming-statistics)`,
+    `- [AI File Renaming Statistics 2026 (CSV)](${SITE_ORIGIN}/ai-file-renaming-statistics.csv)`,
     `- [Benchmark simulation evidence pack — methodology only; no applications executed](${SITE_ORIGIN}/benchmarks/ai-file-renamer-simulation-2026/README.md)`,
     `- [Simulation corpus manifest with per-record SHA-256](${SITE_ORIGIN}/benchmarks/ai-file-renamer-simulation-2026/corpus-manifest.csv)`,
     `- [Simulation raw modeled results — not product measurements](${SITE_ORIGIN}/benchmarks/ai-file-renamer-simulation-2026/raw-results.csv)`,
