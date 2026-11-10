@@ -6,13 +6,28 @@
         <description>Zush app updates</description>
         <language>en</language>
         <item>
+            <title>3.22.2</title>
+            <pubDate>Tue, 10 Nov 2026 19:55:02 +0700</pubDate>
+            <sparkle:version>224</sparkle:version>
+            <sparkle:shortVersionString>3.22.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<h2>What's New in 3.22.2</h2><ul></ul><p><strong>Improved</strong></p><ul><li>The checkout now shows the full order summary, a field for discount codes and tax details.</li><li>MP4 recording dates follow the camera's time zone, and more videos now get a recording date.</li></ul><p><strong>Fixed</strong></p><ul><li>Your settings and folder setups are kept if Zush can't read them at launch, instead of being reset.</li><li>Settings no longer freeze while checking the Start at Login option.</li><li>Monitor no longer misses a file added right after resuming, and a watched folder that comes back is watched again.</li><li>Files added while names are being regenerated are analyzed right away.</li><li>Rename works again after a failed move into folders.</li><li>Cancelling an Ollama model download no longer selects the unfinished model.</li></ul>
+]]></description>
+            <enclosure url="https://zushapp.com/releases/Zush-3.22.2.dmg" length="19254459" type="application/octet-stream" sparkle:edSignature="NPOMD/GT33jQn0jKj6YgEHJnCdEkgj7zjmbaCnFJjy0NxE40FukCL8tvD5VuL+gH8x0eBC/vt9yEdNtcvY4OCQ=="/>
+            <sparkle:deltas>
+                <enclosure url="https://zushapp.com/releases/Zush224-222.delta" sparkle:deltaFrom="222" length="5865566" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="9J42B/aO/wYIRNZUXRCue1Apnatt0nXbqESKVAoq7U92GxKs4fMF1Hjc5BbTpMk5JUs18rlEiobgeimgG5CbCg=="/>
+                <enclosure url="https://zushapp.com/releases/Zush224-220.delta" sparkle:deltaFrom="220" length="6796826" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="Sjcy2jsIzUi9U3zOeC3tW5t9G2cJRBSQQR7QnI9SnSN9676tiowyO7ZqUHR38mp2oOuVVzz6zVzJmDBD9vMACA=="/>
+                <enclosure url="https://zushapp.com/releases/Zush224-218.delta" sparkle:deltaFrom="218" length="7039406" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="Cd7qu3gbzxE3NSdXJNkllldW/6rrT/JuXjSbM9vkrKvrzseycvyJmIy95NybzZBdFbiiF2fmQhxL+7pgPY8OCQ=="/>
+                <enclosure url="https://zushapp.com/releases/Zush224-216.delta" sparkle:deltaFrom="216" length="7213722" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="MRn9UnK0WrMeXtfPbupsxsbtv+Z8h4LTPl+Yr+vk4X+QnZ5oR+zUw+n1K4H/fV4Y1cqYTEd+HOlACVAQPWRPDg=="/>
+                <enclosure url="https://zushapp.com/releases/Zush224-214.delta" sparkle:deltaFrom="214" length="7383370" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="w131MNuFrRPpezKYHjA1FXSUjMV8S78wSMoAjMB14NtbgCT9G7rkJq5taHet2nCb7srYF4QpjARTk6o8nNIXBg=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>3.22.1</title>
             <pubDate>Thu, 05 Nov 2026 11:41:49 +0700</pubDate>
             <sparkle:version>222</sparkle:version>
             <sparkle:shortVersionString>3.22.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<h2>What's New in 3.22.1</h2><ul></ul><p><strong>Improved</strong></p><ul><li>Custom AI Blocks are less likely to make up a value when a file has none.</li><li>Ollama and LM Studio keep the finished title and description when a long reply is cut off.</li><li>Folder sorting with Ollama or LM Studio asks the model again about files it left unsorted.</li></ul><p><strong>Fixed</strong></p><ul><li>The template picker no longer grows past the screen with many templates and keeps the selected template in view.</li><li>When Zush AI is briefly unavailable, files are retried instead of asking you to check a provider account.</li></ul>
-]]></description>
             <enclosure url="https://zushapp.com/releases/Zush-3.22.1.dmg" length="18436908" type="application/octet-stream" sparkle:edSignature="otPBD9OFeRkE1W4IIzxjIrlZZN7bgbpCtc0NDZc6fQ364zFJj7FF6EMFtmqo/7hBu3TZGyyr+I3EJU/VIL4UBg=="/>
             <sparkle:deltas>
                 <enclosure url="https://zushapp.com/releases/Zush222-220.delta" sparkle:deltaFrom="220" length="5372966" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="bZnClhice3vhdpxQ3/4N3xXszsw3Pe+9E4j6PCKUWZY2ni9CFUIGTxuhi1+ltOHJFVqS1kgI+XhCMGdzBaW+Cg=="/>
@@ -35,21 +50,6 @@
                 <enclosure url="https://zushapp.com/releases/Zush220-214.delta" sparkle:deltaFrom="214" length="4003070" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="QRLGWlQqnxqaa+U61L+LwfNkfZPvBNq0Iz1Xft5CA+Ik0uRKudNwu3HSZOlK2XVLZ7IR7SddPlel7zHDqcSpBQ=="/>
                 <enclosure url="https://zushapp.com/releases/Zush220-212.delta" sparkle:deltaFrom="212" length="4172638" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="k3J3fVPXRGscUTEOFJLqGqhowNVjB8HWWLHOAICVmUUqJy9Vk/kxxVOtDvGxBwLAM0hVPY4sy0or6NjPBPBMCw=="/>
                 <enclosure url="https://zushapp.com/releases/Zush220-210.delta" sparkle:deltaFrom="210" length="4535394" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="bQteu1yyiniOndKjeh9EIL0sLMlRyWDOgZNlybgpeGsoKPzIexvqrpL73vR4emmjNvxnZb8ZPExuiov+DI69DQ=="/>
-            </sparkle:deltas>
-        </item>
-        <item>
-            <title>3.21.0</title>
-            <pubDate>Thu, 29 Oct 2026 15:58:20 +0700</pubDate>
-            <sparkle:version>218</sparkle:version>
-            <sparkle:shortVersionString>3.21.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://zushapp.com/releases/Zush-3.21.0.dmg" length="17672300" type="application/octet-stream" sparkle:edSignature="yndheABKLsfhYyIqrfNdTqi8NRW+1aAiWNX9LG1Po1ToPvqu0/lZz6M6IXeEE8EWdznu1xG2C9dqoo5dFI70BA=="/>
-            <sparkle:deltas>
-                <enclosure url="https://zushapp.com/releases/Zush218-216.delta" sparkle:deltaFrom="216" length="2797946" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="e1Ylz6hNbFX8xP9ooR4EHhNkkb14GkAOX2POSK/sNCUW5EMAKZPYzHBewyK62C09v9K2MVafJ1tUzfZ8jNNSCw=="/>
-                <enclosure url="https://zushapp.com/releases/Zush218-214.delta" sparkle:deltaFrom="214" length="3375998" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="xvjG9hBnv6zkFJ5nn6uGyziOK8qECy9c7cfwlYlA3/iIeOEVMjyjyWlpK7ZExHqzDIcOCCiylP8nD7IwOyVvCw=="/>
-                <enclosure url="https://zushapp.com/releases/Zush218-212.delta" sparkle:deltaFrom="212" length="3589742" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="1yQgrP+WNjIPg6X9X95Scfo65/DYdKvwQecgRlcrMs0GWinTSJMieCx8QDOhVKeH/bfeQtttLjXkt7U8SzBqDw=="/>
-                <enclosure url="https://zushapp.com/releases/Zush218-210.delta" sparkle:deltaFrom="210" length="3995214" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="lQSQLzUOUB6xR3XM6nyUVgkIeBDrP4VVge5CXh6zdLLI1ORaLbDnlbuSEwvvKa8U8GEqOAnWZEcc5iVBjqw0DQ=="/>
-                <enclosure url="https://zushapp.com/releases/Zush218-208.delta" sparkle:deltaFrom="208" length="4290394" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="4pWkyyqyF3QOtyaKl60cTjv5ocUHqPgLD3o0hIQJP1PuRhUTVzm4VUtT4sk/GInuNVsiF1ccOteSbw4ImUiOCA=="/>
             </sparkle:deltas>
         </item>
         <item>

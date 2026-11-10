@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.22.2] - 2026-11-10
+### Improved
+- The checkout now shows the full order summary, a field for discount codes and tax details.
+- MP4 recording dates follow the camera's time zone, and more videos now get a recording date.
+### Fixed
+- Your settings and folder setups are kept if Zush can't read them at launch, instead of being reset.
+- Settings no longer freeze while checking the Start at Login option.
+- Monitor no longer misses a file added right after resuming, and a watched folder that comes back is watched again.
+- Files added while names are being regenerated are analyzed right away.
+- Rename works again after a failed move into folders.
+- Cancelling an Ollama model download no longer selects the unfinished model.
+
 ## [3.22.1] - 2026-11-05
 ### Improved
 - Custom AI Blocks are less likely to make up a value when a file has none.
