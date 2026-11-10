@@ -24,7 +24,7 @@ const NON_WATCH_VIDEO_ROUTES = new Set([
   '/rename-screenshots-with-ai',
 ]);
 // Mirrors MEDIA_ORIGIN in src/utils/mediaUrl.ts.
-const MEDIA_ORIGIN = 'https://sjzrgmvinyxjzvshfvjy.supabase.co/storage/v1/object/public/landing-media';
+const MEDIA_ORIGIN = 'https://sjzrgmvinyxjzvshfvjy.storage.supabase.co/storage/v1/object/public/landing-media';
 // Mirrors MAC_DEMO_VIDEO in src/data/showcaseMedia.ts, rendered by DemoVideo.
 const HOMEPAGE_DEMO_VIDEO = {
   light: {

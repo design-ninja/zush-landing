@@ -7,8 +7,12 @@
 // which stays the lookup key for showcase data; `mediaUrl` turns that path into
 // the public bucket URL at the point where it is rendered. Old site paths
 // redirect to the bucket in vercel.json for links outside the site.
+//
+// The origin is Storage's own hostname, not the project API host: browsers
+// share one HTTP/2 connection per host, so a demo video streaming over the API
+// host queues the checkout Edge Function request behind it on slow networks.
 export const MEDIA_ORIGIN =
-  'https://sjzrgmvinyxjzvshfvjy.supabase.co/storage/v1/object/public/landing-media';
+  'https://sjzrgmvinyxjzvshfvjy.storage.supabase.co/storage/v1/object/public/landing-media';
 
 const BUCKET_PATH = /^\/(?:videos\/.+\.mp4|press\/.+\.zip)$/;
 

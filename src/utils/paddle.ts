@@ -73,6 +73,11 @@ let activeCheckoutSource = "landing";
 let activeCheckoutPriceId: string | null = null;
 const paddleEventListeners = new Set<PaddleEventListener>();
 const CHECKOUT_PRICE_ID_KEY = "zush_checkout_price_id";
+// The checkout session Edge Function answers in 1–7 s; the backend gives Paddle
+// up to 45 s, but a request that has not answered in 20 s is treated as stalled.
+const CHECKOUT_SESSION_TIMEOUT_MS = 20_000;
+const CHECKOUT_SESSION_ATTEMPTS = 2;
+const PADDLE_SCRIPT_TIMEOUT_MS = 20_000;
 // Paddle.js emits these once checkout has collected the buyer's country,
 // before the payment step.
 const CHECKOUT_COUNTRY_EVENTS = new Set([
@@ -258,13 +263,25 @@ async function loadPaddleScript(): Promise<void> {
 
   paddleScriptPromise ??= new Promise((resolve, reject) => {
     const script = document.createElement("script");
+    const fail = (message: string) => {
+      window.clearTimeout(timeout);
+      script.remove();
+      paddleScriptPromise = null;
+      reject(new Error(message));
+    };
+    // A stalled script never fires onload or onerror; give up so checkout
+    // can fall back to the hosted checkout URL or let the visitor retry.
+    const timeout = window.setTimeout(
+      () => fail("Timed out loading Paddle.js"),
+      PADDLE_SCRIPT_TIMEOUT_MS,
+    );
     script.src = "https://cdn.paddle.com/paddle/v2/paddle.js";
     script.async = true;
-    script.onload = () => resolve();
-    script.onerror = () => {
-      paddleScriptPromise = null;
-      reject(new Error("Failed to load Paddle.js"));
+    script.onload = () => {
+      window.clearTimeout(timeout);
+      resolve();
     };
+    script.onerror = () => fail("Failed to load Paddle.js");
     document.head.appendChild(script);
   });
 
@@ -412,34 +429,41 @@ async function createCheckoutSession(
   deviceId: string | null | undefined,
   priceId: string,
 ): Promise<CheckoutSessionResponse | null> {
-  try {
-    const response = await fetch(
-      `${SUPABASE_URL}/functions/v1/create-paddle-checkout-session`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          price_id: priceId,
-          device_id: deviceId || undefined,
-          source: deviceId ? "app" : "landing",
-          posthog_distinct_id: getAnalyticsDistinctId() || undefined,
-        }),
-      },
-    );
+  const body = JSON.stringify({
+    price_id: priceId,
+    device_id: deviceId || undefined,
+    source: deviceId ? "app" : "landing",
+    posthog_distinct_id: getAnalyticsDistinctId() || undefined,
+  });
 
-    if (!response.ok) {
-      console.error("[Paddle] Checkout session failed:", { status: response.status });
-      return null;
+  // A stalled request would otherwise leave the button spinning with no way
+  // out. A timeout or network error is retried once; an HTTP error is final.
+  for (let attempt = 0; attempt < CHECKOUT_SESSION_ATTEMPTS; attempt += 1) {
+    try {
+      const response = await fetch(
+        `${SUPABASE_URL}/functions/v1/create-paddle-checkout-session`,
+        {
+          method: "POST",
+          signal: AbortSignal.timeout(CHECKOUT_SESSION_TIMEOUT_MS),
+          headers: { "Content-Type": "application/json" },
+          body,
+        },
+      );
+
+      if (!response.ok) {
+        console.error("[Paddle] Checkout session failed:", { status: response.status });
+        return null;
+      }
+
+      const data = (await response.json()) as CheckoutSessionResponse;
+      return data.success && data.checkout_session && data.transaction_id
+        ? data
+        : null;
+    } catch (error) {
+      console.error("[Paddle] Failed to create checkout session:", error);
     }
-
-    const data = (await response.json()) as CheckoutSessionResponse;
-    return data.success && data.checkout_session && data.transaction_id
-      ? data
-      : null;
-  } catch (error) {
-    console.error("[Paddle] Failed to create checkout session:", error);
-    return null;
   }
+  return null;
 }
 
 function buildCheckoutSettings(): PaddleCheckoutOptions["settings"] {
