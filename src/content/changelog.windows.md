@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.18.1.0] - 2026-11-10
+
+### Added
+- When Zush runs as administrator, the AI Rename drop area explains why files cannot be dragged in from File Explorer, shows how to fix it and offers to select the files instead.
+
+### Improved
+- Video recording dates come from the clip's own tags, so names keep the local time the video was recorded, whatever time zone the PC is in.
+- Recording dates no longer fall back to the date a file was copied to the computer.
+- Complete local analysis reads PDFs whose text cannot be extracted by recognizing the text on their pages.
+
+### Fixed
+- Removing many selected files from the AI Rename list no longer freezes the window.
+- Files the AI service could not analyze are now marked as failed instead of being renamed "Untitled".
+- The PayPal window opened during checkout now appears in front of the checkout instead of behind it.
+- PRO no longer briefly switches back to Free limits after a purchase or activation.
+- Fixed a rare case where the app could stop responding for good after a short pause.
+
 ## [3.18.0.0] - 2026-11-04
 
 ### Improved
