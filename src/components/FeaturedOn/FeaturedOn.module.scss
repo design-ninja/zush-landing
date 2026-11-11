@@ -58,8 +58,9 @@
   &__Logo {
     display: block;
     flex-shrink: 0;
+    width: 24px;
     height: 24px;
-    width: auto;
+    object-fit: contain;
     border-radius: 6px;
   }
 
