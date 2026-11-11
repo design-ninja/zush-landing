@@ -29,6 +29,13 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 在进行任何批量重命名之前，先将几个文件复制到测试文件夹，并在那里先试用该方法。
 
+<BlogCTA
+  placement="early"
+  platform="windows"
+  title="每个文件都该有真正的名字，而不是 Name (1)、Name (2)"
+  description="Zush 会读取 PDF、扫描件、照片、截图和 Office 文件，为每个文件建议描述性名称。应用前可检查整批结果，并可通过 Rename History 恢复。免费重命名 50 次。"
+/>
+
 ## 1. File Explorer：用 F2 生成编号序列
 
 1. 打开文件夹并选中文件。使用 **Ctrl+A** 全选，或使用 **Ctrl+点击** 逐个选择。
@@ -122,6 +129,8 @@ Get-ChildItem *.jpg | Sort-Object LastWriteTime | ForEach-Object {
 | `Document1.docx` | `q3-marketing-plan-draft.docx` |
 
 开启文件夹监控后，“下载”文件夹或扫描仪文件夹中的新文件会在到达时被自动重命名。前 50 次 AI 重命名免费。
+
+![Zush for Windows 按内容批量重命名多种文件，并在应用前显示每个建议的文件名](/videos/windows/zush-batch-rename.mp4)
 
 <BlogCTA placement='inline' platform='windows' />
 

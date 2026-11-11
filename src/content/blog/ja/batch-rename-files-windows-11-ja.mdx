@@ -29,6 +29,13 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 一括リネームを行う前に、いくつかのファイルをテスト用フォルダーにコピーして、まずそこで試してください。
 
+<BlogCTA
+  placement="early"
+  platform="windows"
+  title="Name (1)、Name (2) ではなく、ファイルごとに本当の名前を"
+  description="Zush は PDF、スキャン、写真、スクリーンショット、Office ファイルを読み取り、それぞれに内容がわかる名前を提案します。適用前に一括で確認でき、Rename History から元に戻せます。50 回まで無料でリネームできます。"
+/>
+
 ## 1. File Explorer:F2 で連番を付ける
 
 1. フォルダーを開いてファイルを選択します。すべて選択するには **Ctrl+A**、個別に選ぶには **Ctrl+クリック** を使います。
@@ -122,6 +129,8 @@ Get-ChildItem *.jpg | Sort-Object LastWriteTime | ForEach-Object {
 | `Document1.docx` | `q3-marketing-plan-draft.docx` |
 
 フォルダー監視を有効にすると、ダウンロードフォルダーやスキャナーのフォルダーに届いた新しいファイルが、届いた時点で自動的にリネームされます。最初の 50 回の AI リネームは無料です。
+
+![Zush for Windows が内容に基づいて複数種類のファイルを一括リネームし、適用前に提案されたファイル名をすべて表示している様子](/videos/windows/zush-batch-rename.mp4)
 
 <BlogCTA placement='inline' platform='windows' />
 

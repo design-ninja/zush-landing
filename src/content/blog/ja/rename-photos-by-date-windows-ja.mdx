@@ -40,6 +40,13 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 | ExifTool | 無料 | なし | 不可 |
 | Zush | 50回まで無料、その後は月額$10または$48 | あり(写真の内容から生成) | Rename History で完全に復元 |
 
+<BlogCTA
+  placement="early"
+  platform="windows"
+  title="撮影日と写真の内容を名前に"
+  description="Zush は撮影日を読み取り、画像の内容も確認するので、IMG_4382.jpg が 2026-08-30_lisbon_tram_street.jpg になります。適用前にすべての名前を確認でき、Rename History から一括で元に戻せます。50 回まで無料でリネームできます。"
+/>
+
 ## 1. PowerRename(無料・Microsoft製)
 
 1. Microsoft Store から [Microsoft PowerToys](https://learn.microsoft.com/en-us/windows/powertoys/powerrename) をインストールし、PowerRename が有効になっていることを確認します。
@@ -94,6 +101,8 @@ exiftool "-FileName<DateTimeOriginal" -d "%Y-%m-%d_%H%M%S%%-c.%%e" .
 4. 名前を確認し、必要なものはダブルクリックで編集してから、**Rename** をクリックします。
 
 Zush は JPG、PNG、iPhone の HEIC、そして CR3、NEF、ARW、DNG などの RAW ファイルに対応しています。写真に撮影日がない場合は、推測せず Capture Date ブロックを空のままにします。Rename History を使えば、いつでも元の名前に戻せます。
+
+![Zush for Windows が内容に基づいて複数種類のファイルを一括リネームし、適用前に提案されたファイル名をすべて表示している様子](/videos/windows/zush-batch-rename.mp4)
 
 <BlogCTA placement='inline' platform='windows' />
 
