@@ -1,0 +1,160 @@
+---
+title: "Gescannte Dokumente automatisch umbenennen: Scanner, OCR und KI"
+description: "So bekommen deine Scans lesbare Dateinamen: Scanner-Einstellungen, OCR-Regeln und KI im Vergleich, plus Testablauf für Briefe vom Finanzamt und Rechnungen."
+date: "2026-11-11"
+slug: "gescannte-dokumente-automatisch-umbenennen"
+locale: "de"
+translationOf: "rename-scanned-documents-automatically"
+platform: "general"
+topic: "documents"
+tags:
+  - "Automatisierung"
+  - "PDFs & Dokumente"
+  - "Dateibenennung"
+tldr: "Lege einen festen Scan-Ordner und eine Namenskonvention fest und teste dann einige echte Scans. Für einfache Muster reichen die Benennungseinstellungen der Scanner-Software, für immer gleiche Layouts OCR plus Regeln, für gemischte Post vom Finanzamt, von der Krankenkasse oder vom Vermieter eine KI, die das Seitenbild liest. Prüfe unklare Angaben, bevor du automatisierst."
+reviewed: "2026-11-11"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Kurz gesagt: Damit deine Scans lesbare Namen bekommen, legst du zuerst fest, in welchen Ordner dein Scanner speichert und welche Angaben jeder Dateiname enthalten soll. Dann wählst du eine Methode: die Benennungseinstellungen der Scanner-Software, OCR plus Regeln oder eine KI, die das Seitenbild liest. Teste einen kleinen Stapel, bevor du die automatische Verarbeitung einschaltest. Wie Zush mit Scans umgeht, zeigt die Seite [Zush für gescannte Dokumente](/rename-scanned-documents).
+
+**Zuletzt geprüft: 11. November 2026.** Geschrieben vom Entwickler von [Zush – KI-Dateiumbenenner für Mac und Windows](/de).
+
+## Scan-Ordner einrichten und testen
+
+1. Speichere ein paar typische Scans in einen eigenen Eingangsordner. Nimm eine saubere Seite, ein mehrseitiges Dokument und einen schlechten Scan dazu, etwa einen schief eingezogenen Brief.
+2. Lege fest, welche Angaben du brauchst, zum Beispiel Dokumenttyp, Absender und Datum des Dokuments. Entscheide auch, was passiert, wenn ein Datum oder eine Nummer fehlt.
+3. Probiere zuerst die einfachste Methode, die diese Angaben liefern kann. Schau nach, was deine Scanner-Software schon kann, bevor du ein weiteres Tool installierst.
+4. Vergleiche jeden vorgeschlagenen Namen mit dem Original. Achte auf gedrehte Seiten, fehlende Angaben und Namen, die doppelt vorkommen würden. Korrigiere unsichere Dateien oder lege sie beiseite.
+5. Wenn die Stichprobe zuverlässig ist, richte die [Ordnerüberwachung](/docs/folder-monitoring) ein und teste neu eingehende Dateien. Bewahre die Original-Scans auf und prüfe, ob du die alten Namen wiederherstellen kannst, bevor du den Ablauf ausweitest.
+
+Scan-Ordner füllen sich schnell mit Namen wie `Scan0001.pdf`, `Scan_0042.pdf` oder `Gescanntes Dokument 4.pdf`. Daraus erfährst du weder, wer das Dokument geschickt hat, noch, worum es geht oder welches Datum es betrifft. Welche Benennungsoptionen du hast, hängt von der Scanner-Software und ihren Einstellungen ab.
+
+Dieser Leitfaden behandelt die Einstellungen am Scanner, den OCR-Weg und den KI-Weg. Wenn du hauptsächlich Rechnungen scannst, geht der Artikel [Rechnungen automatisch umbenennen](/de/blog/rechnungen-automatisch-umbenennen) tiefer auf Anbieter, Datum und Betrag ein. Für PDFs, die nie durch einen Scanner gelaufen sind, lies [PDF-Dateien automatisch umbenennen](/de/blog/pdf-dateien-automatisch-umbenennen). Komplette Archiv-Tools wie Paperless-ngx und DEVONthink vergleicht der Artikel über [die besten KI-Tools zur Dokumentenorganisation](/de/blog/best-ai-document-organizers-de).
+
+<BlogProductIntro
+  title="Jeder Scan soll sofort einen sinnvollen Namen bekommen?"
+  description="Zush überwacht deinen Scan-Ordner, liest jede Seite per KI und wendet eine feste Namenskonvention an: Datum, Dokumenttyp, Absender. Mit Vorschau und Rückgängig-Funktion unter Mac und Windows."
+  links={[
+    { href: '/rename-scanned-documents', label: 'Gescannte Dokumente umbenennen' },
+    { href: '/de/rename-pdf-with-ai', label: 'PDFs mit KI umbenennen' },
+    { href: '/docs/folder-monitoring', label: 'Ordnerüberwachung' },
+    { href: '/docs/naming-blocks', label: 'Naming Blocks' },
+  ]}
+/>
+
+<BlogCTA placement='inline' platform='general' />
+
+## Warum Standardnamen vom Scanner kaum auffindbar sind
+
+Ein Scan ist zunächst ein Bild der Seite. Einfache Benennungseinstellungen setzen einen Zeitstempel oder einen Zähler ein; Software mit OCR oder Dokumenterkennung bietet manchmal mehr. Prüfe die Optionen deiner installierten Version, bevor du einen weiteren Verarbeitungsschritt einbaust. Typische Dateinamen sehen so aus:
+
+| Quelle | Typischer Standardname |
+| --- | --- |
+| Fujitsu / Ricoh ScanSnap | Datum und Uhrzeit oder fester Name plus Zähler |
+| Brother ControlCenter | `Scan_0042.pdf` |
+| Epson Document Capture | `img20260612_10331290.pdf` |
+| Canon- und HP-Bürogeräte | `Scan0001.pdf`, `doc00421720260612103455.pdf` |
+| Apple Notizen und Scan-Apps auf dem Handy | `Gescanntes Dokument 4.pdf` |
+
+Das Ergebnis ist ein Ordner, der technisch ordentlich ist, denn jede Datei ist eindeutig und chronologisch, aber praktisch undurchsichtig. Um einen bestimmten Brief der Versicherung in `Scans/` zu finden, öffnest du eine Datei nach der anderen. Und eine falsch abgelegte Seite bleibt verschwunden, bis du den ganzen Ordner wieder durchgehst.
+
+Für Selbstständige, Praxen und Kanzleien summiert sich das: Ein Scan, den du nicht über seinen Namen findest, wird erneut angefordert, ausgedruckt und gescannt. Auch das papierlose Büro zu Hause funktioniert nur, wenn du den Bescheid vom Finanzamt oder die Nebenkostenabrechnung vom Vermieter in Sekunden wiederfindest.
+
+## Option 1: Benennung in der Scanner-Software einstellen
+
+Bei den meisten Scanner-Programmen kannst du den Namen der Ausgabedatei anpassen. ScanSnap Home, Brother iPrint&Scan und Epson Document Capture können in der Regel ein festes Präfix, das Scandatum und einen Zähler kombinieren, etwa `2026-06-12_steuer_001.pdf`.
+
+Fang hier an, wenn Präfix, Scandatum und Laufnummer reichen. Wenn du Angaben von der Seite selbst brauchst, such in deiner Scanner-Software nach OCR-basierter Benennung, erkannten Dokumentfeldern oder Barcode-Funktionen. Beachte: Das Scandatum ist nicht unbedingt das Datum des Dokuments. Ein Brief vom 2. Oktober, den du am 15. Oktober scannst, bekäme sonst das falsche Datum.
+
+Teste diese Funktionen mit deiner echten Post. Eine Einstellung, die mit einem Kassenbon klappt, muss für einen Arbeitsvertrag oder einen Brief der Schule vielleicht angepasst werden. Wenn die eingebauten Optionen zuverlässige Namen liefern, brauchst du womöglich gar keinen separaten KI-Umbenenner.
+
+Viele Multifunktionsgeräte im Büro können außerdem direkt in einen Netzwerkordner oder auf ein NAS scannen. Das ist praktisch, ändert aber nichts an den Namen: Auch dort landen zunächst `Scan0001.pdf` und Co.
+
+## Option 2: OCR plus Regeln oder Skripte
+
+Der klassische Weg hat zwei Schritte: Zuerst fügt eine OCR eine Textebene hinzu, dann ziehen Musterregeln einen Namen aus diesem Text. Adobe Acrobat kann einen ganzen Ordner per OCR verarbeiten; PDF-Editoren und Kommandozeilen-Tools können den Text anschließend nach einem Datum oder einer Kundennummer durchsuchen und bei einem Treffer umbenennen.
+
+Das lohnt sich bei Dokumenten mit immer gleichen Feldern, etwa der monatlichen Stromrechnung mit identischem Layout. Je unterschiedlicher die Post, desto mehr Regeln brauchst du. Zwei typisch deutsche Stolpersteine:
+
+- **Datumsformate.** Im Dokument steht `02.10.2026` oder „2. Oktober 2026“, im Dateinamen willst du `2026-10-02`. Deine Regeln müssen beide Schreibweisen erkennen und umwandeln.
+- **Umlaute in der OCR.** Aus „Krankenkasse Müller“ wird bei schwachen Scans schnell „Mu11er“ oder „Muller“. Regeln, die auf ein exaktes Wort warten, greifen dann nicht.
+
+Prüfe die OCR-Qualität und schicke Dokumente ohne Treffer oder mit mehrdeutigen Treffern in eine Prüfliste, statt einen Dateinamen zu erzwingen.
+
+## Option 3: KI, die das Seitenbild liest
+
+KI-Modelle mit Bildverständnis können Dokumentangaben direkt aus dem Seitenbild vorschlagen, ganz ohne separate Textebene. Das hilft bei wechselnden Layouts, das Ergebnis musst du aber trotzdem prüfen: verschwommene Daten, Handschrift, ähnliche Nummern und widersprüchliche Angaben können zu falschen Vorschlägen führen.
+
+[Zush](/de) nutzt genau das. Hat ein PDF auswählbaren Text, liest Zush den Text; ist ein Scan nur ein Bild der Seite, wechselt Zush automatisch zur Bildanalyse. In beiden Fällen bekommst du die Angaben, aus denen ein brauchbarer Name entsteht: Dokumenttyp, Absender oder Anbieter, Datum und alles, was du zusätzlich abfragst. Neben PDFs liest Zush auch Bildformate wie JPG, PNG, TIFF und HEIC, also die üblichen Ausgaben von Scannern und Handy-Apps.
+
+Der Ablauf bleibt überprüfbar:
+
+1. **Scans hinzufügen:** Zieh den Ordner hinein oder richte die [Ordnerüberwachung](/docs/folder-monitoring) auf den Ordner, in den dein Scanner speichert.
+2. **Konvention wählen:** Kombiniere [Naming Blocks](/docs/naming-blocks) wie Datum, Dokumenttyp und Absender. Ein Custom AI Block kann zusätzlich eine Vertragsnummer, ein Aktenzeichen oder eine Ausgabenkategorie herausziehen, die du in Alltagssprache beschreibst.
+3. **Stapel prüfen:** Jeder vorgeschlagene Name steht neben dem Original, bevor sich etwas ändert.
+4. **Mit Rückgängig anwenden:** Der Stapel wird direkt im Ordner umbenannt, und über Rename History kannst du ihn zurücksetzen.
+
+Weist du dem Scan-Ordner per **Monitor** ein Template zu, schließt sich der Kreis: Das Papier geht in den Einzug, und aus `Scan_0042.pdf` wird `2026-10-02_finanzamt_steuerbescheid_2025.pdf`, ohne dass jemand die Tastatur anfasst. Die Einrichtung zeigt der [Workflow für gescannte Dokumente](/rename-scanned-documents). Wer die Dateien anschließend auch in Ordner verteilen will, findet das im [KI-Dateiorganisator](/de/ai-file-organizer).
+
+## Eine Namenskonvention, die für Scans funktioniert
+
+Gescannte Post reicht von Rechnungen über Briefe und Kontoauszüge bis zu Formularen. Die Konvention muss also allgemein sein, ohne vage zu werden. Diese Struktur hat sich bewährt:
+
+```
+JJJJ-MM-TT_dokumenttyp_absender_detail.pdf
+
+2026-10-02_finanzamt_steuerbescheid_2025.pdf
+2026-10-14_krankenkasse_beitragsbescheinigung_2026.pdf
+2026-10-20_vermieter_nebenkostenabrechnung_2025.pdf
+2026-11-03_arbeitgeber_lohnabrechnung_oktober.pdf
+```
+
+Drei Regeln erledigen den Großteil der Arbeit:
+
+- **Datum zuerst, im ISO-Format.** `JJJJ-MM-TT` sortiert sich chronologisch, sobald Dateinamen alphabetisch sortiert werden. Das deutsche `02.10.2026` tut das nicht. Lege fest, ob das Feld das Dokumentdatum oder das Scandatum meint, und prüfe den gewählten Wert am Original.
+- **Dokumenttyp an zweiter Stelle.** `rechnung`, `bescheid`, `kontoauszug`, `vertrag`, `brief`: ein Dutzend einheitlicher Begriffe macht aus einem flachen Ordner etwas, das du mit dem Auge überfliegen und per Suche filtern kannst.
+- **Absender an dritter Stelle.** Die Behörde, die Versicherung, der Anbieter. Lege in den Anweisungen deines Templates eine einheitliche Schreibweise fest und prüfe, ob die Ergebnisse sich daran halten.
+
+**Warum ae, oe und ue statt Umlauten?** Kleinbuchstaben ohne Umlaute und Leerzeichen funktionieren überall gleich: auf dem Mac, unter Windows, auf einem NAS, in Cloud-Ordnern und als E-Mail-Anhang. Umlaute werden je nach System intern unterschiedlich gespeichert, was beim Synchronisieren oder Suchen gelegentlich zu doppelten oder nicht gefundenen Dateien führt. `pruefbescheid` ist hässlicher als `Prüfbescheid`, aber zuverlässiger.
+
+Weitere Muster für verschiedene Bereiche findest du im Leitfaden zu [Dateibenennungskonventionen](/de/blog/dateibenennung-konventionen-best-practices). Wie du Belege und Bescheide für die Steuererklärung ablegst, zeigt [Steuerunterlagen digital organisieren](/de/blog/steuerunterlagen-digital-organisieren).
+
+Ein Hinweis zum Archivieren: Für steuerlich und geschäftlich relevante Unterlagen gelten Aufbewahrungspflichten. Ob ein Scan das Papieroriginal ersetzen darf, klärst du am besten mit deiner Steuerberatung. Dieser Artikel ist keine Rechts- oder Steuerberatung.
+
+## Datenschutz: was den Computer verlässt und was nicht
+
+Gescannte Post ist meist der sensibelste Ordner auf einem Computer: Kontoauszüge, Arztbriefe, Bescheide, Verträge. Zush bietet dir drei Varianten:
+
+| Modus | Was passiert |
+| --- | --- |
+| **Cloud AI (Standard)** | Die Dateianalyse läuft über eine verwaltete Cloud-KI; Dateinamen und Ordnerstruktur bleiben lokal. |
+| **BYOK** | Die Analyse geht an dein eigenes OpenAI-, Anthropic- oder Google-API-Konto, mit deinen Schlüsseln und deren Datenbedingungen. |
+| **Offline AI** | Lokale Modelle über Ollama analysieren unterstützte Dateien vollständig auf deinem Mac oder Windows-PC; nichts verlässt das Gerät. |
+
+Für Gesundheits-, Finanz- oder Personalunterlagen sind Offline AI oder BYOK die ehrliche Empfehlung. Genau deshalb passt ein Desktop-Umbenenner besser zu gescannter Post als Web-Tools, bei denen du jede Datei hochlädst. Die Einrichtung beschreibt die Seite zum [Offline-KI-Umbenenner](/offline-ai-file-renamer).
+
+Zush gibt es für [Mac](/de/mac) und [Windows](/de/windows). Du kannst mit 50 kostenlosen Umbenennungen testen, und eine Lizenz gilt für bis zu 3 Geräte.
+
+## FAQ
+
+### Wie benenne ich gescannte Dokumente automatisch um, sobald sie ankommen?
+
+Richte die Ordnerüberwachung von Zush auf den Ordner, in den dein Scanner speichert, und weise ein Template zu. Jeder neue Scan wird per KI gelesen, nach deiner Konvention umbenannt und in Rename History protokolliert, sodass du den Stapel zurücksetzen kannst.
+
+### Muss ich meine Scans vor dem Umbenennen per OCR verarbeiten?
+
+Nein. Hat ein gescanntes PDF keine Textebene, liest Zush das Seitenbild direkt. Ein eigener OCR-Durchlauf lohnt sich nur, wenn du zusätzlich durchsuchbaren Text im PDF haben möchtest. Das ist eine andere Aufgabe als die Benennung der Datei.
+
+### Funktioniert das mit Scannern von ScanSnap, Brother, Canon, Epson und HP?
+
+Ja. Zush liest die gespeicherte Ausgabedatei, die Marke des Scanners spielt also keine Rolle. Jedes Gerät, das PDFs oder Bilder in einen Ordner speichert, passt in denselben Ablauf, auch Scan-Apps auf dem Handy, die in einen Cloud-Ordner synchronisieren.
+
+### Kann ich einen Rückstand von Hunderten alter Scans umbenennen?
+
+Ja. Füge den ganzen Ordner hinzu, prüfe die vorgeschlagenen Namen in einem Durchgang und wende den Stapel an. Beginne mit einer kopierten Testauswahl von 10 bis 20 Scans, um das Template abzustimmen, bevor du den gesamten Bestand verarbeitest.
+
+### Was ist mit handschriftlichen oder schlechten Scans?
+
+Schlechte Seiten können zu unvollständigen oder falschen Namen führen, auch zu plausibel aussehenden Daten und Nummern. Drehe oder scanne unklare Seiten nach Möglichkeit erneut, prüfe die vorgeschlagenen Angaben und lege alles beiseite, was du nicht bestätigen kannst, bevor du umbenennst.

@@ -1,0 +1,242 @@
+---
+title: "Rechnungen automatisch umbenennen mit KI: Anleitung 2026"
+description: "Rechnungen automatisch umbenennen: KI liest PDF und Scan, übernimmt Datum, Lieferant, Rechnungsnummer und Betrag und benennt alle Belege einheitlich."
+date: "2026-11-11"
+slug: "rechnungen-automatisch-umbenennen"
+locale: "de"
+translationOf: "automatically-rename-invoices-ai"
+platform: "general"
+topic: "documents"
+tags:
+  - "Automatisierung"
+  - "PDFs & Dokumente"
+  - "Dateibenennung"
+tldr: "Um Rechnungen automatisch umzubenennen, liest Zush jedes PDF und jeden Scan, übernimmt Lieferant, Rechnungsdatum, Rechnungsnummer und Betrag, zeigt alle neuen Namen in einer Vorschau und wendet sie als einen Stapel an, der sich rückgängig machen lässt."
+reviewed: "2026-11-11"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Kurz gesagt: Rechnungen benennst du am zuverlässigsten automatisch um, wenn ein KI-Tool den Inhalt jedes PDFs oder Scans liest, Lieferant, Rechnungsdatum, Rechnungsnummer und Betrag herauszieht und daraus nach einem festen Template einen Dateinamen baut. [Zush](/de) macht genau das auf Mac und Windows, mit Vorschau für den ganzen Stapel, wiederverwendbaren Naming Blocks, Ordnerüberwachung per Monitor und Rückgängig-Funktion.
+
+Ein Rechnungsordner fängt meist ordentlich an und endet mit `rechnung.pdf`, `download (7).pdf`, `scan_0042.pdf` und `Rechnung_final_neu.pdf`. Alles, was ein guter Name braucht, steht bereits im Dokument. Manuelles oder musterbasiertes Umbenennen kommt an diese Angaben aber nur heran, wenn jemand jede Datei öffnet.
+
+Dieser Leitfaden zeigt den Ablauf speziell für Eingangs- und Ausgangsrechnungen. Wenn dein Ordner eher Verträge, Bescheide und gemischte PDFs enthält, passt die Anleitung [PDF-Dateien automatisch umbenennen](/de/blog/pdf-dateien-automatisch-umbenennen) besser. Einen Überblick über komplette Tools zur Dokumentenorganisation findest du im Vergleich [die besten KI-Tools zur Dokumentenorganisation](/de/blog/best-ai-document-organizers-de).
+
+**Zuletzt geprüft: 11. November 2026.** Geschrieben vom Entwickler von [Zush – KI-Dateiumbenenner für Mac und Windows](/de). Die Angaben zu Renamed.to und Renamer.ai stammen von deren offiziellen Produktseiten und dem Renamer.ai-v5-Changelog, geprüft am 8. Oktober 2026. Genauigkeitswerte sind Herstellerangaben, keine unabhängigen Tests.
+
+<BlogProductIntro
+  title="Jede Rechnung nach demselben Muster benennen?"
+  description="Zush liest Rechnungs-PDFs und Scans, übernimmt die Angaben, die du auswählst, zeigt den ganzen Stapel in einer Vorschau und benennt nach einem wiederverwendbaren Template um, mit Rückgängig-Funktion auf Mac und Windows."
+  links={[
+    { href: '/rename-invoices-with-ai', label: 'Rechnungen mit KI umbenennen' },
+    { href: '/rename-receipts-with-ai', label: 'Belege umbenennen' },
+    { href: '/de/rename-pdf-with-ai', label: 'PDFs mit KI umbenennen' },
+    { href: '/de/ai-file-organizer', label: 'KI-Dateiorganisation' },
+  ]}
+/>
+
+<BlogCTA placement='inline' platform='general' />
+
+## Warum Rechnungsdateien im Chaos enden
+
+Rechnungen kommen aus vielen Richtungen, und jede Quelle hat ihren eigenen Standardnamen:
+
+- das Kundenportal von Telekom oder Vodafone liefert `Rechnung.pdf` oder eine lange Nummer
+- Amazon Business lädt `invoice.pdf` herunter, oft mehrmals am Tag
+- der Scanner im Büro erzeugt `scan_0042.pdf`
+- die Stadtwerke schicken die Jahresabrechnung als E-Mail-Anhang `Dokument.pdf`
+- lexoffice, sevDesk oder dein Rechnungsprogramm exportieren Ausgangsrechnungen als `RE-2026-0815.pdf`
+- eine Kollegin hängt `final`, `neu` oder `korrigiert` an
+
+Der übliche Ausweg: jede Datei öffnen, den Briefkopf lesen und einen Namen wie `2026-10-14_telekom_rechnung_4711.pdf` tippen. Bei fünf Rechnungen klappt das. Beim Monatsabschluss, bei der Übergabe an den Steuerberater oder in einem gemeinsamen Eingangsordner nicht mehr.
+
+Ein dauerhaft brauchbarer Rechnungsname beantwortet die Fragen, mit denen du später suchst:
+
+1. Von wem kommt die Rechnung, oder an wen ging sie?
+2. Zu welchem Datum oder Buchungsmonat gehört sie?
+3. Welche Rechnungsnummer unterscheidet sie von ähnlichen?
+4. Welcher Betrag bestätigt, dass es die richtige ist?
+
+Nicht jedes Feld muss in den Namen. Er braucht nur genug stabile Angaben, um chronologisch zu sortieren, nach Lieferant zu suchen und fast gleiche Dateien auseinanderzuhalten.
+
+### Deutsches Datum im Dokument, ISO-Datum im Dateinamen
+
+Auf deutschen Rechnungen steht das Datum fast immer als `14.10.2026`. Im Dateinamen sortiert dieses Format falsch, weil der Tag vorne steht. Nimm im Namen deshalb das ISO-Format `2026-10-14`: Dann ordnet Finder oder Explorer alle Rechnungen automatisch chronologisch. Dasselbe gilt für Beträge: Aus `1.249,90 €` wird im Dateinamen besser `1249-90-eur`, ohne Punkt, Komma und Eurozeichen.
+
+## Drei Wege, Rechnungen umzubenennen
+
+| Ansatz | Liest den Rechnungsinhalt? | Funktioniert im Stapel? | Geeignet für | Grenze |
+|---|---|---|---|---|
+| Manuell | Ein Mensch liest | Langsam | Wenige Einzelfälle | Mühsam und uneinheitlich |
+| Regelbasiert | Nur vorhandenen Dateinamen oder Metadaten | Ja | Saubere Exporte mit festem Muster | Kann fehlenden Lieferanten, Datum oder Betrag nicht ergänzen |
+| KI nach Inhalt | Ja: Textebene, OCR oder Bildanalyse | Ja | Gemischte PDFs und Scans | Braucht Prüfung und ein klares Template |
+
+### 1. Manuell umbenennen
+
+Volle Kontrolle, keine neue Software: Rechnung öffnen, Lieferant und Datum abschreiben, Datei umbenennen, wiederholen. Für ein oder zwei Dokumente ist das sinnvoll, weil sich eine Einrichtung nicht lohnt.
+
+Das Problem ist die Einheitlichkeit. Eine Person schreibt `Telekom`, die nächste `Deutsche-Telekom-AG`, die dritte setzt das Datum ans Ende. Jeder einzelne Name wirkt vernünftig, aber Suche und Sortierung werden unzuverlässig.
+
+### 2. Regelbasiert umbenennen
+
+Ein regelbasiertes Tool ändert vorhandene Namen mit Suchen und Ersetzen, regulären Ausdrücken, Zählern, Datum oder Metadaten. Wenn jeder Export schon wie `lieferant_20261014_4711.pdf` aussieht, bringt eine Regel Trennzeichen und Reihenfolge ohne KI in Form.
+
+Regeln können aber keine Angaben herbeizaubern, die im alten Namen fehlen. In `scan_0042.pdf` steht weder Lieferant noch Rechnungsnummer. OCR plus eigenes Skript kann die Lücke schließen, doch dann kümmerst du dich selbst um Lesefehler, doppelte Namen, Wiederholungen und das Zurücksetzen.
+
+### 3. Mit KI nach Inhalt umbenennen
+
+KI liest die Rechnung selbst, statt dem aktuellen Dateinamen zu vertrauen. Digitale PDFs bringen eine Textebene mit, Scans und Belegfotos brauchen OCR oder Bildanalyse. Die erkannten Angaben fließen in ein Template, das Reihenfolge, Trennzeichen, Datumsformat, Schreibweise und optionale Felder festlegt.
+
+So bekommt jede Datei einen eigenen Namen, der trotzdem derselben Konvention folgt. Wichtig sind dabei Vorschau, manuelle Korrektur, Umgang mit Namenskollisionen und Rückgängig.
+
+## Rechnungen mit Zush automatisch umbenennen: Schritt für Schritt
+
+Die Schritte funktionieren auf Mac und Windows. Zush kann Rechnungen zusätzlich per KI-Ordnersortierung in Zielordner einsortieren, das ist optional.
+
+### 1. Kleinen Teststapel kopieren
+
+Beginne mit 10 bis 20 typischen Dateien statt mit dem ganzen Buchhaltungsarchiv. Nimm ein digitales PDF, eine gescannte Rechnung, zwei Rechnungen vom selben Lieferanten, eine Gutschrift, eine Rechnung in Fremdwährung und einen schlechten Scan dazu. Die Originale bleiben während des Tests in einem Sicherungsordner.
+
+### 2. Rechnungsordner hinzufügen
+
+Ziehe die Dateien oder den Ordner in Zush. Die App nutzt vorhandenen PDF-Text und kann [gescannte Dokumente](/rename-scanned-documents) per Bildanalyse lesen. Wie das bei Papierpost und Scannerordnern im Alltag aussieht, beschreibt der Leitfaden [gescannte Dokumente automatisch umbenennen](/de/blog/gescannte-dokumente-automatisch-umbenennen). Passwortgeschützte oder unlesbare Dateien gehören in einen Prüfstapel, nicht unter einen geratenen Namen.
+
+### 3. Dateinamen-Template bauen
+
+Nutze die eingebauten [Naming Blocks](/docs/naming-blocks) für feste Felder und einen [Custom AI Block](/docs/custom-ai-blocks) für Angaben, die es noch nicht als Block gibt. Ein praxistaugliches Muster:
+
+```text
+{rechnungsdatum}_{lieferant}_{rechnungsnummer}_{betrag}_{waehrung}
+```
+
+Optionale Felder bleiben optional. Hat eine Rechnung keine verlässliche Nummer, ist `2026-10-14_stadtwerke_86-40-eur.pdf` besser als eine erfundene Kennung.
+
+### 4. Jeden vorgeschlagenen Namen prüfen
+
+Kontrolliere Schreibweise des Lieferanten, Rechnungsdatum gegenüber Fälligkeitsdatum, Dezimaltrennzeichen, Währung und Rechnungsnummer. Die Sicherheit der KI ist kein Buchungsnachweis. Maßgeblich bleibt das Original-PDF, und in der Vorschau korrigierst du unklare Felder.
+
+### 5. Stapel anwenden, Rückgängig behalten
+
+Wende die geprüften Namen an. Zush speichert die Änderung in der [Rename History](/docs/undo-history), sodass du den Stapel zurücksetzen kannst, falls das Template noch eine Runde braucht. Umbenennen ändert nur den Dateinamen, nicht Text, Anmerkungen, Lesezeichen, Signaturen oder Formularfelder im PDF.
+
+### 6. Eingangsordner per Monitor überwachen
+
+Läuft der manuelle Test zuverlässig, weise dasselbe Template per [Monitor](/docs/folder-monitoring) einem Ordner zu: dem Downloads-Ordner, dem Scannerordner oder einem synchronisierten Rechnungseingang. Prüfe die ersten neuen Dateien noch in der Vorschau, bevor du den Ablauf ganz laufen lässt.
+
+Sensible Rechnungen können mit Ollama oder LM Studio auf deinem Computer bleiben, siehe [Offline AI](/docs/offline-ai). Zush Cloud AI und dein eigener API-Schlüssel sind die weiteren Optionen. Eine Zush-Lizenz gilt für bis zu 3 Geräte unter Mac und Windows.
+
+## Vorlagen für Rechnungsnamen in der Buchhaltung
+
+Welches Muster passt, hängt davon ab, wie du später suchst und an wen du die Belege weitergibst. Mehr zur Konvention selbst steht im englischen Leitfaden zur [Namenskonvention für Rechnungen](/blog/invoice-file-naming-convention).
+
+### Chronologisch für die laufende Buchhaltung
+
+```text
+{rechnungsdatum}_{lieferant}_{rechnungsnummer}
+```
+
+Vorher: `download (7).pdf`
+Nachher: `2026-10-14_telekom_rechnung_4711.pdf`
+
+Sortiert nach Rechnungsdatum und hält die Suche nach Lieferant einfach. Ein guter Standard für Monatsordner.
+
+### Lieferant zuerst für Eingangsrechnungen
+
+```text
+{lieferant}_{rechnungsdatum}_{rechnungsnummer}_{betrag}_{waehrung}
+```
+
+Vorher: `invoice.pdf`
+Nachher: `amazon_2026-10-02_de6a1b2c3_49-99-eur.pdf`
+
+Sinnvoll, wenn die Suche meist mit „alle Rechnungen von diesem Lieferanten“ beginnt. Betrag und Währung helfen bei wiederkehrenden Rechnungen wie Mobilfunk oder Strom.
+
+### Ausgangsrechnungen nach Kunde
+
+```text
+{kunde}_{rechnungsdatum}_{rechnungsnummer}_{betrag}
+```
+
+Vorher: `RE-2026-0815.pdf`
+Nachher: `mueller-gmbh_2026-10-31_re-2026-0815_1249-90-eur.pdf`
+
+Damit findest du offene Posten pro Kunde schnell, auch wenn dein Rechnungsprogramm nur fortlaufende Nummern exportiert.
+
+### Buchungsmonat und Belegart für den Steuerberater
+
+```text
+{jahr}-{monat}_{lieferant}_{belegart}_{rechnungsnummer}
+```
+
+Vorher: `Dokument.pdf`
+Nachher: `2026-09_vodafone_rechnung_88310.pdf`
+
+Hält Monatsordner einheitlich und trennt Rechnungen, Gutschriften, Abrechnungen und Belege. Wenn dein Steuerberater die Belege nach DATEV übernimmt oder du sie in lexoffice oder sevDesk hochlädst, erkennt jeder sofort, was in einer Datei steckt. Wie du daraus eine komplette Ablage für das Steuerjahr machst, zeigt der Leitfaden [Steuerunterlagen digital organisieren](/de/blog/steuerunterlagen-digital-organisieren).
+
+## E-Rechnung, ZUGFeRD und XRechnung: was das für Dateinamen bedeutet
+
+Seit dem 1. Januar 2025 müssen inländische Unternehmen E-Rechnungen empfangen können; laut [FAQ des Bundesfinanzministeriums](https://www.bundesfinanzministerium.de/Content/DE/FAQ/e-rechnung.html) reicht dafür bereits ein E-Mail-Postfach. Damit landen neben klassischen PDFs zunehmend strukturierte Formate wie ZUGFeRD und XRechnung im Rechnungseingang. Dies ist keine Steuerberatung: Was für dein Unternehmen genau gilt, klärst du mit deinem Steuerberater.
+
+Für die Dateiablage heißt das:
+
+- **ZUGFeRD** ist ein PDF mit eingebetteten Rechnungsdaten. Zush liest das PDF wie jede andere Rechnung und benennt es nach dem sichtbaren Inhalt.
+- **XRechnung** kommt meist als reine XML-Datei. Zush liest XML als Textdatei, wertet aber keine strukturierten XRechnung-Felder gezielt aus. Teste das Template deshalb erst an einigen echten Dateien, bevor du einen ganzen Ordner verarbeitest. Welche Formate Zush liest, steht unter [unterstützte Dateitypen](/docs/supported-file-types).
+
+Ein Dateiname ersetzt keine ordnungsgemäße Archivierung. Er sorgt nur dafür, dass du und dein Steuerberater eine Rechnung in Sekunden wiederfindet.
+
+## Renamed.to, Renamer.ai oder Desktop-App?
+
+Renamed.to und Renamer.ai lesen ebenfalls Dokumentinhalte mit KI, unterscheiden sich aber im Ablauf und in der Abrechnung von einer Desktop-App wie Zush.
+
+| Tool | Ablauf | Preise (Stand 8. Oktober 2026) | Automatisierung und Speicher | Passt für |
+|---|---|---|---|---|
+| Renamed.to | Web-Upload, verbundener Cloud-Speicher, API | 50 Dokumente/Monat kostenlos; $9 für 1.000 oder $49 für 10.000 Credits | Drive, Dropbox, OneDrive und API; Bezahlung pro Dokument | Browser-, Cloud- und API-Workflows |
+| Renamer.ai | Web plus Desktop-App für Mac und Windows | Cloud-Tarife: 25 Dateien/Monat kostenlos; $9,95/200, $29,95/1.000, $99,95/5.000 pro Monat; Limits der Local/BYOK-Lizenz vor dem Kauf prüfen | Magic Folders; Cloud, herunterladbare lokale Modelle, BYOK mit OpenAI oder Gemini | OCR-lastige Workflows mit Wahl des KI-Modus |
+| Zush | Desktop-App für Mac und Windows | 50 Umbenennungen zum Start; $10/Monat oder $48 einmalig, PRO ohne Mengenlimit | Benennt lokale Dateien direkt um; Monitor, BYOK, Offline AI, Rückgängig | Große Stapel und wiederverwendbare Templates für lokale Ordner |
+
+Renamed.to wirbt mit 95 %+ Genauigkeit ab Werk und 100 % mit Prüfung für unterstützte Dokumenttypen; das ist eine Herstellerangabe. Abgerechnet wird nach Verbrauch: 50 kostenlose Dokumente pro Monat, danach Credit-Pakete, die 12 Monate gültig sind. Renamer.ai bietet Weboberfläche und Desktop-App mit Magic Folders, Templates, Vorschau und Rückgängig; seit v5 gibt es lokale Modelle sowie BYOK mit OpenAI und Gemini.
+
+Zush ist die Wahl für den gesamten Rechnungs-Workflow auf Mac oder Windows, wenn der Rückstau groß ist und kein Kontingent pro Datei mitlaufen soll: wiederverwendbare Templates, Custom AI Blocks, Prüfung, Monitor und Rückgängig. Zush PRO enthält Cloud-Umbenennungen ohne Mengenlimit und ohne eigenen API-Schlüssel; BYOK und Offline AI bleiben optional. Renamed.to lohnt sich, wenn ein reiner Browser-, Cloud- oder API-Ablauf Pflicht ist, Renamer.ai, wenn du genau dessen OCR- und Magic-Folders-Ablauf brauchst.
+
+## Belege ordnen: dasselbe Muster, schwierigere Vorlagen
+
+Kassenbons und Quittungen haben dieselben Kernangaben: Händler, Datum, Betrag, Währung, Kategorie. Sie kommen aber öfter als HEIC- oder JPG-Foto, als schmaler Thermopapier-Scan oder als PDF ohne Textebene. Licht, Knicke, verblasste Schrift und handschriftliches Trinkgeld machen das Auslesen unberechenbarer.
+
+Ein Template für Belege:
+
+```text
+{kaufdatum}_{haendler}_{betrag}_{waehrung}_{ausgabenkategorie}
+```
+
+Halte unsichere Fotos in einem Prüfstapel und übernimm eine von der KI vorgeschlagene Steuerkategorie nie ungeprüft. Der Ablauf für [Belege mit KI umbenennen](/rename-receipts-with-ai) verarbeitet Fotos und PDFs, die Seite [PDFs mit KI umbenennen](/de/rename-pdf-with-ai) deckt Verträge, Berichte und andere Dokumente ab.
+
+## Häufige Fehler
+
+**Fälligkeitsdatum statt Rechnungsdatum.** Lege fest, welches Datum in den Namen kommt, und halte es im Template fest.
+
+**Beträge ungeprüft übernehmen.** Netto, Umsatzsteuer, Brutto und bereits gezahlter Betrag stehen oft auf derselben Seite.
+
+**Zu lange Namen.** Behalte nur Felder, die beim Suchen helfen. Alle anderen Details stehen in der Rechnung selbst.
+
+**Dateien verschieben, bevor die Namen stabil sind.** Wenn Hazel oder eine andere Regel vom neuen Namen abhängt, teste zuerst die Benennung und schalte das Verschieben danach als eigenen Schritt ein.
+
+**Kollisionen nicht testen.** Zwei Rechnungen desselben Lieferanten am selben Tag brauchen Rechnungsnummer, Betrag oder Zähler, damit die Namen eindeutig bleiben.
+
+## FAQ
+
+### Wie kann ich Rechnungen automatisch umbenennen?
+
+Füge in Zush einen Rechnungsordner hinzu, lass Lieferant, Rechnungsdatum, Rechnungsnummer und Betrag auslesen, setze diese Angaben in ein wiederverwendbares Template ein, prüfe die vorgeschlagenen Namen und weise das Template danach per Monitor dem Eingangsordner zu.
+
+### Kann KI gescannte Rechnungen als PDF auslesen und umbenennen?
+
+Ja. Zush nutzt Bildanalyse, wenn ein PDF ein reiner Scan ohne markierbaren Text ist. Die Scanqualität zählt trotzdem, prüfe also Lieferant, Datum, Rechnungsnummer, Betrag und Währung, bevor du den Stapel anwendest.
+
+### Welches Dateinamenformat ist für Rechnungen am besten?
+
+Ein guter Standard ist `JJJJ-MM-TT_lieferant_rechnungsnummer.pdf`, zum Beispiel `2026-10-14_telekom_rechnung_4711.pdf`. Ergänze Betrag und Währung bei wiederkehrenden Rechnungen und den Firmennamen, wenn ein Eingangsordner mehrere Unternehmen bedient.
+
+### Verändert das Umbenennen die Rechnung selbst?
+
+Nein. Zush ändert nur den Dateinamen auf der Festplatte, nicht den PDF-Inhalt. Text, Signaturen, Anmerkungen, Lesezeichen, Formularfelder und Seitenreihenfolge bleiben unverändert. Programme, die auf den alten Pfad verweisen, musst du gegebenenfalls anpassen.
