@@ -22,24 +22,14 @@ const titleByLocale: Partial<Record<Locale, string>> = {
 
 const catalogs = [
   {
+    name: 'G2',
+    href: 'https://www.g2.com/products/zush/reviews',
+    icon: '/images/featured-on/g2.png',
+  },
+  {
     name: 'Product Hunt',
     href: 'https://www.producthunt.com/products/zush',
     modifier: styles.FeaturedOnItem_producthunt,
-  },
-  {
-    name: 'AlternativeTo',
-    href: 'https://alternativeto.net/software/zush/',
-    icon: '/images/featured-on/alternativeto.svg',
-  },
-  {
-    name: 'Stork.AI',
-    href: 'https://www.stork.ai/en/zush',
-    icon: '/images/featured-on/stork.png',
-  },
-  {
-    name: 'ProductDirs',
-    href: 'https://productdirs.com/projects/zush',
-    icon: '/images/featured-on/productdirs.svg',
   },
   {
     name: 'Capterra',
@@ -47,14 +37,19 @@ const catalogs = [
     icon: '/images/featured-on/capterra.png',
   },
   {
-    name: 'MacUpdate',
-    href: 'https://zush.macupdate.com/',
-    icon: '/images/featured-on/macupdate.png',
+    name: 'SourceForge',
+    href: 'https://sourceforge.net/software/product/Zush/',
+    icon: '/images/featured-on/sourceforge.png',
   },
   {
-    name: 'MacApp.Supply',
-    href: 'https://macapp.supply/app/zush',
-    icon: '/images/featured-on/macapp-supply.png',
+    name: 'Homebrew',
+    href: 'https://formulae.brew.sh/cask/zush',
+    icon: '/images/featured-on/homebrew.png',
+  },
+  {
+    name: 'Software Advice',
+    href: 'https://www.softwareadvice.com/product/549611-Zush/',
+    icon: '/images/featured-on/software-advice.png',
   },
   {
     name: 'GetApp',
@@ -62,20 +57,30 @@ const catalogs = [
     icon: '/images/featured-on/getapp.png',
   },
   {
-    name: 'SaaSHub',
-    href: 'https://www.saashub.com/zush',
-    icon: '/images/featured-on/saashub.png',
+    name: 'Softpedia',
+    href: 'https://www.softpedia.com/get/Artificial-Intelligence-Generative-AI/Zush.shtml',
+    icon: '/images/featured-on/softpedia.svg',
   },
   {
-    name: 'Uneed',
-    href: 'https://www.uneed.best/tool/zush',
-    icon: '/images/featured-on/uneed.png',
+    name: 'Softonic',
+    href: 'https://zush.en.softonic.com/',
+    icon: '/images/featured-on/softonic.png',
+  },
+  {
+    name: 'AlternativeTo',
+    href: 'https://alternativeto.net/software/zush/',
+    icon: '/images/featured-on/alternativeto.svg',
   },
   // Dang.ai and ToolPilot listings require a dofollow cross-link to their homepage
   {
     name: 'Dang.ai',
     href: 'https://dang.ai',
     icon: '/images/featured-on/dang.png',
+  },
+  {
+    name: 'SaaSHub',
+    href: 'https://www.saashub.com/zush',
+    icon: '/images/featured-on/saashub.png',
   },
   {
     name: 'ToolPilot',
@@ -92,9 +97,20 @@ const catalogs = [
     nofollow: true,
   },
   {
-    name: 'Submit AI Tools',
-    href: 'https://submitaitools.org/zushapp-com/',
-    icon: '/images/featured-on/submit-ai-tools.png',
+    name: 'MacUpdate',
+    href: 'https://zush.macupdate.com/',
+    icon: '/images/featured-on/macupdate.png',
+  },
+  {
+    name: 'Uneed',
+    href: 'https://www.uneed.best/tool/zush',
+    icon: '/images/featured-on/uneed.png',
+  },
+  {
+    name: 'FileHorse',
+    href: 'https://www.filehorse.com/download-zush/',
+    icon: '/images/featured-on/filehorse.png',
+    nofollow: true,
   },
   {
     name: 'ScrollLaunch',
@@ -110,10 +126,29 @@ const catalogs = [
     icon: '/images/featured-on/launchpadly.svg',
   },
   {
-    name: 'FileHorse',
-    href: 'https://www.filehorse.com/download-zush/',
-    icon: '/images/featured-on/filehorse.png',
-    nofollow: true,
+    name: 'winget',
+    href: 'https://winstall.app/apps/Lirikpro.Zush',
+    icon: '/images/featured-on/winstall.png',
+  },
+  {
+    name: 'Stork.AI',
+    href: 'https://www.stork.ai/en/zush',
+    icon: '/images/featured-on/stork.png',
+  },
+  {
+    name: 'ProductDirs',
+    href: 'https://productdirs.com/projects/zush',
+    icon: '/images/featured-on/productdirs.svg',
+  },
+  {
+    name: 'MacApp.Supply',
+    href: 'https://macapp.supply/app/zush',
+    icon: '/images/featured-on/macapp-supply.png',
+  },
+  {
+    name: 'Submit AI Tools',
+    href: 'https://submitaitools.org/zushapp-com/',
+    icon: '/images/featured-on/submit-ai-tools.png',
   },
 ];
 
