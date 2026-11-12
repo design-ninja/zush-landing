@@ -7,10 +7,15 @@
     &__Container {
         text-align: center;
 
-        // Service screens (purchase, activation, recovery) are short messages,
-        // so their titles sit one step below a marketing page's h1.
+        // Service screens (purchase, activation, recovery) are short status
+        // messages, so their titles stay well below a marketing page's h1.
         h1 {
-            @include heading-size('h2');
+            font-size: 2rem;
+            letter-spacing: -0.025em;
+
+            @include mobile {
+                font-size: 1.6rem;
+            }
         }
 
         &--sm {
