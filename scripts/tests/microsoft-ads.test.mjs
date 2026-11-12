@@ -9,14 +9,17 @@ const compile = source => ts.transpileModule(source.replace(/^import[\s\S]*?from
   compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
 }).outputText;
 
-function client({ enabled = true, gpc = false, dnt = '', hostname = 'zushapp.com', failure = false } = {}) {
+function client({ enabled = true, gpc = false, dnt = '', hostname = 'zushapp.com', failure = false, noAdTracking = false } = {}) {
   const scripts = [];
   const calls = [];
   let requests = 0;
   const runtime = {
     exports: {}, navigator: { globalPrivacyControl: gpc, doNotTrack: dnt },
     window: { location: { hostname } },
-    document: { createElement: () => ({}), head: { appendChild: s => scripts.push(s) } },
+    document: {
+      createElement: () => ({}), head: { appendChild: s => scripts.push(s) },
+      documentElement: { hasAttribute: name => noAdTracking && name === 'data-no-ad-tracking' },
+    },
     fetch: async () => { requests++; if (failure) throw new Error('blocked'); return { ok: true, json: async () => ({ enabled, tagId: '343281815' }) }; },
     encodeURIComponent,
   };
@@ -61,8 +64,8 @@ test('non-US and unknown countries do not load UET or emit conversions', async (
   assert.equal(c.runtime.window.uetq, undefined);
 });
 
-test('privacy signals and non-production hosts prevent even the config request', async () => {
-  for (const options of [{ gpc: true }, { dnt: '1' }, { hostname: 'preview.vercel.app' }]) {
+test('privacy signals, non-production hosts and credential pages prevent even the config request', async () => {
+  for (const options of [{ gpc: true }, { dnt: '1' }, { hostname: 'preview.vercel.app' }, { noAdTracking: true }]) {
     const c = client(options);
     c.downloads.trackDownloadClick({ os: 'windows', source: 'hero' }, {});
     await settle();

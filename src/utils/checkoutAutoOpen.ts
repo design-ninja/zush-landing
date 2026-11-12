@@ -6,6 +6,7 @@ import {
   getCheckoutParam,
   isCheckoutSessionToken,
   isPaddleTransactionId,
+  readCheckoutSessionHandoff,
 } from '@/utils/checkoutParams';
 
 let hasOpenedCheckout = false;
@@ -21,7 +22,10 @@ export function bindCheckoutAutoOpen(): void {
 
   const transactionId = getCheckoutParam('_ptxn');
   if (isPaddleTransactionId(transactionId)) {
-    const checkoutSession = getCheckoutParam('checkout_session');
+    // BaseLayout's head script has already moved the token out of the URL; the URL is read only
+    // when that script could not run.
+    const checkoutSession = readCheckoutSessionHandoff(transactionId)
+      ?? getCheckoutParam('checkout_session');
     openTransactionCheckout(
       transactionId,
       isCheckoutSessionToken(checkoutSession) ? checkoutSession : null,

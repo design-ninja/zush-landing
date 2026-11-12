@@ -15,11 +15,22 @@ function hasPrivacyOptOut(): boolean {
     || navigator.doNotTrack === '1';
 }
 
+// BaseLayout marks pages whose URL carries an activation token or email
+// (activation, thank-you); UET sends the page URL, so it never loads there, not
+// even from a download click.
+function isAdTrackingDisabledForPage(): boolean {
+  return document.documentElement?.hasAttribute?.('data-no-ad-tracking') === true;
+}
+
 // One cached server decision gates every Microsoft Ads feature: the public tag
 // is returned only for US visitors on the production host without GPC or DNT.
 export function getMicrosoftAdsTagId(): Promise<string | null> {
   if (typeof window === 'undefined') return Promise.resolve(null);
-  if (!['zushapp.com', 'www.zushapp.com'].includes(window.location.hostname) || hasPrivacyOptOut()) {
+  if (
+    !['zushapp.com', 'www.zushapp.com'].includes(window.location.hostname)
+    || hasPrivacyOptOut()
+    || isAdTrackingDisabledForPage()
+  ) {
     return Promise.resolve(null);
   }
 

@@ -347,19 +347,11 @@ function initializePaddle(): boolean {
       }
 
       if (event.name === "checkout.completed") {
-        const email = event.data?.customer?.email || "";
-        const params = new URLSearchParams();
-        if (activeCheckoutSession) {
-          params.set("checkout_session", activeCheckoutSession);
-        }
-        if (email) {
-          params.set("email", email);
-        }
+        // The thank-you page reads the checkout session from sessionStorage (both checkout paths
+        // store it), so neither that token nor the buyer's email goes into a URL that analytics
+        // scripts send.
         setTimeout(() => {
-          const thankYouPath = getLocalizedThankYouPath();
-          window.location.href = params.toString()
-            ? `${thankYouPath}?${params}`
-            : thankYouPath;
+          window.location.href = getLocalizedThankYouPath();
         }, 2500);
       }
     },

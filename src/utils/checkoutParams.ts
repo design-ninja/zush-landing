@@ -34,6 +34,43 @@ export function isCheckoutSessionToken(value: string | null): value is string {
   return value !== null && CHECKOUT_SESSION_PATTERN.test(value);
 }
 
+const CHECKOUT_SESSION_HANDOFF_KEY = "zush_checkout_session_handoff";
+
+interface CheckoutSessionHandoff {
+  checkoutSession?: unknown;
+  transactionId?: unknown;
+}
+
+// The `checkout_session` the head script of BaseLayout moved out of the page URL, so analytics
+// never send it. With a transaction, only the token that came with that transaction is returned.
+export function readCheckoutSessionHandoff(
+  transactionId: string | null = null,
+  storage: Pick<Storage, "getItem"> = window.sessionStorage,
+): string | null {
+  try {
+    const raw = storage.getItem(CHECKOUT_SESSION_HANDOFF_KEY);
+    if (!raw) return null;
+    const handoff = JSON.parse(raw) as CheckoutSessionHandoff | null;
+    const checkoutSession = typeof handoff?.checkoutSession === "string" ? handoff.checkoutSession : null;
+    if (!isCheckoutSessionToken(checkoutSession)) return null;
+    if (transactionId !== null && handoff?.transactionId !== transactionId) return null;
+    return checkoutSession;
+  } catch {
+    // Storage blocked or a value this code did not write: there is no token to hand off.
+    return null;
+  }
+}
+
+export function clearCheckoutSessionHandoff(
+  storage: Pick<Storage, "removeItem"> = window.sessionStorage,
+): void {
+  try {
+    storage.removeItem(CHECKOUT_SESSION_HANDOFF_KEY);
+  } catch {
+    // Storage blocked: nothing was stored either.
+  }
+}
+
 export function getCheckoutParam(
   name: string,
   location: CheckoutParamsLocation = window.location,

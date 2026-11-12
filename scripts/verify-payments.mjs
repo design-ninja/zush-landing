@@ -84,11 +84,11 @@ function verifyPaddleCheckout() {
     /sessionStorage\.setItem\(\s*["']zush_checkout_session["'],\s*checkoutSession\.checkout_session\s*,?\s*\)/,
     "Checkout session is not persisted before checkout",
   );
-  assertMatch(
-    src,
-    /params\.set\(["']checkout_session["'],\s*activeCheckoutSession\s*\)/,
-    "Thank-you redirect no longer includes checkout session",
-  );
+  // The thank-you page reads the session from sessionStorage; in its URL the token (which returns
+  // the buyer's email and activation link once paid) and the email would reach ad analytics.
+  if (/params\.set\(["'](?:checkout_session|email)["']/.test(src)) {
+    throw new Error("Thank-you redirect must not put the checkout session or email in its URL");
+  }
   assertMatch(
     src,
     /waitForBrowserPaint/,
@@ -165,6 +165,16 @@ function verifyAutoOpenFlow() {
     /bindCheckoutAutoOpen\(\)/,
     "Base layout no longer binds checkout auto-open flow",
   );
+  assertMatch(
+    src,
+    /readCheckoutSessionHandoff\(transactionId\)/,
+    "Auto-open no longer takes the app's checkout session from the handoff",
+  );
+  const handoffAt = layoutSrc.indexOf("zush_checkout_session_handoff");
+  const firstOtherScriptAt = layoutSrc.search(/zush_pricing_hidden|initializeMicrosoftAds|<PostHogAnalytics/);
+  if (handoffAt < 0 || handoffAt > firstOtherScriptAt) {
+    throw new Error("checkout_session must leave the page URL before any other script runs");
+  }
   assertMatch(
     layoutSrc,
     /window\.__zushLocaleRedirecting\s*=\s*true/,

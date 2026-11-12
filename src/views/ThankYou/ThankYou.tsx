@@ -11,6 +11,10 @@ import Text from "@/components/Text";
 import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from "@/i18n/config";
 import { getServicePageCopy, type ThankYouCopy } from "@/i18n/servicePages";
 import { trackAnalyticsEvent } from "@/utils/analytics";
+import {
+  clearCheckoutSessionHandoff,
+  readCheckoutSessionHandoff,
+} from "@/utils/checkoutParams";
 import { getProPlanAnalyticsFromPriceId } from "@/utils/proAnalytics";
 import { SUPABASE_URL } from "@/utils/supabase";
 import styles from "./ThankYou.module.scss";
@@ -52,13 +56,15 @@ const ThankYou = ({
   const resolvedHomeHref = homeHref ?? getLocalizedPath('/', locale);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
+    // The checkout keeps its token in sessionStorage; a thank-you link from an older page still
+    // carries it in the URL, which BaseLayout's head script moved to the handoff.
     const checkoutSession =
-      params.get("checkout_session") ||
-      sessionStorage.getItem("zush_checkout_session");
+      sessionStorage.getItem("zush_checkout_session") ||
+      readCheckoutSessionHandoff();
     const deviceId = sessionStorage.getItem("zush_checkout_device_id");
     const checkoutPriceId = sessionStorage.getItem("zush_checkout_price_id");
 
+    clearCheckoutSessionHandoff();
     sessionStorage.removeItem("zush_checkout_session");
     sessionStorage.removeItem("zush_checkout_device_id");
     sessionStorage.removeItem("zush_checkout_price_id");

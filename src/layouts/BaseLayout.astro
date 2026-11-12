@@ -129,6 +129,7 @@ const ldItems = [
   ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []),
 ].filter(Boolean);
 const isHomePage = route === '/';
+const pageCarriesPurchaseCredentials = route === '/activate' || route === '/thank-you';
 const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
 const shouldAutoDetectLocale = LOCALE_AUTO_DETECT_ENABLED
   && !LOCALIZATION_PAUSED
@@ -160,6 +161,7 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
   dir="ltr"
   data-theme={forcedTheme}
   data-theme-forced={forcedTheme}
+  data-no-ad-tracking={pageCarriesPurchaseCredentials ? '' : undefined}
 >
   <head>
     <meta charset="UTF-8" />
@@ -175,6 +177,51 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
     <link rel="preload" href={interLatinFontUrl} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={manropeLatinFontUrl} as="font" type="font/woff2" crossorigin />
     <meta name="color-scheme" content={forcedTheme ?? 'light dark'} />
+
+    {/* The desktop apps open the browser checkout with their `checkout_session`
+        token in the URL (create-paddle-checkout-session). Once paid, that token
+        returns the buyer's email and activation link, so it must not stay in the
+        page URL that analytics scripts send (Microsoft UET sends the full URL by
+        default). It moves to sessionStorage before any other script runs,
+        including the locale redirect; checkoutParams.ts takes it from there. */}
+    <script is:inline>
+      (() => {
+        try {
+          const take = (part) => {
+            const match = /(^[?#]|[?&])checkout_session=([^&#]*)/.exec(part);
+            if (!match) return null;
+            const before = part.slice(0, match.index);
+            const after = part.slice(match.index + match[0].length);
+            let value = '';
+            try { value = decodeURIComponent(match[2]); } catch {}
+            return {
+              value,
+              rest: after.startsWith('&') ? before + match[1] + after.slice(1) : before,
+            };
+          };
+          const fromSearch = take(window.location.search);
+          const fromHash = take(window.location.hash);
+          if (!fromSearch && !fromHash) return;
+          const token = (fromSearch || fromHash).value;
+          if (/^[a-f\d]{64}$/.test(token)) {
+            // Kept with its transaction, so a reload still finds it and a later
+            // checkout of another transaction never picks it up.
+            const transaction = /[?&#]_ptxn=([^&#]*)/.exec(window.location.search + window.location.hash);
+            window.sessionStorage.setItem('zush_checkout_session_handoff', JSON.stringify({
+              checkoutSession: token,
+              transactionId: transaction ? transaction[1] : null,
+            }));
+          }
+          window.history.replaceState(
+            window.history.state,
+            '',
+            window.location.pathname
+              + (fromSearch ? fromSearch.rest : window.location.search)
+              + (fromHash ? fromHash.rest : window.location.hash),
+          );
+        } catch {}
+      })();
+    </script>
 
     {/* middleware.js sets this cookie where checkout is unavailable; mark the
         document before first paint so pricing never flashes. */}
@@ -501,10 +548,14 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
         });
       </script>
     </div>
-    <script>
-      import { initializeMicrosoftAds } from '@/utils/microsoftAds';
-      void initializeMicrosoftAds();
-    </script>
+    {/* The activation page carries the activation token and email in its URL, and
+        the thank-you page polls the paid checkout; neither URL may reach UET. */}
+    {!pageCarriesPurchaseCredentials && (
+      <script>
+        import { initializeMicrosoftAds } from '@/utils/microsoftAds';
+        void initializeMicrosoftAds();
+      </script>
+    )}
     {posthogProjectKey && (
       <PostHogAnalytics
         projectKey={posthogProjectKey}
