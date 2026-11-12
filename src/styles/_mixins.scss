@@ -354,7 +354,7 @@ $button-sizes: (
 // Loading spinner: a ring whose arc fades into a transparent tail, rotating
 // steadily. The including module must `@use` styles/animations so the local
 // `spin` keyframes exist (CSS modules scope keyframe names per module).
-@mixin spinner-ring($size: 2rem, $thickness: 3px, $color: currentColor) {
+@mixin spinner-ring($size: 2rem, $thickness: 4px, $color: currentColor) {
     display: inline-block;
     width: $size;
     height: $size;
