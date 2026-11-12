@@ -2,5 +2,6 @@
 @use '../../styles/animations';
 
 .Spinner {
-    @include spinner-ring;
+    // Brand green; spinners inside buttons use the button's text colour instead.
+    @include spinner-ring($color: var(--secondary));
 }
