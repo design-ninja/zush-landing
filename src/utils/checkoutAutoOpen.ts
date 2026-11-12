@@ -2,7 +2,11 @@ import {
   PRO_MONTHLY_PADDLE_PRICE_ID,
   PRO_ONE_TIME_PADDLE_PRICE_ID,
 } from '@/constants/pricing';
-import { getCheckoutParam, isPaddleTransactionId } from '@/utils/checkoutParams';
+import {
+  getCheckoutParam,
+  isCheckoutSessionToken,
+  isPaddleTransactionId,
+} from '@/utils/checkoutParams';
 
 let hasOpenedCheckout = false;
 
@@ -17,7 +21,11 @@ export function bindCheckoutAutoOpen(): void {
 
   const transactionId = getCheckoutParam('_ptxn');
   if (isPaddleTransactionId(transactionId)) {
-    openTransactionCheckout(transactionId);
+    const checkoutSession = getCheckoutParam('checkout_session');
+    openTransactionCheckout(
+      transactionId,
+      isCheckoutSessionToken(checkoutSession) ? checkoutSession : null,
+    );
     return;
   }
 
@@ -48,13 +56,16 @@ export function bindCheckoutAutoOpen(): void {
   }, 300);
 }
 
-// A Paddle payment link (`_ptxn`) from the app's browser fallback names a transaction the app
-// already prepared for this device, so it opens as is rather than through a new session.
-function openTransactionCheckout(transactionId: string): void {
+// A Paddle payment link (`_ptxn`) from the app's browser checkout names a transaction the app
+// already prepared for this device, so it opens as is rather than through a new session. Newer
+// apps also pass that transaction's `checkout_session`, which lets the thank-you page send the
+// buyer back to the app.
+function openTransactionCheckout(transactionId: string, checkoutSession: string | null): void {
   hasOpenedCheckout = true;
 
   void import('@/utils/paddle')
-    .then(({ openPaddleTransactionCheckout }) => openPaddleTransactionCheckout(transactionId))
+    .then(({ openPaddleTransactionCheckout }) =>
+      openPaddleTransactionCheckout(transactionId, checkoutSession))
     .catch((error) => {
       console.error('[CheckoutAutoOpen] Failed to open the app checkout:', error);
     });

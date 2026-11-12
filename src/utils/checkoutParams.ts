@@ -27,6 +27,13 @@ export function isPaddleTransactionId(value: string | null): value is string {
   return value !== null && PADDLE_TRANSACTION_ID_PATTERN.test(value);
 }
 
+// Checkout session tokens are 32 random bytes in lowercase hex.
+const CHECKOUT_SESSION_PATTERN = /^[a-f\d]{64}$/;
+
+export function isCheckoutSessionToken(value: string | null): value is string {
+  return value !== null && CHECKOUT_SESSION_PATTERN.test(value);
+}
+
 export function getCheckoutParam(
   name: string,
   location: CheckoutParamsLocation = window.location,

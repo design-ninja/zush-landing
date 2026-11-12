@@ -480,17 +480,24 @@ async function beforeCheckoutOpen(
   await waitForBrowserPaint();
 }
 
-// The Windows app falls back to this page with the transaction its checkout already created, in
+// The desktop apps open this page with the transaction their checkout already created, in
 // Paddle's payment-link parameter `_ptxn`. Paddle.js opens such a link by itself only when it is on
 // the page from the start; here it loads on demand, so open that transaction explicitly instead of
-// waiting for a pricing button and creating a second one.
+// waiting for a pricing button and creating a second one. With the app's `checkout_session` the
+// thank-you page can activate the app; without it (older apps) it points to the activation email.
 export async function openPaddleTransactionCheckout(
   transactionId: string,
+  checkoutSession: string | null = null,
 ): Promise<boolean> {
   activeCheckoutSource = "app";
   activeCheckoutPriceId = null;
-  activeCheckoutSession = null;
+  activeCheckoutSession = checkoutSession;
   activeCheckoutTransactionId = transactionId;
+  if (checkoutSession) {
+    sessionStorage.setItem("zush_checkout_session", checkoutSession);
+  } else {
+    sessionStorage.removeItem("zush_checkout_session");
+  }
 
   try {
     const ready = await ensurePaddleReady();
