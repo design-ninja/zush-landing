@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.23.0] - 2026-11-12
+### New
+- Find duplicate files in AI Rename: turn on Detect duplicate files in a template's settings, then keep the copies as they are, mark them in the name or move them to the Trash. Copies don't use credits.
+- The new Remove Duplicates template moves exact copies to the Trash and leaves file names unchanged.
+- Copies moved to the Trash are listed in Activity, and Undo puts them back.
+- Buying PRO opens checkout in your browser, where you can pay with Apple Pay or Google Pay.
+### Improved
+- A redesigned welcome window explains that nothing changes before you click Rename, how undo works, how your files are used and where to find offline AI.
+- The Custom AI Blocks group in Naming Blocks can be collapsed, and templates have new icons.
+- Quick Rename handles large Finder selections more reliably, and more EPUB books can be read.
+### Fixed
+- Silent or damaged audio files are named from their details instead of failing.
+- Checkout no longer reports an error for a typo you can fix in the payment form.
+
 ## [3.22.2] - 2026-11-10
 ### Improved
 - The checkout now shows the full order summary, a field for discount codes and tax details.
