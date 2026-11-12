@@ -1,5 +1,24 @@
 # Changelog
 
+## [3.19.0.0] - 2026-11-13
+
+### Added
+- Find duplicate files in AI Rename: turn on Detect duplicate files in a template's settings, then keep the copies as they are, mark them in the name or move them to the Recycle Bin. Copies don't use credits.
+- The new Remove Duplicates template moves exact copies to the Recycle Bin and leaves file names unchanged.
+- Copies moved to the Recycle Bin are listed in Activity, and Undo puts them back.
+- Buying PRO opens checkout in your browser, where you can also pay with Google Pay.
+- A welcome window on first launch explains that nothing changes before you click Rename, how undo works and how your files are used.
+
+### Improved
+- The Custom AI Blocks group in Naming Blocks can be collapsed.
+- When Zush starts with Windows, it opens its window only when you need it, so sign-in is lighter.
+- A file another app keeps open stays ready in the list, so you can rename it with the next Rename once it is free.
+
+### Fixed
+- Audio files with no sound data, such as incomplete downloads, are named from their details instead of failing.
+- Zush starts normally after a newer version of Zush was used on the same PC.
+- Hints you have already seen, such as the note about closing Zush to the tray, no longer come back.
+
 ## [3.18.1.0] - 2026-11-10
 
 ### Added
