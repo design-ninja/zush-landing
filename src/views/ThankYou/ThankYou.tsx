@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { CheckCircle, ExternalLink, LoaderCircle, Mail } from "lucide-react";
+import { CheckCircle, ExternalLink, Mail } from "lucide-react";
+import Spinner from "@/components/Spinner";
 import Button from "@/components/Button";
 import BackToHome from "@/components/BackToHome";
 import DownloadButton from "@/components/DownloadButton";
@@ -170,7 +171,7 @@ const ThankYou = ({
           ? styles.ThankYou__LoadingIcon
           : styles.ThankYou__SuccessIcon}
       >
-        {isChecking ? <LoaderCircle size={64} /> : <CheckCircle size={64} />}
+        {isChecking ? <Spinner label={copy.checkingTitle} /> : <CheckCircle size={64} />}
       </PageIcon>
 
       <Heading as="h1" className={styles.ThankYou__Title}>

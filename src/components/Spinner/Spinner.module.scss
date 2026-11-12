@@ -1,0 +1,6 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/animations';
+
+.Spinner {
+    @include spinner-ring;
+}

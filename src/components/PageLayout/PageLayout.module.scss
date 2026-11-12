@@ -7,6 +7,12 @@
     &__Container {
         text-align: center;
 
+        // Service screens (purchase, activation, recovery) are short messages,
+        // so their titles sit one step below a marketing page's h1.
+        h1 {
+            @include heading-size('h2');
+        }
+
         &--sm {
             max-width: 400px;
         }
