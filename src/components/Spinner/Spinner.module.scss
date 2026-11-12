@@ -1,0 +1,7 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/animations';
+
+.Spinner {
+    // Brand violet; spinners inside buttons use the button's text colour instead.
+    @include spinner-ring($color: var(--primary));
+}

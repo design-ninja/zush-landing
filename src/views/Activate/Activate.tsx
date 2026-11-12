@@ -4,6 +4,7 @@ import Button from '@/components/Button';
 import BackToHome from '@/components/BackToHome';
 import PageLayout from '@/components/PageLayout';
 import PageIcon from '@/components/PageIcon';
+import Spinner from '@/components/Spinner';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
 import { DOWNLOAD_URL } from '@/constants';
@@ -67,8 +68,8 @@ const Activate = ({
   if (!activationParams) {
     return (
       <PageLayout>
-        <PageIcon animated>
-          <ExternalLink size={64} />
+        <PageIcon>
+          <Spinner label={copy.preparingTitle} />
         </PageIcon>
 
         <Heading as='h1' className={styles.Activate__Title}>{copy.preparingTitle}</Heading>

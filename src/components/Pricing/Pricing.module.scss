@@ -1,6 +1,7 @@
 // fallow-ignore-file unused-export
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
+@use '../../styles/animations';
 
 .Pricing {
     // design/homepage-concept/native.dc.html — Pricing. No tinted band.
@@ -102,12 +103,6 @@
     &__TrustLine {
         margin: 1.1rem auto 0;
         max-width: 32rem;
-    }
-}
-
-@keyframes pricing-checkout-spin {
-    to {
-        transform: translate(-50%, -50%) rotate(360deg);
     }
 }
 
@@ -423,15 +418,9 @@
             &::after {
                 content: '';
                 position: absolute;
-                top: 50%;
-                left: 50%;
-                width: 1.1rem;
-                height: 1.1rem;
-                border: 2px solid currentColor;
-                border-right-color: transparent;
-                border-radius: 50%;
-                transform: translate(-50%, -50%);
-                animation: pricing-checkout-spin 0.75s linear infinite;
+                top: calc(50% - 0.6rem);
+                left: calc(50% - 0.6rem);
+                @include spinner-ring(1.2rem, 2px);
             }
         }
     }

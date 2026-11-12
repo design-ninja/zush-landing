@@ -5,11 +5,6 @@
 .ThankYou {
     &__LoadingIcon {
         color: var(--primary);
-
-        svg {
-            animation: thankYouSpin 0.9s linear infinite;
-            transform-origin: center;
-        }
     }
 
     &__SuccessIcon {
@@ -57,11 +52,5 @@
         align-items: center;
         justify-content: center;
         gap: 28px;
-    }
-}
-
-@keyframes thankYouSpin {
-    to {
-        transform: rotate(360deg);
     }
 }
