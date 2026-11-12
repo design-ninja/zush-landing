@@ -1,7 +1,7 @@
 import styles from './Spinner.module.scss';
 
 interface SpinnerProps {
-  /** CSS length; defaults to the page icon size. */
+  /** CSS length; defaults to 2rem. */
   size?: string;
   label?: string;
   className?: string;
