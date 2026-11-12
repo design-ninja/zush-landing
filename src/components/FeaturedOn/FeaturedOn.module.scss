@@ -64,6 +64,19 @@
     border-radius: 6px;
   }
 
+  // Third-party badge served from the directory's own domain, so it cannot take
+  // currentColor or the 24x24 logo box — ship both themes and let the active one show.
+  &__Badge {
+    display: block;
+    flex-shrink: 0;
+    height: 28px;
+    width: auto;
+  }
+
+  &__Badge[data-badge-theme='dark'] {
+    display: none;
+  }
+
   &__Label {
     font-size: 0.9375rem;
     font-weight: 600;
@@ -81,5 +94,15 @@
     &__Label {
       font-size: 0.9375rem;
     }
+  }
+}
+
+:global([data-theme='dark']) {
+  .FeaturedOnItem__Badge[data-badge-theme='light'] {
+    display: none;
+  }
+
+  .FeaturedOnItem__Badge[data-badge-theme='dark'] {
+    display: block;
   }
 }

@@ -1,5 +1,8 @@
 # Agent Notes
 
+- Before broad cleanup (including `git clean`), check active automations and their working directories. Untracked files are not necessarily unused. `marketing/seeding-2026-10-24/` is an active campaign through October 27, 2026 and its publication/comment logs remain in use afterward.
+- Before an authorized cleanup removes active campaign files, preserve a verified archive outside the checkout and update the automation to its surviving location. Include campaign source files, queues, publication logs, comment logs, and proofs.
+
 - GitHub, Vercel, GSC, and live-site checks are networked operations. Run `gh`, GitHub API, `git fetch`, `git push`, `git ls-remote`, `vercel`, and live `curl` checks with sandbox escalation on the first attempt.
 - Do not interpret non-escalated sandbox failures from `gh auth status`, `gh api`, Vercel CLI, or GitHub remotes as broken credentials. Re-run with network escalation before diagnosing auth.
 - `gh` is configured for `github.com` through macOS keyring and `gh auth setup-git --hostname github.com`; GitHub CLI and HTTPS Git operations should use that credential path.
