@@ -73,10 +73,23 @@ for (const row of negativeRows) {
 
 const requiredIntentNegatives = [
   'ollama rename model', 'photo storage', 'compress pdf', 'delete files', 'disk cleanup',
+  'zanus', 'zanusai',
 ];
 const campaignNegatives = new Set(negativeRows.map((row) => row.negative_keyword.toLowerCase()));
 for (const keyword of requiredIntentNegatives) {
   assert.ok(campaignNegatives.has(keyword), `missing non-product intent negative: ${keyword}`);
+}
+
+const requiredCoreCompetitorNegatives = [
+  'namequick', 'renameclick', 'renamer ai', 'sortio', 'filesdesk', 'wisfile', 'file juggler',
+];
+const coreCompetitorNegatives = new Set(
+  adGroupNegativeRows
+    .filter((row) => row.ad_group === 'Core AI File Renamer')
+    .map((row) => row.negative_keyword.toLowerCase()),
+);
+for (const keyword of requiredCoreCompetitorNegatives) {
+  assert.ok(coreCompetitorNegatives.has(keyword), `missing core competitor negative: ${keyword}`);
 }
 
 const sitelinks = extensionRows.filter((row) => row.extension_type === 'Sitelink');
