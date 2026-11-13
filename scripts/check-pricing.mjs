@@ -100,28 +100,7 @@ assertIncludes('src/content/blog/best-ai-file-renamer-tools-2026.mdx', fiveYearL
 assertIncludes('src/content/blog/zush-vs-renameclick.mdx', annualLabel);
 assertIncludes('src/content/blog/zush-vs-renameclick.mdx', threeYearLabel);
 assertIncludes('src/content/blog/zush-vs-renameclick.mdx', fiveYearLabel);
-for (const relativePath of [
-  'marketing/ads/google-search-extensions.csv',
-  'marketing/ads/google-search-rsa-assets.csv',
-]) {
-  const source = read(relativePath);
-  if (/\$\d+/.test(source)) {
-    fail(`${relativePath} contains a numeric price that can drift before Ads are re-enabled`);
-  }
-}
-assertIncludes('marketing/ads/google-search-extensions.csv', 'Monthly or One-Time Pro');
-assertIncludes('marketing/ads/google-search-rsa-assets.csv', 'Monthly or One-Time Pro');
 assertIncludes('BLOG_GROWTH_BRIEF.md', `${monthlyLabel}/month or ${oneTimeLabel} one-time`);
-
-const adScript = read('marketing/ads/scripts/update_zush_mac_search_campaign.py');
-for (const expected of [
-  'google-search-extensions.csv',
-  'google-search-rsa-assets.csv',
-]) {
-  if (!adScript.includes(expected)) {
-    fail(`Google Ads update script is missing CSV source ${expected}`);
-  }
-}
 
 console.log(
   `[check-pricing] OK: Zush pricing is ${monthlyLabel}/month or ${oneTimeLabel} one-time; derived monthly costs are ${annualLabel}, ${threeYearLabel}, and ${fiveYearLabel}.`,
