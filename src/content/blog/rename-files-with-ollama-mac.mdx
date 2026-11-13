@@ -1,6 +1,6 @@
 ---
-title: "Use Ollama to Rename Files on Mac: Local AI Setup (2026)"
-description: "Use Ollama as the local AI behind Zush to rename files on Mac. This guide covers file naming with a vision model, not renaming an Ollama model."
+title: "Rename an Ollama Model, or Use Ollama to Rename Files on Mac"
+description: "Ollama has no rename command: copy the model with ollama cp, then remove the old name. Plus how to use a local Ollama model to rename files on Mac."
 date: "2026-04-28"
 slug: "rename-files-with-ollama-mac"
 platform: "mac"
@@ -14,7 +14,15 @@ reviewed: "2026-09-24"
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-This guide is about using an Ollama model to rename files. It does not explain how to rename an Ollama model or change a model name.
+**Renaming an Ollama model?** Ollama has no `rename` command. Copy the model under the new name, check it, then remove the old name:
+
+```bash
+ollama cp llama3.2 my-assistant
+ollama list
+ollama rm llama3.2
+```
+
+The copy reuses the same model layers on disk, so it does not download or duplicate the weights. The rest of this guide covers the other meaning: using an Ollama model to rename your files.
 
 Quick answer: rename files locally on Mac with Ollama by installing Ollama, pulling the current recommended model `qwen3.5:4b`, then opening **Settings → AI Modes → Ollama** in [Zush](/mac). Supported analysis content stays on your device and there are no provider API costs.
 
@@ -162,6 +170,10 @@ Try a smaller model, close memory-heavy apps, or switch back to Cloud for large 
 Try a stronger model, add a custom prompt, or use Cloud/BYOK for files where naming quality matters more than offline processing.
 
 ## FAQ
+
+### How do I rename an Ollama model?
+
+Run `ollama cp old-name new-name`, confirm the new name with `ollama list`, then delete the old name with `ollama rm old-name`. Ollama has no direct rename command, and the copy shares the existing model layers on disk.
 
 ### Can I rename files with Ollama on any Mac?
 

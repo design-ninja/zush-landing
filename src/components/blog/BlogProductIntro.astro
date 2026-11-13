@@ -1,5 +1,5 @@
 ---
-import { getLocalizedPath, stripLocaleFromPath } from '@/i18n/config';
+import { getLocalizedPath, localizeInternalHref, stripLocaleFromPath } from '@/i18n/config';
 import { getBlogCtaCopy } from '@/i18n/blogCtaCopy';
 
 interface Link {
@@ -53,7 +53,7 @@ const homeLabel = getBlogCtaCopy(locale)?.homepage ?? 'Zush homepage';
       links.map((link) => (
         <a
           class='blog-product-intro__link'
-          href={link.href}
+          href={localizeInternalHref(link.href, locale)}
           data-article-cta
           data-article-cta-label={link.label}
           data-article-cta-placement='product-intro'

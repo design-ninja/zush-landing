@@ -280,6 +280,16 @@ export function getLocalizedPath(route: string, locale: Locale = DEFAULT_LOCALE)
   return normalizedRoute === '/' ? prefix : `${prefix}${normalizedRoute}`;
 }
 
+export function localizeInternalHref(href: string, locale: Locale): string {
+  if (locale === DEFAULT_LOCALE || !href.startsWith('/') || href.startsWith('//')) return href;
+  const match = href.match(/^([^?#]*)(.*)$/);
+  const path = match?.[1] ?? href;
+  const suffix = match?.[2] ?? '';
+  const route = normalizeRoute(path);
+  if (!isLocalizedRoute(route) || !getLocalesForRoute(route).includes(locale)) return href;
+  return `${getLocalizedPath(route, locale)}${suffix}`;
+}
+
 export function stripLocaleFromPath(pathname: string): { locale: Locale; route: string } {
   const normalizedPath = normalizeRoute(pathname);
   const [, maybeLocale, ...rest] = normalizedPath.split('/');
