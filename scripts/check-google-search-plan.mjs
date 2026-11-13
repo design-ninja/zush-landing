@@ -60,6 +60,31 @@ for (const row of [...rsaRows, ...adGroupNegativeRows]) {
   assert.ok(adGroups.has(row.ad_group), `unknown ad group: ${row.ad_group}`);
 }
 
+const words = (text) => text.toLowerCase().split(/\s+/).filter(Boolean);
+function negativeBlocks(negative, matchType, keyword) {
+  const negativeWords = words(negative);
+  const keywordWords = words(keyword);
+  if (matchType === 'Exact') return negativeWords.join(' ') === keywordWords.join(' ');
+  if (matchType === 'Broad') return negativeWords.every((word) => keywordWords.includes(word));
+  assert.equal(matchType, 'Phrase', `unknown negative match type: ${matchType}`);
+  return keywordWords.some((_, start) => negativeWords.every((word, offset) => keywordWords[start + offset] === word));
+}
+
+const scopedNegatives = [
+  ...negativeRows.map((row) => ({ ...row, ad_group: undefined })),
+  ...adGroupNegativeRows,
+];
+for (const negative of scopedNegatives) {
+  for (const keyword of keywordRows) {
+    if (negative.ad_group && negative.ad_group !== keyword.ad_group) continue;
+    assert.equal(
+      negativeBlocks(negative.negative_keyword, negative.match_type, keyword.keyword),
+      false,
+      `negative "${negative.negative_keyword}" (${negative.match_type}) blocks keyword "${keyword.keyword}" in ${keyword.ad_group}`,
+    );
+  }
+}
+
 const keywordKeys = keywordRows.map((row) => `${row.ad_group}\0${row.keyword.toLowerCase()}\0${row.match_type}`);
 assert.equal(new Set(keywordKeys).size, keywordKeys.length, 'duplicate keyword and match type');
 
