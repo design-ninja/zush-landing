@@ -12,7 +12,8 @@ type SearchLandingSlug =
   | 'rename-receipts-with-ai'
   | 'rename-scanned-documents'
   | 'for-accountants'
-  | 'for-legal';
+  | 'for-legal'
+  | 'remove-duplicate-files';
 
 const invoiceSlides: FeatureLandingPageProps['showcaseSlides'] = [
   {
@@ -521,6 +522,67 @@ const receiptRenameFaq = [
   },
 ];
 
+const duplicateSlides: FeatureLandingPageProps['showcaseSlides'] = [
+  {
+    files: [
+      { before: 'scan_0041 (1).pdf', after: 'Invoice 2026-1047.pdf', type: 'pdf' },
+      { before: 'scan_0041.pdf', after: 'Invoice 2026-1047 DUPLICATE.pdf', type: 'pdf' },
+      { before: 'notes.txt', after: 'Product Sync Meeting Notes.txt', type: 'doc' },
+      { before: 'notes (1).txt', after: 'Product Sync Meeting Notes DUPLICATE.txt', type: 'doc' },
+      { before: 'IMG_2291.png', after: 'Lufthansa Boarding Pass.png', type: 'image' },
+      { before: 'IMG_2291 copy.png', after: 'Lufthansa Boarding Pass DUPLICATE.png', type: 'image' },
+    ],
+  },
+  {
+    files: [
+      { before: 'document(3).pdf', after: 'Residential Rental Agreement.pdf', type: 'pdf' },
+      { before: 'IMG_2886.jpg', after: 'Blue Bottle Coffee Receipt.jpg', type: 'image' },
+      { before: 'download (2).pdf', after: 'Figma 2026-06 Invoice.pdf', type: 'pdf' },
+      { before: 'download (3).pdf', after: 'Figma 2026-06 Invoice DUPLICATE.pdf', type: 'pdf' },
+      { before: 'Scan_0042.pdf', after: 'Acme Supply 2026-06 Invoice.pdf', type: 'pdf' },
+      { before: 'Scan_0042 copy.pdf', after: 'Acme Supply 2026-06 Invoice DUPLICATE.pdf', type: 'pdf' },
+    ],
+  },
+];
+
+const duplicateFaq = [
+  {
+    question: 'How does Zush decide that two files are duplicates?',
+    answer:
+      'By comparing their contents. Two files match when they hold exactly the same data, whatever they are named, so notes (1).txt, IMG_2291 copy.png, and a copy you renamed months ago are all recognized. Names are never used to decide a match.',
+  },
+  {
+    question: 'Do duplicate files use AI credits?',
+    answer:
+      'No. Copies are identified before analysis and are never sent to the AI. A folder where half the files are duplicates costs the same to process as the same folder with one of each.',
+  },
+  {
+    question: 'What happens to the copies?',
+    answer:
+      'You choose per Template. Keep as is leaves them untouched and unchecked. Mark in name gives each copy the original’s new name with the Duplicate Mark block added, so copies sort next to their originals. Move to Trash removes them when you apply the batch, with the count shown next to the Rename button.',
+  },
+  {
+    question: 'Can I undo a batch that moved copies to the Trash?',
+    answer:
+      'Yes. Removals are recorded in Activity alongside the renames, and Undo restores the copies to their original folders under their original names. That stops working once the Trash or Recycle Bin is emptied.',
+  },
+  {
+    question: 'Will it catch two scans of the same page?',
+    answer:
+      'No. Each pass through a scanner produces a different image, so the files are not identical and content matching will not pair them. The same applies to a photo and its edited export, or a document saved as both .docx and .pdf.',
+  },
+  {
+    question: 'Can I clear duplicates without renaming anything?',
+    answer:
+      'Yes. The built-in Remove Duplicates Template is built from a single Original Name block, so every file keeps the name it already has and only the exact copies are cleared.',
+  },
+  {
+    question: 'Does this work on Windows as well as Mac?',
+    answer:
+      'Yes. The setting and the three options are the same on both; on Windows the copies go to the Recycle Bin rather than the Trash.',
+  },
+];
+
 export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageProps> = {
   'batch-rename-files': {
     h1: 'Batch Rename Files on Mac & Windows with AI',
@@ -563,6 +625,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     relatedPages: [
       { title: 'Batch Rename Docs', href: '/docs/batch-rename-files' },
       { title: 'Templates Guide', href: '/docs/templates' },
+      { title: 'Remove Duplicate Files', href: '/remove-duplicate-files' },
       { title: 'AI File Organizer', href: '/ai-file-organizer' },
       { title: 'AI File Renamer & Organizer', href: '/' },
       { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
@@ -675,7 +738,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
         {
           tool: 'Zush',
           bestFor: 'Naming and sorting mixed files by content in one reviewed batch, with Templates, Naming Blocks, folder monitoring, and local AI on Mac and Windows',
-          gap: 'Not a disk cleaner or document-management system; it does not delete duplicates or replace a photo library.',
+          gap: 'Not a disk cleaner or document-management system, and not a photo library; it clears exact copies during a rename but does not compare files that merely look alike.',
         },
         {
           tool: 'Sparkle',
@@ -701,6 +764,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     },
     relatedPages: [
       { title: 'AI File Sorter', href: '/ai-file-sorter' },
+      { title: 'Remove Duplicate Files', href: '/remove-duplicate-files' },
       { title: 'AI Folder Sorting: Auto and Custom Rules', href: '/docs/folder-sorting' },
       { title: 'Folder Monitoring Docs', href: '/docs/folder-monitoring' },
       { title: 'Templates Guide', href: '/docs/templates' },
@@ -1287,6 +1351,73 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
           'Local AI and BYOK for confidential documents',
           'Folder monitoring for e-filing and scanner intake',
           'Preview every batch before applying, with undo',
+        ],
+      },
+    }),
+  },
+  'remove-duplicate-files': {
+    h1: 'Remove Duplicate Files While You Rename',
+    h1Accent: 'Duplicate Files',
+    category: 'general',
+    definitionTitle: 'What Is Content-Based Duplicate Detection?',
+    definitionText:
+      'Zush compares the contents of the files in a batch, so copies are found whatever they are called: "notes (1).txt" and "IMG_2291 copy.png" are matched with their originals by their data, not by the (1) or the word copy. Copies never reach the AI, so they cost nothing, and you decide whether they stay, get marked in the filename, or move to the Trash.',
+    showcaseSlides: duplicateSlides,
+    faqItems: duplicateFaq,
+    relatedPages: [
+      { title: 'Duplicate File Handling Docs', href: '/docs/duplicates' },
+      { title: 'Batch Rename Files', href: '/batch-rename-files' },
+      { title: 'Templates', href: '/docs/templates' },
+      { title: 'Undo History', href: '/docs/undo-history' },
+      { title: 'AI File Organizer', href: '/ai-file-organizer' },
+      { title: 'Folder Monitoring Docs', href: '/docs/folder-monitoring' },
+      { title: 'Rename & Organize Invoices with AI', href: '/rename-invoices-with-ai' },
+    ],
+    relatedBlogPosts: [
+      { title: 'Find and Remove Duplicate Files on Mac', href: 'find-remove-duplicate-files-mac' },
+      { title: 'Remove Duplicate Files on Windows 11', href: 'remove-duplicate-files-windows-11' },
+      { title: 'Deduplicate First, Rename Once', href: 'deduplicate-before-renaming-files' },
+      { title: 'Best Duplicate File Finders for Mac', href: 'best-duplicate-file-finders-mac' },
+    ],
+    contextualGuideLink: {
+      before: 'Comparing the alternatives first? Read',
+      label: 'how to find and remove duplicate files on Mac',
+      href: '/blog/find-remove-duplicate-files-mac',
+      after: 'for the Finder, Terminal, and Photos methods alongside this one.',
+    },
+    jsonLd: buildFeaturePageJsonLd({
+      howTo: {
+        name: 'Remove duplicate files while renaming',
+        description:
+          'Use Zush to match copies by content and keep, mark, or trash them during a renaming batch on Mac and Windows.',
+        steps: [
+          {
+            name: 'Turn on duplicate detection',
+            text: 'Open the Template you rename with, go to Processing, and turn on Detect duplicate files.',
+          },
+          {
+            name: 'Choose what happens to copies',
+            text: 'Pick Keep as is to leave them untouched, Mark in name to label them with the Duplicate Mark block, or Move to Trash to remove them.',
+          },
+          {
+            name: 'Review and apply',
+            text: 'Read the Duplicate of labels in the preview, check the count of files that will be removed, then apply the batch with undo available from Activity.',
+          },
+        ],
+      },
+      faqItems: duplicateFaq,
+      page: {
+        pagePath: '/remove-duplicate-files',
+        description:
+          'Duplicate file remover for Mac and Windows. Zush matches copies by content, keeps them, marks them in the filename, or moves them to the Trash during a renaming batch, with a preview and undo.',
+        featureList: [
+          'Match copies by content, not by filename',
+          'Copies are never sent to the AI and use no credits',
+          'Keep copies, mark them with the Duplicate Mark block, or move them to the Trash',
+          'A Remove Duplicates Template that changes no filenames',
+          'Every removal previewed before it is applied',
+          'Undo restores trashed copies to their original folders from Activity',
+          'Works on Mac and Windows, with the Recycle Bin on Windows',
         ],
       },
     }),

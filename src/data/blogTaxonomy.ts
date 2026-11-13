@@ -2,6 +2,7 @@ const BLOG_PUBLIC_TAG_ORDER = [
   'ai-file-renaming',
   'automation',
   'file-organization',
+  'duplicate-files',
   'photos',
   'videos',
   'audio',
@@ -56,6 +57,15 @@ export const BLOG_PUBLIC_TAGS: Record<BlogPublicTagSlug, BlogPublicTagMeta> = {
     seoTitle: 'File Organization Guides & Folder Cleanup Tips — Zush Blog',
     seoDescription:
       'File organization guides for Mac and Windows: downloads, client work, school files, and desktop cleanup systems that survive more than a week of real use.',
+  },
+  'duplicate-files': {
+    slug: 'duplicate-files',
+    label: 'Duplicate Files',
+    description:
+      'Finding and clearing copies: content matching, the (1) and copy suffixes, duplicate finders, and cleanup during a rename',
+    seoTitle: 'Duplicate File Guides for Mac & Windows — Zush Blog',
+    seoDescription:
+      'How to find duplicate files by content rather than by name on Mac and Windows: Terminal and PowerShell commands, the apps worth paying for, and clearing copies during a rename.',
   },
   photos: {
     slug: 'photos',

@@ -73,7 +73,7 @@
       "alt": "Zush pour Mac affichant un lot de fichiers renommés et regroupés dans des dossiers suggérés avant l'application des modifications.",
       "caption": "Zush pour Mac : noms de fichiers proposés, regroupés par dossier suggéré. Rien ne bouge tant que vous n'appliquez pas le lot."
     },
-    "limit": "Le tri de dossiers par IA déplace des fichiers : testez d'abord sur une copie et laissez-le désactivé pour les dossiers que d'autres applications référencent par chemin. Zush ne supprime pas les doublons, ne libère pas d'espace disque et ne remplace pas un système de gestion documentaire. L'annulation rétablit le nom et le dossier d'origine.",
+    "limit": "Le tri de dossiers par IA déplace des fichiers : testez d'abord sur une copie et laissez-le désactivé pour les dossiers que d'autres applications référencent par chemin. Zush supprime les copies strictement identiques d'un fichier lorsque la détection des doublons est activée, mais il ne compare pas les fichiers qui se ressemblent seulement, ne libère pas d'espace disque et ne remplace pas un système de gestion documentaire. L'annulation rétablit le nom et le dossier d'origine.",
     "links": [
       {
         "href": "/ai-file-sorter",

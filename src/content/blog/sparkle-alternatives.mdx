@@ -33,7 +33,7 @@ Choose Zush when you want to control **both the filename and the destination**. 
 | A way to review and reverse a batch | Proposed names and folders before manual apply; Rename History afterward |
 | Organization of incoming files | A tested Template assigned to Monitor |
 
-Zush is not a replacement for duplicate removal, app uninstalling, or disk cleanup. If those are why you use Sparkle, switching to Zush would not solve the same problem. Zush's advantage here is its combined naming, sorting, and reusable Template workflow, not exclusive access to local AI or natural-language instructions.
+Zush is not a replacement for app uninstalling or disk cleanup. It can [clear exact copies of a file during a rename](/blog/deduplicate-before-renaming-files), but it does not compare files that merely look alike and it does not reclaim space the way a cleaner does. If cleanup is why you use Sparkle, switching to Zush would not solve the same problem. Zush's advantage here is its combined naming, sorting, and reusable Template workflow, not exclusive access to local AI or natural-language instructions.
 
 One Zush license covers up to 3 devices on Mac and Windows. PRO costs $10/month or $48 one-time and includes unlimited renames with Zush Cloud AI. BYOK, Ollama, and LM Studio are also available; your own API provider charges separately. The free allowance is 50 renames in total across AI modes.
 
@@ -69,7 +69,8 @@ Zush supports managed cloud, BYOK, and supported local analysis through Ollama o
 
 | Requirement beyond this Zush workflow | Boundary to consider |
 |---|---|
-| Storage cleanup and duplicate removal | Sparkle covers cleanup; Zush does not. Keep these tasks separate from naming and sorting. |
+| Storage cleanup | Sparkle covers cleanup; Zush does not. Keep disk cleaning separate from naming and sorting. |
+| Duplicate files | Zush matches [exact copies by content](/blog/find-remove-duplicate-files-mac) during a rename. Neither app compares files that only look alike. |
 | Scripts and deterministic macOS conditions | Hazel documents rule-based automation. Zush's AI Folder rules are a different mechanism. |
 | Linux desktop support | Sortio lists Linux. Zush supports Mac and Windows. |
 

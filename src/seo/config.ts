@@ -122,6 +122,15 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     keywords:
       'batch rename files, bulk rename files, AI batch file renamer, batch rename files with AI, bulk file renamer, batch rename files on Mac, batch rename files on Windows, rename multiple files by content, mixed file batch renamer, batch file naming tool',
   },
+  '/remove-duplicate-files': {
+    title: 'Remove Duplicate Files on Mac & Windows While Renaming',
+    description:
+      'Find duplicate files by content, not by filename. Zush keeps copies, marks them in the name, or moves them to the Trash during a rename, with preview and undo.',
+    robots: 'index, follow',
+    ogType: 'website',
+    keywords:
+      'remove duplicate files, duplicate file finder, find duplicate files Mac, remove duplicate files Windows 11, delete duplicate files, duplicate file remover, find duplicate files by content, duplicate photo and document cleanup, duplicate file cleaner with undo',
+  },
   '/offline-ai-file-renamer': {
     title: 'Offline AI File Renamer for LM Studio & Ollama',
     description:

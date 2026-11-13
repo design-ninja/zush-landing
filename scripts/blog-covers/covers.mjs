@@ -100,6 +100,19 @@ export const COVERS = {
   'sort-files-into-folders-with-ai-windows': flow('windows', 'FolderOpen'),
   'zush-templates-file-renaming-workflows': flow('Blocks', 'LayoutTemplate'),
 
+  // Duplicate files
+  'best-duplicate-file-finders-mac': compare('Copy'),
+  'deduplicate-before-renaming-files': flow('Copy', 'Sparkles'),
+  'duplicate-files-downloads-folder': flow('Download', 'CopyCheck'),
+  'duplicate-invoice-files-scans': flow('Receipt', 'CopyCheck'),
+  'duplicate-mark-flag-copies': naming('CopyCheck'),
+  'duplicate-scanned-pdfs': flow('ScanLine', 'Copy'),
+  'files-named-copy-1-2-duplicates': naming('Copy'),
+  'find-duplicate-files-by-hash': flow('Terminal', 'Copy'),
+  'find-duplicate-photos-mac': flow('Images', 'Copy'),
+  'find-remove-duplicate-files-mac': flow('apple', 'CopyCheck'),
+  'remove-duplicate-files-windows-11': flow('windows', 'CopyCheck'),
+
   // Naming conventions
   'file-naming-conventions-best-practices': naming('FileText'),
   'hr-employee-file-naming-convention': naming('Users'),

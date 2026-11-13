@@ -94,7 +94,9 @@ Duplicates are one of the biggest hidden space wasters. They happen when you dow
 
 **Finding duplicates manually:** Sort a folder by size in Finder (View > Arrange By > Size). Files with identical sizes are candidates. Open them to verify before deleting.
 
-**Finding duplicates by name:** Look for files with `(1)`, `(2)`, or `copy` in the name. These are almost always duplicates created by macOS when a file with the same name already existed in the destination folder.
+**Finding duplicates by name:** Look for files with `(1)`, `(2)`, or `copy` in the name. The suffix is added when a file with that name already existed in the folder, so it flags a name collision rather than identical contents. Check before deleting: repeated exports and downloads reuse generic names, so [`export (1).csv` is often different data](/blog/files-named-copy-1-2-duplicates).
+
+**Finding duplicates by content:** The only definitive test compares the files themselves. [Five ways to find duplicate files on Mac](/blog/find-remove-duplicate-files-mac) covers a Terminal command that lists every exact copy without deleting anything, and the apps worth paying for.
 
 **Photos specifically:** If you use Apple Photos, it has a built-in duplicate detection feature (Photos > Duplicates in the sidebar on macOS Ventura and later). This finds matching images even if the filenames differ.
 

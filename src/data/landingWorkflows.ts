@@ -68,7 +68,7 @@ const workflows: Record<string, LandingWorkflow> = {
       alt: 'Zush for Mac showing a batch of renamed files grouped into suggested folders before the changes are applied.',
       caption: 'Zush for Mac: proposed filenames grouped by suggested folder. Nothing moves until you apply the batch.',
     },
-    limit: 'AI folder sorting moves files, so test on a copy first and keep it off for folders other apps reference by path. Zush does not delete duplicates, clean up disk space, or replace a document-management system. Undo restores the original name and folder.',
+    limit: 'AI folder sorting moves files, so test on a copy first and keep it off for folders other apps reference by path. Zush clears exact copies of a file when duplicate detection is on, but it does not compare files that merely look alike, clean up disk space, or replace a document-management system. Undo restores the original name and folder.',
     links: [{ href: '/ai-file-sorter', label: 'AI file sorter with your own folder rules' }, { href: '/docs/folder-sorting', label: 'Folder sorting documentation' }, { href: '/docs/folder-monitoring', label: 'Set up folder monitoring' }],
   },
   '/ai-file-sorter': {

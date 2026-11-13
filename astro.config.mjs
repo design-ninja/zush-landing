@@ -103,6 +103,7 @@ export default defineConfig({
             { label: 'Quick Rename', link: '/docs/quick-rename' },
             { label: 'Folder monitoring', link: '/docs/folder-monitoring' },
             { label: 'Folder sorting', link: '/docs/folder-sorting' },
+            { label: 'Duplicate files', link: '/docs/duplicates' },
             { label: 'Undo history', link: '/docs/undo-history' },
             { label: 'Find files later', link: '/docs/file-search' },
           ],

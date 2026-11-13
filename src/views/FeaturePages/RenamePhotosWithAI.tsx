@@ -25,7 +25,7 @@ const faqItems = [
   {
     question: 'How do I rename an entire photo library without duplicates?',
     answer:
-      'Zush handles duplicate detection automatically. If two photos would receive the same name, Zush appends a sequential number to keep every filename unique. You can also customize the separator and numbering format in your naming pattern.',
+      'Two different things get called duplicates here. When two photos would end up with the same filename, Zush appends a sequential number so every name stays unique, and you can set the separator and numbering format in the naming pattern. Separately, turning on Detect duplicate files matches photos that are exact copies of one another and lets you keep those copies, mark them in the name, or move them to the Trash.',
   },
 ];
 
