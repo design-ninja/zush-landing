@@ -1,5 +1,23 @@
 # Changelog
 
+## [3.23.1] - 2026-11-14
+### Improved
+- Monitor waits for a destination folder that is offline, such as a disconnected drive, and renames the files when it is back. Files changed while waiting are analyzed again.
+- Monitor skips files it can't read instead of stopping, and keeps retrying files on a share that drops for a moment.
+- Built-in templates name files more predictably, and rename rules that ask not to include a date or other part of the original name are followed.
+- Large batches are sent in smaller parts, so they no longer fail for being too big.
+- Text recognition in scanned documents waits longer on slower Macs before switching to a faster method.
+- Zush starts faster.
+### Fixed
+- A file that was moved or deleted before renaming is kept in the list with its result instead of failing the whole batch.
+- A Mac where Zush was reinstalled is recognized again instead of showing that it can't be verified.
+- iCloud Drive, Dropbox and Google Drive folders can be watched in the App Store version.
+- iCloud files that start downloading slowly are no longer reported as stuck.
+- Checkout no longer stops with an error when it takes longer to open.
+- More EPUB books can be read.
+- Local AI models in Ollama no longer get stuck repeating the same tags, and model loading errors are explained.
+- The welcome window no longer shows a gray strip at the bottom.
+
 ## [3.23.0] - 2026-11-12
 ### New
 - Find duplicate files in AI Rename: turn on Detect duplicate files in a template's settings, then keep the copies as they are, mark them in the name or move them to the Trash. Copies don't use credits.
