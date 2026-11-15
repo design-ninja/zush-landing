@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.19.1.0] - 2026-11-15
+
+### Improved
+- AI Rename starts downloading online-only files in the background while it prepares the batch. If a download fails, Zush can suggest a name from the existing filename. If the sync app is closed, Zush asks you to start it.
+- Built-in templates give more useful names to screenshots, design assets, receipts, meeting notes, legal documents, and travel bookings. Default naming rules update automatically.
+- LM Studio setup stays responsive while Zush checks for the app and opens it.
+
+### Fixed
+- Windows notifications work again, including opening Zush when you click a notification while the app is closed.
+- Offline speech setup now checks for the Visual C++ runtime version it needs and tells you when to update it.
+- Batch rename finishes promptly and shows a clearer message when a file was moved or deleted after analysis.
+
 ## [3.19.0.0] - 2026-11-13
 
 ### Added
