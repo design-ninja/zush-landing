@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.19.2.0] - 2026-11-16
+
+### Added
+- Free users can add up to 1,000 files to AI Rename at once. Files beyond your free credits stay in the list as Awaiting PRO and are analyzed once you get PRO.
+- Before analyzing more files than your free credits cover, Zush lets you analyze the covered files now or get PRO for the whole batch.
+
+### Improved
+- Starting LM Studio from Zush now also starts its local server, so Zush can connect without you opening the app.
+- After your first analysis, the rename button briefly lights up to show the next step.
+
+### Fixed
+- Renaming an online-only file that could not be downloaded no longer gets stuck. If the sync app stops responding, the file keeps its name and you can retry.
+- Suggesting names for files in online-only folders no longer downloads other files from those folders.
+
+
 ## [3.19.1.0] - 2026-11-15
 
 ### Improved
