@@ -8,6 +8,8 @@ import {
   Search,
 } from 'lucide-react';
 import PlatformSeoSection, { type PlatformSeoCard } from '@/components/PlatformSeoSection/PlatformSeoSection.astro';
+import SectionHeader from '@/components/SectionHeader';
+import b from '@/components/Blocks/Blocks.module.scss';
 
 const docsLinks = [
   { href: '/blog/best-file-renamer-windows-11', label: 'PowerRename and other renamers compared' },
@@ -65,6 +67,13 @@ const rows: [string, string, string][] = [
   ['Rename screenshots, PDFs, photos, videos, audio, or docs by content', 'Zush for Windows', 'Every file can get a different descriptive name after AI analysis.'],
   ['Add counters, prefixes, or case rules only', 'PowerRename / Bulk Rename Utility', 'Rule-based tools still fit when the same pattern applies to every filename.'],
 ];
+
+const powerRenameRows: [string, string, string][] = [
+  ['How names are made', 'Search-and-replace and regular expressions on the existing filename', 'AI reads each file and proposes a descriptive name from its content'],
+  ['Mixed folders (scans, PDFs, photos, screenshots)', 'Every file gets the same rule applied', 'Every file can get its own name, built from your naming template'],
+  ['Review and undo', 'Live preview before renaming', 'Preview of every proposed name, plus Rename History to restore originals'],
+  ['Where it runs', 'Free part of Microsoft PowerToys, File Explorer context menu', 'Microsoft Store app for Windows 10 and 11, with Zush Cloud, BYOK, or Local AI'],
+];
 ---
 
 <PlatformSeoSection
@@ -83,9 +92,33 @@ const rows: [string, string, string][] = [
     you want a Microsoft Store install, review before apply, undo history, BYOK, Local AI, and content-aware
     names for mixed Windows folders.
   </p>
-  <p>
-    Coming from PowerToys? PowerRename rewrites filenames with search-and-replace and regular expressions, while
-    Zush reads what each file contains and names it by content — see how
-    <a href="/blog/best-file-renamer-windows-11"> PowerRename and other Windows renamers compare</a>.
-  </p>
 </PlatformSeoSection>
+
+<section class={b.Section}>
+  <SectionHeader
+    id="powerrename-alternative"
+    eyebrow="PowerRename alternative"
+    title="Zush as a PowerRename alternative on Windows"
+    description={[
+      'Zush is a PowerRename alternative for files that need names based on what is inside them. PowerRename in Microsoft PowerToys rewrites the existing filename with search-and-replace and regular expressions and never opens the file. Zush reads each document, image, PDF, screenshot, audio, or video file and proposes a descriptive name you review before applying.',
+      'Keep PowerRename for uniform mechanical edits such as replacing a word, fixing case, or adding a counter. Use Zush when a folder of IMG_1234.jpg and scan_001.pdf files needs a different, meaningful name for every file.',
+    ]}
+  />
+  <div class={b.Table} role="table" aria-label="PowerRename and Zush compared">
+    <div class:list={[b.TableRow, b.TableRow_head]} role="row">
+      <strong role="columnheader">Question</strong>
+      <strong role="columnheader">PowerRename</strong>
+      <strong role="columnheader">Zush</strong>
+    </div>
+    {powerRenameRows.map(([question, powerRename, zush]) => (
+      <div class={b.TableRow} role="row">
+        <span role="cell"><strong>{question}</strong></span>
+        <span role="cell">{powerRename}</span>
+        <span role="cell">{zush}</span>
+      </div>
+    ))}
+  </div>
+  <p class={b.BlockText}>
+    See how <a href="/blog/best-file-renamer-windows-11">PowerRename and other Windows renamers compare</a>.
+  </p>
+</section>
