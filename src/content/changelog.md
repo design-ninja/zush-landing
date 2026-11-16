@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.23.2] - 2026-11-16
+### Improved
+- Free users can add a full batch of files to AI Rename. Files covered by your free credits are analyzed right away, and the rest wait for PRO.
+- Cloud AI names are more specific: invoices include the vendor and period, books the author, and screenshots the app and what it shows. Photos get a place name only when the file states it.
+- Names no longer repeat a person, company, number or date that one of your naming blocks already adds.
+- Start LM Studio now starts LM Studio's server for you, so you don't have to turn it on in the app.
+- Ollama and LM Studio give documents more descriptive names, and Ollama keeps video frames in its analysis.
+### Fixed
+- Zush no longer quits at launch when a saved template is damaged.
+- When Ollama can't load a model, the batch stops with a clear message instead of failing every file.
+- LM Studio explains why a model failed to load.
+- Pausing or clearing Monitor while it waits for an offline destination folder no longer renames the waiting files afterwards.
+
 ## [3.23.1] - 2026-11-14
 ### Improved
 - Monitor waits for a destination folder that is offline, such as a disconnected drive, and renames the files when it is back. Files changed while waiting are analyzed again.
