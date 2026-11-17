@@ -1,0 +1,230 @@
+---
+title: "Free AI File Renamers Compared (2026): What Free Includes"
+description: "Free AI file renamers compared: how many renames each gives, monthly resets, sign-up, cloud vs local AI, and the cheapest way to keep going after."
+date: "2026-11-17"
+slug: "free-ai-file-renamers"
+platform: "general"
+topic: "comparisons"
+tags:
+  - "Tool Comparisons"
+  - "AI File Renaming"
+tldr: "Zush gives 50 AI renames on its managed cloud with no account, card, API key, or model download. RenameClick (100 a month, ~4 GB local model) and Floxtop (100 files a month, Apple Silicon Macs; renaming needs macOS 26 with Apple Intelligence) reset monthly. Wisfile is the free desktop app with no meter, but it has no undo. After the free tier, Zush's $48 one-time license is the only one-time option here that includes a managed cloud."
+earlyTaskExample: false
+reviewed: "2026-11-17"
+itemList:
+  name: "Free AI file renamers compared"
+  description: "Editorial ranking by the maker of Zush, based on documented free tiers checked November 17, 2026."
+  items:
+    - name: "Zush"
+      description: "50 AI renames on a managed cloud with no account, card, API key, or model download; Mac and Windows."
+      url: "https://zushapp.com/"
+    - name: "RenameClick"
+      description: "100 renames or moves a month with unlimited analysis, using a bundled ~4 GB local model."
+    - name: "Floxtop"
+      description: "100 files a month on-device with no email or card; Apple Silicon Macs on macOS 15 or later."
+    - name: "NameQuick"
+      description: "30 managed cloud renames with no email, no card, and no time limit; Mac and Windows."
+    - name: "Wisfile"
+      description: "Free and local with no rename meter; focused on PDFs and Word files, with no undo."
+    - name: "Renamed.to"
+      description: "50 free credits for a cloud web app with an API and CLI; paid credits last 12 months."
+    - name: "Renamer.ai"
+      description: "25 files a month on the free Starter plan; local mode is available on every tier."
+    - name: "Files Magic AI"
+      description: "25 rename credits and one organized folder; an English on-device model ships with the app."
+    - name: "FilesDesk"
+      description: "15 credits after sign-in; paid plans add Watch Folders and Watch Inbox for email attachments."
+    - name: "AI Renamer"
+      description: "10 cloud credits after Google sign-in; a $19 Local license runs Ollama or LM Studio."
+    - name: "ai-renamer (open-source CLI)"
+      description: "Free GPL-3.0 command-line tool that renames images and videos with Ollama, LM Studio, or an OpenAI key."
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
+
+Quick answer: if you want to try AI renaming on your own files today without signing up or downloading a model, [Zush](/) gives 50 renames on its managed cloud with no account, card, or API key. If you want a free allowance that comes back every month, RenameClick (100 a month, local model) and Floxtop (100 files a month on Apple Silicon Macs; renaming needs macOS 26 with Apple Intelligence) give the most. Wisfile is the only desktop app here that stays free with no meter (the open-source ai-renamer CLI is also free), but it focuses on PDFs and Word files and has no undo.
+
+**How we checked:** Written by the maker of [Zush](/). Competitor prices, features and ratings were checked on vendor sites and official stores on November 17, 2026 ([sources below](#sources-and-how-we-checked)). This compares documented features, not a lab test.
+
+## Free tiers at a glance
+
+"Free allowance" is counted differently by each vendor: renames, files, or credits. Where a vendor defines a credit, it usually covers one file. FilesDesk is the exception: it uses 1 credit per AI name suggestion, and re-running a file uses another credit.
+
+| Tool | Free allowance | Resets monthly? | Account needed | What AI runs it | Platforms | After the free tier |
+|---|---|---|---|---|---|---|
+| **Zush** | <BlogHighlight>50 AI renames</BlogHighlight> | No, 50 in total | <BlogHighlight>No account, card, or key</BlogHighlight> | Managed Zush Cloud AI (the same 50 also work with BYOK, Ollama, LM Studio) | Mac (macOS 15+), Windows 10/11 | $10/mo or $48 one-time, unlimited renames incl. cloud |
+| **RenameClick** | 100 renames or moves, unlimited analysis | Yes | No card; must go online once before the first apply | Built-in local model (~4 GB download, 16 GB RAM recommended) | Mac, Windows | $8 + VAT/mo or $36 + VAT lifetime; AI provider fees not included |
+| **Floxtop** | 100 files | Yes | No email or card | On-device; renaming needs Apple Intelligence on macOS 26 | Mac, Apple Silicon only | $19.99 one-time, 1 Mac |
+| **NameQuick** | 30 Managed renames | No time limit, not monthly | No email or card | Managed cloud (EU servers) | Mac, Windows | Managed from $12/mo; packs $19/500; $69 Self-Managed |
+| **Wisfile** | All features free | No meter | Not stated by vendor | Local, built in | Mac, Windows | Stays free |
+| **Renamed.to** | 50 credits | Not stated by vendor | Sign-up page; no card | Cloud | Web, API, CLI | $9 per 1,000 or $49 per 10,000 credits, valid 12 months |
+| **Renamer.ai** | 25 files | Yes | Sign-up page; no card | Cloud by default; local mode on every tier | Mac, Windows, web | Pro $9.95/mo (200 files) and up |
+| **Files Magic AI** | 25 rename credits + 1 folder organized | Not stated by vendor | Not stated by vendor | English on-device model ships with the app; optional cloud | Mac (Windows download listed, not verified) | $6.99/mo, $34.99/yr, $49.99 lifetime (sale price) |
+| **FilesDesk** | 15 credits | Not stated for the free tier | Sign-in | Managed cloud | Mac, Windows | $8/mo (500 credits); $40 Self-Managed |
+| **AI Renamer** | 10 cloud credits | No | Google sign-in | Cloud credits | Mac, Windows, Linux | $10 per 200 credits; $19 Local |
+| **ai-renamer (CLI)** | Free, open source | No meter | No | Your Ollama or LM Studio, or an OpenAI key | Anywhere Node.js runs | Free; you pay any API provider |
+
+Two things in that table matter more than the headline number. First, whether you can start without an account: only Zush, Floxtop, and NameQuick Managed say plainly that they need no email. Second, what runs the AI. A managed cloud works on any computer right away. A local model keeps files on your machine, but you download several gigabytes first and need the RAM to run it.
+
+## What free gets you in each app
+
+### 1. Zush: 50 renames with nothing to set up
+
+Zush's free tier is 50 AI renames on Zush Cloud AI. You install the app and rename. There's no account, card, API key, or model download. The same 50 renames are shared across all four AI modes, so you can also try your own Gemini, OpenAI, Claude, or OpenRouter key, or a local Ollama or LM Studio model, inside the allowance.
+
+You see every suggested name in a preview, and nothing changes until you click Rename. Applied batches go into a persistent Rename History, and you can undo a whole batch later, even after a restart. The free renames cover the same file types as the paid app: PDFs and scans, photos including RAW and HEIC, design files, Office and iWork documents, audio, and video named from speech and subtitles, including MKV. In cloud mode the app needs 4 GB of RAM and about 200 MB of disk.
+
+**Weakness:** the 50 renames are a one-time allowance, not a monthly one. RenameClick and Floxtop give you 100 every month.
+
+**Choose Zush if** you want to judge AI renaming on your real files within minutes, on Mac or Windows, without creating an account or downloading a model. For a step-by-step walkthrough of the first batch, see [rename files with AI for free](/blog/rename-files-with-ai-free).
+
+### 2. RenameClick: 100 a month on a local model
+
+RenameClick's free plan gives 100 successful renames or moves per month with unlimited analysis and no card. Its free AI path is a built-in local model of about 4 GB. RenameClick recommends 16 GB of system RAM. The app must go online once (activation and model download) before the first apply, then works offline. Version 4.1.2 added video (MP4, MOV, M4V, 3GP) using frames and local speech transcription. MKV, WebM, and AVI aren't supported.
+
+**Weakness:** undo is kept in memory, holds 10 entries, and is cleared when the app restarts.
+
+**Choose RenameClick if** you have 16 GB of RAM and want a free allowance that resets every month, with a local model that needs no Ollama setup.
+
+### 3. Floxtop: 100 files a month, on-device
+
+Floxtop gives 100 files per month with no email or card. Analysis runs on your Mac, and the vendor says the app only goes online for updates. Organizing works on macOS 15. Smart Rename, its renaming feature, needs Apple Intelligence on macOS 26.
+
+**Weakness:** it runs only on Apple Silicon Macs. There's no Intel or Windows version.
+
+**Choose Floxtop if** you're on an Apple Silicon Mac with macOS 26 and want monthly free renaming that never leaves the machine. Its $19.99 Pro license has a 30-day refund window, longer than most here.
+
+### 4. NameQuick: 30 managed renames, no email
+
+NameQuick's Managed route gives 30 renames with no email, no card, and no time limit. A 14-day trial with 70 more renames requires a card. The Self-Managed trial is a separate 30 renames with your own key or local model, and it asks for no card. Managed files go encrypted to NameQuick's EU servers and are deleted within 24 hours, according to its pricing page.
+
+**Weakness:** its credits documentation says a Managed rename is counted when the suggestion is generated, even if you reject it.
+
+**Choose NameQuick if** you want a managed cloud that's as easy to start as Zush's, or you already pay for Setapp, where it's included.
+
+### 5. Wisfile: free, local, no meter
+
+Wisfile says all its features are free and that processing is 100% local, on Mac and Windows. It's built around PDFs and Word files, pulling out details such as title, authors, and year, and it can sort files into folders by subject.
+
+**Weakness:** there's no undo. Test on copies.
+
+**Choose Wisfile if** you rename research papers or documents and your budget is zero.
+
+### 6. Renamed.to: 50 credits, web and API
+
+Renamed.to gives 50 credits with no card. It's a cloud service with a web app, REST API, CLI, and Google Drive, Dropbox, and OneDrive integrations. Paid credits come in packs, $9 for 1,000 or $49 for 10,000, valid for 12 months.
+
+**Weakness:** there's no desktop app, so every file goes through its servers.
+
+**Choose Renamed.to if** you're a developer wiring renaming into scripts or cloud-drive workflows.
+
+### 7. Renamer.ai: 25 files a month
+
+Renamer.ai's Starter plan gives 25 files per month with no card. Cloud processing is the default. Local mode is available on every tier, including Starter: you download a model inside the app, and it shows the download size before you start. The vendor doesn't say whether local renames count against the 25.
+
+**Weakness:** bring-your-own-key is only on Ultimate, at $99.95 a month.
+
+**Choose Renamer.ai if** you rename mostly documents and want a web uploader as well as the desktop app. For how it stacks up against its closest rival, see [Renamer.ai vs NameQuick](/blog/renamer-ai-vs-namequick).
+
+### 8. Files Magic AI: 25 credits plus one folder
+
+The free plan includes 25 AI rename credits, one organized folder, and the app's System Cleaner modules. An English on-device model ships with the app, and Magic Rename can also use Apple Intelligence or a cloud route that sends the extracted text.
+
+**Weakness:** 25 credits is a small sample, and the site lists a Windows download that we couldn't confirm in its public releases.
+
+**Choose Files Magic AI if** you also want Mac cleanup tools and plan to buy the $49.99 lifetime license while that sale price lasts.
+
+### 9. FilesDesk: 15 credits after sign-in
+
+FilesDesk gives 15 credits once you sign in. Paid plans are $8 a month for 500 credits or $20 for 2,000. Each credit pays for one AI name suggestion, and re-running a file uses another credit. The $40 Self-Managed license runs your own key or Ollama, LM Studio, or vLLM on one device, with one year of updates.
+
+**Weakness:** the smallest allowance among apps that require an account, and a 3-day refund window on Self-Managed.
+
+**Choose FilesDesk if** you want Watch Inbox, which renames email attachments from Gmail, iCloud, or IMAP.
+
+### 10. AI Renamer: 10 credits with Google sign-in
+
+AI Renamer gives 10 cloud credits after you sign in with Google. More credits cost $10 per 200. The $19 Local license gives unlimited renames with Ollama, LM Studio, or your own key. Recent versions added a Watch Folder (beta) and video, audio, RAW, HEIC, Office, and EPUB support.
+
+**Weakness:** no undo is documented.
+
+**Choose AI Renamer if** you're on Linux, or you want the lowest one-time price and already run local models.
+
+### 11. ai-renamer: the open-source CLI
+
+[ai-renamer](https://github.com/ozgrozer/ai-renamer) is a GPL-3.0 Node.js tool you run with `npx ai-renamer /path`. It uses Ollama by default, or LM Studio, or OpenAI with your key. It renames images and videos (videos need ffmpeg). Its README points to the AI Renamer desktop app above.
+
+**Weakness:** the README describes no preview step and no undo, and there's no interface beyond the terminal.
+
+**Choose ai-renamer if** you're comfortable in a terminal and already have Ollama running.
+
+<BlogCTA placement='inline' platform='general' />
+
+## The cheapest way to keep going
+
+Most free tiers are a sample. What matters is what you pay once they run out, and what that price includes.
+
+**Monthly plans** start at:
+
+- $6.99 for Files Magic AI
+- $8 for FilesDesk (500 credits)
+- $8 + VAT for RenameClick's unlimited plan
+- $9.95 for Renamer.ai (200 files)
+- $10 for Zush (unlimited, including the cloud)
+- $12 for NameQuick (500 renames)
+
+**Credit packs** suit occasional use: AI Renamer $10 per 200, NameQuick $19 per 500 (valid 12 months), Renamed.to $9 per 1,000 (valid 12 months), and File Renamer AI $10 per 1,000 (never expire).
+
+**One-time licenses** are where the offers differ most:
+
+| Included | Zush $48 | AI Renamer Local $19 | Floxtop Pro $19.99 | RenameClick Lifetime $36 + VAT | FilesDesk Self-Managed $40 | NameQuick Self-Managed $69 |
+|---|---|---|---|---|---|---|
+| AI included | <BlogHighlight>Zush Cloud AI + BYOK + Ollama/LM Studio</BlogHighlight> | Own key or Ollama/LM Studio; cloud credits extra | On-device only | Built-in ~4 GB model, Ollama/LM Studio, or own key | Own key or local only | Own key or local; AI costs separate |
+| Devices | <BlogHighlight>3, Mac + Windows</BlogHighlight> | Not stated by vendor | 1 Mac | Up to 3 (direct builds) | 1 device (support can transfer it) | 1 computer |
+| Updates | All future updates | Not stated by vendor | v1 updates only | Lifetime | 1 year | Lifetime |
+| Refund | 14 days | None stated | 30 days | Only where required by law | 3 days | 14 days |
+| History/undo | Persistent Rename History, batch undo | Not documented | Undo (v1.24) | In memory, 10 entries | History + undo | History + undo |
+
+The lowest sticker price is AI Renamer Local at $19, but you bring the AI: your own API bill or a local model your computer can run. RenameClick's $36 + VAT includes a local model that needs no Ollama, which is good value if you have 16 GB of RAM. Zush's $48 is the only one-time license in the table that includes a managed cloud, so unlimited renames work on a 4 GB laptop with no API bill, on up to three Macs and PCs. For the full cost math, see [what AI file renaming really costs](/blog/ai-file-renaming-cost).
+
+## Getting the most from any free tier
+
+- **Use a copy of a real folder.** Twenty mixed files from your Downloads tell you more than a demo set.
+- **Check the preview and the undo.** Rename, then undo the batch. If undo isn't documented, test only on copies.
+- **Know what consumes a credit.** Some apps count suggestions you never apply. Others count only applied renames.
+- **Know where the file goes.** Cloud routes send content to a server, local routes don't. If that matters, look at the [local AI file organizers compared](/blog/local-ai-file-organizers-compared).
+
+The wider field, including paid-only tools, is in the [best AI file renamer tools for 2026](/blog/best-ai-file-renamer-tools-2026).
+
+## Sources and how we checked
+
+<BlogSources ids={['renameclick', 'floxtop', 'namequick', 'wisfile', 'renamed-to', 'renamer-ai', 'files-magic-ai', 'filesdesk', 'airenamer', 'file-renamer-ai']} />
+
+The open-source ai-renamer CLI was checked on its [GitHub repository](https://github.com/ozgrozer/ai-renamer) on November 17, 2026.
+
+## FAQ
+
+### Is there a completely free AI file renamer?
+
+Yes. Wisfile says all its features are free and run locally, though it focuses on PDFs and Word files and has no undo. The open-source ai-renamer CLI is free if you run Ollama or LM Studio yourself. Every other app here gives a free allowance, from 10 credits (AI Renamer) to 100 a month (renames or moves in RenameClick, files in Floxtop, where renaming needs macOS 26 with Apple Intelligence), then charges a subscription, credit packs, or a one-time license.
+
+### Which free AI file renamer works without an account?
+
+Zush gives 50 renames with no account, card, or API key. Floxtop's 100 files a month need no email or card, and NameQuick's 30 Managed renames need neither. FilesDesk requires sign-in, and AI Renamer requires a Google sign-in. RenameClick needs no card but must go online once before the first apply. Renamer.ai and Renamed.to send you to a sign-up page.
+
+### Do free allowances reset every month?
+
+RenameClick (100 renames or moves), Floxtop (100 files), and Renamer.ai (25 files) reset monthly. Zush's 50 renames and AI Renamer's 10 credits are one-time. NameQuick's 30 Managed renames have no time limit but don't refill. Renamed.to, Files Magic AI, and FilesDesk don't state whether their free allowances reset, so check your account after the first month.
+
+### Which free option keeps my files on my computer?
+
+RenameClick, Floxtop, Wisfile, and Files Magic AI's on-device model run locally on the free tier. Renamer.ai offers a local mode on every plan, and Zush's 50 free renames also work with Ollama or LM Studio. Zush Cloud AI, NameQuick Managed, FilesDesk, AI Renamer credits, and Renamed.to send file content to a cloud service. Local models need a download and enough RAM.
+
+### What's the cheapest way to keep renaming after the free tier?
+
+It depends on what you already have. If you run local models, AI Renamer Local at $19 or RenameClick Lifetime at $36 + VAT are the cheapest one-time paths. If you want a managed cloud without an API bill, Zush's $48 one-time license includes Zush Cloud AI, BYOK, and local modes with unlimited renames on up to three devices. For occasional use, credit packs from $9 per 1,000 work.
+
+### Do Zush's free renames include local AI?
+
+Yes. The 50 free renames are shared across all four modes: Zush Cloud AI, your own API key, Ollama, and LM Studio. You can try the cloud on a few files, then set up Ollama from Zush's settings with its Download and Start buttons and use the rest locally. Paid plans remove the rename limit in every mode.

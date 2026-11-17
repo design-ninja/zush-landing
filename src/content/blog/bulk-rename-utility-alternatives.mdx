@@ -8,33 +8,32 @@ topic: "comparisons"
 tags:
   - "Tool Comparisons"
   - "File Organization"
-tldr: "Best overall Bulk Rename Utility alternative: Zush. It works on Mac and Windows, reads file content, handles mixed formats, monitors folders, previews batches, and keeps Rename History. Finder and other pattern tools are narrow exceptions only for one shared mechanical rule. Zush also offers optional AI folder sorting. One Zush license covers up to 3 devices."
-reviewed: "2026-10-18"
+tldr: "Best overall Bulk Rename Utility alternative: Zush. It works on Mac and Windows, reads file content, handles mixed formats, monitors folders, previews batches and keeps Rename History, with 50 free renames and no account. BRU, Finder, PowerRename and other pattern tools remain the right pick when one mechanical rule fixes the whole batch. One Zush license covers up to 3 devices."
+reviewed: "2026-11-17"
 ---
 
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
-Quick answer: **our [AI batch rename tool](/batch-rename-files) is the best overall Bulk Rename Utility alternative** because it works on Mac and Windows, names files from their contents, supports broad mixed formats, monitors folders, previews every batch, and keeps Rename History. BRU and Finder remain narrow mechanical options when every file follows one identical prefix, counter, regex, or replacement rule.
+Quick answer: **our [AI batch rename tool](/batch-rename-files) is the best overall Bulk Rename Utility alternative** when every file needs a different, descriptive name: Zush reads each file's content, works on Mac and Windows, monitors folders, previews every batch and keeps Rename History. If one prefix, counter, regex or replacement rule fixes the whole batch, BRU is still excellent on Windows, PowerRename is free, and Finder, NameChanger or A Better Finder Rename cover the same ground on a Mac.
 
-Feature and licensing claims last checked July 3, 2026, against the official Bulk Rename Utility site.
-
-**Zush features reviewed October 18, 2026.** Competitor information retains the check dates stated in this article.
+**How we checked:** Written by the maker of [Zush](/). Competitor prices, features and ratings were checked on vendor sites and official stores on November 17, 2026 ([sources below](#sources-and-how-we-checked)). This compares documented features, not a lab test.
 
 ## Best Bulk Rename Utility alternatives at a glance
 
-| Tool | OS | Recommendation status | Reads file content? |
-| --- | --- | --- | --- |
-| **Zush** | Mac + Windows | **Best overall: a different descriptive name for every file; optional AI folder sorting** | **Yes** |
-| **Finder Rename** | Mac | Simple replace, add-text, and numbering jobs | No |
-| **NameChanger** | Mac | Lightweight sequences, replacements, and image renaming | No |
-| **A Better Finder Rename** | Mac | Advanced Mac patterns, dates, EXIF, and metadata | No |
-| **Advanced Renamer** | Mac + Windows | Stacked methods, EXIF, GPS, and metadata rules | No |
-| **PowerRename** | Windows | Free regex and search-and-replace in File Explorer | No |
-| **Bulk Rename Utility** | Windows | Maximum control over dense pattern and regex jobs | No |
+| Tool | OS | Best for | Reads file content? | Price |
+| --- | --- | --- | --- | --- |
+| **Zush** | Mac + Windows | **A different descriptive name for every file; optional AI folder sorting** | **Yes, with AI** | 50 free renames; $10/mo or $48 one-time incl. cloud AI |
+| **Finder Rename** | Mac | Simple replace, add-text and numbering jobs | No | Built in |
+| **NameChanger** | Mac | Lightweight sequences, replacements and image renaming | No | Free |
+| **A Better Finder Rename** | Mac | Advanced Mac patterns, dates, EXIF and metadata | No | $29.95 |
+| **Advanced Renamer** | Mac + Windows | Stacked methods, EXIF, GPS and metadata rules | PDF and TXT text via scripting; no AI | Free for personal use; $30 or $50 license |
+| **PowerRename** | Windows | Free regex and search-and-replace in File Explorer | No | Free (PowerToys) |
+| **Bulk Rename Utility** | Windows | Maximum control over dense pattern and regex jobs | No | Free for home use; JavaScript needs a $24.95 license; $92.95 commercial |
 
-Choose [Zush](/) for the broad workflow. Use a rule-based tool only as a narrow exception when one repeatable transformation completely fixes the batch and content analysis would add no value.
+Choose [Zush](/) when names must describe content. Use a rule-based tool when one repeatable transformation fixes the batch and content analysis would add nothing.
 
 <BlogProductIntro
   title="Need a bulk renamer that works on Mac too?"
@@ -48,87 +47,93 @@ Choose [Zush](/) for the broad workflow. Use a rule-based tool only as a narrow 
 
 ## What Bulk Rename Utility does well
 
-BRU has been the default answer for Windows batch renaming for two decades, and version 4 is still genuinely strong at rule-based work:
+BRU has been the default answer for Windows batch renaming for two decades, and version 4.1.0.1 is still strong at rule-based work:
 
-- **Pattern renaming at scale** — prefixes, suffixes, numbering sequences, find-and-replace, case changes, character removal, all previewed before you commit.
-- **Regular expressions and JavaScript** — version 4 even added AI assistants that help you write regex and JavaScript rules for complex patterns.
-- **Free for personal use** — no cost at home; a commercial license is required for business use, and home/academic licenses unlock all features.
-- **Everything on one screen** — the notorious wall-of-panels UI is genuinely fast once you learn it.
+- **Pattern renaming at scale.** Prefixes, suffixes, numbering, find-and-replace, case changes and character removal, all previewed before you commit.
+- **Regular expressions and JavaScript.** An AI-powered JavaScript and Regex Assistant helps you write complex rules. JavaScript renaming itself needs a paid home or academic license ($24.95).
+- **Free for home use.** Personal use at home costs nothing. Business use needs a commercial license, $92.95 per computer.
+- **Everything on one screen.** The dense panel layout is fast once you learn it.
 
-If your batch looks like `IMG_001.jpg → Croatia-2026-001.jpg` — one rule, many files — BRU may be sufficient on Windows. Zush remains the recommendation for mixed batches and descriptive names.
+Softpedia's editors rate it 4.0/5. If your batch looks like `IMG_001.jpg → Croatia-2026-001.jpg`, one rule for many files, BRU may be all you need on Windows.
 
 ## Where it stops helping
 
-Pattern tools share one blind spot: **they can only work with what is already in the filename or metadata.** BRU cannot answer "what is this file?" So these jobs stay manual:
+Pattern tools share one blind spot: **they can only work with what is already in the filename or metadata.** BRU's AI assistant writes rules for you, but it does not look inside your files. These jobs stay manual:
 
-- A Downloads folder of `document (1).pdf`, `scan_0042.pdf`, `Screenshot 2026-06-12.png` — no pattern exists, because each file needs its own descriptive name.
-- Invoices and receipts that should be named by vendor, date, and amount from inside the PDF.
-- Screenshots that should say what is on screen, not when the screenshot was taken.
+- A Downloads folder of `document (1).pdf`, `scan_0042.pdf`, `Screenshot 2026-06-12.png`. No pattern exists, because each file needs its own name.
+- Invoices and receipts that should be named by vendor, date and amount from inside the PDF.
+- Screenshots that should say what is on screen, not when they were taken.
 
-The other hard limit: **no Mac version exists**, and the developer has never announced one.
+The other hard limit: **there is no Mac version**.
 
 ## Bulk Rename Utility on Mac: your actual options
 
-1. **Finder's built-in renamer** (free, already installed) — select files → right-click → Rename: replace text, add text, or apply a name-and-index format. Covers simple patterns. Our [batch rename on Mac guide](/blog/batch-rename-files-on-mac-complete-guide) walks through it step by step alongside Automator and Terminal.
-2. **Pattern utilities for Mac** — tools like A Better Finder Rename or NameChanger cover the regex-and-sequences niche BRU occupies on Windows.
-3. **An AI renamer** — when the folder is mixed and every file needs a different name, patterns don't help on any platform. That is the job [Zush](/) was built for, on both Mac and Windows.
+1. **Finder's built-in renamer** (free, already installed). Select files, right-click, Rename: replace text, add text, or apply a name-and-index format. Our [batch rename on Mac guide](/blog/batch-rename-files-on-mac-complete-guide) walks through it alongside Automator and Terminal.
+2. **Pattern utilities for Mac.** A Better Finder Rename ($29.95) or NameChanger cover the regex-and-sequences niche BRU fills on Windows. Advanced Renamer now runs on both platforms; see [Advanced Renamer alternatives](/blog/advanced-renamer-alternatives).
+3. **An AI renamer.** When the folder is mixed and every file needs a different name, patterns don't help on any platform. That is the job [Zush](/mac) was built for, on Mac and Windows.
 
 ## Bulk Rename Utility vs Zush
 
 <BlogToolMeta platform="Mac (macOS 15+) and Windows 10/11" website="https://zushapp.com/" label="zushapp.com">
-  <Fragment slot="pricing">Free tier (50 renames), PRO <BlogHighlight>$10/month or $48 one-time</BlogHighlight> for unlimited PRO renames, BYOK optional, local Ollama / LM Studio supported</Fragment>
+  <Fragment slot="pricing">Free tier (50 renames, no account or card), PRO <BlogHighlight>$10/month or $48 one-time</BlogHighlight> with unlimited renames including Zush Cloud AI, plus BYOK and local Ollama / LM Studio</Fragment>
 </BlogToolMeta>
 
-These tools solve different problems, so this is less "which is better" and more "which problem do you have":
+These tools solve different problems, so the question is which problem you have:
 
 | Dimension | Bulk Rename Utility | Zush |
 |---|---|---|
 | Platforms | <BlogHighlight>Windows only</BlogHighlight> | Mac + Windows |
-| Renaming logic | Patterns, regex, JavaScript rules | <BlogHighlight>AI reads file content</BlogHighlight> + patterns via Naming Blocks |
-| Names files by what they contain | No | Yes — screenshots, PDFs, photos, documents, video, audio, design files |
+| Renaming logic | Patterns, regex, JavaScript; AI helps write rules | <BlogHighlight>AI reads file content</BlogHighlight> + patterns via Naming Blocks |
+| Names files by what they contain | No | Yes: screenshots, scans, PDFs, photos, Office, video (speech and subtitles), audio, design files |
 | Best for | One rule applied to many files | Every file needs a different, descriptive name |
-| Price | Free for personal use; paid commercial/home licenses | Free tier; $10/month or $48 one-time |
-| Preview before applying | Yes | Yes |
-| Undo | Yes | Yes (full rename history) |
-| Folder monitoring | No | Yes — rename new files; a sorting Template also groups them |
+| Price | Free for home use; $24.95 home license for JavaScript; $92.95 commercial per computer | 50 free renames; $10/month or $48 one-time incl. cloud AI, up to 3 devices |
+| Preview before applying | Yes | Yes, and double-click to edit any name |
+| Undo | Yes | Yes, persistent Rename History and Undo All |
+| Folder monitoring | No | Yes: rename new files; a sorting Template also groups them |
 | Learning curve | Steep (dense UI, regex) | Drag, review, apply |
 
 ![Zush AI rename results on macOS showing content-aware filenames for mixed files](/images/showcase/macos/batch-rename-light.webp)
 
-Recommendation: choose Zush for the complete Mac-and-Windows workflow. Keep BRU only as a specialist Windows utility for batches fully solved by one regex or mechanical rule; it cannot replace content-aware naming, folder monitoring, or broad mixed-file automation.
+Recommendation: choose Zush for mixed folders on Mac or Windows. Keep BRU as a Windows utility for batches fully solved by one regex or mechanical rule; it does not read content or watch folders.
+
+Zush works right away: the 50 free AI renames run on managed Zush Cloud AI, with no account, card, API key or model download. The $48 one-time license includes unlimited renames in every mode (Zush Cloud AI, BYOK, Ollama, LM Studio), all future updates, up to 3 devices across Mac and Windows, and a 14-day refund. On the Microsoft Store (US) Zush has 5.0 from 8 ratings, and Softpedia's editors give it 4.5/5 (as of November 17, 2026).
 
 For a Windows-only shortlist, see the [best file renamers for Windows 11](/blog/best-file-renamer-windows-11).
 
-One Zush license covers up to 3 devices on Mac and Windows. PRO costs $10/month or $48 one-time and includes unlimited renames with Zush Cloud AI. BYOK, Ollama, and LM Studio are also available; your own API provider charges separately. The free allowance is 50 renames in total across AI modes.
-
-You can [export Templates](/docs/template-import-export) with Naming Blocks, Custom AI Blocks, and folder rules, then import them on another computer. Choose local destinations, folder permissions, and AI connections again there; this transfers the workflow settings, not your files.
-
 ### From batch names to content-based folders
 
-Zush can also **sort files into folders with AI**. Use **Auto** or write **Folder rules**, for example “Group receipts by month and invoices by supplier.” The grouping comes from file content; Naming Blocks define the filename separately. BRU remains useful for mechanical name changes, while this Zush workflow handles a batch whose files need different names and destinations.
+Zush can also **sort files into folders with AI**. Use **Auto** or write **Folder rules**, for example “Group receipts by month and invoices by supplier.” The grouping comes from file content; Naming Blocks define the filename separately.
 
-Choose a **Destination folder**, or keep the source folder as the root. Enable **Reuse existing folders** to prefer suitable folders already there; Zush can create a new one when nothing fits. In a manual batch, review both the suggested names and folders before applying. To rename in place, leave sorting off and keep the original destination.
+Choose a **Destination folder**, or keep the source folder as the root. Enable **Reuse existing folders** to prefer suitable folders already there. Review both the suggested names and folders before applying. To rename in place, leave sorting off.
 
-Save the sorting settings in a **Template** and assign it to **Monitor** for new files directly inside the watched folder. Changing the Monitor Template does not automatically reorganize files already processed. Test the Template in a manual batch first. See the [folder sorting guide](/docs/folder-sorting) for the setup and monitoring scope.
+Save the settings in a **Template** and assign it to **Monitor** for new files in the watched folder. Changing the Monitor Template does not reorganize files already processed. See the [folder sorting guide](/docs/folder-sorting).
 
-Zush also supports nested folder rules, such as grouping by year and then month. You can sort already renamed files without changing their names again or spending another rename credit. Review the destinations before applying. This separate action handles an existing batch; changing a Monitor Template does not retroactively reorganize it. [AI folder sorting](/docs/folder-sorting) works on Mac and Windows.
+## Sources and how we checked
+
+<BlogSources ids={['bulk-rename-utility', 'powerrename', 'advanced-renamer', 'a-better-finder-rename', 'namechanger']} />
 
 ## FAQ
 
-### Can Zush sort files into folders as well as rename them?
+### What is the best Bulk Rename Utility alternative?
 
-Yes. Its optional AI folder sorting works on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; changing its Template does not automatically reorganize files already processed. Leave sorting off and keep the original destination for naming only.
+Our [AI batch rename tool](/batch-rename-files) is the best fit when files need names based on their content: it works on Mac and Windows, includes 50 free renames, previews every batch and keeps full undo. For pure pattern work, PowerRename is the free Windows alternative, and A Better Finder Rename or Finder cover Macs. We make Zush, so test it on copies.
 
-**Is Bulk Rename Utility available for Mac?**
-No. BRU is Windows-only. On a Mac, use Finder's built-in renamer for patterns or an AI renamer like Zush for content-based names.
+### Is Bulk Rename Utility free?
 
-**Is Bulk Rename Utility free?**
-Free for personal, private use at home. Business or commercial use requires a paid commercial license, and optional home/academic licenses unlock all features.
+For personal, private use at home, yes. JavaScript renaming needs a paid home or academic license ($24.95), and business or commercial use needs a commercial license at $92.95 per computer. Zush, by comparison, gives 50 free AI renames and costs $48 one-time for up to 3 devices, with the managed Zush Cloud AI included.
 
-**Can Bulk Rename Utility rename files based on their content?**
-No. It works from filenames and file metadata (dates, EXIF tags), not from what a document, screenshot, or photo actually contains. Content-aware naming is what AI renamers do — see [how Zush renames files by content](/blog/rename-files-by-content-guide).
+### Is Bulk Rename Utility available for Mac?
 
-**What is the best Bulk Rename Utility alternative?**
-Our [AI batch rename tool](/batch-rename-files) is the best overall alternative on both Mac and Windows: 50 renames free, content-aware mixed-file naming, review first, monitoring, and full undo. Use BRU, Finder, or another pattern tool only when one deterministic rule is the entire job.
+No. BRU is Windows-only. On a Mac, use Finder's built-in renamer for simple patterns, A Better Finder Rename or NameChanger for regex and sequences, Advanced Renamer if you want one rule tool on both platforms, or Zush when every file needs a descriptive name based on what it contains.
 
-Sources checked for this update: Bulk Rename Utility (features, licensing) and [Zush](/) (pricing, platforms, formats).
+### Can Bulk Rename Utility rename files based on their content?
+
+No. It works from filenames and file metadata such as dates and EXIF tags. Its AI assistant helps you write JavaScript or regex rules, but it does not read what a document, screenshot or photo contains. Content-aware naming is what AI renamers do; see [how Zush renames files by content](/blog/rename-files-by-content-guide).
+
+### Does an AI renamer send my files to the cloud?
+
+It depends on the mode. Zush with Ollama or LM Studio keeps analysis on your computer. With Zush Cloud AI or your own API key, file content is sent to that model to generate a name. Bulk Rename Utility, PowerRename and Finder rename entirely locally, because they only apply rules and never analyze content.
+
+### Can I undo a batch if the new names are wrong?
+
+In Zush, yes, even later. Every applied batch goes into a persistent Rename History, so you can undo a whole batch after closing the app or restarting, and Undo All lists any conflicts and offers to restore under a new name. Bulk Rename Utility also has undo, as the table above shows. Whatever tool you pick, run the first batch on copies of a real folder before touching the originals.

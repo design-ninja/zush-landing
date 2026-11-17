@@ -208,6 +208,24 @@
     .markdown-table-wrap {
         @include content-table-wrap;
         margin-bottom: 1.5rem;
+
+        // Wide comparison tables (5+ columns) scroll sideways on phones. Keep the
+        // row label pinned so readers always know which product a cell belongs to.
+        @include small {
+            table:has(thead th:nth-child(5)) {
+                :is(th, td) {
+                    padding: 0.75rem 0.875rem;
+                }
+
+                :is(th, td):first-child {
+                    position: sticky;
+                    left: 0;
+                    z-index: 1;
+                    background: var(--background);
+                    box-shadow: inset -1px 0 0 var(--border);
+                }
+            }
+        }
     }
 
     table {

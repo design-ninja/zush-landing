@@ -84,6 +84,29 @@ export const blogCollectionSchema = z.object({
   reviewed: z.coerce.date().optional(),
   /** Let informational comparisons introduce the task after answering the query. */
   earlyTaskExample: z.boolean().default(true),
+  /**
+   * Ranked roundups: emitted as schema.org ItemList. Keep the order and the
+   * one-line descriptions identical to the article's visible ranking.
+   */
+  itemList: z
+    .object({
+      name: z.string(),
+      /** Fragment for the ItemList @id; keep it stable once published. */
+      anchor: z.string().regex(/^[a-z0-9-]+$/).optional(),
+      description: z.string().optional(),
+      items: z
+        .array(
+          z.object({
+            name: z.string(),
+            description: z.string(),
+            url: z.string().url().optional(),
+            /** schema.org @id of an entity defined elsewhere, e.g. Zush's SoftwareApplication. */
+            id: z.string().url().optional(),
+          }),
+        )
+        .min(2),
+    })
+    .optional(),
   noindex: z.coerce.boolean().optional(),
   canonical: z.string().optional(),
   locale: z.enum(BLOG_LOCALE_VALUES).default('en'),

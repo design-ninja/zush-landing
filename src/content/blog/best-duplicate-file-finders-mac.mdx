@@ -1,6 +1,6 @@
 ---
-title: "Best Duplicate File Finders for Mac in 2026, Compared"
-description: "Gemini 2, CleanMyMac, Duplicate File Finder, dupeGuru, the Terminal, and Zush compared by what they match, what they do with a match, and how you get a file back."
+title: "Best Duplicate File Finders for Mac (2026), Compared"
+description: "Gemini 2, dupeGuru, Duplicate File Finder, CleanMyMac, Photos, Terminal and Zush compared: what each matches, what it costs, and how you undo a mistake."
 date: "2026-11-13"
 slug: "best-duplicate-file-finders-mac"
 platform: "mac"
@@ -9,14 +9,29 @@ tags:
   - "Duplicate Files"
   - "Tool Comparisons"
 tldr: "Pick by what you need matched. Exact copies are solved by free tools, including a Terminal command. Similar photos need Gemini 2 or dupeGuru's fuzzy modes. If the folder also needs real filenames, Zush clears exact copies during the rename instead of asking for a separate pass."
-reviewed: "2026-11-13"
+reviewed: "2026-11-17"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-Quick answer: for exact copies, the free options are good and a Terminal command costs nothing at all. Pay for a duplicate finder when you need similar-image matching, when the library is large enough that reviewing matters more than scanning, or when you want the cleanup to be part of a job you were doing anyway.
+Quick answer: for exact copies, free tools are enough. dupeGuru is free and open source, and a Terminal command costs nothing. For duplicates inside your photo library, use the Duplicates collection in Apple Photos. Pay for **Gemini 2** ($1.95/month or $44.95 one-time) when you need similar-photo matching and a polished review screen on a large library. If the folder also needs real filenames, [Zush](/remove-duplicate-files) clears exact copies during the AI rename. It is a renamer with duplicate detection, not a disk-wide duplicate finder.
 
-This compares six approaches on the three things that actually differ: what gets matched, what happens to a match, and how you recover a file you should have kept.
+**How we checked:** Written by the maker of [Zush](/). Competitor prices, features and ratings were checked on vendor sites and official stores on November 17, 2026 ([sources below](#sources-and-how-we-checked)). This compares documented features, not a lab test.
+
+This compares seven approaches on what actually differs: what gets matched, what happens to a match, what it costs, and how you recover a file you should have kept.
+
+## The comparison
+
+| Tool | Matches | Does what with a match | Price |
+|---|---|---|---|
+| Terminal (`shasum`) | Exact contents | Prints a list. You delete by hand | Free, built in |
+| Photos Duplicates collection | Items in the Photos library | Merges, keeping one copy with the combined metadata | Free, built in |
+| dupeGuru | Exact contents, similar filenames, similar images | Mark, then send to Trash, move, or copy; rename one selected file at a time | Free and open source |
+| Duplicate File Finder (Nektony) | Exact contents, similar folders | Review and remove; moves data between similar folders | Free version; Pro from $7.95/mo. Free vs Pro split not stated by vendor |
+| Gemini 2 (MacPaw) | Exact contents and similar images | Smart Select picks what to remove, then deletes to Trash | $1.95/mo or $44.95 one-time; trial cleans up to 500 MB |
+| CleanMyMac (MacPaw) | Exact contents and similar images, inside a wider cleanup suite | Review and delete | Paid suite |
+| Zush | Exact contents, within the batch you add | Keep, mark in the filename, or move to Trash during the rename; Undo restores | 50 free renames; $10/mo or $48 one-time. Copies use no credits |
 
 <BlogProductIntro
   title="Renaming the folder after you clean it?"
@@ -28,20 +43,6 @@ This compares six approaches on the three things that actually differ: what gets
     { href: '/blog/find-remove-duplicate-files-mac', label: 'Five ways to find duplicates on Mac' },
   ]}
 />
-
-## The comparison
-
-| Tool | Matches | Does what with a match | Cost model |
-|---|---|---|---|
-| Terminal (`shasum`) | Exact contents | Prints a list. You delete by hand | Free, built in |
-| Photos Duplicates album | Items in the Photos library | Merges, keeping the best version and its metadata | Free, built in |
-| dupeGuru | Exact contents, similar filenames, similar images | Mark, then delete, move, copy, or rename | Free and open source |
-| Duplicate File Finder (Nektony) | Exact contents, similar folders | Review and delete to Trash; paid tier adds auto selection and folder merging | Free tier with a paid upgrade |
-| Gemini 2 (MacPaw) | Exact contents and similar images | Smart Select picks what to remove, then deletes to Trash | Paid, with a limited free mode |
-| CleanMyMac (MacPaw) | Exact contents and similar images, inside a wider cleanup suite | Review and delete | Paid suite |
-| Zush | Exact contents, within the batch you add | Keep, mark in the filename, or move to Trash during the rename | Free tier with a paid upgrade |
-
-Pricing on all of these moves around, and the vendor pages disagree with the roundups often enough that quoting a number here would age badly. Check the App Store listing or the vendor site before you buy.
 
 ## What each one is actually for
 
@@ -55,17 +56,17 @@ grep -F -f /tmp/dupes.txt /tmp/hashes.txt
 
 It is free, it cannot delete anything by accident, and for one folder it is faster than installing an app. What it does not give you is a review interface, which is the thing you are paying for everywhere below.
 
-**The Photos Duplicates album** is the right tool whenever the duplicates are inside your photo library, and no third-party app handles that case better. It merges rather than deletes, keeping the higher quality version along with keywords, favorites, and album membership. It covers only the library, so photos sitting loose in a folder are invisible to it.
+**The Photos Duplicates collection** is the right tool whenever the duplicates are inside your photo library. In macOS 26 it sits under **Library** in the Photos sidebar. It merges rather than deletes, keeping the higher quality version along with keywords, favorites, and album membership. It covers only the library, so photos sitting loose in a folder are invisible to it. For choosing a whole photo library app, see [the best photo organizers for Mac](/blog/best-photo-organizing-software-mac).
 
-**dupeGuru** is free, open source, and the most flexible of the apps. It has separate modes for general files, music, and pictures, and the picture mode does fuzzy matching with an adjustable threshold. Its results pane lets you mark files and then delete, move, copy, or rename them, which is unusual: most of its competitors only delete. The interface shows its age and its defaults expect you to understand what a match threshold does.
+**dupeGuru** is free, open source, and the most flexible of the apps. It has separate modes for general files, music, and pictures, and the picture mode does fuzzy matching with an adjustable threshold. Its results pane lets you mark files and then send them to the Trash, move them, or copy them to another folder. Rename Selected renames one selected file at a time, so it is a manual fix, not a bulk rename. The interface shows its age and its defaults expect you to understand what a match threshold does.
 
-**Duplicate File Finder from Nektony** is free to scan and remove duplicates, with a paid tier that adds automatic selection, folder merging, and selection by folder. It also finds similar folders, which is the feature you want after a sync went wrong and the same directory exists twice under different names.
+**Duplicate File Finder from Nektony** has a free version and a Pro upgrade from $7.95 per month. Nektony's page says Pro adds "additional features and advanced options" without listing which ones, so test the free version on your folder before paying. It also finds similar folders, which is the feature you want after a sync went wrong and the same directory exists twice under different names.
 
-**Gemini 2** is the polished one. Smart Select proposes what to remove and learns from what you override, which is genuinely useful on a library of tens of thousands of photos and genuinely risky on a folder of work documents. It handles similar images, external drives, and has a monitor for newly added duplicates.
+**Gemini 2** is the polished one. Smart Select proposes what to remove and learns from what you keep and delete, which helps on a library of tens of thousands of photos and is risky on a folder of work documents. It finds similar images, not only exact copies, and its Duplicates Monitor notifies you about new copies. It costs $1.95 per month or $44.95 one-time, and the trial cleans up to 500 MB before you pay.
 
 **CleanMyMac** includes duplicate and similar-photo finding inside a general cleanup suite. If you already own it, use what you have. Buying it for duplicates alone means paying for cache cleaning and uninstallers you did not ask for.
 
-**Zush** is not a disk-wide duplicate scanner, and it would be wrong to present it as one. It compares the files in the batch you give it, matches exact copies by content, and then does something about them inside the renaming pass.
+**Zush** is an AI file renamer with duplicate detection built in, not a disk-wide duplicate scanner. It compares the files in the batch you give it, matches exact copies by content, and handles them inside the renaming pass. It does not find similar photos or scan a whole disk.
 
 <BlogCTA placement='inline' platform='mac' />
 
@@ -75,7 +76,7 @@ The case for a separate duplicate finder is strongest when cleaning is the whole
 
 The case against it is the folder that has two problems at once. A Downloads folder full of `scan_0041 (1).pdf` and `IMG_2291 copy.png` needs the copies gone *and* the survivors named, and a duplicate finder leaves you halfway. You run one app, then open another, and the second one re-reads files the first one already read.
 
-In Zush the detection is a Template setting. Copies are matched before analysis and never sent to the AI, so duplicates add nothing to the cost of a batch, and each one is labelled in the list with the file it matches.
+In Zush the detection is a Template setting called **Detect duplicate files**. Copies are matched by content before analysis and never sent to the AI, so they use no credits, and each one is labelled in the list with the file it matches. Nothing changes until you click Rename.
 
 ![Zush showing detected copies in the AI Rename list, each labelled with the file it duplicates](/images/showcase/macos/duplicates-keep-light.webp)
 
@@ -83,20 +84,20 @@ Then they go one of three ways. Keep as is leaves them untouched and unchecked. 
 
 ![Zush with Move to Trash selected, showing a Moves to Trash label on each copy and the Copies to Trash counter](/images/showcase/macos/duplicates-trash-light.webp)
 
-The part that has no equivalent in the apps above is what happens afterwards. Removals are recorded in Activity alongside the renames, and Undo restores the copies to their original folders under their original names in one action. Every tool here deletes to the Trash, so nothing is unrecoverable, but recovery elsewhere means finding the right files in the Trash and dragging them back to folders you have to remember.
+The difference is what happens afterwards. Removals are recorded in Activity alongside the renames, and Undo restores the copies to their original folders under their original names and reverses the renames in the same action, as long as the Trash has not been emptied. The other apps send files to the Trash too, so recovery is possible there, but you restore them from the Trash yourself.
 
-There is also a Remove Duplicates Template, built from a single Original Name block, for when the names are already right and you only want the copies cleared.
+There is also a Remove Duplicates Template, built from a single Original Name block, for when the names are already right and you only want the copies cleared. Duplicate detection arrived in Zush 3.23 for Mac and 3.19 for Windows, and the [duplicate files guide](/docs/duplicates) covers every option.
 
 ## Picking one
 
 | If you need | Use |
 |---|---|
 | A definitive list of exact copies, nothing deleted | The Terminal command |
-| Duplicates inside the Photos library | The Duplicates album in Photos |
+| Duplicates inside the Photos library | The Duplicates collection in Photos |
 | Similar photos, not just identical ones | Gemini 2, or dupeGuru's picture mode |
-| A free app with a review step | dupeGuru or Duplicate File Finder |
+| A free app with a review step | dupeGuru, or the free version of Duplicate File Finder |
 | Duplicate folders after a bad sync | Duplicate File Finder |
-| The folder cleaned and renamed in one pass | Zush |
+| Exact copies cleared and the survivors renamed in one pass | Zush |
 
 ## What none of them do
 
@@ -104,24 +105,32 @@ Exact matching will not pair two scans of the same page, a photo and its edited 
 
 And no duplicate finder protects you from a bad decision at speed. Whatever you use, send files to the Trash rather than deleting them, leave the Trash unemptied for a few days, and be suspicious of any feature that selects what to delete on your behalf without showing its reasoning.
 
+## Sources and how we checked
+
+<BlogSources ids={['apple-photos', 'dupeguru', 'nektony-duplicate-file-finder', 'gemini-2', 'cleanmymac']} />
+
 ## FAQ
 
 ### Does macOS have a built-in duplicate file finder?
 
-Only for the Photos library and for Music. Finder has no general duplicate finder, which is why the Terminal command or a third-party app is needed for documents and downloads.
+Only for the Photos library and for Music. In macOS 26, Photos shows a Duplicates collection under Library that merges matching photos and videos. Music can show duplicate songs. Finder has no general duplicate finder for documents and downloads, which is why people use the Terminal command above, a free app like dupeGuru, or a paid one like Gemini 2.
 
 ### Is a free duplicate finder good enough?
 
-For exact copies, yes. dupeGuru and the free tier of Duplicate File Finder both find and remove them. Paying buys a better review interface, similar-image matching, and bulk selection on large libraries.
+For exact copies, yes. dupeGuru is free and open source, and the Terminal command lists exact copies without deleting anything. Nektony's Duplicate File Finder has a free version, though the vendor does not say exactly what Pro adds. Paying, for example $44.95 one-time for Gemini 2, buys a smoother review screen, similar-photo matching, and automatic selection on large libraries.
 
 ### What is the safest way to run any of these?
 
-Scan one folder rather than a whole disk, read the groups before acting, delete to the Trash, and leave the Trash alone for a few days. Avoid auto-selection on folders of work documents, where the rule picking the keeper is not one you wrote.
+Scan one folder rather than a whole disk, read the groups before acting, delete to the Trash, and leave the Trash alone for a few days. Avoid auto-selection on folders of work documents, where the rule picking the keeper is not one you wrote. Tools that show every removal in a preview and offer an Undo make a mistake cheaper to fix.
 
 ### Can a duplicate finder also rename my files?
 
-dupeGuru can rename files it has marked, as one of its post-scan actions. Zush renames by reading what each file contains, and treats duplicate handling as part of that pass. The other apps on this list delete and move.
+dupeGuru has Rename Selected, which renames one selected file at a time by hand. Zush works the other way round: it is an AI renamer that names files from their contents and handles exact copies in the same pass, keeping them, marking them in the name, or moving them to the Trash. The other apps in this comparison remove or move duplicates but do not rename.
 
 ### Do duplicates cost extra to process in Zush?
 
-No. Copies are identified before analysis and never sent to the AI, so a folder that is half duplicates costs the same as the same folder with one of each.
+No. Copies are identified by content before analysis and never sent to the AI, so a folder that is half duplicates costs the same as the same folder with one of each. The free tier gives 50 AI renames with no account or card, and PRO is $10 per month or $48 one-time for unlimited renames on up to 3 Mac or Windows devices.
+
+### Do these apps upload my files to scan them?
+
+dupeGuru, the Terminal command, and Apple Photos compare files on your Mac. Gemini 2, CleanMyMac, and Duplicate File Finder are Mac apps that scan the folders you choose; check each vendor's privacy policy if that matters. Zush detects duplicates locally by comparing file contents, and copies are never sent to the AI. The originals it renames go to Zush Cloud AI by default, or stay on your Mac when you choose Ollama or LM Studio.

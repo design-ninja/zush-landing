@@ -1,6 +1,6 @@
 ---
 title: "Best File Renamer for Windows 11 (2026): Free Tools vs AI"
-description: "Six file renamers for Windows 11 and 10 compared: File Explorer, PowerRename, Bulk Rename Utility, Advanced Renamer, ReNamer, and Zush. Which one fits your files."
+description: "Best file renamer for Windows 11 and 10: File Explorer, PowerRename, Bulk Rename Utility, Advanced Renamer, ReNamer and Zush AI compared."
 date: "2026-09-22"
 slug: "best-file-renamer-windows-11"
 platform: "windows"
@@ -9,32 +9,33 @@ tags:
   - "File Naming"
   - "Tool Comparisons"
   - "AI File Renaming"
-tldr: "For pattern jobs (add a date, replace text, number a sequence), PowerRename is free and good enough; Bulk Rename Utility and Advanced Renamer go deeper. For files that each need a different, descriptive name, like screenshots, scans, and photos, use an AI renamer such as Zush, which reads each file before naming it. Zush also offers optional AI folder sorting. One Zush license covers up to 3 devices."
-reviewed: "2026-10-26"
+tldr: "For pattern jobs (add a date, replace text, number a sequence), PowerRename is free and good enough; Bulk Rename Utility and Advanced Renamer go deeper. For files that each need a different, descriptive name, like screenshots, scans and photos, use an AI renamer such as Zush: 50 free AI renames with no account, then $10/month or $48 one-time for up to 3 devices."
+reviewed: "2026-11-17"
 ---
 
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-Quick answer: if every file gets the same kind of change, such as a prefix, a date, or a number sequence, use **PowerRename**. It is free from Microsoft and handles most pattern jobs. If every file needs its own name based on what is inside it, use an AI renamer like [Zush](/windows).
+Quick answer: if every file gets the same kind of change, such as a prefix, a date, or a number sequence, use **PowerRename**. It is free from Microsoft and handles most pattern jobs. If every file needs its own name based on what is inside it, use an AI renamer like [Zush](/windows), which reads each file and gives you 50 free AI renames with no account.
+
+**How we checked:** Written by the maker of [Zush](/). Competitor prices, features and ratings were checked on vendor sites and official stores on November 17, 2026 ([sources below](#sources-and-how-we-checked)). This compares documented features, not a lab test.
 
 That split decides everything else. Pattern tools are fast and precise, but they only transform the name a file already has. `IMG_4382.jpg` can become `Vacation_001.jpg`, never `lisbon-tram-at-night.jpg`.
-
-**Last checked: September 22, 2026.** Written by the maker of [Zush, the AI file renamer for Mac and Windows](/). Other tools' details come from their official pages.
-
-**Zush features reviewed October 26, 2026.** Competitor information retains the check dates stated in this article.
 
 ## The six options at a glance
 
 | Tool | Best for | Reads file content | Undo | Price |
 |---|---|---|---|---|
 | File Explorer | A few files, quick sequence | No | Ctrl+Z, last action | Built in |
-| PowerRename | Find-and-replace, regex, dates | No (EXIF fields only) | Ctrl+Z in Explorer | Free (PowerToys) |
-| Bulk Rename Utility | Heavy pattern work, 100k+ files | No (EXIF, ID3 fields) | Generates an undo batch file | Free for personal use |
-| Advanced Renamer | Metadata and GPS-based names | No (EXIF, ID3, GPS, video fields) | Full batch undo | Free for light personal use; $25 personal, $45 commercial |
+| PowerRename | Find-and-replace, regex, dates | No AI (EXIF/XMP tokens only) | Ctrl+Z | Free (PowerToys) |
+| Bulk Rename Utility | Heavy pattern work, 100k+ files | No (EXIF, ID3 fields) | Generates an undo batch file | Free for personal use; JavaScript renaming needs a paid license; commercial $92.95 per computer |
+| Advanced Renamer | Metadata and GPS-based names | Metadata, plus PDF/TXT text via scripts; no AI or OCR | Full batch undo | Free for light personal use; $30 personal, $50 commercial |
 | ReNamer | Chains of rules, scripting | No (meta tags) | Undo supported | Lite free for non-commercial use; paid Pro |
-| **Zush** | <BlogHighlight>A different descriptive name for every file; optional AI folder sorting</BlogHighlight> | Yes, with AI | Full Rename History | 50 free renames; $10/mo or $48 one-time |
+| **Zush** | <BlogHighlight>A different descriptive name for every file; optional AI folder sorting</BlogHighlight> | Yes, with AI | Persistent Rename History, batch undo | 50 free AI renames, no account; $10/mo or $48 one-time |
+
+Ratings, as of November 17, 2026: Zush 5.0 from 8 ratings in the US Microsoft Store and 4.5/5 from Softpedia's editors; Advanced Renamer 4.2 from 23 ratings in the US Microsoft Store and 3.5/5 from Softpedia; Bulk Rename Utility 4.0/5 from Softpedia.
 
 ## 1. File Explorer: fine for five files
 
@@ -51,21 +52,21 @@ It handles more than it looks like:
 - Regular expressions, including capture groups (`29-03-2020` → `2020-03-29`)
 - Counters with padding and start values (`Image_${padding=4}`)
 - File creation date variables like `$YYYY-$MM-$DD`
-- Photo EXIF fields such as `$DATE_TAKEN_YYYY`, `$CAMERA_MODEL`, and GPS coordinates
+- Photo EXIF and XMP tokens such as `$DATE_TAKEN_YYYY` and `$CAMERA_MODEL`
 
-Pick PowerRename for any job you can describe as a pattern. For the AI side, see our [PowerRename alternative](/windows) page.
+Ctrl+Z undoes the last rename. It has no AI and never opens the file, so it can't tell what a scan or screenshot shows. Pick PowerRename for any job you can describe as a pattern. For the AI side, see our [PowerRename alternative](/windows) page.
 
 ## 3. Bulk Rename Utility: maximum control
 
 Bulk Rename Utility packs every pattern option into one dense window: regex, JavaScript, auto-numbering, EXIF dates, MP3 tags, CSV-driven renames, and timestamp changes. It handles 100,000+ files without slowing down. Undo works by generating a batch file that reverses the change.
 
-It is free for personal use; business use needs a commercial license. The interface takes some getting used to. More in our [Bulk Rename Utility alternatives](/blog/bulk-rename-utility-alternatives) guide.
+It is free for personal use, but JavaScript renaming needs a paid license ($24.95), and commercial use costs $92.95 per computer. Version 4.1.0.1 added an AI assistant that writes JavaScript and regex rules for you; it helps build the pattern but does not read file content. The interface takes some getting used to. More in our [Bulk Rename Utility alternatives](/blog/bulk-rename-utility-alternatives) guide.
 
 ## 4. Advanced Renamer: best for photos and music metadata
 
-Advanced Renamer builds a name from stacked methods: tags from EXIF, ID3, video properties, and GPS (it can turn coordinates into a city name). It shows a live preview and can undo a full batch. It also runs on macOS.
+Advanced Renamer builds a name from stacked methods: tags from EXIF, ID3, video properties, and GPS (it can turn coordinates into a city name). It shows a live preview and can undo a full batch. It also runs on macOS. Version 4.28 is current, and its scripting method can extract text from PDF and TXT files, but there is no AI or OCR: scanned PDFs and photos stay unreadable, and you write the script that turns text into a name.
 
-It is free for light personal use. Regular users are asked to buy a $25 personal license, and work use requires a $45 commercial one. Both are one-time. See our [Advanced Renamer review](/blog/advanced-renamer-alternatives).
+It is free for light personal use. Regular users are asked to buy a $30 personal license, and work use requires a $50 commercial one. Both are one-time. See our [Advanced Renamer review](/blog/advanced-renamer-alternatives).
 
 ## 5. ReNamer: rules and scripts
 
@@ -86,7 +87,7 @@ ReNamer Lite is free for non-commercial use, limited to 5 rules and 5 presets. P
 
 You stay in control of the shape. Templates and 145+ Naming Blocks fix the order (date, vendor, client, title), the case, and the separators. You review every suggestion before applying it, and Rename History can restore a whole batch later. Folder monitoring renames new files in Downloads or a scanner folder automatically.
 
-AI can run through Zush Cloud AI, your own API key, or locally with Ollama or LM Studio. The first 50 renames are free.
+AI can run through Zush Cloud AI, your own API key, or locally with Ollama or LM Studio. The first 50 AI renames are free with no account, card or API key. After that, Zush is $10/month or $48 one-time; the one-time license includes managed cloud AI with unlimited renames, all future updates, up to 3 devices across Windows and Mac, and a 14-day refund. It also spots duplicate files during AI Rename (copies use no credits), names videos from speech and subtitles, and identifies music without tags on Windows.
 
 <BlogCTA placement='inline' platform='windows' />
 
@@ -124,15 +125,19 @@ Plenty of people keep both kinds. PowerRename for quick mechanical fixes, Zush f
   ]}
 />
 
+## Sources and how we checked
+
+<BlogSources ids={['powerrename', 'bulk-rename-utility', 'advanced-renamer', 'renamer']} />
+
 ## FAQ
 
-### Can Zush sort files into folders as well as rename them?
+### Can Zush rename video and music files on Windows 11?
 
-Yes. Its optional AI folder sorting works on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; changing its Template does not automatically reorganize files already processed. Leave sorting off and keep the original destination for naming only.
+Yes. Zush for Windows names videos from speech, embedded subtitles and metadata, including MKV, and can identify music even when a track has no tags, a feature that is Windows-only for now. For offline work, you can download optional on-device speech recognition from AI settings and use it with Ollama or LM Studio. Pattern tools such as PowerRename only change names by rule, so they can't tell what a recording contains.
 
 ### What is the best free file renamer for Windows 11?
 
-PowerRename, part of Microsoft PowerToys. It is free, previews every change, supports regex and date variables, and undoes with Ctrl+Z. Bulk Rename Utility is the free alternative for heavier personal jobs.
+PowerRename, part of Microsoft PowerToys. It is free, previews every change, supports regex, counters, date variables and EXIF/XMP tokens, and undoes with Ctrl+Z. For heavier personal jobs, Bulk Rename Utility is free too, though JavaScript renaming needs a paid license. Advanced Renamer is free for light personal use. None of them read file content; for that, Zush gives 50 free AI renames with no account.
 
 ### Does Windows 11 have a built-in bulk rename?
 
@@ -140,8 +145,16 @@ Yes, but a basic one. Select files in File Explorer and press F2 to give them on
 
 ### Can a file renamer read what is inside my files?
 
-Pattern tools cannot; they only read the existing name and metadata fields like EXIF or ID3. AI renamers such as Zush read the content itself (text, images, video frames) and write a new descriptive name.
+Pattern tools mostly cannot. They read the existing name and metadata fields like EXIF or ID3. Advanced Renamer can extract text from PDF and TXT files through scripts, but it has no AI or OCR, so scans and photos stay unreadable. AI renamers such as Zush read the content itself (text, images, speech and frames in video) and propose a new descriptive name you review before applying.
 
 ### Which file renamer is safest?
 
 Any tool with a preview and a batch undo. PowerRename, Advanced Renamer, and Zush all show results before applying. Zush also keeps a persistent Rename History, so you can revert a batch days later, not just right after.
+
+### Is Zush worth paying for if PowerRename is free?
+
+Only if your files need names based on their content. PowerRename is the right tool for uniform pattern changes and costs nothing. If you open screenshots, scans or downloads to see what they are before naming them, Zush does that reading for you. Its $48 one-time license includes managed cloud AI with unlimited renames, BYOK and local models, all future updates, 3 devices and a 14-day refund.
+
+### Where does Zush process my files on Windows?
+
+It depends on the mode. Zush Cloud AI and BYOK send file content to an AI service to generate a name; BYOK uses your own provider account. With Ollama or LM Studio, analysis runs on your PC, and on-device speech recognition is available for video. PowerRename, Bulk Rename Utility and Advanced Renamer never send files anywhere because they don't analyze content. See the [offline AI file renamer](/offline-ai-file-renamer).

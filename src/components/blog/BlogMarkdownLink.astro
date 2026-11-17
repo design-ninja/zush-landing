@@ -13,10 +13,27 @@ const {
 const { locale } = stripLocaleFromPath(Astro.url.pathname);
 const localizedHref = localizeInternalHref(href, locale);
 const isExternal = /^(https?:\/\/|mailto:|tel:)/i.test(href);
-const safeRel =
-  target === '_blank'
-    ? rel ?? (isExternal ? 'noopener noreferrer' : undefined)
-    : rel;
+// Outbound links in posts are usually vendor or product pages (competitors in
+// comparisons), so they get nofollow like BlogToolMeta and BlogSources. Platform
+// documentation from Apple and Microsoft stays followed.
+const FOLLOWED_HOSTS = /(^|\.)(apple\.com|microsoft\.com|zushapp\.com)$/i;
+const externalHost = /^https?:\/\//i.test(href)
+  ? (() => {
+      try {
+        return new URL(href).hostname;
+      } catch {
+        return '';
+      }
+    })()
+  : '';
+const defaultRel = externalHost
+  ? FOLLOWED_HOSTS.test(externalHost)
+    ? 'noopener noreferrer'
+    : 'nofollow noopener noreferrer'
+  : isExternal && target === '_blank'
+    ? 'noopener noreferrer'
+    : undefined;
+const safeRel = rel ?? defaultRel;
 ---
 
 <a

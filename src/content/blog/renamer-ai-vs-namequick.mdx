@@ -1,0 +1,148 @@
+---
+title: "Renamer.ai vs NameQuick (2026): Pricing, Limits, Local AI"
+description: "Renamer.ai vs NameQuick: free plans, price per rename, how each counts credits, local AI and BYOK access, folder monitoring, and who should pick which."
+date: "2026-11-17"
+slug: "renamer-ai-vs-namequick"
+platform: "general"
+topic: "comparisons"
+tags:
+  - "Tool Comparisons"
+  - "AI File Renaming"
+tldr: "NameQuick gives more managed renames per dollar ($12 for 500 a month vs Renamer.ai's $9.95 for 200) and sells a $69 one-time license for your own key or local models. Renamer.ai includes local mode on every tier, including the free 25 files a month, and adds a web uploader, but BYOK needs the $99.95 Ultimate plan. Both run on Mac and Windows."
+earlyTaskExample: false
+reviewed: "2026-11-17"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
+
+Quick answer: pick **NameQuick** if you rename more than about 200 files a month on a managed cloud, or want a one-time license ($69) for your own API key or local models. Pick **Renamer.ai** if you want local AI without buying a separate license, since its local mode is on every tier including the free one, or if you need a web uploader alongside the desktop app. Both run on Mac and Windows, both watch folders, and both let you undo.
+
+**How we checked:** Written by the maker of [Zush](/), a third AI renamer covered in its own clearly labeled section below. Competitor prices, features and ratings were checked on vendor sites and official stores on November 17, 2026 ([sources below](#sources-and-how-we-checked)). This compares documented features, not a lab test.
+
+## Renamer.ai vs NameQuick at a glance
+
+| Feature | Renamer.ai | NameQuick |
+|---|---|---|
+| Free plan | 25 files a month, no card | 30 Managed renames, no email, no card, no time limit |
+| Paid trial | Not stated by vendor | 14 days with 70 renames, card required |
+| Monthly plans | Pro $9.95 (200 files), Power User $29.95 (1,000), Ultimate $99.95 (5,000) | $12 (500 renames), $29 (2,000), $59 (5,000), $99 (10,000) |
+| Annual billing | 15% discount | "2 months free" |
+| Entry price per file | About 5¢ | About 2.4¢ |
+| Extra volume | Top-up credits on paid plans | Rename packs: $19 for 500, $39 for 1,500, valid 12 months |
+| One-time license | None | $69 Self-Managed, 1 computer, lifetime updates |
+| Unused allowance | Doesn't carry over | Doesn't carry over |
+| What uses a credit | One credit per file renamed | Counted when a suggestion is generated, even if rejected |
+| Local AI | <BlogHighlight>On every tier</BlogHighlight>: app downloads its own model | Self-Managed only: Ollama, LM Studio, MLX (Apple Silicon) |
+| Your own API key | Ultimate only ($99.95/mo): OpenAI or Google | <BlogHighlight>Self-Managed ($69 once)</BlogHighlight>: OpenAI, Anthropic, Gemini, OpenRouter, Mistral, and some university gateways |
+| Managed cloud | Renamer.ai servers; desktop files deleted after analysis, web uploads kept up to 24 hours | Encrypted to EU servers, deleted within 24 hours |
+| Platforms | Mac, Windows, web uploader (100 MB per file) | Mac, Windows (x64; ARM through emulation); also on the Mac App Store and Setapp |
+| Folder monitoring | Magic Folders, with pause and resume | Watch Folders, with optional Review first |
+| Undo | Revert in the activity list | History and Undo (can fail if the file was moved or is open) |
+| Devices | Not stated by vendor | Managed: no device limit. Self-Managed: 1 computer |
+| Refund | Not stated on the pricing page | 14 days |
+
+## Pricing: NameQuick gives more renames per dollar
+
+At every managed tier above the smallest, NameQuick charges less per file. Here is what a monthly volume costs at list prices, before annual discounts:
+
+| Files per month | Renamer.ai | NameQuick |
+|---|---|---|
+| Up to 200 | $9.95 (Pro) | $12 (500 tier) |
+| 500 | $29.95 (Power User, 1,000) | $12 |
+| 1,000 | $29.95 | $29 (2,000 tier) |
+| 2,000 | $99.95 (Ultimate, 5,000) | $29 |
+| 5,000 | $99.95 | $59 |
+| 10,000 | Not offered above 5,000 except Enterprise | $99 |
+
+If you rename fewer than 200 files a month, Renamer.ai Pro is about $2 cheaper. Past that, the gap widens fast: 2,000 files costs $29 on NameQuick and $99.95 on Renamer.ai, because Renamer.ai has no tier between 1,000 and 5,000.
+
+NameQuick also has two options Renamer.ai doesn't. Rename packs ($19 for 500, $39 for 1,500, valid 12 months) suit spiky use without a subscription. The $69 Self-Managed license is a one-time purchase if you bring your own key or model. Renamer.ai has no one-time option, and its top-ups require a paid plan.
+
+One caveat cuts the other way. NameQuick's license and credits documentation says a Managed rename is counted when the suggestion is generated, so rejected suggestions and renaming the same file again both count. Renamer.ai says each file it renames uses one credit and doesn't say how it treats rejected suggestions. If you often regenerate names, NameQuick's effective price per kept name is higher than the list price suggests.
+
+## Local AI and BYOK: the plans are inverted
+
+This is where the two products differ most.
+
+**Renamer.ai** puts local mode on every tier, including the free one. You click Download model, choose Small, Medium, Large, or Auto, and the app marks sizes your computer can't run. It doesn't publish the download size or RAM needs, it says local quality may not match its cloud, and it doesn't say whether local renames count against your monthly allowance. Bring-your-own-key is a different story: it's only on Ultimate at $99.95 a month, with OpenAI or Google.
+
+**NameQuick** keeps the managed cloud and the self-managed route separate. Your own key or a local model needs the $69 Self-Managed license, after a 30-rename trial with no card. In exchange, the menu is wider: OpenAI, Anthropic, Gemini, OpenRouter, Mistral, and some university and government gateways for keys, and Ollama, LM Studio, and MLX for local models. MLX needs an Apple Silicon Mac on macOS 14 or later. NameQuick notes that photos and scans need a vision-capable model.
+
+So if you want local AI for free, Renamer.ai is the only one of the two that offers it. If you want your own API key without a subscription, NameQuick is the only one.
+
+## Privacy: where each sends your files
+
+Both default to a managed cloud. NameQuick says Managed files go encrypted to its EU servers, are used only to make the name, and are deleted within 24 hours. Renamer.ai's processing guide says cloud renames run on its servers, and its FAQ says desktop files go to its servers for analysis and are then deleted, while web uploads are kept for up to 24 hours. In local mode, Renamer.ai says files never leave the computer. NameQuick says the same for its local models. With either app's BYOK route, files go straight to your provider. For sensitive folders, choose the local route and check the mode before each batch.
+
+## Workflow features
+
+**Folder monitoring.** Renamer.ai's Magic Folders watch designated folders and rename new files, with pause and resume. NameQuick's Watch Folders can apply a Preset per folder and can hold each name for review first. NameQuick also imports from connected inboxes and has conditional Rules and Quick Organize for sorting.
+
+**Undo.** Renamer.ai shows a Revert button in its activity list. NameQuick keeps a history with old and new names, and warns that Undo can fail if the file was moved or is open.
+
+**Platforms.** Both have Mac and Windows desktop apps. Renamer.ai adds a web uploader with a 100 MB file limit, which helps on a machine where you can't install software. NameQuick is also sold through the Mac App Store and included in Setapp. MLX and Finder tags are Mac-only features in NameQuick.
+
+**Formats.** Both list 30+ formats. Renamer.ai's list covers PDFs, Office files, common photos including HEIC, vectors such as EPS, SVG, and AI, and email. It doesn't list camera RAW, PSD, Sketch, or Figma. NameQuick's public list doesn't name camera RAW formats either. If you rename RAW photos, test both on your own files.
+
+**Ratings.** Renamer.ai has a Softpedia editorial score of 4.5 out of 5. It isn't listed in the Microsoft Store. NameQuick's Mac App Store rating can't be read from the web, so none is stated here, and we don't cite review-site or vendor-reported ratings.
+
+## Who should pick which
+
+**Pick Renamer.ai if:**
+- you want local AI without paying for a license, including on the free plan,
+- you rename fewer than 200 files a month and want the cheapest managed plan,
+- you sometimes need a browser upload instead of the desktop app.
+
+**Pick NameQuick if:**
+- you rename more than 200 files a month on a managed cloud,
+- you want your own API key or local models with a one-time payment,
+- you want MLX on Apple Silicon, rename packs instead of a subscription, or Setapp and Mac App Store availability.
+
+**Watch out for:** Renamer.ai's jump from 1,000 to 5,000 files with nothing in between, and its BYOK being Ultimate-only. With NameQuick, rejected suggestions count, and the Self-Managed license covers one computer.
+
+<BlogCTA placement='inline' platform='general' />
+
+## A third option: Zush
+
+Disclosure: we make Zush, so treat this section as the maker's view. It's here because Zush answers a few of the gaps above in a different way.
+
+- **Free start with nothing to set up.** 50 AI renames on managed Zush Cloud AI, with no account, card, API key, or model download. NameQuick Managed is equally easy to start, with 30.
+- **One-time purchase that includes the cloud.** $48 once gives unlimited renames in every mode (Zush Cloud AI, your own key, Ollama, LM Studio), all future updates, and up to 3 devices across Mac and Windows, with a 14-day refund. Renamer.ai has no one-time option, and NameQuick's are rename packs that expire after 12 months or the $69 license, which has no managed cloud.
+- **Preview and persistent history.** Nothing changes until you click Rename, and Rename History lets you undo a whole batch later, even after a restart. Undo All lists conflicts and offers to restore under a new name.
+- **Formats.** Video named from speech, embedded subtitles, and metadata, including MKV. Camera RAW, design files, audio, Office, iWork, and EPUB. Duplicate detection inside AI Rename, where copies use no credits.
+- **Ratings, as of November 17, 2026:** Microsoft Store (US) 5.0 from 8 ratings, and a Softpedia editorial score of 4.5 out of 5.
+
+Where Zush is weaker: it has no web uploader like Renamer.ai's, and no MLX support like NameQuick's. If you want either, they're the better fit.
+
+The one-on-one comparisons go deeper: [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai) and [Zush vs NameQuick](/blog/zush-vs-namequick). For more options, see [Renamer.ai alternatives](/blog/renamer-ai-alternatives) and [Zush pricing](/pricing).
+
+## Sources and how we checked
+
+<BlogSources ids={['renamer-ai', 'namequick']} />
+
+## FAQ
+
+### Is Renamer.ai or NameQuick cheaper?
+
+It depends on volume. Under 200 files a month, Renamer.ai Pro at $9.95 is cheaper than NameQuick's $12 tier. Above that, NameQuick costs less at every level: 500 renames for $12 versus $29.95, 2,000 for $29 versus $99.95, and 5,000 for $59 versus $99.95. NameQuick also sells a $69 one-time license for your own key or local models. Renamer.ai has no one-time option.
+
+### Which has the better free plan?
+
+Renamer.ai gives 25 files every month, and local mode is available on that plan. NameQuick gives 30 Managed renames once, with no email, no card, and no time limit, plus a separate 30-rename Self-Managed trial with no card. For ongoing light use, Renamer.ai's monthly reset wins. For a quick test with nothing to sign up for, NameQuick is easier.
+
+### Can Renamer.ai or NameQuick run offline with local AI?
+
+Both have local routes. Renamer.ai downloads its own model in the app, on every tier, and says files never leave the computer in that mode. NameQuick runs Ollama, LM Studio, or MLX on Apple Silicon, but only with the $69 Self-Managed license. NameQuick notes that photos and scans need a vision-capable model. Renamer.ai doesn't publish model size or RAM requirements.
+
+### Which is better for privacy?
+
+In local mode, both keep files on your computer, according to each vendor. On the managed cloud, NameQuick says files go encrypted to its EU servers and are deleted within 24 hours. Renamer.ai's FAQ says desktop files go to its servers for analysis and are then deleted, and web uploads are kept for up to 24 hours. With your own API key, both send files directly to your provider. For confidential folders, use the local route in either app.
+
+### Does NameQuick count suggestions I don't use?
+
+Yes. NameQuick's license and credits documentation says a Managed rename is counted when the suggestion is generated, so rejected suggestions and renaming the same file twice both use allowance. Unused monthly renames don't carry over. Renamer.ai says each renamed file uses one credit and also doesn't roll unused credits over, but doesn't say how it counts rejected suggestions.
+
+### Do both work on Windows?
+
+Yes. Both have Mac and Windows desktop apps. NameQuick's Windows installer is x64, and ARM PCs run it through Windows 11 emulation. MLX and Finder tags are Mac-only in NameQuick. Renamer.ai also has a web uploader for files up to 100 MB. Neither lists a Linux app.

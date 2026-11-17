@@ -1,0 +1,145 @@
+---
+/**
+ * "Sources" block for comparison posts. Reads vendor links, check dates and
+ * store/editorial ratings from src/data/competitors.ts so every article that
+ * cites a vendor shows the same, current references.
+ */
+import {
+  COMPETITORS,
+  ZUSH_RATINGS,
+  ZUSH_RATINGS_CHECKED,
+  type Competitor,
+  type CompetitorId,
+  type CompetitorRating,
+} from '@/data/competitors';
+
+interface Props {
+  ids: CompetitorId[];
+  /** Show Zush's own store and editorial ratings first. */
+  includeZush?: boolean;
+}
+
+const { ids, includeZush = true } = Astro.props;
+
+const formatDate = (iso: string) =>
+  new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+
+const formatRating = (rating: CompetitorRating) =>
+  `${rating.source}: ${rating.value}${rating.count ? ` from ${rating.count} ratings` : ''}`;
+
+const entries = ids.map((id) => {
+  const competitor = COMPETITORS[id] as Competitor | undefined;
+  if (!competitor) throw new Error(`BlogSources: unknown competitor id "${id}"`);
+  return competitor;
+});
+
+const externalRel = 'nofollow noopener noreferrer';
+---
+
+<div class='blog-sources'>
+  <ul class='blog-sources__list'>
+    {
+      includeZush && (
+        <li>
+          <strong>Zush</strong>:{' '}
+          <a class='blog-sources__link' href='/pricing'>pricing</a> ·{' '}
+          <a class='blog-sources__link' href='/changelog'>changelog</a> ·{' '}
+          <a class='blog-sources__link' href='/docs'>docs</a>
+          {ZUSH_RATINGS.length > 0 && (
+            <span class='blog-sources__ratings'>
+              Ratings, checked {formatDate(ZUSH_RATINGS_CHECKED)}:{' '}
+              {ZUSH_RATINGS.map((rating, index) => (
+                <>
+                  {index > 0 && '; '}
+                  <a class='blog-sources__link' href={rating.url} rel={externalRel} target='_blank'>
+                    {formatRating(rating)}
+                  </a>
+                </>
+              ))}
+            </span>
+          )}
+        </li>
+      )
+    }
+    {
+      entries.map((competitor) => (
+        <li>
+          <strong>{competitor.name}</strong>:{' '}
+          {competitor.sources.length > 0
+            ? competitor.sources.map((source, index) => (
+                <>
+                  {index > 0 && ' · '}
+                  <a class='blog-sources__link' href={source.url} rel={externalRel} target='_blank'>
+                    {source.label}
+                  </a>
+                </>
+              ))
+            : competitor.note}
+          {competitor.sources.length > 0 && competitor.note && <span> ({competitor.note})</span>}
+          <span class='blog-sources__checked'> Checked {formatDate(competitor.checked)}.</span>
+          {competitor.ratings && competitor.ratings.length > 0 && (
+            <span class='blog-sources__ratings'>
+              Ratings:{' '}
+              {competitor.ratings.map((rating, index) => (
+                <>
+                  {index > 0 && '; '}
+                  <a class='blog-sources__link' href={rating.url} rel={externalRel} target='_blank'>
+                    {formatRating(rating)}
+                  </a>
+                </>
+              ))}
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+  <p class='blog-sources__policy'>
+    Ratings come only from official app stores and independent editorial reviews. We leave out user-voted
+    directories and ratings that vendors publish about themselves.
+  </p>
+</div>
+
+<style is:global lang='scss'>
+  @use 'styles/mixins' as *;
+
+  .blog-sources {
+    @include callout;
+    margin: 0.5rem 0 1.5rem;
+  }
+
+  .blog-sources__list {
+    margin: 0;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: 0.45rem;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  .blog-sources__link {
+    @include text-link;
+  }
+
+  .blog-sources__checked {
+    color: var(--text-faint);
+  }
+
+  .blog-sources__ratings {
+    display: block;
+    margin-top: 0.15rem;
+    color: var(--text-faint);
+    font-size: 0.875rem;
+  }
+
+  .blog-sources__policy {
+    margin: 0.75rem 0 0;
+    font-size: 0.8125rem;
+    color: var(--text-faint);
+  }
+</style>

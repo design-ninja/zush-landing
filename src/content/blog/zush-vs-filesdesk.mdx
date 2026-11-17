@@ -1,6 +1,6 @@
 ---
 title: "FilesDesk Alternative? Zush vs FilesDesk Compared (2026)"
-description: "Looking at FilesDesk? Compare it with Zush on credits vs unlimited renames, pricing, file formats, AI folder sorting, automation, and recovery."
+description: "FilesDesk alternative? Compare Zush and FilesDesk on credits vs unlimited renames, one-time licenses, sign-in, file formats, Watch Inbox, and undo."
 date: "2026-07-03"
 slug: "zush-vs-filesdesk"
 platform: "general"
@@ -8,19 +8,39 @@ topic: "comparisons"
 tags:
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "Zush combines 145+ Naming Blocks, broad mixed-format support, and unmetered paid renames. FilesDesk also has Organize Flow for conditional moves/copies and Finder actions. Its subscriptions exclude BYOK/local AI and have expiring monthly credits; its $40 self-managed license covers one device and 12 months of updates. One Zush license covers up to 3 devices."
-reviewed: "2026-10-18"
+tldr: "Zush's $48 one-time license includes managed Zush Cloud AI, BYOK and local models, unlimited renames, all future updates and up to 3 devices. FilesDesk's managed AI is a credit subscription that needs a sign-in; its $40 Self-Managed license is BYOK or local only, binds to one device, and includes 1 year of updates. FilesDesk adds Watch Inbox and vLLM."
+reviewed: "2026-11-17"
 ---
 
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-Quick answer: choose [Zush](/) when you want the AI to follow a precise, reusable convention. Ready-made Templates combine with 145+ Naming Blocks, Custom AI Blocks, formatting, localization and metadata; Rename History keeps original and new names, folder and timestamp and can restore an applied batch. FilesDesk documents templates and Processing History, but does not publish an equivalent granular naming system or RAW/design/iWork matrix. Its managed suggestions are metered, while the lifetime license requires your own API key or local model.
+Quick answer: choose [Zush](/) if you want one payment that includes managed cloud AI, unlimited renames, and precise naming control. <BlogHighlight>$48 one-time</BlogHighlight> covers Zush Cloud AI, BYOK, and local models on up to 3 Mac or Windows devices, and the first 50 renames need no account. Choose FilesDesk if you want email attachments from Gmail, iCloud, or IMAP renamed automatically (Watch Inbox), or you run vLLM. Its managed AI is a credit subscription with a sign-in, and its $40 lifetime license is your own key or local model only.
 
-**Last checked: October 5, 2026.** Written by the maker of [Zush, the AI file renamer for Mac and Windows](/). This compares published features and license terms, not independent accuracy or speed measurements.
+**How we checked:** Written by the maker of [Zush](/). Competitor prices, features and ratings were checked on vendor sites and official stores on November 17, 2026 ([sources below](#sources-and-how-we-checked)). This compares documented features, not a lab test.
 
-Sources checked for this update: [Zush](/), FilesDesk, FilesDesk pricing, and FilesDesk docs, including public pricing, platform, provider, Watch Folders, and format-support details.
+## TL;DR comparison
+
+| Dimension | Zush | FilesDesk |
+|---|---|---|
+| Pricing | <BlogHighlight>$10/month or $48 one-time, unlimited renames</BlogHighlight> | $8/month for 500 credits or $80/year; $20/month for 2,000 credits or $200/year; Self-Managed $40 one-time |
+| What the one-time license includes | <BlogHighlight>Zush Cloud AI, BYOK, Ollama and LM Studio; all future updates</BlogHighlight> | Your own key or a local model only; managed AI is subscription-only; 1 year of updates |
+| Devices per one-time license | Up to 3, across Mac and Windows | Binds to one device |
+| Refund | 14 days | 3 days (Self-Managed) |
+| Metering | None on paid PRO | 1 credit per AI name suggestion; re-running a file uses another credit; credits refresh monthly; unused yearly credits expire at year end |
+| Free start | 50 AI renames on managed Zush Cloud AI, no account, card, or API key | 15 free credits; sign-in required |
+| Platforms | Mac (macOS 15+, Apple Silicon and Intel) and Windows 10/11 | Mac and Windows (also in the Microsoft Store) |
+| Current version | Mac 3.23, Windows 3.19 | 1.0.35 |
+| Format coverage | <BlogHighlight>100+ formats</BlogHighlight>: images incl. RAW/HEIC/AVIF, Sketch, Figma, AI, PSD, documents incl. iWork and EPUB, video, audio | Images, PDF/Office documents, video, and audio; no published RAW/design/iWork list |
+| Video | Named from speech, embedded subtitles and metadata, including MKV | MP4/MOV/AVI/MKV/WebM listed in the FAQ; method not stated by vendor |
+| AI routes | Zush Cloud AI; BYOK with Gemini, OpenRouter, OpenAI, or Claude; LM Studio; Ollama | Managed credits on subscription; Claude/OpenAI/Gemini/OpenRouter or Ollama/LM Studio/vLLM on Self-Managed |
+| Automation | Monitor folders (including external drives on Mac) with a Template that renames and sorts | Watch Folders, Watch Inbox (Gmail, iCloud, IMAP attachments), Organize Flow conditional actions |
+| Naming control | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight> | Templates plus Organize Flow: conditions, moves/copies, prefixes/suffixes, timestamps, Mac Finder actions |
+| Recovery | <BlogHighlight>Persistent Rename History with batch undo; Undo All flags conflicts</BlogHighlight> | History and undo through Processing History |
+| Duplicates | Duplicate detection inside AI Rename; copies use no credits | Not stated by vendor |
+| Ratings (official stores and editorial) | Microsoft Store (US) 5.0 from 8 ratings; Softpedia editorial 4.5/5 (as of November 17, 2026) | In the Microsoft Store with no ratings yet |
 
 <BlogProductIntro
   title="Want control over every part of the filename?"
@@ -29,103 +49,95 @@ Sources checked for this update: [Zush](/), FilesDesk, FilesDesk pricing, and Fi
     { href: '/', label: 'AI file renamer' },
     { href: '/mac', label: 'AI file renamer for Mac' },
     { href: '/windows', label: 'AI file renamer for Windows' },
-    { href: '/docs/pricing-limits', label: 'Pricing and limits' },
+    { href: '/pricing', label: 'Pricing' },
   ]}
 />
-
-**Zush features reviewed October 18, 2026.** Competitor information retains the check dates stated in this article.
-
-## TL;DR comparison
-
-| Dimension | Zush | FilesDesk |
-|---|---|---|
-| Pricing | <BlogHighlight>$10/month or $48 one-time, unlimited renames</BlogHighlight> | $8/month (500 credits), $20/month (2,000 credits), $40 lifetime BYOK/local |
-| Metering | Unlimited — no counting | <BlogHighlight>Credit-based</BlogHighlight>: 1 credit per filename suggestion |
-| Free tier | 50 renames, no signup | 15 credits trial, no credit card |
-| 5-year cost (one-time path) | $48 total, managed cloud included | $40 + your own API costs or local model setup |
-| Platforms | Mac (macOS 15+) + Windows 10/11 | Mac + Windows |
-| Format coverage | <BlogHighlight>100+ formats</BlogHighlight>: 41 image incl. RAW/HEIC/AVIF, 4 design (Sketch, Figma, AI, PSD), 40 document incl. iWork, 16 video, 7 audio | Images, PDF/Office documents, video, and audio; no detailed RAW/design/iWork matrix |
-| Video and audio renaming | <BlogHighlight>Yes</BlogHighlight> | Yes: common video and audio formats are listed in the FAQ |
-| Design files (Figma/Sketch/PSD) | <BlogHighlight>Yes</BlogHighlight> | Not publicly listed |
-| AI processing routes | Zush Cloud AI; BYOK with Gemini, OpenRouter, OpenAI, or Claude; LM Studio; Ollama | Managed credits on subscription; Claude/OpenAI/Gemini/OpenRouter or Ollama/LM Studio/vLLM on Self-Managed |
-| Local AI | LM Studio, Ollama | Ollama, LM Studio, vLLM; Self-Managed license required |
-| Folder monitoring | <BlogHighlight>Yes — rename new files; a sorting Template also groups them</BlogHighlight> | Yes (Watch Folders) |
-| Naming conventions | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight>; optional AI folder sorting | Templates plus Organize Flow: conditions, moves/copies, prefixes/suffixes, timestamps and Mac Finder actions |
-| Recovery | Full Rename History: original/new name, folder, timestamp, batch revert | Undo through Processing History |
-| Main limitation | Desktop-only | Managed suggestions are metered; lifetime requires BYOK/local setup; no granular RAW/design/iWork matrix |
-| Devices per license | Up to 3 devices | 1 device (lifetime plan) |
-| Money-back guarantee | 14 days | 3 days |
-| Updates | See current Zush license terms | Subscription: while subscribed; Self-Managed: 12 months |
-| BYOK eligibility | Every plan, within FREE allowance or unmetered PRO | Subscription excludes BYOK/local; separate Self-Managed license required |
 
 ## Zush
 
 <BlogToolMeta platform="Mac (macOS 15+) and Windows 10/11" website="https://zushapp.com/" label="zushapp.com">
-  <Fragment slot="pricing">Free tier (50 renames shared across all four modes), PRO <BlogHighlight>$10/month or $48 one-time</BlogHighlight> with unlimited PRO renames; Zush Cloud AI, BYOK, LM Studio, and Ollama work on Mac and Windows</Fragment>
+  <Fragment slot="pricing">Free tier (50 renames shared across all four modes, no account or card), PRO <BlogHighlight>$10/month or $48 one-time</BlogHighlight> with unlimited PRO renames; Zush Cloud AI, BYOK, LM Studio, and Ollama work on Mac and Windows</Fragment>
 </BlogToolMeta>
 
 ![Zush AI rename results on macOS showing content-aware filenames for mixed files](/images/showcase/macos/batch-rename-light.webp)
 
-Zush's strongest advantage is naming control. Built-in Templates cover Screenshots, Designer Assets, Bookkeeper Expenses, Photographer Shoots, Video Production, Music Tracks, and Client Meeting Notes. They combine with 145+ Naming Blocks, Custom AI Blocks, prompts, field order, case, separators, date formats, language, Finder tags, and Spotlight metadata. The same Template can run in a reviewed batch or a monitored folder. Rename History records original and new names, folder, and timestamp so an applied batch can be inspected and reverted.
+Zush works right away: download it, drop in files, and the first 50 AI renames run on managed Zush Cloud AI with no account, card, API key, or model download. The $48 one-time license keeps that managed cloud and adds unlimited renames, BYOK, Ollama, LM Studio, all future updates, and up to 3 devices across Mac and Windows. You never have to decide whether a messy 800-file folder is worth the credits.
 
-The 100+ supported formats add breadth to that system: RAW and HEIC photos, Sketch/Figma/Illustrator/PSD design files, iWork and Office documents, 16 video and 7 audio formats all go through the same workflow.
+Its main strength is naming control. Built-in Templates cover Screenshots, Designer Assets, Bookkeeper Expenses, Photographer Shoots, Video Production, Music Tracks, Movies & TV, Remove Duplicates, and more. They combine with 145+ Naming Blocks, Custom AI Blocks, sequence numbers, case, separators, date formats, language, Finder tags, and Spotlight metadata. You preview every name, can double-click one to edit it, and nothing changes until you click Rename. Rename History keeps the original and new names so a batch can be reverted later.
 
-The pricing is deliberately boring: unlimited PRO renames either as a subscription or a one-time $48 purchase. You never think about whether a messy 800-file folder is "worth the credits".
+The 100+ formats include RAW and HEIC photos, Sketch/Figma/Illustrator/PSD files, iWork, Office and EPUB documents, audio, and video. Videos are named from speech, embedded subtitles, and metadata, including MKV. [Duplicate detection](/remove-duplicate-files) runs inside AI Rename, and copies use no credits.
 
-One Zush license covers up to 3 devices on Mac and Windows.
-
-You can [export Templates](/docs/template-import-export) with Naming Blocks, Custom AI Blocks, and folder rules, then import them on another computer. Choose local destinations, folder permissions, and AI connections again there; this transfers the workflow settings, not your files.
+You can [export Templates](/docs/template-import-export) with Naming Blocks, Custom AI Blocks, and folder rules, then import them on another computer.
 
 ### Content-based folders in Zush
 
-Zush can **sort files into folders with AI** as well as rename them. Choose **Auto** or write **Folder rules**, for example “Group client documents by company and recordings by meeting topic.” Folder grouping is independent of the filename Template, so the same batch can get both consistent names and useful destinations. The watch-folder row alone does not describe this part of the Zush workflow.
+Zush can **sort files into folders with AI** as well as rename them. Choose **Auto** or write **Folder rules**, for example "Group client documents by company and recordings by meeting topic." Folder grouping is independent of the filename Template, so the same batch can get consistent names and useful destinations. Zush also sorts into nested folders without renaming, with custom rules on size, dates, camera, duration, or page count.
 
-Choose a **Destination folder**, or keep the source folder as the root. Enable **Reuse existing folders** to prefer suitable folders already there; Zush can create a new one when nothing fits. In a manual batch, review both the suggested names and folders before applying. To rename in place, leave sorting off and keep the original destination.
-
-Save the sorting settings in a **Template** and assign it to **Monitor** for new files directly inside the watched folder. Changing the Monitor Template does not automatically reorganize files already processed. Test the Template in a manual batch first. See the [folder sorting guide](/docs/folder-sorting) for the setup and monitoring scope.
-
-Zush also supports nested folder rules, such as grouping by year and then month. You can sort already renamed files without changing their names again or spending another rename credit. Review the destinations before applying. This separate action handles an existing batch; changing a Monitor Template does not retroactively reorganize it. [AI folder sorting](/docs/folder-sorting) works on Mac and Windows.
+Save the sorting settings in a **Template** and assign it to **Monitor** for new files. On Mac, monitoring also covers external drives and resumes after you reconnect them. Changing a Monitor Template does not reorganize files already processed. See the [folder sorting guide](/docs/folder-sorting) for the setup.
 
 ## FilesDesk
 
-FilesDesk positions itself as the plug-and-play credit option: 15 free credits with no API key, then $8/month for 500 credits or $20/month for 2,000, processed in memory and never stored.
-Its FAQ lists common images, PDFs and Office documents, MP4/MOV/AVI/MKV/WebM video, and MP3/WAV/FLAC/AAC/M4A audio. Processing History can undo completed renames. The $40 Self-Managed license supports Claude/OpenAI/Gemini/OpenRouter or local Ollama/LM Studio/vLLM, with one device and 12 months of updates.
+<BlogToolMeta platform="Mac and Windows (Microsoft Store)" website="https://filesdesk.app/" label="filesdesk.app">
+  <Fragment slot="pricing">15 free credits with sign-in; $8/month (500 credits) or $80/year; $20/month (2,000 credits) or $200/year; Self-Managed $40 one-time with your own key or local AI, one device, 1 year of updates, 3-day refund</Fragment>
+</BlogToolMeta>
 
-### Organize Flow and practical limitations
+FilesDesk (version 1.0.35) sells managed AI as a credit subscription: 15 free credits after you sign in, then $8/month for 500 credits or $20/month for 2,000.
 
-Organize Flow runs when a file arrives or after AI renaming. Conditions match extension, name, size, type, folder, and dates using All/Any logic. Actions can move or copy into date-based folders, add prefixes/suffixes or timestamps, and write Finder tags, colors, and comments on Mac. It documents destination previews and undo for moves. This is a real conditional-action workflow, not merely a watch-folder feature; vLLM and copy/action chains are reasons to evaluate it alongside Zush.
+Yearly billing is $80 or $200 for the two tiers, and unused yearly credits expire when the year ends.
 
-The pricing FAQ states that subscriptions cannot use BYOK or local AI, and Self-Managed and subscription cannot be used at the same time. Managed credits count filename suggestions and expire monthly without rollover. Both purchase paths are limited to one device (one at a time for subscriptions); Self-Managed includes only 12 months of updates and a three-day refund window. BYOK sends required content to the chosen cloud provider, while only a local model keeps inference offline.
+Its FAQ lists common images, PDFs and Office documents, MP4/MOV/AVI/MKV/WebM video, and MP3/WAV/FLAC/AAC/M4A audio. Processing History can undo completed renames.
 
-FilesDesk is relevant when vLLM is a hard requirement. Its main drawback is the operating model: managed suggestions consume credits, while the lifetime path requires the user to supply an API key or local model; its public docs also do not enumerate RAW, design, and iWork coverage as granularly as Zush.
+The $40 Self-Managed license works with Claude, OpenAI, Gemini, or OpenRouter keys, or with local Ollama, LM Studio, or vLLM. It binds to one device, includes 1 year of updates, and has a 3-day refund window. Managed AI is not part of it.
+
+**Choose FilesDesk if** you want attachments from Gmail, iCloud, or IMAP mail renamed as they arrive. Watch Inbox is new and Zush has no equivalent. vLLM support and Organize Flow's conditional moves and copies are other reasons to evaluate it.
+
+### Organize Flow and practical limits
+
+Organize Flow runs when a file arrives or after AI renaming. Conditions match extension, name, size, type, folder, and dates using All/Any logic. Actions can move or copy into date-based folders, add prefixes, suffixes, or timestamps, and write Finder tags, colors, and comments on Mac.
+
+The main limit is the operating model. Managed AI needs a sign-in and spends a credit per AI name suggestion (re-running a file uses another), while the one-time path needs your own key or a local model. Its public docs don't list RAW, design, or iWork formats.
 
 ## How to choose
 
-- **You rename a lot, or in bursts** — credit meters punish exactly the moments you need the tool most (a 1,500-file photo import is 3 months of FilesDesk Basic credits in one afternoon). Zush unlimited wins.
-- **Your folders include specialist formats** — both tools list common video and audio support, but Zush also publishes explicit RAW camera, design, and iWork coverage that FilesDesk does not enumerate.
-- **You want automation** — both products list folder monitoring/watch-folder workflows; Zush pairs it with full rename history and unlimited PRO renames.
-- **You want precise conventions** — Zush documents ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and per-folder Template assignment; FilesDesk documents naming templates without the same granular control matrix.
-- **Safety net** — both let you try free without a card; Zush's money-back window is 14 days vs FilesDesk's 3.
+- **You rename a lot, or in bursts.** A 1,500-file photo import uses three months of FilesDesk Basic credits in an afternoon. Zush PRO has no meter.
+- **You want the cheapest start without setup.** Zush's free tier needs no account; FilesDesk's needs a sign-in. Both need no card.
+- **Your folders include specialist formats.** Both list video and audio, but only Zush publishes RAW camera, design, and iWork coverage.
+- **You want email attachments handled.** FilesDesk's Watch Inbox does this; Zush doesn't.
+- **You want precise conventions.** Zush has 145+ Naming Blocks, Custom AI Blocks, and per-folder Templates; FilesDesk documents naming templates without the same field-level control.
+- **Safety net.** Zush's refund window is 14 days; FilesDesk Self-Managed has 3.
 
-For more options, compare [RenameClick alternatives](/blog/renameclick-alternatives) or see [what AI file renaming costs](/blog/ai-file-renaming-cost) at 100, 1,000, and 5,000 files a month.
+For more options, compare [RenameClick alternatives](/blog/renameclick-alternatives), [Zush vs NameQuick](/blog/zush-vs-namequick), or see [what AI file renaming costs](/blog/ai-file-renaming-cost) at 100, 1,000, and 5,000 files a month.
+
+## Sources and how we checked
+
+<BlogSources ids={['filesdesk']} />
 
 ## FAQ
 
-### Can Zush sort files into folders as well as rename them?
+### Is FilesDesk cheaper than Zush?
 
-Yes. Its optional AI folder sorting works on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; changing its Template does not automatically reorganize files already processed. Leave sorting off and keep the original destination for naming only.
+The sticker prices buy different things. FilesDesk's $40 Self-Managed license binds to one device, includes 1 year of updates, and needs your own API key or local model. Zush's $48 one-time license includes managed Zush Cloud AI, BYOK, and local models, unlimited renames, all future updates, and up to 3 devices.
 
-**Is FilesDesk cheaper than Zush?**
-Its $8 managed tier includes 500 credits rather than unlimited renames.
-The sticker prices are not equivalent products: FilesDesk's managed tier is capped at 500 suggestions, and its lifetime license requires your own AI key or local model and covers one device with 12 months of updates. Zush paid PRO is unmetered and includes managed AI.
+FilesDesk's cheapest managed tier is capped at 500 credits a month. Zush has no rename meter on either paid plan.
 
-**Do both work offline?**
-Both support local models: Zush through LM Studio or Ollama; FilesDesk through Ollama, LM Studio, or vLLM on its Self-Managed license. Both require a compatible model and suitable hardware. FilesDesk's managed subscription cannot be used for local AI.
+### Do I need an account to start?
 
-**Which supports more file types?**
-Both document video and audio support. Zush publishes a broader concrete list of 100+ formats including RAW photos, design files, and iWork, while FilesDesk lists common image, PDF/Office, video, and audio formats without the same RAW/design/iWork matrix.
+For FilesDesk, yes: its managed AI and 15 free credits require a sign-in. Zush's 50 free AI renames run on managed Zush Cloud AI with no account, card, API key, or model download, so you can test it on a real folder within a minute of installing. Neither app asks for a card to start.
 
-**Can I undo renames in both?**
-Yes. Zush keeps full rename history with one-click revert, and FilesDesk documents undo from Processing History.
+### Where are my files processed?
 
-Also comparing other tools? See [Zush vs NameQuick](/blog/zush-vs-namequick), [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai), and the full [AI renamer roundup](/blog/best-ai-file-renamer-tools-2026).
+Both apps offer cloud and local routes. Zush Cloud AI and FilesDesk's managed AI send file content to the vendor's cloud for naming. BYOK in either app sends it to the provider you pick. For processing that stays on your computer, use Ollama or LM Studio in Zush, or Ollama, LM Studio, or vLLM on FilesDesk's Self-Managed license. Local models need suitable hardware.
+
+### Which supports more file types?
+
+Both document video and audio support. Zush publishes a concrete list of 100+ formats including 11 RAW camera formats, Sketch, Figma, PSD, iWork, and EPUB, and names videos from speech and subtitles, including MKV. FilesDesk lists common image, PDF, Office, video, and audio formats but does not publish RAW, design, or iWork coverage. Test your own specialist files before buying either.
+
+### Can I undo renames in both?
+
+Yes. Zush keeps a persistent Rename History with the original name, new name, folder, and timestamp, and can revert a whole batch. Undo All lists any conflicts and offers to restore under a new name. FilesDesk documents undo from Processing History. In both apps, preview names before applying so you rarely need the undo.
+
+### Does Zush have an equivalent to FilesDesk's Watch Inbox?
+
+No. FilesDesk's Watch Inbox renames attachments from Gmail, iCloud or IMAP mail as they arrive, and Zush doesn't connect to email. Zush monitors folders instead, including folders on external drives on Mac, and applies a Template to each new file. If email attachments are your main job, FilesDesk is the better fit. If you already save attachments into a folder, a monitored folder in Zush covers the renaming step.
+
+Also comparing other tools? See [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai) and the full [AI renamer roundup](/blog/best-ai-file-renamer-tools-2026).

@@ -1,6 +1,6 @@
 ---
 title: "Sortio Alternative? Zush vs Sortio Compared (2026)"
-description: "Looking at Sortio? Both apps sort files into folders from a plain-language prompt. Compare price, formats, naming control, local AI, and automation before you pick."
+description: "Sortio alternative? Both apps sort files from a plain-language prompt. Compare price, formats, naming control, local AI, sign-up, and automation."
 date: "2026-09-27"
 slug: "zush-vs-sortio"
 platform: "general"
@@ -9,62 +9,61 @@ tags:
   - "Tool Comparisons"
   - "File Organization"
   - "AI File Renaming"
-tldr: "Zush and Sortio both sort files into folders from a plain-language prompt. Choose Zush for video, audio, RAW, and design files, precise filename Templates, and an unmetered $48 one-time option. Choose Sortio if you need Linux, team seats, or unlimited free rule-based sorting. One Zush license covers up to 3 devices."
+tldr: "Zush and Sortio both sort files into folders from a plain-language prompt. Choose Zush for video, audio, RAW, and design files, precise filename Templates, no sign-up, and a $48 one-time license that includes managed cloud AI. Choose Sortio if you need Linux or team seats with shared workspaces."
 earlyTaskExample: false
-reviewed: "2026-10-18"
+reviewed: "2026-11-17"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-Quick answer: [Zush](/ai-file-sorter) and Sortio both sort files into folders from a plain-language prompt and rename them in the same pass. Zush also offers optional AI folder sorting. Pick Zush if you sort more than documents and images (video, audio, RAW photos, design files), want exact control over filenames, or prefer a one-time $48 license with no file meter. Pick Sortio if you need Linux, shared team workspaces, or free rule-based sorting.
+Quick answer: [Zush](/ai-file-sorter) and Sortio both sort files into folders from a plain-language prompt and rename them in the same pass. Pick Zush if you sort more than documents and images (video, audio, RAW photos, design files), want exact control over filenames, want to start without an account, or prefer a <BlogHighlight>$48 one-time license that includes managed cloud AI</BlogHighlight>. Pick Sortio if you need Linux or shared team workspaces with an admin console.
 
-**Last checked: October 5, 2026.** Written by the maker of [Zush, the AI file renamer for Mac and Windows](/). Sources: Sortio pricing and data flow, Mac/Windows/Linux downloads, and security and recovery documentation. This compares published features, not independently measured performance. Verify checkout prices and your processing mode.
-
-**Zush features reviewed October 18, 2026.** Competitor information retains the check dates stated in this article.
+**How we checked:** Written by the maker of [Zush](/). Competitor prices, features and ratings were checked on vendor sites and official stores on November 17, 2026 ([sources below](#sources-and-how-we-checked)). This compares documented features, not a lab test.
 
 ## Zush vs Sortio at a glance
 
-| | Zush | Sortio |
+| Feature | Zush | Sortio |
 |---|---|---|
-| Sorting instruction | <BlogHighlight>AI folder sorting: plain-language Folder rules (up to 2,000 characters) or Auto</BlogHighlight> | Plain-English prompt, plus classic rules |
+| Sorting instruction | <BlogHighlight>AI folder sorting: plain-language Folder rules (up to 2,000 characters) or Auto</BlogHighlight>; custom rules on size, dates, camera, duration, page count | Plain-English prompt, plus classic rules; since v9.0.0 (November 8, 2026) chat is the Home screen |
 | Renames files | Yes, with Templates and 145+ Naming Blocks | Yes on Pro, with templates |
-| File types | <BlogHighlight>PDFs and scans, photos incl. RAW and HEIC, screenshots, Office and iWork, design files, video, audio</BlogHighlight> | Documents, images, PDFs, spreadsheets; no full format list published |
+| File types | <BlogHighlight>PDFs and scans, photos incl. RAW and HEIC, screenshots, Office, iWork and EPUB, design files, audio, video named from speech and subtitles</BlogHighlight> | Documents, images, PDFs, spreadsheets; photo and video location metadata since v8.66.0; no full format list published |
 | Existing folders | Reuse existing folders, create new ones when nothing fits | Restrict to a folder list, fallback folder for unmatched files |
-| Automation | Monitor with a sorting Template | Watch folders |
-| Review and undo | Preview names and folders; undo restores original folder and name | Preview, undo, and history |
-| Local AI | LM Studio or Ollama for analysis and folder planning | Ollama; BYOK on every plan |
-| Platforms | Mac, Windows | Mac, Windows, Linux |
-| Free plan | 50 AI renames | Unlimited rule-based sorting, one-time AI trial |
-| Paid | <BlogHighlight>$10/mo or $48 one-time, no file meter</BlogHighlight> | Pro $14.99/mo or $99/yr; Team $29/seat/mo or $290/seat/yr; Enterprise from $50/seat/mo |
-| Hosted processing | Managed cloud, BYOK, or local routes selected by the user | Filenames/metadata sent by default; file contents only with content features; homepage states 30-day rolling hosted retention |
-| Teams | Per-user desktop licensing; no shared team admin workspace documented | Shared workspaces/automations, pooled allowance, admin seats and central LLM policy |
+| Automation | Monitor with a sorting Template, including external drives on Mac | Watch folders and on-change automations on Pro; not on the free plan |
+| Review and undo | Preview names and folders; persistent Rename History with batch undo | Preview, undo, and sort history |
+| Duplicates | Detected during AI Rename; copies use no credits | Not stated by vendor |
+| Local AI | LM Studio or Ollama for analysis and folder planning | Ollama or LM Studio and BYOK on every plan, including Free (local: 8 GB RAM minimum, 16 GB+ recommended, 10 GB disk); watch folders need Pro |
+| Hardware in cloud mode | 4 GB RAM minimum, about 200 MB app | Not stated by vendor |
+| Platforms | Mac (macOS 15+, Apple Silicon and Intel), Windows 10/11 | Mac, Windows, Linux |
+| Free start | 50 AI renames on managed Zush Cloud AI, no account, card, or API key | One-time AI trial, rule-based sorting (up to 5 rules, 3 Spaces), undo; email account required |
+| Paid | <BlogHighlight>$10/mo or $48 one-time, no file meter, managed cloud included</BlogHighlight> | Pro $14.99/mo or $99/yr on the website ($19.99/mo in the App Store); Team $29/seat/mo or $290/seat/yr; Enterprise from $50/seat/mo |
+| Hosted processing | Managed cloud, BYOK, or local routes selected by the user | Filenames/metadata sent by default; file contents only with content features; homepage says hosted content is purged on a 30-day window |
+| Teams | Per-user desktop licensing; no shared team admin workspace | Shared workspaces and automations, pooled allowance, admin console, central LLM policy |
 
 ## Where Zush is stronger
 
-**Sorting by content beyond documents.** Zush looks at sampled video frames, audio, design files, and RAW photos, not just text and images. "Group videos by topic" or "Separate B-roll, interviews, and screen recordings" works on files called `IMG_5501.MOV`. Sortio's published materials focus on documents, images, and spreadsheets.
+**Sorting by content beyond documents.** Zush names and sorts videos from speech, embedded subtitles, and metadata (including MKV), plus audio, design files, and RAW photos. "Separate B-roll, interviews, and screen recordings" works on files called `IMG_5501.MOV`. Sortio added photo and video location metadata in v8.66.0, so it can group clips by place, but its published materials still focus on documents, images, and spreadsheets.
 
-**Filenames you fully control.** In Zush, the folder rule and the filename are separate: Folder rules decide where a file goes, and a Template built from 145+ Naming Blocks decides what it is called, including dates, vendors, amounts, capture metadata, case, separators, and language. That keeps names consistent across thousands of files.
+**Filenames you fully control.** In Zush, the folder rule and the filename are separate: Folder rules decide where a file goes, and a Template built from 145+ Naming Blocks decides what it is called, including dates, vendors, amounts, capture metadata, sequence numbers, case, separators, and language. You preview every name, can double-click one to edit it, and nothing moves until you click Rename.
 
-**Predictable paid app allowance.** Zush PRO is $48 once or $10/month with no monthly rename cap, including Zush Cloud AI. Sortio Pro is $14.99/month or $99/year with a hosted AI allowance; BYOK is unmetered but provider charges are separate. Sortio does not publish the allowance as a fixed number of files on its current pricing page, so it cannot be equated with a measured workload. A three-year license-only scenario is $48 for Zush One-Time and $297 for Sortio Pro Annual, assuming unchanged prices and uninterrupted billing, before taxes or API costs.
+**Works right away.** Zush's first 50 AI renames run on managed Zush Cloud AI with no account, card, API key, or model download. Sortio asks for an email account before you start. In cloud mode Zush needs 4 GB of RAM and about 200 MB of disk; Sortio's local models need at least 8 GB of RAM and 10 GB of disk.
 
-**Monitor remembers its folders.** When Zush creates a folder for a Monitor Template, it records what belongs there, so next month's invoice from the same supplier lands in the same place.
+**A one-time license that includes the cloud.** Zush PRO is $48 once or $10/month with no rename cap, and the one-time license includes Zush Cloud AI, BYOK, Ollama, LM Studio, all future updates, and up to 3 devices across Mac and Windows. Sortio Pro is a subscription with a hosted AI allowance that its pricing page doesn't publish as a fixed number of files; BYOK is unmetered but provider charges are separate. A three-year license-only scenario is $48 for Zush One-Time and $297 for Sortio Pro Annual, assuming unchanged prices, before taxes or API costs. See [Zush pricing](/pricing).
+
+**Monitor remembers its folders.** When Zush creates a folder for a Monitor Template, it records what belongs there, so next month's invoice from the same supplier lands in the same place. On Mac, Monitor also watches external drives and resumes after you reconnect them.
 
 **Private sorting end to end.** With LM Studio or Ollama selected, both the file analysis and the folder planning step run on your computer, and Zush does not fall back to the cloud.
 
-One Zush license covers up to 3 devices on Mac and Windows.
-
-You can [export Templates](/docs/template-import-export) with Naming Blocks, Custom AI Blocks, and folder rules, then import them on another computer. Choose local destinations, folder permissions, and AI connections again there; this transfers the workflow settings, not your files.
-
-Zush also supports nested folder rules, such as grouping by year and then month. You can sort already renamed files without changing their names again or spending another rename credit. Review the destinations before applying. This separate action handles an existing batch; changing a Monitor Template does not retroactively reorganize it. [AI folder sorting](/docs/folder-sorting) works on Mac and Windows.
+Zush also supports nested folder rules, such as grouping by year and then month, and can sort already renamed files without another rename credit. You can [export Templates](/docs/template-import-export) with Naming Blocks, Custom AI Blocks, and folder rules to another computer. [AI folder sorting](/docs/folder-sorting) works on Mac and Windows.
 
 ## Where Sortio is stronger
 
 **Linux.** Sortio runs on Linux as well as Mac and Windows. Zush is Mac and Windows only.
 
-**Free rule-based sorting.** Sortio's free plan includes unlimited classic rules (up to five), watch folders, and undo, without any AI. Zush's free start is 50 AI renames.
+**Teams.** Sortio's Team plan includes shared workspaces and automations, an admin console, a central LLM policy, and a pooled allowance at twice Pro per seat. Enterprise starts at $50/seat/month with volume licensing for 25+ seats, audit logs, and procurement support. Zush's per-user licensing has no shared admin workspace.
 
-**Teams.** Sortio's Team plan includes shared workspaces and automations, an admin console, central LLM policy, and a pooled allowance at twice Pro per seat. Enterprise starts at $50/seat/month with volume licensing for 25+ seats and procurement support. These are substantive advantages for coordinated teams; Zush's per-user licensing does not provide an equivalent shared admin workspace.
+**Free rule-based sorting.** Sortio's free plan includes rule-based sorting without AI (up to five rules and three Spaces), preview, and undo. Local models via Ollama or LM Studio and your own API key also work on the free plan. Watch folders are no longer part of it.
 
 **Folder allowlists and fallbacks.** Sortio can restrict sorting to a fixed list of folders and send anything unmatched to a fallback folder. In Zush, Reuse existing folders prefers your folders but can create new ones; add "Put everything else in Other" to your rule for a catch-all.
 
@@ -72,13 +71,13 @@ Zush also supports nested folder rules, such as grouping by year and then month.
 
 ## Sortio limitations to check before buying
 
-**Hosted retention and remote metadata.** Sortio's homepage says hosted content is purged on a 30-day rolling window. By default, AI planning sends filenames and metadata; content-based features can also send file text or images. Its security page also says contents are not retained, which is less precise than that 30-day statement. For a strict no-upload requirement, select Ollama local mode and verify it. BYOK sends data to your selected provider; it is not automatically offline.
+**Hosted retention and remote metadata.** Sortio's homepage says hosted content is purged on a 30-day window. By default, AI planning sends filenames and metadata; content-based features can also send file text or images. For a strict no-upload requirement, select a local model (Ollama or LM Studio) and verify it. BYOK sends data to your selected provider; it is not automatically offline.
 
-**Allowance and renewal.** Pro and Team are recurring subscriptions with hosted allowances. The public page gives a percentage usage indicator rather than a fixed allowance count; Pro AI sorts are listed as up to 5,000 files per run, with unlimited automation and unmetered BYOK. Confirm how your batch is counted before committing.
+**Account and allowance.** Sortio needs an email account even for the free plan. Pro and Team are recurring subscriptions with hosted allowances shown as a percentage indicator rather than a fixed count; Pro AI sorts are listed at up to 5,000 files per run. The App Store lists Pro at $19.99/month versus $14.99 on the website, so check where you buy.
 
-**Backup size.** Sortio keeps backups for the ten most recent sorts and skips a backup when the batch exceeds its default 500 MB cap. You can change or remove that cap; history-based undo is separate and still works. For a large media batch, check the backup setting rather than assuming a safety copy exists.
+**Backup size.** Sortio keeps backups for the ten most recent sorts and skips a backup when the batch exceeds its default 500 MB cap. You can change or remove that cap; history-based undo is separate. For a large media batch, check the backup setting rather than assuming a safety copy exists.
 
-These limitations do not erase its Linux and team-workflow strengths. Zush's own constraints are desktop-only Mac/Windows support, local-model setup, and local-model setup for offline use.
+These limits don't erase its Linux and team strengths. Zush's own constraints are no Linux build and no shared team workspace.
 
 ## Same prompt in both apps
 
@@ -94,8 +93,8 @@ Need more rules to test? Use the [30 folder sorting prompts](/blog/ai-folder-sor
 
 - Mixed folders with video, audio, RAW, or design files: **Zush**.
 - Strict filename conventions for invoices, receipts, or client files: **Zush**.
-- One-time payment without a file meter: **Zush**.
-- Linux desktop, team workspaces, or free rules without AI: **Sortio**.
+- Starting without an account, or a one-time license with the cloud included: **Zush**.
+- Linux desktop, or team workspaces with an admin console: **Sortio**.
 
 Both have a free start. To see how Zush works as an [AI file organizer](/ai-file-organizer) that names and sorts by content, run the same 20 files through each and compare the plans before you decide. On Windows, the [AI file organizers for Windows 11 compared](/blog/best-ai-file-organizers-windows) adds Wisfile, RenameClick, File Juggler, and DropIt.
 
@@ -110,20 +109,28 @@ Both have a free start. To see how Zush works as an [AI file organizer](/ai-file
   ]}
 />
 
+## Sources and how we checked
+
+<BlogSources ids={['sortio']} />
+
 ## FAQ
 
 ### Is Zush a good Sortio alternative?
 
-Yes. Zush also sorts files into folders from a plain-language prompt and renames them in the same reviewed batch, on Mac and Windows. It adds video, audio, RAW, and design file support, 145+ Naming Blocks for filenames, and a $48 one-time license with no file meter.
+Yes, on Mac and Windows. Zush also sorts files into folders from a plain-language prompt and renames them in the same reviewed batch. It adds video named from speech and subtitles, audio, RAW, and design file support, 145+ Naming Blocks for filenames, and persistent batch undo. You can start without an account. If you need Linux or a team admin console, Sortio remains the better fit.
 
 ### Is Sortio free?
 
-Sortio's free plan includes unlimited rule-based sorting with up to five rules, watch folders, undo, and a one-time AI trial. AI sorting beyond the trial requires Pro at $14.99 a month or $99 a year, or your own API key.
+Partly. Sortio's free plan includes rule-based sorting with up to five rules and three Spaces, preview, undo, and a one-time AI trial, and it needs an email account. Watch folders require Pro at $14.99 a month or $99 a year on the website. Ongoing AI sorting needs Pro, your own API key, or a local model via Ollama or LM Studio, which Sortio allows on the free plan too. Zush's free tier gives 50 AI renames with no account, card, or API key.
+
+### Which is better value: Zush $48 or Sortio Pro?
+
+Over three years, Zush One-Time costs $48 and Sortio Pro Annual costs $297 at current prices, before taxes or API costs. Zush's license includes managed Zush Cloud AI with no rename cap, BYOK, local models, all future updates, and up to 3 devices. Sortio Pro adds a hosted AI allowance and watch folders; BYOK, local models and Linux are available on every Sortio plan. For teams that need shared workspaces, Sortio's Team plan has no Zush equivalent.
 
 ### Which one works offline?
 
-Both. Zush runs analysis and folder planning locally with LM Studio or Ollama. Sortio supports Ollama for local AI.
+Both. Zush runs file analysis and folder planning locally with LM Studio or Ollama and does not fall back to the cloud. Sortio supports local models via Ollama or LM Studio on every plan, including Free, with a stated minimum of 8 GB of RAM (16 GB or more recommended) and 10 GB of disk. In hosted mode, Sortio sends filenames and metadata by default and says hosted content is purged on a 30-day window.
 
 ### Does Zush run on Linux?
 
-No. Zush has native apps for macOS 15+ and Windows 10 and 11. If you need Linux, Sortio or the open-source AI File Sorter are the options.
+No. Zush has native apps for macOS 15 or later on Apple Silicon and Intel, and for Windows 10 and 11. If you need Linux, Sortio is one option, and the open-source AI File Sorter is another. Zush's files stay on a Mac or PC, so a Linux-only setup is a real gap.

@@ -1,6 +1,6 @@
 ---
 title: "Cloud AI vs Local AI File Renaming: Privacy, Speed, and Cost"
-description: "Compare cloud AI, BYOK, and local Ollama file renaming for privacy, speed, quality, setup effort, and cost before choosing your Zush workflow."
+description: "Cloud AI, your own API key, or a local Ollama or LM Studio model: how each affects privacy, speed, quality, setup and cost when renaming files."
 date: "2026-04-28"
 slug: "cloud-vs-local-ai-file-renaming"
 platform: "general"
@@ -10,15 +10,29 @@ tags:
   - "Ollama"
   - "BYOK"
 tldr: "Cloud AI is usually easiest and strongest, BYOK uses your own provider key; FREE shares a 50-rename limit across all modes and PRO removes it, and local Ollama gives private on-device processing for supported files. The right choice depends on privacy requirements, batch size, hardware, and how much setup you want."
-reviewed: "2026-09-24"
+reviewed: "2026-11-17"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-Quick answer: Zush Cloud AI gives the easiest setup, BYOK uses your own cloud-provider key, and Ollama or LM Studio keeps supported analysis on your machine. Choose by privacy, model control, speed, and setup effort.
+Quick answer: use cloud AI when you want the easiest setup and the strongest names on everyday files. Use your own API key (BYOK) when you rename in high volume and want to pick and pay the provider yourself. Use a local model through Ollama or LM Studio when files must not leave your computer and you have the hardware for it. In [Zush](/) all four routes are in the same app, so you can pick per folder.
+
+**How we checked:** Written by the maker of [Zush](/). Competitor prices, features and ratings were checked on vendor sites and official stores on November 17, 2026 ([sources below](#sources-and-how-we-checked)). This compares documented features, not a lab test.
 
 AI file renaming is no longer a single technical choice. Zush exposes four AI routes: Zush Cloud AI, BYOK, Ollama, and LM Studio. They can all produce better filenames than rules alone, but they optimize for different constraints.
 
 This guide compares the four routes from a practical desktop workflow perspective: privacy, speed, cost, quality, setup effort, and when each one fits. For the Ollama setup path, start with the [Ollama Setup Guide](/docs/offline-ai). For the product overview, see [File Renamer for Mac and Windows](/). For the current Mac release, see [AI file renamer for Mac](/mac).
+
+## The four AI routes
+
+| Mode | What it means | Best fit |
+|---|---|---|
+| Cloud AI | Zush sends supported files to managed Zush Cloud AI. 50 free renames, unlimited with PRO | Easiest setup and strong everyday quality |
+| BYOK | You connect your own provider key for cloud AI | Your own provider account and direct provider billing |
+| Ollama | Zush connects to an Ollama model running on your device | Private processing for supported files and offline workflows |
+| LM Studio | Zush connects to a compatible local model served by LM Studio | Local model choice through a desktop model manager |
+
+All four routes are useful. The mistake is treating them as interchangeable. A managed cloud model, an API-key workflow, and local models served by Ollama or LM Studio have different strengths.
 
 <BlogProductIntro
   title="Deciding between cloud and on-device renaming?"
@@ -31,16 +45,6 @@ This guide compares the four routes from a practical desktop workflow perspectiv
   ]}
 />
 
-## The four AI routes
-
-| Mode | What it means | Best fit |
-|---|---|---|
-| Cloud AI | Zush uses built-in cloud processing credits | Easiest setup and strong everyday quality |
-| BYOK | You connect your own provider key for cloud AI | Your own provider account and direct provider billing |
-| Ollama | Zush connects to an Ollama model running on your device | Private processing for supported files and offline workflows |
-| LM Studio | Zush connects to a compatible local model served by LM Studio | Local model choice through a desktop model manager |
-
-All four routes are useful. The mistake is treating them as interchangeable. A managed cloud model, an API-key workflow, and local models served by Ollama or LM Studio have different strengths.
 
 ## Privacy
 
@@ -94,7 +98,7 @@ If local names are weak, adjust the prompt or try another compatible model. The 
 
 The cost model is different for each mode.
 
-Managed PRO is the simplest. Zush includes 50 free AI renames, then paid PRO plans unlock unlimited PRO renames for $10/month or $48 one-time. You do not manage provider billing.
+Managed PRO is the simplest. Zush includes 50 free AI renames with no account, card, or API key, then PRO unlocks unlimited renames for $10/month or $48 one-time. The one-time license covers every mode, including Zush Cloud AI, plus all future updates and up to 3 Mac or Windows devices. You do not manage provider billing.
 
 BYOK shifts cost to your provider account. You bring an API key from a supported provider and pay the provider directly. This is often the best option for users who want cloud quality through their own provider account. For the full walkthrough, read [BYOK AI File Renaming with Your Own API Key](/blog/byok-ai-file-renaming-unlimited) and [BYOK Setup Guide](/docs/byok).
 
@@ -102,7 +106,7 @@ Local AI with Ollama has no per-rename AI provider bill once the model is instal
 
 | Mode | Direct AI cost | Hidden cost |
 |---|---|---|
-| Cloud AI | Zush credits | Internet required |
+| Cloud AI | 50 free renames, then PRO at $10/month or $48 one-time | Internet required |
 | BYOK | Provider API billing | API key setup and provider account management |
 | Ollama | No provider request per local rename | Local compute, model storage, slower batches on weaker hardware |
 
@@ -120,7 +124,26 @@ Ollama requires local setup:
 4. Select the model in Zush.
 5. Test before using large folders.
 
-For Mac-specific instructions, read [How to Rename Files with Ollama on Mac](/blog/rename-files-with-ollama-mac). Zush for Windows is live, but local-model setup can differ by platform and build, so use the current [Windows product page](/windows) rather than assuming the Mac Ollama flow applies unchanged.
+For Mac-specific instructions, read [How to Rename Files with Ollama on Mac](/blog/rename-files-with-ollama-mac). Ollama and LM Studio also work with Zush for Windows; the [local AI docs](/docs/local-ai) cover both platforms. For audio and video, local speech recognition can feed spoken content into filename suggestions without uploading the recordings: through Ollama or LM Studio on Mac, and as an optional on-device speech download on Windows.
+
+Hardware matters more for local models. In cloud mode Zush needs about 4 GB of RAM and a ~200 MB app on macOS 15+ or Windows 10/11. A local vision model needs far more memory and disk space, which is the cost you trade for keeping files on the machine.
+
+## How other AI renamers handle cloud and local
+
+Most AI file renamers pick one side, or charge separately for the cloud. Here is what the vendors document:
+
+| App | Cloud option | Local option | Notes |
+|---|---|---|---|
+| Zush | Managed Zush Cloud AI, or your own key | Ollama, LM Studio | 50 free renames with no account; the $48 one-time license includes the managed cloud |
+| RenameClick | Your own key | Built-in local model (~4 GB download, 16 GB RAM recommended), Ollama, LM Studio | No Ollama setup needed for its built-in model; provider fees not included |
+| AI Renamer | Cloud credits, $10 per 200; 10 free | Ollama or LM Studio with the $19 Local license | Google sign-in required |
+| NameQuick | Managed plans, 30 free renames | Self-Managed license ($69) with your own key or a local model | Its pricing page says AI costs are separate on Self-Managed |
+| Renamer.ai | 25 files/month free; Pro $9.95/month for 200 | Local mode on all tiers | Your own key only on the $99.95/month Ultimate plan |
+| Sortio | AI plans after a one-time trial: Pro $14.99/month or $99/year | Ollama or LM Studio, and your own key, on every plan including Free; 8 GB RAM minimum and 10 GB disk | Email account required; watch folders need Pro |
+| Floxtop | None | On-device only; Apple Silicon, macOS 15+ | Renaming needs Apple Intelligence on macOS 26 |
+| Wisfile | None | 100% local, free | Focused on PDF and Word; no undo |
+
+The pattern: one-time licenses elsewhere (AI Renamer Local, RenameClick Lifetime, NameQuick Self-Managed, FilesDesk Self-Managed) cover your own key or a local model only. Managed cloud AI is sold separately or by subscription. If you want a strong model with no setup and no ongoing bill, check whether the license actually includes the cloud. If local is what you want, [local AI file organizers compared](/blog/local-ai-file-organizers-compared) goes through ten apps' local engines, RAM needs and what still goes online. For a broader comparison, see [the best AI file renamers](/blog/best-ai-file-renamer-tools-mac-compared) and the [offline AI file renamer](/offline-ai-file-renamer) page.
 
 ## Which mode should you choose?
 
@@ -159,20 +182,32 @@ Many users will use more than one mode. That is the point. Use Cloud for normal 
 
 If you mostly rename photos, also read [AI Photo Renamer Guide](/blog/how-to-rename-images-with-ai-on-macos). If screenshots are the main issue, see [How to Rename Screenshots Automatically on Mac](/blog/rename-screenshots-automatically-mac).
 
+## Sources and how we checked
+
+<BlogSources ids={['renameclick', 'airenamer', 'namequick', 'renamer-ai', 'sortio', 'floxtop', 'wisfile', 'filesdesk']} />
+
 ## FAQ
 
 ### Is local AI better than cloud AI for file renaming?
 
-Not universally. Local AI is better when privacy and offline processing matter. Cloud AI is usually easier and often stronger for difficult visual content.
+Not universally. Local AI is better when privacy and offline processing matter, because supported analysis stays on your computer. Cloud AI is usually easier to set up and often gives stronger names for difficult screenshots, scans, and ambiguous images, because larger models run on remote hardware. Many people use both: cloud for everyday downloads and a local model for confidential folders.
+
+### Where are my files processed in each Zush mode?
+
+With Zush Cloud AI, supported files are analyzed by Zush's managed cloud service. With BYOK, they go to the provider whose API key you connected, under that provider's terms. With Ollama or LM Studio, analysis runs through the local model on your Mac or Windows PC, and Zush does not silently fall back to the cloud while a local mode is selected. See the [privacy policy](/privacy-policy) for details.
 
 ### Does BYOK mean files stay local?
 
-No. BYOK is still cloud processing. The difference is that you use your own provider API key and pay the provider directly. For local processing, select Ollama or LM Studio under **Settings → AI Modes**.
+No. BYOK is still cloud processing. The difference is that you use your own provider API key, choose the provider, and pay it directly for each request. That can suit high-volume work or company accounts with their own data agreements. For processing that stays on your device, select Ollama or LM Studio under **Settings → AI Modes** instead.
+
+### Which is cheapest for renaming thousands of files?
+
+A local model has no per-file bill once it is installed, but it costs hardware, time, and setup. BYOK charges per request at your provider's rates. Zush PRO at $48 one-time includes unlimited renames with Zush Cloud AI, BYOK, Ollama, and LM Studio, so a large batch on the managed cloud adds no extra cost. Many other one-time renamer licenses include only your own key or a local model.
 
 ### Can I switch modes later?
 
-Yes. The practical workflow is to use the mode that fits the folder. Use local AI for sensitive files, cloud for speed, and BYOK for high-volume cloud work.
+Yes. The mode is a setting, not a separate purchase, so you can use the one that fits each folder. A practical split is local AI for sensitive files, Zush Cloud AI for speed on everyday files, and BYOK for high-volume cloud work through your own provider account. Rename History and undo work the same way in every mode.
 
-### Is Windows supported?
+### Is local AI supported on Windows?
 
-Zush for Windows is live. Use the [Windows product page](/windows) for current release details, and do not treat this article as a Windows local-model setup guide unless that flow is documented there.
+Yes. Zush for Windows connects to Ollama and LM Studio the same way the Mac app does, and offers an optional on-device speech model for audio and video. Install a vision-capable model, select the local mode in AI settings, and test on a small copied folder first. The [local AI docs](/docs/local-ai) cover setup on both platforms, and the [Windows page](/windows) lists current requirements.

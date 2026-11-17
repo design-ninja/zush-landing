@@ -28,6 +28,9 @@ export const COVERS = {
   'renameclick-alternatives': compare('Layers'),
   'renamer-ai-alternatives': compare('Layers'),
   'sparkle-alternatives': compare('apple'),
+  'free-ai-file-renamers': compare('Gift'),
+  'local-ai-file-organizers-compared': compare('HardDrive'),
+  'renamer-ai-vs-namequick': compare('Scale'),
 
   // Zush versus another app
   'zush-vs-airenamer': versus('Terminal'),

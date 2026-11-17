@@ -8,41 +8,40 @@ topic: "comparisons"
 tags:
   - "Tool Comparisons"
   - "File Organization"
-tldr: "Best overall alternative: Zush. It adds content-aware naming, broad mixed-format support, folder monitoring, Templates, preview, and Rename History on Mac and Windows. Advanced Renamer and other pattern tools are narrow exceptions only when existing metadata or one mechanical rule already contains the complete answer. Zush also offers optional AI folder sorting. One Zush license covers up to 3 devices."
-reviewed: "2026-10-18"
+tldr: "Best overall alternative: Zush. It names files from their content, handles mixed formats, monitors folders, previews every batch and keeps Rename History on Mac and Windows, with 50 free renames and no account. Advanced Renamer (free for personal use, $30 personal or $50 commercial license) stays the better fit when EXIF, GPS, ID3 or a mechanical rule already holds the full name. One Zush license covers up to 3 devices."
+reviewed: "2026-11-17"
 ---
 
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
-Quick answer: **[Zush](/) is our best overall Advanced Renamer alternative** because it can name files from their content as well as structured Naming Blocks, works on Mac and Windows, monitors folders, previews changes, and keeps full Rename History. Advanced Renamer remains a narrow option when the complete filename can be built only from existing EXIF, GPS, ID3, timestamps, counters, or other deterministic metadata.
+Quick answer: **[Zush](/) is our best overall Advanced Renamer alternative** when the name has to come from what a file contains: it reads screenshots, scans, documents, photos, audio and video, works on Mac and Windows, monitors folders, previews changes and keeps a persistent Rename History. Keep Advanced Renamer when the full filename can be built from existing EXIF, GPS, ID3, timestamps, counters or text replacements. For one-off mechanical jobs, Finder or PowerRename are free and already installed.
 
-Feature and licensing claims last checked July 3, 2026, against the official Advanced Renamer site.
-
-**Zush features reviewed October 18, 2026.** Competitor information retains the check dates stated in this article.
+**How we checked:** Written by the maker of [Zush](/). Competitor prices, features and ratings were checked on vendor sites and official stores on November 17, 2026 ([sources below](#sources-and-how-we-checked)). This compares documented features, not a lab test.
 
 ## Best Advanced Renamer alternatives at a glance
 
-Choose the alternative by the job you actually need to finish. A different interface will not help if the underlying renaming method is wrong.
+Choose by the job you need to finish. A different interface will not help if the renaming method is wrong. Ranked on: whether a tool can name files from their content, Mac and Windows coverage, preview and undo, and price.
 
-| Tool | Platforms | Recommendation status | Reads file content? | Preview / undo |
-|---|---|---|---|---|
-| **Zush** | Mac + Windows | **Best overall: content-aware names plus reusable naming control; optional AI folder sorting** | **Yes** | Preview + Rename History |
-| **Finder Rename** | Mac | Simple replace, add-text, and numbering jobs | No | Preview + immediate Finder undo |
-| **PowerRename** | Windows | Free search-and-replace and regex in File Explorer | No | Preview before applying |
-| **Bulk Rename Utility** | Windows | Dense, advanced pattern and regex workflows | No | Preview + undo |
-| **A Better Finder Rename** | Mac | Mac-native patterns, dates, and metadata | No | Preview + undo |
-| **Advanced Renamer** | Mac + Windows | Stacked rules, EXIF, GPS, and metadata | No | Preview + batch undo |
+| Tool | Platforms | Best for | Reads file content? | Preview / undo | Price |
+|---|---|---|---|---|---|
+| **Zush** | Mac + Windows | **Content-aware names plus reusable naming control; optional AI folder sorting** | **Yes, with AI** | Preview + persistent Rename History | 50 free renames; $10/mo or $48 one-time incl. cloud AI |
+| **Finder Rename** | Mac | Simple replace, add-text and numbering jobs | No | Preview + immediate Finder undo | Built in |
+| **PowerRename** | Windows | Free search-and-replace and regex in File Explorer | No | Preview before applying | Free (PowerToys) |
+| **Bulk Rename Utility** | Windows | Dense pattern and regex workflows | No | Preview + undo | Free for home use; $92.95 commercial |
+| **A Better Finder Rename** | Mac | Mac-native patterns, dates and metadata | No | Preview + undo | $29.95 |
+| **Advanced Renamer** | Mac + Windows | Stacked rules, EXIF, GPS and metadata | PDF and TXT text via scripting only; no AI or OCR | Preview + batch undo | Free for personal use; $30 personal, $50 commercial |
 
 ### Which one should you choose?
 
-- Start with **[Zush](/)** for the broad recommendation: it handles content-aware names, mixed formats, monitoring, preview, and rollback in one workflow.
-- Consider **Advanced Renamer** only when the correct filename already exists in reliable metadata or a repeatable rule.
-- Consider **Finder or PowerRename** only for a one-off mechanical change that the built-in free option fully covers.
-- Consider **Bulk Rename Utility or A Better Finder Rename** only when platform-specific regex or metadata rules are the explicit requirement.
+- Start with **[Zush](/)** when every file needs its own descriptive name: screenshots, scans, invoices, mixed downloads.
+- Keep **Advanced Renamer** when the correct filename already exists in reliable metadata or a repeatable rule.
+- Use **Finder or PowerRename** for a one-off mechanical change.
+- Use **Bulk Rename Utility or A Better Finder Rename** when platform-specific regex or metadata rules are the requirement.
 
-For a broader category view before choosing, compare the [best file renamer tools for Mac and Windows](/blog/best-file-renamer-tools).
+For a broader view, compare the [best file renamer tools for Mac and Windows](/blog/best-file-renamer-tools) or the [best AI file renamers for Windows](/blog/best-ai-file-renamer-tools-windows-compared).
 
 <BlogProductIntro
   title="Want renaming that reads the file, not just patterns?"
@@ -58,77 +57,87 @@ For a broader category view before choosing, compare the [best file renamer tool
 
 ## What Advanced Renamer does well
 
-- **13 renaming methods you can stack** — add, remove, replace, change case, renumber, or build entirely new names, combined in one batch and previewed before running.
-- **Metadata-driven names** — pull EXIF date/time, image dimensions, camera model, and even GPS data into filenames; great for photographers with `DSC_*.NEF` archives shot on a consistent workflow.
-- **Move and copy rules** — files can be relocated based on their information as part of the same batch.
-- **Batch undo** — regret a run, revert the whole thing.
-- **One-time license** — personal and commercial tiers via Paddle, with free upgrades across the 3.xx–4.xx range and no subscription.
+Advanced Renamer 4.28 (October 27, 2026) runs on Windows and Mac. Its strengths are real:
 
-If your photos have reliable EXIF and the entire desired name is `2026-06-12 14.32 Osaka.jpg`, Advanced Renamer may be sufficient. For mixed folders or names that must explain content, Zush remains the recommendation.
+- **13 renaming methods you can stack.** Add, remove, replace, change case, renumber or build new names, combined in one batch and previewed before running.
+- **Metadata-driven names.** It pulls EXIF date and time, image dimensions, camera model and GPS data into filenames, which suits photographers with consistent `DSC_*.NEF` archives.
+- **Scripting.** Script methods can extract text from PDF and TXT files and use it in the name.
+- **Move and copy rules.** Files can be relocated based on their information in the same batch.
+- **Batch undo.** Regret a run, revert the whole thing.
+- **Free for personal use.** Business use needs a license: $30 personal (VAT included) or $50 commercial (excluding VAT), one-time.
+
+It holds 4.2 from 23 ratings on the Microsoft Store (US) and 3.5/5 from Softpedia's editors. If your photos have reliable EXIF and the desired name is `2026-06-12 14.32 Osaka.jpg`, Advanced Renamer may be all you need.
 
 ## Where metadata rules stop
 
-Metadata answers *when, where, and with what* a file was made — not *what it shows or says*. That gap covers most everyday mess:
+Metadata answers when, where and with what a file was made, not what it shows or says. That gap covers most everyday mess:
 
 - Screenshots: EXIF gives you the timestamp you already had, not "Stripe Dashboard Payout Error".
-- Scanned PDFs: creation date says nothing about vendor, contract type, or invoice number inside.
+- Scanned PDFs: an image-only scan has no text for a script to extract, and Advanced Renamer has no OCR.
 - Mixed client folders: no counter or GPS tag turns `Untitled.fig` and `meeting_notes_FINAL.docx` into names a teammate can search for.
 
-For those, the name has to come from the content itself — which means AI analysis, not rules. Our guide to [renaming files by content](/blog/rename-files-by-content-guide) shows what that looks like in practice.
+Advanced Renamer's script methods can pull text out of a text-based PDF, but you still write the logic that picks the vendor or invoice number. For names that describe content, you need AI analysis. Our guide to [renaming files by content](/blog/rename-files-by-content-guide) shows what that looks like.
 
 ## Advanced Renamer vs Zush
 
 <BlogToolMeta platform="Mac (macOS 15+) and Windows 10/11" website="https://zushapp.com/" label="zushapp.com">
-  <Fragment slot="pricing">Free tier (50 renames), PRO <BlogHighlight>$10/month or $48 one-time</BlogHighlight> for unlimited PRO renames, BYOK optional, local Ollama / LM Studio supported</Fragment>
+  <Fragment slot="pricing">Free tier (50 renames, no account or card), PRO <BlogHighlight>$10/month or $48 one-time</BlogHighlight> with unlimited renames including Zush Cloud AI, plus BYOK and local Ollama / LM Studio</Fragment>
 </BlogToolMeta>
 
 | Dimension | Advanced Renamer | Zush |
 |---|---|---|
 | Platforms | Windows + macOS | Windows + macOS |
-| Renaming logic | 13 pattern/metadata methods | <BlogHighlight>AI reads file content</BlogHighlight>, combined with dates, counters, and metadata via 145+ Naming Blocks |
+| Renaming logic | 13 pattern, metadata and script methods | <BlogHighlight>AI reads file content</BlogHighlight>, combined with dates, counters and metadata via 145+ Naming Blocks |
 | Names from EXIF/GPS/tags | <BlogHighlight>Yes, very strong</BlogHighlight> | Yes (metadata Naming Blocks) |
-| Names from file content | No | Yes — screenshots, PDFs, photos, documents, video, audio, design files |
-| Pricing model | One-time license (personal/commercial tiers) | Free tier; $10/month or $48 one-time |
-| Preview + undo | Yes | Yes (full rename history) |
-| Folder monitoring | No | Yes — rename new files; a sorting Template also groups them |
-| Templates for repeat jobs | Method presets | Templates + custom AI prompts |
+| Names from file content | Text from PDF/TXT via your own scripts; no AI, no OCR | Yes: screenshots, scans, PDFs, photos, Office, video (speech and subtitles), audio, design files |
+| Pricing | Free for personal use; $30 personal or $50 commercial license | 50 free renames; $10/month or $48 one-time including cloud AI |
+| Preview + undo | Yes, batch undo | Yes, persistent Rename History and Undo All |
+| Folder monitoring | Not stated by vendor | Yes: rename new files; a sorting Template also groups them |
+| Duplicates | Not stated by vendor | Detected during AI Rename; keep, mark or trash, Undo restores |
+| Templates for repeat jobs | Method presets | Templates + Custom AI Blocks |
 
 ![Zush AI rename results on macOS showing content-aware filenames for mixed files](/images/showcase/macos/batch-rename-light.webp)
 
-Recommendation: choose Zush for the complete everyday workflow. Consider Advanced Renamer only as a specialist metadata utility when disciplined EXIF/GPS/ID3 rules are the whole job; it does not replace Zush for screenshots, scans, documents, video, audio, or other files whose names must come from content.
+Recommendation: choose Zush when names must come from content, and keep Advanced Renamer as a metadata utility when disciplined EXIF, GPS or ID3 rules are the whole job. Many photographers use both.
 
-For the full Windows lineup, see the [best file renamers for Windows 11](/blog/best-file-renamer-windows-11).
+Zush works right away: the 50 free AI renames run on managed Zush Cloud AI, with no account, card, API key or model download. The $48 one-time license covers unlimited renames in every mode (Zush Cloud AI, BYOK, Ollama, LM Studio), all future updates, up to 3 devices across Mac and Windows, and a 14-day refund. On the Microsoft Store (US) Zush has 5.0 from 8 ratings, and Softpedia's editors give it 4.5/5 (as of November 17, 2026).
 
-One Zush license covers up to 3 devices on Mac and Windows. PRO costs $10/month or $48 one-time and includes unlimited renames with Zush Cloud AI. BYOK, Ollama, and LM Studio are also available; your own API provider charges separately. The free allowance is 50 renames in total across AI modes.
-
-You can [export Templates](/docs/template-import-export) with Naming Blocks, Custom AI Blocks, and folder rules, then import them on another computer. Choose local destinations, folder permissions, and AI connections again there; this transfers the workflow settings, not your files.
+For the full Windows lineup, see the [best file renamers for Windows 11](/blog/best-file-renamer-windows-11). For bulk renamers on both platforms, see [Bulk Rename Utility alternatives](/blog/bulk-rename-utility-alternatives).
 
 ### When you also need folders organized
 
-Zush also offers optional **AI folder sorting**. For a mixed batch of invoices, scans, and photos, choose **Auto** grouping or write **Folder rules** such as “Group invoices by company and photos by subject.” The AI proposes folders from content while Naming Blocks still control each filename. This is a separate task from applying an EXIF or text-replacement rule.
+Zush also offers optional **AI folder sorting**. For a mixed batch of invoices, scans and photos, choose **Auto** grouping or write **Folder rules** such as “Group invoices by company and photos by subject.” The AI proposes folders from content while Naming Blocks still control each filename.
 
-Choose a **Destination folder**, or keep the source folder as the root. Enable **Reuse existing folders** to prefer suitable folders already there; Zush can create a new one when nothing fits. In a manual batch, review both the suggested names and folders before applying. To rename in place, leave sorting off and keep the original destination.
+Choose a **Destination folder**, or keep the source folder as the root. Enable **Reuse existing folders** to prefer suitable folders already there. In a manual batch, review both the suggested names and folders before applying. To rename in place, leave sorting off.
 
-Save the sorting settings in a **Template** and assign it to **Monitor** for new files directly inside the watched folder. Changing the Monitor Template does not automatically reorganize files already processed. Test the Template in a manual batch first. See the [folder sorting guide](/docs/folder-sorting) for the setup and monitoring scope.
+Save the settings in a **Template** and assign it to **Monitor** for new files in the watched folder. Changing the Monitor Template does not reorganize files already processed. See the [folder sorting guide](/docs/folder-sorting).
 
-Zush also supports nested folder rules, such as grouping by year and then month. You can sort already renamed files without changing their names again or spending another rename credit. Review the destinations before applying. This separate action handles an existing batch; changing a Monitor Template does not retroactively reorganize it. [AI folder sorting](/docs/folder-sorting) works on Mac and Windows.
+## Sources and how we checked
+
+<BlogSources ids={['advanced-renamer', 'powerrename', 'bulk-rename-utility', 'a-better-finder-rename']} />
 
 ## FAQ
 
-### Can Zush sort files into folders as well as rename them?
+### What is the best Advanced Renamer alternative?
 
-Yes. Its optional AI folder sorting works on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; changing its Template does not automatically reorganize files already processed. Leave sorting off and keep the original destination for naming only.
+[Zush](/) is our pick when files need names based on their content: it reads screenshots, scans, documents, photos, audio and video, and previews and records every batch on Mac and Windows. If your names come from metadata or a fixed rule, Bulk Rename Utility (Windows), A Better Finder Rename (Mac) or the free PowerRename and Finder tools are closer replacements. We make Zush, so weigh that.
 
-**Is Advanced Renamer available for Mac?**
-Yes — Advanced Renamer added a macOS version alongside Windows (current release 4.23, June 2026). Many "Advanced Renamer alternative for Mac" searches predate this.
+### Is Advanced Renamer free?
 
-**Is Advanced Renamer free?**
-No. Licenses are one-time purchases (personal and commercial tiers, sold via Paddle) with free upgrades within the 3.xx–4.xx version range.
+For personal use, yes. Its download page says you can use it for free for personal use. Business use needs a license after trying it: $30 for the personal license (VAT included) or $50 for the commercial license (excluding VAT), both one-time. Zush, by comparison, gives 50 free AI renames and costs $48 one-time with cloud AI included.
 
-**Can Advanced Renamer name files based on their content?**
-No. It builds names from patterns and file metadata such as EXIF, GPS, and ID3 tags. Naming a file by what it shows or says requires AI content analysis — that's what the [AI batch rename workflow](/batch-rename-files) does, with review before applying and full undo.
+### Is Advanced Renamer available for Mac?
 
-**What is the best Advanced Renamer alternative?**
-[Zush](/) is our best overall Advanced Renamer alternative: it adds content-aware naming, broad mixed-format support, Templates, monitoring, review, and rollback on Mac and Windows. Keep Advanced Renamer only for the narrow case where deterministic metadata already contains the complete filename.
+Yes. Advanced Renamer runs on Windows and macOS, and version 4.28 was released for both on October 27, 2026. Many "Advanced Renamer for Mac" searches predate the macOS version. On a Mac you can also use Finder's built-in renamer, A Better Finder Rename for patterns and metadata, or Zush for names based on file content.
 
-Sources checked for this update: Advanced Renamer (version, platforms, features, licensing) and [Zush](/) (pricing, platforms, formats).
+### Can Advanced Renamer name files based on their content?
+
+Only partly. Script methods can extract text from PDF and TXT files, but it has no AI and no OCR, so it cannot read an image-only scan or describe what a photo or screenshot shows. You also write the logic yourself. Naming a file by what it shows or says is what the [AI batch rename workflow](/batch-rename-files) does, with review before applying and full undo.
+
+### Does Zush upload my files when it renames them?
+
+Only in cloud modes. With Zush Cloud AI or your own API key, file content is sent to that model to generate a name. With Ollama or LM Studio, analysis stays on your computer. Advanced Renamer, Bulk Rename Utility, PowerRename and Finder work entirely locally because they only apply rules and metadata, never AI analysis.
+
+### Can Zush add counters and dates like Advanced Renamer?
+
+Yes, as part of a Template. Naming Blocks add sequence numbers with a custom start and leading zeros, numbered per folder, plus dates, capture metadata, case and separators, next to the part of the name the AI writes. What Zush doesn't copy is Advanced Renamer's stack of scripted renaming methods. If the whole filename can be built from existing metadata or a fixed rule, Advanced Renamer remains the better fit.

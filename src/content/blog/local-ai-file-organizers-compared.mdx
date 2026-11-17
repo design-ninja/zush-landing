@@ -1,0 +1,203 @@
+---
+title: "Local AI File Organizers Compared (2026): Ollama, On-Device"
+description: "Local AI file organizers compared: Ollama and LM Studio apps vs bundled on-device models, with setup, RAM and disk needs, what goes online, and price."
+date: "2026-11-17"
+slug: "local-ai-file-organizers-compared"
+platform: "general"
+topic: "comparisons"
+tags:
+  - "Tool Comparisons"
+  - "Ollama"
+  - "File Organization"
+  - "AI File Renaming"
+tldr: "Ten apps can rename or sort files with AI on your own machine. RenameClick, Wisfile, and Files Magic AI bundle their model, and Floxtop uses the one built into macOS. Zush, AI Renamer, FilesDesk, NameQuick, and Sortio connect to Ollama or LM Studio, and Renamer.ai downloads its own. Zush adds guided Ollama setup and local speech recognition, and its $48 license also includes a managed cloud."
+earlyTaskExample: false
+reviewed: "2026-11-17"
+itemList:
+  name: "Local AI file organizers compared"
+  description: "Editorial ranking by the maker of Zush, based on documented local AI features checked November 17, 2026."
+  items:
+    - name: "Zush"
+      description: "Guided Ollama setup or LM Studio, local speech recognition for audio and video, local folder planning; Mac and Windows."
+      url: "https://zushapp.com/"
+    - name: "RenameClick"
+      description: "Bundled ~4 GB local model with no Ollama needed; 16 GB RAM recommended; Mac and Windows."
+    - name: "Floxtop"
+      description: "On-device sorting and renaming on Apple Silicon Macs; renaming uses Apple Intelligence on macOS 26."
+    - name: "NameQuick Self-Managed"
+      description: "$69 one-time license for Ollama, LM Studio, or MLX on Apple Silicon; one computer."
+    - name: "Sortio"
+      description: "Offline Mode with Ollama or LM Studio; 8 GB RAM minimum and 10 GB free disk stated; also on Linux."
+    - name: "AI Renamer Local"
+      description: "$19 one-time license for unlimited renames with Ollama or LM Studio on Mac, Windows, and Linux."
+    - name: "FilesDesk Self-Managed"
+      description: "$40 one-time license for Ollama, LM Studio, or vLLM, with one year of updates."
+    - name: "Renamer.ai"
+      description: "In-app local model download on every tier; the vendor doesn't state model size or RAM needs."
+    - name: "Wisfile"
+      description: "Free, built-in local engine for PDFs and Word files on Mac and Windows; no undo."
+    - name: "Files Magic AI"
+      description: "English on-device model ships with the Mac app; optional cloud route sends extracted text."
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
+
+Quick answer: if you want local AI with no setup at all, RenameClick bundles a ~4 GB model (16 GB RAM recommended), and Floxtop runs on-device on Apple Silicon Macs. If you already use Ollama or LM Studio, [Zush](/), AI Renamer Local, FilesDesk, NameQuick Self-Managed, and Sortio all connect to it. Zush adds guided Ollama setup, local speech recognition for audio and video, and a $48 license that also covers a managed cloud for computers that can't run a model.
+
+**How we checked:** Written by the maker of [Zush](/). Competitor prices, features and ratings were checked on vendor sites and official stores on November 17, 2026 ([sources below](#sources-and-how-we-checked)). This compares documented features, not a lab test.
+
+## Local AI apps at a glance
+
+| App | Local engine | Setup needed | Stated RAM / disk | Platforms | What still goes online | Price |
+|---|---|---|---|---|---|---|
+| **Zush** | Ollama or LM Studio; local speech recognition | <BlogHighlight>Download and Start buttons for Ollama, then a suggested model</BlogHighlight> | App: 4 GB RAM min, about 200 MB; model size shown before download | Mac (macOS 15+), Windows 10/11 | Install and model download; licensing and update checks | 50 free renames; $10/mo or $48 one-time |
+| **RenameClick** | Bundled model, or Ollama/LM Studio | One in-app model download | ~4 GB disk, ~4 GB model RAM; 16 GB system RAM recommended | Mac, Windows | Model download, license activation and recovery | 100/mo free; $8 + VAT/mo; $36 + VAT lifetime |
+| **Floxtop** | On-device; Apple Intelligence for renaming | None for sorting; Apple Intelligence on for renaming | Not stated by vendor | Mac, Apple Silicon, macOS 15+ (renaming needs macOS 26) | Updates only, per vendor (can be turned off) | 100 files/mo free; $19.99 one-time |
+| **NameQuick Self-Managed** | Ollama, LM Studio, MLX (Apple Silicon, macOS 14+) | Install a local runtime and a vision model | Not stated by vendor | Mac, Windows (x64) | Not stated by vendor | $69 one-time, 1 computer |
+| **Sortio** | Ollama or LM Studio (Offline Mode) | Install a runtime and model | 8 GB RAM min, 16 GB+ recommended, 10 GB free disk | Mac, Windows, Linux | Email account required | Local models and BYOK on every plan, including Free; Pro $14.99/mo or $99/yr adds watch folders |
+| **AI Renamer Local** | Ollama or LM Studio | Install a runtime and model | Not stated by vendor | Mac, Windows, Linux | Not stated by vendor | $19 one-time |
+| **FilesDesk Self-Managed** | Ollama, LM Studio, vLLM | Install a runtime and model | Not stated by vendor | Mac, Windows | Sign-in for the account | $40 one-time, 1 device, 1 year of updates |
+| **Renamer.ai** | Own downloadable model (Small to Large, or Auto) | In-app model download | Not stated by vendor; app marks unsupported sizes | Mac, Windows | Account, model download | 25 files/mo free; from $9.95/mo |
+| **Wisfile** | Built-in local engine | None | Not stated by vendor | Mac, Windows | Not stated by vendor | Free |
+| **Files Magic AI** | English on-device model in the app, or Apple Intelligence | None | Not stated by vendor | Mac (Windows download listed, not verified) | Optional cloud route sends extracted text | 25 credits free; $6.99/mo, $34.99/yr, $49.99 lifetime (sale) |
+
+"Not stated by vendor" means we couldn't find the number on the vendor's own pages. It doesn't mean there's no requirement. Any local model needs memory, and vision models that read photos and scans are the heaviest.
+
+## Three ways apps run AI locally
+
+**A bundled model.** RenameClick, Wisfile, and Files Magic AI ship or download their own model. You don't install anything else. The trade-off is that you get the model the vendor picked. Among apps that bundle a model, only RenameClick publishes its size and memory needs.
+
+**The operating system's model.** Floxtop uses on-device analysis for sorting and Apple Intelligence for renaming, and Files Magic AI can also use Apple Intelligence. There's nothing to download, but you need recent Apple hardware and software.
+
+**Your own runtime.** Zush, NameQuick, FilesDesk, AI Renamer, and Sortio talk to Ollama or LM Studio (FilesDesk also to vLLM, NameQuick also to MLX). You choose the model and can swap it when better ones come out. You also install and run the server, and you need a vision-capable model for photos and scans. Renamer.ai sits in between: it downloads its own model, but lets you pick a size.
+
+If you're new to Ollama, our [local AI file renaming guide](/blog/local-ai-file-renaming-ollama-guide) explains how the pieces fit, and [cloud vs local AI file renaming](/blog/cloud-vs-local-ai-file-renaming) covers when local is worth the setup.
+
+## The apps in detail
+
+### 1. Zush: Ollama or LM Studio, with guided setup
+
+Zush connects to Ollama or LM Studio on Mac and Windows. For Ollama, Settings has **Download Ollama** and **Start Ollama** buttons, then downloads a suggested model and shows the size first, so you don't need Terminal. If you already run models, you pick one from a list. With a local mode selected, Zush doesn't fall back to the cloud on its own, and folder planning for AI sorting also runs locally.
+
+Audio and video can be named from speech locally. On Mac (3.20.1 and later), speech recognition works with Ollama and LM Studio. On Windows, you can download optional on-device speech recognition from AI settings. Local modes skip online music recognition. Zush's privacy page says the app may still contact its servers for licensing, updates, and support checks.
+
+**Weakness:** you still install a local runtime. RenameClick's bundled model needs no Ollama step at all.
+
+**Choose Zush if** you want local AI plus a managed cloud in one license. The $48 one-time license includes Zush Cloud AI, BYOK, Ollama, and LM Studio with unlimited renames on up to three Macs and PCs, so a 4 GB laptop can use the cloud while a desktop runs models. Previews, persistent Rename History with batch undo, and duplicate detection work in every mode. The product page for this setup is [offline AI file renamer](/offline-ai-file-renamer).
+
+### 2. RenameClick: a bundled model, no Ollama
+
+RenameClick's built-in model is about 4 GB on disk and uses about 4 GB of RAM on top of the system. The vendor recommends 16 GB of system RAM and says a dedicated GPU isn't required. After the one-time download, it works offline. You can also point it at Ollama or LM Studio. Activation and model downloads need a connection. Version 4.1.2 names MP4, MOV, M4V, and 3GP video using frames and local speech transcription.
+
+**Weakness:** undo keeps only 10 entries in memory and clears them on restart.
+
+**Choose RenameClick if** you have 16 GB of RAM and want local AI that works after one download, with no other software.
+
+### 3. Floxtop: on-device on Apple Silicon
+
+Floxtop analyzes files on your Mac and, per the vendor, uses the internet only to check for updates, which you can turn off. Sorting doesn't use Apple Intelligence. Smart Rename does, and needs macOS 26. A multilingual model is an optional download.
+
+**Weakness:** Apple Silicon Macs only. No Intel Macs, no Windows.
+
+**Choose Floxtop if** you're on an Apple Silicon Mac with macOS 26 and want local AI with nothing to install. It has a 30-day refund on its $19.99 license.
+
+### 4. NameQuick Self-Managed: Ollama, LM Studio, or MLX
+
+The $69 Self-Managed license runs your own key or a local model: Ollama or LM Studio on Mac and Windows, plus MLX on Apple Silicon Macs (macOS 14 or later). NameQuick notes that photos and scans need a vision-capable model. A 30-rename trial needs no card.
+
+**Weakness:** one license covers one computer.
+
+**Choose NameQuick if** you want MLX on Apple Silicon, or Rules and watched folders with a Review-first option.
+
+### 5. Sortio: Offline Mode for sorting
+
+Sortio's Offline Mode uses Ollama or LM Studio. Local models and your own API key are available on every plan, including Free; watch folders need Pro. Sortio publishes hardware numbers for local use: 8 GB RAM minimum, 16 GB or more recommended, at least 10 GB of free disk, and a dedicated GPU recommended.
+
+**Weakness:** an email account is required, and automatic sorting with watch folders is Pro-only.
+
+**Choose Sortio if** you need Linux or team workspaces, and your main job is sorting into folders.
+
+### 6. AI Renamer Local: $19 for Ollama or LM Studio
+
+AI Renamer's Local package is $19 once for unlimited renames with Ollama or LM Studio, or your own key with OpenAI, Google AI Studio, OpenRouter, or a custom endpoint. It runs on Mac, Windows, and Linux, and recent versions added a Watch Folder (beta) and video, audio, RAW, and Office support.
+
+**Weakness:** no undo is documented, and the Watch Folder runs only while the app is open.
+
+**Choose AI Renamer Local if** you already run Ollama and want the cheapest one-time license, or you're on Linux.
+
+### 7. FilesDesk Self-Managed: Ollama, LM Studio, or vLLM
+
+The $40 Self-Managed license works with Ollama, LM Studio, or vLLM, or with Claude, OpenAI, Gemini, and OpenRouter keys. It binds to one device (support can transfer it) and includes one year of updates.
+
+**Weakness:** a 3-day refund window, and managed AI is only on the subscription.
+
+**Choose FilesDesk if** you run vLLM on a server, or want Watch Folders plus Watch Inbox for email attachments.
+
+### 8. Renamer.ai: its own local model on every tier
+
+Renamer.ai's local mode downloads a model in the app, with Small, Medium, Large, or Auto sizes. The app shows the download size and marks sizes your computer can't run. The vendor says local naming quality may not match its cloud.
+
+**Weakness:** model size, RAM needs, and whether local renames count against your monthly file allowance aren't stated.
+
+**Choose Renamer.ai if** you want local mode on the free tier and don't want to install Ollama.
+
+### 9. Wisfile: free and local for documents
+
+Wisfile says it's 100% local and free, on Mac and Windows. It works best on PDFs and Word files, extracting titles, authors, and years.
+
+**Weakness:** no undo, and no published model or hardware details.
+
+**Choose Wisfile if** you rename research papers and want a free tool with no setup.
+
+### 10. Files Magic AI: an on-device model in the box
+
+Files Magic AI ships an English on-device model with the app, and Magic Rename can also use Apple Intelligence. Its cloud route sends the text read from the file.
+
+**Weakness:** the bundled model is English, and we couldn't verify the listed Windows version in its public releases.
+
+**Choose Files Magic AI if** you want renaming plus Mac cleanup tools in one app.
+
+The open-source [ai-renamer](https://github.com/ozgrozer/ai-renamer) CLI also renames images and videos with Ollama or LM Studio from the terminal, free under GPL-3.0. It has no interface, preview, or undo.
+
+<BlogCTA placement='inline' platform='general' />
+
+## Hardware: what you actually need
+
+Two vendors publish RAM and disk numbers. RenameClick recommends 16 GB of system RAM for its ~4 GB model. Sortio asks for 8 GB minimum, 16 GB or more recommended, and 10 GB of disk. Floxtop states platform requirements instead: Apple Silicon, and Apple Intelligence on macOS 26 for renaming.
+
+For apps that use Ollama or LM Studio, the model you pick sets the requirement. Smaller vision models need less memory and usually give less precise names, so check the model's own size before you download it. If a computer can't run a model well, a cloud route is the practical fallback. Zush in cloud mode needs 4 GB of RAM and about 200 MB of disk.
+
+For a hands-on Mac setup, follow [rename files with Ollama on Mac](/blog/rename-files-with-ollama-mac). If you're comparing free allowances rather than local engines, see [free AI file renamers compared](/blog/free-ai-file-renamers).
+
+## Sources and how we checked
+
+<BlogSources ids={['renameclick', 'floxtop', 'namequick', 'sortio', 'airenamer', 'filesdesk', 'renamer-ai', 'wisfile', 'files-magic-ai']} />
+
+The open-source ai-renamer CLI was checked on its [GitHub repository](https://github.com/ozgrozer/ai-renamer) on November 17, 2026.
+
+## FAQ
+
+### Which AI file organizer works fully offline?
+
+Most can, once set up. Floxtop says it goes online only for updates, which you can disable. RenameClick works offline after its model download and license activation. Zush, NameQuick, FilesDesk, AI Renamer, and Sortio work offline once Ollama or LM Studio and a model are installed. Wisfile, Files Magic AI, and Renamer.ai describe local processing but don't state offline behavior in detail. Activation, updates, and model downloads still need the internet.
+
+### Do I need Ollama to rename files with local AI?
+
+No. RenameClick bundles a ~4 GB model, Floxtop uses on-device analysis and Apple Intelligence, Wisfile and Files Magic AI have built-in engines, and Renamer.ai downloads its own model. Ollama or LM Studio is needed for Zush, AI Renamer Local, FilesDesk Self-Managed, NameQuick Self-Managed, and Sortio's Offline Mode. Zush has buttons that download and start Ollama for you.
+
+### How much RAM do I need for local AI file renaming?
+
+RenameClick recommends 16 GB of system RAM. Sortio states 8 GB minimum and 16 GB or more recommended, plus 10 GB of free disk. The other vendors don't publish numbers. With Ollama or LM Studio, the model you choose decides it, and larger vision models need more memory. If your computer struggles, a smaller model or a cloud route is the practical choice.
+
+### Does local AI keep my files private?
+
+In local mode, the app reads the file and the model runs on your computer, so file contents aren't sent to an AI provider. Apps may still go online for activation, updates, or licensing; Zush's privacy page says so plainly. If Ollama or LM Studio runs on another computer on your network, that computer receives the content. Cloud and BYOK routes send content to the chosen provider.
+
+### What's the cheapest local AI file renamer?
+
+Wisfile is free, and so is the open-source ai-renamer CLI. Among paid one-time licenses, AI Renamer Local is $19, Floxtop Pro $19.99, RenameClick Lifetime $36 + VAT, FilesDesk Self-Managed $40, Zush $48, and NameQuick Self-Managed $69. Zush's $48 is the only one of these that also includes a managed cloud, and it covers up to three devices across Mac and Windows.
+
+### Can I name videos with local AI?
+
+Yes, in some apps. Zush names audio and video from speech with Ollama or LM Studio on Mac 3.20.1 and later, and with optional on-device speech recognition on Windows. It also reads embedded subtitles and metadata, including MKV. RenameClick 4.1.2 handles MP4, MOV, M4V, and 3GP with local transcription. AI Renamer added video support in version 1.10.

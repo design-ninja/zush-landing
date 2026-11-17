@@ -8,18 +8,34 @@ topic: "comparisons"
 tags:
   - "File Organization"
   - "Tool Comparisons"
-tldr: "Zush is our best overall Sparkle alternative for content-aware naming and folder sorting on Mac and Windows. Try plain-language Folder rules, review the proposed names and destinations, then reuse the setup in Monitor. Zush does not replace disk cleanup. One Zush license covers up to 3 devices."
+tldr: "Sparkle is now a Mac cleaner and AI file organizer that sorts into folders but does not rename files; it costs $119/yr or $179 lifetime and its trial needs a card. Zush names files by content and sorts them, starts with 50 free renames and no account, and costs $48 one-time with managed cloud AI included. Zush does not replace disk cleanup."
 earlyTaskExample: false
-reviewed: "2026-10-18"
+reviewed: "2026-11-17"
 ---
 
 import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-**[Zush](/ai-file-sorter) is our best overall Sparkle alternative when your priority is searchable filenames and folders organized by content.** Zush reads supported files, proposes descriptive names, and groups them with Auto or your own plain-language Folder rules. Review the batch, apply it, and check the result before automating new arrivals.
+Quick answer: if you want files **renamed** by their content as well as sorted into folders, choose [Zush](/ai-file-sorter). Sparkle sorts files into folders and cleans your Mac, but it does not rename files. Zush starts with 50 free renames and no account, and its <BlogHighlight>$48 one-time license</BlogHighlight> includes managed cloud AI on up to 3 Mac or Windows devices. Keep Sparkle, or another cleaner, if reclaiming disk space is the main job.
 
-Written by the maker of [Zush, the AI file renamer for Mac and Windows](/). Editorial review: October 16, 2026. This recommendation concerns naming and sorting, not an independent performance comparison. Sparkle's official page also advertises natural-language requests and custom rules, so instructions alone are not a unique Zush advantage.
+**How we checked:** Written by the maker of [Zush](/). Competitor prices, features and ratings were checked on vendor sites and official stores on November 17, 2026 ([sources below](#sources-and-how-we-checked)). This compares documented features, not a lab test.
 
-**Zush features reviewed October 18, 2026.** Competitor information retains the check dates stated in this article.
+## Zush vs Sparkle at a glance
+
+| Feature | Zush | Sparkle |
+|---|---|---|
+| Positioning | AI file renamer and organizer | "Mac Cleaner & AI File Organizer" |
+| Renames files | <BlogHighlight>Yes, by content, with Templates and 145+ Naming Blocks</BlogHighlight> | No |
+| Sorts into folders | Auto or plain-language Folder rules; nested folders; custom rules on size, dates, camera, duration, page count | AI folders built from patterns in your files; 10+ custom rules |
+| Disk cleanup | Not offered (duplicates are detected during AI Rename) | Duplicates, app uninstaller, old screenshots, scheduled cleanup |
+| Platforms | Mac (macOS 15+, Apple Silicon and Intel) and Windows 10/11 | Mac only |
+| Free start | 50 AI renames on managed Zush Cloud AI, no account, card, or API key | No free tier; 15-day trial needs an email and a card |
+| Price | $10/month or <BlogHighlight>$48 one-time, up to 3 devices across Mac and Windows</BlogHighlight> | $119/year for 1 Mac, or $179 lifetime for up to 5 Macs |
+| AI routes | Zush Cloud AI, BYOK, Ollama, LM Studio | Managed by Sparkle; no local option stated by vendor |
+| Undo | Persistent Rename History with batch undo; Undo All flags conflicts | Deleted items go to the Trash first; undo details not stated by vendor |
+
+Sparkle's page advertises natural-language requests and custom rules, so plain-language instructions alone are not a unique Zush advantage. The difference is the filename.
 
 ## When switching to Zush makes sense
 
@@ -35,7 +51,9 @@ Choose Zush when you want to control **both the filename and the destination**. 
 
 Zush is not a replacement for app uninstalling or disk cleanup. It can [clear exact copies of a file during a rename](/blog/deduplicate-before-renaming-files), but it does not compare files that merely look alike and it does not reclaim space the way a cleaner does. If cleanup is why you use Sparkle, switching to Zush would not solve the same problem. Zush's advantage here is its combined naming, sorting, and reusable Template workflow, not exclusive access to local AI or natural-language instructions.
 
-One Zush license covers up to 3 devices on Mac and Windows. PRO costs $10/month or $48 one-time and includes unlimited renames with Zush Cloud AI. BYOK, Ollama, and LM Studio are also available; your own API provider charges separately. The free allowance is 50 renames in total across AI modes.
+Zush PRO costs $10/month or $48 one-time. The one-time license includes unlimited renames with Zush Cloud AI, plus BYOK, Ollama, and LM Studio, all future updates, and up to 3 devices across Mac and Windows; your own API provider charges separately. The free allowance is 50 renames in total across AI modes, with no account or card. Sparkle's lifetime plan covers more Macs (up to 5), but Mac only. See [Zush pricing](/pricing).
+
+Recent Zush releases also name videos from speech, embedded subtitles, and metadata (including MKV), and detect [duplicate copies during AI Rename](/remove-duplicate-files): keep them, mark them in the name, or move them to the Trash. Copies use no credits, and Undo restores them.
 
 You can [export Templates](/docs/template-import-export) with Naming Blocks, Custom AI Blocks, and folder rules, then import them on another computer. Choose local destinations, folder permissions, and AI connections again there; this transfers the workflow settings, not your files.
 
@@ -70,26 +88,38 @@ Zush supports managed cloud, BYOK, and supported local analysis through Ollama o
 | Requirement beyond this Zush workflow | Boundary to consider |
 |---|---|
 | Storage cleanup | Sparkle covers cleanup; Zush does not. Keep disk cleaning separate from naming and sorting. |
-| Duplicate files | Zush matches [exact copies by content](/blog/find-remove-duplicate-files-mac) during a rename. Neither app compares files that only look alike. |
-| Scripts and deterministic macOS conditions | Hazel documents rule-based automation. Zush's AI Folder rules are a different mechanism. |
+| Duplicate files | Sparkle's cleaner includes deduplication. Zush matches [exact copies by content](/blog/find-remove-duplicate-files-mac) during a rename and does not compare files that only look alike. |
+| Scripts and deterministic macOS conditions | Hazel documents rule-based automation; see the [Hazel alternative](/hazel-alternative) page. Zush's AI Folder rules are a different mechanism. |
 | Linux desktop support | Sortio lists Linux. Zush supports Mac and Windows. |
 
 For content-aware names, reviewed folder grouping, and reusable automation on Mac and Windows, start with Zush. The copied-folder trial is the way to decide whether its results fit your actual files. For a wider field, see the [best AI file sorters compared](/blog/best-ai-file-sorters).
+
+## Sources and how we checked
+
+<BlogSources ids={['sparkle', 'hazel', 'sortio']} />
 
 ## FAQ
 
 ### What is the best Sparkle alternative for Mac?
 
-Zush is our best overall alternative for the naming-and-sorting workflow: configurable names, AI folder groups, preview, undo, and Monitor. Zush does not replace Sparkle's cleanup functions.
+For naming and sorting, Zush. It renames files by content with configurable Templates, groups them into folders with Auto or plain-language Folder rules, shows every change before applying, and keeps a persistent Rename History with batch undo. Sparkle sorts into folders but does not rename files. Zush does not replace Sparkle's cleanup tools, such as the app uninstaller and scheduled cleanup.
 
 ### Can I try Zush for free?
 
-Zush includes 50 free renames in total across AI modes. Use a small copied folder to evaluate the workflow; this is not a recurring monthly allowance. Check [Zush pricing](/pricing) for paid plans and [local AI setup](/offline-ai-file-renamer) if you want supported analysis on your device.
+Yes. Zush includes 50 free AI renames in total across its AI modes, running on managed Zush Cloud AI with no account, card, API key, or model download. It is a one-time allowance, not a monthly one. Sparkle has no free tier; its 15-day trial asks for an email and a card. Use a small copied folder to evaluate either app.
+
+### Which is better value: Zush or Sparkle?
+
+They buy different things. Zush's $48 one-time license covers renaming and sorting with managed cloud AI, BYOK, and local models, all future updates, and up to 3 devices across Mac and Windows. Sparkle is $119 a year for one Mac or $179 lifetime for up to 5 Macs, and adds disk cleanup but no renaming. If you need names, Sparkle doesn't cover it.
+
+### Where are my files processed?
+
+Sparkle says it reads files only to sort them and claims zero data retention, but its page doesn't detail what is sent for AI processing, and no local option is stated by the vendor. Zush lets you choose: Zush Cloud AI sends content to the cloud for naming, BYOK sends it to your chosen provider, and Ollama or LM Studio keep analysis on your computer. See the [offline AI file renamer](/offline-ai-file-renamer) page.
 
 ### Can I use Zush alongside Sparkle?
 
-Yes, in separate workflows. Give only one app responsibility for moving or renaming files in a particular folder. Test Zush separately before changing the setup that handles your real files.
+Yes, in separate workflows. Let Sparkle handle cleanup and give only one app responsibility for moving or renaming files in a particular folder, so the two don't fight over the same incoming files. Test Zush on a copied folder first, then move one recurring workflow at a time once you've checked the names, destinations, and undo.
 
 ### Where are the full setup instructions?
 
-Follow [sorting files on Mac with Zush](/blog/sort-files-into-folders-with-ai-mac), then adapt the [Downloads workflow](/ai-file-sorter) after you have checked the first batch and undo.
+Follow [sorting files on Mac with Zush](/blog/sort-files-into-folders-with-ai-mac) for the step-by-step setup, then adapt the [Downloads workflow](/ai-file-sorter) once you have checked the first batch and tested undo in Rename History. For a wider field of tools, including Sortio and Hazel, see the [best AI file sorters compared](/blog/best-ai-file-sorters).

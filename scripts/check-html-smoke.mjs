@@ -576,8 +576,8 @@ for (const [pathname, expectedSoftwareId] of [
   if (JSON.stringify(positions) !== JSON.stringify([1, 2, 3, 4, 5, 6, 7])) {
     fail(`Mac comparison ItemList positions must be contiguous on ${pathname}`);
   }
-  if (comparison.itemListElement[0]?.name !== 'Zush — Best overall') {
-    fail(`Zush must remain first and best overall in the Mac comparison ItemList on ${pathname}`);
+  if (comparison.itemListElement[0]?.name !== 'Zush') {
+    fail(`Zush must remain first in the Mac comparison ItemList on ${pathname}`);
   }
   if (!comparison.itemListElement.some((item) => item.name === 'File Renamer AI')) {
     fail(`File Renamer AI is missing from the Mac comparison ItemList on ${pathname}`);
