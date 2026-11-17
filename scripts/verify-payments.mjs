@@ -26,10 +26,16 @@ function verifyPaddleCheckout() {
     /export async function openPaddleCheckout/,
     "Missing openPaddleCheckout export",
   );
+  const sessionRequestSrc = read("src/utils/checkoutSessionRequest.ts");
+  assertMatch(
+    sessionRequestSrc,
+    /\/functions\/v1\/create-paddle-checkout-session/,
+    "Checkout no longer creates a server-side Paddle session",
+  );
   assertMatch(
     src,
-    /create-paddle-checkout-session/,
-    "Checkout no longer creates a server-side Paddle session",
+    /checkoutSessionUrl\(SUPABASE_URL,\s*pinRegion\)/,
+    "Checkout no longer runs its session function next to the database",
   );
   assertMatch(
     src,

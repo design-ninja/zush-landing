@@ -4,6 +4,7 @@ import { accessPolicyMessage } from "@/utils/accessPolicyMessage";
 // fallow-ignore-file unused-export
 import { getAnalyticsDistinctId, trackAnalyticsEvent } from "@/utils/analytics";
 import { getCheckoutAnalyticsEvent, type CheckoutAnalyticsEvent } from "@/utils/checkoutAnalytics";
+import { checkoutSessionUrl, isPinnedRegionUnavailable } from "@/utils/checkoutSessionRequest";
 import { SUPABASE_URL } from "@/utils/supabase";
 
 interface PaddleCheckoutOptions {
@@ -429,11 +430,13 @@ async function createCheckoutSession(
   });
 
   // A stalled request would otherwise leave the button spinning with no way
-  // out. A timeout or network error is retried once; an HTTP error is final.
+  // out. A timeout or network error is retried once; an HTTP error is final,
+  // except a gateway error from the region-pinned first attempt.
   for (let attempt = 0; attempt < CHECKOUT_SESSION_ATTEMPTS; attempt += 1) {
+    const pinRegion = attempt === 0;
     try {
       const response = await fetch(
-        `${SUPABASE_URL}/functions/v1/create-paddle-checkout-session`,
+        checkoutSessionUrl(SUPABASE_URL, pinRegion),
         {
           method: "POST",
           signal: AbortSignal.timeout(CHECKOUT_SESSION_TIMEOUT_MS),
@@ -441,6 +444,11 @@ async function createCheckoutSession(
           body,
         },
       );
+
+      if (pinRegion && isPinnedRegionUnavailable(response.status)) {
+        console.error("[Paddle] Checkout session region unavailable:", { status: response.status });
+        continue;
+      }
 
       if (!response.ok) {
         console.error("[Paddle] Checkout session failed:", { status: response.status });

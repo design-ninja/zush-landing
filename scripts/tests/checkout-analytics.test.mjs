@@ -7,6 +7,9 @@ import vm from 'node:vm';
 const source = readFileSync(new URL('../../src/utils/checkoutAnalytics.ts', import.meta.url), 'utf8');
 const compiled = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 } }).outputText;
 const { getCheckoutAnalyticsEvent } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`);
+const sessionRequestSource = readFileSync(new URL('../../src/utils/checkoutSessionRequest.ts', import.meta.url), 'utf8');
+const sessionRequestCompiled = ts.transpileModule(sessionRequestSource, { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 } }).outputText;
+const { checkoutSessionUrl, isPinnedRegionUnavailable } = await import(`data:text/javascript;base64,${Buffer.from(sessionRequestCompiled).toString('base64')}`);
 
 test('captures checkout lifecycle, discount changes and payment failures', () => {
   for (const [event, expected] of [
@@ -50,12 +53,13 @@ test('global Paddle callback survives UI unsubscribe and server session preserve
   let config;
   let opened;
   let submitted;
+  const requested = [];
   const context = {
     exports: {}, testEnv: { PUBLIC_PADDLE_TOKEN: 'test', PUBLIC_PADDLE_ENVIRONMENT: 'sandbox' },
-    SUPABASE_URL: 'https://example.test', getAnalyticsDistinctId: () => 'visitor-test', getCheckoutAnalyticsEvent,
+    SUPABASE_URL: 'https://example.test', getAnalyticsDistinctId: () => 'visitor-test', getCheckoutAnalyticsEvent, checkoutSessionUrl, isPinnedRegionUnavailable,
     trackAnalyticsEvent: (name, properties) => captured.push({ name, properties }),
-    URLSearchParams, console: { log() {}, warn() {}, error() {} },
-    fetch: async (_url, init) => { submitted = JSON.parse(init.body); return { ok: true, json: async () => ({ success: true, checkout_session: 'session_test', transaction_id: 'txn_test' }) }; },
+    URLSearchParams, AbortSignal, console: { log() {}, warn() {}, error() {} },
+    fetch: async (url, init) => { requested.push(url); submitted = JSON.parse(init.body); return { ok: true, status: 200, json: async () => ({ success: true, checkout_session: 'session_test', transaction_id: 'txn_test' }) }; },
     sessionStorage: { setItem() {}, removeItem() {} },
     document: { documentElement: { lang: 'en' } }, navigator: { language: 'en' },
     window: { location: { search: '' }, Paddle: {
@@ -65,6 +69,7 @@ test('global Paddle callback survives UI unsubscribe and server session preserve
   };
   vm.runInNewContext(js, context);
   assert.equal(await context.exports.openPaddleCheckout(null, 'pri_test'), true);
+  assert.deepEqual(requested, ['https://example.test/functions/v1/create-paddle-checkout-session?forceFunctionRegion=ap-south-1']);
   assert.equal(submitted.posthog_distinct_id, 'visitor-test');
   assert.equal(opened.transactionId, 'txn_test');
   assert.equal(opened.items, undefined);
@@ -89,9 +94,9 @@ for (const failure of ['already_pro', 'checkout_in_progress', 'server_error', 'n
     const captured = [];
     const context = {
       exports: {}, testEnv: { PUBLIC_PADDLE_TOKEN: 'test', PUBLIC_PADDLE_ENVIRONMENT: 'sandbox' },
-      SUPABASE_URL: 'https://example.test', getAnalyticsDistinctId: () => 'visitor-test', getCheckoutAnalyticsEvent,
+      SUPABASE_URL: 'https://example.test', getAnalyticsDistinctId: () => 'visitor-test', getCheckoutAnalyticsEvent, checkoutSessionUrl, isPinnedRegionUnavailable,
       trackAnalyticsEvent: (name, properties) => captured.push({ name, properties }),
-      URLSearchParams, console: { log() {}, warn() {}, error() {} },
+      URLSearchParams, AbortSignal, console: { log() {}, warn() {}, error() {} },
       fetch: async () => {
         if (failure === 'network_error') throw new Error('network unavailable');
         if (failure === 'invalid_response') return { ok: true, json: async () => ({ success: false }) };
@@ -108,5 +113,41 @@ for (const failure of ['already_pro', 'checkout_in_progress', 'server_error', 'n
     assert.equal(captured.length, 1);
     assert.equal(captured[0].name, 'checkout_error');
     assert.equal(captured[0].properties.stage, 'session_creation');
+  });
+}
+
+for (const [first, expectedRequests, expectedOpens] of [[503, 2, 1], [409, 1, 0], [500, 1, 0]]) {
+  test(`a ${first} from the pinned region ${expectedRequests === 2 ? 'retries unpinned' : 'is final'}`, async () => {
+    const paddleSource = readFileSync(new URL('../../src/utils/paddle.ts', import.meta.url), 'utf8');
+    const js = ts.transpileModule(paddleSource.replace(/^import .*;\n/gm, '').replaceAll('import.meta.env', 'testEnv'), {
+      compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
+    }).outputText;
+    const requested = [];
+    let opens = 0;
+    const context = {
+      exports: {}, testEnv: { PUBLIC_PADDLE_TOKEN: 'test', PUBLIC_PADDLE_ENVIRONMENT: 'sandbox' },
+      SUPABASE_URL: 'https://example.test', getAnalyticsDistinctId: () => 'visitor-test', getCheckoutAnalyticsEvent, checkoutSessionUrl, isPinnedRegionUnavailable,
+      trackAnalyticsEvent() {},
+      URLSearchParams, AbortSignal, console: { log() {}, warn() {}, error() {} },
+      fetch: async url => {
+        requested.push(url);
+        return requested.length === 1
+          ? { ok: false, status: first }
+          : { ok: true, status: 200, json: async () => ({ success: true, checkout_session: 'session_test', transaction_id: 'txn_test' }) };
+      },
+      sessionStorage: { setItem() {}, removeItem() {} },
+      document: { documentElement: { lang: 'en' } }, navigator: { language: 'en' },
+      window: { location: { search: '' }, Paddle: {
+        Environment: { set() {} }, Initialize() {}, Checkout: { open() { opens++; } },
+      } },
+    };
+    vm.runInNewContext(js, context);
+    await context.exports.openPaddleCheckout(null, 'pri_test');
+    assert.equal(requested.length, expectedRequests);
+    assert.match(requested[0], /\?forceFunctionRegion=ap-south-1$/);
+    if (expectedRequests === 2) {
+      assert.equal(requested[1], 'https://example.test/functions/v1/create-paddle-checkout-session');
+    }
+    assert.equal(opens, expectedOpens);
   });
 }
