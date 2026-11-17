@@ -1,6 +1,6 @@
 ---
-title: "Meilleur logiciel pour renommer des fichiers sous Windows 11 (2026): outils gratuits vs IA"
-description: "Six outils de renommage pour Windows 11 et 10 comparés : File Explorer, PowerRename, Bulk Rename Utility, Advanced Renamer, ReNamer et Zush. Lequel convient à vos fichiers ?"
+title: "Meilleur logiciel pour renommer des fichiers sous Windows 11 (2026) : outils gratuits vs IA"
+description: "Renommer des fichiers sous Windows 11 et 10 : File Explorer, PowerRename, Bulk Rename Utility, Advanced Renamer, ReNamer et Zush (IA) comparés."
 date: "2026-09-22"
 slug: "best-file-renamer-windows-11-fr"
 platform: "windows"
@@ -9,8 +9,8 @@ tags:
   - "File Naming"
   - "Tool Comparisons"
   - "AI File Renaming"
-tldr: "Pour les tâches basées sur un motif (ajouter une date, remplacer du texte, numéroter une séquence), PowerRename est gratuit et largement suffisant ; Bulk Rename Utility et Advanced Renamer vont plus loin. Pour les fichiers qui ont chacun besoin d’un nom différent et descriptif, comme les captures d’écran, les scans et les photos, utilisez un outil de renommage par IA tel que Zush, qui lit chaque fichier avant de le nommer. Zush propose aussi un tri de dossiers par IA en option. Une licence Zush couvre jusqu’à 3 appareils."
-reviewed: "2026-10-26"
+tldr: "Pour les tâches à base de motif (ajouter une date, remplacer du texte, numéroter une séquence), PowerRename est gratuit et suffit largement ; Bulk Rename Utility et Advanced Renamer vont plus loin. Pour les fichiers qui ont chacun besoin d'un nom différent et descriptif, comme les captures d'écran, les scans et les photos, utilisez un outil de renommage par IA tel que Zush : 50 renommages IA gratuits sans compte, puis 10 $/mois ou 48 $ en paiement unique pour jusqu'à 3 appareils."
+reviewed: "2026-11-17"
 locale: "fr"
 translationOf: "best-file-renamer-windows-11"
 ---
@@ -18,66 +18,67 @@ translationOf: "best-file-renamer-windows-11"
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-Réponse rapide : si tous vos fichiers subissent le même type de modification, comme un préfixe, une date ou une séquence de numéros, utilisez **PowerRename**. Il est gratuit, fourni par Microsoft, et gère la plupart des tâches basées sur un motif. Si chaque fichier a besoin de son propre nom en fonction de ce qu’il contient, utilisez un outil de renommage par IA comme [Zush](/windows).
+Réponse rapide : si chaque fichier reçoit le même type de modification, comme un préfixe, une date ou une numérotation, utilisez **PowerRename**. Il est gratuit, signé Microsoft, et gère la plupart des tâches à base de motif. Si chaque fichier a besoin de son propre nom d'après son contenu, utilisez un outil de renommage par IA comme [Zush](/windows), qui lit chaque fichier et offre 50 renommages IA gratuits sans compte.
 
-C’est cette distinction qui détermine tout le reste. Les outils à motifs sont rapides et précis, mais ils se contentent de transformer le nom que le fichier porte déjà. `IMG_4382.jpg` peut devenir `Vacation_001.jpg`, jamais `lisbon-tram-at-night.jpg`.
+**Notre méthode :** rédigé par l'éditeur de [Zush](/). Les prix, fonctions et notes des concurrents ont été vérifiés sur les sites des éditeurs et les boutiques officielles le 17 novembre 2026 ([sources en bas de page](#sources-and-how-we-checked)). Ce comparatif porte sur les fonctions documentées, pas sur un test en laboratoire.
 
-**Dernière vérification : 22 septembre 2026.** Article rédigé par le créateur de [Zush, le renommeur et organiseur de fichiers IA pour Mac et Windows](/fr). Les informations sur les autres outils proviennent de leurs pages officielles.
+Cette distinction décide de tout le reste. Les outils à motif sont rapides et précis, mais ils ne font que transformer le nom qu'un fichier porte déjà. `IMG_4382.jpg` peut devenir `Vacation_001.jpg`, jamais `lisbon-tram-at-night.jpg`.
 
-**Fonctions de Zush vérifiées le 26 octobre 2026.** Les informations sur les concurrents conservent les dates de vérification indiquées dans cet article.
+## Les six options en un coup d'œil
 
-## Les six options en un coup d’œil
-
-| Outil | Idéal pour | Lit le contenu du fichier | Annulation | Prix |
+| Outil | Idéal pour | Lit le contenu des fichiers | Annulation | Prix |
 |---|---|---|---|---|
 | File Explorer | Quelques fichiers, séquence rapide | Non | Ctrl+Z, dernière action | Intégré |
-| PowerRename | Rechercher-remplacer, regex, dates | Non (champs EXIF uniquement) | Ctrl+Z dans l’Explorateur | Gratuit (PowerToys) |
-| Bulk Rename Utility | Gros travaux à base de motifs, plus de 100 000 fichiers | Non (champs EXIF, ID3) | Génère un fichier batch d’annulation | Gratuit pour un usage personnel |
-| Advanced Renamer | Noms basés sur les métadonnées et le GPS | Non (champs EXIF, ID3, GPS, vidéo) | Annulation complète du lot | Gratuit pour un usage personnel léger ; $25 en licence personnelle, $45 en licence commerciale |
-| ReNamer | Chaînes de règles, scripts | Non (balises méta) | Annulation prise en charge | Lite gratuit pour un usage non commercial ; Pro payant |
-| **Zush** | <BlogHighlight>Un nom descriptif différent pour chaque fichier ; tri de dossiers par IA en option</BlogHighlight> | Oui, avec l’IA | Rename History complet | 50 renommages gratuits ; $10/mois ou $48 en paiement unique |
+| PowerRename | Rechercher-remplacer, regex, dates | Pas d'IA (jetons EXIF/XMP seulement) | Ctrl+Z | Gratuit (PowerToys) |
+| Bulk Rename Utility | Gros travaux de motifs, plus de 100 000 fichiers | Non (champs EXIF, ID3) | Génère un fichier batch d'annulation | Gratuit pour un usage personnel ; le renommage en JavaScript exige une licence payante ; usage commercial 92,95 $ par ordinateur |
+| Advanced Renamer | Noms à partir des métadonnées et du GPS | Métadonnées, plus le texte des PDF/TXT via scripts ; ni IA ni OCR | Annulation complète du lot | Gratuit pour un usage personnel léger ; 30 $ personnel, 50 $ commercial |
+| ReNamer | Chaînes de règles, scripts | Non (balises méta) | Annulation prise en charge | Lite gratuit pour un usage non commercial ; Pro payant |
+| **Zush** | <BlogHighlight>Un nom descriptif différent pour chaque fichier ; tri en dossiers par IA en option</BlogHighlight> | Oui, par IA | Rename History persistant, annulation par lot | 50 renommages IA gratuits, sans compte ; 10 $/mois ou 48 $ en paiement unique |
 
-## 1. File Explorer : suffisant pour cinq fichiers
+Notes au 17 novembre 2026 : Zush obtient 5,0 sur 8 avis sur le Microsoft Store américain et 4,5/5 de la part de la rédaction de Softpedia ; Advanced Renamer obtient 4,2 sur 23 avis sur le Microsoft Store américain et 3,5/5 chez Softpedia ; Bulk Rename Utility obtient 4,0/5 chez Softpedia.
 
-Sélectionnez plusieurs fichiers, appuyez sur **F2**, saisissez un nom, puis appuyez sur Entrée. Windows les nomme `Trip (1).jpg`, `Trip (2).jpg`, et ainsi de suite. **Ctrl+Z** l’annule immédiatement.
+## 1. File Explorer : suffisant pour cinq fichiers
 
-C’est tout ce qu’il sait faire. Pas d’aperçu, pas de dates, pas de rechercher-remplacer. Utilisez-le quand le résultat doit seulement être propre, pas significatif.
+Sélectionnez plusieurs fichiers, appuyez sur **F2**, tapez un nom, puis Entrée. Windows les nomme `Trip (1).jpg`, `Trip (2).jpg`, et ainsi de suite. **Ctrl+Z** annule immédiatement.
 
-## 2. PowerRename : le meilleur choix gratuit pour la plupart des gens
+C'est tout. Pas d'aperçu, pas de dates, pas de rechercher-remplacer. Utilisez-le quand le résultat doit seulement être propre, pas parlant.
+
+## 2. PowerRename : le meilleur choix gratuit pour la plupart des gens
 
 [PowerRename](https://learn.microsoft.com/en-us/windows/powertoys/powerrename) est fourni avec Microsoft PowerToys. Sélectionnez des fichiers, faites un clic droit, choisissez **Rename with PowerRename**, et vous obtenez un rechercher-remplacer avec aperçu en direct.
 
-Il fait plus qu’il n’y paraît :
+Il en fait plus qu'il n'y paraît :
 
-- Des expressions régulières, y compris les groupes de capture (`29-03-2020` → `2020-03-29`)
-- Des compteurs avec remplissage et valeurs de départ (`Image_${padding=4}`)
-- Des variables de date de création de fichier comme `$YYYY-$MM-$DD`
-- Des champs EXIF de photos tels que `$DATE_TAKEN_YYYY`, `$CAMERA_MODEL` et les coordonnées GPS
+- Expressions régulières, groupes de capture compris (`29-03-2020` → `2020-03-29`)
+- Compteurs avec remplissage et valeur de départ (`Image_${padding=4}`)
+- Variables de date de création comme `$YYYY-$MM-$DD`
+- Jetons EXIF et XMP de photos, tels que `$DATE_TAKEN_YYYY` et `$CAMERA_MODEL`
 
-Choisissez PowerRename pour toute tâche que vous pouvez décrire comme un motif. Pour le côté IA, consultez notre page [alternative à PowerRename](/windows).
+Ctrl+Z annule le dernier renommage. Il n'a pas d'IA et n'ouvre jamais le fichier : il ne peut donc pas savoir ce que montre un scan ou une capture d'écran. Prenez PowerRename pour toute tâche que vous pouvez décrire comme un motif. Pour la partie IA, consultez notre page [alternative à PowerRename](/windows).
 
-## 3. Bulk Rename Utility : un contrôle maximal
+## 3. Bulk Rename Utility : un contrôle maximal
 
-Bulk Rename Utility réunit toutes les options de motifs dans une seule fenêtre dense : regex, JavaScript, numérotation automatique, dates EXIF, balises MP3, renommages pilotés par CSV et modifications d’horodatage. Il gère plus de 100 000 fichiers sans ralentir. L’annulation fonctionne en générant un fichier batch qui inverse la modification.
+Bulk Rename Utility rassemble toutes les options de motif dans une seule fenêtre dense : regex, JavaScript, numérotation automatique, dates EXIF, tags MP3, renommage piloté par CSV et modification des horodatages. Il traite plus de 100 000 fichiers sans ralentir. L'annulation passe par un fichier batch généré qui inverse la modification.
 
-Il est gratuit pour un usage personnel ; un usage professionnel nécessite une licence commerciale. L’interface demande un certain temps d’adaptation. Plus de détails dans notre guide des [alternatives à Bulk Rename Utility](/blog/bulk-rename-utility-alternatives).
+Il est gratuit pour un usage personnel, mais le renommage en JavaScript exige une licence payante (24,95 $), et l'usage commercial coûte 92,95 $ par ordinateur. La version 4.1.0.1 a ajouté un assistant IA qui écrit pour vous les règles JavaScript et regex ; il aide à construire le motif mais ne lit pas le contenu des fichiers. L'interface demande un temps d'adaptation. Plus de détails dans notre guide des [alternatives à Bulk Rename Utility](/blog/bulk-rename-utility-alternatives).
 
-## 4. Advanced Renamer : le meilleur pour les métadonnées de photos et de musique
+## 4. Advanced Renamer : le meilleur pour les métadonnées de photos et de musique
 
-Advanced Renamer construit un nom à partir de méthodes empilées : balises EXIF, ID3, propriétés vidéo et GPS (il peut transformer des coordonnées en nom de ville). Il affiche un aperçu en direct et peut annuler un lot entier. Il fonctionne aussi sur macOS.
+Advanced Renamer construit un nom en empilant des méthodes : tags EXIF, ID3, propriétés vidéo et GPS (il sait convertir des coordonnées en nom de ville). Il affiche un aperçu en direct et peut annuler un lot entier. Il fonctionne aussi sous macOS. La version actuelle est la 4.28, et sa méthode de script peut extraire le texte des fichiers PDF et TXT, mais il n'y a ni IA ni OCR : les PDF scannés et les photos restent illisibles, et c'est à vous d'écrire le script qui transforme le texte en nom.
 
-Il est gratuit pour un usage personnel léger. Les utilisateurs réguliers sont invités à acheter une licence personnelle à $25, et un usage professionnel exige une licence commerciale à $45. Les deux sont en paiement unique. Consultez notre [test d’Advanced Renamer](/blog/advanced-renamer-alternatives).
+Il est gratuit pour un usage personnel léger. Les utilisateurs réguliers sont invités à acheter une licence personnelle à 30 $, et l'usage professionnel exige une licence commerciale à 50 $. Les deux sont en paiement unique. Consultez notre [avis sur Advanced Renamer](/blog/advanced-renamer-alternatives).
 
-## 5. ReNamer : règles et scripts
+## 5. ReNamer : règles et scripts
 
-ReNamer applique une liste ordonnée de règles : insertion, suppression, remplacement, casse, regex, balises méta, et Pascal Script pour tout ce qui est sur mesure. Il est portable et prend en charge plus de 25 langues d’interface.
+ReNamer applique une liste ordonnée de règles : insérer, supprimer, remplacer, casse, regex, balises méta, et Pascal Script pour tout le reste. Il est portable et propose plus de 25 langues d'interface.
 
-ReNamer Lite est gratuit pour un usage non commercial, limité à 5 règles et 5 préréglages. La version Pro supprime ces limites et autorise un usage commercial.
+ReNamer Lite est gratuit pour un usage non commercial, limité à 5 règles et 5 préréglages. Pro lève ces limites et autorise l'usage commercial.
 
-## 6. Zush : quand chaque fichier a besoin de son propre nom
+## 6. Zush : quand chaque fichier a besoin de son propre nom
 
-[Zush](/windows) fonctionne différemment. Au lieu de modifier l’ancien nom, il examine le fichier : le texte d’un PDF, ce que montre une capture d’écran, la scène d’une photo, le contenu d’un fichier Word ou Excel. Puis il rédige un nom qui le décrit.
+[Zush](/windows) fonctionne autrement. Au lieu de modifier l'ancien nom, il regarde le fichier : le texte d'un PDF, ce que montre une capture d'écran, la scène d'une photo, le contenu d'un fichier Word ou Excel. Puis il écrit un nom qui le décrit.
 
 | Avant | Après |
 |---|---|
@@ -86,64 +87,76 @@ ReNamer Lite est gratuit pour un usage non commercial, limité à 5 règles et 5
 | `Document1.docx` | `q3-marketing-plan-draft.docx` |
 | `IMG_4382.jpg` | `2026-08-30_lisbon_tram_street.jpg` |
 
-Vous gardez la maîtrise de la forme. Les Templates et plus de 145 Naming Blocks fixent l’ordre (date, fournisseur, client, titre), la casse et les séparateurs. Vous examinez chaque suggestion avant de l’appliquer, et Rename History peut restaurer un lot entier plus tard. La surveillance de dossiers renomme automatiquement les nouveaux fichiers dans Téléchargements ou dans un dossier de scanner.
+Vous gardez la main sur la forme. Les Templates et plus de 145 Naming Blocks fixent l'ordre (date, fournisseur, client, titre), la casse et les séparateurs. Vous vérifiez chaque suggestion avant de l'appliquer, et Rename History peut restaurer un lot entier plus tard. La surveillance de dossiers renomme automatiquement les nouveaux fichiers de Téléchargements ou d'un dossier de scanner.
 
-L’IA peut fonctionner via Zush Cloud AI, avec votre propre clé API, ou en local avec Ollama ou LM Studio. Les 50 premiers renommages sont gratuits.
+L'IA peut passer par Zush Cloud AI, par votre propre clé API, ou tourner en local avec Ollama ou LM Studio. Les 50 premiers renommages IA sont gratuits, sans compte, carte ni clé API. Ensuite, Zush coûte 10 $/mois ou 48 $ en paiement unique ; la licence unique inclut l'IA cloud gérée avec renommages illimités, toutes les mises à jour futures, jusqu'à 3 appareils entre Windows et Mac, et un remboursement sous 14 jours. Il repère aussi les fichiers en double pendant AI Rename (les copies ne consomment aucun crédit), nomme les vidéos d'après la parole et les sous-titres, et identifie la musique sans tags sous Windows.
 
 <BlogCTA placement='inline' platform='windows' />
 
-Une licence Zush couvre jusqu’à 3 appareils Mac ou Windows.
+Une licence Zush couvre jusqu'à 3 appareils sur Mac et Windows.
 
-Vous pouvez [exporter vos Templates](/docs/template-import-export), avec les Naming Blocks, Custom AI Blocks et règles de dossiers, puis les importer sur un autre ordinateur. Les destinations locales, autorisations et connexions IA se configurent à nouveau sur cet ordinateur. Le transfert porte sur les réglages, pas sur vos fichiers.
+Vous pouvez [exporter des Templates](/docs/template-import-export) avec leurs Naming Blocks, Custom AI Blocks et règles de dossiers, puis les importer sur un autre ordinateur. Choisissez-y de nouveau les destinations locales, les autorisations de dossiers et les connexions IA : l'export transfère les réglages du flux de travail, pas vos fichiers.
 
-### Trier les fichiers renommés dans des dossiers
+### Ranger les fichiers renommés dans des dossiers
 
-Sous Windows, Zush peut aussi **trier les fichiers dans des dossiers avec l’IA**. Choisissez le regroupement **Auto** ou rédigez des **Folder rules** comme « Regrouper les factures par entreprise et les reçus par mois ». Examinez les groupes de dossiers suggérés en même temps que les noms de fichiers ; un outil de renommage à motifs reste suffisant lorsque vous n’avez besoin que de la même modification de texte sur tout un lot.
+Sous Windows, Zush peut aussi **trier les fichiers dans des dossiers avec l'IA**. Choisissez le regroupement **Auto** ou écrivez des **Folder rules** comme « Regroupe les factures par entreprise et les reçus par mois ». Vérifiez les groupes de dossiers suggérés à côté des noms de fichiers ; un outil de renommage à motif reste suffisant quand il vous faut seulement la même modification de texte sur tout un lot.
 
-Choisissez un **Destination folder**, ou conservez le dossier source comme racine. Activez **Reuse existing folders** pour privilégier les dossiers adaptés déjà présents ; Zush peut en créer un nouveau lorsqu’aucun ne convient. Dans un lot manuel, examinez à la fois les noms et les dossiers suggérés avant d’appliquer. Pour renommer sur place, laissez le tri désactivé et conservez la destination d’origine.
+Choisissez un **Destination folder**, ou gardez le dossier source comme racine. Activez **Reuse existing folders** pour privilégier les dossiers adaptés déjà présents ; Zush peut en créer un nouveau quand rien ne convient. Dans un lot manuel, vérifiez à la fois les noms et les dossiers suggérés avant d'appliquer. Pour renommer sur place, laissez le tri désactivé et gardez la destination d'origine.
 
-Enregistrez les réglages de tri dans un **Template** et affectez-le à **Monitor** pour les nouveaux fichiers placés directement dans le dossier surveillé. Cela ne réorganise pas les fichiers déjà traités. Testez d’abord le Template dans un lot manuel. Consultez le [guide du tri par dossiers](/docs/folder-sorting) pour la configuration et la portée de la surveillance.
+Enregistrez les réglages de tri dans un **Template** et associez-le à **Monitor** pour les nouveaux fichiers placés directement dans le dossier surveillé. Changer le Template de Monitor ne réorganise pas automatiquement les fichiers déjà traités. Testez d'abord le Template sur un lot manuel. Le [guide du tri en dossiers](/docs/folder-sorting) détaille la configuration et le périmètre de la surveillance.
 
-Zush prend aussi en charge les dossiers imbriqués, par exemple par année puis par mois. Vous pouvez classer des fichiers déjà renommés sans changer à nouveau leur nom ni consommer un autre crédit de renommage. Vérifiez les destinations avant d’appliquer. Cette action est distincte de Monitor : modifier son Template ne reclasse pas les anciens fichiers. Le [classement IA](/docs/folder-sorting) fonctionne sur Mac et Windows.
+Zush prend aussi en charge les règles de dossiers imbriquées, comme un regroupement par année puis par mois. Vous pouvez trier des fichiers déjà renommés sans changer à nouveau leur nom ni dépenser un autre crédit de renommage. Vérifiez les destinations avant d'appliquer. Cette action distincte traite un lot existant ; modifier un Template de Monitor ne le réorganise pas rétroactivement. Le [tri de dossiers par IA](/docs/folder-sorting) fonctionne sur Mac et Windows.
 
-## Quel outil de renommage choisir ?
+## Quel outil de renommage choisir ?
 
-- La même modification pour chaque fichier (préfixe, date, numéro): **PowerRename**.
-- Des motifs complexes sur d’énormes dossiers : **Bulk Rename Utility**.
-- Des noms issus des métadonnées de photos, de musique ou du GPS : **Advanced Renamer**.
-- Des captures d’écran, des scans, des téléchargements et des photos qui ont besoin de vrais noms : **Zush**.
+- La même modification pour chaque fichier (préfixe, date, numéro) : **PowerRename**.
+- Des motifs complexes sur d'énormes dossiers : **Bulk Rename Utility**.
+- Des noms tirés des métadonnées de photos, de musique ou du GPS : **Advanced Renamer**.
+- Des captures d'écran, scans, téléchargements et photos qui méritent de vrais noms : **Zush**.
 
-Beaucoup de gens gardent les deux types d’outils. PowerRename pour les corrections mécaniques rapides, Zush pour les dossiers où vous ouvrez actuellement chaque fichier pour voir de quoi il s’agit.
+Beaucoup de gens gardent les deux types d'outils. PowerRename pour les corrections mécaniques rapides, Zush pour les dossiers où vous ouvrez aujourd'hui chaque fichier pour savoir ce qu'il contient.
 
 <BlogProductIntro
-  title="Marre d’ouvrir des fichiers juste pour voir ce qu’ils contiennent ?"
-  description="Zush lit chaque fichier de votre PC Windows et suggère un nom clair et facile à retrouver. Examinez le lot, appliquez-le, annulez-le à tout moment."
+  title="Marre d'ouvrir vos fichiers juste pour savoir ce qu'ils contiennent ?"
+  description="Zush lit chaque fichier de votre PC Windows et propose un nom clair et facile à retrouver. Vérifiez le lot, appliquez-le, annulez-le quand vous voulez."
   links={[
     { href: '/windows', label: 'Zush pour Windows' },
-    { href: '/batch-rename-files', label: "Renommer par lot avec l’IA" },
-    { href: '/blog/batch-rename-files-windows-11', label: 'Renommer par lot dans Windows 11' },
-    { href: '/blog/best-ai-file-renamer-tools-windows-compared', label: "Outils de renommage par IA pour Windows" },
+    { href: '/batch-rename-files', label: 'Renommer par lot avec l’IA' },
+    { href: '/blog/batch-rename-files-windows-11', label: 'Renommer par lot sous Windows 11' },
+    { href: '/blog/best-ai-file-renamer-tools-windows-compared', label: 'Outils de renommage IA pour Windows' },
   ]}
 />
 
-## FAQ
+## Sources et méthode de vérification
 
-### Zush peut-il trier les fichiers dans des dossiers en plus de les renommer ?
+<BlogSources ids={['powerrename', 'bulk-rename-utility', 'advanced-renamer', 'renamer']} />
 
-Oui. Son tri de dossiers par IA, optionnel, fonctionne sur Mac et Windows. Choisissez Auto ou rédigez des Folder rules, sélectionnez la destination, puis examinez à la fois les noms et les groupes dans un lot manuel. Un Template avec tri activé peut aussi traiter les nouveaux fichiers placés directement dans un dossier surveillé ; il ne réorganise pas les fichiers déjà traités. Laissez le tri désactivé et conservez la destination d’origine si vous voulez seulement renommer.
+## Questions fréquentes
 
-### Quel est le meilleur outil gratuit pour renommer des fichiers sous Windows 11 ?
+### Zush peut-il renommer des fichiers vidéo et audio sous Windows 11 ?
 
-PowerRename, inclus dans Microsoft PowerToys. Il est gratuit, affiche un aperçu de chaque modification, prend en charge les regex et les variables de date, et s’annule avec Ctrl+Z. Bulk Rename Utility est l’alternative gratuite pour les tâches personnelles plus lourdes.
+Oui. Zush pour Windows nomme les vidéos d'après la parole, les sous-titres intégrés et les métadonnées, MKV compris, et peut identifier la musique même quand un morceau n'a pas de tags, une fonction pour l'instant réservée à Windows. Pour travailler hors ligne, vous pouvez télécharger la reconnaissance vocale sur l'appareil, en option, depuis les réglages IA et l'utiliser avec Ollama ou LM Studio. Les outils à motif comme PowerRename ne changent les noms que par règle : ils ne savent pas ce que contient un enregistrement.
 
-### Windows 11 dispose-t-il d’un renommage en masse intégré ?
+### Quel est le meilleur outil gratuit pour renommer des fichiers sous Windows 11 ?
 
-Oui, mais basique. Sélectionnez des fichiers dans File Explorer et appuyez sur F2 pour leur donner un même nom suivi de numéros entre parenthèses. Pour un rechercher-remplacer ou des dates, installez PowerToys et utilisez PowerRename.
+PowerRename, inclus dans Microsoft PowerToys. Il est gratuit, affiche un aperçu de chaque modification, prend en charge les regex, compteurs, variables de date et jetons EXIF/XMP, et annule avec Ctrl+Z. Pour des tâches personnelles plus lourdes, Bulk Rename Utility est gratuit aussi, même si le renommage en JavaScript exige une licence payante. Advanced Renamer est gratuit pour un usage personnel léger. Aucun ne lit le contenu des fichiers ; pour cela, Zush offre 50 renommages IA gratuits sans compte.
 
-### Un outil de renommage peut-il lire le contenu de mes fichiers ?
+### Windows 11 a-t-il un renommage par lot intégré ?
 
-Les outils à motifs, non ; ils ne lisent que le nom existant et des champs de métadonnées comme EXIF ou ID3. Les outils de renommage par IA tels que Zush lisent le contenu lui-même (texte, images, images vidéo) et rédigent un nouveau nom descriptif.
+Oui, mais rudimentaire. Sélectionnez des fichiers dans File Explorer et appuyez sur F2 pour leur donner un même nom suivi de numéros entre parenthèses. Pour du rechercher-remplacer ou des dates, installez PowerToys et utilisez PowerRename.
 
-### Quel outil de renommage est le plus sûr ?
+### Un outil de renommage peut-il lire le contenu de mes fichiers ?
 
-N’importe quel outil doté d’un aperçu et d’une annulation de lot. PowerRename, Advanced Renamer et Zush affichent tous les résultats avant de les appliquer. Zush conserve en plus un Rename History persistant, ce qui permet d’annuler un lot plusieurs jours plus tard, et pas seulement juste après.
+Les outils à motif, pour la plupart, non. Ils lisent le nom existant et des champs de métadonnées comme EXIF ou ID3. Advanced Renamer peut extraire le texte des fichiers PDF et TXT via des scripts, mais sans IA ni OCR : les scans et les photos restent illisibles. Les outils de renommage par IA comme Zush lisent le contenu lui-même (texte, images, parole et images de la vidéo) et proposent un nouveau nom descriptif que vous vérifiez avant de l'appliquer.
+
+### Quel outil de renommage est le plus sûr ?
+
+Tout outil avec un aperçu et une annulation par lot. PowerRename, Advanced Renamer et Zush affichent tous le résultat avant de l'appliquer. Zush conserve en plus un Rename History persistant : vous pouvez annuler un lot des jours plus tard, pas seulement juste après.
+
+### Zush vaut-il la peine de payer quand PowerRename est gratuit ?
+
+Seulement si vos fichiers ont besoin de noms fondés sur leur contenu. PowerRename est le bon outil pour des modifications de motif uniformes et ne coûte rien. Si vous ouvrez vos captures d'écran, scans ou téléchargements pour savoir ce qu'ils contiennent avant de les nommer, Zush fait cette lecture à votre place. Sa licence unique à 48 $ inclut l'IA cloud gérée avec renommages illimités, BYOK et modèles locaux, toutes les mises à jour futures, 3 appareils et un remboursement sous 14 jours.
+
+### Où Zush traite-t-il mes fichiers sous Windows ?
+
+Cela dépend du mode. Zush Cloud AI et BYOK envoient le contenu du fichier à un service d'IA pour générer un nom ; BYOK utilise votre propre compte chez le fournisseur. Avec Ollama ou LM Studio, l'analyse tourne sur votre PC, et la reconnaissance vocale sur l'appareil est disponible pour la vidéo. PowerRename, Bulk Rename Utility et Advanced Renamer n'envoient jamais de fichiers nulle part, car ils n'analysent pas le contenu. Consultez la page [outil de renommage IA hors ligne](/offline-ai-file-renamer).

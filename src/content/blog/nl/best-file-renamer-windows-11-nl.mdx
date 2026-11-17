@@ -1,6 +1,6 @@
 ---
 title: "Beste bestandshernoemer voor Windows 11 (2026): gratis tools vs AI"
-description: "Zes bestandshernoemers voor Windows 11 en 10 vergeleken: File Explorer, PowerRename, Bulk Rename Utility, Advanced Renamer, ReNamer en Zush. Welke past bij jouw bestanden?"
+description: "Beste bestandshernoemer voor Windows 11 en 10: File Explorer, PowerRename, Bulk Rename Utility, Advanced Renamer, ReNamer en Zush AI vergeleken."
 date: "2026-09-22"
 slug: "best-file-renamer-windows-11-nl"
 platform: "windows"
@@ -9,8 +9,8 @@ tags:
   - "File Naming"
   - "Tool Comparisons"
   - "AI File Renaming"
-tldr: "Voor patroonklussen (een datum toevoegen, tekst vervangen, een reeks nummeren) is PowerRename gratis en goed genoeg; Bulk Rename Utility en Advanced Renamer gaan dieper. Voor bestanden die elk een andere, beschrijvende naam nodig hebben, zoals screenshots, scans en foto's, gebruik je een AI-hernoemer zoals Zush, die elk bestand leest voordat hij een naam geeft. Zush biedt ook optionele AI-mapsortering. Eén Zush-licentie geldt voor maximaal 3 apparaten."
-reviewed: "2026-10-26"
+tldr: "Voor patroonklussen (een datum toevoegen, tekst vervangen, een reeks nummeren) is PowerRename gratis en goed genoeg; Bulk Rename Utility en Advanced Renamer gaan dieper. Voor bestanden die elk een eigen, beschrijvende naam nodig hebben, zoals screenshots, scans en foto's, gebruik je een AI-hernoemer zoals Zush: 50 gratis AI-hernoemingen zonder account, daarna $10 per maand of $48 eenmalig voor maximaal 3 apparaten."
+reviewed: "2026-11-17"
 locale: "nl"
 translationOf: "best-file-renamer-windows-11"
 ---
@@ -18,66 +18,67 @@ translationOf: "best-file-renamer-windows-11"
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-Kort antwoord: als elk bestand dezelfde soort wijziging krijgt, zoals een voorvoegsel, een datum of een nummerreeks, gebruik dan **PowerRename**. Het is gratis van Microsoft en regelt de meeste patroonklussen. Als elk bestand een eigen naam nodig heeft op basis van wat erin staat, gebruik je een AI-hernoemer zoals [Zush](/windows).
+Kort antwoord: krijgt elk bestand dezelfde soort wijziging, zoals een voorvoegsel, een datum of een nummerreeks, gebruik dan **PowerRename**. Het is gratis, komt van Microsoft en doet de meeste patroonklussen. Heeft elk bestand een eigen naam nodig op basis van wat erin staat, gebruik dan een AI-hernoemer zoals [Zush](/windows). Die leest elk bestand en geeft je 50 gratis AI-hernoemingen zonder account.
 
-Dat onderscheid bepaalt al het andere. Patroontools zijn snel en nauwkeurig, maar ze passen alleen de naam aan die een bestand al heeft. `IMG_4382.jpg` kan `Vacation_001.jpg` worden, maar nooit `lisbon-tram-at-night.jpg`.
+**Hoe we dit controleerden:** geschreven door de maker van [Zush](/). Prijzen, functies en beoordelingen van concurrenten zijn op 17 november 2026 gecontroleerd op de sites van de makers en in de officiële stores ([bronnen onderaan](#sources-and-how-we-checked)). Dit is een vergelijking van gedocumenteerde functies, geen labtest.
 
-**Laatst gecontroleerd: 22 september 2026.** Geschreven door de maker van [Zush, de AI-bestandshernoemer en -organizer voor Mac en Windows](/nl). De details van andere tools komen van hun officiële pagina's.
-
-**Zush-functies gecontroleerd op 26 oktober 2026.** Voor informatie over concurrenten blijven de controledatums in dit artikel gelden.
+Die tweedeling bepaalt al het andere. Patroontools zijn snel en precies, maar veranderen alleen de naam die een bestand al heeft. `IMG_4382.jpg` kan `Vacation_001.jpg` worden, nooit `lisbon-tram-at-night.jpg`.
 
 ## De zes opties in één oogopslag
 
-| Tool | Het beste voor | Leest bestandsinhoud | Ongedaan maken | Prijs |
+| Tool | Het best voor | Leest bestandsinhoud | Ongedaan maken | Prijs |
 |---|---|---|---|---|
 | File Explorer | Een paar bestanden, snelle reeks | Nee | Ctrl+Z, laatste actie | Ingebouwd |
-| PowerRename | Zoeken en vervangen, regex, datums | Nee (alleen EXIF-velden) | Ctrl+Z in Explorer | Gratis (PowerToys) |
-| Bulk Rename Utility | Zwaar patroonwerk, 100k+ bestanden | Nee (EXIF-, ID3-velden) | Genereert een batchbestand om ongedaan te maken | Gratis voor persoonlijk gebruik |
-| Advanced Renamer | Namen op basis van metadata en GPS | Nee (EXIF-, ID3-, GPS-, videovelden) | Volledig ongedaan maken van een batch | Gratis voor licht persoonlijk gebruik; $25 persoonlijk, $45 commercieel |
-| ReNamer | Reeksen regels, scripting | Nee (metatags) | Ongedaan maken ondersteund | Lite gratis voor niet-commercieel gebruik; betaalde Pro |
-| **Zush** | <BlogHighlight>Een andere beschrijvende naam voor elk bestand; optionele AI-mapsortering</BlogHighlight> | Ja, met AI | Volledige Rename History | 50 gratis hernoemingen; $10/mnd of $48 eenmalig |
+| PowerRename | Zoeken en vervangen, regex, datums | Geen AI (alleen EXIF/XMP-tokens) | Ctrl+Z | Gratis (PowerToys) |
+| Bulk Rename Utility | Zwaar patroonwerk, 100.000+ bestanden | Nee (EXIF-, ID3-velden) | Maakt een batchbestand om terug te draaien | Gratis voor privégebruik; hernoemen met JavaScript vraagt een betaalde licentie; zakelijk $92.95 per computer |
+| Advanced Renamer | Namen uit metadata en GPS | Metadata, plus tekst uit PDF/TXT via scripts; geen AI of OCR | Hele batch ongedaan maken | Gratis voor licht privégebruik; $30 privé, $50 zakelijk |
+| ReNamer | Ketens van regels, scripting | Nee (metatags) | Ongedaan maken ondersteund | Lite gratis voor niet-commercieel gebruik; betaalde Pro |
+| **Zush** | <BlogHighlight>Een andere, beschrijvende naam voor elk bestand; optioneel sorteren in mappen met AI</BlogHighlight> | Ja, met AI | Blijvende Rename History, batch ongedaan maken | 50 gratis AI-hernoemingen, zonder account; $10/mnd of $48 eenmalig |
+
+Beoordelingen per 17 november 2026: Zush 5,0 uit 8 beoordelingen in de Amerikaanse Microsoft Store en 4,5/5 van de redactie van Softpedia; Advanced Renamer 4,2 uit 23 beoordelingen in de Amerikaanse Microsoft Store en 3,5/5 van Softpedia; Bulk Rename Utility 4,0/5 van Softpedia.
 
 ## 1. File Explorer: prima voor vijf bestanden
 
-Selecteer meerdere bestanden, druk op **F2**, typ een naam en druk op Enter. Windows noemt ze `Trip (1).jpg`, `Trip (2).jpg`, enzovoort. **Ctrl+Z** maakt het meteen ongedaan.
+Selecteer meerdere bestanden, druk op **F2**, typ een naam en druk op Enter. Windows noemt ze `Trip (1).jpg`, `Trip (2).jpg` enzovoort. **Ctrl+Z** maakt het meteen ongedaan.
 
-Meer kan het niet. Geen voorbeeld, geen datums, geen zoeken en vervangen. Gebruik het als het resultaat alleen netjes hoeft te zijn, niet betekenisvol.
+Meer doet het niet. Geen voorbeeld, geen datums, geen zoeken en vervangen. Gebruik het als het resultaat alleen netjes hoeft te zijn, niet betekenisvol.
 
 ## 2. PowerRename: de beste gratis keuze voor de meeste mensen
 
-[PowerRename](https://learn.microsoft.com/en-us/windows/powertoys/powerrename) wordt geleverd met Microsoft PowerToys. Selecteer bestanden, klik met de rechtermuisknop, kies **Rename with PowerRename** en je krijgt zoeken en vervangen met een live voorbeeld.
+[PowerRename](https://learn.microsoft.com/en-us/windows/powertoys/powerrename) zit in Microsoft PowerToys. Selecteer bestanden, klik met rechts, kies **Rename with PowerRename** en je krijgt zoeken en vervangen met een live voorbeeld.
 
-Het kan meer dan je denkt:
+Het kan meer dan je zou denken:
 
-- Reguliere expressies, inclusief capture-groepen (`29-03-2020` → `2020-03-29`)
+- Reguliere expressies, inclusief capture groups (`29-03-2020` → `2020-03-29`)
 - Tellers met opvulling en startwaarden (`Image_${padding=4}`)
-- Variabelen voor de aanmaakdatum van een bestand, zoals `$YYYY-$MM-$DD`
-- EXIF-velden van foto's, zoals `$DATE_TAKEN_YYYY`, `$CAMERA_MODEL` en GPS-coördinaten
+- Variabelen voor de aanmaakdatum, zoals `$YYYY-$MM-$DD`
+- EXIF- en XMP-tokens van foto's, zoals `$DATE_TAKEN_YYYY` en `$CAMERA_MODEL`
 
-Kies PowerRename voor elke klus die je als patroon kunt beschrijven. Voor de AI-kant: zie onze pagina over een [PowerRename-alternatief](/windows).
+Ctrl+Z maakt de laatste hernoeming ongedaan. Er zit geen AI in en het opent het bestand nooit, dus het weet niet wat er op een scan of screenshot staat. Kies PowerRename voor elke klus die je als patroon kunt omschrijven. Voor de AI-kant, zie onze pagina over een [PowerRename-alternatief](/windows).
 
 ## 3. Bulk Rename Utility: maximale controle
 
-Bulk Rename Utility stopt alle patroonopties in één compact venster: regex, JavaScript, automatische nummering, EXIF-datums, MP3-tags, hernoemingen op basis van CSV en wijzigingen van tijdstempels. Het verwerkt 100.000+ bestanden zonder te vertragen. Ongedaan maken werkt via een gegenereerd batchbestand dat de wijziging terugdraait.
+Bulk Rename Utility stopt alle patroonopties in één vol venster: regex, JavaScript, automatisch nummeren, EXIF-datums, MP3-tags, hernoemen vanuit een CSV en tijdstempels aanpassen. Het verwerkt 100.000+ bestanden zonder te vertragen. Ongedaan maken gaat via een batchbestand dat de wijziging terugdraait.
 
-Het is gratis voor persoonlijk gebruik; zakelijk gebruik vereist een commerciële licentie. De interface vraagt wat gewenning. Meer in onze gids over [alternatieven voor Bulk Rename Utility](/blog/bulk-rename-utility-alternatives).
+Het is gratis voor privégebruik, maar hernoemen met JavaScript vraagt een betaalde licentie ($24.95), en zakelijk gebruik kost $92.95 per computer. Versie 4.1.0.1 kreeg een AI-assistent die JavaScript- en regex-regels voor je schrijft; die helpt het patroon te bouwen, maar leest geen bestandsinhoud. Aan de interface moet je even wennen. Meer in onze gids met [alternatieven voor Bulk Rename Utility](/blog/bulk-rename-utility-alternatives).
 
-## 4. Advanced Renamer: het beste voor foto- en muziekmetadata
+## 4. Advanced Renamer: het best voor metadata van foto's en muziek
 
-Advanced Renamer bouwt een naam op uit gestapelde methoden: tags uit EXIF, ID3, video-eigenschappen en GPS (het kan coördinaten omzetten in een plaatsnaam). Het toont een live voorbeeld en kan een hele batch ongedaan maken. Het draait ook op macOS.
+Advanced Renamer bouwt een naam uit gestapelde methoden: tags uit EXIF, ID3, video-eigenschappen en GPS (het kan coördinaten omzetten in een plaatsnaam). Het toont een live voorbeeld en kan een hele batch terugdraaien. Het draait ook op macOS. Versie 4.28 is actueel, en de scriptmethode kan tekst uit pdf- en TXT-bestanden halen, maar er is geen AI of OCR: gescande pdf's en foto's blijven onleesbaar, en het script dat tekst in een naam omzet schrijf je zelf.
 
-Het is gratis voor licht persoonlijk gebruik. Reguliere gebruikers wordt gevraagd een persoonlijke licentie van $25 te kopen, en zakelijk gebruik vereist een commerciële licentie van $45. Beide zijn eenmalig. Zie onze [review van Advanced Renamer](/blog/advanced-renamer-alternatives).
+Het is gratis voor licht privégebruik. Wie het vaak gebruikt, wordt gevraagd een privélicentie van $30 te kopen, en voor werk is een zakelijke licentie van $50 verplicht. Beide zijn eenmalig. Zie onze [review van Advanced Renamer](/blog/advanced-renamer-alternatives).
 
 ## 5. ReNamer: regels en scripts
 
-ReNamer past een geordende lijst met regels toe: invoegen, verwijderen, vervangen, hoofdletters, regex, metatags en Pascal Script voor alles wat op maat moet. Het is draagbaar en ondersteunt 25+ interfacetalen.
+ReNamer past een geordende lijst regels toe: invoegen, verwijderen, vervangen, hoofdletters, regex, metatags en Pascal Script voor alles wat maatwerk is. Het is portable en ondersteunt meer dan 25 interfacetalen.
 
-ReNamer Lite is gratis voor niet-commercieel gebruik, beperkt tot 5 regels en 5 presets. Pro heft die limieten op en staat commercieel gebruik toe.
+ReNamer Lite is gratis voor niet-commercieel gebruik, met een maximum van 5 regels en 5 presets. Pro heft die grenzen op en staat zakelijk gebruik toe.
 
-## 6. Zush: wanneer elk bestand een eigen naam nodig heeft
+## 6. Zush: als elk bestand een eigen naam nodig heeft
 
-[Zush](/windows) werkt anders. In plaats van de oude naam aan te passen, kijkt het naar het bestand zelf: de tekst in een pdf, wat een screenshot toont, het tafereel op een foto, de inhoud van een Word- of Excel-bestand. Daarna schrijft het een naam die het bestand beschrijft.
+[Zush](/windows) werkt anders. In plaats van de oude naam te bewerken, kijkt het naar het bestand: de tekst in een pdf, wat een screenshot laat zien, de scène op een foto, de inhoud van een Word- of Excel-bestand. Daarna schrijft het een naam die het bestand beschrijft.
 
 | Voor | Na |
 |---|---|
@@ -86,64 +87,76 @@ ReNamer Lite is gratis voor niet-commercieel gebruik, beperkt tot 5 regels en 5 
 | `Document1.docx` | `q3-marketing-plan-draft.docx` |
 | `IMG_4382.jpg` | `2026-08-30_lisbon_tram_street.jpg` |
 
-Jij houdt de controle over de vorm. Templates en 145+ Naming Blocks leggen de volgorde vast (datum, leverancier, klant, titel), de hoofdletters en de scheidingstekens. Je bekijkt elke suggestie voordat je die toepast, en Rename History kan later een hele batch terugzetten. Mapbewaking hernoemt nieuwe bestanden in Downloads of een scannermap automatisch.
+Jij houdt de vorm in de hand. Templates en 145+ Naming Blocks leggen de volgorde vast (datum, leverancier, klant, titel), plus hoofdletters en scheidingstekens. Je bekijkt elk voorstel voordat je het toepast, en Rename History kan later een hele batch herstellen. Mapbewaking hernoemt nieuwe bestanden in Downloads of een scannermap automatisch.
 
-De AI kan draaien via Zush Cloud AI, met je eigen API-sleutel, of lokaal met Ollama of LM Studio. De eerste 50 hernoemingen zijn gratis.
+De AI draait via Zush Cloud AI, je eigen API-sleutel, of lokaal met Ollama of LM Studio. De eerste 50 AI-hernoemingen zijn gratis, zonder account, kaart of API-sleutel. Daarna kost Zush $10 per maand of $48 eenmalig; de eenmalige licentie bevat beheerde cloud-AI met onbeperkt hernoemen, alle toekomstige updates, maximaal 3 apparaten verdeeld over Windows en Mac, en 14 dagen geld-terug. Het herkent ook dubbele bestanden tijdens AI Rename (kopieën kosten geen credits), geeft video's een naam op basis van spraak en ondertitels, en herkent muziek zonder tags op Windows.
 
 <BlogCTA placement='inline' platform='windows' />
 
-Eén Zush-licentie geldt voor maximaal 3 Mac- of Windows-apparaten.
+Eén Zush-licentie geldt voor maximaal 3 apparaten op Mac en Windows.
 
-U kunt [Templates exporteren](/docs/template-import-export) met Naming Blocks, Custom AI Blocks en mapregels en ze op een andere computer importeren. Stel daar de lokale doelmappen, toegangsrechten en AI-verbindingen opnieuw in. De overdracht bevat de instellingen, niet uw bestanden.
+Je kunt [Templates exporteren](/docs/template-import-export) met Naming Blocks, Custom AI Blocks en mapregels, en ze op een andere computer importeren. Kies daar opnieuw lokale bestemmingen, mapmachtigingen en AI-verbindingen; zo verhuis je de workflow-instellingen, niet je bestanden.
 
-### Sorteer de hernoemde bestanden in mappen
+### De hernoemde bestanden in mappen sorteren
 
-Op Windows kan Zush bestanden ook **met AI in mappen sorteren**. Kies **Auto**-groepering of schrijf **Folder rules** zoals “Groepeer facturen per bedrijf en bonnetjes per maand.” Bekijk de voorgestelde mapgroepen samen met de bestandsnamen; een patroonhernoemer is nog steeds voldoende als je alleen dezelfde tekstwijziging op een hele batch nodig hebt.
+Op Windows kan Zush ook **bestanden met AI in mappen sorteren**. Kies groeperen met **Auto** of schrijf **Folder rules** zoals "Groepeer facturen per bedrijf en bonnetjes per maand". Bekijk de voorgestelde mapgroepen naast de bestandsnamen; een patroonhernoemer volstaat nog steeds als je alleen dezelfde tekstwijziging over een batch nodig hebt.
 
-Kies een **Destination folder**, of houd de bronmap als hoofdmap aan. Schakel **Reuse existing folders** in om bij voorkeur geschikte mappen te gebruiken die er al zijn; Zush kan een nieuwe map maken als er niets past. Bekijk in een handmatige batch zowel de voorgestelde namen als de mappen voordat je ze toepast. Wil je ter plekke hernoemen, laat sorteren dan uit en behoud de oorspronkelijke bestemming.
+Kies een **Destination folder**, of houd de bronmap als basis. Zet **Reuse existing folders** aan om bestaande, passende mappen voorrang te geven; Zush maakt een nieuwe map als niets past. Bekijk in een handmatige batch zowel de voorgestelde namen als de mappen voordat je toepast. Wil je op dezelfde plek hernoemen, laat sorteren dan uit en houd de oorspronkelijke bestemming.
 
-Sla de sorteerinstellingen op in een **Template** en wijs die toe aan **Monitor** voor nieuwe bestanden die direct in de bewaakte map terechtkomen. Dit organiseert bestanden die al verwerkt zijn niet opnieuw. Test de Template eerst in een handmatige batch. Zie de [gids voor mapsortering](/docs/folder-sorting) voor de installatie en het bereik van de bewaking.
+Sla de sorteerinstellingen op in een **Template** en wijs die toe aan **Monitor** voor nieuwe bestanden direct in de bewaakte map. Een andere Monitor-Template organiseert al verwerkte bestanden niet automatisch opnieuw. Test de Template eerst in een handmatige batch. Zie de [gids voor sorteren in mappen](/docs/folder-sorting) voor de instellingen en wat Monitor wel en niet oppakt.
 
-Zush ondersteunt geneste mappen, bijvoorbeeld per jaar en daarbinnen per maand. U kunt al hernoemde bestanden sorteren zonder hun namen opnieuw te wijzigen of nog een hernoemcredit te gebruiken. Controleer de bestemmingen voordat u de wijzigingen toepast. Dit staat los van Monitor: een gewijzigd Template sorteert eerdere bestanden niet opnieuw. [AI-mapsortering](/docs/folder-sorting) werkt op Mac en Windows.
+Zush ondersteunt ook geneste mapregels, zoals eerst per jaar en dan per maand groeperen. Je kunt al hernoemde bestanden sorteren zonder hun naam opnieuw te wijzigen of nog een hernoemcredit te gebruiken. Controleer de bestemmingen voordat je toepast. Deze aparte actie werkt op een bestaande batch; een gewijzigde Monitor-Template organiseert die niet met terugwerkende kracht. [Sorteren in mappen met AI](/docs/folder-sorting) werkt op Mac en Windows.
 
 ## Welke hernoemer moet je gebruiken?
 
 - Dezelfde wijziging voor elk bestand (voorvoegsel, datum, nummer): **PowerRename**.
 - Complexe patronen op enorme mappen: **Bulk Rename Utility**.
-- Namen uit foto-, muziek- of GPS-metadata: **Advanced Renamer**.
+- Namen uit metadata van foto's, muziek of GPS: **Advanced Renamer**.
 - Screenshots, scans, downloads en foto's die echte namen nodig hebben: **Zush**.
 
-Veel mensen houden beide soorten. PowerRename voor snelle mechanische correcties, Zush voor de mappen waar je nu elk bestand opent om te zien wat het is.
+Veel mensen houden beide soorten. PowerRename voor snelle mechanische correcties, Zush voor de mappen waarin je nu elk bestand opent om te zien wat het is.
 
 <BlogProductIntro
-  title="Genoeg van bestanden openen om te zien wat ze zijn?"
-  description="Zush leest elk bestand op je Windows-pc en stelt een duidelijke, doorzoekbare naam voor. Bekijk de batch, pas hem toe en maak hem op elk moment ongedaan."
+  title="Moe van bestanden openen alleen om te zien wat het zijn?"
+  description="Zush leest elk bestand op je Windows-pc en stelt een duidelijke, doorzoekbare naam voor. Bekijk de batch, pas hem toe en draai hem terug wanneer je wilt."
   links={[
     { href: '/windows', label: 'Zush voor Windows' },
-    { href: '/batch-rename-files', label: 'Batchgewijs hernoemen met AI' },
-    { href: '/blog/batch-rename-files-windows-11', label: 'Batchgewijs hernoemen in Windows 11' },
+    { href: '/batch-rename-files', label: 'Batch hernoemen met AI' },
+    { href: '/blog/batch-rename-files-windows-11', label: 'Batch hernoemen in Windows 11' },
     { href: '/blog/best-ai-file-renamer-tools-windows-compared', label: 'AI-hernoemers voor Windows' },
   ]}
 />
 
+## Bronnen en hoe we het controleerden
+
+<BlogSources ids={['powerrename', 'bulk-rename-utility', 'advanced-renamer', 'renamer']} />
+
 ## Veelgestelde vragen
 
-### Kan Zush bestanden ook in mappen sorteren en niet alleen hernoemen?
+### Kan Zush video- en muziekbestanden hernoemen op Windows 11?
 
-Ja. De optionele AI-mapsortering werkt op Mac en Windows. Kies Auto of schrijf Folder rules, selecteer de bestemming en bekijk in een handmatige batch zowel de namen als de groepen. Een Template met sortering ingeschakeld kan ook nieuwe bestanden verwerken die direct in een bewaakte map terechtkomen; het organiseert bestanden die al verwerkt zijn niet opnieuw. Laat sorteren uit en behoud de oorspronkelijke bestemming als je alleen namen wilt geven.
+Ja. Zush voor Windows geeft video's een naam op basis van spraak, ingesloten ondertitels en metadata, ook bij MKV, en kan muziek herkennen zelfs als een nummer geen tags heeft; die functie is voorlopig alleen voor Windows. Voor offline werk kun je optionele spraakherkenning op het apparaat downloaden in de AI-instellingen en die gebruiken met Ollama of LM Studio. Patroontools zoals PowerRename wijzigen namen alleen volgens regels en weten dus niet wat er in een opname zit.
 
 ### Wat is de beste gratis bestandshernoemer voor Windows 11?
 
-PowerRename, onderdeel van Microsoft PowerToys. Het is gratis, toont elke wijziging vooraf, ondersteunt regex en datumvariabelen en maakt ongedaan met Ctrl+Z. Bulk Rename Utility is het gratis alternatief voor zwaardere persoonlijke klussen.
+PowerRename, onderdeel van Microsoft PowerToys. Het is gratis, toont elke wijziging vooraf, ondersteunt regex, tellers, datumvariabelen en EXIF/XMP-tokens, en maakt ongedaan met Ctrl+Z. Voor zwaardere privéklussen is Bulk Rename Utility ook gratis, al vraagt hernoemen met JavaScript een betaalde licentie. Advanced Renamer is gratis voor licht privégebruik. Geen van allen leest bestandsinhoud; daarvoor geeft Zush 50 gratis AI-hernoemingen zonder account.
 
-### Heeft Windows 11 een ingebouwde functie om bestanden in bulk te hernoemen?
+### Heeft Windows 11 een ingebouwde manier om bulk te hernoemen?
 
-Ja, maar een eenvoudige. Selecteer bestanden in File Explorer en druk op F2 om ze één naam te geven met nummers tussen haakjes. Voor zoeken en vervangen of datums installeer je PowerToys en gebruik je PowerRename.
+Ja, maar een eenvoudige. Selecteer bestanden in File Explorer en druk op F2 om ze één naam met nummers tussen haakjes te geven. Voor zoeken en vervangen of datums installeer je PowerToys en gebruik je PowerRename.
 
 ### Kan een bestandshernoemer lezen wat er in mijn bestanden staat?
 
-Patroontools kunnen dat niet; ze lezen alleen de bestaande naam en metadatavelden zoals EXIF of ID3. AI-hernoemers zoals Zush lezen de inhoud zelf (tekst, afbeeldingen, videoframes) en schrijven een nieuwe beschrijvende naam.
+Patroontools meestal niet. Ze lezen de bestaande naam en metadatavelden zoals EXIF of ID3. Advanced Renamer kan via scripts tekst uit pdf- en TXT-bestanden halen, maar heeft geen AI of OCR, dus scans en foto's blijven onleesbaar. AI-hernoemers zoals Zush lezen de inhoud zelf (tekst, afbeeldingen, spraak en beelden in video) en stellen een nieuwe, beschrijvende naam voor die je controleert voordat je hem toepast.
 
 ### Welke bestandshernoemer is het veiligst?
 
-Elke tool met een voorbeeld en het ongedaan maken van een batch. PowerRename, Advanced Renamer en Zush tonen allemaal de resultaten voordat ze worden toegepast. Zush bewaart bovendien een permanente Rename History, zodat je een batch dagen later nog kunt terugdraaien, niet alleen direct erna.
+Elke tool met een voorbeeldweergave en ongedaan maken per batch. PowerRename, Advanced Renamer en Zush tonen allemaal het resultaat voordat ze iets toepassen. Zush bewaart daarnaast een blijvende Rename History, zodat je een batch ook dagen later nog kunt terugdraaien, niet alleen direct erna.
+
+### Is Zush het geld waard als PowerRename gratis is?
+
+Alleen als je bestanden namen nodig hebben op basis van hun inhoud. PowerRename is de juiste tool voor uniforme patroonwijzigingen en kost niets. Open je screenshots, scans of downloads om te zien wat ze zijn voordat je ze een naam geeft, dan doet Zush dat lezen voor je. De eenmalige licentie van $48 bevat beheerde cloud-AI met onbeperkt hernoemen, BYOK en lokale modellen, alle toekomstige updates, 3 apparaten en 14 dagen geld-terug.
+
+### Waar verwerkt Zush mijn bestanden op Windows?
+
+Dat hangt af van de modus. Zush Cloud AI en BYOK sturen bestandsinhoud naar een AI-dienst om een naam te maken; BYOK gebruikt je eigen account bij een aanbieder. Met Ollama of LM Studio draait de analyse op je pc, en voor video is spraakherkenning op het apparaat beschikbaar. PowerRename, Bulk Rename Utility en Advanced Renamer sturen nooit bestanden ergens heen, omdat ze geen inhoud analyseren. Zie de [offline AI-bestandshernoemer](/offline-ai-file-renamer).

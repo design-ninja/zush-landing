@@ -1,6 +1,6 @@
 ---
 title: "File Juggler-alternatieven: 5 Windows-organizers (2026)"
-description: "File Juggler automatiseert bestanden op Windows met regels. Vergelijk vijf alternatieven, ook gratis: Zush voor AI-naamgeving en sortering, DropIt, Sortio, Wisfile en PowerShell."
+description: "File Juggler automatiseert Windows-bestanden met regels. Vijf alternatieven, ook gratis: Zush voor AI-namen, DropIt, Sortio, Wisfile en PowerShell."
 date: "2026-10-16"
 slug: "file-juggler-alternatives-nl"
 locale: "nl"
@@ -11,109 +11,108 @@ tags:
   - "Bestandsorganisatie"
   - "Toolvergelijkingen"
   - "Automatisering"
-tldr: "File Juggler is een betaalde, actief onderhouden regelengine voor Windows: $50 eenmalig vóór belasting, met een volledige proefperiode van 30 dagen. Houd het als je bestanden patronen volgen die je kunt beschrijven. Stap over op Zush als bestanden geen patroon hebben om op te matchen, zoals screenshots, scans en foto's, want Zush leest elk bestand, geeft het een naam en kan het in mappen sorteren. DropIt en PowerShell zijn de gratis regelgebaseerde opties, en Wisfile is gratis voor pdf's en Word-documenten. Eén Zush-licentie dekt maximaal 3 apparaten."
+tldr: "File Juggler is een betaalde, actief onderhouden regelengine voor Windows (versie 3.1.9, oktober 2026): $50 eenmalig vóór belasting, met een volledige proefperiode van 30 dagen. Houd het als je bestanden patronen volgen die je kunt beschrijven. Stap over op Zush als bestanden geen patroon hebben om op te matchen, zoals screenshots, scans en foto's: Zush leest elk bestand, geeft het een naam en kan het in mappen sorteren. DropIt en PowerShell zijn de gratis regelgebaseerde opties, en Wisfile is gratis voor pdf's en Word-documenten. Eén Zush-licentie dekt maximaal 3 apparaten."
 earlyTaskExample: false
-reviewed: "2026-10-18"
+reviewed: "2026-11-17"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-Kort antwoord: als je regels bestanden blijven missen omdat die bestanden geen patroon hebben, is [Zush voor Windows](/windows) het beste alternatief voor File Juggler. Het leest elk bestand, schrijft een beschrijvende naam en kan de batch met één instructie in gewone taal in mappen sorteren. Wil je liever een andere regelengine, dan is DropIt gratis en voegt Sortio AI toe bovenop regels. File Juggler zelf is nog steeds een goede tool: het wordt onderhouden, is goedkoop en voorspelbaar.
+Kort antwoord: als je regels steeds bestanden missen omdat die bestanden geen patroon hebben, is [Zush voor Windows](/windows) het beste alternatief voor File Juggler. Het leest elk bestand, schrijft een beschrijvende naam en kan de hele batch met één instructie in gewone taal in mappen sorteren. Wil je liever een andere regelengine, dan is DropIt gratis en voegt Sortio AI toe bovenop regels. Houd File Juggler als je bestanden vaste patronen volgen: het wordt onderhouden, je betaalt één keer en het gedrag is voorspelbaar.
 
-**Laatst gecontroleerd: 16 oktober 2026.** Geschreven door de maker van [Zush – AI-bestandshernoemer voor Mac en Windows](/). De gegevens over File Juggler komen van de site, de FAQ en de release notes; de andere tools van hun officiële pagina's, die bij elke sectie zijn gelinkt.
+**Hoe we dit controleerden:** geschreven door de maker van [Zush](/). Prijzen, functies en beoordelingen van concurrenten zijn op 17 november 2026 gecontroleerd op de sites van de makers en in de officiële stores ([bronnen onderaan](#sources-and-how-we-checked)). Dit is een vergelijking van gedocumenteerde functies, geen labtest.
 
-**Zush-functies beoordeeld op 18 oktober 2026.** Informatie over concurrenten behoudt de in dit artikel vermelde controledata.
+## File Juggler-alternatieven in één oogopslag
+
+| Tool | Het best voor | Leest bestandsinhoud | Bewaakt mappen | Ongedaan maken | Prijs |
+|---|---|---|---|---|---|
+| **Zush** | <BlogHighlight>Bestanden zonder patroon: AI-namen plus sorteren in mappen</BlogHighlight> | Ja, met AI: scans, foto's, screenshots, Office, pdf's, video, audio | Ja (Monitor) | Blijvende Rename History, batch ongedaan maken | 50 gratis hernoemingen, zonder account of kaart; $10/mnd of $48 eenmalig incl. cloud-AI |
+| DropIt | Gratis regels op naam, grootte, datum | Eenvoudige filters | Ja, scans op een timer | Nee | Gratis, open source |
+| Sortio | AI-mapplannen plus klassieke regels | Ja, met AI | Alleen Pro (Smart Folders) | Sorteergeschiedenis en ongedaan maken | Gratis versie; Pro $14.99/mnd of $99/jaar |
+| Wisfile | Gratis eenmalige opruiming van pdf's en Word-bestanden | Pdf's en Word, lokale AI | Nee | Nee | Gratis |
+| PowerShell + Task Scheduler | Alles wat je kunt scripten | Wat je zelf programmeert | Volgens schema | Alleen als je het zelf bouwt | Gratis |
+| File Juggler | Exacte regels die hernoemen en verplaatsen | Tekst uit pdf, Word, Excel; geen OCR | Ja, direct | Niet vermeld door de maker | $50 eenmalig + btw |
 
 ## Wat File Juggler goed doet
 
-File Juggler is een Windows-automatiseringstool van een onafhankelijke ontwikkelaar in Denemarken. Je maakt regels van drie onderdelen:
+File Juggler is een automatiseringstool voor Windows van een onafhankelijke ontwikkelaar in Denemarken. Je bouwt regels uit drie onderdelen:
 
 1. **Bewaakte mappen**, zoals Downloads, Bureaublad of een scannermap.
-2. **Voorwaarden**: bestandsnaam en pad, tekst in het bestand, grootte en aanmaak- of wijzigingsdatum.
+2. **Voorwaarden**: bestandsnaam en pad, tekst in het bestand, grootte, en aanmaak- of wijzigingsdatum.
 3. **Acties**: verplaatsen, kopiëren, hernoemen, extensie wijzigen, verwijderen of naar de Prullenbak sturen, archieven uitpakken, aan een zip toevoegen, een opdracht uitvoeren of uploaden naar Evernote.
 
-Het reageert bijna direct, omdat het zich abonneert op meldingen van mapwijzigingen in plaats van op een timer te scannen. Het kan tekst in pdf-, Word- en Excel-bestanden lezen en woorden en datums die het vindt hergebruiken in een nieuwe bestandsnaam. Versie 3.1.7 verscheen in september 2026 en in oktober volgde een 3.1.8-bèta, dus het is niet verlaten.
+Het reageert vrijwel meteen, omdat het zich abonneert op wijzigingsmeldingen van mappen in plaats van op een timer te scannen. Het kan tekst lezen in pdf-, Word- en Excel-bestanden en woorden en datums die het vindt hergebruiken in een nieuwe bestandsnaam. Versie 3.1.9 verscheen op 30 oktober 2026, dus het project leeft nog. De redactie van Softpedia geeft het 4,5/5, dezelfde score als Zush.
 
-De prijs is eenvoudig: $50 eenmalig vóór belasting bij het afrekenen, geldig voor alle toekomstige upgrades. Eén licentie dekt één persoon op meerdere pc's, of één pc die door meerdere mensen wordt gedeeld. De proefperiode van 30 dagen bevat alle functies, en als die afloopt, herinnert de app je eraan te kopen maar blijft hij werken.
+De prijs is eenvoudig: $50 eenmalig vóór belasting bij het afrekenen, inclusief alle toekomstige upgrades. Eén licentie geldt voor één persoon op meerdere pc's, of voor één pc die door meerdere mensen wordt gedeeld. De proefperiode van 30 dagen bevat alle functies; daarna herinnert de app je eraan te kopen, maar blijft hij werken.
 
 ## Waarom mensen een alternatief zoeken
 
-- **Geen AI.** Elke regel moet met de hand worden geschreven. Een regel kan `Screenshot 2026-10-02 141203.png` of `IMG_4382.jpg` niet herkennen, omdat niets in de naam of tekst zegt wat het bestand is.
-- **Geen OCR.** In de FAQ van File Juggler staat dat scans die alleen uit beeld bestaan geen doorzoekbare tekst hebben, dus je hebt een apart OCR-programma nodig voordat de inhoudsregels erop kunnen matchen.
-- **Alleen Windows.** Er is geen Mac-versie. Op een Mac is het equivalent [Hazel](/hazel-alternative).
-- **Geen service.** Het draait terwijl een gebruiker is ingelogd, dus het is niet geschikt voor servers.
-- **De prijs**, als je alleen eenvoudig wilt sorteren op bestandstype. Meerdere gratis tools doen dat.
-
-## File Juggler-alternatieven in een oogopslag
-
-| Tool | Het beste voor | Leest bestandsinhoud | Bewaakt mappen | Ongedaan maken | Prijs |
-|---|---|---|---|---|---|
-| **Zush** | <BlogHighlight>Bestanden zonder patroon: AI-naamgeving plus mappensortering</BlogHighlight> | Ja, met AI: scans, foto's, screenshots, Office, pdf's, video, audio | Ja (Monitor) | Rename History | 50 gratis hernoemingen; $10/mnd of $48 eenmalig |
-| DropIt | Gratis regels op naam, grootte, datum | Basisfilters | Ja, gescande op timer | Nee | Gratis, open source |
-| Sortio | AI-mapplannen plus klassieke regels | Ja, met AI | Ja (Smart Folders) | Ja | Gratis niveau; Pro $14,99/mnd of $99/jaar |
-| Wisfile | Gratis eenmalige opruiming van pdf- en Word-bestanden | Pdf's en Word, lokale AI | Nee | Nee | Gratis |
-| PowerShell + Taakplanner | Alles wat je kunt scripten | Wat je zelf codeert | Op een schema | Alleen als je het bouwt | Gratis |
-| File Juggler | Exacte regels die hernoemen en verplaatsen | Tekst uit pdf, Word, Excel; geen OCR | Ja, direct | Niet gedocumenteerd | $50 eenmalig + belasting |
+- **Geen AI.** Elke regel schrijf je met de hand. Een regel kan `Screenshot 2026-10-02 141203.png` of `IMG_4382.jpg` niet vangen, want niets in de naam of de tekst zegt wat het bestand is.
+- **Geen OCR.** Volgens de FAQ van File Juggler hebben scans die alleen uit een afbeelding bestaan geen doorzoekbare tekst. Je hebt dus eerst een apart OCR-programma nodig voordat de inhoudsregels er iets mee kunnen.
+- **Alleen Windows.** Er is geen Mac-versie. Op een Mac is [Hazel](/hazel-alternative) het equivalent.
+- **Geen service.** Het draait alleen zolang een gebruiker is ingelogd, en past daardoor slecht op servers.
+- **De prijs**, als je alleen eenvoudig op bestandstype wilt sorteren. Daarvoor zijn meerdere gratis tools.
 
 ## 1. Zush: voor de bestanden die regels niet kunnen beschrijven
 
-[Zush voor Windows](/windows) draait op Windows 10 en 11 via de [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X). In plaats van voorwaarden te matchen, leest het het bestand: de tekst in een pdf of scan, de inhoud van een foto of screenshot, de beelden van een video. Daarna stelt het een naam voor, zoals `2026-09-12_acme_invoice_1042.pdf` of `stripe-revenue-dashboard-september.png`.
+[Zush voor Windows](/windows) draait op Windows 10 en 11 en komt uit de [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X). In plaats van voorwaarden te matchen, leest het het bestand: de tekst in een pdf of scan, wat er op een foto of screenshot staat, en de beelden, spraak en ondertitels van een video (ook MKV). Daarna stelt het een naam voor zoals `2026-09-12_acme_invoice_1042.pdf` of `stripe-revenue-dashboard-september.png`.
 
-![Zush voor Windows hernoemt een gemengde batch op inhoud, waarbij elke voorgestelde bestandsnaam wordt getoond voordat de batch wordt toegepast](/videos/windows/zush-batch-rename.mp4)
+![Zush voor Windows hernoemt een gemengde batch op inhoud en toont elke voorgestelde bestandsnaam voordat de batch wordt toegepast](/videos/windows/zush-batch-rename.mp4)
 
-Waar File Juggler één regel per bestemming nodig heeft, neemt Zush één zin in **Folder rules**, zoals "Groepeer facturen per bedrijf en bonnetjes per maand", of groepeert het bestanden op inhoud met Auto. Je bekijkt voorgestelde namen en mappen samen voordat er iets wordt verplaatst. Controleer onduidelijke bestanden voordat je de wijzigingen toepast.
+Waar File Juggler één regel per bestemming nodig heeft, neemt Zush één zin in **Folder rules**, zoals "Groepeer facturen per bedrijf en bonnetjes per maand", of groepeert het bestanden op inhoud met Auto. Je controleert voorgestelde namen en mappen samen voordat er iets wordt verplaatst. Kijk twijfelgevallen na voordat je toepast.
 
-![Zush voor Windows toont een voorbeeld van op inhoud gebaseerde mapgroepen en voorgestelde bestandsnamen vóór Rename & sort](/images/showcase/windows/folder-sorting-light.webp)
+![Zush voor Windows toont mapgroepen op basis van inhoud en voorgestelde bestandsnamen vóór Rename & sort](/images/showcase/windows/folder-sorting-light.webp)
 
-Voor het altijd-actieve deel van File Juggler sla je de instelling op in een Template en wijs je die toe aan **Monitor**. Nieuwe bestanden in Downloads of een scannermap worden dan hernoemd en gesorteerd zodra ze binnenkomen. Rename History bewaart de oude en nieuwe namen, zodat een mislukte batch kan worden teruggedraaid. AI draait via Zush Cloud AI, je eigen API-sleutel, of lokaal met Ollama of LM Studio wanneer bestanden op de pc moeten blijven.
+Voor het altijd-aan-deel van File Juggler sla je de instellingen op als Template en wijs je die toe aan **Monitor**. Nieuwe bestanden in Downloads of een scannermap worden dan bij binnenkomst hernoemd en gesorteerd. Rename History bewaart oude en nieuwe namen ook na een herstart, en Undo All draait een hele batch terug en toont eventuele conflicten. AI Rename kan ook dubbele downloads herkennen en naar de Prullenbak verplaatsen; kopieën kosten geen credits en Undo zet ze terug.
 
-![Het tabblad Monitor van Zush voor Windows bewaakt de mappen Screenshots en Downloads en hernoemt nieuwe bestanden zodra ze binnenkomen](/images/showcase/windows/monitor-light.webp)
+Het werkt meteen: de eerste 50 AI-hernoemingen draaien op de beheerde Zush Cloud AI, zonder account, kaart, API-sleutel of modeldownload. Voor bestanden die op de pc moeten blijven, schakel je over naar Ollama of LM Studio, of gebruik je je eigen API-sleutel.
 
-Kies Zush als je regellijst blijft groeien en toch bestanden mist. Stap voor stap: [bestanden met AI in mappen sorteren op Windows](/blog/sort-files-into-folders-with-ai-windows) en [30 kant-en-klare maprregels](/blog/ai-folder-sorting-prompts).
+![Het Monitor-tabblad van Zush voor Windows bewaakt de mappen Screenshots en Downloads en hernoemt nieuwe bestanden zodra ze binnenkomen](/images/showcase/windows/monitor-light.webp)
+
+Kies Zush als je lijst met regels blijft groeien en toch bestanden mist. Stap voor stap: [bestanden met AI in mappen sorteren op Windows](/blog/sort-files-into-folders-with-ai-windows) en [30 kant-en-klare mapregels](/blog/ai-folder-sorting-prompts).
 
 <BlogCTA placement='inline' platform='windows' />
 
-Eén Zush-licentie dekt maximaal 3 apparaten op Mac en Windows.
+Prijs: $10 per maand of $48 eenmalig. Net als bij File Juggler bevat de eenmalige licentie alle toekomstige updates. Daar komen de beheerde Zush Cloud AI bij, plus BYOK, Ollama en LM Studio, onbeperkt hernoemen, maximaal 3 apparaten verdeeld over Windows en Mac, en 14 dagen geld-terug. In de Microsoft Store (VS) heeft Zush een 5,0 uit 8 beoordelingen, en de redactie van Softpedia geeft 4,5/5 (stand 17 november 2026).
 
-Je kunt [Templates exporteren](/docs/template-import-export) met Naming Blocks, Custom AI Blocks en maprregels en ze op een andere computer importeren. Kies daar opnieuw lokale bestemmingen, maprechten en AI-verbindingen; dit draagt de werkstroominstellingen over, niet je bestanden.
-
-Zush ondersteunt ook geneste maprregels, zoals groeperen op jaar en daarna op maand. Je kunt al hernoemde bestanden sorteren zonder hun namen opnieuw te wijzigen of nog een hernoemtegoed te gebruiken. Bekijk de bestemmingen voordat je toepast. Deze aparte actie verwerkt een bestaande batch; het wijzigen van een Monitor-Template herorganiseert die niet met terugwerkende kracht. [AI-mappensortering](/docs/folder-sorting) werkt op Mac en Windows.
+Zwakte ten opzichte van File Juggler: Zush heeft geen acties voor "opdracht uitvoeren", archieven uitpakken of Evernote, en vervangt dus geen regelketen die daarop leunt.
 
 ## 2. DropIt: de gratis regelengine
 
-DropIt is gratis en open source. Regels matchen bestanden op naam, grootte, datum, eigenschappen of reguliere expressies, en 21 acties dekken verplaatsen, kopiëren, hernoemen, comprimeren, uitpakken en meer. Je sleept bestanden naar een zwevend doelwit of laat het bewaakte mappen op een timer scannen.
+DropIt is gratis en open source. Regels matchen bestanden op naam, grootte, datum, eigenschappen of reguliere expressies, en 21 acties dekken verplaatsen, kopiëren, hernoemen, comprimeren, uitpakken en meer. Je sleept bestanden op een zwevend doel, of laat het bewaakte mappen op een timer scannen.
 
-De nieuwste release, 8.5.1, is van oktober 2018. Het werkt nog steeds, maar verwacht geen nieuwe functies en geen AI.
+Zwakte: de laatste release, 8.5.1, is van februari 2018. Het draait nog, maar verwacht geen nieuwe functies en geen AI.
 
 Kies DropIt als je alleen "pdf's hierheen, afbeeldingen daarheen" nodig hebt en betalen geen optie is.
 
 ## 3. Sortio: AI-plannen met regels eronder
 
-Sortio combineert beide benaderingen. Je kunt klassieke regels schrijven of de organisatie in gewoon Engels beschrijven, een plan bekijken en het dan bestanden laten hernoemen, mappen laten aanmaken en bestanden laten verplaatsen. Smart Folders blijven het plan toepassen op nieuwe bestanden. Het draait op Windows, macOS en Linux.
+Sortio combineert beide benaderingen. Je kunt klassieke regels schrijven of de indeling in gewone taal (Engels) beschrijven, een plan controleren en het dan laten hernoemen, mappen laten maken en bestanden laten verplaatsen. Smart Folders blijven het plan toepassen op nieuwe bestanden. Het draait op Windows, macOS en Linux.
 
-Het gratis plan bevat regelgebaseerde sortering met maximaal vijf regels, bewaakte mappen, ongedaan maken en een eenmalige AI-proefperiode. Pro kost $14,99 per maand of $99 per jaar met een maandelijks AI-tegoed; Ollama houdt de verwerking lokaal.
+Het gratis plan bevat sorteren op regels met maximaal vijf regels en drie Spaces, een voorbeeldweergave, sorteergeschiedenis, ongedaan maken en een eenmalige AI-proef. Bewaakte mappen en automatiseringen vragen Pro, voor $14.99 per maand of $99 per jaar met een maandelijks AI-tegoed. Met Ollama blijft de verwerking lokaal, en je logt in met een e-mailaccount.
 
-Kies Sortio als je regels in de stijl van File Juggler en AI in één app wilt, of Linux nodig hebt. Vergelijk het in detail: [Zush vs Sortio](/blog/zush-vs-sortio).
+Kies Sortio als je regels in File Juggler-stijl en AI in één app wilt, of Linux nodig hebt. Zwakte: het altijd-aan-deel is alleen voor Pro. Uitgebreide vergelijking: [Zush vs Sortio](/blog/zush-vs-sortio).
 
 ## 4. Wisfile: gratis AI-opruiming voor documenten
 
-Wisfile is gratis, draait lokaal op Mac en Windows en hernoemt documenten op basis van hun inhoud met sjablonen zoals `Author-Year-Title`. Het kan ook een batch in onderwerpmappen groeperen. In de FAQ staan Word en pdf als ondersteunde formaten.
+Wisfile is gratis, draait lokaal op Mac en Windows en hernoemt documenten op basis van hun inhoud met sjablonen als `Author-Year-Title`. Het kan een batch ook in themamappen groeperen. De FAQ noemt Word en pdf als ondersteunde formaten.
 
-Er is geen mapbewaking of planning: je sleept bestanden erin en voert het elke keer uit. In de FAQ staat ook dat er geen ingebouwde functie voor ongedaan maken is, dus test eerst op kopieën.
+Er is geen mapbewaking of planning: je sleept bestanden erin en start het elke keer zelf. Volgens de FAQ is er ook geen ingebouwde ongedaan-maakfunctie, dus test eerst op kopieën.
 
-Kies Wisfile voor een eenmalige opruiming van een papier- of documentarchief. Zie [Zush vs Wisfile](/blog/zush-vs-wisfile) voor een nadere blik.
+Kies Wisfile voor een eenmalige opruiming van een papier- of documentenarchief. Zie [Zush vs Wisfile](/blog/zush-vs-wisfile) voor een nadere vergelijking.
 
-## 5. PowerShell en Taakplanner: de doe-het-zelfroute
+## 5. PowerShell en Task Scheduler: zelf bouwen
 
-Windows kan basistaken van File Juggler uitvoeren zonder extra software. PowerShell verplaatst en hernoemt bestanden; Taakplanner voert het script uit bij het inloggen of om de paar minuten:
+Windows kan eenvoudige File Juggler-taken zonder extra software. PowerShell verplaatst en hernoemt bestanden; Task Scheduler (Taakplanner) start het script bij het inloggen of om de paar minuten:
 
 ```powershell
 Get-ChildItem "$env:USERPROFILE\Downloads" -Filter *.pdf |
   Move-Item -Destination "$env:USERPROFILE\Documents\PDFs"
 ```
 
-Het is gratis en zo flexibel als je scripts. Je bent ook zelf verantwoordelijk voor dubbele namen, vergrendelde bestanden, logboeken en ongedaan maken. Meer opties: [je map Downloads organiseren op Windows](/blog/organize-downloads-folder-windows).
+Het is gratis en zo flexibel als je scripts. Dubbele namen, vergrendelde bestanden, logging en ongedaan maken regel je dan ook zelf. Meer opties: [zo organiseer je de map Downloads op Windows](/blog/organize-downloads-folder-windows).
 
 <BlogProductIntro
   title="Regels kunnen geen screenshot lezen. Zush wel."
@@ -121,40 +120,52 @@ Het is gratis en zo flexibel als je scripts. Je bent ook zelf verantwoordelijk v
   links={[
     { href: '/windows', label: 'Zush voor Windows' },
     { href: '/ai-file-sorter', label: 'AI-bestandssorteerder' },
-    { href: '/docs/folder-monitoring', label: 'Documentatie mapbewaking' },
+    { href: '/docs/folder-monitoring', label: 'Documentatie over mapbewaking' },
   ]}
 />
 
 ## File Juggler houden of overstappen?
 
 - Je bestanden volgen vaste patronen (dezelfde bank, dezelfde opmaak, hetzelfde naamvoorvoegsel): **houd File Juggler**.
-- Screenshots, scans, telefoonfoto's en willekeurige downloads met betekenisloze namen: **Zush**.
+- Screenshots, scans, telefoonfoto's en willekeurige downloads met nietszeggende namen: **Zush**.
 - Gratis sorteren op extensie of naam: **DropIt** of **PowerShell**.
 - Regels en AI in één tool, of Linux: **Sortio**.
-- Een gratis eenmalige ronde over pdf- en Word-bestanden: **Wisfile**.
+- Een gratis eenmalige ronde over pdf's en Word-bestanden: **Wisfile**.
 
-Je kunt ook beide gebruiken. Zush bewaakt Downloads en schrijft voorspelbare namen zoals `2026-10-02_acme_invoice.pdf`, en File Juggler verplaatst `*_invoice.pdf` naar een vaste map Finance. Elke tool doet het deel waar hij goed in is. Test elke opzet eerst op kopieën; onze checklist over [hoe je bestanden veilig in batch hernoemt](/blog/how-to-safely-batch-rename-files) beschrijft waarop je moet letten.
+Je kunt ook beide gebruiken. Zush bewaakt Downloads en schrijft voorspelbare namen als `2026-10-02_acme_invoice.pdf`, en File Juggler verplaatst `*_invoice.pdf` naar een vaste map Financiën. Elke tool doet waar hij goed in is. Test elke opzet eerst op kopieën; onze checklist over [veilig bestanden in batch hernoemen](/blog/how-to-safely-batch-rename-files) zegt waar je op moet letten.
 
-Voor een bredere vergelijking van AI-tools, zie de [beste AI-bestandsorganizers voor Windows 11](/blog/best-ai-file-organizers-windows).
+Voor een bredere vergelijking van AI-tools, zie de [beste AI-bestandsorganizers voor Windows 11](/blog/best-ai-file-organizers-windows). Kom je van een Mac? Lees dan [Hazel-alternatieven voor Windows](/blog/hazel-for-windows-alternatives).
+
+## Bronnen en hoe we het controleerden
+
+<BlogSources ids={['file-juggler', 'dropit', 'sortio', 'wisfile']} />
 
 ## Veelgestelde vragen
 
 ### Is er een gratis alternatief voor File Juggler?
 
-Ja. DropIt is gratis en open source, maar is sinds 2018 niet bijgewerkt. Het gratis plan van Sortio bevat maximaal vijf regels. PowerShell met Taakplanner is gratis als je kunt scripten. Zush bevat 50 gratis AI-hernoemingen als je probleem onduidelijke bestandsnamen zijn.
+Ja. DropIt is gratis en open source, maar de laatste release is van februari 2018. Het gratis plan van Sortio bevat maximaal vijf regels, al vragen bewaakte mappen om Pro. PowerShell met Task Scheduler is gratis als je kunt scripten. Wisfile is gratis voor pdf- en Word-bestanden. Zush geeft 50 gratis AI-hernoemingen zonder account of kaart, als je probleem onduidelijke bestandsnamen zijn.
 
 ### Wordt File Juggler nog onderhouden?
 
-Ja. Volgens de release notes verscheen versie 3.1.7 in september 2026 en een 3.1.8-bèta in oktober 2026.
+Ja. Versie 3.1.9 verscheen op 30 oktober 2026, volgens de nieuwspagina van File Juggler zelf, en de licentie bevat alle toekomstige upgrades. Daarmee is het een van de weinige regelgebaseerde organizers voor Windows die nog regelmatig updates krijgen. DropIt, het belangrijkste gratis alternatief, heeft sinds februari 2018 geen release meer gehad.
 
 ### Gebruikt File Juggler AI?
 
-Nee. Het matcht voorwaarden die je zelf schrijft, inclusief woorden in pdf- en Office-bestanden. Het kan scans die alleen uit beeld bestaan niet lezen zonder aparte OCR.
+Nee. Het matcht voorwaarden die jij schrijft, ook op woorden in pdf-, Word- en Excel-bestanden, en kan datums die het in de tekst vindt hergebruiken. Scans die alleen uit een afbeelding bestaan kan het niet lezen zonder apart OCR-programma, en het weet niet wat er op een foto of screenshot staat. Voor die bestanden heb je een AI-tool nodig, zoals Zush, Sortio of Wisfile.
 
-### Is er een File Juggler voor Mac?
+### Is File Juggler voor $50 het waard naast Zush voor $48?
 
-Nee, File Juggler is alleen voor Windows. Hazel is het dichtstbijzijnde Mac-equivalent voor regels, en Zush voor Mac biedt AI-naamgeving en mappensortering. Zie onze pagina [Hazel-alternatief](/hazel-alternative).
+Je koopt er iets anders mee. Voor $50 plus btw krijg je bij File Juggler een regelengine met alle toekomstige upgrades, maar zonder AI. De eenmalige licentie van $48 voor Zush bevat AI-namen en sorteren in mappen met de beheerde Zush Cloud AI, lokale en BYOK-modi, onbeperkt hernoemen, alle toekomstige updates en maximaal 3 apparaten verdeeld over Windows en Mac. Veel mensen gebruiken ze allebei.
+
+### Sturen Zush of File Juggler mijn bestanden ergens heen?
+
+File Juggler voert zijn regels lokaal uit. Bij Zush hangt het af van de modus die je kiest: met Ollama of LM Studio blijft de analyse op je pc; met Zush Cloud AI of je eigen API-sleutel gaat de bestandsinhoud naar dat cloudmodel om een naam te maken. Kies een lokale modus voor vertrouwelijke mappen, en controleer ook de instelling van Sortio, dat gehoste AI, BYOK of Ollama aanbiedt.
+
+### Bestaat File Juggler voor Mac?
+
+Nee, File Juggler is alleen voor Windows. Hazel is het dichtstbijzijnde Mac-equivalent voor regels, en de redactie van Softpedia geeft het 5,0/5. Zush voor Mac regelt AI-namen en sorteren in mappen, ook met bewaakte mappen op externe schijven. Zie onze pagina over een [Hazel-alternatief](/hazel-alternative) voor hoe de twee benaderingen zich op een Mac verhouden.
 
 ### Kan Zush File Juggler volledig vervangen?
 
-Voor het benoemen van bestanden op inhoud en het sorteren in mappen, ja, inclusief bewaakte mappen. File Juggler heeft nog acties die Zush niet biedt, zoals een opdracht uitvoeren, archieven uitpakken of uploaden naar Evernote. Als je daarop vertrouwt, houd het dan naast Zush.
+Voor bestanden een naam geven op basis van inhoud en ze in mappen sorteren: ja, ook met bewaakte mappen. File Juggler heeft wel acties die Zush niet biedt, zoals een opdracht uitvoeren, archieven uitpakken of uploaden naar Evernote. Leun je daarop, houd File Juggler dan voor dat deel en laat Zush de beschrijvende namen schrijven waar de regels op kunnen matchen.

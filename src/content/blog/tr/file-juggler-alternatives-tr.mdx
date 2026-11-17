@@ -1,6 +1,6 @@
 ---
 title: "File Juggler Alternatifleri: 5 Windows Dosya Düzenleyici (2026)"
-description: "File Juggler, Windows dosyalarını kurallarla otomatikleştirir. Aralarında ücretsiz olanların da bulunduğu beş alternatifi karşılaştırın: yapay zekâyla adlandırma ve sıralama için Zush, DropIt, Sortio, Wisfile ve PowerShell."
+description: "File Juggler, Windows dosyalarını kuralla düzenler. Ücretsizler dahil 5 seçenek: yapay zekâyla adlandırma için Zush, DropIt, Sortio, Wisfile, PowerShell."
 date: "2026-10-16"
 slug: "file-juggler-alternatives-tr"
 locale: "tr"
@@ -11,150 +11,161 @@ tags:
   - "Dosya Düzenleme"
   - "Araç Karşılaştırmaları"
   - "Otomasyon"
-tldr: "File Juggler, ücretli ve aktif olarak geliştirilen bir Windows kural motorudur: vergi öncesi tek seferlik $50, 30 günlük tam deneme sürümüyle. Dosyalarınız tarif edebileceğiniz kalıpları izliyorsa onu kullanmaya devam edin. Ekran görüntüleri, taramalar ve fotoğraflar gibi eşleştirilecek bir kalıbı olmayan dosyalar için Zush'a geçin; çünkü Zush her dosyayı okur, ona bir ad verir ve klasörlere sıralayabilir. DropIt ve PowerShell kural tabanlı ücretsiz seçeneklerdir, Wisfile ise PDF ve Word belgeleri için ücretsizdir. Tek bir Zush lisansı en fazla 3 cihazı kapsar."
+tldr: "File Juggler, ücretli ve aktif olarak geliştirilen bir Windows kural motorudur (sürüm 3.1.9, Ekim 2026): vergi öncesi tek seferlik $50, 30 günlük tam deneme sürümüyle. Dosyalarınız tarif edebileceğiniz kalıpları izliyorsa onda kalın. Ekran görüntüleri, taramalar ve fotoğraflar gibi eşleşecek kalıbı olmayan dosyalarda Zush'a geçin: Zush her dosyayı okur, adlandırır ve klasörlere ayırabilir. DropIt ve PowerShell kural tabanlı ücretsiz seçeneklerdir; Wisfile ise PDF ve Word belgeleri için ücretsizdir. Tek bir Zush lisansı en fazla 3 cihazı kapsar."
 earlyTaskExample: false
-reviewed: "2026-10-18"
+reviewed: "2026-11-17"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-Kısa cevap: Kurallarınız, dosyaların bir kalıbı olmadığı için onları sürekli kaçırıyorsa en iyi File Juggler alternatifi [Windows için Zush](/windows)'tur. Her dosyayı okur, açıklayıcı bir ad yazar ve tek bir sade dille yazılmış talimattan yola çıkarak grubu klasörlere sıralayabilir. Bunun yerine başka bir kural motoru istiyorsanız DropIt ücretsizdir, Sortio ise kuralların üzerine yapay zekâ ekler. File Juggler'ın kendisi hâlâ iyi bir araçtır: güncel tutuluyor, uygun fiyatlı ve öngörülebilir.
+Kısa cevap: Kurallarınız, dosyaların bir kalıbı olmadığı için onları sürekli kaçırıyorsa en iyi File Juggler alternatifi [Windows için Zush](/windows) olur. Her dosyayı okur, açıklayıcı bir ad yazar ve sade dille yazılmış tek bir talimatla grubu klasörlere ayırabilir. Bunun yerine başka bir kural motoru istiyorsanız DropIt ücretsizdir, Sortio ise kuralların üstüne yapay zekâ ekler. Dosyalarınız sabit kalıpları izliyorsa File Juggler'da kalın: güncel tutuluyor, tek seferlik ücretli ve öngörülebilir.
 
-**Son kontrol: 16 Ekim 2026.** [Zush – Mac ve Windows için yapay zekâ dosya adlandırıcı](/)'un geliştiricisi tarafından yazılmıştır. File Juggler ayrıntıları sitesinden, SSS sayfasından ve sürüm notlarından alınmıştır; diğer araçların bilgileri ise her bölümde bağlantısı verilen resmî sayfalarından alınmıştır.
+**Nasıl kontrol ettik:** Bu yazı [Zush](/) geliştiricisi tarafından yazıldı. Rakiplerin fiyatları, özellikleri ve puanları 17 Kasım 2026'da üretici sitelerinde ve resmî mağazalarda kontrol edildi ([kaynaklar aşağıda](#sources-and-how-we-checked)). Bu yazı belgelenmiş özellikleri karşılaştırır; bir laboratuvar testi değildir.
 
-**Zush özellikleri 18 Ekim 2026 tarihinde gözden geçirildi.** Rakip bilgileri, bu makalede belirtilen kontrol tarihlerini korumaktadır.
+## Bir bakışta File Juggler alternatifleri
+
+| Araç | En uygun olduğu iş | Dosya içeriğini okur | Klasör izler | Geri alma | Fiyat |
+|---|---|---|---|---|---|
+| **Zush** | <BlogHighlight>Kalıbı olmayan dosyalar: yapay zekâyla adlandırma ve klasörlere ayırma</BlogHighlight> | Evet, yapay zekâyla: taramalar, fotoğraflar, ekran görüntüleri, Office, PDF, video, ses | Evet (Monitor) | Kalıcı Rename History, toplu geri alma | Hesap ve kart olmadan 50 ücretsiz yeniden adlandırma; bulut yapay zekâsı dahil aylık $10 veya tek seferlik $48 |
+| DropIt | Ada, boyuta, tarihe göre ücretsiz kurallar | Temel filtreler | Evet, zamanlı taramalarla | Hayır | Ücretsiz, açık kaynak |
+| Sortio | Yapay zekâ klasör planları ve klasik kurallar | Evet, yapay zekâyla | Yalnızca Pro (Smart Folders) | Sıralama geçmişi ve geri alma | Ücretsiz sürüm; Pro aylık $14.99 veya yıllık $99 |
+| Wisfile | PDF ve Word dosyalarını bir kerelik ücretsiz toparlama | PDF ve Word, yerel yapay zekâ | Hayır | Hayır | Ücretsiz |
+| PowerShell + Görev Zamanlayıcı | Betiğini yazabildiğiniz her şey | Ne kodlarsanız | Zamanlamaya göre | Ancak siz kurarsanız | Ücretsiz |
+| File Juggler | Yeniden adlandıran ve taşıyan kesin kurallar | PDF, Word, Excel metni; OCR yok | Evet, anında | Üretici belirtmiyor | Tek seferlik $50 + vergi |
 
 ## File Juggler neleri iyi yapıyor
 
-File Juggler, Danimarka'daki bağımsız bir geliştirici tarafından yazılmış bir Windows otomasyon aracıdır. Kuralları üç parçadan oluşturursunuz:
+File Juggler, Danimarka'daki bağımsız bir geliştiricinin yazdığı bir Windows otomasyon aracıdır. Kuralları üç parçadan kurarsınız:
 
-1. **İzlenen klasörler**: İndirilenler, Masaüstü veya bir tarayıcı klasörü gibi.
-2. **Koşullar**: dosya adı ve yolu, dosyanın içindeki metin, boyut ve oluşturulma veya değiştirilme tarihi.
-3. **Eylemler**: taşıma, kopyalama, yeniden adlandırma, uzantı değiştirme, silme veya Geri Dönüşüm Kutusu'na gönderme, arşivleri çıkarma, zip'e ekleme, komut çalıştırma veya Evernote'a yükleme.
+1. **İzlenen klasörler**: İndirilenler, Masaüstü ya da bir tarayıcı klasörü gibi.
+2. **Koşullar**: dosya adı ve yolu, dosyanın içindeki metin, boyut, oluşturulma veya değiştirilme tarihi.
+3. **Eylemler**: taşıma, kopyalama, yeniden adlandırma, uzantı değiştirme, silme veya Geri Dönüşüm Kutusu'na gönderme, arşiv açma, zip'e ekleme, komut çalıştırma ya da Evernote'a yükleme.
 
-Zamanlayıcıyla tarama yapmak yerine klasör değişiklik bildirimlerine abone olduğu için neredeyse anında tepki verir. PDF, Word ve Excel dosyalarındaki metni okuyabilir ve bulduğu sözcükleri ve tarihleri yeni bir dosya adında yeniden kullanabilir. 3.1.7 sürümü Eylül 2026'da yayımlandı ve Ekim'de bir 3.1.8 beta sürümü geldi; yani terk edilmiş değil.
+Zamanlayıcıyla tarama yapmak yerine klasör değişikliği bildirimlerine abone olduğu için neredeyse anında tepki verir. PDF, Word ve Excel dosyalarındaki metni okuyabilir, bulduğu kelimeleri ve tarihleri yeni dosya adında kullanabilir. Sürüm 3.1.9, 30 Ekim 2026'da yayımlandı; yani terk edilmiş bir proje değil. Softpedia editörleri ona 4,5/5 veriyor; Zush'a verdikleri puanla aynı.
 
-Fiyatlandırma basit: ödeme sırasında vergi öncesi tek seferlik $50, gelecekteki tüm yükseltmeleri kapsar. Tek bir lisans, birden fazla bilgisayarda çalışan tek bir kişiyi ya da birden fazla kişinin paylaştığı tek bir bilgisayarı kapsar. 30 günlük deneme sürümünde tüm özellikler vardır; süre dolduktan sonra uygulama satın almanızı hatırlatır ama çalışmaya devam eder.
+Fiyatlandırma basit: ödeme sırasında vergi öncesi tek seferlik $50 ve gelecekteki tüm yükseltmeler dahil. Bir lisans, birkaç bilgisayardaki tek bir kişiyi ya da birkaç kişinin paylaştığı tek bir bilgisayarı kapsar. 30 günlük deneme sürümünde tüm özellikler açıktır; süre bittiğinde uygulama satın almanızı hatırlatır ama çalışmaya devam eder.
 
 ## İnsanlar neden alternatif arıyor
 
-- **Yapay zekâ yok.** Her kural elle yazılmalıdır. Bir kural `Screenshot 2026-10-02 141203.png` ya da `IMG_4382.jpg` dosyalarını yakalayamaz, çünkü ad veya metinde dosyanın ne olduğunu söyleyen hiçbir şey yoktur.
-- **OCR yok.** File Juggler'ın SSS sayfası, yalnızca görüntüden oluşan taramaların aranabilir metni olmadığını söylüyor; bu yüzden içerik kurallarının onlarla eşleşebilmesi için ayrı bir OCR programına ihtiyaç duyarsınız.
-- **Yalnızca Windows.** Mac sürümü yok. Mac'te eşdeğeri [Hazel](/hazel-alternative)'dir.
-- **Hizmet değil.** Bir kullanıcı oturum açıkken çalışır, bu nedenle sunucular için uygun değildir.
-- **Fiyat**, yalnızca dosya türüne göre basit bir sıralamaya ihtiyacınız varsa. Bunu yapan birkaç ücretsiz araç var.
-
-## File Juggler alternatiflerine genel bakış
-
-| Araç | En uygun olduğu durum | Dosya içeriğini okur | Klasörleri izler | Geri alma | Fiyat |
-|---|---|---|---|---|---|
-| **Zush** | <BlogHighlight>Kalıbı olmayan dosyalar: yapay zekâyla adlandırma ve klasörlere sıralama</BlogHighlight> | Evet, yapay zekâyla: taramalar, fotoğraflar, ekran görüntüleri, Office, PDF'ler, video, ses | Evet (Monitor) | Rename History | 50 ücretsiz yeniden adlandırma; $10/ay veya $48 tek seferlik |
-| DropIt | Ada, boyuta, tarihe göre ücretsiz kurallar | Temel filtreler | Evet, zamanlanmış taramalar | Hayır | Ücretsiz, açık kaynak |
-| Sortio | Yapay zekâ klasör planları ve klasik kurallar | Evet, yapay zekâyla | Evet (Smart Folders) | Evet | Ücretsiz katman; Pro $14,99/ay veya $99/yıl |
-| Wisfile | PDF ve Word dosyalarının ücretsiz, tek seferlik temizliği | PDF ve Word, yerel yapay zekâ | Hayır | Hayır | Ücretsiz |
-| PowerShell + Görev Zamanlayıcı | Komut dosyasıyla yazabildiğiniz her şey | Kodladığınız her şey | Bir zamanlamayla | Yalnızca siz geliştirirseniz | Ücretsiz |
-| File Juggler | Yeniden adlandıran ve taşıyan kesin kurallar | PDF, Word, Excel metni; OCR yok | Evet, anında | Belgelenmemiş | Tek seferlik $50 + vergi |
+- **Yapay zekâ yok.** Her kuralı elle yazmanız gerekir. Bir kural `Screenshot 2026-10-02 141203.png` ya da `IMG_4382.jpg` dosyasını yakalayamaz, çünkü ne adda ne de metinde dosyanın ne olduğunu söyleyen bir şey vardır.
+- **OCR yok.** File Juggler'ın SSS sayfasına göre yalnızca görüntüden oluşan taramalarda aranabilir metin bulunmaz; içerik kurallarının bunları eşleştirebilmesi için ayrı bir OCR programı gerekir.
+- **Yalnızca Windows.** Mac sürümü yoktur. Mac'teki karşılığı [Hazel](/hazel-alternative)'dir.
+- **Hizmet olarak çalışmaz.** Yalnızca bir kullanıcı oturum açmışken çalışır, bu yüzden sunucular için pek uygun değildir.
+- **Fiyat**, eğer yalnızca dosya türüne göre basit bir ayırma istiyorsanız. Bunu yapan birkaç ücretsiz araç var.
 
 ## 1. Zush: kuralların tarif edemediği dosyalar için
 
-[Windows için Zush](/windows), [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X) üzerinden Windows 10 ve 11'de çalışır. Koşulları eşleştirmek yerine dosyayı okur: bir PDF'nin veya taramanın metnini, bir fotoğrafın veya ekran görüntüsünün içeriğini, bir videonun karelerini. Ardından `2026-09-12_acme_invoice_1042.pdf` ya da `stripe-revenue-dashboard-september.png` gibi bir ad önerir.
+[Windows için Zush](/windows), [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X) üzerinden Windows 10 ve 11'de çalışır. Koşul eşleştirmek yerine dosyayı okur: PDF'teki ya da taramadaki metni, bir fotoğrafın veya ekran görüntüsünün içeriğini, bir videonun karelerini, konuşmasını ve altyazılarını (MKV dahil). Ardından `2026-09-12_acme_invoice_1042.pdf` ya da `stripe-revenue-dashboard-september.png` gibi bir ad önerir.
 
-![Windows için Zush, karışık bir grubu içeriğe göre yeniden adlandırıyor; grup uygulanmadan önce önerilen her dosya adı gösteriliyor](/videos/windows/zush-batch-rename.mp4)
+![Windows için Zush, karışık bir dosya grubunu içeriğe göre yeniden adlandırıyor; grup uygulanmadan önce önerilen her dosya adı gösteriliyor](/videos/windows/zush-batch-rename.mp4)
 
-File Juggler her hedef için bir kural gerektirirken, Zush **Folder rules** bölümünde "Faturaları şirkete göre, makbuzları aya göre grupla" gibi tek bir cümle alır ya da Auto modunda dosyaları içeriğe göre gruplar. Herhangi bir şey taşınmadan önce önerilen adları ve klasörleri birlikte gözden geçirirsiniz. Değişiklikleri uygulamadan önce belirsiz dosyaları kontrol edin.
+File Juggler'ın her hedef için bir kurala ihtiyaç duyduğu yerde Zush, **Folder rules** alanına yazılan tek bir cümleyle yetinir: "Faturaları şirkete, makbuzları aya göre grupla" gibi. Ya da Auto ayarında dosyaları içeriğe göre gruplar. Hiçbir şey taşınmadan önce önerilen adları ve klasörleri birlikte gözden geçirirsiniz. Belirsiz dosyaları uygulamadan önce kontrol edin.
 
-![Windows için Zush, Rename & sort işleminden önce içeriğe dayalı klasör gruplarını ve önerilen dosya adlarını önizliyor](/images/showcase/windows/folder-sorting-light.webp)
+![Windows için Zush, Rename & sort öncesinde içeriğe dayalı klasör gruplarını ve önerilen dosya adlarını önizliyor](/images/showcase/windows/folder-sorting-light.webp)
 
-File Juggler'ın her zaman açık çalışan kısmı için kurulumu bir Template içine kaydedip **Monitor**'a atayın. İndirilenler veya bir tarayıcı klasörüne gelen yeni dosyalar, geldikleri anda yeniden adlandırılır ve sıralanır. Rename History eski ve yeni adları saklar; böylece kötü giden bir grup geri alınabilir. Yapay zekâ; Zush Cloud AI üzerinden, kendi API anahtarınızla ya da dosyaların bilgisayarda kalması gerektiğinde Ollama veya LM Studio ile yerel olarak çalışır.
+File Juggler'ın sürekli açık kısmı için kurulumu bir Template olarak kaydedip **Monitor**'e atayın. Böylece İndirilenler'e ya da bir tarayıcı klasörüne gelen yeni dosyalar geldikleri anda yeniden adlandırılır ve ayrılır. Rename History eski ve yeni adları yeniden başlatmadan sonra da saklar; Undo All tüm bir grubu geri alır ve çakışmaları listeler. AI Rename yinelenen indirmeleri de yakalayıp Geri Dönüşüm Kutusu'na taşıyabilir; kopyalar kredi harcamaz ve Undo onları geri getirir.
 
-![Windows için Zush Monitor sekmesi, Screenshots ve Downloads klasörlerini izliyor ve yeni dosyaları geldikçe yeniden adlandırıyor](/images/showcase/windows/monitor-light.webp)
+Hemen çalışır: ilk 50 yapay zekâ yeniden adlandırması, hesap, kart, API anahtarı ya da model indirme gerektirmeden yönetilen Zush Cloud AI üzerinde çalışır. Bilgisayarda kalması gereken dosyalar için Ollama ya da LM Studio'ya geçin veya kendi API anahtarınızı kullanın.
 
-Kural listeniz büyümeye devam ediyor ve hâlâ dosyaları kaçırıyorsa Zush'u seçin. Adım adım anlatım: [Windows'ta yapay zekâyla dosyaları klasörlere sıralama](/blog/sort-files-into-folders-with-ai-windows) ve [30 hazır klasör kuralı](/blog/ai-folder-sorting-prompts).
+![Windows için Zush'un Monitor sekmesi Ekran Görüntüleri ve İndirilenler klasörlerini izliyor ve gelen yeni dosyaları yeniden adlandırıyor](/images/showcase/windows/monitor-light.webp)
+
+Kural listeniz büyüdükçe büyüyor ama yine de dosya kaçırıyorsa Zush'u seçin. Adım adım rehberler: [Windows'ta dosyaları yapay zekâyla klasörlere ayırma](/blog/sort-files-into-folders-with-ai-windows) ve [hazır 30 klasör kuralı](/blog/ai-folder-sorting-prompts).
 
 <BlogCTA placement='inline' platform='windows' />
 
-Tek bir Zush lisansı Mac ve Windows'ta en fazla 3 cihazı kapsar.
+Fiyat: aylık $10 veya tek seferlik $48. File Juggler'da olduğu gibi tek seferlik lisans gelecekteki tüm güncellemeleri içerir; buna ek olarak yönetilen Zush Cloud AI ile BYOK, Ollama ve LM Studio, sınırsız yeniden adlandırma, Windows ve Mac arasında en fazla 3 cihaz ve 14 günlük iade hakkı sunar. Microsoft Store'da (ABD) Zush 8 değerlendirmeden 5,0 puan alıyor; Softpedia editörleri ise 4,5/5 veriyor (17 Kasım 2026 itibarıyla).
 
-Naming Blocks, Custom AI Blocks ve klasör kurallarını içeren [Template'leri dışa aktarabilir](/docs/template-import-export), ardından başka bir bilgisayara aktarabilirsiniz. Orada yerel hedefleri, klasör izinlerini ve yapay zekâ bağlantılarını yeniden seçin; bu işlem dosyalarınızı değil, iş akışı ayarlarını aktarır.
-
-Zush ayrıca iç içe klasör kurallarını destekler; örneğin önce yıla, sonra aya göre gruplama gibi. Zaten yeniden adlandırılmış dosyaları, adlarını yeniden değiştirmeden ve bir yeniden adlandırma kredisi daha harcamadan sıralayabilirsiniz. Uygulamadan önce hedefleri gözden geçirin. Bu ayrı eylem mevcut bir grubu işler; bir Monitor Template'ini değiştirmek onu geriye dönük olarak yeniden düzenlemez. [Yapay zekâyla klasör sıralama](/docs/folder-sorting) Mac ve Windows'ta çalışır.
+File Juggler'a kıyasla zayıf yanı: Zush'ta "komut çalıştır", arşiv açma ya da Evernote eylemleri yoktur; bu yüzden bunlara dayanan bir kural zincirinin yerini tutmaz.
 
 ## 2. DropIt: ücretsiz kural motoru
 
-DropIt ücretsiz ve açık kaynaklıdır. Kurallar dosyaları ada, boyuta, tarihe, özelliklere veya düzenli ifadelere göre eşleştirir; 21 eylem ise taşıma, kopyalama, yeniden adlandırma, sıkıştırma, çıkarma ve daha fazlasını kapsar. Dosyaları yüzen bir hedefe sürükleyebilir ya da izlenen klasörleri bir zamanlayıcıyla taratabilirsiniz.
+DropIt ücretsiz ve açık kaynaktır. Kurallar dosyaları ada, boyuta, tarihe, özelliklere ya da düzenli ifadelere göre eşleştirir; 21 eylem taşıma, kopyalama, yeniden adlandırma, sıkıştırma, arşiv açma ve daha fazlasını kapsar. Dosyaları yüzen bir hedefe sürüklersiniz ya da izlenen klasörleri zamanlayıcıyla taramasına izin verirsiniz.
 
-Son sürüm olan 8.5.1, Ekim 2018 tarihlidir. Hâlâ çalışıyor, ancak yeni özellik ya da yapay zekâ beklemeyin.
+Zayıf yanı: son sürüm 8.5.1, Şubat 2018 tarihli. Hâlâ çalışıyor ama yeni özellik ya da yapay zekâ beklemeyin.
 
-Yalnızca "PDF'ler buraya, görseller şuraya" gibi bir düzene ihtiyacınız varsa ve para ödemek bir seçenek değilse DropIt'i seçin.
+Yalnızca "PDF'ler buraya, görseller şuraya" türü bir düzene ihtiyacınız varsa ve ödeme yapmak istemiyorsanız DropIt'i seçin.
 
 ## 3. Sortio: altında kurallar olan yapay zekâ planları
 
-Sortio her iki yaklaşımı birleştirir. Klasik kurallar yazabilir ya da düzeni sade İngilizceyle tarif edebilir, bir planı gözden geçirebilir, ardından dosyaları yeniden adlandırmasına, klasör oluşturmasına ve taşımasına izin verebilirsiniz. Smart Folders, planı yeni gelen dosyalara da uygulamaya devam eder. Windows, macOS ve Linux'ta çalışır.
+Sortio iki yaklaşımı birleştirir. Klasik kurallar yazabilir ya da düzeni sade bir dille tarif edip bir planı gözden geçirebilir, ardından yeniden adlandırma, klasör oluşturma ve dosya taşıma işini ona bırakabilirsiniz. Smart Folders planı yeni gelen dosyalara uygulamaya devam eder. Windows, macOS ve Linux'ta çalışır.
 
-Ücretsiz plan, en fazla beş kurallı kural tabanlı sıralamayı, izleme klasörlerini, geri almayı ve tek seferlik bir yapay zekâ denemesini içerir. Pro, aylık yapay zekâ kotasıyla aylık $14,99 veya yıllık $99'dır; Ollama işlemeyi yerel tutar.
+Ücretsiz plan en fazla beş kural ve üç Space ile kural tabanlı ayırma, önizleme, ayırma geçmişi, geri alma ve bir kerelik yapay zekâ denemesi içerir. İzlenen klasörler ve otomasyonlar için aylık yapay zekâ kotası olan Pro gerekir: aylık $14.99 veya yıllık $99. Ollama işlemeyi yerelde tutar; oturumu bir e-posta hesabıyla açarsınız.
 
-File Juggler tarzı kuralları ve yapay zekâyı tek uygulamada istiyorsanız ya da Linux'a ihtiyacınız varsa Sortio'yu seçin. Ayrıntılı karşılaştırma: [Zush ve Sortio](/blog/zush-vs-sortio).
+File Juggler tarzı kuralları ve yapay zekâyı tek uygulamada istiyorsanız ya da Linux'a ihtiyacınız varsa Sortio'yu seçin. Zayıf yanı: sürekli açık kısım yalnızca Pro'da. Ayrıntılı karşılaştırma: [Zush ve Sortio](/blog/zush-vs-sortio).
 
 ## 4. Wisfile: belgeler için ücretsiz yapay zekâ temizliği
 
-Wisfile ücretsizdir, Mac ve Windows'ta yerel olarak çalışır ve belgeleri içeriklerine göre `Author-Year-Title` gibi şablonlarla yeniden adlandırır. Ayrıca bir grubu konu klasörlerine ayırabilir. SSS sayfası desteklenen biçimler olarak Word ve PDF'yi sıralıyor.
+Wisfile ücretsizdir, Mac ve Windows'ta yerel olarak çalışır ve belgeleri içeriklerine göre `Author-Year-Title` gibi şablonlarla yeniden adlandırır. Bir grubu konu klasörlerine de ayırabilir. SSS sayfasında desteklenen biçimler olarak Word ve PDF listeleniyor.
 
-Klasör izleme ya da zamanlama yoktur: dosyaları sürükleyip her seferinde çalıştırırsınız. SSS sayfası ayrıca yerleşik bir geri alma olmadığını söylüyor; bu yüzden önce kopyalar üzerinde deneyin.
+Klasör izleme ya da zamanlama yok: dosyaları her seferinde sürükleyip çalıştırırsınız. SSS sayfası yerleşik bir geri alma olmadığını da söylüyor; bu yüzden önce kopyalar üzerinde deneyin.
 
-Bir kâğıt veya belge arşivinin tek seferlik temizliği için Wisfile'ı seçin. Daha yakından bir bakış için [Zush ve Wisfile](/blog/zush-vs-wisfile) yazısına bakın.
+Bir kâğıt ya da belge arşivini bir kerelik toparlamak için Wisfile'ı seçin. Daha yakından bakmak için [Zush ve Wisfile](/blog/zush-vs-wisfile) yazısına göz atın.
 
 ## 5. PowerShell ve Görev Zamanlayıcı: kendin yap yolu
 
-Windows, temel File Juggler işlerini ek yazılım olmadan yapabilir. PowerShell dosyaları taşır ve yeniden adlandırır; Görev Zamanlayıcı komut dosyasını oturum açılışında ya da birkaç dakikada bir çalıştırır:
+Windows, temel File Juggler işlerini ek yazılım olmadan da yapabilir. PowerShell dosyaları taşır ve yeniden adlandırır; Görev Zamanlayıcı da betiği oturum açılışında ya da birkaç dakikada bir çalıştırır:
 
 ```powershell
 Get-ChildItem "$env:USERPROFILE\Downloads" -Filter *.pdf |
   Move-Item -Destination "$env:USERPROFILE\Documents\PDFs"
 ```
 
-Ücretsizdir ve komut dosyası yazma becerinizin elverdiği kadar esnektir. Yinelenen adlar, kilitli dosyalar, günlük kaydı ve geri alma da size aittir. Daha fazla seçenek: [Windows'ta İndirilenler klasörünüzü düzenleme](/blog/organize-downloads-folder-windows).
+Ücretsizdir ve betik yazma becerinizin izin verdiği kadar esnektir. Yinelenen adlar, kilitli dosyalar, günlük kaydı ve geri alma da sizin sorumluluğunuzdadır. Daha fazla seçenek: [Windows'ta İndirilenler klasörünü düzenleme](/blog/organize-downloads-folder-windows).
 
 <BlogProductIntro
-  title="Kurallar bir ekran görüntüsünü okuyamaz. Zush okuyabilir."
-  description="Zush, Windows dosyalarını içlerinde ne olduğuna göre adlandırır, tek bir talimatla klasörlere sıralar ve izlenen bir klasördeki yeni dosyalar için de bunu sürdürür."
+  title="Kurallar bir ekran görüntüsünü okuyamaz. Zush okur."
+  description="Zush, Windows dosyalarını içlerindekine göre adlandırır, tek bir talimatla klasörlere ayırır ve izlenen bir klasöre gelen yeni dosyalar için bunu yapmaya devam eder."
   links={[
     { href: '/windows', label: 'Windows için Zush' },
-    { href: '/ai-file-sorter', label: 'Yapay zekâ dosya sıralayıcı' },
+    { href: '/ai-file-sorter', label: 'Yapay zekâ dosya ayırıcı' },
     { href: '/docs/folder-monitoring', label: 'Klasör izleme belgeleri' },
   ]}
 />
 
-## File Juggler'la devam mı, geçiş mi?
+## File Juggler'da kalmalı mı, geçmeli mi?
 
-- Dosyalarınız sabit kalıpları izliyorsa (aynı banka, aynı düzen, aynı ad öneki): **File Juggler'la devam edin**.
-- Ekran görüntüleri, taramalar, telefon fotoğrafları ve anlamsız adlı rastgele indirmeler: **Zush**.
-- Uzantıya veya ada göre ücretsiz sıralama: **DropIt** veya **PowerShell**.
-- Kurallar ve yapay zekâ tek araçta, ya da Linux: **Sortio**.
-- PDF ve Word dosyaları üzerinde ücretsiz, tek seferlik bir geçiş: **Wisfile**.
+- Dosyalarınız sabit kalıpları izliyor (aynı banka, aynı düzen, aynı ad öneki): **File Juggler'da kalın**.
+- Anlamsız adlı ekran görüntüleri, taramalar, telefon fotoğrafları ve rastgele indirmeler: **Zush**.
+- Uzantıya ya da ada göre ücretsiz ayırma: **DropIt** veya **PowerShell**.
+- Kurallar ve yapay zekâ tek araçta ya da Linux: **Sortio**.
+- PDF ve Word dosyaları üzerinden ücretsiz, bir kerelik geçiş: **Wisfile**.
 
-İkisini birlikte de çalıştırabilirsiniz. Zush İndirilenler klasörünü izler ve `2026-10-02_acme_invoice.pdf` gibi öngörülebilir adlar yazar; File Juggler ise `*_invoice.pdf` dosyalarını sabit bir Finance klasörüne taşır. Her araç iyi olduğu kısmı yapar. Herhangi bir kurulumu önce kopyalar üzerinde deneyin; [dosyaları toplu olarak güvenle yeniden adlandırma](/blog/how-to-safely-batch-rename-files) kontrol listemiz nelere bakmanız gerektiğini kapsar.
+İkisini birlikte de kullanabilirsiniz. Zush İndirilenler'i izler ve `2026-10-02_acme_invoice.pdf` gibi öngörülebilir adlar yazar; File Juggler da `*_invoice.pdf` dosyalarını sabit bir Finans klasörüne taşır. Her araç iyi olduğu işi yapar. Her kurulumu önce kopyalar üzerinde deneyin; [dosyaları güvenle toplu yeniden adlandırma](/blog/how-to-safely-batch-rename-files) kontrol listemiz nelere bakmanız gerektiğini anlatıyor.
 
-Yapay zekâ araçlarının daha geniş bir karşılaştırması için [Windows 11 için en iyi yapay zekâ dosya düzenleyicileri](/blog/best-ai-file-organizers-windows) yazısına bakın.
+Yapay zekâ araçlarının daha geniş bir karşılaştırması için [Windows 11 için en iyi yapay zekâ dosya düzenleyicileri](/blog/best-ai-file-organizers-windows) yazısına bakın. Mac'ten mi geliyorsunuz? [Windows için Hazel alternatifleri](/blog/hazel-for-windows-alternatives) yazısını okuyun.
 
-## SSS
+## Kaynaklar ve nasıl kontrol ettik
 
-### File Juggler'a ücretsiz bir alternatif var mı?
+<BlogSources ids={['file-juggler', 'dropit', 'sortio', 'wisfile']} />
 
-Evet. DropIt ücretsiz ve açık kaynaklıdır ancak 2018'den beri güncellenmedi. Sortio'nun ücretsiz planı en fazla beş kural içerir. Komut dosyası yazabiliyorsanız Görev Zamanlayıcı'lı PowerShell ücretsizdir. Sorununuz belirsiz dosya adlarıysa Zush 50 ücretsiz yapay zekâ yeniden adlandırması içerir.
+## Sıkça sorulan sorular
 
-### File Juggler hâlâ güncel tutuluyor mu?
+### File Juggler'ın ücretsiz bir alternatifi var mı?
 
-Evet. Sürüm notlarına göre 3.1.7 sürümü Eylül 2026'da, 3.1.8 beta sürümü ise Ekim 2026'da yayımlandı.
+Evet. DropIt ücretsiz ve açık kaynaktır, ancak son sürümü Şubat 2018 tarihlidir. Sortio'nun ücretsiz planı en fazla beş kural içerir, ama izlenen klasörler için Pro gerekir. Betik yazabiliyorsanız PowerShell ile Görev Zamanlayıcı ücretsizdir. Wisfile, PDF ve Word dosyaları için ücretsizdir. Sorununuz anlaşılmaz dosya adlarıysa Zush, hesap ya da kart gerektirmeden 50 ücretsiz yapay zekâ yeniden adlandırması sunar.
+
+### File Juggler hâlâ geliştiriliyor mu?
+
+Evet. File Juggler'ın kendi haber sayfasına göre sürüm 3.1.9, 30 Ekim 2026'da yayımlandı ve lisans gelecekteki tüm yükseltmeleri kapsıyor. Bu da onu düzenli güncelleme almaya devam eden az sayıdaki kural tabanlı Windows düzenleyicisinden biri yapıyor. Başlıca ücretsiz alternatif olan DropIt ise Şubat 2018'den beri yeni sürüm çıkarmadı.
 
 ### File Juggler yapay zekâ kullanıyor mu?
 
-Hayır. PDF ve Office dosyalarının içinde bulunan sözcükler dahil, sizin yazdığınız koşulları eşleştirir. Ayrı bir OCR olmadan yalnızca görüntüden oluşan taramaları okuyamaz.
+Hayır. PDF, Word ve Excel dosyalarının içinde bulunan kelimeler dahil, sizin yazdığınız koşulları eşleştirir ve metinde bulduğu tarihleri yeniden kullanabilir. Ayrı bir OCR programı olmadan yalnızca görüntüden oluşan taramaları okuyamaz, bir fotoğrafın ya da ekran görüntüsünün ne gösterdiğini de anlayamaz. Bu dosyalar için Zush, Sortio ya da Wisfile gibi bir yapay zekâ aracına ihtiyacınız var.
 
-### File Juggler'ın Mac sürümü var mı?
+### File Juggler $50'a, $48'lık Zush'a kıyasla değer mi?
 
-Hayır, File Juggler yalnızca Windows içindir. Kurallar için en yakın Mac eşdeğeri Hazel'dir; yapay zekâyla adlandırma ve klasör sıralamayı ise Mac için Zush kapsar. [Hazel alternatifi](/hazel-alternative) sayfamıza bakın.
+İkisi farklı şeyler satın alır. File Juggler'ın $50 artı vergisi, gelecekteki tüm yükseltmeleri içeren ama yapay zekâ barındırmayan bir kural motoru verir. Zush'un tek seferlik $48'lık lisansı ise yönetilen Zush Cloud AI ile yapay zekâ adlandırma ve klasörlere ayırma, yerel ve BYOK modları, sınırsız yeniden adlandırma, gelecekteki tüm güncellemeler ve Windows ile Mac arasında en fazla 3 cihaz içerir. Birçok kişi ikisini birlikte kullanıyor.
 
-### Zush, File Juggler'ın yerini tamamen alabilir mi?
+### Zush ya da File Juggler dosyalarımı bir yere gönderiyor mu?
 
-Dosyaları içeriğe göre adlandırmak ve klasörlere sıralamak için evet; izlenen klasörler de dahil. File Juggler'da hâlâ Zush'un sunmadığı eylemler var; örneğin komut çalıştırma, arşivleri çıkarma veya Evernote'a yükleme. Bunlara güveniyorsanız onu Zush'un yanında tutun.
+File Juggler kurallarını yerelde çalıştırır. Zush'ta durum seçtiğiniz moda bağlıdır: Ollama ya da LM Studio ile analiz bilgisayarınızda kalır; Zush Cloud AI ya da kendi API anahtarınızla dosya içeriği, ad üretmesi için ilgili bulut modeline gönderilir. Gizli klasörler için yerel bir mod seçin ve Sortio'nun ayarını da kontrol edin; o da barındırılan yapay zekâ, BYOK ya da Ollama sunuyor.
+
+### Mac için bir File Juggler var mı?
+
+Hayır, File Juggler yalnızca Windows'ta çalışır. Kurallar açısından Mac'teki en yakın karşılığı Hazel'dir; Softpedia editörleri ona 5,0/5 veriyor. Mac için Zush, harici disklerdeki izlenen klasörler dahil yapay zekâ adlandırmayı ve klasörlere ayırmayı kapsar. İki yaklaşımın Mac'te nasıl karşılaştırıldığını görmek için [Hazel alternatifi](/hazel-alternative) sayfamıza bakın.
+
+### Zush, File Juggler'ın yerini tamamen tutabilir mi?
+
+Dosyaları içeriğe göre adlandırma ve klasörlere ayırma konusunda, izlenen klasörler dahil, evet. File Juggler'da ise Zush'un sunmadığı eylemler hâlâ var: komut çalıştırma, arşiv açma ya da Evernote'a yükleme gibi. Bunlara güveniyorsanız o kısım için File Juggler'da kalın ve kurallarının eşleştirebileceği açıklayıcı adları Zush'a yazdırın.

@@ -1,6 +1,6 @@
 ---
-title: "Die besten Dateiumbenenner 2026: kostenlose Regeln und KI im Vergleich"
-description: "Dateiumbenenner für Mac und Windows: Zush für gemischte Dateien, Finder und PowerRename für einfache Regeln sowie Werkzeuge für Metadaten."
+title: "Die besten Dateiumbenenner 2026: kostenlose Mustertools vs. KI"
+description: "Die besten Dateiumbenenner für Mac und Windows: Finder, PowerRename, Bulk Rename Utility, Advanced Renamer und Zush für Namen aus dem Dateiinhalt."
 date: "2026-07-31"
 slug: "best-file-renamer-tools-de"
 platform: "general"
@@ -9,9 +9,9 @@ tags:
   - "Tool Comparisons"
   - "AI File Renaming"
   - "File Organization"
-tldr: "Zush ist unsere erste Wahl für gemischte Ordner: inhaltsbezogene Namen, Naming Blocks, Vorschau, Ordnerüberwachung und Rückgängig-Funktion. Finder, PowerRename und Metadatenprogramme passen zu eng begrenzten Aufgaben. Die KI-Ordnersortierung ist optional. Eine Zush-Lizenz gilt für bis zu 3 Geräte."
+tldr: "Wenn jede Datei dieselbe Änderung bekommt, reicht ein kostenloses Mustertool: Finder auf dem Mac, PowerRename unter Windows oder Bulk Rename Utility und Advanced Renamer für komplexere Regeln. Braucht jede Datei einen eigenen Namen aus ihrem Inhalt, nehmen Sie Zush: 50 kostenlose KI-Umbenennungen ohne Konto, danach $10/Monat oder $48 einmalig, mit Vorschau, Ordnerüberwachung und Rename History auf Mac und Windows."
 earlyTaskExample: false
-reviewed: "2026-10-26"
+reviewed: "2026-11-17"
 locale: "de"
 translationOf: "best-file-renamer-tools"
 ---
@@ -19,91 +19,118 @@ translationOf: "best-file-renamer-tools"
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-Für Mac und Windows empfehlen wir **<BlogHighlight>[Zush](/)</BlogHighlight>**, wenn jede Datei einen eigenen aussagekräftigen Namen braucht. Das Programm liest den Inhalt und verbindet Naming Blocks, Vorschau, Ordnerüberwachung und wiederherstellbare Änderungen. Kostenlose Musterwerkzeuge sind sinnvoll, wenn eine einzige feste Regel den gesamten Stapel beschreibt.
+Kurze Antwort: Wenn jede Datei die gleiche Art von Änderung bekommt (ein Präfix, ein Datum, eine Nummernfolge), nehmen Sie ein kostenloses Mustertool: den **Finder** auf dem Mac oder **PowerRename** unter Windows, für komplexere Regeln Bulk Rename Utility oder Advanced Renamer. Braucht jede Datei einen eigenen Namen aus ihrem Inhalt, nehmen Sie einen KI-Umbenenner. **Dort ist <BlogHighlight>[Zush](/)</BlogHighlight> unsere Empfehlung**: 50 kostenlose KI-Umbenennungen ohne Konto, Karte oder API-Schlüssel, danach $10/Monat oder $48 einmalig, auf Mac und Windows.
 
-<BlogCTA placement='inline' platform='general' />
-
-**Zush-Funktionen geprüft am 26. Oktober 2026.** Für Angaben zu anderen Produkten gelten weiterhin die im Artikel genannten Prüfzeitpunkte.
+**So haben wir geprüft:** Verfasst vom Entwickler von [Zush](/). Preise, Funktionen und Bewertungen der Mitbewerber haben wir am 17. November 2026 auf den Websites der Anbieter und in den offiziellen Stores geprüft ([Quellen unten](#sources-and-how-we-checked)). Verglichen werden dokumentierte Funktionen, es handelt sich nicht um einen Labortest.
 
 ## Die besten Dateiumbenenner im Überblick
 
-| Aufgabe | Empfehlung | Plattform | Liest Inhalte? | Preis |
-|---|---|---|---|---|
-| Gemischte Dateien, individuelle Namen und optionale Ordnersortierung | **Zush** | Mac, Windows | Ja | 50 kostenlose Umbenennungen; $10/Monat oder einmalig $48 |
-| Text ersetzen, Präfix oder Nummerierung | Finder | Mac | Nein | Kostenlos, vorinstalliert |
-| Suchen und Ersetzen mit regulären Ausdrücken | PowerRename | Windows | Nein | Kostenlos |
-| Umfangreiche Muster und kombinierte Regeln | Bulk Rename Utility | Windows | Nein | Kostenlos für private Nutzung |
-| EXIF, Datum, GPS und Metadaten | Advanced Renamer | Mac, Windows | Nein | Einmalige Lizenz |
-| Mac-typische Muster und Metadaten | A Better Finder Rename | Mac | Nein | Einmalige Lizenz |
+| Ihre Aufgabe | Empfehlung | System | Liest Inhalt? | Rückgängig | Preis |
+| --- | --- | --- | --- | --- | --- |
+| Ein eigener beschreibender Name für jede Datei | <BlogHighlight>**Zush**</BlogHighlight> | Mac + Windows | **Ja, per KI** | Dauerhafte Rename History, Rückgängig für Stapel | 50 kostenlose KI-Umbenennungen; $10/Monat oder $48 einmalig |
+| Einfaches Ersetzen, Präfix oder Nummerierung | Finder-Umbenennen | Mac | Nein | Bearbeiten > Widerrufen | Kostenlos, integriert |
+| Suchen und Ersetzen, Regex, Datumsangaben | PowerRename (PowerToys) | Windows | Nein (nur EXIF/XMP-Tokens) | Strg+Z | Kostenlos |
+| Schwere Muster- und Regex-Arbeit | Bulk Rename Utility | Windows | Nein | Erzeugt eine Batchdatei zum Rückgängigmachen | Privat kostenlos; JavaScript-Umbenennung braucht eine kostenpflichtige Lizenz; kommerziell $92.95 pro Computer |
+| Regeln mit EXIF, GPS und ID3; PDF-/TXT-Text per Skript | Advanced Renamer | Windows + Mac | Nur Text, per Skript; keine KI, keine OCR | Rückgängig für Stapel | Für gelegentliche private Nutzung kostenlos; $30 privat, $50 kommerziell |
+| Mac-eigene Muster und Metadaten | A Better Finder Rename | Mac | Nein | Vom Anbieter nicht angegeben | $29.95 |
 
-## 1. Integrierte und kostenlose Musterwerkzeuge
+Bewertungen, Stand 17. November 2026: Zush 5,0 aus 8 Bewertungen im Microsoft Store (USA) und 4,5/5 von der Softpedia-Redaktion; Advanced Renamer 4,2 aus 23 Bewertungen im Microsoft Store (USA) und 3,5/5 von Softpedia; Bulk Rename Utility 4,0/5 von Softpedia.
 
-### Finder auf dem Mac
+<BlogProductIntro
+  title="Dateien, bei denen jeder Name anders sein muss?"
+  description="Zush liest Screenshots, PDFs, Fotos, Scans und Videos und schlägt für jede Datei einen Namen vor. Erst Vorschau, später Rückgängig, auf Mac und Windows."
+  links={[
+    { href: '/batch-rename-files', label: 'Dateien stapelweise umbenennen' },
+    { href: '/rename-scanned-documents', label: 'Gescannte Dokumente umbenennen' },
+    { href: '/mac', label: 'KI-Dateiumbenenner für Mac' },
+    { href: '/windows', label: 'KI-Dateiumbenenner für Windows' },
+  ]}
+/>
 
-Dateien auswählen, rechtsklicken und Rename wählen: Text ersetzen, Text hinzufügen oder Namen mit laufender Nummer vergeben. Dafür ist keine Installation nötig. Finder bietet jedoch keine regulären Ausdrücke, Inhaltsanalyse, Metadatenregeln, Überwachung oder dauerhafte Änderungshistorie. Die [Anleitung zur Stapelumbenennung auf dem Mac](/blog/batch-rename-files-on-mac-complete-guide) behandelt auch Automator und Terminal.
+## Klasse 1: integrierte und kostenlose Muster-Umbenenner
 
-### PowerRename unter Windows
+### Finder-Umbenennen (Mac)
 
-PowerRename gehört zu Microsoft PowerToys. Im File Explorer lassen sich Dateien mit Suchen-und-Ersetzen, regulären Ausdrücken und Vorschau bearbeiten. Das genügt für eine klar definierte gemeinsame Regel, liest aber keine Dateiinhalte und überwacht keine gemischten Ordner. Mehr dazu auf der [PowerRename-Alternativseite](/windows).
+Dateien markieren, Rechtsklick, **Umbenennen** wählen: Text ersetzen, Text hinzufügen oder Name und Nummer vergeben. Keine Installation nötig. Es gibt kein Regex, keine Metadaten und kein Lesen von Inhalten. Die [Anleitung zum Stapel-Umbenennen auf dem Mac](/blog/batch-rename-files-on-mac-complete-guide) behandelt den Finder zusammen mit Automator und Terminal.
 
-### Bulk Rename Utility
+**Nehmen Sie ihn, wenn** eine Regel jede Datei korrigiert. **Schwäche:** überhaupt kein Regex und keine Metadaten.
 
-BRU kombiniert Präfixe, Nummerierung, Groß- und Kleinschreibung und reguläre Ausdrücke. Es eignet sich für rein mechanische Windows-Stapel. Eine Mac-Version oder Inhaltsanalyse gibt es nicht; die Oberfläche ist entsprechend dicht. Unsere [Besprechung von Bulk Rename Utility](/blog/bulk-rename-utility-alternatives) erläutert diese Grenze.
+### PowerRename (Windows)
 
-## 2. Umbenennen anhand von Metadaten
+Teil von Microsoft PowerToys. Per Rechtsklick auf eine Auswahl bekommen Sie Suchen und Ersetzen mit Regex, Zählern, Variablen für das Erstellungsdatum und EXIF/XMP-Tokens aus Fotos, mit Live-Vorschau. Strg+Z macht die Umbenennung rückgängig. Es hat keine KI und liest keine Dateiinhalte. Mehr auf der Seite [Zush für Windows](/windows), die beide vergleicht.
 
-**Advanced Renamer** und **A Better Finder Rename** ergänzen Muster um EXIF-Daten, GPS, ID3-Tags und Dateidaten. Nutzen Sie diese Programme, wenn der vollständige gewünschte Name bereits in solchen Feldern steht. Ein EXIF-Zeitstempel erklärt nicht, dass ein Foto einen Hund im Park zeigt; PDF-Metadaten enthalten nicht automatisch Lieferant und Rechnungsbetrag. Die [Advanced-Renamer-Besprechung](/blog/advanced-renamer-alternatives) zeigt, wo feste Regeln enden.
+**Nehmen Sie es, wenn** sich die Änderung als Muster beschreiben lässt. **Schwäche:** Es kann `scan_004.pdf` nicht nach dem benennen, was der Scan zeigt.
 
-## 3. KI, wenn jede Datei einen anderen Namen braucht
+### Bulk Rename Utility (Windows)
 
-Aus `Screenshot 2026-03-23.png`, `Scan0001.pdf`, `IMG_4382.HEIC` und `download (7).pdf` wird nicht allein durch ein Muster eine Beschreibung des tatsächlichen Inhalts. Die nötige Information steckt im Bild oder Text.
+BRU stapelt Regeln für Präfixe, Nummerierung, Schreibweise, Regex, EXIF- und ID3-Tags in einem dichten Fenster. Privat ist es kostenlos. JavaScript-Umbenennung braucht eine kostenpflichtige Lizenz ($24.95), die kommerzielle Nutzung kostet $92.95 pro Computer. Version 4.1.0.1 hat einen KI-Assistenten ergänzt, der JavaScript und Regex für Sie schreibt; Dateiinhalte liest es trotzdem nicht. Eine Mac-Version gibt es nicht. Siehe unsere [Alternativen zu Bulk Rename Utility](/blog/bulk-rename-utility-alternatives).
 
-[Zush](/) liest Screenshots, Fotos einschließlich RAW und HEIC, PDFs, [Scans per KI-Bilderkennung](/de/blog/gescannte-dokumente-automatisch-umbenennen), Office- und iWork-Dokumente, Designformate, Audio und Video. [Naming Blocks](/docs/naming-blocks) geben den Aufbau vor; vor dem Anwenden sehen Sie jeden Namen, danach bleibt eine Rückgängig-Historie. [Ordnerüberwachung](/docs/folder-monitoring) verarbeitet neu eintreffende Downloads oder Scans.
+**Nehmen Sie es, wenn** Sie komplexe mechanische Regeln über sehr große Ordner laufen lassen. **Schwäche:** Die Oberfläche ist dicht, und geschäftliche Nutzung wird pro Computer berechnet.
 
-Die ersten 50 Umbenennungen werden über alle vier Modi geteilt. PRO kostet $10 pro Monat oder einmalig $48 und begrenzt die Zahl der Umbenennungen nicht. Neben Zush Cloud AI und BYOK funktionieren LM Studio und Ollama auf Mac und Windows. Der [plattformübergreifende KI-Vergleich](/blog/best-ai-file-renamer-tools-2026) behandelt auch FilesDesk, RenameClick, Renamer.ai und NameQuick.
+## Klasse 2: Metadaten-Umbenenner
 
-Eine Zush-Lizenz gilt für bis zu 3 Geräte mit Mac oder Windows.
+**Advanced Renamer** und **A Better Finder Rename** bauen Namen aus EXIF-Datum, GPS-Koordinaten, ID3-Tags und Dateidaten. Advanced Renamer (Version 4.28) kann über seine Skript-Methode auch Text aus PDF- und TXT-Dateien ziehen, hat aber weder KI noch OCR: Gescannte PDFs und Bilder bleiben unlesbar, und die Logik, die aus dem ausgelesenen Text einen Namen macht, schreiben Sie selbst. Für gelegentliche private Nutzung ist es kostenlos; regelmäßige Nutzer sollen eine private Lizenz für $30 kaufen, für die berufliche Nutzung ist eine kommerzielle für $50 nötig. A Better Finder Rename kostet $29.95 für den Mac.
 
-[Templates lassen sich exportieren](/docs/template-import-export) und auf einem anderen Computer importieren, einschließlich Naming Blocks, Custom AI Blocks und Ordnerregeln. Lokale Zielordner, Zugriffsrechte und KI-Verbindungen richten Sie dort neu ein. Übertragen werden die Einstellungen, nicht Ihre Dateien.
+Die Grenze: Metadaten beschreiben *wann* und *womit*, nicht *was*. Die EXIF-Daten eines Fotos sagen, wann es aufgenommen wurde, nicht dass ein Golden Retriever im Park zu sehen ist. Unser Test der [Alternativen zu Advanced Renamer](/blog/advanced-renamer-alternatives) zeigt, wo solche Regeln an ihre Grenzen kommen.
 
-### Optional auch in Ordner sortieren
+**Nehmen Sie sie, wenn** der komplette gewünschte Name schon in EXIF, GPS oder Tags steht. **Schwäche:** kein Verständnis von Bildern oder gescannten Dokumenten.
 
-Die **KI-Ordnersortierung** ist von der Namensgebung getrennt. Wählen Sie Auto oder beschreiben Sie unter **Folder rules** beispielsweise: „Screenshots nach Projekt und Rechnungen nach Unternehmen gruppieren.“ Wählen Sie einen **Destination folder**, oder verwenden Sie den Quellordner als Wurzel. **Reuse existing folders** bevorzugt passende vorhandene Ordner; falls nötig, werden neue erstellt. Prüfen Sie Namen und Ordner vor dem Anwenden.
+## Klasse 3: KI-Umbenenner, wenn jede Datei einen eigenen Namen braucht
 
-Speichern Sie die Einstellungen in einem **Template** und weisen Sie es **Monitor** zu. Es verarbeitet neue Dateien direkt im überwachten Ordner, verteilt aber bereits verarbeitete Dateien nicht nachträglich neu. Testen Sie das Template zuerst manuell. Für reine Umbenennung bleiben Sortierung und separates Ziel ausgeschaltet. Die [Sortierdokumentation](/docs/folder-sorting) erklärt den Ablauf.
+Manche Ordner überfordern beide Klassen oben: `Screenshot 2026-03-23.png`, `Scan0001.pdf`, `IMG_4382.HEIC`, `download (7).pdf`. Der richtige Name ist bei jeder Datei anders, und er steckt in den Pixeln, im Text oder im Ton.
 
-Zush unterstützt auch verschachtelte Ordnerregeln, etwa nach Jahr und darunter nach Monat. Bereits umbenannte Dateien lassen sich sortieren, ohne ihre Namen erneut zu ändern oder ein weiteres Umbenennungsguthaben zu verbrauchen. Prüfen Sie die Zielpfade vor dem Anwenden. Diese separate Aktion bearbeitet vorhandene Dateien; eine Änderung am Monitor-Template sortiert sie nicht rückwirkend. Die [KI-Ordnersortierung](/docs/folder-sorting) funktioniert auf Mac und Windows.
+[Zush](/) liest diesen Inhalt in Screenshots, Fotos (auch RAW und HEIC), PDFs, [gescannten Dokumenten](/rename-scanned-documents), Office- und iWork-Dateien, Designdateien, Audio und Video. Videos werden anhand von Sprache, eingebetteten Untertiteln und Metadaten benannt, auch MKV. Sie wählen ein fertiges Template oder bauen mit über 145 [Naming Blocks](/docs/naming-blocks) eine eigene Konvention, sehen jeden vorgeschlagenen Namen, und nichts ändert sich, bevor Sie auf Rename klicken. Die Rename History übersteht Neustarts und macht ganze Stapel rückgängig. Die [Ordnerüberwachung](/docs/folder-monitoring) benennt Dateien in Downloads oder einem Scanner-Ordner direkt beim Eintreffen.
+
+Wofür Sie bezahlen:
+
+- **Funktioniert sofort:** 50 kostenlose KI-Umbenennungen über Zush Cloud AI, ohne Konto, Karte, API-Schlüssel oder Modell-Download.
+- **Der Einmalpreis enthält die Cloud:** $48 Lifetime umfasst unbegrenzte Umbenennungen mit Zush Cloud AI, BYOK, Ollama und LM Studio, alle künftigen Updates, bis zu 3 Geräte unter Mac und Windows und 14 Tage Rückerstattung. Oder $10/Monat.
+- **Duplikate inklusive:** AI Rename erkennt doppelte Dateien; Kopien kosten keine Credits, und Undo stellt sie wieder her. Siehe [doppelte Dateien entfernen](/remove-duplicate-files).
+- **Schlank im Cloud-Modus:** etwa 200 MB und 4 GB RAM.
+
+Zush kann Dateien außerdem per **Auto**-Gruppierung oder **Folder rules** in Ordner sortieren, auch verschachtelt, und sogar sortieren, ohne umzubenennen. Siehe den [Leitfaden zur Ordnersortierung](/docs/folder-sorting) und die Anleitung [Dateien auf dem Mac mit KI in Ordner sortieren](/blog/sort-files-into-folders-with-ai-mac). Als Ziel wählen Sie einen **Destination folder** oder behalten den Quellordner; mit **Reuse existing folders** bevorzugt Zush passende vorhandene Ordner. Gespeichert als Template und **Monitor** zugewiesen, gilt die Sortierung auch für neue Dateien. Fertige Formulierungen finden Sie in [30 Ordnerregeln zum Kopieren](/blog/ai-folder-sorting-prompts).
+
+Es gibt weitere KI-Umbenenner mit anderen Stärken und Schwächen: Der [plattformübergreifende Vergleich von KI-Umbenennern](/blog/best-ai-file-renamer-tools-2026) behandelt zehn davon, dazu gibt es eigene Ranglisten für [Mac](/blog/best-ai-file-renamer-tools-mac-compared) und [Windows](/blog/best-ai-file-renamer-tools-windows-compared).
+
+<BlogCTA placement='inline' platform='general' />
 
 ## In 30 Sekunden entscheiden
 
-1. Zush für gemischte Inhalte, aussagekräftige Namen, Überwachung, Vorschau und Wiederherstellung.
-2. Ein kostenloses Musterwerkzeug nur, wenn dieselbe Ersetzung, dasselbe Präfix oder dieselbe Nummerierung für alle Dateien reicht.
-3. Ein Metadatenprogramm nur, wenn EXIF, Datum, GPS oder Tags den vollständigen Namen liefern.
+1. Dieselbe Änderung für jede Datei: **Finder** oder **PowerRename**.
+2. Komplexe Regeln für riesige Ordner: **Bulk Rename Utility**.
+3. Der komplette Name steht schon in EXIF, GPS oder Tags: **Advanced Renamer** oder **A Better Finder Rename**.
+4. Sie öffnen Dateien, um vor dem Benennen zu sehen, was sie sind: **Zush**.
 
-Beide Werkzeugklassen können nebeneinander sinnvoll sein. Vertiefungen: [Mac-KI-Vergleich](/blog/best-ai-file-renamer-tools-mac-compared), [Windows-KI-Vergleich](/blog/best-ai-file-renamer-tools-windows-compared) und [Dateiumbenenner für Windows 11](/blog/best-file-renamer-windows-11).
+Viele behalten beide Arten: ein Mustertool für schnelle mechanische Korrekturen und KI für Ordner, in denen Namen etwas bedeuten müssen. Speziell für Windows siehe die [besten Dateiumbenenner für Windows 11](/blog/best-file-renamer-windows-11).
 
-## Häufige Fragen
+## Quellen und wie wir geprüft haben
 
-### Kann Zush auch Ordner zuweisen?
-Ja, optional. Prüfen Sie Ziel, Namen und Gruppen in einem manuellen Stapel; ein getestetes Template kann anschließend neue Dateien über Monitor verarbeiten.
+<BlogSources ids={['powerrename', 'bulk-rename-utility', 'advanced-renamer', 'a-better-finder-rename']} />
 
-### Welches kostenlose Programm passt?
-Finder auf dem Mac und PowerRename unter Windows für eine gemeinsame Musterregel. Für KI-Namen bietet Zush 50 kostenlose Umbenennungen. Die [kostenlosen KI-Optionen](/blog/rename-files-with-ai-free) umfassen Cloud AI, BYOK, LM Studio, Ollama und lokale Kommandozeilenwerkzeuge.
+## Häufig gestellte Fragen
 
-### Welcher Dateiumbenenner ist für Mac oder Windows am besten?
-Für gemischte Inhalte empfehlen wir [Zush für Mac](/mac) beziehungsweise [Zush für Windows](/windows). Finder, A Better Finder Rename, PowerRename und BRU passen zu engeren Muster- oder Metadatenaufgaben.
+### Was ist der beste kostenlose Dateiumbenenner?
 
-### Können Namen aus dem Inhalt entstehen?
-KI-Werkzeuge lesen tatsächlichen Text oder Bilder, auch Scans ohne Textebene. Musterwerkzeuge ordnen vorhandene Namensteile oder Tags um.
+Für Musteraufgaben sind der Finder auf dem Mac und PowerRename unter Windows kostenlos und zeigen jede Änderung vorab. Bulk Rename Utility ist privat kostenlos, Advanced Renamer für gelegentliche private Nutzung. Für Namen aus dem Dateiinhalt bietet Zush 50 kostenlose KI-Umbenennungen ohne Konto, Karte oder API-Schlüssel, mit derselben Vorschau und Rename History wie die bezahlte Version. Siehe den [Leitfaden zum kostenlosen Umbenennen mit KI](/blog/rename-files-with-ai-free).
 
-### Lohnt sich ein kostenpflichtiges KI-Werkzeug?
-Für mechanische Aufgaben genügen kostenlose Regeln. Wenn Sie Dateien regelmäßig öffnen müssen, um ihren Inhalt zu erkennen, kann KI Zeit sparen; Zush bietet dafür eine einmalige PRO-Lizenz für $48.
+### Kann ein Dateiumbenenner Dateien nach ihrem Inhalt benennen?
 
-<BlogProductIntro
-  title="Mit Zush beginnen"
-  description="Zush ist unsere erste Wahl für gemischte Ordner: inhaltsbezogene Namen, Naming Blocks, Vorschau, Ordnerüberwachung und Rückgängig-Funktion. Finder, PowerRename und Metadatenprogramme passen zu eng begrenzten Aufgaben. Die KI-Ordnersortierung ist optional."
-  links={[{"href":"/ai-file-sorter","label":"KI-Dateien sortieren"},{"href":"/blog/ai-folder-sorting-prompts","label":"Sortieranweisungen"},{"href":"/docs/folder-sorting","label":"Sortierdokumentation"},{"href":"/pricing","label":"Preise"}]}
-/>
+Richtig können das nur KI-Umbenenner. Mustertools ordnen den vorhandenen Namen um, Metadatentools lesen EXIF- oder ID3-Tags. Advanced Renamer kann per Skript Text aus PDF- und TXT-Dateien auslesen, hat aber weder KI noch OCR, sodass Scans und Bilder unlesbar bleiben. Ein KI-Umbenenner wie Zush liest Text, Bilder, Audio und Video, auch Scans ohne Textebene, und schlägt einen Namen vor, den Sie zuerst prüfen.
 
-[Mac-Anleitung](/blog/sort-files-into-folders-with-ai-mac) · [Windows-Anleitung](/blog/sort-files-into-folders-with-ai-windows) · [Sortieranweisungen](/blog/ai-folder-sorting-prompts) · [Sortierdokumentation](/docs/folder-sorting).
+### Lohnt es sich, für einen KI-Dateiumbenenner zu bezahlen?
+
+Wenn Ihr Umbenennen mechanisch ist, nein: Kostenlose Mustertools erledigen das. Wenn Sie regelmäßig Dateien öffnen, um zu sehen, was sie sind, ja. Die Einmallizenz von Zush für $48 enthält verwaltete Cloud-KI mit unbegrenzten Umbenennungen, dazu BYOK und lokale Modelle, alle künftigen Updates, bis zu 3 Geräte unter Mac und Windows und 14 Tage Rückerstattung. Testen Sie die 50 kostenlosen Umbenennungen zuerst mit Kopien.
+
+### Wo verarbeitet Zush meine Dateien?
+
+Das hängt vom gewählten Modus ab. Zush Cloud AI und BYOK senden Dateiinhalte an einen KI-Dienst, der die Namen erzeugt; bei BYOK ist das Ihr eigenes Anbieterkonto. Mit Ollama oder LM Studio läuft die Analyse auf Ihrem eigenen Computer, und die Dateien bleiben dort. Mustertools wie Finder, PowerRename und Bulk Rename Utility lesen nie Inhalte, also verlässt nichts Ihren Rechner. Siehe die Einrichtung des [Offline-KI-Datei-Umbenenners](/offline-ai-file-renamer).
+
+### Was ist der beste Dateiumbenenner für den Mac?
+
+Für gemischte Ordner, in denen jede Datei einen beschreibenden Namen braucht, [Zush für Mac](/mac): Es liest Screenshots, PDFs, RAW-Fotos, Designdateien, Audio und Video und führt eine dauerhafte Rename History. Für eine gemeinsame Regel ist der Finder integriert; für EXIF- und Metadatenmuster kostet A Better Finder Rename $29.95. Das ganze Feld finden Sie im [Vergleich der KI-Umbenenner für Mac](/blog/best-ai-file-renamer-tools-mac-compared).
+
+### Was ist der beste Dateiumbenenner für Windows 11?
+
+Für Musteraufgaben ist PowerRename kostenlos, zeigt Änderungen vorab und macht mit Strg+Z rückgängig. Bulk Rename Utility und Advanced Renamer bewältigen komplexere Regeln und Metadaten. Für Dateien, die jeweils einen eigenen Namen aus ihrem Inhalt brauchen, installieren Sie [Zush für Windows](/windows) aus dem Microsoft Store und bekommen Vorschau, Ordnerüberwachung und dauerhafte Rename History. Siehe den [Vergleich der KI-Umbenenner für Windows](/blog/best-ai-file-renamer-tools-windows-compared).

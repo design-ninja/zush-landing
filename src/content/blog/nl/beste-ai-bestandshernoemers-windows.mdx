@@ -1,6 +1,6 @@
 ---
 title: "De 7 beste AI-bestandshernoemers voor Windows vergeleken (2026)"
-description: "Vergelijk 7 AI-bestandshernoemers voor Windows op preview, ongedaan maken, bestandsondersteuning, prijs en AI-opties. Zush ondersteunt managed cloud, BYOK, Ollama en LM Studio."
+description: "AI-hernoemers voor Windows vergeleken: Zush, FilesDesk, RenameClick, AI Renamer, Renamer.ai en NameQuick op gratis start, prijs, formaten en herstel."
 date: "2026-04-23"
 slug: "beste-ai-bestandshernoemers-windows"
 platform: "windows"
@@ -8,219 +8,195 @@ topic: "comparisons"
 tags:
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "Beste overall: Zush. Het combineert de breedst gedocumenteerde dekking van gemengde bestanden in deze vergelijking met configureerbare naamgeving, mapbewaking, voorbeeldweergave en volledige Rename History met batchherstel. FilesDesk en de andere zes vermeldingen zijn alternatieven voor beperktere vereisten, niet onze algemene aanbeveling."
-reviewed: "2026-11-16"
+tldr: "Beste overall voor Windows: Zush. Je installeert het uit de Microsoft Store, het hernoemt 50 bestanden gratis zonder account, kaart of API-sleutel, en de eenmalige licentie van $48 bevat beheerde cloud-AI plus BYOK, Ollama en LM Studio op maximaal 3 pc's of Macs. Elke batch wordt vooraf getoond en bewaard in Rename History met batch ongedaan maken. FilesDesk past bij e-mailbijlagen, RenameClick bij een meegeleverd lokaal model, AI Renamer bij een lokale licentie van $19, Renamer.ai bij documentsjablonen, NameQuick bij regels."
+reviewed: "2026-11-17"
 featuredOrder: 1
 locale: "nl"
 translationOf: "best-ai-file-renamer-tools-windows-compared"
 ---
 
-> **Toelichting bij het bewijs (5 september 2026):** Deze vergelijking is geschreven door de maker van Zush. Onze [praktijktest met acht bestanden](/benchmarks/ai-file-renamer-pilot-2026-09-05/README.md) toont echte resultaten van Zush 3.11.0 en RenamerX 1.2.2 op Mac, met sterke punten en fouten van beide. Niet alle tools of Windows zijn getest; er is geen algemene winnaar vastgesteld. De eerdere synthetische simulatie is een methodevoorbeeld, geen bewijs van nauwkeurigheid. We raden Zush aan voor veelzijdige, inhoudsgerichte bestandsnamen: het herkende factuurgegevens, de inhoud van een gescande bon, de zichtbare videowerkwijze en het onderwerp van een opname. Een goede naam maakt het bestand herkenbaar met relevante informatie, zonder verzonnen details. Lengte bepaalt niet de kwaliteit. Naming Blocks en Templates regelen de velden en structuur; aangepaste velden zijn hier niet getest.
-
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-**Gerichte controle: 5 oktober 2026.** Renamer.ai, NameQuick en FilesDesk gecontroleerd met primaire bronnen. Andere controles behouden hun eerdere datums. Gedocumenteerde functies, geen onafhankelijke prestatietest.
+**Op Windows is [Zush](/windows) onze keuze**: je installeert het uit de Microsoft Store, het geeft 50 gratis hernoemingen zonder account, kaart of API-sleutel, en de eenmalige licentie van $48 bevat beheerde cloud-AI op maximaal 3 apparaten. Een AI-hernoemer (AI-bestandshernoemer) leest wat er in elk bestand staat en schrijft er een beschrijvende bestandsnaam voor. FilesDesk, RenameClick, AI Renamer, Renamer.ai en NameQuick passen bij smallere situaties; die staan hieronder.
 
-FilesDesk biedt Organize Flow voor voorwaardelijk verplaatsen, kopiëren en Finder-acties op Mac. Lokaal: Ollama, LM Studio en vLLM. Abonnementen sluiten BYOK/lokaal uit en maandcredits worden niet meegenomen. Self-Managed van $40 geldt voor één apparaat en twaalf maanden updates.
+**Hoe we dit controleerden:** geschreven door de maker van [Zush](/). Prijzen, functies en beoordelingen van concurrenten zijn op 17 november 2026 gecontroleerd op de sites van de makers en in de officiële stores ([bronnen onderaan](#sources-and-how-we-checked)). Dit is een vergelijking van gedocumenteerde functies, geen labtest.
 
-Primaire bronnen · NameQuick · FilesDesk
-Deze gids vergelijkt zeven Windows-opties op bestandsformaten, naamregels, herstel en kosten. De gids is geschreven door het Zush-team. Bekijk voor het product, de gratis proefversie en downloads de [Zush AI-bestandshernoemer voor Mac en Windows](/nl).
+## De 7 AI-hernoemers voor Windows in één oogopslag
+
+| Positie | Gratis start | Betaald | Beheerde cloud in het betaalde plan | Mapbewaking | Ongedaan maken / geschiedenis | Kies het als |
+|---|---|---|---|---|---|---|
+| <BlogHighlight>**1. Zush**</BlogHighlight> | 50 AI-hernoemingen, geen account, kaart of sleutel | $10/mnd of $48 eenmalig | Ja, in beide plannen | Ja | Blijvende Rename History, batch ongedaan maken | Je wilt dat het nu werkt en één keer betalen |
+| 2. FilesDesk | 15 credits, inloggen | $8 of $20/mnd; $40 Self-Managed | Alleen abonnementen | Watch Folders + Watch Inbox | Geschiedenis + ongedaan maken | E-mailbijlagen moeten ook hernoemd worden |
+| 3. RenameClick | 100 hernoemingen of verplaatsingen/mnd | $36 + btw Lifetime | Nee: lokaal model of eigen sleutel | Auto Flow, zolang de app draait | 10 items in het geheugen | Je wilt een meegeleverd lokaal model, zonder Ollama |
+| 4. AI Renamer | 10 cloudcredits, inloggen met Google | $19 Local; $10 per 200 credits | Apart te koop | Watch Folder-bèta, app moet open zijn, geen submappen | Niet gedocumenteerd | Je wilt de goedkoopste lokale licentie of Linux |
+| 5. Renamer.ai | 25 bestanden/mnd | $9.95–$99.95/mnd | Ja, op verbruik | Magic Folders | Ongedaan maken | Je hernoemt documenten en wilt gratis lokale modus |
+| 6. NameQuick | 30 Managed-hernoemingen, geen kaart | Vanaf $12/mnd; $69 Self-Managed | Alleen Managed-abonnementen | Bewaakte mappen | Geschiedenis + ongedaan maken (kan mislukken als een bestand is verplaatst) | Je wilt een regelengine |
+| 7. Zelf bouwen met PowerShell/Python | Gratis software | Je eigen API- of modelkosten | Bouw je zelf | Bouw je zelf | Bouw je zelf | De pipeline bouwen hoort bij je werk |
+
+Werk je op een Mac? Zie de [ranglijst van AI-hernoemers voor Mac](/blog/best-ai-file-renamer-tools-mac-compared). Voor ook Linux-, web- en API-tools, zie het [overzicht van 10 AI-hernoemers voor alle platforms](/blog/best-ai-file-renamer-tools-2026).
+
+### Waarom Zush op Windows bovenaan staat
+
+1. **Je installeert het uit de Microsoft Store.** x64- en ARM64-pakketten voor Windows 10 en 11, met updates via de Store. Er is ook een portable ZIP.
+2. **Het past bij File Explorer.** Sleep bestanden uit Verkenner, OneDrive of het Bureaublad naar het dropvak, of selecteer tot 10 bestanden in Verkenner en druk op de sneltoets voor Quick Rename. Batches worden vooraf getoond, en Rename History kan een hele batch ook na een herstart terugdraaien.
+3. **Het leest wat PowerRename niet kan.** PowerRename past één regel toe op de hele selectie. Zush geeft elk bestand een eigen naam op basis van de inhoud: tekst in een pdf, wat er op een foto staat, spraak en ondertitels in video (ook MKV), en muziek die zelfs zonder tags wordt herkend, een functie die alleen op Windows bestaat.
+4. **Offline AI inclusief spraak.** Met Ollama of LM Studio, plus optionele spraakherkenning op het apparaat die je in de AI-instellingen downloadt, krijgen audio en video een naam zonder cloud. Dezelfde licentie van $48 bevat ook de beheerde Zush Cloud AI op maximaal 3 apparaten.
+
+Beoordelingen in de Amerikaanse Microsoft Store per 17 november 2026: Zush 5,0 uit 8 beoordelingen, RenameClick 3,0 uit 6, FilesDesk vermeld zonder beoordelingen. Redactionele scores bij Softpedia: Zush 4,5/5, Renamer.ai 4,5/5, RenameClick 3,5/5.
 
 <BlogProductIntro
-  title="Op zoek naar de Windows-app?"
-  description="Bouw de conventie op met kant-en-klare Templates, 145+ Naming Blocks en Custom AI Blocks, bekijk een voorbeeld van de batch en herstel vervolgens de toegepaste namen van Rename History indien nodig."
+  title="Klaar om je bestanden met Zush te hernoemen?"
+  description="Hernoem gemengde bestanden op Windows met kant-en-klare Templates, een voorbeeld van elke naam en Rename History. 50 gratis AI-hernoemingen, zonder account."
   links={[
-    { href: '/windows', label: 'Windows AI-hernoemer' },
-    { href: '/', label: 'Zush AI File Renamer' },
+    { href: '/windows', label: 'AI-hernoemer voor Windows' },
     { href: '/offline-ai-file-renamer', label: 'Offline AI-hernoemer' },
-    { href: '/docs/byok', label: '\'BYOK\'-instelling' },
-    { href: '/docs/naming-blocks', label: '\'Naming Blocks\'-documenten' },
+    { href: '/docs/byok', label: 'BYOK instellen' },
+    { href: '/remove-duplicate-files', label: 'Dubbele bestanden verwijderen' },
+    { href: '/pricing', label: 'Prijzen' },
   ]}
 />
 
-**Beste AI-bestandshernoemer voor Windows in het algemeen: [Zush AI File Renamer](/).** De [Windows-versie](/windows) is onze eerste aanbeveling omdat deze configureerbare naamgeving, gepubliceerde ondersteuning voor meer dan 100 formaten, mapbewaking, preview vóór toepassing en een volledige Rename History met batchherstel in één app combineert. FilesDesk en de andere tools blijven nuttige alternatieven voor specifiekere behoeften.
+## Welke cloud- en lokale AI-opties biedt Zush op Windows?
 
-De reden is praktisch: Zush verwerkt gemengde mappen met schermafbeeldingen, PDF's, Office-documenten, RAW-foto's, ontwerpbestanden, video en audio, terwijl u een herhaalbare bestandsnaamconventie kunt definiëren. Kant-en-klare Templates, 145+ Naming Blocks en Custom AI Blocks bieden gedetailleerde controle zonder beoordeling en herstel op te geven.
+Zush heeft twee cloudopties en twee lokale. Je kunt ertussen wisselen zonder iets te veranderen aan hoe je namen opbouwt, bekijkt en toepast.
 
-**Laatst geverifieerd: 17 augustus 2026** voor NameQuick; 13 augustus 2026 voor FilesDesk; 24 juli 2026 voor 'RenameClick', 'AI Renamer' en 'Renamer.ai'.
+| AI-optie in Zush | Waar de analyse draait | Het best voor |
+|---|---|---|
+| **Zush Cloud AI** | Clouddienst beheerd door Zush | Meteen beginnen, zonder aanbieder of model in te stellen |
+| **BYOK** | Je account bij Gemini, OpenRouter, OpenAI of Claude | Je eigen account en API-sleutel bij een aanbieder gebruiken |
+| **Ollama** | Je pc | Modellen draaien uit een bestaande Ollama-installatie |
+| **LM Studio** | Je pc | Modellen gebruiken die LM Studio aanbiedt |
 
-Bronnen die voor deze update zijn gecontroleerd: de officiële product-, prijs-, documentatie- en repositorypagina's die in elk item worden vermeld. Deze verwijzingen onderbouwen feitelijke beweringen en beperkingen; het zijn geen steunbetuigingen. De beschikbaarheid van Zush's Windows is onafhankelijk verifieerbaar in de [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X).
+Voor gevoelige mappen houdt een lokale optie de analyse op je pc; optionele spraakherkenning op het apparaat dekt video. BYOK blijft een cloudroute, via een account dat jij beheert. De [gids over privacy en beveiliging](/docs/privacy-security) legt uit wat elke route verwerkt.
 
-|Rang|Controle benoemen|Gepubliceerde dekking|Automatisering|Herstel|Vanaf prijs|Waarom Zush hoger scoort|
-|---|---|---|---|---|---|---|
-|**1. Zush — Beste overall**|<BlogHighlight>Kant-en-klaar Templates, 145+ Naming Blocks, Custom AI Blocks, opmaak, lokalisatie, metadata</BlogHighlight>|Afbeeldingen, RAW, ontwerp, documenten, audio, video|Mapbewaking|Volledige Rename History met batch-return|50 gratis; $ 10 per maand of $ 48 eenmalig|Het is de baselinewinnaar: de meest complete gedocumenteerde combinatie in deze vergelijking|
-|2. FilesDesk — alternatief|Sjablonen benoemen|Algemene afbeeldingen, documenten, video en audio|Bekijk mappen|Verwerkingsgeschiedenis ongedaan maken|15 studiepunten; USD 8/maand of USD 40 levenslang|Beheerde suggesties worden gemeten; levensduur vereist BYOK/lokale installatie|
-|3. RenameClick — alternatief|Formaatpatronen, EXIF-plaatsaanduidingen, aangepaste instructies|Afbeeldingen, documenten, audio|Auto Flow kan hernoemen en verplaatsen|Maximaal 10 Undo-items in het geheugen; gewist na herstart|100 van toepassing/maand; Levensduur van $ 48+ BTW|RAW-, ontwerp- en video-ondersteuning worden niet gepubliceerd|
-|4. AI Renamer — alternatief|Aangepaste aanwijzingen|Openbare voorbeelden leggen de nadruk op afbeeldingen en tekstdocumenten|Niet publiekelijk gedocumenteerd|Niet publiekelijk gedocumenteerd|$ 19 lokale modus|Mapbewaking, 'Rename History' en gedetailleerde dekking van gemengde bestanden zijn niet gedocumenteerd|
-|5. Renamer.ai — alternatief|Templates voor documentworkflows|30+ formaten, document- en vectorfocus|Magische mappen|Met één klik ongedaan maken|25 bestanden/maand gratis; $ 9,95/maand| Cloudlimieten; bevestig Local/BYOK-licentie |
-|6. NameQuick — alternatief|Voorinstellingen, aanwijzingen en regels|30+ formaatcategorieën|Controlemappen en -regels worden op de leverancierslijst vermeld|Ongedaan maken met één klik wordt door de leverancier vermeld| $12/mo; $69 Self-Managed; Managed: 70/14 dagen met kaart; Self-Managed: 30 zonder kaart | Maandtegoed vervalt; Self-Managed: één computer |
-|7. DIY PowerShell/Python – alternatief|Wat je ook bouwt|Wat je ook implementeert|Volledig op maat|Je moet het bouwen|Software kan gratis zijn|U bent eigenaar van validatie, botsingen, inloggegevens, onderhoud en terugdraaien|
+## Hoe AI-hernoemen verschilt van PowerRename
 
-Dit is een brongebaseerde vergelijking, geen onafhankelijke benchmark van alle zeven inzendingen. We hebben dezelfde beslissingspunten gecontroleerd in de prijzen en documentatie van de leverancier: 'Windows'-installatiemethode, ondersteuning voor gemengde bestanden, lokale/'BYOK'-beschikbaarheid, automatisering van gecontroleerde mappen, preview, terugdraaien en prijzen. Niet-ondersteunde of niet-gedocumenteerde functies worden gemarkeerd in plaats van afgeleid.
+Patroontools zoals PowerRename passen één regel toe op elk geselecteerd bestand. Een AI-hernoemer opent elk bestand: documenttekst, wat een afbeelding of screenshot laat zien, of de spraak in een video. Daarna stelt hij voor elk bestand een andere naam voor, zodat `scan_004.pdf` verandert in `invoice-7842-webdesign-services.pdf`. Heb je alleen een gedeeld voorvoegsel of een nummerreeks nodig, dan is PowerRename gratis en prima; de [gids voor bestandshernoemers op Windows 11](/blog/best-file-renamer-windows-11) behandelt die tools.
 
-Het openbare '[benchmark simulatie bewijspakket](/benchmarks/ai-file-renamer-simulation-2026/README.md)' valideert het geplande corpusmanifest, SHA-256-hashes, fixed Seed, instellingen, drie herhalingen, onbewerkt resultaatschema en aggregatiepijplijn. Het is expliciet gesimuleerd: er is geen desktop- of webapplicatie uitgevoerd en de gemodelleerde rijen zijn geen bewijs van productkwaliteit, nauwkeurigheid of snelheid.
+## Probeer een gecontroleerde batch op Windows
 
-Deze vergelijking bepaalt de 'beste' en 'vergeleken' zoekintentie. Als je Zush al hebt gekozen en het oorspronkelijke downloadpad wilt, ga dan direct naar [AI-bestandshernoemer voor Windows](/windows).
+1. Installeer [Zush voor Windows](/windows) uit de Microsoft Store en laat Zush Cloud AI geselecteerd.
+2. Kopieer een paar screenshots, pdf's en Office-bestanden naar een testmap. Voeg ze toe aan AI Rename en kies een Template.
+3. Vergelijk elke voorgestelde naam met het bestand. Dubbelklik op een naam om hem aan te passen en klik dan op Rename.
+4. Open [Rename History](/docs/undo-history) en draai de batch terug om het herstel te zien werken. Zet mapbewaking aan zodra de Template past.
 
-**Zush-functies gecontroleerd op 18 oktober 2026.** Voor informatie over concurrenten blijven de controledatums in dit artikel gelden.
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/showcase/windows/batch-rename-light.webp" alt="Zush op Windows met de Template Smart Title Name en voorgestelde namen voor PowerPoint-, pdf-, Word-, spreadsheet-, afbeeldings- en videobestanden vóór Rename 10." width="2560" height="1440" loading="lazy" decoding="async" />
+  <figcaption>Zush op Windows: de oorspronkelijke naam en de voorgestelde titel worden getoond voordat er iets wordt toegepast.</figcaption>
+</figure>
 
-## Wat maakt een AI-bestandshernoemer nuttig op Windows?
+## 1. Zush: de beste AI-bestandshernoemer voor Windows overall
 
-Een AI-bestandshernoemer voor Windows leest de inhoud van elk bestand en maakt een beschrijvende bestandsnaam, in plaats van één regel op een hele selectie in Verkenner toe te passen. Het kan documenttekst, de zichtbare inhoud van een afbeelding of screenshot, of voorbeeldframes uit een video gebruiken om voor elk bestand een andere naam voor te stellen — `scan_004.pdf` wordt `invoice-7842-webdesign-services.pdf`. Gebruik PowerRename voor voorspelbare tekstpatronen en inhoudsbewuste hernoeming wanneer elk bestand een andere beschrijvende naam nodig heeft.
-
-Alles hieronder vergelijkt de Windows-apps in deze categorie op de praktische verschillen: naamgeving, kant-en-klare workflows, dekking van bestandstypen, automatisering en of een batch kan worden beoordeeld en ongedaan kan worden gemaakt. Lokale AI komt in meerdere producten voor en wordt niet als uniek voordeel gescoord. Gebruik de [veilige checklist voor het hernoemen van batches](/blog/how-to-safely-batch-rename-files) om elke kandidaat met dezelfde bestanden te testen en de preview, afhandeling van botsingen, extensieveiligheid en herstelpad te verifiëren.
-
-![Voorbeeld van 'Zush' batchhernoeming met door AI gegenereerde namen voor een gemengde 'Windows'-map](/images/showcase/windows/batch-rename-light.webp)
-
-## Bestanden met AI in mappen sorteren
-
-[Zush AI-bestandssorteerder](/ai-file-sorter) — Zush-mapsortering is in bèta op Mac en Windows. Het analyseert ondersteunde inhoud en stelt namen en groepen voor. Laat Folder rules leeg voor Auto of beschrijf de indeling in gewone taal. Naming Blocks bepaalt afzonderlijk de bestandsnamen.
-
-> Groepeer facturen op bedrijf en bonnetjes op maand. Noem maandmappen YYYY-MM.
-
-1. Voeg een kleine gekopieerde batch toe in AI Rename en kies een Template.
-2. Schakel + Sort in en kies Destination folder als hoofdmap voor submappen. Zonder aparte bestemming blijft de bronmap de hoofdmap.
-3. Beschrijf de groepen in Folder rules. Gebruik Reuse existing folders voor passende mappen onder de bestemming; Zush kan nieuwe maken als geen bestaande past.
-4. Controleer en verbeter namen en groepen voordat je de batch toepast.
-
-![Zush op Windows met een voorbeeld van voorgestelde namen en mapgroepen vóór Rename & sort](/images/showcase/windows/folder-sorting-light.webp)
-
-Bewaar de geteste bestemming en regels in het Template. Monitor kan nieuwe bestanden direct in de bewaakte map hernoemen en sorteren; reeds verwerkte bestanden worden niet achteraf opnieuw ingedeeld. Met sortering uit en de oorspronkelijke bestemming blijven bestanden in hun huidige map.
-
-[Stapsgewijze handleiding voor AI-mapsortering](/blog/sort-files-into-folders-with-ai-windows) · [Documentatie voor mapsortering](/docs/folder-sorting) · [30 voorbeelden van mapregels](/blog/ai-folder-sorting-prompts).
-
-## Wat belangrijk is op Windows
-
-De Windows-specifieke controles verschillen enigszins van die op Mac:
-
-- **File Explorer past**: voelt de app zich eigen in een Windows-workflow, of is het gewoon een verpakte web-UI?
-- **Document- en video-ondersteuning**: schermafbeeldingen zijn eenvoudig; PDF's, DOCX, XLSX, MP4/MOV-clips en gemengde downloadmappen zijn de echte test.
-- **Automatisering**: eenmalige batchhernoeming is handig, maar automatische mapbewaking voorkomt dat rommel terugkomt.
-- **Ongedaan maken en bekijken**: het hernoemen van honderden bestanden zonder terugdraaien is roekeloos.
-- **Winkel- of vertrouwde installatie**: veel Windows-gebruikers geven de voorkeur aan een Microsoft Store-installatie waarbij updates voor hen worden afgehandeld.
-- **Windows Zoekvriendelijkheid**: beschrijvende bestandsnamen en metagegevens zijn van belang als u later daadwerkelijk zoekt.
-
-Als de vraag achter uw opruiming "batch hernoemen van bestanden op Windows" is, begin dan met [AI-bestandshernoemer voor Windows](/windows) en [gids voor het hernoemen van bestanden in batches](/docs/batch-rename-files). Als het probleem het later vinden van bestanden is, lees dan [doorzoekbare bestandsnamen](/docs/file-search).
-
-Als het de bredere taak is om downloads, schermafbeeldingen, pdf's en gemengde mappen georganiseerd te houden, gebruik dan de [AI-bestandsorganisator](/ai-file-organizer) naast deze Windows-vergelijking.
-
-## Beste AI-bestandshernoemer voor Windows: Zush
-
-<BlogToolMeta platform="Windows 10 / 11 via Microsoft Store" website="https://zushapp.com/windows" label="AI-bestandshernoemer voor Windows">
-<Fragment slot="pricing">Gratis (50 hernoemingen om te starten), Pro $10/maand of $48 eenmalig, BYOK beschikbaar bij elk abonnement</Fragment>
+<BlogToolMeta platform="Windows 10 / 11 via de Microsoft Store (x64 en ARM64), plus Mac" website="https://zushapp.com/windows" label="AI-bestandshernoemer voor Windows">
+  <Fragment slot="pricing">Gratis: 50 AI-hernoemingen, zonder account of kaart. Pro: $10 per maand of $48 eenmalig, onbeperkt hernoemen in elke modus, maximaal 3 apparaten</Fragment>
 </BlogToolMeta>
 
-[AI-bestandshernoemer voor Windows](/windows) is de sterkste keuze als u één beoordeelbare en zeer configureerbare workflow nodig heeft voor schermafbeeldingen, video's, PDF's, foto's, ontwerpmiddelen, audio en Office-documenten. Kant-en-klaar Templates en 145+ Naming Blocks bepalen de structuur; Custom AI Blocks extraheert velden die de ingebouwde blokken niet bestrijken; opmaak, lokalisatie, tags en metadata zorgen ervoor dat het resultaat consistent blijft. Mapmonitoring verwerkt nieuwkomers, terwijl Rename History originele en nieuwe namen, map en tijdstempel registreert, zodat een toegepaste batch kan worden teruggedraaid.
+[Zush voor Windows](/windows) geeft screenshots, pdf's, Office-bestanden, foto's inclusief RAW, ontwerpbestanden, audio en video een naam op basis van hun inhoud. Kant-en-klare Templates (Smart Rename, Movies & TV, Remove Duplicates en andere) en 145+ Naming Blocks leggen de structuur vast; Custom AI Blocks halen velden op die de ingebouwde blokken niet dekken.
 
-Waarom het opvalt op Windows:
+**Sterke punten:**
 
-- Microsoft Store installatie en automatische updates
-- Ondersteuning voor gemengde bestanden voor beeld-, ontwerp-, video-, audio- en documentworkflows
-- goed geschikt voor screenshotmappen, exports, downloads en gescande PDF's
-- native ARM64- en x64 Store-pakketten
-- kant-en-klare workflow Templates die per bewaakte map kan worden aangepast en toegewezen
-- duidelijke beoordeling vóór toepassing plus aanhoudende Rename History met terugkeer
+- Installatie via de Microsoft Store met automatische updates
+- Vier AI-routes in één workflow: Zush Cloud AI, BYOK, Ollama, LM Studio
+- Video's krijgen een naam op basis van spraak, ingesloten ondertitels en metadata, ook bij MKV
+- Muziek herkennen zonder tags
+- Duplicaten herkennen: houden, in de naam markeren of naar de Prullenbak verplaatsen; kopieën kosten geen credits en Undo zet ze terug
+- Volgnummers met eigen startwaarde en voorloopnullen, genummerd per map
+- Mapbewaking met een Template per map, plus optioneel sorteren in mappen met AI
+- Blijvende Rename History met batch ongedaan maken; Undo All wijst op conflicten
 
-Beste voor: Windows-gebruikers die een dagelijkse tool willen, geen eenmalig experiment.
+**Beperkingen:**
 
-Installeer Zush van Microsoft Store, test een gekopieerd voorbeeld van tien gemengde bestanden en bevestig elke voorgestelde naam voordat u de batch toepast.
+- Geen Linux-versie en geen versie die alleen in de browser werkt
+- Zush Cloud AI en BYOK hebben internet nodig; Ollama en LM Studio draaien lokaal
 
 <BlogCTA placement='inline' platform='windows' />
 
-Eén Zush-licentie geldt voor maximaal 3 Mac- of Windows-apparaten.
+Eén licentie geldt voor maximaal 3 apparaten verdeeld over Windows en Mac. Je kunt [Templates exporteren](/docs/template-import-export) en op een andere computer importeren. Wil je bestanden ook in mappen groeperen, zie dan [bestanden met AI in mappen sorteren op Windows](/blog/sort-files-into-folders-with-ai-windows).
 
-U kunt [Templates exporteren](/docs/template-import-export) met Naming Blocks, Custom AI Blocks en mapregels en ze op een andere computer importeren. Stel daar de lokale doelmappen, toegangsrechten en AI-verbindingen opnieuw in. De overdracht bevat de instellingen, niet uw bestanden.
+![Zush voor Windows toont mapgroepen op basis van inhoud en voorgestelde bestandsnamen vóór Rename & sort](/images/showcase/windows/folder-sorting-light.webp)
 
-Zush ondersteunt geneste mappen, bijvoorbeeld per jaar en daarbinnen per maand. U kunt al hernoemde bestanden sorteren zonder hun namen opnieuw te wijzigen of nog een hernoemcredit te gebruiken. Controleer de bestemmingen voordat u de wijzigingen toepast. Dit staat los van Monitor: een gewijzigd Template sorteert eerdere bestanden niet opnieuw. [AI-mapsortering](/docs/folder-sorting) werkt op Mac en Windows.
+## 2. FilesDesk
 
-## Alternatief 1: FilesDesk — met meter of in eigen beheer
+FilesDesk draait op Windows en Mac en staat in de Microsoft Store. Het heeft Watch Folders, een Watch Inbox die bijlagen uit Gmail, iCloud of IMAP hernoemt, sjablonen, en geschiedenis met ongedaan maken. Je begint met 15 gratis credits na het inloggen. Beheerde AI is alleen als abonnement te krijgen: $8 per maand voor 500 credits of $20 per maand voor 2.000 ($80 of $200 per jaar), tegen 1 credit per AI-naamvoorstel; een bestand opnieuw laten verwerken kost nog een credit. De Self-Managed-licentie van $40 gebruikt je eigen sleutel of een lokaal model (Ollama, LM Studio, vLLM), is gebonden aan 1 apparaat, bevat een jaar updates en heeft 3 dagen geld-terug.
 
-FilesDesk scoort in deze vergelijking lager dan Zush omdat de beheerde plannen elke suggestie voor bestandsnamen meten, terwijl het levenslange pad van $ 40 vereist dat de gebruiker een API-sleutel of een lokaal model opgeeft. De betaalde abonnementen van Zush omvatten ongelimiteerde beheerde AI, evenals BYOK en offline AI-opties.
+**Kies FilesDesk als** je e-mailbijlagen bij binnenkomst wilt laten hernoemen. **Zwakte:** de eenmalige licentie bevat geen beheerde AI. Zie [Zush vs FilesDesk](/blog/zush-vs-filesdesk).
 
-Gedocumenteerde verschillen zijn geen onafhankelijke kwaliteitsmetingen. Niet gedocumenteerd betekent niet automatisch niet aanwezig.
+## 3. RenameClick
 
-## Alternatief 2: RenameClick — beperktere gepubliceerde dekking
+RenameClick (nu op rename.click, versie 4.1.2) levert een lokaal model mee en werkt ook met Ollama, LM Studio of je eigen cloudsleutel. Versie 4.1.2 voegde video toe voor MP4, MOV, M4V en 3GP; MKV, WebM en AVI worden niet ondersteund, en camera-RAW en ontwerpbestanden ook niet. Auto Flow hernoemt en verplaatst bestanden zolang de app draait. De gratis versie staat 100 hernoemingen of verplaatsingen per maand toe; Lifetime kost $36 + btw voor maximaal 3 apparaten bij de directe versies.
 
-RenameClick scoort lager dan Zush omdat de gecontroleerde formaatdocumentatie geen RAW-camera-, ontwerp- of video-ondersteuning publiceert. Zush documenteert alle drie de categorieën als onderdeel van dezelfde workflow met gemengde mappen.
+**Kies RenameClick als** je lokale AI wilt zonder Ollama in te stellen. **Zwakte:** het meegeleverde model is een download van ongeveer 4 GB met 16 GB RAM aanbevolen, en Undo bewaart 10 items in het geheugen die bij een herstart verdwijnen. Zie [Zush vs RenameClick](/blog/zush-vs-renameclick).
 
-Maximaal 10 Undo-items in het geheugen; gewist na herstart. RenameClick
+## 4. AI Renamer
 
-## Alternatief 3: AI Renamer — lacunes in de documentatie
+AI Renamer (airenamer.app) is een desktop-app voor Windows, Mac en Linux. Versie 1.9.0 voegde een Watch Folder (bèta) toe die alleen werkt zolang de app open is en submappen overslaat; versie 1.10.0 voegde video, audio, RAW, HEIC, Office en EPUB toe. Local Mode kost $19 eenmalig met je eigen sleutel, Ollama of LM Studio; cloudcredits kosten $10 per 200, met 10 gratis na inloggen met Google. Er wordt geen geld-terugregeling vermeld en aankopen van credits zijn definitief.
 
-AI Renamer scoort lager dan Zush omdat het openbare materiaal geen mapmonitoring, aanhoudende Rename History of gedetailleerde dekking voor RAW-, Office-, iWork-, ontwerp-, audio- en videoworkflows documenteert. De lagere instapprijs van $ 19 vervangt de ontbrekende workflowgaranties niet.
+Verwar het niet met [`ozgrozer/ai-renamer`](https://github.com/ozgrozer/ai-renamer), een gratis GPL-3.0-opdrachtregeltool op GitHub die er niets mee te maken heeft.
 
-Gedocumenteerde verschillen zijn geen onafhankelijke kwaliteitsmetingen. Niet gedocumenteerd betekent niet automatisch niet aanwezig.
+**Kies AI Renamer als** je de goedkoopste eenmalige lokale licentie wilt of Linux nodig hebt. **Zwakte:** het documenteert geen ongedaan maken. Zie [Zush vs AI Renamer](/blog/zush-vs-airenamer).
 
-## Alternatief 4: Renamer.ai — gemeten documentworkflow
+## 5. Renamer.ai
 
-Renamer.ai v5 biedt Cloud, downloadbare lokale modellen, OpenAI/Gemini-BYOK, gesynchroniseerde sjablonen en geneste mappen. De gepubliceerde cloudabonnementen hebben bestandslimieten; bevestig de licentiegrenzen voor Local/BYOK. Camera-RAW, PSD, Sketch en Figma ontbreken in de openbare formatlijst. Zush documenteert die formaten en onbeperkte betaalde hernoemingen.
+Renamer.ai is een hernoemer gericht op documenten, met apps voor Windows en Mac en een webinterface. Het staat niet in de Microsoft Store. Magic Folders, sjablonen, OCR, voorbeeldweergave en ongedaan maken zitten erin, en lokale modus is beschikbaar in elke versie, ook het gratis Starter-plan (25 bestanden per maand). De cloudabonnementen zijn Pro $9.95 per maand (200 bestanden), Power $29.95 (1.000) en Ultimate $99.95 (5.000), 15% minder bij jaarlijkse betaling. BYOK zit alleen in Ultimate. De formatenlijst noemt geen camera-RAW, PSD, Sketch of Figma.
 
-Primaire bronnen · Renamer.ai
+**Kies Renamer.ai als** je vooral documenten hernoemt en gratis lokale verwerking wilt. **Zwakte:** geen eenmalige licentie, dus hernoemen via de beheerde cloud is een maandelijkse meter. Zie [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai) of de [alternatieven voor Renamer.ai](/blog/renamer-ai-alternatives).
 
-## NameQuick — voorwaardelijke documentworkflows
+## 6. NameQuick
 
-NameQuick werkt op Mac en Windows; MLX en Finder-tags/opmerkingen zijn alleen voor Mac. Windows gebruikt een x64-installatieprogramma en emulatie op ARM. Managed telt ook niet toegepaste suggesties; ongebruikt maandtegoed vervalt. Self-Managed kost $69 voor één computer. Huidige proef: Managed 70/14 dagen met kaart; Self-Managed 30 zonder kaart. Het changelog vermeldt nu 3.0.17 na 3.0.16.
+NameQuick draait op Windows (x64-installatieprogramma; ARM-pc's gebruiken emulatie) en Mac, met Watch Folders, Rules, zoeken op inhoud en ongedaan maken. Versie 3.0.57 is actueel. Je krijgt 30 Managed-hernoemingen zonder e-mail of kaart; de Managed-proef van 14 dagen met 70 hernoemingen vraagt een kaart, de Self-Managed-proef niet. Managed-abonnementen beginnen bij $12 per maand, met hernoempakketten van $19 voor 500 of $39 voor 1.500, 12 maanden geldig. Self-Managed kost $69 eenmalig voor één computer, met levenslange updates en 14 dagen geld-terug; AI-kosten zijn apart.
 
-NameQuick
+**Kies NameQuick als** je een regelengine bovenop AI-naamgeving wilt. **Zwakte:** de eenmalige licentie geldt voor één computer en bevat geen beheerde AI. Zie [Zush vs NameQuick](/blog/zush-vs-namequick).
 
-## Alternatief 6: DIY Python of PowerShell - onderhoudslast
+## 7. Zelf bouwen met PowerShell of Python
 
-U kunt absoluut uw eigen hernoemingsworkflow bouwen op Windows. Het basispatroon is:
+Je kunt je eigen pipeline bouwen: bestanden lezen, tekst of afbeeldingen naar een model sturen, de uitvoer opschonen tot een veilige bestandsnaam, hernoemen. Het wordt lastiger zodra je herhaalpogingen, slechte modeluitvoer, dubbele namen, padlimieten van Windows, inloggegevens en ongedaan maken toevoegt.
 
-1. bestanden uit een map lezen
-2. stuur afbeeldings- of tekstpayloads naar een AI-model
-3. zuiver de uitvoer in een veilige bestandsnaam
-4. lokaal hernoemen
+**Kies zelf bouwen als** het bouwen en onderhouden van het script bij je werk hoort. **Zwakte:** elke veiligheidsfunctie die de apps hierboven hebben, moet je zelf schrijven.
 
-Dat klinkt eenvoudig totdat u nieuwe pogingen, slechte modeluitvoer, dubbele namen, ongedaan maken, inloggegevens en 'Windows'-padrandgevallen toevoegt. Voor veel gebruikers wordt het script het project in plaats van het project op te lossen.
+## Wat elke eenmalige licentie bevat
 
-Overweeg deze route alleen als het aanleggen en onderhouden van de pijpleiding tot de werkzaamheden behoort.
+| Inbegrepen | Zush $48 | AI Renamer Local $19 | RenameClick Lifetime $36 + btw | FilesDesk Self-Managed $40 | NameQuick Self-Managed $69 |
+|---|---|---|---|---|---|
+| AI inbegrepen | Zush Cloud AI + BYOK + Ollama/LM Studio | Eigen sleutel of Ollama/LM Studio; cloudcredits extra | Ingebouwd lokaal model, Ollama/LM Studio of eigen sleutel | Alleen eigen sleutel of lokaal | Eigen sleutel of lokaal; AI-kosten apart |
+| Apparaten | 3, Windows + Mac | Niet vermeld door de maker | Maximaal 3 (directe versies) | 1 apparaat | 1 computer |
+| Updates | Alle toekomstige updates | Niet vermeld door de maker | Levenslang | 1 jaar | Levenslang |
+| Geld terug | 14 dagen | Niets vermeld | Alleen waar de wet het eist | 3 dagen | 14 dagen |
+| Geschiedenis / ongedaan maken | Blijvend, batch ongedaan maken | Niet gedocumenteerd | In het geheugen, 10 items | Geschiedenis + ongedaan maken | Geschiedenis + ongedaan maken |
 
-## Eindoordeel: Zush is de beste Windows AI-bestandshernoemer
+## Bronnen en hoe we het controleerden
 
-Voor breed gemengde mappen is [AI-bestandshernoemer voor Windows](/windows) momenteel de duidelijkste aanbeveling. Het heeft de meest configureerbare naamgevingsworkflow die hier is gedocumenteerd: kant-en-klaar Templates, 145+ Naming Blocks, Custom AI Blocks, opmaak, lokalisatie, metagegevens, monitoring, preview en Rename History met batchherstel. Het omvat ook schermafbeeldingen, video's, foto's, ontwerpbestanden, audio, PDF's, 'iWork'-bestanden en Office-documenten. Lokale AI is beschikbaar in verschillende apps en moet worden behandeld als een privacyvereiste en niet als de belangrijkste onderscheidende factor.
-
-Als je een bredere tutorial wilt in plaats van een vergelijking, lees dan [Hoe bestanden hernoemen met AI op Windows](/blog/rename-files-with-ai-windows-guide). Als uw grootste probleem automatisering is, ga dan naar [Bestanden automatisch hernoemen op Windows](/blog/auto-rename-files-windows-guide).
-
-Voor productdocumentatie, zie [batch hernoemen van bestanden](/docs/batch-rename-files), [automatisch hernoemen van bestanden met mapbewaking](/docs/folder-monitoring) en [ondersteunde bestandstypen](/docs/supported-file-types).
+<BlogSources ids={['filesdesk', 'renameclick', 'airenamer', 'renamer-ai', 'namequick', 'powerrename']} />
 
 ## Veelgestelde vragen
 
+### Wat is AI-hernoemsoftware?
+
+AI-hernoemsoftware leest de inhoud van elk bestand (documenttekst, wat er op een afbeelding staat, spraak in een video) en stelt er een beschrijvende bestandsnaam voor voor. Een tool voor bulk hernoemen kan tekst vervangen of nummers toevoegen over een batch, maar ziet geen verschil tussen een factuur en een garantiebewijs als die allebei `scan_004.pdf` heten. Zush, FilesDesk, RenameClick, AI Renamer, Renamer.ai en NameQuick zijn AI-hernoemers voor Windows.
+
 ### Wat is de beste AI-bestandshernoemer voor Windows?
 
-Voor gemengde mappen op Mac en Windows raden we Zush aan: kies een sjabloon, controleer de voorgestelde namen en pas de selectie toe. Met Rename History herstel je de oorspronkelijke namen. Verbind LM Studio of Ollama voor lokale analyse; BYOK gebruikt je eigen cloudprovider. Zush hernoemt bestanden op hun bestaande locatie en biedt geen automatische verdeling over mappen of cloudopslag-API.
+Onze keuze is Zush. Je installeert het uit de Microsoft Store, het geeft 50 gratis AI-hernoemingen zonder account, kaart of API-sleutel, en de eenmalige licentie van $48 bevat beheerde cloud-AI, BYOK, Ollama en LM Studio op maximaal 3 apparaten. Elke batch wordt vooraf getoond en bewaard in Rename History met batch ongedaan maken. FilesDesk, RenameClick, AI Renamer, Renamer.ai en NameQuick passen elk bij smallere behoeften.
 
-### Wat is de beste platformonafhankelijke AI-bestandshernoemer voor Mac en Windows?
+### Is Renamer.ai hetzelfde als AI Renamer?
 
-Voor gemengde mappen op Mac en Windows raden we Zush aan: kies een sjabloon, controleer de voorgestelde namen en pas de selectie toe. Met Rename History herstel je de oorspronkelijke namen. Verbind LM Studio of Ollama voor lokale analyse; BYOK gebruikt je eigen cloudprovider. Zush hernoemt bestanden op hun bestaande locatie en biedt geen automatische verdeling over mappen of cloudopslag-API.
+Nee. Renamer.ai (renamer.ai) is een hernoemer op abonnementsbasis voor Windows, Mac en web, met abonnementen van $9.95 tot $99.95 per maand en lokale modus in elke versie. AI Renamer (airenamer.app) is een desktop-app met een eenmalige Local Mode van $19 en cloudcreditpakketten van $10. Een derde project, de opdrachtregeltool `ozgrozer/ai-renamer` op GitHub, is gratis en staat los van beide.
 
-### Waarom staat Zush boven FilesDesk en RenameClick?
+### Is een eenmalige licentie van $48 meer waard dan een goedkopere?
 
-Voor gemengde mappen op Mac en Windows raden we Zush aan: kies een sjabloon, controleer de voorgestelde namen en pas de selectie toe. Met Rename History herstel je de oorspronkelijke namen. Verbind LM Studio of Ollama voor lokale analyse; BYOK gebruikt je eigen cloudprovider. Zush hernoemt bestanden op hun bestaande locatie en biedt geen automatische verdeling over mappen of cloudopslag-API.
+Dat hangt af van of je AI inbegrepen wilt. AI Renamer Local ($19) en RenameClick Lifetime ($36 + btw) dekken de app, maar de AI draait op je eigen sleutel of op een model dat je pc moet draaien. De $48 van Zush bevat beheerde Zush Cloud AI met onbeperkt hernoemen, plus BYOK en lokale modellen, alle toekomstige updates, 3 apparaten verdeeld over Windows en Mac, en 14 dagen geld-terug.
 
-### Kan ik BYOK of offline AI gebruiken op Windows?
+### Waar worden mijn bestanden verwerkt met Zush op Windows?
 
-Ja. Zush voor Windows omvat BYOK voor Gemini, OpenRouter, OpenAI en Claude plus Offline AI met Ollama in elk abonnement. GRATIS omvat 50 hernoemingen gedeeld door Cloud AI, BYOK en Offline AI; PRO verwijdert de limiet.
-
-### Wat is AI-hernoemersoftware?
-
-AI-hernoemersoftware analyseert de bestandsinhoud en genereert automatisch beschrijvende bestandsnamen. Een normale tool voor bulksgewijs hernoemen kan tekst vervangen of cijfers toevoegen, maar een AI-hernoemer kan naar een screenshot, pdf, document, afbeelding, videoframe of audiocontext kijken en voor elk bestand een andere betekenisvolle naam voorstellen.
+Met Zush Cloud AI of BYOK gaat bestandsinhoud naar een AI-dienst om namen te maken; BYOK gebruikt je eigen account bij een aanbieder. Met Ollama of LM Studio draait de analyse op je pc, en optionele spraakherkenning op het apparaat verwerkt video. Voorbeeldweergave, handmatige bevestiging en Rename History werken in elke modus hetzelfde. Zie de [gids over privacy en beveiliging](/docs/privacy-security).
 
 ### Hoe verschilt Zush van PowerRename op Windows?
 
-[PowerRename](https://learn.microsoft.com/en-us/windows/powertoys/powerrename), het hulpprogramma uit PowerToys, past één gedeelde regel toe op alles wat je in Verkenner hebt geselecteerd: zoeken en vervangen, reguliere expressies en datum- of kenmerkvariabelen. Het opent het bestand nooit, dus het kan een factuur niet onderscheiden van een garantiebewijs als beide binnenkomen als `scan_004.pdf`. Zush leest elk bestand en stelt een eigen naam voor op basis van de inhoud; daarna kun je de batch bekijken, toepassen en ongedaan maken. Voor Windows-mappen met gemengde screenshots, pdf's, foto's, video's, audio en Office-bestanden telt die werkwijze van controleren en terugdraaien zwaarder dan pure hernoemsnelheid. De [vergelijking van PowerRename-alternatieven](/windows) laat zien waar elke aanpak wint.
+[PowerRename](https://learn.microsoft.com/en-us/windows/powertoys/powerrename), het hulpprogramma uit PowerToys, past één gedeelde regel toe op je selectie in File Explorer: zoeken en vervangen, regex, tellers, en datum- of EXIF/XMP-tokens. Het heeft geen AI en leest nooit bestandsinhoud. Zush leest elk bestand en stelt een eigen naam voor, en laat je de batch daarna bekijken, toepassen en terugdraaien. PowerRename is gratis en prima voor uniforme patroonwijzigingen.
 
 ### Is er een native Windows-app, niet alleen een browsertool?
 
-Ja. [AI-bestandshernoemer voor Windows](/windows) wordt geïnstalleerd via Microsoft Store en is gebouwd voor desktopgebruik in plaats van voor upload- en download-websessies.
-
-### Wat moet ik doen als ik schermafbeeldingen meestal hernoem?
-
-Dan is de screenshot-workflow belangrijker dan de algemene vergelijking. Lees '[Hoe u schermafbeeldingen automatisch kunt hernoemen op Windows](/blog/rename-screenshots-automatically-windows)'.
-
-### Wat moet ik doen als ik vooral PDF's en downloads hernoem?
-
-Geef vervolgens prioriteit aan documentondersteuning en automatisering. Begin met [Hoe u PDF-bestanden kunt hernoemen met AI op Windows](/blog/rename-pdf-files-with-ai-windows) en [Hoe u uw downloadmap kunt ordenen op Windows](/blog/organize-downloads-folder-windows).
+Ja. [Zush voor Windows](/windows) installeer je uit de Microsoft Store met x64- en ARM64-pakketten, en het draait op Windows 10 en 11. FilesDesk en RenameClick staan ook in de Microsoft Store. AI Renamer, Renamer.ai en NameQuick bieden Windows-installatieprogramma's op hun eigen sites. Browsertools uploaden je bestanden in plaats daarvan; dat past bij incidenteel gebruik als je geen software kunt installeren.

@@ -1,6 +1,6 @@
 ---
 title: "2026년 AI 파일 이름 변경 도구 10개 비교"
-description: "Mac, Windows, 웹, 클라우드 및 로컬 워크플로용 AI 파일 이름 변경 도구를 이름 지정 제어, 파일 지원, 미리보기, 실행 취소, 자동화 및 가격별로 비교합니다."
+description: "Mac·Windows·Linux·웹 AI 파일 이름 변경 도구 비교: 무료 시작, 1회 결제, 클라우드·로컬 AI, 폴더 감시, 실행 취소."
 date: "2026-03-23"
 slug: "best-ai-file-renamer-tools-2026-ko"
 locale: "ko"
@@ -10,250 +10,238 @@ topic: "comparisons"
 tags:
   - "AI 파일 이름 바꾸기"
   - "도구 비교"
-tldr: "전체적으로 최고: 'Zush'. 이 비교에서 가장 구성 가능한 AI 명명 워크플로가 있습니다. 바로 사용할 수 있는 'Templates', 145개 이상의 'Naming Blocks', 'Custom AI Blocks', 형식 지정 및 현지화 컨트롤과 적용된 배치를 복원할 수 있는 'Rename History'입니다. 다른 제품은 우리의 전반적인 권장 사항이 아닌 더 좁은 대안입니다. Zush 폴더 분류는 Mac과 Windows에서 사용할 수 있습니다. Zush 라이선스 하나로 최대 3대에서 사용할 수 있습니다."
-reviewed: "2026-11-16"
+tldr: "종합 1위는 Zush입니다. 바로 쓸 수 있고(계정, 카드, API 키 없이 AI 이름 변경 50회 무료), $48 1회 결제 라이선스에 관리형 클라우드 AI와 BYOK, Ollama, LM Studio가 Mac과 Windows 최대 3대용으로 포함되며, 모든 묶음은 미리 보고 묶음 단위 실행 취소가 되는 Rename History에 남습니다. Linux에는 AI Renamer, Mac과 Windows에서 무료 로컬 도구로는 Wisfile이 있습니다. 내장 로컬 모델에는 RenameClick이나 RenamerX, 클라우드 저장소와 API 작업에는 Renamed.to를 고르세요."
+reviewed: "2026-11-17"
 featuredOrder: 1
 ---
-
-> **검증 안내(2026년 9월 5일):** 이 비교는 Zush 개발사가 작성했습니다. [8개 파일 실사용 테스트](/benchmarks/ai-file-renamer-pilot-2026-09-05/README.md)는 Mac에서 Zush 3.11.0과 RenamerX 1.2.2의 실제 결과와 두 제품의 장점 및 오류를 기록합니다. 여기에 소개된 모든 도구나 Windows를 테스트한 것은 아니며 종합 우승 제품을 입증하지도 않습니다. 이전 합성 시뮬레이션은 방법론의 예시이지 제품 정확도의 증거가 아닙니다. 다양한 파일 형식과 내용에 맞는 이름을 원한다면 Zush를 추천합니다. 테스트에서 청구서 정보, 스캔한 영수증의 내용, 영상에 보이는 작업 과정, 음성 녹음의 주제를 인식했습니다. 좋은 이름은 관련 정보로 파일을 식별하고 근거 없는 세부 정보를 넣지 않습니다. 길이만으로 품질을 판단할 수 없습니다. Naming Blocks와 Templates로 필드와 구조를 선택할 수 있지만 이번에는 사용자 지정 필드 추출을 테스트하지 않았습니다.
 
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-**대상 정보 검토: 2026년 10월 5일.** Renamer.ai, NameQuick, FilesDesk를 일차 자료로 확인했습니다. 다른 제품은 기존 확인 날짜를 유지합니다. 공개 기능 비교이며 독립 성능 시험이 아닙니다.
+**Mac이나 Windows를 쓰는 대부분의 사람에게 가장 좋은 AI 파일 이름 변경 도구는 [Zush](/)입니다.** 계정, 카드, API 키 없이 이름 변경 50회가 무료이고, $48 1회 결제 라이선스에 최대 3대용 관리형 클라우드 AI가 포함됩니다. Linux에는 AI Renamer, Mac과 Windows에서 무료 로컬 도구로는 Wisfile이 있습니다. RenameClick과 RenamerX는 로컬 모델을 내장하고, Renamed.to는 클라우드 저장소에 맞습니다.
 
-FilesDesk Organize Flow는 조건부 이동, 복사, Mac Finder 작업을 지원합니다. 로컬 옵션은 Ollama, LM Studio, vLLM입니다. 구독은 BYOK/로컬을 제외하며 월 크레딧은 이월되지 않습니다. 40달러 Self-Managed는 한 기기와 12개월 업데이트입니다.
+**확인 방법:** 이 글은 [Zush](/) 제작사가 썼습니다. 경쟁 제품의 가격, 기능, 평점은 2026년 11월 17일에 각 제조사 사이트와 공식 스토어에서 확인했습니다([아래 출처](#sources-and-how-we-checked)). 실험실 테스트가 아니라 문서로 확인된 기능을 비교한 글이며, 실제 파일에 대한 Zush의 결과는 [8개 파일 파일럿 테스트](/benchmarks/ai-file-renamer-pilot-2026-09-05/README.md)에 공개했습니다.
 
-일차 자료 · NameQuick · FilesDesk
+이 페이지는 크로스플랫폼 개요입니다. 플랫폼별 추천은 [Mac용 AI 파일 이름 변경 도구 추천](/blog/best-ai-file-renamer-tools-mac-compared)과 [Windows용 AI 파일 이름 변경 도구 추천](/blog/best-ai-file-renamer-tools-windows-compared)을 보세요.
+
+## AI 파일 이름 변경 도구 10종 한눈에 보기
+
+| 도구 | 플랫폼 | 무료 시작 | 유료 | 유료 요금제의 관리형 클라우드 AI | 폴더 감시 | 실행 취소 / 기록 |
+|---|---|---|---|---|---|---|
+| <BlogHighlight>**1. Zush**</BlogHighlight> | Mac, Windows | AI 이름 변경 50회, 계정·카드·키 불필요 | 월 $10 또는 1회 $48 | 예, 두 요금제 모두 | 예, Mac에서는 외장 드라이브 포함 | 영구 Rename History, 묶음 단위 실행 취소 |
+| 2. FilesDesk | Mac, Windows | 크레딧 15개, 로그인 필요 | 월 $8 또는 $20, Self-Managed $40 | 구독에만 | Watch Folders + Watch Inbox | 기록 + 실행 취소 |
+| 3. RenameClick | Mac, Windows | 월 100회 이름 변경 또는 이동 | 평생 $36 + VAT | 아니요: 내장 로컬 모델, Ollama/LM Studio 또는 본인 키 | Auto Flow, 앱 실행 중에만 | 메모리에 10개 항목, 재시작 시 삭제 |
+| 4. AI Renamer | Mac, Windows, Linux | 클라우드 크레딧 10개, Google 로그인 | Local $19, 클라우드 크레딧 200개당 $10 | 크레딧으로 별도 판매 | Watch Folder 베타, 앱 실행 중, 하위 폴더 제외 | 문서화되지 않음 |
+| 5. Renamer.ai | Windows, Mac, 웹 | 월 25개 파일 | 월 $9.95~$99.95 | 예, 파일 수 기준 사용량제 | Magic Folders | 실행 취소 |
+| 6. NameQuick | Mac, Windows | Managed 이름 변경 30회, 카드 불필요 | Managed 월 $12부터, Self-Managed $69 | Managed 요금제에만 | 감시 폴더 | 기록 + 실행 취소(파일을 옮긴 경우 실패할 수 있음) |
+| 7. RenamerX | Mac, Windows | 월 50 크레딧 | 평생 $36 | 아니요: 내장 로컬 모델, Ollama/LM Studio 또는 본인 키 | Watch Folders | 실행 취소, 기록 로그 설명 없음 |
+| 8. Wisfile | Mac, Windows | 무료 | 없음 | 아니요, 로컬 전용 | 제조사 미기재 | 실행 취소 없음 |
+| 9. Renamed.to | 웹, API, CLI | 50 크레딧 | 1,000 크레딧 $9 또는 10,000 크레딧 $49(12개월) | 클라우드 전용, 사용량제 | 클라우드 저장소 연동 | 제조사 미기재 |
+| 10. File Renamer AI | 브라우저 | 미기재 | 1,000 크레딧 $10 또는 10,000 크레딧 $100 | 클라우드 전용, 사용량제 | 아니요 | 문서화되지 않음 |
+
+### Zush가 1위인 이유
+
+인상이 아니라 확인할 수 있는 사실입니다.
+
+1. **Mac이나 Windows에서 바로 동작합니다.** 계정, 카드, API 키, 모델 다운로드 없이 관리형 Zush Cloud AI로 AI 이름 변경 50회가 무료입니다. AI Renamer는 Google 로그인이, FilesDesk는 로그인이 필요하고, RenameClick의 무료 AI는 RAM 16 GB를 권장하는 약 4 GB 로컬 모델을 내려받아야 합니다. NameQuick Managed도 30회 무료로 똑같이 쉽게 시작할 수 있습니다.
+2. **라이선스 하나로 두 플랫폼, 클라우드까지.** 1회 $48로 Mac과 Windows를 합쳐 최대 3대, 모든 모드(Zush Cloud AI, BYOK, Ollama, LM Studio)의 무제한 이름 변경, 이후 모든 업데이트, 14일 환불이 해결됩니다. AI Renamer($19), RenameClick($36 + VAT), RenamerX($36), FilesDesk($40), NameQuick($69)의 1회 결제 라이선스는 모두 본인 키나 로컬 모델이 필요합니다.
+3. **Rename을 누르기 전에는 아무것도 바뀌지 않고, 나중에 되돌릴 수 있습니다.** Rename History는 재시작 후에도 남고 묶음 전체를 되돌릴 수 있습니다. RenameClick의 실행 취소는 메모리의 10개 항목이고, AI Renamer는 실행 취소를 문서화하지 않았으며, Wisfile에는 없습니다.
+4. **폭넓은 지원.** MKV를 포함한 동영상을 음성, 내장 자막, 메타데이터로 이름 짓고, RAW 사진, 디자인 파일, 오디오, Office, iWork, EPUB을 처리합니다. AI Rename 안의 중복 감지에는 크레딧이 들지 않습니다.
+
+Zush가 답이 아닌 경우: Linux 빌드가 없고(AI Renamer에는 있음), 브라우저 전용이나 클라우드 저장소 API 작업 흐름이 없으며(Renamed.to에는 있음), 환불 기간은 14일입니다. 평점(2026년 11월 17일 기준): 미국 Microsoft Store 평가 8개 기준 5.0, Softpedia 편집자 리뷰 4.5/5.
+
 <BlogProductIntro
-  title="제품 경로 선택"
-  description="'Zush'에는 Mac, 'Windows', 오프라인 AI, 'BYOK' 설정 및 일괄 이름 변경 의도에 대한 별도의 랜딩 페이지가 있습니다. 이 비교를 사용하여 선택한 다음 작업 흐름과 일치하는 페이지로 이동하세요."
+  title="Zush로 파일 이름을 바꿀 준비가 되셨나요?"
+  description="Templates, 미리 보기, Rename History로 Mac과 Windows에서 내용 기반 이름을 만드세요. 계정 없이 AI 이름 변경 50회 무료로 시작하세요."
   links={[
-    { href: '/', label: 'AI 파일 이름 바꾸기' },
-    { href: '/ai-file-organizer', label: 'AI 파일 정리' },
-    { href: '/mac', label: '맥 앱' },
-    { href: '/windows', label: '\'Windows\' 앱' },
+    { href: '/', label: 'Zush AI 파일 이름 변경' },
+    { href: '/mac', label: 'Mac 앱' },
+    { href: '/windows', label: 'Windows 앱' },
     { href: '/offline-ai-file-renamer', label: '오프라인 AI' },
+    { href: '/pricing', label: '가격' },
   ]}
 />
 
-Mac, Windows, 웹, 클라우드 및 로컬 워크플로용 AI 파일 이름 변경 도구 10개를 비교했습니다. **[Zush AI File Renamer](/)를 종합 추천 제품으로 선정한 이유**는 즉시 사용 가능한 Templates, 145개 이상의 Naming Blocks, Custom AI Blocks, 블록별 서식, 현지화, 메타데이터 설정, 폭넓은 혼합 형식 지원, 폴더 모니터링과 영구 Rename History를 함께 제공하기 때문입니다. 다른 제품도 더 구체적인 요구 사항에는 유용한 대안입니다.
-**Zush 제품 업데이트 — 2026년 8월 31일:** 현재 Mac 및 Windows용 Zush는 하나의 워크플로에서 네 가지 AI 모드를 제공합니다. 온라인 모드는 Zush Cloud AI와 BYOK이며, 로컬 모드는 LM Studio와 Ollama입니다. FREE의 파일명 변경 50회 한도는 네 모드가 공유하고, 유료 PRO는 네 모드 모두에서 Zush 한도를 제거합니다. 경쟁사 관련 주장은 별도로 표시된 각 검증 날짜를 유지합니다.
+## 고르기 전에 확인할 것
 
-개인 정보 보호가 주요 쿼리인 경우 '[오프라인 AI 파일 이름 바꾸기](/offline-ai-file-renamer)'을 사용하세요. 공급자 제어가 기본 쿼리인 경우 '[BYOK 설정 가이드](/docs/byok)'을 사용하세요. 잘못된 대량 이름 변경의 위험이 결정 요인이라면 '[미리보기 및 실행 취소를 통해 파일 이름을 안전하게 일괄적으로 바꾸는 방법](/blog/how-to-safely-batch-rename-files)'를 읽어보세요. 여전히 공급업체를 비교하고 있다면 아래 섹션에서 파일 범위, 플랫폼, 가격 및 안전성을 기준으로 전체 시장을 구분합니다.
-
-**마지막 확인일: 2026년 8월 17일** 'NameQuick'; 'FilesDesk'의 경우 2026년 8월 13일; 'RenameClick', 'Renamer.ai', 'AI Renamer', 'Riffo'의 경우 2026년 7월 24일 Wisfile 및 Renamed.to는 2026년 7월 9일에 마지막으로 확인되었습니다.
-
-이 업데이트에 대해 확인된 소스에는 '[Zush](/)', 'FilesDesk', 'FilesDesk 문서', 'RenameClick' 및 해당 '지원되는 파일 형식 문서', 'NameQuick', 'Renamer.ai', 'AI Renamer', 별도의 'GitHub의 ai-renamer CLI 리포지토리', '위스파일', 'Riffo' 및 '이름이 .to로 변경되었습니다.'에 대한 공식 제품, 가격, 문서 또는 저장소 페이지가 포함됩니다.
-
-**벤치마크 상태:** 이 기사는 독립적인 제품 테스트가 아닌 소스 기반 기사입니다. 공개 '[벤치마크 시뮬레이션 증거 팩](/benchmarks/ai-file-renamer-simulation-2026/README.md)'는 제안된 300개 레코드 코퍼스, SHA-256 매니페스트, 고정 설정, 3회 반복 원시 데이터 형식, 집계 및 제한 사항을 보여줍니다. 시뮬레이션은 'Zush'이나 다른 경쟁업체를 실행하지 않았으므로 제품 점수로 사용해서는 안 됩니다.
-
-사용 사례별 빠른 선택:
-
-- **가장 구성 가능한 이름 지정 작업 흐름:** Zush — 기성 Templates, 145개 이상의 Naming Blocks, Custom AI Blocks, 형식 지정, 현지화, 메타데이터 및 폴더별 템플릿 할당
-- **가장 안전한 반복 가능한 'Zush' 워크플로:** 적용 전 미리 본 후 'Rename History'에서 적용된 배치를 검사하고 복원합니다.
-- **Mac 및 Windows의 혼합 파일(RAW + HEIC + 디자인 + iWork + 오디오 + 비디오):** Zush
-- **Zush:** Zush 폴더 분류는 Mac과 Windows에서 사용할 수 있습니다.
-- **위험도가 낮은 첫 번째 테스트:** 복사된 대표 폴더에서 Zush의 50개 스타터 이름 변경을 사용한 다음 제안된 이름과 Rename History을 검사한 후 자동화하기 전에
-
-AI 파일 이름 바꾸기 기능은 이제 형식 지원, 검토 및 실행 취소 보호 조치, 폴더 모니터링, 가격 책정, 플랫폼 적합성 측면에서 실질적으로 다릅니다. 제품이 공유 자료에서 독립적으로 벤치마킹되지 않았기 때문에 이 문서에서는 품질 점수를 할당하지 않습니다.
-
-이 비교에서는 공급업체 소유 제품, 가격, 문서 및 저장소 소스를 사용합니다. 또한 AI 이름 바꾸기 앱, AI 일괄 이름 바꾸기 도구, 자동 파일 이름 바꾸기, 문서 이름 바꾸기, 클라우드 스토리지 이름 바꾸기 및 오프라인 AI 워크플로우 등 자주 혼합되는 검색 의도를 분리합니다.
-
-플랫폼별 비교를 원하시면 '[Mac AI 이름 바꾸기 앱 비교](/ko/blog/mac-ai-file-renamer-comparison)' 또는 '['Windows' AI 이름 바꾸기 앱 비교](/ko/blog/windows-ai-file-renamer-comparison)'으로 이동하세요. 이 페이지는 의도적으로 광범위하게 유지됩니다.
-
-**Zush 기능 확인일: 2026년 10월 18일.** 경쟁 제품 정보에는 본문에 명시된 기존 확인 날짜가 적용됩니다.
-
-## 명명 제어, 복구 및 AI 모드
-
-Mac과 Windows에서 여러 형식의 파일을 다룬다면 Zush를 권합니다. 템플릿을 선택하고 제안된 이름을 검토한 뒤 적용하세요. Rename History로 원래 이름을 복원할 수 있습니다. 로컬 분석에는 LM Studio 또는 Ollama를 연결하며, BYOK는 사용자의 클라우드 제공업체를 이용합니다. Zush는 파일을 현재 위치에서 이름만 변경하며, 폴더 간 자동 분류나 클라우드 저장소 API를 제공하지 않습니다.
-
-## AI로 파일을 폴더에 분류하기
-
-Zush 폴더 분류는 Mac과 Windows에서 사용할 수 있습니다. 지원 파일의 내용을 분석해 이름과 그룹을 제안합니다. Auto를 쓰려면 Folder rules를 비우고, 직접 정하려면 자연어로 지시하세요. 파일 이름 형식은 Naming Blocks에서 별도로 설정합니다.
-
-> 청구서는 회사별, 영수증은 월별로 묶어 주세요. 월 폴더 이름은 YYYY-MM으로 지정해 주세요.
-
-1. 복사한 작은 묶음을 AI Rename에 추가하고 Template을 선택합니다.
-2. + Sort를 켜고 하위 폴더의 루트로 Destination folder를 선택합니다. 별도 대상이 없으면 원본 폴더가 루트입니다.
-3. Folder rules에 분류 방법을 적습니다. 대상 안의 적절한 기존 폴더를 쓰려면 Reuse existing folders를 켭니다. 맞는 폴더가 없으면 새로 만들 수 있습니다.
-4. 처리를 적용하기 전에 제안된 이름과 그룹을 확인하고 수정합니다.
-
-검증한 대상과 규칙을 Template에 저장하세요. Monitor는 감시 폴더 바로 안에 새로 들어오는 파일의 이름과 분류를 처리합니다. 이미 처리한 파일을 소급해 정리하지 않습니다. 분류를 끄고 원래 대상을 선택하면 파일은 현재 폴더에 남습니다.
-
-[폴더 분류 문서](/docs/folder-sorting).
-
-## 평가 대상
-
-도구를 비교하기 전에 일상적인 사용에 실제로 중요한 것이 무엇인지 파악하십시오.
-
-|표준|왜 중요한가요?|
+| 기준 | 확인할 점 |
 |---|---|
-|콘텐츠 인식|도구는 파일 내부 내용에 따라 파일 이름을 지정해야 합니다.|
-|네이밍 컨트롤|AI 제안에는 여전히 예측 가능한 구조, 필드, 서식 및 언어가 필요합니다.|
-|기성 워크플로|'Templates'는 설정 시간을 줄이고 반복되는 작업을 일관성 있게 유지합니다.|
-|형식 지원|실제 폴더에는 JPG뿐만 아니라 HEIC, RAW, PDF, DOCX가 포함됩니다.|
-|일괄 처리|실제 배치 파일 이름 바꾸기는 한 번에 많은 내용 인식 이름을 미리 보고 적용해야 합니다.|
-|오토메이션|자동 폴더 모니터링으로 복잡한 내용이 다시 발생하지 않도록 방지|
-|실행 취소/롤백|대량 이름 바꾸기에는 안전망이 필요합니다.|
-|가격 투명성|커밋하기 전에 지불할 금액을 파악하세요.|
-|플랫폼|Mac, 'Windows', Linux 또는 크로스 플랫폼|
+| 첫 실행 | 계정, 카드, API 키, 모델 다운로드 없이 AI가 동작하나요? |
+| 가격에 포함된 것 | 관리형 AI가 라이선스에 포함되나요, 아니면 제공업체에 돈을 내거나 직접 모델을 돌려야 하나요? |
+| 형식 | 실제 폴더에는 RAW, HEIC, PSD, MKV, Office, iWork 파일이 섞여 있습니다 |
+| 검토 | 무엇이든 바뀌기 전에 모든 이름을 보고 수정할 수 있나요? |
+| 복구 | 실행 취소가 재시작 후에도 남나요? 묶음 전체를 되돌릴 수 있나요? |
+| 자동화 | 폴더 감시에 앱이 열려 있어야 하나요? 하위 폴더나 외장 드라이브도 다루나요? |
+| 하드웨어 | 로컬 우선 앱은 RAM, 디스크 공간, 때로는 특정 칩이나 GPU가 필요합니다 |
+| 플랫폼 | Mac, Windows, Linux, 웹 |
 
-## 비교된 도구
+## 비교한 도구
 
 ### 1. Zush
 
-<BlogToolMeta platform="맥과 Windows" website="https://zushapp.com/" label="zushapp.com"><Fragment slot="pricing">무료(시작 시 이름 변경 50개), 무제한 PRO 이름 변경을 위한 Pro '<BlogHighlight>월 $10 또는 일회성 $48</BlogHighlight>', API 비용으로 선택 사항인 'BYOK', Mac의 'Ollama / LM Studio' 및 'Windows'을 통한 오프라인 AI</Fragment></BlogToolMeta>
+<BlogToolMeta platform="Mac(macOS 15 이상, Apple Silicon과 Intel), Windows 10/11" website="https://zushapp.com/" label="zushapp.com">
+  <Fragment slot="pricing">무료: 계정·카드 없이 AI 이름 변경 50회. Pro: <BlogHighlight>월 $10 또는 1회 $48</BlogHighlight>, Zush Cloud AI, BYOK, Ollama, LM Studio에서 무제한 이름 변경, 최대 3대</Fragment>
+</BlogToolMeta>
 
-![이름 전후에 설명이 포함된 파일과 녹색 확인 표시가 있는 'Zush' AI 이름 변경 결과](/images/showcase/macos/batch-rename-light.webp)
+![변경을 적용하기 전에 섞인 묶음의 원래 파일 이름 옆에 AI 제목 제안을 보여 주는 Mac용 Zush](/images/showcase/macos/batch-rename-light.webp)
 
-'[Mac 및 Windows용 Zush 파일 이름 바꾸기](/)'은 다양한 파일 형식을 사용하여 작업하고 이미지, 디자인 파일, 문서, 비디오 및 오디오에 대한 별도의 이름 바꾸기 도구 대신 하나의 데스크탑 워크플로우를 원하는 사용자에게 선택됩니다. 100가지 이상의 형식을 지원합니다: 41가지 이미지 형식(HEIC, AVIF, SVG 및 RAW 포함), 4가지 디자인 형식(Sketch, Figma .fig, Adobe Illustrator .ai 및 PSD), 37가지 문서 및 PDF 관련 형식(PDF, Office, iWork, OpenDocument, 텍스트, 데이터, 이메일 및 자막 파일), 16가지 비디오 형식(MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV 및 VOB) 및 7가지 오디오 형식(MP3, M4A, WAV, FLAC, OGG, WebM 및 MPGA 포함). 실제 워크플로에서는 휴대폰 사진, 카메라 RAW 파일, 디자인 자산, 스캔한 PDF, Office 문서, 자막, 화면 녹화 및 오디오 파일이 동일한 폴더에 혼합되어 있기 때문에 이러한 폭이 중요합니다. 비디오는 대부분의 도구가 완전히 건너뛰는 범주입니다. '[AI로 비디오 파일 이름을 바꾸는 방법](/blog/rename-video-files-with-ai)'는 이름 변경자가 클립에서 실제로 읽는 내용을 설명합니다.
+[Zush](/)는 내용으로 파일 이름을 짓는 Mac과 Windows용 데스크톱 앱입니다. 100개 이상의 형식을 지원합니다. HEIC, AVIF, 카메라 RAW를 포함한 이미지 형식 41개, 디자인 형식 4개(Sketch, Figma .fig, Illustrator .ai, PSD), PDF, Office, iWork, OpenDocument, EPUB을 포함한 문서 형식 40개, MP4, MOV, MKV를 포함한 동영상, 오디오 형식 7개입니다. 동영상은 음성, 내장 자막, 메타데이터로 이름을 짓습니다. 무엇을 읽는지는 [AI로 동영상 파일 이름 바꾸는 법](/blog/rename-video-files-with-ai)에서 설명합니다.
 
-이 목록의 나머지 부분 옆에 'Zush'가 눈에 띄는 이유는 무엇입니까?
+작동 방식: 준비된 Template(Smart Rename, Screenshots, Movies & TV, Remove Duplicates 등)을 고르거나 145개 이상의 Naming Blocks와 Custom AI Blocks로 직접 만드세요. Zush가 파일마다 이름을 제안합니다. 이름을 더블클릭해 수정할 수 있고, Rename을 누르기 전에는 아무것도 바뀌지 않습니다.
 
-- <BlogHighlight>**이 비교에서 가장 구성 가능한 명명 워크플로**</BlogHighlight> — 미리 만들어진 Templates, 145개 이상의 Naming Blocks, Custom AI Blocks, 사용자 정의 프롬프트, 블록 순서, 대소문자, 구분 기호, 날짜 형식, 언어, Finder 태그 및 Spotlight 메타데이터.
-- <BlogHighlight variant="accent">**사용 준비가 되어 있고 적응하기 쉬운 Templates**</BlogHighlight> — 스마트 이름 변경, 스크린샷, 디자이너 자산, 장부 관리 비용, 사진작가 촬영, 비디오 제작, 음악 트랙 및 고객 회의 메모가 내장되어 있습니다. 각각은 일괄적으로 재사용하거나 모니터링되는 폴더에 할당할 수 있습니다.
-- <BlogHighlight variant="accent">**실제 복구 컨텍스트가 포함된 Rename History**</BlogHighlight> — 미리보기 및 적용 후 활동은 원래 이름, 새 이름, 폴더 및 타임스탬프를 유지하므로 적용된 배치를 검사하고 되돌릴 수 있습니다.
-- <BlogHighlight>**$10/월 또는 $48 일회성** — 월별 유연성 또는 평생 액세스 선택</BlogHighlight>.
-- '<BlogHighlight variant="accent">**광범위한 혼합 형식 적용 범위**</BlogHighlight>' — RAW, HEIC, 디자인 파일, 'iWork', 오디오, 비디오, PDF, Office 문서 및 자막 사이드카를 하나의 워크플로우로 처리합니다.
-- <BlogHighlight variant="accent">**검토 우선 일괄 작업 흐름**</BlogHighlight> — 변경 사항을 적용하기 전에 이름을 미리 보고 배치를 되돌려야 하는 경우 이름 변경 기록을 사용합니다.
+**장점:**
 
-**강점:**
+- 계정이나 키 없이 관리형 클라우드 AI로 처음 실행할 때부터 동작
+- 하나의 작업 흐름에 AI 경로 네 가지: Zush Cloud AI, BYOK(Gemini, OpenRouter, OpenAI, Claude), Ollama, LM Studio, 그리고 Ollama나 LM Studio를 통한 동영상용 로컬 음성 인식
+- 적용 전 미리 보기, 묶음 단위 실행 취소가 되는 영구 Rename History, 충돌을 표시하는 Undo All
+- 중복 감지: 사본을 유지, 이름에 표시, 또는 휴지통으로 이동, 크레딧 미사용
+- 폴더 감시, Mac에서는 다시 연결하면 재개되는 외장 드라이브 포함
+- 시작 값과 앞자리 0을 지정하는 폴더별 일련번호
+- 중첩 폴더를 지원하는 선택 사항인 AI 폴더 분류
+- 클라우드 모드에서 가벼움: 약 200 MB, RAM 최소 4 GB
+- 11개 이상 언어 인터페이스, 60개 이상 언어로 이름 생성
 
-- 이미지, 디자인 파일, 문서, 비디오 및 오디오 전반에 걸쳐 내용 인식 이름 지정
-- 적용 전 미리보기로 일괄 이름 바꾸기
-- 새 파일의 자동 이름 바꾸기를 위한 폴더 모니터링
-- 반복 가능한 파일 이름 구조를 위한 재사용 가능한 템플릿 및 145개 이상의 'Naming Blocks'
-- 검색하기 쉬운 이름, 메타데이터 및 사용자 정의 프롬프트
-- 여러 AI 제공업체: Gemini, OpenRouter, OpenAI, Claude
-- Mac 및 Windows에서 로컬 Ollama 처리
-- 60개 이상의 언어 지원
-- 전체 되돌리기 기능으로 기록 이름 바꾸기
-- 구독 대신 일회성 가격 책정
+**한계:**
 
-**제한사항:**
+- Linux 빌드와 브라우저 전용 버전 없음
+- Zush Cloud AI와 BYOK는 인터넷 필요, Ollama와 LM Studio는 내 컴퓨터에서 실행
+- 태그 없는 음악 식별은 현재 Windows 전용
 
-- 브라우저 전용 도구가 아닌 기본 데스크톱 워크플로
-- 클라우드 및 'BYOK' 처리에는 인터넷이 필요합니다. 로컬 'Ollama'은 기기에서 지원되는 파일을 처리할 수 있습니다.
-
-**최적의 대상:** 일회성 정리와 지속적인 자동화를 모두 원하고 한 번만 지불하려는 혼합 파일 형식을 사용하는 Mac 및 'Windows' 사용자.
-
-**Zush에 대해 자세히 알아보기:** [파일 이름 바꾸기](/) · [일괄 이름 바꾸기 파일](/batch-rename-files) · [Mac용 파일 이름 바꾸기](/mac) · [Windows의 파일 이름 바꾸기](/windows) · [PDF 이름 바꾸기](/rename-pdf-with-ai) · [사진 이름 바꾸기](/rename-photos-with-ai)
+**적합한 사람:** AI 이름 변경이 바로 동작하고 한 번만 결제하고 싶은, 섞인 폴더를 가진 Mac과 Windows 사용자.
 
 <BlogCTA placement='inline' platform='general' />
 
-Zush 라이선스 하나로 Mac과 Windows를 합해 최대 3대에서 사용할 수 있습니다.
+Zush 라이선스 하나로 Mac과 Windows를 합쳐 최대 3대에서 쓸 수 있습니다. [Templates를 내보내](/docs/template-import-export) 다른 컴퓨터에서 가져올 수 있습니다.
 
-Naming Blocks, Custom AI Blocks, 폴더 규칙을 포함한 [Templates를 내보내고](/docs/template-import-export) 다른 컴퓨터에서 가져올 수 있습니다. 대상 폴더, 접근 권한, AI 연결은 새 컴퓨터에서 다시 설정해야 합니다. 파일 자체가 아닌 설정을 옮기는 기능입니다.
+#### 선택 사항: AI 폴더 분류
 
-Zush는 연도 아래 월을 두는 식의 중첩 폴더 규칙도 지원합니다. 이미 이름을 바꾼 파일은 이름을 다시 변경하거나 추가 이름 변경 크레딧을 쓰지 않고 분류할 수 있습니다. 적용 전에 대상 경로를 확인하세요. 이 작업은 Monitor와 별개이며, Template을 바꿔도 이전 파일을 자동으로 다시 정리하지는 않습니다. [AI 폴더 정리](/docs/folder-sorting)는 Mac과 Windows에서 사용할 수 있습니다.
+Zush는 파일을 폴더로 분류할 수도 있습니다. **Auto**를 고르거나 "청구서는 회사별로, 영수증은 월별로 묶기" 같은 **Folder rules**를 쓰세요. 규칙으로 중첩 폴더를 만들고 날짜나 페이지 수 같은 파일 정보를 쓸 수 있습니다(Mac 앱은 크기, 카메라, 재생 시간도 씁니다). 이름을 바꾸지 않고 분류만 하거나, 대상 폴더를 고르거나, 기존 폴더를 다시 쓸 수 있습니다. 설정을 Template에 저장해 감시 폴더에 연결하면 새로 들어오는 파일에도 적용됩니다. [폴더 분류 가이드](/docs/folder-sorting)와 [AI 파일 정리](/ai-file-organizer) 페이지를 참고하세요.
 
 ### 2. FilesDesk
 
-'FilesDesk'은 관리형 AI, 'BYOK'/로컬 모드, 감시 폴더, 템플릿, 일괄 처리 및 처리 기록을 갖춘 유사한 Mac + 'Windows' 워크플로를 대상으로 하기 때문에 포함됩니다. 주요 제한 사항은 구조적입니다. 관리되는 제안은 측정되지만 수명 경로에는 자체 API 키 또는 로컬 모델이 필요합니다. 직접적인 절충점에 대해서는 '['Zush' 대 'FilesDesk'](/blog/zush-vs-filesdesk)'를 참조하세요.
+FilesDesk는 Mac과 Windows에서 동작하며 Watch Folders, Gmail·iCloud·IMAP 이메일 첨부 파일 이름을 바꾸는 Watch Inbox, 템플릿, 실행 취소가 되는 기록이 있습니다. 로그인하면 무료 크레딧 15개로 시작합니다. 관리형 AI는 구독 전용입니다. 500 크레딧 월 $8 또는 2,000 크레딧 월 $20(연 $80 또는 $200)이며, AI 이름 제안 1개당 1 크레딧이고 같은 파일을 다시 실행하면 크레딧을 또 씁니다. $40 Self-Managed 라이선스는 본인 키나 로컬 모델(Ollama, LM Studio, vLLM)을 쓰고, 기기 1대에 묶이며, 1년 업데이트가 포함되고, 환불 기간은 3일입니다.
+
+**FilesDesk를 고를 때:** 이메일 첨부 파일이 도착하는 대로 이름을 바꾸고 싶을 때. **약점:** 1회 결제 라이선스에 관리형 AI가 포함되지 않습니다. [Zush vs FilesDesk](/blog/zush-vs-filesdesk)를 참고하세요.
 
 ### 3. RenameClick
 
-'RenameClick'은 AI 검색 및 이름 바꾸기 및 폴더 라우팅 워크플로우에 포함되어 있습니다. 로컬 AI, 'Ollama', LM Studio, 선택적 클라우드 공급자 및 Auto Flow가 내장된 'macOS' 및 'Windows'용 데스크톱 앱을 제공합니다. 로컬 처리는 Zush를 포함한 여러 제품이 지원하기 때문에 장점으로 간주되지 않습니다. 주요 제한 사항은 적용 범위가 좁다는 것입니다. 문서화된 카메라 RAW, 디자인 또는 비디오 지원이 없습니다.
+RenameClick(현재 rename.click)은 Mac과 Windows에서 동작합니다. 4.1.2 버전에서 프레임과 로컬 음성 받아쓰기를 이용한 MP4, MOV, M4V, 3GP 동영상 지원이 추가됐지만 MKV, WebM, AVI는 지원하지 않고 카메라 RAW나 디자인 파일도 지원하지 않습니다. 무료 요금제는 무제한 분석과 월 100회 이름 변경 또는 이동을 허용합니다. Lifetime 라이선스는 직접 배포 빌드 기준 최대 3대에 $36 + VAT이며, 제공업체 요금은 포함되지 않습니다.
+
+**RenameClick을 고를 때:** Ollama 설정이 필요 없는 내장 로컬 모델을 원할 때. **약점:** 모델 다운로드가 약 4 GB이고 RAM 16 GB를 권장하며, Undo는 메모리에 10개 항목만 보관하고 재시작하면 지워집니다. [Zush vs RenameClick](/blog/zush-vs-renameclick)을 참고하세요.
 
 ### 4. AI Renamer
 
-두 개의 개별 프로젝트가 이 이름을 공유하고 있으며, 이를 합치면 유료 제품이 제공하는 기능이 과장됩니다. **airenamer.app의 AI Renamer**는 가격 페이지에 정확히 세 가지 항목이 나열된 상용 Mac 및 Windows 데스크톱 앱입니다. 로컬 모드는 1회 19달러, 클라우드 모드는 200크레딧당 10달러, 가입 시 10무료 크레딧입니다. CLI와 오픈 소스 버전을 광고하지 않습니다. **`ozgrozer/ai-renamer`**는 Ollama, LM Studio 또는 OpenAI 키에서 실행되고 (ffmpeg를 통해) 이미지와 비디오를 처리하는 GitHub의 관련 없는 무료 GPL-3.0 Node.js CLI입니다. "'AI Renamer`는 무료이며 오픈 소스입니다."라고 표시되면 $19 앱이 아니라 GitHub 프로젝트입니다.
+AI Renamer(airenamer.app)는 Mac, Windows, 그리고 이제 Linux용 데스크톱 앱입니다. 1.9 버전에서 앱이 열려 있을 때만 동작하고 하위 폴더를 건너뛰는 Watch Folder(베타)가 추가됐고, 1.10 버전에서 동영상, 오디오, RAW, HEIC, Office, EPUB이 추가됐습니다. Local Mode는 본인 키나 Ollama/LM Studio로 쓰는 1회 $19이고, 클라우드 크레딧은 200개당 $10이며 Google 로그인 후 10개가 무료입니다. 환불 규정은 없고 크레딧 구매는 환불되지 않습니다. GitHub의 무료 GPL-3.0 `ozgrozer/ai-renamer` CLI는 무관한 프로젝트입니다.
+
+**AI Renamer를 고를 때:** Linux가 필요하거나 로컬 AI용으로 가장 낮은 1회 결제 가격을 원할 때. **약점:** 실행 취소가 문서화돼 있지 않습니다. [Zush vs AI Renamer](/blog/zush-vs-airenamer)를 참고하세요.
 
 ### 5. Renamer.ai
 
-Renamer.ai v5는 Cloud, 다운로드형 로컬 모델, OpenAI/Gemini BYOK, 동기화 템플릿과 중첩 폴더를 제공합니다. 공개 클라우드 요금제에는 파일 할당량이 있으며 Local/BYOK 라이선스 한도는 확인해야 합니다. 공개 형식 목록에는 카메라 RAW, PSD, Sketch, Figma가 없습니다. Zush는 해당 형식과 유료 이름 변경 무제한을 명시합니다.
+Renamer.ai는 Windows와 Mac 앱, 웹 인터페이스를 제공하며 Magic Folders, 템플릿, 미리 보기, 실행 취소가 있습니다. 무료 Starter 요금제(월 25개 파일)를 포함한 모든 요금제에서 로컬 모드를 쓸 수 있습니다. 유료 클라우드 요금제는 Pro 월 $9.95(200개), Power $29.95(1,000개), Ultimate $99.95(5,000개)이며 연간 결제 시 15% 저렴합니다. BYOK는 Ultimate에만 있습니다. Softpedia 편집자 점수는 4.5/5입니다.
 
-일차 자료 · Renamer.ai
+**Renamer.ai를 고를 때:** 문서 템플릿과 무료 로컬 처리를 원할 때. **약점:** 1회 결제 라이선스가 없어서 관리형 AI는 월간 사용량제입니다. [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai)를 참고하세요.
 
 ### 6. NameQuick
 
-NameQuick은 Mac과 Windows에서 작동합니다. MLX와 Finder 태그/주석은 Mac 전용입니다. Windows 설치 프로그램은 x64이며 ARM은 에뮬레이션을 사용합니다. Managed는 적용하지 않은 제안도 차감하고 미사용 월 할당량은 만료됩니다. Self-Managed는 69달러에 컴퓨터 한 대입니다. 현재 체험: Managed는 카드 필수 14일 70회, Self-Managed는 카드 없이 30회. 변경 기록에는 3.0.16 이후 3.0.17도 있습니다.
+NameQuick(3.0.57 버전, 이제 Mac App Store에도 있음)은 Mac과 Windows에서 동작하며 Watch Folders, Rules, Quick Organize, 실행 취소를 제공합니다. 이메일이나 카드 없이 Managed 이름 변경 30회를 무료로 주고, 14일 Managed 체험(70회)에는 카드가 필요합니다. Managed 요금제는 월 $12부터이고, 이름 변경 팩은 500회 $19 또는 1,500회 $39이며 12개월 유효합니다. Self-Managed는 컴퓨터 1대용 1회 $69로 평생 업데이트와 14일 환불이 있고, AI 비용은 별도입니다.
 
-NameQuick
+**NameQuick을 고를 때:** AI 이름 짓기 위에 규칙 엔진을 원할 때. **약점:** 1회 결제 라이선스는 컴퓨터 1대용이고 관리형 AI가 없습니다. [Zush vs NameQuick](/blog/zush-vs-namequick)을 참고하세요.
 
-### 7. 위스파일
+### 7. RenamerX
 
-Wisfile은 완전 로컬 AI 파일 이름 바꾸기 및 구성 도구입니다. 이 사이트는 클라우드 의존성, 수수료, 데이터가 컴퓨터를 떠나지 않고 전적으로 사용자의 장치에서 실행된다고 말합니다.
+RenamerX는 Mac과 Windows용 로컬 우선 이름 변경 도구입니다. 내장 모델(Qwen3.5 4B)은 약 3.4 GB를 내려받으며, Apple Silicon이나 호환 GPU가 있는 Windows x64 PC에서 실행됩니다. Ollama, LM Studio, OpenAI 호환 엔드포인트, 또는 본인 키로 OpenAI와 Gemini에도 연결합니다. 사이트에는 문서, 카메라 RAW를 포함한 이미지, MKV를 포함한 동영상, Watch Folders, 실행 취소가 나와 있습니다. Free는 월 50 크레딧, Pro는 무제한 크레딧의 평생 $36입니다. 기기 수, 환불 조건, 업데이트 정책은 홈페이지에 나와 있지 않습니다.
 
-### 8. Riffo
+**RenamerX를 고를 때:** 내장 로컬 모델로 RAW와 MKV를 지원받고 싶을 때. **약점:** 관리형 클라우드가 없고, 오디오 파일은 지원 목록에 없습니다.
 
-'Riffo'는 AI 기반 파일 이름 변경 및 폴더 정리를 위한 Mac 앱이자 웹 데모입니다. 공개 홈페이지에서는 제품을 무료로 제공하고 대량 파일 이름 바꾸기와 파일을 폴더로 분류하는 기능을 보여줍니다. 그 외에는 확인할 사항이 거의 없습니다. 가격 페이지도 없고, 형식 목록도 없고, 실행 취소 명령문도 없고, 확인된 페이지에 폴더 모니터링 명령문도 없습니다.
+### 8. Wisfile
 
-### 9. .to로 개명
+Wisfile은 무료이고 Mac과 Windows에서 100% 로컬로 동작하며 PDF와 Word 파일에 집중합니다. 실행 취소는 없습니다.
 
-공개 문서의 차이는 독립적인 품질 측정 결과가 아닙니다. 문서에 없는 기능이 반드시 존재하지 않는 것은 아닙니다. Renamed.to
+**Wisfile을 고를 때:** 가끔 문서 이름을 바꾸고 비용도 클라우드도 원하지 않을 때. **약점:** 실행 취소가 없어서 잘못된 묶음은 손으로 고쳐야 합니다.
 
-## 기능 비교표
+### 9. Renamed.to
 
-|특징| Zush | FilesDesk | RenameClick | AI Renamer | Renamer.ai | NameQuick |위스파일| Riffo |이름이 .to로 변경되었습니다.|
-|---|---|---|---|---|---|---|---|---|---|
-|플랫폼|맥 & Windows|맥 & Windows|Mac 및 Windows(데스크톱 기본)|데스크톱(Mac/Win)|데스크톱(Win/Mac) + 웹| Mac + Windows; MLX/Finder는 Mac 전용 |로컬 데스크톱|'macOS' + 웹 데모|웹 + 클라우드 통합|
-|이미지/디자인 형식|41개의 이미지 + 4개의 디자인 형식|사진/이미지 자세한 매트릭스를 찾을 수 없습니다.|10가지 이미지 형식; RAW/디자인 목록 없음|기능 예시 + 전체 파일 설명|30개 이상의 형식 포함 EPS/SVG/AI 벡터; RAW 없음|30개 이상의 형식|공개적으로 자세히 설명되지 않음|문서화되지 않음|스캔한 이미지/문서|
-|문서 형식|'iWork' 등 40개|사진, PDF, 송장, 영수증, 계약서, 스크린샷|20+ 포함 PDF/DOCX/JSON/XML/YAML/HTML/SQL/자막|PDF/TXT 예시; 모든 파일 문|30개 이상의 문서/이미지/벡터/이메일|PDF, 페이지, Office, OCR|공개적으로 자세히 설명되지 않음|문서화되지 않음|PDF/워드/엑셀/파워포인트|
-|오디오/비디오|오디오 7개 + 비디오 16개|나열된 일반적인 오디오 및 비디오 형식|전사된 오디오 5개; 지원되지 않는 비디오|나열되지 않음(별도의 CLI가 비디오를 제공함)|중심이 아님|광범위한 카테고리만 해당|확인되지 않음|문서화되지 않음|아니요|
-|측정되었나요?|유료 PRO에서는 아니요|관리 크레딧 예; 평생 아니오|무료 등급 예; 프로 아니오|클라우드 예; $19 현지 번호| 클라우드 할당량, Local/BYOK 조건 확인 필요 |예, 관리됩니다. 자체 관리 아니요|아니요|명시되지 않음|예, 크레딧|
-|일괄 이름 바꾸기|예|예|예|예|예|예|예|예|예|
-|폴더 모니터링|예|예(감시 폴더)|예(자동 흐름)|공개 성명 없음|예(매직 폴더)|예(감시 폴더)|확인되지 않음|확인되지 않음|예(클라우드 폴더 감시)|
-|맞춤 패턴| Templates + 145+ Naming Blocks | Templates |형식 + 지침|사용자 정의 프롬프트/케이스 스타일| Templates |사전 설정/템플릿/프롬프트|공개적으로 자세히 설명되지 않음|제한된|저장된 팀 규칙/프롬프트|
-|실행 취소/롤백|예|예, 처리 기록을 통해|메모리에 Undo 최대 10개 보관, 재시작 시 삭제|공개 성명 없음|예|예, 원클릭 실행 취소 및 복구|확인되지 않음|확인되지 않음|검토/신뢰 워크플로|
-|여러 AI 제공업체|Gemini/OpenRouter/OpenAI/Claude + Ollama| Claude/Gemini/OpenAI/OpenRouter/Ollama/LM Studio/vLLM |내장 로컬/Ollama/LM Studio/OpenAI/Gemini/Qwen|'Ollama'/LM 스튜디오/OpenAI/커스텀| Cloud, 로컬 모델, OpenAI/Gemini BYOK |OpenAI/OpenRouter/Claude/Gemini/Ollama/LM Studio/MLX|고정 로컬|고정 클라우드|고정 클라우드|
-|무료 등급|시작하려면 50개|15학점|무제한 분석 + 월 100 크레딧 적용|가입 시 10크레딧|25/월| Managed: 카드 필수 70회/14일; Self-Managed: 카드 없이 30회 |무료|자유로운 위치의 홈페이지|시작해야 할 문서 50개|
-|BYOK/로컬 옵션|예|평생 계획|예/공급자 선택|예/현지/맞춤형| Local + OpenAI/Gemini BYOK (v5) |자체 관리형|현지의|공개 'BYOK' 없음|아니요|
+Renamed.to는 API와 CLI가 있는 클라우드 서비스입니다. 무료 이름 변경 50회로 시작하고, 이후 크레딧을 1,000개 $9 또는 10,000개 $49에 판매하며 12개월간 유효합니다.
 
-## 가격 비교
+**Renamed.to를 고를 때:** 문서가 클라우드 저장소에 있거나 API가 필요할 때. **약점:** 클라우드 전용이라 로컬 처리 경로가 없습니다.
 
-직접 구독과 일회성 구독을 비교하려면 '['Zush' 대 'Renamer.ai'](/blog/zush-vs-renamer-ai)'을 참조하세요.
+### 10. File Renamer AI
 
-|도구|무료 옵션|유료 옵션|연간 비용(예상)|모델|
-|---|---|---|---|---|
-| Zush |시작하려면 이름을 50개 바꿔야 합니다.| <BlogHighlight>월 $10 또는 일회성 $48</BlogHighlight> | <BlogHighlight>일회성 $48 또는 월 $120/년</BlogHighlight> |월간 또는 일회성 PRO|
-| Zush BYOK |모든 플랜에서 이용 가능|공급자 API 비용|선택적 API 비용|종량제 API|
-| FilesDesk |15학점|$8/월, $20/월 또는 $40 평생 'BYOK'/현지|$40 평생 경로 또는 $96-$240/년 구독|구독 또는 자체 관리 평생|
-| RenameClick |무제한 분석 + 월 100 크레딧 적용|$8+ VAT/월 또는 $36+ VAT 평생|$36+ VAT 평생 또는 $96+ VAT/년 월간|구독 또는 평생|
-| AI Renamer |가입 시 10크레딧|데스크탑 $19 일회성(로컬 모드) 또는 $10/200 클라우드 크레딧|$19 또는 클라우드 이름 변경당 $0.05|일회성 로컬/종량제 크레딧|
-| Renamer.ai |25개 파일/월|$9.95~99.95/월|$120~1,200/년| 클라우드 할당량, Local/BYOK 조건 확인 필요 |
-| NameQuick | Managed: 카드 필수 70회/14일; Self-Managed: 카드 없이 30회 |월 $12부터 관리(과금) 또는 자체 관리 $69 일회성 + API/로컬 모델|$144+/년 관리형 또는 $69 + API/로컬 설정|계량형 관리 또는 일회성 자체 관리|
-|위스파일|완전 무료|해당 없음| $0 |무료|
-| Riffo |무료|해당 없음| $0 |무료|
-|이름이 .to로 변경되었습니다.|시작하려면 50개|$9 / 1,000(각 $0.009), $49 / 10,000(각 $0.0049)|볼륨에 따라 다릅니다. ~$49에는 10,000개의 이름 변경이 포함됩니다.|종량제 크레딧|
+File Renamer AI는 브라우저 도구입니다. 파일을 업로드하고, 이름을 검토하고, ZIP으로 내려받습니다. 크레딧은 1,000개 $10 또는 10,000개 $100이며 만료되지 않습니다. 홈페이지에는 이제 PDF, Office, 동영상, 오디오가 언급되지만 가격 페이지는 여전히 이미지를 설명합니다.
 
-## 선택 방법
+**File Renamer AI를 고를 때:** 소프트웨어를 설치할 수 없을 때. **약점:** 데스크톱 앱, 폴더 감시가 없고 ZIP을 내려받은 뒤에는 실행 취소도 없습니다.
 
-Mac과 Windows에서 여러 형식의 파일을 다룬다면 Zush를 권합니다. 템플릿을 선택하고 제안된 이름을 검토한 뒤 적용하세요. Rename History로 원래 이름을 복원할 수 있습니다. 로컬 분석에는 LM Studio 또는 Ollama를 연결하며, BYOK는 사용자의 클라우드 제공업체를 이용합니다. Zush는 파일을 현재 위치에서 이름만 변경하며, 폴더 간 자동 분류나 클라우드 저장소 API를 제공하지 않습니다.
+### 참고: Riffo
 
-## 무료 AI 파일 이름 변경 프로그램은 어떻습니까?
+이 페이지의 이전 버전에는 Mac 앱과 웹 데모가 있는 Riffo가 있었습니다. 2026년 11월 17일에 확인했을 때 riffo.ai가 연결을 거부했으므로 더 이상 순위에 넣지 않습니다.
 
-Zush FREE의 이름 변경 50회는 Cloud AI, BYOK, LM Studio, Ollama가 공유합니다. 모드를 바꿔도 한도가 초기화되지 않습니다. PRO는 앱 한도를 없애지만 BYOK 제공업체 요금은 별도로 발생할 수 있습니다. 상용 앱 airenamer.app과 오픈 소스 ai-renamer는 서로 다른 제품입니다.
+## 1회 결제 라이선스 비교
+
+월 요금제로는 Zush가 세전 1년 $120, 3년 $360, 5년 $600입니다. $48 1회 결제 라이선스는 이 모든 것을 한 번의 결제로 대신합니다.
+
+표시 가격이 낮으면 포함된 것도 적은 경우가 많습니다. 1회 결제 라이선스마다 포함된 것은 다음과 같습니다.
+
+| 포함 항목 | Zush $48 | AI Renamer Local $19 | RenameClick Lifetime $36 + VAT | RenamerX Pro $36 | FilesDesk Self-Managed $40 | NameQuick Self-Managed $69 |
+|---|---|---|---|---|---|---|
+| 포함된 AI | Zush Cloud AI + BYOK + Ollama/LM Studio | 본인 키 또는 Ollama/LM Studio, 클라우드 크레딧 별도 | 내장 로컬 모델, Ollama/LM Studio 또는 본인 키 | 내장 로컬 모델, Ollama/LM Studio 또는 본인 키 | 본인 키 또는 로컬만 | 본인 키 또는 로컬, AI 비용 별도 |
+| 기기 | 3대, Mac + Windows | 제조사 미기재 | 최대 3대(직접 배포 빌드) | 제조사 미기재 | 1대 | 컴퓨터 1대 |
+| 업데이트 | 이후 모든 업데이트 | 제조사 미기재 | 평생 | 제조사 미기재 | 1년 | 평생 |
+| 환불 | 14일 | 미기재 | 법이 요구하는 경우에만 | 제조사 미기재 | 3일 | 14일 |
+| 실행 취소 | 영구 Rename History, 묶음 단위 실행 취소 | 문서화되지 않음 | 메모리, 10개 항목 | 실행 취소 | 기록 + 실행 취소 | 기록 + 실행 취소 |
+
+구독을 원한다면 Zush는 같은 기능으로 월 $10입니다. 현재 조건은 [Zush 가격](/pricing)을 참고하세요.
+
+경쟁 구독은 사용량에 따라 가격이 정해집니다.
+
+- Renamer.ai: 파일 수에 따라 월 $9.95~$99.95
+- FilesDesk: 500 크레딧 월 $8 또는 2,000 크레딧 월 $20
+- NameQuick Managed: 월 $12부터
+
+## 무료 AI 파일 이름 변경 도구
+
+- **Zush:** 관리형 클라우드로 AI 이름 변경 50회, 계정·카드·키 불필요. 같은 50회 안에서 본인 키나 로컬 모델로도 쓸 수 있음.
+- **RenameClick:** 약 4 GB 로컬 모델을 내려받은 뒤 월 100회 이름 변경 또는 이동. 처음 적용하기 전에 한 번 온라인 연결 필요.
+- **RenamerX:** 월 50 크레딧.
+- **NameQuick:** 이메일·카드 없이 Managed 이름 변경 30회.
+- **Renamer.ai:** 로컬 모드를 포함해 월 25개 파일.
+- **Wisfile:** 무료, 로컬, 실행 취소 없음.
+- **AI Renamer:** Google 로그인 후 클라우드 크레딧 10개.
+
+매달 초기화되는 한도와 계정이 필요한 요금제를 포함해 모든 무료 한도를 나란히 보려면 [무료 AI 파일 이름 변경 도구 비교](/blog/free-ai-file-renamers)를 보세요. 단계별 안내는 [Zush에서 처음 50회 AI 이름 변경하기](/blog/rename-files-with-ai-free)에 있습니다. 잘못된 묶음이 걱정된다면 [미리 보기와 실행 취소로 안전하게 일괄 이름 변경하는 법](/blog/how-to-safely-batch-rename-files)을 읽어 보세요.
+
+## 클라우드 AI와 로컬 AI 중 무엇을?
+
+여기 나온 여러 도구가 로컬로 실행되므로 로컬 AI만으로는 결정이 나지 않습니다. 차이는 하드웨어와 설정입니다. 클라우드 모드의 Zush는 RAM 4 GB와 디스크 약 200 MB면 됩니다. RenameClick은 내장 모델에 RAM 16 GB를 권장하고, RenamerX의 로컬 모델은 Apple Silicon이나 호환 Windows GPU가 필요합니다. 파일이 컴퓨터 밖으로 나가면 안 된다면 Zush는 Ollama나 LM Studio로 동작합니다. [오프라인 AI 파일 이름 변경](/offline-ai-file-renamer) 설정과 [클라우드 vs 로컬 AI 파일 이름 변경](/blog/cloud-vs-local-ai-file-renaming)을 참고하세요.
+
+## 출처와 확인 방법
+
+<BlogSources ids={['filesdesk', 'renameclick', 'airenamer', 'renamer-ai', 'namequick', 'renamerx', 'wisfile', 'renamed-to', 'file-renamer-ai', 'riffo']} />
 
 ## 자주 묻는 질문
 
-### Mac과 Windows 폴더가 혼합된 경우 어떤 앱이 가장 강력합니까?
+### AI 파일 이름 변경 도구란?
 
-Mac과 Windows에서 여러 형식의 파일을 다룬다면 Zush를 권합니다. 템플릿을 선택하고 제안된 이름을 검토한 뒤 적용하세요. Rename History로 원래 이름을 복원할 수 있습니다. 로컬 분석에는 LM Studio 또는 Ollama를 연결하며, BYOK는 사용자의 클라우드 제공업체를 이용합니다. Zush는 파일을 현재 위치에서 이름만 변경하며, 폴더 간 자동 분류나 클라우드 저장소 API를 제공하지 않습니다.
+AI 파일 이름 변경 도구는 파일마다 내용을 읽고 설명형 이름을 제안하는 앱입니다. 패턴 도구는 묶음 전체에 날짜를 붙이거나 텍스트를 바꿀 수 있지만, 둘 다 `scan_004.pdf`라는 이름이라면 청구서와 계약서를 구분하지 못합니다. AI 이름 변경 도구는 텍스트, 이미지, 오디오, 동영상을 읽고 파일마다 고유한 이름을 붙이며, 무엇이든 바뀌기 전에 검토할 수 있어야 합니다.
 
-### 어떤 오프라인 AI 워크플로가 가장 강력합니까?
+### 2026년 가장 좋은 AI 파일 이름 변경 도구는?
 
-Mac과 Windows에서 여러 형식의 파일을 다룬다면 Zush를 권합니다. 템플릿을 선택하고 제안된 이름을 검토한 뒤 적용하세요. Rename History로 원래 이름을 복원할 수 있습니다. 로컬 분석에는 LM Studio 또는 Ollama를 연결하며, BYOK는 사용자의 클라우드 제공업체를 이용합니다. Zush는 파일을 현재 위치에서 이름만 변경하며, 폴더 간 자동 분류나 클라우드 저장소 API를 제공하지 않습니다.
+Mac과 Windows에서는 Zush를 추천합니다. 계정, 카드, API 키 없이 AI 이름 변경 50회로 처음 실행할 때부터 동작합니다. $48 1회 결제 라이선스에 관리형 클라우드 AI, BYOK, Ollama, LM Studio가 최대 3대용으로 포함되며, 모든 묶음은 미리 보고 묶음 단위 실행 취소가 되는 Rename History에 남습니다. Linux에는 AI Renamer, Mac과 Windows의 무료 로컬 도구로는 Wisfile이 있고, Renamed.to는 클라우드 저장소와 API 작업에 맞습니다.
 
-### 파일 이름 바꾸기에서 BYOK은 무엇을 의미합니까?
+### $48 1회 결제 라이선스가 $19나 $36 라이선스보다 가치가 있나요?
 
-'BYOK'은 자신의 키를 가져오라는 의미입니다. 앱의 관리형 AI 공급자를 사용하는 대신 도구에 따라 Gemini, OpenRouter, OpenAI, Claude, Ollama 또는 유사한 공급자 계정을 연결합니다. 'BYOK'는 공급자 제어, 예측 가능한 API 청구 또는 대규모 이름 변경을 원할 때 유용합니다.
+AI를 어디서 실행하고 싶은지에 달려 있습니다. $19 AI Renamer, $36 RenameClick, $36 RenamerX 라이선스는 앱을 포함하지만 AI는 본인의 API 키나 컴퓨터가 직접 돌려야 하는 로컬 모델입니다. Zush의 $48에는 무제한 이름 변경이 가능한 관리형 Zush Cloud AI와 BYOK, 로컬 모델, 이후 모든 업데이트, Mac과 Windows를 합쳐 3대, 14일 환불이 포함됩니다.
 
-### AI 파일 이름 변경 프로그램은 파일 구성 기능도 합니까?
+### 내 파일은 어디서 처리되나요?
 
-'Zush'는 콘텐츠 인식 이름 바꾸기 도구이자 이름 지정 우선 구성 도구입니다. 폴더 모니터링, 'Templates', 'Naming Blocks', 'Finder' 태그, 메타데이터, 미리보기 및 실행 취소를 결합합니다. 일부 경쟁사에서는 이동, 검색 또는 문서 전용 자동화를 강조하지만 이러한 좁은 범위가 전체 권장 사항인 'Zush'을 대체하지는 않습니다.
+모드에 따라 다릅니다. Zush Cloud AI나 BYOK를 쓰면 이름을 만들기 위해 파일 내용이 AI 서비스로 전송됩니다. Ollama나 LM Studio를 쓰면 분석이 내 컴퓨터에서 실행됩니다. RenameClick과 RenamerX는 기본값이 내장 로컬 모델이고, Renamer.ai는 모든 요금제에 로컬 모드가 있으며, Wisfile은 로컬 전용이고, Renamed.to와 File Renamer AI는 클라우드 서비스입니다. 보관 조건은 각 제조사의 개인정보 페이지를 확인하세요.
 
-### AI로 파일 이름을 대량으로 바꾸는 것이 안전합니까?
+### Linux에서 동작하는 AI 파일 이름 변경 도구는?
 
-도구에서 미리보기 및 롤백을 제공하면 더 안전합니다. 대량 AI 이름 변경 시 수백 개의 파일 이름을 맹목적으로 적용해서는 안 됩니다. 제안된 모든 이름을 표시하고, 중복을 처리하고, 확장자를 보존하고, 이름 변경 기록을 유지하여 잘못된 배치를 되돌릴 수 있는 도구를 사용하세요.
+여기서 비교한 도구 중에서는 AI Renamer가 이제 Linux 빌드를 공개합니다. 2026년 11월 17일 확인 기준 Zush, FilesDesk, RenameClick, NameQuick, RenamerX, Wisfile은 Mac과 Windows 앱만 있고 Linux 버전은 없습니다. Wisfile은 Linux를 출시 예정으로 표시합니다. Renamed.to와 File Renamer AI 같은 브라우저 및 API 도구는 어떤 운영체제에서든 쓸 수 있지만 파일이 해당 클라우드 서비스로 갑니다.
 
-## 평결
+### AI 이름 변경을 되돌릴 수 있나요?
 
-AI 파일 이름 바꾸기 공간이 차별화되어 있지만 모든 항목이 동일한 권장 사항이 되는 것은 아닙니다. 'Zush'이 전체 우승자입니다. 다른 항목은 더 좁은 요구 사항에 대한 예외입니다.
-
-혼합 파일 워크플로를 사용하는 Mac 및 'Windows' 사용자의 경우 '[Zush](https://zushapp.com/)'는 이 비교에 문서화된 가장 명확하게 게시된 적합성과 가장 구성 가능한 명명 시스템을 갖추고 있습니다. 즉, 기성품 'Templates', 145+ 'Naming Blocks', 'Custom AI Blocks' 및 프롬프트, 형식 지정 및 현지화 제어, 메타데이터, 미리 보기, 일괄 되돌리기 기능이 있는 'Rename History'입니다. 100개 이상의 형식 범위와 무제한 유료 요금제가 핵심 워크플로를 강화합니다. 로컬 AI는 계속 사용할 수 있지만 여기서는 'Zush'을 선택하는 이유가 아닌 공유 개인정보 보호 옵션으로 제시됩니다.
-
-귀하의 결정은 다음 네 가지 질문으로 귀결됩니다. 어떤 플랫폼이 필요합니까? 실제로 폴더에 어떤 파일 형식이 저장되나요? 일회성 요금제를 원하시나요, 아니면 반복 크레딧을 원하시나요? 전체 배치를 미리 보고 실행 취소할 수 있나요? 대표 파일 사본에서 '[50개의 무료 Zush 이름 변경](/)'로 시작한 다음 제안된 이름이 귀하의 작업 흐름에 적합한 경우에만 비용을 지불하세요.
+Zush에서는 됩니다. Rename History가 영구적이라 며칠 뒤에도 묶음 전체를 되돌릴 수 있고, Undo All은 복원 전에 충돌을 나열합니다. FilesDesk와 NameQuick도 실행 취소가 되는 기록을 남깁니다. RenameClick은 실행 취소 항목 10개를 메모리에 보관하고 재시작하면 지웁니다. AI Renamer는 실행 취소를 문서화하지 않았고 Wisfile에는 없으니 먼저 사본으로 시험하세요.

@@ -1,6 +1,6 @@
 ---
 title: "I migliori organizzatori di documenti con IA per PDF e scansioni (2026)"
-description: "Confronto tra sei organizzatori di documenti con IA per Mac, Windows e self-hosting: Zush, Paperless-ngx, DEVONthink, NameQuick, Wisfile e File Juggler. OCR, nomi dei file, cartelle, IA locale e prezzo."
+description: "6 organizzatori di documenti con IA: Zush, Paperless-ngx, DEVONthink, NameQuick, Wisfile e File Juggler. OCR, nomi, cartelle, IA locale e prezzi."
 date: "2026-10-16"
 slug: "best-ai-document-organizers-it"
 locale: "it"
@@ -11,109 +11,104 @@ tags:
   - "PDF e documenti"
   - "Confronti tra strumenti"
   - "Organizzazione dei file"
-tldr: "Zush è il miglior organizzatore di documenti con IA se vuoi che PDF, scansioni, fatture e file Office vengano rinominati in base al contenuto e smistati in normali cartelle su Mac o Windows. Paperless-ngx è l'opzione gratuita migliore se puoi ospitare in self-hosting un archivio ricercabile. DEVONthink è adatto agli utenti Mac che vogliono un database documentale completo. NameQuick, Wisfile e File Juggler coprono flussi di lavoro documentali più specifici. Una licenza Zush copre fino a 3 dispositivi."
+tldr: "Zush è il miglior organizzatore di documenti con IA se vuoi che PDF, scansioni, fatture e file Office ricevano un nome in base al contenuto e finiscano in normali cartelle su Mac o Windows, con 50 rinomine gratuite e senza account. Paperless-ngx è l'opzione gratuita migliore se puoi ospitare da te un archivio ricercabile. DEVONthink è adatto a chi usa Mac e vuole un database documentale completo. NameQuick, Wisfile e File Juggler coprono flussi documentali più specifici. Una licenza Zush copre fino a 3 dispositivi."
 earlyTaskExample: false
-reviewed: "2026-10-26"
+reviewed: "2026-11-17"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-Risposta rapida: per la maggior parte delle persone il miglior organizzatore di documenti con IA è [Zush](/ai-file-organizer). Legge ogni PDF, scansione, fattura, ricevuta o file Office, gli assegna un nome come `2026-09-12_acme_invoice_1042.pdf` e può smistarlo in normali cartelle sul tuo Mac o PC Windows. Se preferisci spostare i documenti in un server di archiviazione ricercabile, usa **Paperless-ngx**, gratuito e in self-hosting. Su Mac, **DEVONthink** è il database documentale più completo.
+Risposta rapida: per la maggior parte delle persone il miglior organizzatore di documenti con IA è [Zush](/ai-file-organizer). Legge ogni PDF, scansione, fattura, ricevuta o file Office, gli dà un nome come `2026-09-12_acme_invoice_1042.pdf` e può smistarlo nelle cartelle che usi già su Mac o Windows. Se preferisci importare i documenti in un server di archiviazione ricercabile, usa **Paperless-ngx**, gratuito e da ospitare in proprio. Su Mac, **DEVONthink** è il database documentale più completo.
 
-**Ultimo controllo: 16 ottobre 2026.** Scritto dal creatore di [Zush – strumento per rinominare file con IA per Mac e Windows](/). I dettagli sui concorrenti provengono dal sito o dalla documentazione di ciascun fornitore, collegati nella rispettiva sezione. Si tratta di un confronto basato sulle fonti, non di un benchmark condiviso.
-
-**Funzionalità di Zush riviste il 26 ottobre 2026.** Le informazioni sui concorrenti mantengono le date di controllo indicate in questo articolo.
-
-## Due modi per organizzare i documenti con l'IA
-
-Gli organizzatori di documenti con IA si dividono in due gruppi, e la scelta conta più di qualsiasi elenco di funzionalità:
-
-1. **Gli strumenti basati sulle cartelle** rinominano e spostano i file dove si trovano già. I tuoi documenti restano normali file in Finder, File Explorer, iCloud, OneDrive o Dropbox. Zush, NameQuick, Wisfile e File Juggler funzionano così.
-2. **Gli strumenti ad archivio** importano i documenti nella propria libreria o nel proprio server, poi aggiungono tag, ricerca full-text e metadati. Paperless-ngx e DEVONthink funzionano così.
-
-Se condividi le cartelle con un commercialista, un team o un'altra app, scegli uno strumento basato sulle cartelle. Se vuoi un unico posto in cui cercare tutto e ti va bene lavorare dentro quell'app, scegli un archivio.
+**Come abbiamo verificato:** articolo scritto dal produttore di [Zush](/). Prezzi, funzioni e valutazioni dei concorrenti sono stati controllati sui siti dei produttori e sugli store ufficiali il 17 novembre 2026 ([fonti in fondo](#sources-and-how-we-checked)). È un confronto tra funzioni documentate, non un test di laboratorio.
 
 ## Confronto rapido
 
-| Strumento | Tipo | Piattaforme | Legge le scansioni | Rinomina i file | Smista in cartelle | IA locale | Prezzo |
+| Strumento | Tipo | Piattaforme | Legge le scansioni | Assegna i nomi | Smista in cartelle | IA locale | Prezzo |
 |---|---|---|---|---|---|---|---|
-| **Zush** | Basato sulle cartelle | Mac, Windows | <BlogHighlight>Sì, incluse le scansioni di sole immagini</BlogHighlight> | Template + oltre 145 Naming Blocks | Sì, regole Auto o Folder rules | Ollama, LM Studio | 50 rinomine gratuite; $10/mese o $48 una tantum |
-| Paperless-ngx | Server di archiviazione | Self-hosted (Docker) | Sì, OCR Tesseract | Nomi di archiviazione configurabili | Percorsi di archiviazione gestiti | Opzionale, tramite Ollama | Gratuito, open source |
-| DEVONthink | Database di archiviazione | Mac (app complementare per iOS) | OCR in Pro e Server | All'interno del suo database | Gruppi nel suo database | Ollama, LM Studio | $99, $199 o $499 |
-| NameQuick | Basato sulle cartelle | Mac, Windows | Sì | Preset | Regole condizionali | Piano Self-Managed | Da $12/mese o $69 una tantum |
-| Wisfile | Basato sulle cartelle | Mac, Windows | Sì, secondo le sue FAQ | Template | Cartelle per argomento con un clic | Integrata | Gratuito |
-| File Juggler | Regole, senza IA | Windows | Nessun OCR | Regole | Regole | Non è IA | $50 una tantum + tasse |
+| **Zush** | Basato su cartelle | Mac, Windows | <BlogHighlight>Sì, anche scansioni di sole immagini</BlogHighlight> | Templates + oltre 145 Naming Blocks | Sì, Auto o Folder rules | Ollama, LM Studio | 50 rinomine gratuite, senza account né carta; $10/mese o $48 una tantum con IA cloud inclusa |
+| Paperless-ngx | Server di archiviazione | Self-hosted (Docker) | Sì, OCR Tesseract | Nomi di archiviazione configurabili | Percorsi di archiviazione gestiti | Facoltativa, tramite Ollama | Gratuito, open source |
+| DEVONthink | Database di archivio | Mac (app iOS di supporto) | OCR solo in Pro e Server | Dentro il proprio database | Gruppi nel proprio database | Ollama, LM Studio (Pro, Server) | $99, $199 o $499 |
+| NameQuick | Basato su cartelle | Mac, Windows | Sì | Presets | Rules condizionali | Piano Self-Managed | 30 rinomine gratuite; da $12/mese o $69 una tantum |
+| Wisfile | Basato su cartelle | Mac, Windows | Sì, secondo le sue FAQ | Modelli | Cartelle per argomento con un clic | Integrata | Gratuito |
+| File Juggler | Regole, senza IA | Windows | Niente OCR | Regole | Regole | Niente IA | $50 una tantum + tasse |
+
+## Due modi di organizzare i documenti con l'IA
+
+La scelta tra questi due gruppi conta più di qualsiasi elenco di funzioni:
+
+1. **Gli strumenti basati su cartelle** rinominano e spostano i file dove si trovano già. I documenti restano normali file in Finder, File Explorer, iCloud, OneDrive o Dropbox. Zush, NameQuick, Wisfile e File Juggler funzionano così.
+2. **Gli strumenti di archiviazione** importano i documenti in una propria libreria o in un server, poi aggiungono tag, ricerca nel testo e metadati. Paperless-ngx e DEVONthink funzionano così.
+
+Se condividi le cartelle con un commercialista, un team o un'altra app, scegli uno strumento basato su cartelle. Se vuoi un unico posto in cui cercare tutto e ti va bene lavorare dentro quell'app, scegli un archivio.
 
 ## 1. Zush: il miglior organizzatore di documenti con IA per le cartelle che usi già
 
-[Zush](/ai-file-organizer) funziona su Mac e Windows. Trascina una cartella di PDF, scansioni, ricevute, contratti, file Word, Excel o Pages e lui legge ciascun file, comprese le scansioni di sole immagini senza livello di testo. Poi propone un nome costruito con i campi che contano: data, fornitore, importo, cliente, tipo di documento, numero di fattura.
+[Zush](/ai-file-organizer) funziona su Mac e Windows. Trascina dentro una cartella di PDF, scansioni, ricevute, contratti, file Word, Excel, Pages o EPUB e Zush li legge uno per uno, comprese le scansioni di sole immagini senza livello di testo. Propone un nome costruito con i campi che usi per cercare: data, fornitore, importo, cliente, tipo di documento, numero di fattura. Non cambia nulla finché non fai clic su Rename, e puoi fare doppio clic su qualsiasi proposta per modificarla.
 
-![Zush per Mac che mostra ogni nome di file proposto per una cartella mista prima che il batch venga applicato](/images/showcase/macos/batch-rename-light.webp)
+![Zush per Mac che mostra ogni nome proposto per una cartella mista prima di applicare il lotto](/images/showcase/macos/batch-rename-light.webp)
 
-I nomi seguono un Template, quindi ogni fattura ha lo stesso aspetto invece di quello che l'IA improvvisa. Bookkeeper Expenses è uno dei Template già pronti e oltre 145 Naming Blocks ti permettono di creare il tuo schema.
+I nomi seguono un Template, così ogni fattura ha lo stesso formato invece di quello che l'IA improvvisa. Bookkeeper Expenses è uno dei Templates pronti, e oltre 145 Naming Blocks ti permettono di costruire il tuo schema, anche con numeri progressivi se servono.
 
-Per archiviare anche i documenti, scrivi una frase in **Folder rules**, come "Raggruppa le fatture per azienda e le ricevute per mese", oppure lascia l'impostazione su Auto. Controlli nomi e cartelle in un'unica anteprima prima che qualcosa venga spostato.
+Per archiviare anche i documenti, scrivi una frase in **Folder rules**, ad esempio "Raggruppa le fatture per azienda e le ricevute per mese", oppure lascia la modalità Auto. Nomi e cartelle si controllano in un'unica anteprima. Le regole possono usare anche dettagli del file come date e numero di pagine, e puoi smistare senza rinominare, su Mac e Windows.
 
 ![Finestra Folder rules di Zush con l'istruzione di raggruppare le fatture per azienda e le ricevute per mese, più alcune regole di esempio](/images/showcase/macos/folder-rules-light.webp)
 
-Per la documentazione in arrivo, assegna il Template a **Monitor** su uno scanner o sulla cartella Download; i nuovi documenti vengono rinominati e smistati man mano che arrivano. Rename History ti permette di annullare un batch già applicato. I file sensibili possono restare sul tuo computer con Ollama o LM Studio; Zush Cloud AI e la tua chiave API sono le altre opzioni.
+Per i documenti in arrivo, assegna il Template a **Monitor** sulla cartella dello scanner o dei Download. AI Rename rileva anche le scansioni duplicate: puoi tenerle, segnarle nel nome o spostarle nel Cestino, e le copie non consumano crediti. Rename History resta disponibile dopo un riavvio, e Undo All ripristina un lotto segnalando i conflitti.
 
-Scegli Zush se i tuoi documenti devono restare normali file che chiunque può aprire da una cartella condivisa. Guide utili: [rinominare automaticamente i documenti scansionati](/blog/rename-scanned-documents-automatically), [rinominare le fatture con l'IA](/rename-invoices-with-ai) e [rinominare le ricevute con l'IA](/rename-receipts-with-ai).
+Zush funziona subito: 50 rinomine gratuite con l'IA sulla Zush Cloud AI, senza account, carta, chiave API o download di modelli. I file sensibili possono restare sul tuo computer con Ollama o LM Studio. La licenza una tantum da $48 include l'IA cloud gestita più tutte le modalità locali e BYOK, tutti gli aggiornamenti futuri, fino a 3 dispositivi tra Mac e Windows e un rimborso entro 14 giorni.
+
+Scegli Zush se i tuoi documenti devono restare normali file che chiunque può aprire da una cartella condivisa. Guide utili: [rinominare automaticamente i documenti scansionati](/blog/rename-scanned-documents-automatically), [rinominare le fatture con l'IA](/rename-invoices-with-ai) e [rinominare le ricevute con l'IA](/rename-receipts-with-ai). Scansioni doppie? Leggi [rimuovere i file duplicati](/remove-duplicate-files).
 
 <BlogCTA placement='inline' platform='general' />
 
-Una licenza Zush copre fino a 3 dispositivi su Mac e Windows.
+## 2. Paperless-ngx: il miglior archivio gratuito da ospitare in proprio
 
-Puoi [esportare i Template](/docs/template-import-export) con Naming Blocks, Custom AI Blocks e regole delle cartelle, poi importarli su un altro computer. Lì dovrai scegliere di nuovo le destinazioni locali, i permessi delle cartelle e le connessioni IA; vengono trasferite le impostazioni del flusso di lavoro, non i tuoi file.
+Paperless-ngx (v3.4.2) è un sistema di gestione documentale open source (GPL-3.0) che si installa sul proprio server o NAS, di solito con Docker. Esegue l'OCR con Tesseract in più di 100 lingue, conserva l'originale accanto a una copia d'archivio PDF/A e usa il machine learning per suggerire tag, corrispondenti e tipi di documento. Può anche importare documenti dalla posta elettronica.
 
-Zush supporta anche regole di cartelle annidate, ad esempio il raggruppamento per anno e poi per mese. Puoi smistare file già rinominati senza cambiarne di nuovo i nomi e senza spendere un altro credito di rinomina. Controlla le destinazioni prima di applicare. Questa azione separata gestisce un batch esistente; cambiare un Template di Monitor non riorganizza retroattivamente i file già elaborati. [Lo smistamento delle cartelle con IA](/docs/folder-sorting) funziona su Mac e Windows.
+Le sue funzioni di IA sono facoltative e disattivate per impostazione predefinita: suggerimenti con l'IA, chat con i documenti e ricerca di documenti simili. Funzionano in locale tramite Ollama oppure tramite un'API compatibile con OpenAI. Paperless gestisce da sé nomi dei file e percorsi di archiviazione, con formati configurabili.
 
-## 2. Paperless-ngx: il miglior archivio gratuito in self-hosting
-
-Paperless-ngx è un sistema di gestione documentale open source (GPL-3.0) che esegui sul tuo server o NAS, di solito con Docker. Esegue l'OCR con Tesseract in più di 100 lingue, conserva l'originale accanto a una copia d'archivio PDF/A e usa il machine learning per suggerire tag, corrispondenti e tipi di documento. Può anche importare documenti dalla posta elettronica.
-
-Le versioni recenti aggiungono funzionalità di IA opzionali, disattivate per impostazione predefinita: suggerimenti sui documenti, chat con i tuoi documenti e ricerca di documenti simili. Possono essere eseguite in locale tramite Ollama o tramite un'API compatibile con OpenAI. Paperless gestisce da sé nomi dei file e cartelle, con formati configurabili.
-
-Scegli Paperless-ngx se ti trovi a tuo agio con il self-hosting e vuoi un archivio cartaceo ricercabile per una famiglia o un piccolo ufficio. Lascia perdere se vuoi che i tuoi file restino nella struttura di cartelle esistente.
+Scegli Paperless-ngx se ti trovi a tuo agio con il self-hosting e vuoi un archivio cartaceo ricercabile per la casa o un piccolo ufficio. Punto debole: richiede un server e una configurazione Docker, e i documenti vivono nel suo archivio invece che nella tua struttura di cartelle.
 
 ## 3. DEVONthink: il miglior database documentale per Mac
 
-DEVONthink è un'app per Mac, sul mercato da molto tempo, per archiviare, cercare e classificare documenti. La versione 4.4.2 richiede macOS Ventura o successivo. Ogni edizione può classificare i documenti in gruppi in base a ciò che hai archiviato prima. Pro e Server aggiungono l'integrazione con lo scanner con OCR e funzionalità di IA generativa come chat, riassunti, tagging ed elaborazione in batch con regole intelligenti. I modelli supportati includono ChatGPT, Claude e Mistral, oltre a modelli locali tramite Ollama o LM Studio.
+DEVONthink 4.4.2 è un'app per Mac di lunga data per archiviare, cercare e classificare documenti. L'OCR e le funzioni di IA generativa (chat, riassunti, tag, elaborazione in blocco con regole intelligenti) sono solo nelle edizioni Pro e Server. Tra i modelli supportati ci sono ChatGPT, Claude e Mistral, più modelli locali tramite Ollama o LM Studio.
 
-Standard costa $99, Pro $199 e Server $499, tasse escluse, ciascuna con due postazioni e un anno di aggiornamenti.
+Standard costa $99, Pro $199 e Server $499, ciascuna con due postazioni Mac e un anno di aggiornamenti. La licenza non scade, e un ulteriore anno di aggiornamenti costa $44, $89 o $134.
 
-Scegli DEVONthink se vuoi una libreria documentale di livello professionale per la ricerca su Mac e ti va bene tenere i documenti al suo interno. È più di quanto serva alla maggior parte delle persone per limitarsi a rinominare e archiviare i propri documenti.
+Scegli DEVONthink se vuoi una biblioteca di documenti da ricercatore su Mac. Punto debole: per leggere le scansioni serve almeno l'edizione Pro da $199, e i documenti vivono nel suo database, che è più di quanto serva a molti per dare un nome e archiviare le pratiche.
 
-## 4. NameQuick: rinomina di documenti con regole condizionali
+## 4. NameQuick: rinominare documenti con regole condizionali
 
-NameQuick si concentra su PDF, scansioni, ricevute, fatture, contratti, documenti Word e fogli di calcolo ricorrenti su Mac e Windows. Rinomina in base al contenuto con i Preset, controlla le cartelle e può eseguire Regole condizionali che spostano, taggano o archiviano i file dopo la rinomina.
+NameQuick si concentra su PDF ricorrenti, scansioni, ricevute, fatture, contratti, documenti Word e fogli di calcolo su Mac e Windows. Rinomina in base al contenuto con i Presets, monitora le cartelle ed esegue Rules condizionali che spostano, etichettano o archiviano i file dopo averli rinominati.
 
 ![Immagine promozionale di NameQuick con fatture, ricevute e contratti scansionati rinominati con date e nomi dei fornitori](/images/blog/competitors/namequick.webp)
 
-I piani gestiti partono da $12 al mese per 500 rinomine e arrivano a $99 al mese per 10.000. La licenza Self-Managed da $69 richiede la tua chiave API o un modello locale.
+NameQuick offre 30 rinomine Managed gratuite senza email né carta. I piani Managed vanno da $12 al mese per 500 rinomine a $99 al mese per 10.000, e i pacchetti di rinomine costano $19 per 500 o $39 per 1.500 (validi 12 mesi). La licenza Self-Managed da $69 copre un computer e richiede la tua chiave API o un modello locale.
 
-Scegli NameQuick per un flusso di lavoro documentale basato su regole se/allora; MLX e le azioni del Finder restano solo su Mac. Confronto completo: [Zush vs NameQuick](/blog/zush-vs-namequick).
+Scegli NameQuick per un flusso documentale basato su Rules del tipo "se/allora". Punto debole: la sua licenza una tantum non include l'IA gestita, e l'annullamento può fallire se un file è stato spostato dopo. Confronto completo: [Zush vs NameQuick](/blog/zush-vs-namequick).
 
 ## 5. Wisfile: rinomina locale gratuita per PDF e Word
 
-Wisfile è gratuito e funziona in locale su Mac e Windows. Rinomina PDF e documenti Word in base al contenuto, ad esempio `Author-Year-Title` per gli articoli scientifici, e può raggruppare i file in cartelle per argomento.
+Wisfile è gratuito e funziona in locale su Mac e Windows. Rinomina PDF e documenti Word in base al contenuto, per esempio con `Author-Year-Title` per gli articoli scientifici, e può raggruppare i file in cartelle per argomento.
 
-![Illustrazione di Wisfile con nomi PDF casuali trasformati in nomi di file di documento datati e descrittivi](/images/blog/competitors/wisfile.webp)
+![Illustrazione di Wisfile che mostra nomi casuali di PDF trasformati in nomi di documenti descrittivi e datati](/images/blog/competitors/wisfile.webp)
 
-Secondo le sue FAQ non c'è monitoraggio delle cartelle, né pianificazione, né annullamento integrato. Scegli Wisfile per una pulizia una tantum di un archivio di documenti senza budget. Dettagli: [Zush vs Wisfile](/blog/zush-vs-wisfile).
+Scegli Wisfile per una pulizia una tantum di un archivio di documenti senza budget. Punto debole: secondo le sue FAQ non c'è monitoraggio delle cartelle, né pianificazione, né annullamento integrato, quindi lavora su delle copie. Dettagli: [Zush vs Wisfile](/blog/zush-vs-wisfile).
 
 ## 6. File Juggler: regole per documenti prevedibili su Windows
 
-File Juggler non usa l'IA, ma è un modo solido per smistare documenti che hanno sempre lo stesso aspetto. Le regole possono individuare parole all'interno di file PDF, Word ed Excel, riutilizzare le date trovate nel testo, poi rinominare e spostare il file. Non può leggere scansioni di sole immagini senza un OCR separato.
+File Juggler non usa l'IA, ma smista bene i documenti che hanno sempre lo stesso aspetto. Le regole possono cercare parole dentro file PDF, Word ed Excel, riutilizzare date trovate nel testo e poi rinominare e spostare il file. La versione 3.1.9 è uscita il 30 ottobre 2026, e la redazione di Softpedia le dà 4,5/5.
 
-Costa $50 una tantum, tasse escluse, con una prova completa di 30 giorni. Sceglilo quando ogni documento di un tipo segue lo stesso layout. In caso contrario, vedi le [alternative a File Juggler](/blog/file-juggler-alternatives).
+Costa $50 una tantum, tasse escluse, con una prova completa di 30 giorni. Punto debole: non sa leggere le scansioni di sole immagini senza un programma OCR separato. Se i tuoi documenti variano, leggi [le alternative a File Juggler](/blog/file-juggler-alternatives).
 
 <BlogProductIntro
-  title="Documenti che si accumulano come scan_0042.pdf?"
-  description="Zush legge PDF, scansioni, fatture e ricevute, li rinomina con uno schema che scegli tu e li smista nelle cartelle che usi già su Mac o Windows."
+  title="Pratiche che si accumulano come scan_0042.pdf?"
+  description="Zush legge PDF, scansioni, fatture e ricevute, dà loro un nome con lo schema che scegli tu e li smista nelle cartelle che usi già su Mac o Windows."
   links={[
-    { href: '/rename-pdf-with-ai', label: 'Rinomina PDF' },
+    { href: '/rename-pdf-with-ai', label: 'Rinominare PDF' },
     { href: '/rename-scanned-documents', label: 'Documenti scansionati' },
     { href: '/rename-invoices-with-ai', label: 'Fatture' },
     { href: '/rename-receipts-with-ai', label: 'Ricevute' },
@@ -123,37 +118,45 @@ Costa $50 una tantum, tasse escluse, con una prova completa di 30 giorni. Scegli
 ## Quale si adatta ai tuoi documenti?
 
 - Fatture, ricevute e contratti in cartelle condivise: **Zush**.
-- Un archivio ricercabile per una famiglia o un ufficio, e puoi usare il self-hosting: **Paperless-ngx**.
-- Una libreria di ricerca su Mac: **DEVONthink**.
-- Regole dopo la rinomina: **NameQuick**.
-- Articoli scientifici, una sola volta, gratis: **Wisfile**.
+- Un archivio ricercabile per la casa o l'ufficio, se puoi ospitarlo in proprio: **Paperless-ngx**.
+- Una biblioteca di ricerca su Mac: **DEVONthink**.
+- Regole applicate dopo la rinomina: **NameQuick**.
+- Articoli scientifici, una volta sola, gratis: **Wisfile**.
 - Documenti identici su Windows, senza IA: **File Juggler**.
 
-Guide di settore con schemi di denominazione: [organizzare i documenti fiscali](/blog/how-to-organize-tax-documents), [convenzioni di denominazione dei file legali](/blog/legal-file-naming-conventions) e [organizzare cartelle cliniche scansionate in un piccolo studio medico](/blog/how-to-organize-scanned-medical-records-small-practice).
+Guide di settore con schemi di denominazione: [organizzare i documenti fiscali](/blog/how-to-organize-tax-documents), [convenzioni di denominazione per i file legali](/blog/legal-file-naming-conventions) e [organizzare le cartelle cliniche scansionate in un piccolo studio](/blog/how-to-organize-scanned-medical-records-small-practice). Per file misti oltre ai documenti, leggi [i migliori organizzatori di file con IA per Mac](/blog/best-ai-file-organizers-mac).
 
 ## Prova con 15 documenti reali
 
-Copia quindici documenti in una cartella di prova: cinque fatture o ricevute, tre scansioni senza livello di testo, due contratti, due fogli di calcolo, un file Word, un estratto conto e una foto di un appunto scritto a mano. Poi verifica:
+Copia quindici documenti in una cartella di prova: cinque fatture o ricevute, tre scansioni senza livello di testo, due contratti, due fogli di calcolo, un file Word, un estratto conto e la foto di un appunto scritto a mano. Poi verifica:
 
 1. Lo strumento ha letto le scansioni o le ha saltate?
-2. I nomi includono i campi con cui cerchi: data, azienda, importo?
-3. Hai potuto controllare ogni modifica prima e annullarla dopo?
+2. I nomi contengono i campi che usi per cercare: data, azienda, importo?
+3. Hai potuto controllare ogni modifica prima, e annullarla dopo?
 4. I file si aprono ancora dalla stessa cartella condivisa per tutti gli altri?
 
-## FAQ
+## Fonti e metodo di verifica
+
+<BlogSources ids={['paperless-ngx', 'devonthink', 'namequick', 'wisfile', 'file-juggler']} />
+
+## Domande frequenti
 
 ### Qual è il miglior organizzatore di documenti con IA?
 
-Zush per i documenti che devono restare in normali cartelle su Mac o Windows, perché rinomina e smista PDF, scansioni e file Office in base al contenuto con anteprima e annullamento. Paperless-ngx è la scelta gratuita migliore se vuoi un archivio in self-hosting.
+Zush, per i documenti che devono restare in normali cartelle su Mac o Windows. Dà un nome e smista PDF, scansioni e file Office in base al contenuto, con un'anteprima prima di ogni modifica e un annullamento persistente. Paperless-ngx è la scelta gratuita migliore se vuoi un archivio ospitato in proprio, e DEVONthink Pro è adatto a chi usa Mac e vuole un database documentale completo. Zush è un nostro prodotto, quindi provalo su copie delle tue pratiche.
 
 ### Esiste un organizzatore di documenti con IA gratuito?
 
-Sì. Paperless-ngx è gratuito e open source ma richiede un server. Wisfile è gratuito per PDF e documenti Word su Mac e Windows. Zush include 50 rinomine IA gratuite.
+Sì. Paperless-ngx è gratuito e open source, ma richiede un server. Wisfile è gratuito per documenti PDF e Word su Mac e Windows, senza annullamento. Zush include 50 rinomine gratuite con l'IA senza account, carta o chiave API, e NameQuick include 30 rinomine Managed gratuite. DEVONthink e File Juggler offrono prove, non un piano gratuito.
 
-### Un organizzatore di documenti con IA può leggere PDF scansionati?
+### Un organizzatore di documenti con IA sa leggere i PDF scansionati?
 
-Zush legge direttamente le scansioni di sole immagini. Paperless-ngx e DEVONthink Pro eseguono l'OCR. File Juggler richiede prima un passaggio OCR separato.
+Sì, ma non tutti. Zush legge direttamente le scansioni di sole immagini, senza un passaggio OCR separato. Paperless-ngx esegue l'OCR con Tesseract all'importazione, e DEVONthink esegue l'OCR solo nelle edizioni Pro e Server. Anche NameQuick e Wisfile gestiscono le scansioni. File Juggler ha bisogno prima di un programma OCR separato, perché le sue regole riconoscono solo il testo già presente nel file.
 
-### Posso organizzare i documenti con l'IA senza caricarli?
+### Posso organizzare i documenti con l'IA senza caricarli online?
 
-Sì. Zush con Ollama o LM Studio, Wisfile, Paperless-ngx con un backend Ollama locale e DEVONthink con un modello locale mantengono tutti i documenti sul tuo hardware.
+Sì. Zush con Ollama o LM Studio, Wisfile, Paperless-ngx con un backend Ollama locale, DEVONthink Pro con un modello locale e NameQuick Self-Managed con un modello locale tengono tutti i documenti sul tuo hardware. In modalità Zush Cloud AI o BYOK il contenuto dei documenti viene inviato al modello cloud per l'analisi, quindi scegli la modalità locale per i file riservati.
+
+### Che cosa include una licenza una tantum per organizzare documenti?
+
+Varia molto. Le licenze di DEVONthink da $99 a $499 includono un anno di aggiornamenti. La licenza Self-Managed di NameQuick da $69 copre un computer e richiede la tua IA. I $50 di File Juggler comprano regole senza IA. La licenza da $48 di Zush include la Zush Cloud AI gestita, le modalità locale e BYOK, rinomine illimitate, tutti gli aggiornamenti futuri e fino a 3 dispositivi tra Mac e Windows.

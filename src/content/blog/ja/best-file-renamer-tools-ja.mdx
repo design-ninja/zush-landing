@@ -1,6 +1,6 @@
 ---
-title: "2026年のおすすめファイル名変更ソフト：無料の規則ツールとAIを比較"
-description: "MacとWindows向けにZush、Finder、PowerRename、Bulk Rename Utility、Advanced Renamer、A Better Finder Renameを比較します。"
+title: "2026年のおすすめファイル名変更ソフト：無料のパターン型ツールとAIを比較"
+description: "Mac・Windows向けファイル名変更ソフト比較：Finder、PowerRename、Bulk Rename Utility、Zushほか。"
 date: "2026-07-31"
 slug: "best-file-renamer-tools-ja"
 platform: "general"
@@ -9,9 +9,9 @@ tags:
   - "Tool Comparisons"
   - "AI File Renaming"
   - "File Organization"
-tldr: "混在するファイルにはZushを推奨します。内容に基づく名前、Naming Blocks、プレビュー、フォルダ監視、取り消しに対応。無料の規則ツールやメタデータツールは限定された作業向けです。AIフォルダ分類は任意の機能です。 Zushは1ライセンスで最大3台まで利用できます。"
+tldr: "すべてのファイルに同じ変更を加えるなら、無料のパターン型ツールで十分です。MacならFinder、WindowsならPowerRename、より複雑なルールにはBulk Rename UtilityやAdvanced Renamerが使えます。ファイルごとに中身に応じた名前が必要なら、Zushを使いましょう。アカウントなしで50回まで無料でAIリネームでき、その後は月額$10または買い切り$48。MacとWindowsで、プレビュー、フォルダ監視、Rename Historyが使えます。"
 earlyTaskExample: false
-reviewed: "2026-10-26"
+reviewed: "2026-11-17"
 locale: "ja"
 translationOf: "best-file-renamer-tools"
 ---
@@ -19,82 +19,120 @@ translationOf: "best-file-renamer-tools"
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-ファイルごとに異なる説明的な名前が必要なら、MacとWindowsでは **<BlogHighlight>[Zush](/)</BlogHighlight>** を推奨します。同じ文字列の置換、接頭辞、連番だけで全件を処理できる場合は、無料の規則ツールでも十分です。必要な情報が元の名前、メタデータ、実際の内容のどこにあるかで選びます。
+結論から言うと、接頭辞、日付、連番のように、すべてのファイルに同じ種類の変更を加えるなら無料のパターン型ツールを使いましょう。Macなら**Finder**、Windowsなら**PowerRename**で、より複雑なルールにはBulk Rename UtilityやAdvanced Renamerが向いています。ファイルごとに中身に応じた名前が必要なら、AIリネームツールの出番です。**その場合のおすすめは<BlogHighlight>[Zush](/)</BlogHighlight>です**。アカウント、カード、APIキーなしで50回まで無料でAIリネームでき、その後は月額$10または買い切り$48で、MacとWindowsの両方で使えます。
+
+**確認方法：** 執筆は[Zush](/)の開発元です。競合ツールの価格、機能、評価は2026年11月17日に各社の公式サイトと公式ストアで確認しました（[出典は記事末尾](#sources-and-how-we-checked)）。ここで比べているのは公開されている機能で、実機テストの結果ではありません。
+
+## おすすめファイル名変更ソフトの早見表
+
+| やりたいこと | おすすめ | OS | 中身を読むか | 元に戻す | 価格 |
+| --- | --- | --- | --- | --- | --- |
+| ファイルごとに異なるわかりやすい名前 | <BlogHighlight>**Zush**</BlogHighlight> | Mac＋Windows | **読む（AI）** | 再起動後も残るRename History、一括で元に戻す | 無料で50回、月額$10または買い切り$48 |
+| 単純な置換、接頭辞、連番 | Finderの名前変更 | Mac | 読まない | 編集 > 取り消す | 無料、標準搭載 |
+| 検索と置換、正規表現、日付 | PowerRename（PowerToys） | Windows | 読まない（EXIF/XMPトークンのみ） | Ctrl+Z | 無料 |
+| 大量のパターン処理や正規表現 | Bulk Rename Utility | Windows | 読まない | 元に戻すためのバッチファイルを生成 | 個人利用は無料、JavaScriptでのリネームには有料ライセンスが必要、商用はPC1台あたり$92.95 |
+| EXIF、GPS、ID3のルール、スクリプト経由でPDF/TXTのテキスト | Advanced Renamer | Windows＋Mac | スクリプト経由でテキストのみ（AIやOCRはなし） | 一括で元に戻す | 軽い個人利用は無料、個人向け$30、商用$50 |
+| Macネイティブのパターンとメタデータ | A Better Finder Rename | Mac | 読まない | 開発元の記載なし | $29.95 |
+
+評価（2026年11月17日時点）：Zushは米国Microsoft Storeで8件の評価で5.0、Softpediaの編集部の評価は4.5/5。Advanced Renamerは米国Microsoft Storeで23件の評価で4.2、Softpediaの評価は3.5/5。Bulk Rename UtilityはSoftpediaの評価が4.0/5です。
+
+<BlogProductIntro
+  title="1つ1つ違う名前を付けなければならないファイルがありますか？"
+  description="Zushはスクリーンショット、PDF、写真、スキャン、動画を読み取り、ファイルごとに名前を提案します。MacとWindowsで、先にプレビューし、あとから元に戻せます。"
+  links={[
+    { href: '/batch-rename-files', label: 'ファイルを一括リネーム' },
+    { href: '/rename-scanned-documents', label: 'スキャンした書類をリネーム' },
+    { href: '/mac', label: 'Mac向けAIファイル名変更ツール' },
+    { href: '/windows', label: 'Windows向けAIファイル名変更ツール' },
+  ]}
+/>
+
+## 分類1：標準搭載・無料のパターン型リネームツール
+
+### Finderの名前変更（Mac）
+
+ファイルを選んで右クリックし、**名前を変更**を選びます。テキストの置換、テキストの追加、名前と連番の指定ができます。インストールは不要です。正規表現やメタデータは使えず、中身も読みません。[Macでの一括リネーム完全ガイド](/blog/batch-rename-files-on-mac-complete-guide)では、FinderとあわせてAutomatorやターミナルも解説しています。
+
+**こんな人に：** 1つのルールですべてのファイルを直せる場合。**弱点：** 正規表現もメタデータもまったく使えません。
+
+### PowerRename（Windows）
+
+Microsoft PowerToysの一部です。選択したファイルを右クリックすると、正規表現、カウンター、作成日の変数、写真のEXIF/XMPトークンを使った検索と置換が、ライブプレビュー付きで使えます。Ctrl+Zでリネームを元に戻せます。AIはなく、ファイルの中身も読みません。2つを比べた詳しい説明は[Windows版Zush](/windows)のページにあります。
+
+**こんな人に：** 変更をパターンとして説明できる場合。**弱点：** `scan_004.pdf`に、スキャンの中身に応じた名前は付けられません。
+
+### Bulk Rename Utility（Windows）
+
+BRUは、接頭辞、連番、大文字・小文字、正規表現、EXIFやID3のタグといったルールを、1つの密度の高いウィンドウで積み重ねます。個人利用は無料です。JavaScriptでのリネームには有料ライセンス（$24.95）が必要で、商用利用はPC1台あたり$92.95です。バージョン4.1.0.1では、JavaScriptや正規表現を書いてくれるAIアシスタントが加わりましたが、ファイルの中身は今も読みません。Mac版はありません。[Bulk Rename Utilityの代替](/blog/bulk-rename-utility-alternatives)もご覧ください。
+
+**こんな人に：** 非常に大きなフォルダに複雑な機械的ルールを適用する場合。**弱点：** 画面が詰め込まれていて、業務利用はPC単位の料金です。
+
+## 分類2：メタデータ型リネームツール
+
+**Advanced Renamer**と**A Better Finder Rename**は、EXIFの日付、GPS座標、ID3タグ、ファイルの日付から名前を組み立てます。Advanced Renamer（バージョン4.28）はスクリプトのメソッドでPDFやTXTファイルからテキストを抜き出すこともできますが、AIやOCRはありません。そのため、スキャンしたPDFや画像は読めないままで、抜き出したテキストを名前に変えるロジックも自分で書くことになります。軽い個人利用なら無料で、日常的に使う人には$30の個人向けライセンスの購入が求められ、仕事で使うには$50の商用ライセンスが必要です。A Better Finder RenameはMac向けで$29.95です。
+
+限界は、メタデータが表すのは「いつ」「何で」であって、「何が」ではないことです。写真のEXIFからわかるのは撮影日時で、公園にいるゴールデンレトリバーが写っていることまではわかりません。そうしたルールがどこで行き詰まるかは、[Advanced Renamerの代替](/blog/advanced-renamer-alternatives)のレビューで整理しています。
+
+**こんな人に：** 付けたい名前がすべてEXIF、GPS、タグの中にある場合。**弱点：** 画像やスキャンした書類の中身は理解できません。
+
+## 分類3：AIリネームツール（ファイルごとに別の名前が必要なとき）
+
+上の2つの分類ではどうにもならないフォルダがあります。`Screenshot 2026-03-23.png`、`Scan0001.pdf`、`IMG_4382.HEIC`、`download (7).pdf`のようなファイルです。それぞれに合う名前は違い、その手がかりはピクセル、テキスト、音声の中にしかありません。
+
+[Zush](/)は、スクリーンショット、写真（RAWやHEICを含む）、PDF、[スキャンした書類](/rename-scanned-documents)、OfficeやiWorkのファイル、デザインファイル、音声、動画の中身を読み取ります。動画はMKVを含め、音声、埋め込み字幕、メタデータから名前を付けます。用意されたTemplateを選ぶか、145種類以上の[Naming Blocks](/docs/naming-blocks)で命名規則を作り、提案された名前をすべて確認します。「名前を変更」をクリックするまで何も変わりません。Rename Historyは再起動後も残り、バッチ全体を元に戻せます。[フォルダ監視](/docs/folder-monitoring)を使えば、ダウンロードやスキャナーのフォルダに届いたファイルにも次々と名前が付きます。
+
+料金に含まれるもの：
+
+- **すぐに使える：** Zush Cloud AIで50回まで無料でAIリネームでき、アカウント、カード、APIキー、モデルのダウンロードは不要です。
+- **買い切り価格にクラウドも含まれる：** $48のLifetimeで、Zush Cloud AI、BYOK、Ollama、LM Studioでの無制限のリネーム、今後のアップデートすべて、MacとWindowsあわせて最大3台のデバイス、14日間の返金保証が付きます。月額$10のプランもあります。
+- **重複にも対応：** AI Renameが重複ファイルを見つけます。重複分はクレジットを消費せず、Undoで復元できます。[重複ファイルを削除する](/remove-duplicate-files)もご覧ください。
+- **クラウドモードなら軽量：** 約200 MB、RAM 4 GBで動きます。
+
+### リネームと同時にフォルダへ仕分ける
+
+Zushは、**Auto**でのグループ分けや**Folder rules**を使ってファイルをフォルダに仕分けることもできます。入れ子のフォルダにも対応し、名前を変えずに仕分けだけすることもできます。**Destination folder**を選ぶか元のフォルダを起点にし、**Reuse existing folders**を有効にすると、すでにある適切なフォルダが優先されます。設定をTemplateに保存して**Monitor**に割り当てれば、新しいファイルにも適用されます。詳しくは[フォルダ仕分けガイド](/docs/folder-sorting)、手順は[MacでAIを使ってファイルをフォルダに仕分ける方法](/blog/sort-files-into-folders-with-ai-mac)、指示の例は[すぐに使えるフォルダルール30選](/blog/ai-folder-sorting-prompts)をご覧ください。
+
+ほかにも、それぞれ一長一短のAIリネームツールがあります。[クロスプラットフォームのAIリネームツール比較](/blog/best-ai-file-renamer-tools-2026)では10個を取り上げており、[Mac](/blog/best-ai-file-renamer-tools-mac-compared)と[Windows](/blog/best-ai-file-renamer-tools-windows-compared)の個別ランキングもあります。
 
 <BlogCTA placement='inline' platform='general' />
 
-**Zushの機能確認日：2026年10月26日。** 競合製品の情報には、記事内に記載した従来の確認日が適用されます。
+## 30秒で選ぶ方法
 
-## 早見表
+1. すべてのファイルに同じ変更：**Finder**または**PowerRename**。
+2. 巨大なフォルダに複雑なルール：**Bulk Rename Utility**。
+3. 付けたい名前がすでにEXIF、GPS、タグにある：**Advanced Renamer**または**A Better Finder Rename**。
+4. 名前を付ける前に、何のファイルか確かめるために開いている：**Zush**。
 
-| 作業 | ソフト | 対応環境 | 内容を読む | 料金 |
-|---|---|---|---|---|
-| 混在ファイルに個別の名前、任意のフォルダ分類 | Zush | Mac、Windows | はい | 50回無料、月額$10または買い切り$48 |
-| 文字列置換、接頭辞、連番 | Finder | Mac | いいえ | 標準搭載、無料 |
-| 検索と置換、正規表現 | PowerRename | Windows | いいえ | 無料 |
-| 複雑な規則の組み合わせ | Bulk Rename Utility | Windows | いいえ | 個人利用は無料 |
-| EXIF、日付、GPS、メタデータ | Advanced Renamer | Mac、Windows | いいえ | 買い切りライセンス |
-| Mac向けの規則とメタデータ | A Better Finder Rename | Mac | いいえ | 買い切りライセンス |
+両方のタイプを使い分けている人もたくさんいます。機械的な修正にはパターン型ツールを、名前に意味を持たせたいフォルダにはAIを、という具合です。Windowsに絞った比較は[Windows 11向けおすすめファイル名変更ツール](/blog/best-file-renamer-windows-11)をご覧ください。
 
-## 1. 標準機能と無料の規則ツール
+## 出典と確認方法
 
-### Finder
-ファイルを選択して右クリックし、Renameで文字列の置換、追加、名前と番号の組み合わせを指定します。インストールは不要ですが、正規表現、内容解析、メタデータ規則、監視、永続的な履歴はありません。[Macの一括変更ガイド](/blog/batch-rename-files-on-mac-complete-guide)ではAutomatorとTerminalも紹介しています。
-
-### PowerRename
-Microsoft PowerToysに含まれ、File Explorerから検索と置換、正規表現、プレビューを使えます。共通の規則には便利ですが、内容を読んだり混在フォルダを監視したりはしません。[PowerRenameの代替](/windows)も参照してください。
-
-### Bulk Rename Utility
-BRUは接頭辞、番号、大文字・小文字、正規表現を組み合わせます。情報量の多い画面はWindowsの機械的な処理向けです。Mac版と内容解析はありません。[BRUの比較記事](/blog/bulk-rename-utility-alternatives)で範囲を説明しています。
-
-## 2. メタデータから名前を作る
-
-Advanced RenamerとA Better Finder RenameはEXIFの日付、GPS、ID3タグ、ファイル日付を利用します。必要な名前の全情報がこれらの項目に含まれる場合に選びましょう。EXIFは撮影日時を示しますが、写真が公園の犬を写しているとは教えません。PDFのメタデータにも請求元や金額が必ず入っているわけではありません。[Advanced Renamerの比較](/blog/advanced-renamer-alternatives)で限界を確認できます。
-
-## 3. ファイルごとに名前が違うならAI
-
-`Screenshot 2026-03-23.png`、`Scan0001.pdf`、`IMG_4382.HEIC`、`download (7).pdf`だけでは題材は分かりません。Zushはスクリーンショット、RAW・HEIC写真、PDF、[AI視覚によるスキャン](/rename-scanned-documents)、Office、iWork、デザイン、音声、動画を読みます。[Naming Blocks](/docs/naming-blocks)で共通の形式を指定し、適用前に全候補を確認、適用後は履歴から取り消せます。[フォルダ監視](/docs/folder-monitoring)で新しいダウンロードやスキャンを処理できます。
-
-無料の50回は4つのモードで共有します。PROは月額$10または買い切り$48で、名前変更回数の制限はありません。オンラインのZush Cloud AIとBYOKに加え、MacとWindowsでLM StudioとOllamaを利用できます。[AIソフト総合比較](/blog/best-ai-file-renamer-tools-2026)ではFilesDesk、RenameClick、Renamer.ai、NameQuickも扱います。
-
-Zushは1ライセンスでMac・Windowsを合わせて最大3台まで利用できます。
-
-Naming Blocks、Custom AI Blocks、フォルダルールを含む[Templatesをエクスポート](/docs/template-import-export)し、別のパソコンに読み込めます。移動先フォルダ、アクセス権、AI接続は移行先で設定し直します。移すのは設定であり、ファイル自体ではありません。
-
-### 必要ならフォルダにも分類
-
-任意のAI分類機能も使えます。Autoを選ぶか、**Folder rules**に「スクリーンショットはプロジェクト別、請求書は会社別」と書きます。フォルダ規則はNaming Blocksとは独立しています。**Destination folder**を指定するか、元のフォルダをルートにします。**Reuse existing folders**は適切な既存フォルダを使い、合うものがなければ作成します。名前と移動先を確認してから適用します。
-
-設定を**Template**に保存し、手動の少量テスト後に**Monitor**へ割り当てます。監視フォルダ直下の新しいファイルが対象で、処理済みファイルは再整理しません。同じ場所で名前だけ変えるなら分類をオフにし、元の移動先を保ちます。[分類の説明](/docs/folder-sorting)。
-
-Zushは「年、その下に月」のような階層フォルダにも対応します。すでに名前を変更したファイルは、再度名前を変えたり追加の名前変更クレジットを使ったりせずに分類できます。適用前に移動先を確認してください。この操作はMonitorとは別で、Templateを変更しても過去のファイルが自動で再分類されるわけではありません。[AIフォルダ分類](/docs/folder-sorting)はMacとWindowsで利用できます。
-
-## 30秒で選ぶ
-
-混在する内容、説明的な名前、監視、確認、復元にはZush。同じ置換、接頭辞、連番だけなら無料の規則ツール。EXIF、日付、GPS、タグだけで完全な名前を作れるならメタデータ専用ソフト。併用も可能です。[Mac比較](/blog/best-ai-file-renamer-tools-mac-compared)、[Windows比較](/blog/best-ai-file-renamer-tools-windows-compared)、[Windows 11向け](/blog/best-file-renamer-windows-11)もあります。
+<BlogSources ids={['powerrename', 'bulk-rename-utility', 'advanced-renamer', 'a-better-finder-rename']} />
 
 ## よくある質問
 
-### Zushはフォルダへ移動できますか？
-はい。任意の機能として、名前とフォルダを確認してから移動します。テスト済みTemplateはMonitorで新しいファイルを処理できます。
+### 無料で使えるおすすめのファイル名変更ソフトは？
 
-### 無料ならどれを選びますか？
-共通の規則にはMacのFinder、WindowsのPowerRename。ZushはAIの名前変更を50回提供します。[無料AIガイド](/blog/rename-files-with-ai-free)ではCloud AI、BYOK、LM Studio、Ollama、ローカルCLIを説明しています。
+パターン処理なら、MacのFinderとWindowsのPowerRenameが無料で、すべての変更をプレビューできます。Bulk Rename Utilityは個人利用なら無料、Advanced Renamerは軽い個人利用なら無料です。中身に応じた名前を付けたいなら、Zushはアカウント、カード、APIキーなしで50回まで無料でAIリネームでき、有料版と同じプレビューとRename Historyが使えます。[無料でAIリネームする方法](/blog/rename-files-with-ai-free)もご覧ください。
 
-### MacとWindowsでのおすすめは？
-混在ファイルには[Mac用Zush](/mac)と[Windows用Zush](/windows)。Finder、A Better Finder Rename、PowerRename、BRUは限定的な規則向けです。
+### ファイル名変更ソフトは、中身に応じた名前を付けられますか？
 
-### 内容から名前を付けられますか？
-AIは実際の文字や画像を読み、文字層のないスキャンにも対応します。従来の規則は既存の名前やタグを並べ替えます。
+ちゃんとできるのはAIリネームツールだけです。パターン型ツールは既存の名前を並べ替え、メタデータ型ツールはEXIFやID3のタグを読みます。Advanced RenamerはスクリプトでPDFやTXTファイルからテキストを抜き出せますが、AIやOCRがないため、スキャンや画像は読めないままです。ZushのようなAIリネームツールは、テキストレイヤーのないスキャンも含めてテキスト、画像、音声、動画を読み取り、先に確認できる名前を提案します。
 
-### 有料AIに価値はありますか？
-機械的な処理なら無料の規則で足ります。内容を知るために毎回ファイルを開くなら、その作業をAIで減らせます。Zush PROには買い切り$48の選択肢があります。
+### AIファイル名変更ソフトにお金を払う価値はありますか？
 
-<BlogProductIntro
-  title="Zushを試す"
-  description="混在するファイルにはZushを推奨します。内容に基づく名前、Naming Blocks、プレビュー、フォルダ監視、取り消しに対応。無料の規則ツールやメタデータツールは限定された作業向けです。AIフォルダ分類は任意の機能です。"
-  links={[{"href":"/ai-file-sorter","label":"AIでファイルを分類"},{"href":"/blog/ai-folder-sorting-prompts","label":"指示例"},{"href":"/docs/folder-sorting","label":"分類の説明"},{"href":"/pricing","label":"料金"}]}
-/>
+リネームが機械的な作業なら、払う必要はありません。無料のパターン型ツールで十分です。何のファイルか確かめるために頻繁にファイルを開いているなら、価値はあります。Zushの買い切り$48のライセンスには、無制限にリネームできる管理型クラウドAIに加えて、BYOKとローカルモデル、今後のアップデートすべて、MacとWindowsあわせて最大3台のデバイス、14日間の返金保証が含まれます。まずはファイルのコピーで、無料の50回を試してみてください。
 
-[Macの手順](/blog/sort-files-into-folders-with-ai-mac) · [Windowsの手順](/blog/sort-files-into-folders-with-ai-windows) · [指示例](/blog/ai-folder-sorting-prompts) · [分類の説明](/docs/folder-sorting).
+### Zushはファイルをどこで処理しますか？
+
+選んだモードによります。Zush Cloud AIとBYOKでは、名前を生成するためにファイルの内容がAIサービスへ送られます。BYOKでは自分のプロバイダーのアカウントを使います。OllamaやLM Studioなら、解析は自分のコンピュータ上で行われ、ファイルもそこから出ません。Finder、PowerRename、Bulk Rename Utilityのようなパターン型ツールは中身を読まないので、何も外に出ません。設定方法は[オフラインのAIファイル名変更ツール](/offline-ai-file-renamer)をご覧ください。
+
+### Macでおすすめのファイル名変更ソフトは？
+
+ファイルごとにわかりやすい名前が必要な、種類の混ざったフォルダなら[Mac版Zush](/mac)です。スクリーンショット、PDF、RAW写真、デザインファイル、音声、動画を読み取り、再起動後も残るRename Historyを保持します。共通のルール1つで済むなら標準搭載のFinder、EXIFやメタデータのパターンならA Better Finder Rename（$29.95）が使えます。全体の比較は[Mac向けAIリネームツール比較](/blog/best-ai-file-renamer-tools-mac-compared)をご覧ください。
+
+### Windows 11でおすすめのファイル名変更ソフトは？
+
+パターン処理なら、PowerRenameが無料で、変更をプレビューでき、Ctrl+Zで元に戻せます。Bulk Rename UtilityとAdvanced Renamerは、より複雑なルールやメタデータを扱えます。ファイルごとに中身に応じた名前が必要なら、[Windows版Zush](/windows)をMicrosoft Storeから入れれば、プレビュー、フォルダ監視、再起動後も残るRename Historyが使えます。[Windows向けAIリネームツール比較](/blog/best-ai-file-renamer-tools-windows-compared)もご覧ください。

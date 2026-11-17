@@ -1,6 +1,6 @@
 ---
-title: "Mac 照片整理软件：免费与付费选择对比（2026）"
-description: "比较Mac照片整理软件：图库管理、本地搜索和Zush的AI文件夹分类，了解各自功能、限制及适用场景。"
+title: "Mac 照片整理软件：7 款免费与付费应用对比（2026）"
+description: "Mac 照片整理软件推荐：Apple Photos、Lightroom、Mylio、Capture One、Excire、Tonfotos 和 Zush。"
 date: "2026-08-11"
 slug: "best-photo-organizing-software-mac-zh-cn"
 platform: "mac"
@@ -9,129 +9,251 @@ tags:
   - "Photos"
   - "Tool Comparisons"
   - "File Organization"
-tldr: "在 Mac 上管理个人照片图库，可以从免费的 Apple Photos 开始。Mylio 适合跨设备的私有档案；Lightroom 和 Capture One 结合了整理与编辑。对于普通 Finder 文件夹中的照片，Zush 可以建议描述性文件名，并按内容归入真正的文件夹。文件夹分类为可选功能，手动批量应用前应检查名称和目标位置。 一个 Zush 许可证最多可用于 3 台设备。"
-reviewed: "2026-10-18"
+tldr: "对大多数同时使用 iPhone 和 iCloud 的 Mac 用户来说，Apple Photos 是最好的免费照片整理工具。需要编辑选 Lightroom，需要跨设备的私有图库选 Mylio，处理 RAW 和联机拍摄选 Capture One，想要本地 AI 搜索选 Excire Foto（$249 一次性买断），在 Mac、Windows 或 Linux 上建家庭相册档案选 Tonfotos（免费，或 $59 终身版）。对于普通 Finder 文件夹里的照片文件，Zush 会给出描述性名称，并能按内容分类到文件夹。"
+reviewed: "2026-11-17"
 earlyTaskExample: false
 locale: "zh-cn"
 translationOf: "best-photo-organizing-software-mac"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-在 Mac 上管理个人照片图库，可以从免费的 Apple Photos 开始。Mylio 适合跨设备的私有档案；Lightroom 和 Capture One 结合了整理与编辑。对于普通 Finder 文件夹中的照片，Zush 可以建议描述性文件名，并按内容归入真正的文件夹。文件夹分类为可选功能，手动批量应用前应检查名称和目标位置。
+对大多数人来说，Mac 上最好的照片整理软件是 **Apple Photos**：免费、系统自带，并通过 iCloud 照片与 iPhone 同步。要编辑照片选 **Lightroom**，要跨设备的私有图库选 **Mylio Photos**，处理 RAW 和联机拍摄选 **Capture One**，想一次性付费获得本地 AI 搜索选 **Excire Foto**，要免费的家庭相册档案选 **Tonfotos**。对于 Finder 文件夹里的照片，[Zush](/mac) 负责为文件命名和分类。
 
-**Zush 功能核查日期：2026 年 10 月 18 日。** 竞品信息仍以文中原有的核查日期为准。
+**我们如何核查：** 本文由 [Zush](/) 的开发者撰写。竞品的价格、功能和评分均于 2026 年 11 月 17 日在厂商官网和官方应用商店核查（[来源见下文](#sources-and-how-we-checked)）。本文比较的是有文档记载的功能，并非实验室测试。
 
-## 照片图库与普通文件夹有何区别？
+## Mac 最佳照片整理工具对比表
 
-图库使用自己的数据库管理相册、人脸、评分和搜索。文件名和真实文件夹则在文件系统、外接硬盘及共享位置保持可见。Zush 整理文件本身，不代替相册、人脸识别、重复文件检查或备份。两种工作方式可以配合使用。
+| 应用 | 适合场景 | 价格 | 平台 | AI 功能 |
+|---|---|---|---|---|
+| Apple Photos | iPhone 用户，免费并配合 iCloud | macOS 自带免费；iCloud 存储空间可选 | Mac、iPhone、iPad | 人物与宠物、内容搜索、“重复项”精选集 |
+| Adobe Lightroom | 编辑加同步的云端图库 | $11.99/月（Lightroom 1TB）；$19.99/月（Photography 1TB） | Mac、Windows、移动端、网页版 | 内容搜索和自然语言搜索、人物视图 |
+| Mylio Photos | 跨设备和硬盘的私有图库 | 可免费开始；付费方案（方案页面未标价） | Mac、Windows、iOS、Android | 本地人脸识别、AI 搜索、查找重复项 |
+| Capture One Pro | RAW 编辑和联机拍摄 | 订阅或永久许可证（价格在结账时显示） | Mac、Windows | 非其重点：智能相簿、筛选器、选片工具 |
+| Excire Foto 2027 | 无需订阅的本地 AI 搜索 | $249 一次性买断；14 天试用 | Mac、Windows | 内容、人脸、场景和文字搜索；自动关键词；查找重复项 |
+| Tonfotos | 带人脸和家谱的家庭相册档案 | 免费版；Personal 终身版 $59；Family 版 $159（5 台设备） | Mac、Windows、Linux | 人脸识别、查找重复项、地图 |
+| Zush | 在“照片”应用之外为照片文件命名和分类 | 50 次免费重命名；$10/月或 $48 一次性买断 | Mac、Windows | 基于内容的文件名、AI 文件夹分类、完全相同重复项检测 |
 
-## 快速对比
+这些应用解决的是不同的问题。Apple Photos、Mylio 和 Tonfotos 管理个人图库。Lightroom 和 Capture One 把整理和编辑结合在一起。Excire 是以搜索为核心的目录。Zush 根本不是图库：它改变的是你在 Finder 里看到的文件名和文件夹。Zush 是我们开发的，所以它的章节也会列出它做不到的事。
 
-| | 适用场景 | 价格与许可 |
-|---|---|---|
-| Apple Photos | 个人图库、相册、人物与地点 | 免费 |
-| Adobe Lightroom | 云端图库或桌面目录配合编辑 | $11.99/mo |
-| Mylio Photos | 跨设备与硬盘的私有图库 | 免费 + 订阅 |
-| Capture One Pro | RAW 编辑、联机拍摄、Catalogs 与 Sessions | 一次性购买或订阅 |
-| Excire Foto 2027 | 本地 AI 搜索、主题、人脸与重复内容 | $249 |
-| Photo Mechanic Plus | 快速导入与大型 IPTC 元数据目录 | 已停止销售 |
-| Zush | 内容命名与可选 AI 文件夹分类 | 50 次免费改名; $10/mo; $48 |
+<BlogCTA
+  placement='early'
+  platform='mac'
+  title='在照片文件夹副本上试用 Zush'
+  description='应用之前先预览基于内容的名称和可选的文件夹分组。50 次免费重命名，无需账号或银行卡。关闭分类即可让照片留在原处。'
+/>
 
-## 1. Apple Photos
+## 我们如何对比 Mac 照片整理工具
 
-Apple Photos适合iPhone和Mac上的个人图库，可在应用内管理相簿、人物、地点和重复照片。不要在Finder中直接修改图库包。iCloud也会同步删除操作，因此仍需独立备份。
+我们按首次导入之后最重要的六项任务来对比每款应用：
 
-[Apple Photos](https://support.apple.com/guide/photos/welcome/mac).
+1. **图库模式**：托管图库、目录、普通 Finder 文件夹，或几者结合。
+2. **检索方式**：相簿、人物、日期、地点、元数据、自然语言搜索或文件名。
+3. **RAW 工作流**：应用是否为大量相机导入和专业选片而设计。
+4. **设备访问**：仅限 Mac、Apple 设备、云同步，或私有的多设备同步。
+5. **文件掌控**：原始文件夹在应用之外是否仍然可见、可迁移。
+6. **成本和退出风险**：订阅、一次性许可证、可选存储空间，以及停止付费后还有什么能用。
 
-## 2. Adobe Lightroom
+本对比基于已公开的功能。搜索质量取决于你的图库、语言、文件格式和已有元数据，所以在迁移整个档案之前，请先在复制的文件夹上测试最终候选。
 
-Lightroom将编辑、评分、相簿和搜索结合到云端同步图库中。Lightroom Classic则使用桌面目录，对实际文件的控制更灵活。大量导入之前先选定模式，并考虑持续的订阅费用。
+<span id="2-apple-photos-best-free-choice-for-personal-libraries"></span>
 
-Adobe Lightroom.
+## 1. Apple Photos：个人图库的最佳免费选择
 
-## 3. Mylio Photos
+**适合**：想要一个免费、能 iCloud 同步、几乎不用设置的图库的 iPhone 和 Mac 用户。
 
-Mylio可汇集电脑、移动设备和硬盘上的照片与视频。本地分析和设备间同步适合私人档案。优化预览不能代替原始文件，需要自行规划存储和备份。
+[Apple Photos](https://support.apple.com/guide/photos/welcome/mac) 按时间、人物、宠物、地点、旅行、相簿和识别出的主体对照片分组。在 macOS 26 中，**重复项**精选集位于边栏的**图库**下。它会找出重复的照片和视频并将其合并，保留一份副本并整合元数据。
 
-Mylio Photos.
+默认情况下，“照片”会把导入的图片存放在照片图库内。这省去了日常的文件管理，但图库应当通过“照片”应用使用，而不是在 Finder 里手动修改。Apple 支持额外的图库和引用文件，不过只有系统照片图库能完整参与 iCloud 照片。
 
-## 5. Excire Foto 2027
+**注意**：iCloud 照片是同步，不是第二份备份。删除操作会同步到每台设备。请单独备份图库或导出的原件。引用文件也需要单独备份，而在 Finder 中移动它们可能会断开与“照片”的链接。
 
-Excire建立本地目录，用于搜索内容、人脸、相似照片和重复项。它帮助找回照片，并不会自动改进文件名。购买前用试用版检查系统要求和目录所需空间。
+<span id="3-adobe-lightroom-best-for-editing-and-cloud-access"></span>
 
-Excire Foto 2027.
+## 2. Adobe Lightroom：最适合编辑和云端访问
 
-## 6. Photo Mechanic Plus
+**适合**：希望在一份订阅里同时获得编辑、搜索和同步图库的摄影师。
 
-Photo Mechanic Plus已停止销售；新建目录请选其他工具。
+Adobe Lightroom 把编辑与相簿、堆叠、评分、旗标、关键词、元数据、人物视图，以及按内容或日常语言描述搜索结合在一起。Lightroom 方案按年承诺每月 $11.99，含 1TB 云存储。Photography 1TB 方案每月 $19.99。
 
-Photo Mechanic Plus将快速导入与筛选和跨文件夹、硬盘的目录结合起来。其优势是IPTC元数据、筛选和已保存的搜索。它不是完整的RAW编辑器，缺少元数据的档案仍需要前期整理。
+如果需要一个应用完成导入、编辑、整理、同步和交付，Lightroom 很合适。婚礼摄影师可以给一场拍摄打分，按相机或镜头筛选，把精选照片收进相簿，编辑留下的照片，并在另一台设备上打开同一个图库。
 
-Photo Mechanic Plus.
+Lightroom 和 Lightroom Classic 是两种不同的图库模式。Lightroom 保留一个同步的云端图库。Lightroom Classic 是桌面目录，对磁盘上的文件夹有更多控制。导入大型档案之前，请先决定用哪一个。
 
-## 7. Zush
+**注意**：没有一次性买断选项，而且 Adobe 的人物视图文档说明，同步的 Lightroom 图库的人脸分析在云端进行。对隐私敏感的档案可能更适合本地目录。
 
-内容命名与可选 AI 文件夹分类.
+<span id="4-mylio-photos-best-for-private-multi-device-libraries"></span>
 
-Zush 文件夹分类在 Mac 和 Windows 上均可使用。它分析兼容文件的内容，提出名称和分组。使用 Auto 时将 Folder rules 留空，或用自然语言描述分类。Naming Blocks 单独控制文件名格式。
+## 3. Mylio Photos：最适合私有的多设备图库
 
-请使用导出的图片或文件夹副本测试。不要重组 Photos 图库包内部的文件。已被目录软件跟踪的原始文件应遵循该软件的重命名或重新链接流程。重命名和移动都会改变路径。
+**适合**：分散在 Mac、PC、手机和外置硬盘上、又不想上传云端的大型家庭档案。
 
-一个 Zush 许可证最多可用于 3 台 Mac 或 Windows 设备。
+Mylio Photos 把存放在电脑、手机、平板和外接硬盘上的照片和视频汇成一个图库。它可以保留你现有的文件夹结构，以点对点方式连接设备，并在手机上只保留小尺寸预览，原件则留在你掌控的存储上。
 
-可以[导出 Templates](/docs/template-import-export)，将 Naming Blocks、Custom AI Blocks 和文件夹规则一起导入另一台电脑。目标文件夹、访问权限和 AI 连接需要在新电脑上重新设置。转移的是工作流程设置，不是文件本身。
+整理工具包括文件夹、相簿、人脸标记、关键词、元数据、地图和 LifeCalendar 视图。Mylio 还能找出重复和相似的照片。其官方资料称，人脸识别和其他分析都在你的设备上进行。
 
-## 用 AI 将文件分类到文件夹
+基础应用可以免费开始使用。付费方案增加更广泛的同步、保护和备份功能。Mylio 在 2024 年公布的 Photos+ 方案价格为每年 $119.99。其当前方案页面列出了 Personal 和 Business 方案，但没有标价，请在结账时确认价格。
 
-Zush 文件夹分类在 Mac 和 Windows 上均可使用。它分析兼容文件的内容，提出名称和分组。使用 Auto 时将 Folder rules 留空，或用自然语言描述分类。Naming Blocks 单独控制文件名格式。
+**注意**：多设备同步仍然需要存储方案。小尺寸预览不是原件，同步副本也不是离线备份。
 
-> 按主题分组图片，例如人物、食物和风景。
+<span id="5-capture-one-pro-best-for-raw-editing-and-tethered-shoots"></span>
 
-1. 将一小批文件副本加入 AI Rename，并选择 Template。
-2. 启用 + Sort，将 Destination folder 设为子文件夹的根目录。未选择单独目标时，源文件夹仍为根目录。
-3. 在 Folder rules 中填写分组方法。启用 Reuse existing folders 可使用目标中的合适文件夹；没有合适的现有文件夹时，Zush 可以新建。
-4. 应用批次前检查并修正建议的文件名和分组。
+## 4. Capture One Pro：最适合 RAW 编辑和联机拍摄
 
-![Mac 版 Zush 在执行 Rename & sort 前显示建议文件名及按内容划分的文件夹分组](/images/showcase/macos/folder-sorting-light.webp)
+**适合**：专业 RAW 处理、影棚联机拍摄，以及按项目整理。
 
-将经过测试的目标与规则保存到 Template。Monitor 可以处理直接进入监控文件夹的新文件，完成命名和分类，不会追溯重组已处理文件。关闭分类并保留原始目标时，文件留在当前文件夹。
+Capture One Pro 主要是 RAW 编辑和联机拍摄工具，但它的整理能力也很扎实。你可以在长期使用的 Catalogs 和按项目划分的 Sessions 之间选择，再使用相簿、智能相簿、筛选器、评分、颜色标签、关键词和选片工具。
 
-[AI 文件夹分类分步指南](/blog/sort-files-into-folders-with-ai-mac) · [文件夹分类文档](/docs/folder-sorting) · [30 个文件夹规则示例](/blog/ai-folder-sorting-prompts).
+Sessions 让每个项目独立且便于迁移。Catalogs 更适合搜索整个档案。这种划分适合商业、影棚、时装、产品和活动摄影师。
 
-Zush 支持嵌套文件夹规则，例如先按年份、再按月份分类。已经重命名的文件可以单独分类，无需再次改名或消耗另一次重命名额度。应用前请核对目标路径。这与 Monitor 是两个操作：修改 Template 不会自动重新整理之前的文件。[AI 文件夹分类](/docs/folder-sorting)在 Mac 和 Windows 上均可使用。
+Capture One 提供按月或按年计费的订阅，以及永久 Pro 许可证。其价格页面在结账前不显示金额。Capture One 表示，永久许可证最适合不依赖最新更新或新硬件支持的摄影师。
 
-## 如何选择合适的软件
+**注意**：对家庭图库来说它功能过剩。它的强项是编辑和拍摄，而不是自动识别几十年来的随手照。
 
-按图库、编辑、元数据、固定规则或内容命名与分类的需求选择。Zush 适合普通文件夹中的兼容文件，提供预览及可选分组。它不能替代目录软件或备份。
+<span id="6-excire-foto-2027-best-for-local-ai-catalog-search"></span>
 
-## 迁移前先用副本测试
+## 5. Excire Foto 2027：最适合本地 AI 目录搜索
 
-先复制少量照片、截图、RAW、文档和名称不清晰的文件。检查预览、分组、元数据、附属文件、外接硬盘和恢复功能。图库还应测试导入、导出、备份和目录恢复。在新流程验证通过前保留旧档案。
+**适合**：希望有 AI 搜索、又想一次性付费的私有本地档案。
+
+Excire Foto 2027 是一款以 AI 搜索为核心的独立照片和视频管理工具。它无需给每个文件手动打标签，就能找到内容、人脸、场景、可见文字、情绪、活动和相似图片。它还提供重复项搜索、自动关键词、地图和时间线视图，以及给一场拍摄评分或选片的工具。
+
+Excire 表示其分析在本地运行，照片不会发送给第三方。Excire Foto 2027 一次性买断价格为 $249，提供 14 天试用。
+
+**注意**：它会额外增加一个目录和预览数据库，需要占用磁盘空间，也需要单独备份。它能找到文件，但不会更改文件名。购买前请确认当前的 macOS 和处理器要求。
+
+## 6. Tonfotos：最适合在任意桌面系统上建家庭相册档案
+
+**适合**：想要人脸标记和家谱、并希望有免费版和终身许可证的家庭。
+
+[Tonfotos](https://tonfotos.com/) 按年份和日期排列照片，查找重复项，识别人脸，并在地图上显示带地理标记的照片。你可以把标记的人物连接成家谱。它把你的电脑、硬盘和 NAS 视为一个档案，相簿只是给照片分组而不移动它们。它支持 macOS、Windows 和 Linux。
+
+免费版拥有付费功能，但限制了可标记的人数，并会收集匿名使用统计。Personal 版一台设备 $59，Family 版最多 5 台设备 $159。两者都是终身许可证。
+
+**注意**：Tonfotos 的主页没有说明人脸识别是在你的电脑上还是在云端运行。如果这对你的档案很重要，请查看其隐私政策。
+
+<span id="1-zush-best-for-searchable-finder-filenames"></span>
+
+## 7. Zush：最适合在“照片”之外为照片文件命名和分类
+
+**适合**：普通 Finder 文件夹、客户文件夹、导出文件或外置硬盘中，需要描述性名称和合理文件夹结构的照片。
+
+Zush 不是照片图库。它会给出描述性文件名和可选的按内容划分的文件夹，在你点击 Rename 之前什么都不会改变。它不提供相簿、人脸浏览、编辑、选片或云端照片存储。如果你需要这些功能，请从上面的应用中选一款，再搭配 Zush 使用。
+
+[AI 照片重命名工具](/rename-photos-with-ai) 支持 HEIC、JPG、PNG 和受支持的 RAW 文件。在 Naming Blocks 中把 EXIF 拍摄日期与内容描述组合起来，然后审阅建议。你可以双击任意建议的名称进行编辑。
+
+| 重命名前 | 重命名后（示例） |
+|---|---|
+| `DSCF4821.RAF` | `2026-08-11_Night-Market-Food-Stalls.RAF` |
+
+日期取自照片本身，而不是下载时间。Rename History 会保留每一批操作，Undo All 可以恢复原来的名称。如果某个名称在此期间已被占用，它会列出冲突，并提供以新名称恢复的选项。
+
+要得到上面的格式，请在命名编辑器中选择 Capture Date 和 AI Title。截图展示的是示例设置，而不是实测结果。
+
+![Mac 版 Zush 的命名编辑器，显示按顺序排列的 Naming Blocks、语言和元数据偏好设置](/images/showcase/macos/naming-light.webp)
+
+### 用 AI 把照片文件分类到文件夹
+
+[Zush](/ai-file-sorter) 可以在同一批操作中重命名受支持的文件，并按内容把它们分到真实的文件夹中。**Folder rules** 留空即使用 Auto 分组，也可以用日常语言描述分组方式。对于照片，可以试试：
+
+> 按主题给图片分组，例如人物、美食和风景。
+
+1. 在 **AI Rename** 中添加一小批复制的文件，并选择一个 Template。
+2. 打开 **+ Sort**，选择 **Destination folder**，作为分类子文件夹的根目录。如果不单独指定目标位置，源文件夹就是根目录。
+3. 在 **Folder rules** 中输入分组指令。**Naming Blocks** 单独设置文件名格式。
+4. 如果目标位置已有合适的分组，就打开 **Reuse existing folders**。没有合适的文件夹时，Zush 会新建一个。
+5. 审阅建议的名称和文件夹，修正错误之处，然后应用。
+
+![Mac 版 Zush 在执行 Rename & sort 之前预览按内容划分的文件夹分组和建议的文件名](/images/showcase/macos/folder-sorting-light.webp)
+
+Folder rules 还可以使用嵌套文件夹，例如先按年份再按月份，以及基于大小、日期、相机或时长的自定义规则。你也可以对已经重命名的文件只做分类，而不再改名或再次消耗重命名额度。把设置保存为 Template 并分配给 **Monitor**，即可处理进入受监控文件夹的新文件，包括外置硬盘上的文件夹；硬盘重新连接后监控会自动恢复。监控不会重新整理已经处理过的文件。
+
+在 Template 中打开 **Detect duplicate files**，可以找出这一批中完全相同的副本：保留、在名称中标记，或移到废纸篓。副本不消耗额度，Undo 可以恢复它们。它只匹配完全相同的文件，不匹配相似的照片，所以不能取代“照片”中的重复项精选集。请看 [删除重复文件](/remove-duplicate-files)。
+
+请使用导出的图片或复制的 Finder 文件夹。不要重新整理照片图库包；对于由目录跟踪的原件，请按照该目录的重命名或重新链接流程操作。[Mac 分步分类指南](/blog/sort-files-into-folders-with-ai-mac) 和 [照片重命名指南](/blog/how-to-rename-images-with-ai-on-macos) 详细介绍了这两个步骤。设置项和监控范围见 [文件夹分类文档](/docs/folder-sorting)，可直接套用的分组指令见 [AI 文件夹分类指令合集](/blog/ai-folder-sorting-prompts)。
+
+<BlogCTA
+  placement='inline'
+  platform='mac'
+  title='在照片文件夹副本上试试描述性文件名'
+  description='下载 Zush，添加复制或导出的照片，选择字段，然后预览整批结果。50 次免费重命名，无需注册。'
+/>
+
+前 50 次重命名使用 Zush Cloud AI，无需账号、银行卡或 API 密钥。PRO 价格为 $10/月或 $48 一次性买断。一次性许可证包含使用 Zush Cloud AI、你自己的 API 密钥、Ollama 或 LM Studio 的无限次重命名、今后所有更新、最多 3 台 Mac 和 Windows 设备，以及 14 天退款。请看 [价格](/pricing)。
+
+<span id="7-photo-mechanic-plus-best-for-high-volume-metadata-catalogs"></span>
+
+## Photo Mechanic Plus：已停售
+
+Photo Mechanic Plus 在 Photo Mechanic 的导入和选片流程之上增加了一个目录，可跨多个文件夹、硬盘和离线介质，支持按 IPTC 元数据搜索、筛选和保存搜索。
+
+由于目录稳定性问题，Camera Bits 于 2026 年 2 月停止向新买家销售 Photo Mechanic Plus。现有用户应联系 Camera Bits 支持团队咨询迁移事宜。标准版 Photo Mechanic 仍在销售，用于导入和元数据处理，但不包含 Plus 的目录功能。如果要建立新档案，请从上面的列表中选一个目录工具。
+
+## 该选哪款 Mac 照片整理工具？
+
+- **Apple Photos**：如果你的图库主要来自 iPhone，并且希望用最少的设置获得相簿、人物、地点和共享图库。
+- **Lightroom**：如果编辑和云端交付应当放在同一份订阅里。
+- **Mylio Photos**：如果一个私有图库需要跨越多台设备和硬盘，又不依赖某一个云服务。
+- **Capture One Pro**：如果联机拍摄、RAW 编辑、调色和选片是工作流的核心。
+- **Excire Foto**：如果你想要本地 AI 搜索和一次性价格。
+- **Tonfotos**：如果你想要带家谱的免费家庭相册档案，或者需要 Linux。
+- **Zush**：如果 Finder 文件夹里的照片需要描述性名称和按内容划分的文件夹，并且希望任何改动前都有预览。
+
+很多摄影师最后会组合使用：一个图库负责搜索、选片、编辑或同步，再配上在 Finder、外置硬盘和客户交付中依然清楚易懂的描述性文件名。如果要组合使用，尽可能在导入之前完成重命名。
+
+## 迁移整个图库之前的安全测试
+
+把 50 张有代表性的图片复制到一个测试文件夹：近期的 iPhone HEIC 文件、较早的 JPEG、几种 RAW 格式、编辑后的导出文件、截图、Live Photos（如有），以及一些日期不可靠或缺失的文件。
+
+然后检查：
+
+1. 应用能否按人物、地点、日期、主体、评分和文件名找到照片？
+2. 它能否完整保留 RAW 文件、附属文件、编辑、Live Photos 和元数据？
+3. 能否导出原件，而不丢失你需要的文件夹或文件名信息？
+4. 源硬盘断开连接或文件被移动时会发生什么？
+5. 原件和目录有没有文档化的备份和恢复方法？
+6. 随着图库和设备数量增长，价格是否仍然合理？
+
+在新图库经受住导入、搜索、编辑、导出、备份和恢复测试之前，请保持旧图库不变。
+
+关于软件之外的文件夹和备份体系，请看 [如何在 Mac 上整理照片](/blog/best-ways-to-organize-photos-on-mac)。[HEIC 和 RAW 管理指南](/blog/heic-raw-image-management-guide-macos) 介绍了格式、附属文件和档案结构。如果主要问题是重复文件，请看 [Mac 最佳重复文件查找工具](/blog/best-duplicate-file-finders-mac)。
+
+## 来源与核查方法
+
+<BlogSources ids={['apple-photos', 'lightroom', 'mylio', 'capture-one', 'excire', 'tonfotos', 'photo-mechanic']} />
 
 ## 常见问题
 
-### Zush 能把文件实际移动到文件夹吗？
+### Mac 上最好的照片整理软件是哪款？
 
-可以。启用可选的分类，选择目标并检查名称与分组。只在原位置改名时，关闭分类并保留原始目标。
+对大多数个人 Mac 图库来说，Apple Photos 是最好的起点，因为它免费、系统自带，并与 iPhone 同步。Mylio 适合跨设备和硬盘的私有图库。Lightroom 和 Capture One 适合以编辑为主的工作。Excire Foto 最适合一次性付费的本地 AI 搜索，Tonfotos 适合家庭相册档案。Zush 在普通 Finder 文件夹中为照片文件命名和分类，不会新建目录。
 
-### 能自动分类新文件吗？
+### Mac 上最好的免费照片整理工具是哪款？
 
-可以，使用已测试并分配给 Monitor 的 Template。处理监控文件夹直属的新文件，不自动重新分配已处理的旧文件。
+Apple Photos 随 macOS 提供，涵盖相簿、人物、地点和重复项。Tonfotos 的免费版拥有完整功能，只限制可标记的人数。Mylio 可以免费开始使用，建立跨设备的私有图库。Zush 提供 50 次免费重命名，可在复制的文件夹上测试描述性文件名，但它是重命名和分类工具，而不是免费的图库管理器。
 
-### 支持现有文件夹和外接硬盘吗？
+### 不用订阅的最佳照片整理工具是哪款？
 
-Reuse existing folders 能使用目标根目录下的合适文件夹，并按需新建。硬盘与文件必须可访问；云端文件需先下载。
+Apple Photos 除了可选的 iCloud 存储空间外不收费。Excire Foto 2027 一次性 $249，提供本地 AI 搜索。Tonfotos Personal 终身许可证 $59。Capture One 在订阅之外还销售永久 Pro 许可证。Zush 一次性 $48，该许可证包含托管的 Zush Cloud AI、今后所有更新，以及最多 3 台 Mac 或 Windows 设备。Lightroom 没有一次性买断选项。
 
-### 文件会发送给云端 AI 吗？
+### 哪些 Mac 照片整理工具能把照片留在我自己的电脑上？
 
-Zush Cloud AI 和 BYOK 会将内容发送到选择的云端提供商。Ollama 和 LM Studio 提供支持的本地分析。本地分析不等于整个应用的所有功能都离线运行。
+Apple Photos 在设备上分析人脸和内容，不过如果你打开 iCloud 照片，图库会被上传。Mylio 和 Excire 表示其分析在你的设备上运行。Lightroom 对同步图库的人脸分析在 Adobe 的云端进行。Tonfotos 没有说明人脸识别在哪里运行。Zush 默认把照片发送到 Zush Cloud AI，选择 Ollama 或 LM Studio 时则在本地分析。
 
-## 来源与核查日期
+### Apple Photos 适合专业摄影师吗？
 
-对比依据官方产品、帮助及价格页面，而非共同性能测试。价格和要求可能变化。Zush 分类功能于 2026 年 9 月 28 日核查，其他产品核查日期沿用英文原文。
+对于较轻的专业工作，Apple Photos 可以处理精选、相簿和交付。Lightroom 和 Capture One 在 RAW 编辑、选片和联机拍摄方面要强得多，标准版 Photo Mechanic 则擅长快速导入和 IPTC 元数据。当描述性文件名需要在导出、客户交付、外置硬盘以及日后更换目录后依然有效时，Zush 可以与它们中的任何一款搭配使用。
 
-[Apple Photos](https://support.apple.com/guide/photos/welcome/mac) · Adobe Lightroom · Mylio Photos · Capture One Pro · Excire Foto · Photo Mechanic Plus · [文件夹分类文档: Zush](/docs/folder-sorting).
+### AI 能整理存放在外置硬盘上的照片吗？
+
+能。Mylio、Capture One、Excire 和 Tonfotos 都可以为外置硬盘上的图片建立目录，只是在同步、编辑和 AI 搜索方面各有取舍。Zush 可以在已连接的外置硬盘上重命名和分类受支持的照片，硬盘重新连接后其 Monitor 会自动恢复。请保留一份独立备份；在重命名某个目录已经跟踪的文件之前，先了解该目录的重新链接流程。
+
+### 应该按文件夹整理照片，还是使用目录？
+
+如果最看重可迁移性、直接用 Finder 访问和简单备份，就用文件夹。如果你需要收藏集、评分、人脸或内容搜索、选片和编辑，又不想复制文件，就用目录。持久可靠的做法是两者结合：在目录之下保持清晰的“年份/项目”文件夹结构，再加上即使目录不可用或被替换也依然清楚易懂的描述性文件名。
 
 ## 结论
 
-按图库、编辑、元数据、固定规则或内容命名与分类的需求选择。Zush 适合普通文件夹中的兼容文件，提供预览及可选分组。它不能替代目录软件或备份。
+对于个人的 Mac 和 iPhone 图库，先从 Apple Photos 加一份单独备份开始。档案需要跨设备和硬盘保持私密时选 Mylio，编辑主导工作流时选 Lightroom 或 Capture One，需要本地 AI 搜索时选 Excire，想要带终身许可证的家庭相册档案时选 Tonfotos。现有的 Photo Mechanic Plus 用户需要制定迁移计划。
+
+当 Finder、客户文件夹、外置硬盘或导出文件中的照片需要描述性文件名、按内容划分的文件夹，或两者兼需时，就选 Zush。它与目录工具配合使用，而不是取代它。

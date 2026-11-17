@@ -1,6 +1,6 @@
 ---
 title: "Los mejores programas para renombrar archivos en 2026: reglas gratuitas e IA"
-description: "Compara Zush, Finder, PowerRename, Bulk Rename Utility, Advanced Renamer y A Better Finder Rename en Mac y Windows."
+description: "Mejores renombradores de archivos para Mac y Windows: Finder, PowerRename, Bulk Rename Utility, Advanced Renamer y Zush para nombres según el contenido."
 date: "2026-07-31"
 slug: "best-file-renamer-tools-es"
 platform: "general"
@@ -9,9 +9,9 @@ tags:
   - "Tool Comparisons"
   - "AI File Renaming"
   - "File Organization"
-tldr: "Zush es nuestra opción general para carpetas mixtas: nombres según el contenido, Naming Blocks, vista previa, vigilancia y deshacer. Las reglas gratuitas y los metadatos sirven para tareas concretas. La clasificación con IA en carpetas es opcional. Una licencia de Zush cubre hasta 3 dispositivos."
+tldr: "Si todos los archivos reciben el mismo cambio, basta con una herramienta de patrones gratuita: Finder en Mac, PowerRename en Windows, o Bulk Rename Utility y Advanced Renamer para reglas más complejas. Si cada archivo necesita su propio nombre según lo que contiene, usa Zush: 50 renombrados con IA gratis sin cuenta y, después, $10 al mes o $48 de pago único, con vista previa, vigilancia de carpetas y Rename History en Mac y Windows."
 earlyTaskExample: false
-reviewed: "2026-10-26"
+reviewed: "2026-11-17"
 locale: "es"
 translationOf: "best-file-renamer-tools"
 ---
@@ -19,82 +19,118 @@ translationOf: "best-file-renamer-tools"
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-Recomendamos **<BlogHighlight>[Zush](/)</BlogHighlight>** para Mac y Windows cuando cada archivo necesita un nombre descriptivo distinto. Si todo el lote se resuelve con un prefijo, una sustitución o una secuencia, puede bastar una herramienta de reglas. La diferencia está en dónde vive la información: en el nombre actual, en los metadatos o en el contenido.
+Respuesta rápida: si todos los archivos reciben el mismo tipo de cambio (un prefijo, una fecha, una secuencia numérica), usa una herramienta de patrones gratuita: **Finder** en Mac o **PowerRename** en Windows, con Bulk Rename Utility o Advanced Renamer para reglas más complejas. Si cada archivo necesita su propio nombre según su contenido, usa un renombrador con IA. **<BlogHighlight>[Zush](/)</BlogHighlight> es nuestra elección ahí**: 50 renombrados con IA gratis sin cuenta, tarjeta ni clave de API y, después, $10 al mes o $48 de pago único, en Mac y Windows.
+
+**Cómo lo comprobamos:** escrito por el creador de [Zush](/). Los precios, funciones y valoraciones de la competencia se revisaron en las webs de los fabricantes y en las tiendas oficiales el 17 de noviembre de 2026 ([fuentes más abajo](#sources-and-how-we-checked)). Esto compara funciones documentadas, no es una prueba de laboratorio.
+
+## Los mejores renombradores de un vistazo
+
+| Tu tarea | Elección | Sistema | ¿Lee el contenido? | Deshacer | Precio |
+| --- | --- | --- | --- | --- | --- |
+| Un nombre descriptivo distinto para cada archivo | <BlogHighlight>**Zush**</BlogHighlight> | Mac + Windows | **Sí, con IA** | Rename History persistente, deshacer por lotes | 50 renombrados con IA gratis; $10/mes o $48 pago único |
+| Reemplazo simple, prefijo o secuencia | Renombrar en Finder | Mac | No | Edición > Deshacer | Gratis, integrado |
+| Buscar y reemplazar, regex, fechas | PowerRename (PowerToys) | Windows | No (solo tokens EXIF/XMP) | Ctrl+Z | Gratis |
+| Trabajo intensivo con patrones y regex | Bulk Rename Utility | Windows | No | Genera un archivo por lotes para deshacer | Gratis para uso personal; el renombrado con JavaScript requiere licencia de pago; uso comercial $92.95 por ordenador |
+| Reglas con EXIF, GPS e ID3; texto de PDF/TXT mediante scripts | Advanced Renamer | Windows + Mac | Solo texto, mediante scripts; sin IA ni OCR | Deshacer por lotes | Gratis para uso personal ligero; $30 personal, $50 comercial |
+| Patrones y metadatos nativos de Mac | A Better Finder Rename | Mac | No | El fabricante no lo indica | $29.95 |
+
+Valoraciones a 17 de noviembre de 2026: Zush, 5,0 con 8 valoraciones en Microsoft Store de EE. UU. y 4,5/5 de los editores de Softpedia; Advanced Renamer, 4,2 con 23 valoraciones en Microsoft Store de EE. UU. y 3,5/5 en Softpedia; Bulk Rename Utility, 4,0/5 en Softpedia.
+
+<BlogProductIntro
+  title="¿Archivos en los que cada nombre tiene que ser distinto?"
+  description="Zush lee capturas, PDF, fotos, escaneos y vídeos, y propone un nombre para cada uno. Primero la vista previa, después deshacer si hace falta, en Mac y Windows."
+  links={[
+    { href: '/batch-rename-files', label: 'Renombrar archivos por lotes' },
+    { href: '/rename-scanned-documents', label: 'Renombrar documentos escaneados' },
+    { href: '/mac', label: 'Renombrador de archivos con IA para Mac' },
+    { href: '/windows', label: 'Renombrador de archivos con IA para Windows' },
+  ]}
+/>
+
+## Tipo 1: renombradores de patrones integrados y gratuitos
+
+### Renombrar en Finder (Mac)
+
+Selecciona archivos, haz clic derecho y elige **Renombrar**: reemplazar texto, añadir texto o dar formato con nombre y número. No hace falta instalar nada. No hay regex, ni metadatos, ni lectura de contenido. La [guía de renombrado por lotes en Mac](/blog/batch-rename-files-on-mac-complete-guide) cubre Finder junto con Automator y Terminal.
+
+**Elígelo si** una sola regla arregla todos los archivos. **Punto débil:** no tiene regex ni metadatos.
+
+### PowerRename (Windows)
+
+Forma parte de Microsoft PowerToys. Haz clic derecho sobre una selección para buscar y reemplazar con regex, contadores, variables de fecha de creación y tokens EXIF/XMP de fotos, con vista previa en directo. Ctrl+Z deshace el renombrado. No tiene IA y no lee el contenido de los archivos. Más información en la página de [Zush para Windows](/windows), que compara ambas.
+
+**Elígelo si** puedes describir el cambio como un patrón. **Punto débil:** no puede nombrar `scan_004.pdf` según lo que muestra el escaneo.
+
+### Bulk Rename Utility (Windows)
+
+BRU apila reglas de prefijos, numeración, mayúsculas, regex y etiquetas EXIF e ID3 en una sola ventana muy densa. Es gratuito para uso personal. El renombrado con JavaScript requiere una licencia de pago ($24.95), y el uso comercial cuesta $92.95 por ordenador. La versión 4.1.0.1 añadió un asistente con IA que escribe JavaScript y regex por ti; aun así, no lee el contenido de los archivos. No hay versión para Mac. Consulta nuestras [alternativas a Bulk Rename Utility](/blog/bulk-rename-utility-alternatives).
+
+**Elígelo si** aplicas reglas mecánicas complejas a carpetas muy grandes. **Punto débil:** la interfaz es densa y el uso profesional se paga por ordenador.
+
+## Tipo 2: renombradores por metadatos
+
+**Advanced Renamer** y **A Better Finder Rename** construyen nombres a partir de fechas EXIF, coordenadas GPS, etiquetas ID3 y fechas de archivo. Advanced Renamer (versión 4.28) también puede extraer texto de archivos PDF y TXT mediante su método de scripts, pero no tiene IA ni OCR, así que los PDF escaneados y las imágenes siguen siendo ilegibles y eres tú quien escribe la lógica que convierte el texto extraído en un nombre. Es gratuito para uso personal ligero; a los usuarios habituales se les pide comprar una licencia personal de $30, y el uso profesional requiere una comercial de $50. A Better Finder Rename cuesta $29.95 para Mac.
+
+El límite es que los metadatos describen *cuándo* y *con qué*, no *qué*. El EXIF de una foto dice cuándo se tomó, no que muestra un golden retriever en un parque. Nuestra reseña de [alternativas a Advanced Renamer](/blog/advanced-renamer-alternatives) explica dónde se acaban esas reglas.
+
+**Elígelos si** el nombre completo que quieres ya está en el EXIF, el GPS o las etiquetas. **Punto débil:** no entienden imágenes ni documentos escaneados.
+
+## Tipo 3: renombradores con IA, cuando cada archivo necesita su propio nombre
+
+Algunas carpetas superan a los dos tipos anteriores: `Screenshot 2026-03-23.png`, `Scan0001.pdf`, `IMG_4382.HEIC`, `download (7).pdf`. El nombre correcto es distinto para cada uno, y está en los píxeles, en el texto o en el audio.
+
+[Zush](/) lee ese contenido en capturas, fotos (incluidas RAW y HEIC), PDF, [documentos escaneados](/rename-scanned-documents), archivos de Office e iWork, archivos de diseño, audio y vídeo. Los vídeos se nombran a partir de la voz, los subtítulos incrustados y los metadatos, MKV incluido. Eliges un Template ya preparado o construyes tu propia convención con más de 145 [Naming Blocks](/docs/naming-blocks), ves cada nombre propuesto y no cambia nada hasta que pulsas Rename. Rename History sobrevive a los reinicios y deshace lotes completos. La [vigilancia de carpetas](/docs/folder-monitoring) mantiene con nombre Descargas o la carpeta del escáner a medida que llegan archivos.
+
+Lo que pagas:
+
+- **Funciona desde el primer momento:** 50 renombrados con IA gratis en Zush Cloud AI sin cuenta, tarjeta, clave de API ni descarga de modelos.
+- **El pago único incluye la nube:** los $48 de Lifetime cubren renombrados ilimitados con Zush Cloud AI, BYOK, Ollama y LM Studio, todas las actualizaciones futuras, hasta 3 dispositivos entre Mac y Windows, y reembolso en 14 días. O $10 al mes.
+- **Duplicados resueltos:** AI Rename detecta archivos duplicados; las copias no consumen créditos y Undo las restaura. Consulta [eliminar archivos duplicados](/remove-duplicate-files).
+- **Ligero en modo nube:** unos 200 MB y 4 GB de RAM.
+
+Zush también puede clasificar archivos en carpetas con la agrupación **Auto** o con **Folder rules**, incluidas carpetas anidadas, y puede clasificar sin renombrar. Elige un **Destination folder** o deja la carpeta de origen como raíz, y activa **Reuse existing folders** para aprovechar las carpetas que ya tienes. Si guardas la configuración en un Template y lo asignas a **Monitor**, los archivos nuevos se nombran y se clasifican al llegar. Consulta la [guía de clasificación en carpetas](/docs/folder-sorting), el paso a paso para [clasificar archivos en carpetas con IA en Mac](/blog/sort-files-into-folders-with-ai-mac) y [30 reglas de carpeta listas para usar](/blog/ai-folder-sorting-prompts).
+
+Hay otros renombradores con IA, con compromisos distintos: la [comparativa multiplataforma de renombradores con IA](/blog/best-ai-file-renamer-tools-2026) cubre diez, y hay clasificaciones aparte para [Mac](/blog/best-ai-file-renamer-tools-mac-compared) y [Windows](/blog/best-ai-file-renamer-tools-windows-compared).
 
 <BlogCTA placement='inline' platform='general' />
 
-**Funciones de Zush revisadas el 26 de octubre de 2026.** La información de los competidores mantiene las fechas de comprobación indicadas en el artículo.
+## Cómo elegir en 30 segundos
 
-## Comparativa rápida
+1. El mismo cambio para todos los archivos: **Finder** o **PowerRename**.
+2. Reglas complejas sobre carpetas enormes: **Bulk Rename Utility**.
+3. El nombre completo ya está en el EXIF, el GPS o las etiquetas: **Advanced Renamer** o **A Better Finder Rename**.
+4. Abres los archivos para saber qué son antes de nombrarlos: **Zush**.
 
-| Trabajo | Herramienta | Sistema | Lee el contenido | Precio |
-|---|---|---|---|---|
-| Archivos mixtos y nombres individuales; clasificación opcional | Zush | Mac, Windows | Sí | 50 cambios gratis; $10/mes o $48 una vez |
-| Sustituir texto, añadir prefijo o numerar | Finder | Mac | No | Gratis, integrado |
-| Buscar y sustituir o expresiones regulares | PowerRename | Windows | No | Gratis |
-| Reglas complejas y combinadas | Bulk Rename Utility | Windows | No | Gratis para uso personal |
-| EXIF, fechas, GPS y metadatos | Advanced Renamer | Mac, Windows | No | Licencia de pago único |
-| Reglas y metadatos nativos de Mac | A Better Finder Rename | Mac | No | Licencia de pago único |
+Mucha gente usa los dos tipos: una herramienta de patrones para arreglos mecánicos rápidos, y la IA para las carpetas en las que los nombres tienen que significar algo. Si usas Windows, consulta los [mejores renombradores de archivos para Windows 11](/blog/best-file-renamer-windows-11).
 
-## 1. Herramientas integradas y reglas gratuitas
+## Fuentes y cómo lo comprobamos
 
-### Finder
-Selecciona los archivos, haz clic derecho y elige Rename para sustituir texto, añadirlo o combinar un nombre con un índice. No requiere instalación, pero no ofrece expresiones regulares, análisis del contenido, reglas de metadatos, vigilancia ni historial duradero. La [guía de Mac](/blog/batch-rename-files-on-mac-complete-guide) incluye Automator y Terminal.
-
-### PowerRename
-Forma parte de Microsoft PowerToys. Desde File Explorer permite búsqueda y sustitución con expresiones regulares y vista previa. Sirve para una regla compartida, pero no interpreta contenidos ni vigila carpetas mixtas. Consulta la [alternativa a PowerRename](/windows).
-
-### Bulk Rename Utility
-BRU combina prefijos, numeración, mayúsculas y minúsculas y expresiones regulares. Su interfaz densa está orientada a lotes mecánicos en Windows. No tiene versión Mac ni análisis de contenido. Nuestra [comparación de BRU](/blog/bulk-rename-utility-alternatives) explica sus límites.
-
-## 2. Renombrar mediante metadatos
-
-Advanced Renamer y A Better Finder Rename añaden fechas EXIF, GPS, etiquetas ID3 y fechas de archivo. Úsalos cuando esos campos ya contienen todo el nombre deseado. EXIF dice cuándo se tomó una foto, no que muestra un perro en el parque; los metadatos de una factura PDF no necesariamente incluyen proveedor e importe. Véase el [análisis de Advanced Renamer](/blog/advanced-renamer-alternatives).
-
-## 3. IA cuando cada archivo necesita su propio nombre
-
-`Screenshot 2026-03-23.png`, `Scan0001.pdf`, `IMG_4382.HEIC` y `download (7).pdf` no describen el contenido. Zush lee capturas, fotos RAW y HEIC, PDF, [escaneos mediante visión IA](/rename-scanned-documents), Office, iWork, diseño, audio y vídeo. Los [Naming Blocks](/docs/naming-blocks) fijan una convención; cada propuesta se revisa antes de aplicarla y queda en el historial para deshacerla. La [vigilancia de carpetas](/docs/folder-monitoring) procesa nuevas descargas y escaneos.
-
-Los primeros 50 cambios se comparten entre los cuatro modos. PRO cuesta $10/mes o $48 una vez, sin límite de renombrados. Zush Cloud AI y BYOK funcionan en línea; LM Studio y Ollama están disponibles en Mac y Windows. La [comparativa general de IA](/blog/best-ai-file-renamer-tools-2026) incluye FilesDesk, RenameClick, Renamer.ai y NameQuick.
-
-Una licencia de Zush cubre hasta 3 dispositivos Mac o Windows.
-
-Puedes [exportar Templates](/docs/template-import-export) con sus Naming Blocks, Custom AI Blocks y reglas de carpetas e importarlos en otro ordenador. Allí debes configurar de nuevo las carpetas de destino, los permisos y las conexiones de IA. Se transfieren los ajustes, no tus archivos.
-
-### Clasificar también en carpetas
-
-La clasificación con IA es opcional. Elige Auto o escribe en **Folder rules**, por ejemplo: «Agrupar capturas por proyecto y facturas por empresa». Las reglas de carpetas son independientes de los Naming Blocks. Selecciona un **Destination folder** o conserva el origen como raíz. **Reuse existing folders** utiliza carpetas adecuadas existentes y crea otras si hace falta. Revisa nombres y destinos antes de aplicar.
-
-Guarda la configuración en un **Template**, pruébalo manualmente y asígnalo a **Monitor**. Procesa archivos nuevos directamente dentro de la carpeta vigilada; no reorganiza los ya procesados. Para renombrar en el mismo sitio, desactiva la clasificación y conserva el destino original. [Documentación de clasificación](/docs/folder-sorting).
-
-Zush admite carpetas anidadas, por ejemplo por año y después por mes. Puedes clasificar archivos ya renombrados sin volver a cambiar sus nombres ni gastar otro crédito de renombrado. Revisa los destinos antes de aplicar. Esta acción es independiente de Monitor: cambiar su Template no reorganiza archivos anteriores. La [clasificación con IA](/docs/folder-sorting) funciona en Mac y Windows.
-
-## Elegir en 30 segundos
-
-Zush para contenido mixto, nombres descriptivos, vigilancia, revisión y recuperación. Una herramienta gratuita de reglas si la misma sustitución, prefijo o secuencia resuelve todo. Un especialista en metadatos si EXIF, GPS, fechas o etiquetas proporcionan el nombre completo. Se pueden combinar herramientas. Más información para [Mac](/blog/best-ai-file-renamer-tools-mac-compared), [Windows](/blog/best-ai-file-renamer-tools-windows-compared) y [Windows 11](/blog/best-file-renamer-windows-11).
+<BlogSources ids={['powerrename', 'bulk-rename-utility', 'advanced-renamer', 'a-better-finder-rename']} />
 
 ## Preguntas frecuentes
 
-### ¿Zush puede mover archivos a carpetas?
-Sí, opcionalmente y con revisión previa. Un Template probado puede procesar nuevos archivos mediante Monitor.
+### ¿Cuál es el mejor renombrador de archivos gratuito?
 
-### ¿Qué opción gratuita conviene?
-Finder en Mac y PowerRename en Windows para reglas comunes. Zush ofrece 50 renombrados IA. La [guía de IA gratuita](/blog/rename-files-with-ai-free) cubre Cloud AI, BYOK, LM Studio, Ollama y herramientas locales de línea de comandos.
+Para tareas de patrón, Finder en Mac y PowerRename en Windows son gratuitos y muestran una vista previa de cada cambio. Bulk Rename Utility es gratuito para uso personal, y Advanced Renamer es gratuito para uso personal ligero. Para nombres basados en el contenido del archivo, Zush ofrece 50 renombrados con IA gratis sin cuenta, tarjeta ni clave de API, con la misma vista previa y el mismo Rename History que la versión de pago. Consulta la [guía para renombrar con IA gratis](/blog/rename-files-with-ai-free).
 
-### ¿Cuál elegir en Mac o Windows?
-[Zush para Mac](/mac) y [Zush para Windows](/windows) son nuestras recomendaciones para archivos mixtos. Finder, A Better Finder Rename, PowerRename y BRU resuelven casos más concretos.
+### ¿Puede un renombrador nombrar archivos según lo que contienen?
 
-### ¿Se puede usar lo que hay dentro del archivo?
-La IA lee texto o imágenes, incluso escaneos sin capa de texto. Las herramientas de patrones reorganizan nombres o etiquetas existentes.
+Solo los renombradores con IA lo hacen bien. Las herramientas de patrones reordenan el nombre existente; las de metadatos leen etiquetas EXIF o ID3. Advanced Renamer puede extraer texto de archivos PDF y TXT mediante scripts, pero no tiene IA ni OCR, así que los escaneos y las imágenes siguen siendo ilegibles. Un renombrador con IA como Zush lee texto, imágenes, audio y vídeo, incluidos escaneos sin capa de texto, y propone un nombre que revisas antes.
 
-### ¿Merece la pena pagar?
-Para cambios mecánicos, las reglas gratuitas bastan. Si abres archivos continuamente para reconocerlos, la IA puede ahorrar ese trabajo; Zush dispone de licencia PRO de $48 en pago único.
+### ¿Vale la pena pagar por un renombrador de archivos con IA?
 
-<BlogProductIntro
-  title="Empezar con Zush"
-  description="Zush es nuestra opción general para carpetas mixtas: nombres según el contenido, Naming Blocks, vista previa, vigilancia y deshacer. Las reglas gratuitas y los metadatos sirven para tareas concretas. La clasificación con IA en carpetas es opcional."
-  links={[{"href":"/ai-file-sorter","label":"Clasificar archivos con IA"},{"href":"/blog/ai-folder-sorting-prompts","label":"Ejemplos de instrucciones"},{"href":"/docs/folder-sorting","label":"Documentación de clasificación"},{"href":"/pricing","label":"Precios"}]}
-/>
+Si tu renombrado es mecánico, no: las herramientas de patrones gratuitas cumplen. Si abres archivos a menudo para ver qué son, sí. La licencia de pago único de $48 de Zush incluye IA gestionada en la nube con renombrados ilimitados, además de BYOK y modelos locales, todas las actualizaciones futuras, hasta 3 dispositivos entre Mac y Windows, y reembolso en 14 días. Prueba antes los 50 renombrados gratis con copias.
 
-[Guía de Mac](/blog/sort-files-into-folders-with-ai-mac) · [Guía de Windows](/blog/sort-files-into-folders-with-ai-windows) · [Ejemplos de instrucciones](/blog/ai-folder-sorting-prompts) · [Documentación de clasificación](/docs/folder-sorting).
+### ¿Dónde procesa Zush mis archivos?
+
+Depende del modo que elijas. Zush Cloud AI y BYOK envían el contenido del archivo a un servicio de IA para generar nombres; BYOK usa tu propia cuenta del proveedor. Con Ollama o LM Studio, el análisis se ejecuta en tu propio ordenador y los archivos se quedan ahí. Las herramientas de patrones como Finder, PowerRename y Bulk Rename Utility nunca leen el contenido, así que nada sale de tu equipo. Consulta la configuración del [renombrador de archivos con IA sin conexión](/offline-ai-file-renamer).
+
+### ¿Cuál es el mejor renombrador de archivos para Mac?
+
+Para carpetas variadas en las que cada archivo necesita un nombre descriptivo, [Zush para Mac](/mac): lee capturas, PDF, fotos RAW, archivos de diseño, audio y vídeo, y guarda un Rename History persistente. Para una sola regla común, Finder viene integrado; para patrones con EXIF y metadatos, A Better Finder Rename cuesta $29.95. El panorama completo está en la [comparativa de renombradores con IA para Mac](/blog/best-ai-file-renamer-tools-mac-compared).
+
+### ¿Cuál es el mejor renombrador de archivos para Windows 11?
+
+Para tareas de patrón, PowerRename es gratuito, muestra una vista previa de los cambios y se deshace con Ctrl+Z. Bulk Rename Utility y Advanced Renamer manejan reglas y metadatos más complejos. Para archivos que necesitan cada uno su propio nombre según su contenido, [Zush para Windows](/windows) se instala desde Microsoft Store y añade vista previa, vigilancia de carpetas y un Rename History persistente. Consulta la [comparativa de renombradores con IA para Windows](/blog/best-ai-file-renamer-tools-windows-compared).

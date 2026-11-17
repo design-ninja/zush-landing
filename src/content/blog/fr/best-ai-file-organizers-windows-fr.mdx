@@ -1,6 +1,6 @@
 ---
-title: "Organisateurs de fichiers avec IA pour Windows 11 : comparatif (2026)"
-description: "Organisateurs de fichiers IA pour Windows : renommage, dossiers, IA locale et règles. Comparez Zush, Sortio et les alternatives."
+title: "Organisateurs de fichiers avec IA pour Windows 11 : 8 outils comparés (2026)"
+description: "8 organisateurs de fichiers IA pour Windows 10 et 11 comparés : renommage, tri en dossiers, surveillance, IA locale, annulation, offres gratuites et prix."
 date: "2026-09-22"
 slug: "best-ai-file-organizers-windows-fr"
 platform: "windows"
@@ -9,135 +9,172 @@ tags:
   - "File Organization"
   - "Tool Comparisons"
   - "Automation"
-tldr: "Zush associe des noms fondés sur le contenu et un tri facultatif dans des dossiers sous Windows 10 et 11. Auto propose des groupes ; Folder rules permet de décrire votre propre classement. Sortio et Wisfile proposent d'autres workflows IA, tandis que File Juggler et DropIt utilisent des règles déterministes. Comparez l'aperçu, la récupération, les formats et le traitement des données. Une licence Zush couvre jusqu’à 3 appareils."
-reviewed: "2026-10-26"
+tldr: "Zush associe le nommage selon le contenu et le tri en dossiers par IA sous Windows 10 et 11, avec 50 renommages IA gratuits, sans compte, carte ni clé API. Sortio convient à Linux et aux équipes, Wisfile est gratuit pour les PDF et fichiers Word, RenameClick intègre un modèle local, et File Juggler ou DropIt couvrent les règles sans IA. Une licence Zush couvre jusqu'à 3 appareils."
+reviewed: "2026-11-17"
 locale: "fr"
 translationOf: "best-ai-file-organizers-windows"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-Zush associe des noms fondés sur le contenu et un tri facultatif dans des dossiers sous Windows 10 et 11. Auto propose des groupes ; Folder rules permet de décrire votre propre classement. Sortio et Wisfile proposent d'autres workflows IA, tandis que File Juggler et DropIt utilisent des règles déterministes. Comparez l'aperçu, la récupération, les formats et le traitement des données.
+Réponse rapide : pour la plupart des utilisateurs de Windows, le meilleur organisateur de fichiers IA est [Zush](/windows), car ce qui met un PC en désordre, ce sont généralement les noms de fichiers. `scan_0042.pdf` et `IMG_4382.jpg` restent introuvables, quelle que soit l'arborescence. Zush lit chaque fichier, propose un nom descriptif et peut le ranger dans des dossiers selon votre propre instruction, et vous vérifiez tout avant le moindre changement. Prenez Sortio si vous avez aussi besoin de Linux, Wisfile pour un nettoyage ponctuel et gratuit de documents, RenameClick pour un modèle local intégré, et File Juggler pour des règles exactes sans IA.
 
-**Fonctions de Zush vérifiées le 26 octobre 2026.** Les informations sur les concurrents conservent les dates de vérification indiquées dans cet article.
-
-Vous voulez seulement de meilleurs noms de fichiers, sans rien déplacer ? Consultez le [comparatif des outils IA pour renommer des fichiers sous Windows](/fr/blog/meilleurs-outils-ia-renommer-fichiers-windows).
+**Notre méthode :** rédigé par l'éditeur de [Zush](/). Les prix, fonctions et notes des concurrents ont été vérifiés sur les sites des éditeurs et les boutiques officielles le 17 novembre 2026 ([sources en bas de page](#sources-and-how-we-checked)). Ce comparatif porte sur les fonctions documentées, pas sur un test en laboratoire.
 
 ## Comparatif rapide
 
-| | Usage conseillé | Prix et licence |
-|---|---|---|
-| Zush | Noms fondés sur le contenu et groupes de dossiers IA facultatifs | 50 renommages gratuits; $10/mo; $48 |
-| Sortio | Groupes par consignes, renommage, aperçu et dossiers surveillés | gratuit; $14.99/mo; $99/yr |
-| Wisfile | Nommage et regroupement locaux gratuits de documents ; surveillance et annulation non documentées | gratuit |
-| RenameClick | Modèle local intégré ; Auto Flow peut renommer et déplacer les nouveaux fichiers | $8/mo + VAT; $36 + VAT |
-| File Juggler | Règles déterministes de renommage et déplacement ; sans IA | $50 |
-| DropIt | Règles gratuites par nom, date ou extension ; sans IA | gratuit |
+| Application | Ce qu'elle fait | IA sur votre PC ? | Surveille des dossiers | Annulation | Prix |
+|---|---|---|---|---|---|
+| **Zush** | <BlogHighlight>Renommage selon le contenu et tri en dossiers par IA</BlogHighlight> | Oui, via Ollama ou LM Studio (Zush Cloud AI et BYOK aussi) | Oui | Rename History persistant, annulation par lot | 50 renommages gratuits, sans compte ni carte ; 10 $/mois ou 48 $ en paiement unique, IA cloud incluse |
+| Sortio | Renomme, crée des dossiers, déplace les fichiers | Oui, Ollama ou LM Studio sur toutes les offres | Pro uniquement | Historique de tri et annulation | Essai IA unique ; Pro 14,99 $/mois ou 99 $/an |
+| Wisfile | Renomme et regroupe les documents dans des dossiers | Oui, uniquement en local | Non | Non | Gratuit |
+| RenameClick | Renomme ; Auto Flow peut aussi déplacer | Oui, modèle intégré d'environ 4 Go | Auto Flow, tant que l'application tourne | En mémoire, 10 entrées, effacées au redémarrage | 100 renommages ou déplacements gratuits par mois ; 36 $ + TVA à vie |
+| NudgeFile | Surveille des dossiers, renomme, achemine, trouve les doublons | Oui, via Ollama (option cloud aussi) | Oui | Oui, selon son site | Téléchargement gratuit ; offres payantes non précisées par l'éditeur |
+| Foldora | Suggère des dossiers et des noms pour un lot | Oui, analyse locale | Non | Non annoncée | 14,99 $ à vie |
+| File Juggler | Renommage et déplacement par règles, sans IA | Pas d'IA | Oui, instantanément | Non précisé par l'éditeur | 50 $ en paiement unique + taxes, essai de 30 jours |
+| DropIt | Tri et déplacement par règles, sans IA | Pas d'IA | Oui, analyses périodiques | Non | Gratuit, open source |
 
-## 1. Zush
+Vous voulez seulement de meilleurs noms de fichiers, sans rien déplacer ? Consultez le [comparatif des outils de renommage IA pour Windows](/blog/best-ai-file-renamer-tools-windows-compared).
 
-Noms fondés sur le contenu et groupes de dossiers IA facultatifs. La page de l’[organiseur de fichiers IA Zush](/ai-file-organizer) présente trois usages : renommer sur place, renommer et classer, ou surveiller un dossier.
+<BlogProductIntro
+  title="Les noms de fichiers de votre PC Windows ne vous disent rien ?"
+  description="Zush lit les captures d'écran, PDF, photos, fichiers Office et vidéos, propose un nom clair pour chacun, et les renomme sur place ou les range dans des dossiers. Aperçu d'abord, annulation de n'importe quel lot ensuite."
+  links={[
+    { href: '/windows', label: 'Zush pour Windows' },
+    { href: '/ai-file-organizer', label: 'Organisateur de fichiers IA' },
+    { href: '/ai-file-sorter', label: 'Tri de fichiers par IA' },
+    { href: '/offline-ai-file-renamer', label: 'Renommage IA hors ligne' },
+  ]}
+/>
 
-![Zush sur Windows renomme un lot de fichiers variés selon leur contenu et affiche chaque nom proposé avant application](/videos/windows/zush-batch-rename.mp4)
+## Renommer sur place ou déplacer dans des dossiers ?
 
-Le tri de Zush fonctionne sur Mac et Windows. Il analyse le contenu des fichiers compatibles et propose des noms et des groupes. Laissez Folder rules vide pour Auto ou décrivez le classement en langage naturel. Naming Blocks définit séparément le format des noms de fichiers.
+Tout organisateur de fichiers IA fait l'une de ces deux choses, ou les deux :
 
-Testez des images exportées ou un dossier copié. Ne réorganisez pas les fichiers à l'intérieur d'un paquet de photothèque Photos. Pour des originaux déjà catalogués, suivez la procédure de renommage ou de reconnexion du logiciel. Renommer et déplacer modifient tous deux les chemins des fichiers.
+1. Il renomme les fichiers pour que File Explorer et Windows Search puissent les retrouver par leur contenu.
+2. Il déplace les fichiers dans une structure de dossiers, parfois inventée par lui.
 
-![Onglet Monitor de Zush sur Windows surveillant les dossiers Screenshots et Downloads et renommant les nouveaux fichiers dès leur arrivée](/images/showcase/windows/monitor-light.webp)
+Les deux modifient les chemins des fichiers : raccourcis et liens de projet peuvent donc casser. Le déplacement est plus perturbant, d'où la nécessité d'un aperçu et d'une annulation qui survit à un redémarrage. Si vous ouvrez des fichiers juste pour savoir ce qu'ils sont, vous avez d'abord un problème de nommage.
 
-Une licence Zush couvre jusqu’à 3 appareils Mac ou Windows.
+## 1. Zush : des noms fondés sur le contenu et le tri en dossiers par IA
 
-Vous pouvez [exporter vos Templates](/docs/template-import-export), avec les Naming Blocks, Custom AI Blocks et règles de dossiers, puis les importer sur un autre ordinateur. Les destinations locales, autorisations et connexions IA se configurent à nouveau sur cet ordinateur. Le transfert porte sur les réglages, pas sur vos fichiers.
+[Zush pour Windows](/windows) fonctionne sous Windows 10 et 11 et s'installe depuis le [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X). Déposez-y un dossier de captures d'écran, PDF, scans, photos, documents Office, fichiers de design, audio ou vidéo. Zush lit chaque fichier et suggère un nom comme `2026-09-18_acme_invoice_1042.pdf` ou `stripe-revenue-dashboard-september.png`. Les vidéos sont nommées d'après la parole, les sous-titres intégrés et les métadonnées, MKV compris, et la musique peut être identifiée même sans tags.
 
-## 2. Sortio
+Il fonctionne tout de suite. Les 50 premiers renommages IA passent par Zush Cloud AI, l'IA gérée, sans compte, carte, clé API ni modèle à télécharger, et le mode cloud ne demande que 4 Go de RAM. Quand des dossiers ne doivent jamais quitter le PC, passez à Ollama ou LM Studio ; la reconnaissance vocale sur l'appareil, en option, garde aussi la transcription vidéo en local.
 
-Sortio présente un plan de renommage, création de dossiers et déplacement à partir de vos consignes. Smart Folders traite les nouveaux fichiers ; Linux est également pris en charge. Vérifiez les quotas IA et chaque plan : déplacer modifie les chemins.
+Vous voyez chaque suggestion avant tout changement. Double-cliquez sur un nom pour le modifier, régénérez-en un ou appliquez le lot. Des Templates prêts à l'emploi (dont Movies & TV et Remove Duplicates) et plus de 145 Naming Blocks gardent des noms cohérents : dates, fournisseur, montant, client, numéros de séquence avec zéros initiaux.
 
-Sortio.
+![Zush pour Windows renomme un lot de fichiers variés selon leur contenu et affiche chaque nom proposé avant d'appliquer le lot](/videos/windows/zush-batch-rename.mp4)
 
-## 3. Wisfile
+### Trier les fichiers dans des dossiers
 
-Wisfile se concentre sur les documents locaux, notamment PDF, articles scientifiques et supports pédagogiques. Il peut déduire des noms du contenu et regrouper un lot par thème. La gestion des images et vidéos, la surveillance et l’annulation ne sont pas documentées sur sa page produit.
+Pour classer aussi, utilisez Auto ou écrivez dans **Folder rules** une règle comme « Regroupe les factures par entreprise et les reçus par mois ». Vérifiez les groupes, choisissez un **Destination folder** et activez **Reuse existing folders** pour réutiliser les dossiers déjà présents. Les règles peuvent être imbriquées et s'appuyer sur des détails du fichier, comme les dates ou le nombre de pages, et vous pouvez trier des fichiers en gardant leur nom actuel. AI Rename détecte aussi les doublons : gardez-les, signalez-les dans le nom ou envoyez-les à la Corbeille. Les copies ne consomment aucun crédit, et Undo les restaure. Pas à pas : [trier des fichiers dans des dossiers avec l'IA sous Windows](/blog/sort-files-into-folders-with-ai-windows), [30 règles de dossiers prêtes à l'emploi](/blog/ai-folder-sorting-prompts) et le [guide du tri en dossiers](/docs/folder-sorting).
+
+![Zush pour Windows affiche un aperçu des groupes de dossiers basés sur le contenu et des noms de fichiers proposés avant Rename & sort](/images/showcase/windows/folder-sorting-light.webp)
+
+Monitor applique un Template enregistré aux nouveaux fichiers de Téléchargements ou d'un dossier de scanner. Rename History conserve les anciens et nouveaux noms après un redémarrage, et Undo All restaure un lot entier en listant les conflits éventuels, avec la possibilité de restaurer sous un nouveau nom.
+
+![L'onglet Monitor de Zush pour Windows surveille les dossiers Captures d'écran et Téléchargements et renomme les nouveaux fichiers dès leur arrivée](/images/showcase/windows/monitor-light.webp)
+
+<BlogCTA placement='inline' platform='windows' />
+
+Prix : 10 $/mois ou 48 $ en paiement unique. La licence unique inclut des renommages illimités dans tous les modes (Zush Cloud AI, BYOK, Ollama, LM Studio), toutes les mises à jour futures, jusqu'à 3 appareils entre Mac et Windows, et un remboursement sous 14 jours. Sur le Microsoft Store (États-Unis), Zush obtient 5,0 sur 8 avis, et le test de la rédaction de Softpedia lui donne 4,5/5, au 17 novembre 2026.
+
+## 2. Sortio : le tri par consigne, avec Linux en plus
+
+Sortio prend une instruction en langage courant (« range les factures par année, les captures d'écran par projet »), affiche un plan, puis renomme, crée des dossiers et déplace les fichiers. Il fonctionne sous Windows 10/11, macOS et Linux, et la connexion se fait avec un compte e-mail.
+
+L'offre gratuite couvre le tri par règles avec jusqu'à cinq règles et trois Spaces, un essai IA unique, l'aperçu, l'historique de tri et l'annulation. Les dossiers surveillés et les automatisations demandent désormais Pro, à 14,99 $ par mois ou 99 $ par an, avec un quota mensuel d'IA. Votre propre clé contourne ce quota, et Ollama garde le traitement en local (8 Go de RAM minimum).
+
+Choisissez Sortio si vous avez besoin de Linux ou de licences d'équipe. Point faible : l'IA hébergée fonctionne par quota mensuel, et l'offre gratuite ne surveille plus les dossiers. Voir [Zush vs Sortio](/blog/zush-vs-sortio).
+
+## 3. Wisfile : l'option gratuite pour les documents
+
+Wisfile est gratuit et fonctionne entièrement sur votre appareil, sous Windows et sur Mac. Il renomme les documents d'après leur contenu (titre, auteur, année) et peut regrouper un lot dans des dossiers thématiques. Les modèles comme `Author-Year-Title` sont pris en charge.
 
 ![Illustration de Wisfile montrant des noms de PDF aléatoires transformés en noms de documents datés et descriptifs](/images/blog/competitors/wisfile.webp)
 
-Wisfile.
+Choisissez Wisfile pour un nettoyage ponctuel d'archives PDF et Word quand le budget prime. Point faible : il n'a ni annulation ni surveillance de dossiers, et il se concentre sur PDF et Word plutôt que sur les images ou la vidéo. Travaillez sur des copies.
 
-## 4. RenameClick
+## 4. RenameClick : un modèle local intégré
 
-RenameClick fournit un modèle local après un téléchargement volumineux. Auto Flow peut renommer et déplacer de nouveaux fichiers. Dans l’espace Rename standard, jusqu’à dix entrées d’annulation restent en mémoire et disparaissent au redémarrage ; Auto Flow enregistre les opérations appliquées admissibles et permet de les annuler ou rétablir après un redémarrage.
+La voie IA gratuite de RenameClick est un modèle local intégré, environ 4 Go à télécharger, avec 16 Go de RAM recommandés. Pas besoin de configurer Ollama, ce qui est un vrai confort. Il renomme les images, documents, fichiers audio et, depuis la version 4.1.2, les vidéos (MP4, MOV, M4V et 3GP, grâce aux images et à une transcription vocale locale). MKV, WebM, AVI, les photos RAW et les fichiers de design ne figurent pas dans sa liste de formats. Auto Flow renomme et déplace les nouveaux fichiers tant que l'application tourne.
 
-![RenameClick (version Mac) classant les fichiers renommés dans Legal Documents, Medical Documents et Uncategorized avant Rename & Move](/images/blog/competitors/renameclick.webp)
+L'offre gratuite donne une analyse illimitée et 100 renommages ou déplacements par mois ; l'application doit se connecter une fois avant la première application. La licence à vie coûte 36 $ plus TVA pour jusqu'à 3 appareils sur les versions directes, et le remboursement n'est proposé que là où la loi l'impose. Standard Rename garde 10 entrées d'annulation en mémoire, effacées au redémarrage. Notes : 3,0 sur 6 avis sur le Microsoft Store (États-Unis), 3,5 de la part de la rédaction de Softpedia.
 
-RenameClick.
+![RenameClick (version Mac) range des fichiers renommés dans Legal Documents, Medical Documents et Uncategorized avant Rename & Move](/images/blog/competitors/renameclick.webp)
 
-## 5. File Juggler
+Choisissez RenameClick si vous voulez une IA hors ligne sans configuration et que vous avez assez de RAM. Analyse complète : [Zush vs RenameClick](/blog/zush-vs-renameclick).
 
-File Juggler applique des conditions explicites, y compris des contenus et propriétés de PDF, pour renommer ou déplacer les fichiers correspondants. Il convient aux traitements prévisibles sans IA. Chaque règle doit être définie puis testée sur des fichiers représentatifs.
+## 5. NudgeFile : un surveillant de dossiers gratuit avec IA locale
 
-File Juggler.
+NudgeFile est une application récente pour Windows 10 et 11, téléchargeable gratuitement sur le Microsoft Store. Son site indique qu'elle surveille des dossiers comme Téléchargements et le Bureau, donne aux nouveaux fichiers des noms standardisés, les achemine vers des dossiers de destination et trouve les doublons grâce à des sommes de contrôle et à une IA visuelle locale. L'IA tourne en local via Ollama, avec une option cloud. Un « Human Approval Pipeline » permet de vérifier les suggestions ou de les laisser s'appliquer automatiquement, et le site affirme que toute action s'annule en un clic.
 
-## 6. DropIt
+Choisissez NudgeFile si vous voulez un organisateur local gratuit et toujours actif sous Windows. Point faible : sa FAQ indique que le modèle analyse « les métadonnées et la structure des fichiers », et le site ne liste ni les types de fichiers pris en charge ni d'éventuelles offres payantes : testez-le d'abord sur vos propres fichiers.
 
-DropIt classe par nom, extension, date, taille ou expression régulière. On dépose les fichiers sur l’outil ou on configure une vérification périodique des dossiers surveillés. Il est gratuit, sans analyse IA du contenu, et sa dernière version date de 2018.
+## 6. Foldora : un rangement local ponctuel pour 14,99 $
 
-DropIt.
+Foldora fonctionne sous Windows 10, 11 et macOS. Il analyse en local les fichiers sélectionnés, suggère des dossiers et des noms plus clairs, et les applique une fois l'aperçu approuvé. Il coûte 14,99 $ à vie. L'achat, l'activation et les vérifications périodiques de licence demandent une connexion internet.
 
-## Trier les fichiers dans des dossiers avec l'IA
+Choisissez Foldora pour un rangement ponctuel, local et bon marché d'un lot de fichiers variés. Point faible : il n'a pas de surveillance de dossiers, et l'éditeur lui-même précise qu'une annulation garantie en un clic n'est pas annoncée : faites une sauvegarde avant les gros changements.
 
-Le tri de Zush fonctionne sur Mac et Windows. Il analyse le contenu des fichiers compatibles et propose des noms et des groupes. Laissez Folder rules vide pour Auto ou décrivez le classement en langage naturel. Naming Blocks définit séparément le format des noms de fichiers.
+## 7. File Juggler : des règles prévisibles sans IA
 
-> Regrouper les factures par entreprise et les reçus par mois. Nommer les dossiers mensuels YYYY-MM.
+File Juggler est un outil d'automatisation Windows de longue date, toujours maintenu (la version 3.1.9 est sortie le 30 octobre 2026). Vous écrivez des règles (« si un PDF de Téléchargements contient "Invoice", renomme-le avec la date et déplace-le dans Finances »), et il les applique à l'arrivée des fichiers. Il sait lire le texte des PDF, Word et Excel pour ces règles. La rédaction de Softpedia lui donne 4,5/5.
 
-1. Ajoutez un petit lot copié dans AI Rename et choisissez un Template.
-2. Activez + Sort et choisissez Destination folder comme racine des sous-dossiers. Sans destination distincte, le dossier source reste la racine.
-3. Indiquez le classement dans Folder rules. Activez Reuse existing folders pour réutiliser des dossiers adaptés sous la destination ; Zush peut en créer de nouveaux si nécessaire.
-4. Vérifiez et corrigez les noms et les groupes proposés avant d'appliquer le lot.
+Il coûte 50 $ plus taxes en licence unique, avec un essai complet de 30 jours. Point faible : il n'y a ni IA ni OCR, donc chaque cas demande une règle, et les scans en image seule demandent une étape d'OCR à part. D'autres options : [alternatives à File Juggler](/blog/file-juggler-alternatives).
 
-![Zush sur Windows affichant l'aperçu des noms et des groupes de dossiers avant Rename & sort](/images/showcase/windows/folder-sorting-light.webp)
+## 8. DropIt : le moteur de règles gratuit
 
-Enregistrez la destination et les règles testées dans le Template. Monitor peut renommer et trier les nouveaux fichiers arrivant directement dans le dossier surveillé ; il ne réorganise pas rétroactivement les fichiers déjà traités. Avec le tri désactivé et la destination d'origine, les fichiers restent dans leur dossier actuel.
+DropIt est gratuit et open source. Ses règles reconnaissent les fichiers par nom, taille, date ou regex ; vous déposez les fichiers dessus ou le laissez analyser des dossiers surveillés à intervalles réguliers. Il propose 21 actions, dont déplacer, copier, renommer, compresser et extraire.
 
-[Guide étape par étape du tri par IA](/blog/sort-files-into-folders-with-ai-windows) · [Documentation du tri dans les dossiers](/docs/folder-sorting) · [30 exemples de règles de classement](/blog/ai-folder-sorting-prompts).
+Point faible : la dernière version, 8.5.1, date de février 2018 : n'attendez ni mises à jour ni IA. Choisissez DropIt pour un tri simple et gratuit par extension ou motif de nom. Si vous venez du Mac, consultez les [alternatives à Hazel pour Windows](/blog/hazel-for-windows-alternatives).
 
-Zush prend aussi en charge les dossiers imbriqués, par exemple par année puis par mois. Vous pouvez classer des fichiers déjà renommés sans changer à nouveau leur nom ni consommer un autre crédit de renommage. Vérifiez les destinations avant d’appliquer. Cette action est distincte de Monitor : modifier son Template ne reclasse pas les anciens fichiers. Le [classement IA](/docs/folder-sorting) fonctionne sur Mac et Windows.
+## Lequel choisir ?
 
-RenameClick autorise 100 renommages ou déplacements réussis par mois dans son offre gratuite. Son modèle local demande un téléchargement volumineux ; les photos RAW, formats de conception et vidéos ne figurent pas dans sa liste publiée. Rename conserve jusqu’à dix entrées d’annulation en mémoire et les efface au redémarrage ; Auto Flow garde les opérations appliquées admissibles entre les redémarrages. File Juggler propose un essai de 30 jours. DropIt prend en charge 21 actions ; sa dernière version 8.5.1 date d'octobre 2018. L'offre gratuite Sortio comprend le tri par règles avec cinq règles au maximum et un quota d'essai IA unique ; Pro comporte un quota IA mensuel.
+- Les noms de fichiers sont le problème, ou vous voulez noms et dossiers dans un même lot vérifié : **Zush**.
+- Vous avez besoin de Linux ou de licences d'équipe : **Sortio**.
+- Un nettoyage gratuit, local, limité aux documents : **Wisfile**.
+- Une IA hors ligne sans rien à configurer, avec 16 Go de RAM : **RenameClick**.
+- Un surveillant local gratuit que vous êtes prêt à tester : **NudgeFile**.
+- Un rangement local ponctuel et bon marché : **Foldora**.
+- Des règles exactes, sans IA : **File Juggler**, ou **DropIt** s'il faut que ce soit gratuit.
 
-## Quel logiciel choisir ?
+## Testez d'abord n'importe quel organisateur sur 10 fichiers
 
-Choisissez selon la tâche : photothèque, retouche, métadonnées, règles fixes ou noms et dossiers fondés sur le contenu. Zush convient aux fichiers compatibles dans des dossiers ordinaires, avec aperçu des noms et regroupement IA facultatif. Il ne remplace ni catalogue ni sauvegarde.
+Copiez dix fichiers typiques dans un dossier de test : une capture d'écran, une facture, un reçu, une photo de téléphone, un tableur, un document Word, une présentation, une vidéo, un fichier audio et un téléchargement quelconque. Puis vérifiez :
 
-## Tester une copie avant de changer de système
+1. Les résultats sont-ils assez précis pour être recherchés ?
+2. Pouviez-vous voir chaque modification avant qu'elle ne se produise ?
+3. Pouvez-vous annuler tout le lot, même après avoir redémarré l'application ?
+4. Le prix tient-il toujours à votre volume mensuel réel ?
 
-Commencez par un petit ensemble copié : photos, captures, fichiers RAW, documents et noms peu explicites. Vérifiez l'aperçu, les noms, les groupes, les métadonnées, les fichiers annexes, les disques externes et la restauration. Pour une photothèque, testez également importation, exportation, sauvegarde et restauration du catalogue. Conservez l'ancienne archive jusqu'à ce que le nouveau workflow soit fiable.
+Pour une checklist plus complète, lisez [comment renommer des fichiers par lot en toute sécurité](/blog/how-to-safely-batch-rename-files).
+
+## Sources et méthode de vérification
+
+<BlogSources ids={['sortio', 'wisfile', 'renameclick', 'nudgefile', 'foldora', 'file-juggler', 'dropit']} />
 
 ## Questions fréquentes
 
-### Zush peut-il vraiment déplacer des fichiers dans des dossiers ?
+### Quel est le meilleur organisateur de fichiers IA pour Windows 11 ?
 
-Oui. Activez le tri facultatif, choisissez la destination et examinez noms et groupes. Pour renommer sur place, désactivez le tri et gardez la destination d'origine.
+Zush est notre choix : il renomme les fichiers selon leur contenu et les range dans des dossiers en mode Auto ou selon vos propres instructions, avec aperçu, Templates, surveillance et annulation persistante. Sortio est l'alternative si vous avez besoin de Linux, RenameClick si vous voulez un modèle local intégré, et File Juggler si des règles exactes sans IA conviennent à vos fichiers. Nous éditons Zush : testez chacun d'eux sur des copies d'abord.
 
-### Le tri peut-il traiter automatiquement les nouveaux fichiers ?
+### Existe-t-il un organisateur de fichiers IA gratuit pour Windows ?
 
-Oui, avec un Template de tri testé et affecté à Monitor. Les nouveaux fichiers directement dans le dossier surveillé sont traités ; les anciens fichiers déjà traités ne sont pas redistribués automatiquement.
+Oui. Wisfile est gratuit et local pour les fichiers PDF et Word, et NudgeFile se télécharge gratuitement sur le Microsoft Store. Zush offre 50 renommages IA gratuits sans compte, carte ni clé API. RenameClick permet 100 renommages ou déplacements par mois après le téléchargement d'un modèle de 4 Go. DropIt est gratuit aussi, mais il utilise des règles fixes plutôt que l'IA.
 
-### Peut-on utiliser des dossiers existants et un disque externe ?
+### Quel organisateur Windows offre le plus pour un prix unique ?
 
-Reuse existing folders permet de choisir des dossiers adaptés sous la racine de destination et d'en créer au besoin. Le disque et les fichiers doivent être accessibles ; téléchargez d'abord les fichiers cloud si nécessaire.
+Foldora coûte 14,99 $ et RenameClick 36 $ plus TVA, mais les deux ne fonctionnent qu'avec une IA locale ou la vôtre. La licence Zush à 48 $ inclut Zush Cloud AI (IA gérée) ainsi que BYOK, Ollama et LM Studio, des renommages illimités, toutes les mises à jour futures, jusqu'à 3 appareils entre Windows et Mac, et un remboursement sous 14 jours. La licence File Juggler à 50 $ achète des règles, pas de l'IA.
 
-### Les fichiers sont-ils envoyés à un service IA ?
+### Un organisateur de fichiers IA envoie-t-il mes fichiers en ligne ?
 
-Zush Cloud AI et BYOK envoient le contenu au fournisseur cloud choisi. Ollama et LM Studio permettent l'analyse locale des fichiers compatibles. Choisissez le mode adapté ; une analyse locale ne signifie pas que toutes les fonctions de l'application sont hors ligne.
+Cela dépend du mode. Zush avec Ollama ou LM Studio garde l'analyse sur votre PC ; Zush Cloud AI et BYOK envoient le contenu des fichiers à un modèle cloud pour le nommage. Wisfile, Foldora et le modèle intégré de RenameClick fonctionnent en local, et NudgeFile utilise par défaut une IA locale. Sortio propose une IA hébergée, plus BYOK ou Ollama et LM Studio sur toutes les offres. Vérifiez le réglage IA de chaque application avant de la diriger vers des dossiers sensibles.
 
-## Sources et date de vérification
+### L'IA peut-elle organiser automatiquement mon dossier Téléchargements sous Windows ?
 
-Le comparatif s'appuie sur les pages officielles de produits, d'aide et de tarifs liées ci-dessous, pas sur un benchmark commun. Prix et exigences peuvent changer. Les fonctions de tri de Zush ont été vérifiées dans sa documentation le 28 septembre 2026 ; les dates de vérification des autres offres restent celles de l'original anglais.
-
-Sortio · Wisfile · RenameClick · File Juggler · DropIt · [Documentation du tri dans les dossiers: Zush](/docs/folder-sorting).
-
-## Conclusion
-
-Choisissez selon la tâche : photothèque, retouche, métadonnées, règles fixes ou noms et dossiers fondés sur le contenu. Zush convient aux fichiers compatibles dans des dossiers ordinaires, avec aperçu des noms et regroupement IA facultatif. Il ne remplace ni catalogue ni sauvegarde.
+Oui. Zush peut surveiller Téléchargements, renommer les nouveaux fichiers et appliquer les règles de dossiers enregistrées dans votre Template. Auto Flow de RenameClick, Sortio Pro et NudgeFile surveillent aussi des dossiers. Commencez par un dossier de test avant d'automatiser des répertoires importants. Le [guide d'automatisation de Téléchargements](/ai-file-sorter) détaille la configuration de Zush.

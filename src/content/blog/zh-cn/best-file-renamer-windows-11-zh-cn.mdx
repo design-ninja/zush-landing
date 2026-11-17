@@ -1,6 +1,6 @@
 ---
 title: "Windows 11 最佳文件重命名工具（2026）：免费工具 vs AI"
-description: "对比适用于 Windows 11 和 10 的六款文件重命名工具：File Explorer、PowerRename、Bulk Rename Utility、Advanced Renamer、ReNamer 和 Zush，看看哪一款适合你的文件。"
+description: "Windows 11 文件重命名工具：File Explorer、PowerRename、Bulk Rename Utility 与 Zush AI 等 6 款对比。"
 date: "2026-09-22"
 slug: "best-file-renamer-windows-11-zh-cn"
 platform: "windows"
@@ -9,8 +9,8 @@ tags:
   - "File Naming"
   - "Tool Comparisons"
   - "AI File Renaming"
-tldr: "对于规则类任务（添加日期、替换文本、按序编号），免费的 PowerRename 已经够用；Bulk Rename Utility 和 Advanced Renamer 功能更深入。如果每个文件都需要一个不同的、有描述性的名称，比如截图、扫描件和照片，请使用 Zush 这类 AI 重命名工具，它会先读取每个文件的内容再命名。Zush 还提供可选的 AI 文件夹分类功能。 一个 Zush 许可证最多可用于 3 台设备。"
-reviewed: "2026-10-26"
+tldr: "对于规则类任务（添加日期、替换文本、按序编号），免费的 PowerRename 已经够用；Bulk Rename Utility 和 Advanced Renamer 功能更深入。如果每个文件都需要一个不同的、有描述性的名称，比如截图、扫描件和照片，请使用 Zush 这类 AI 重命名工具：50 次免费 AI 重命名，无需账号，之后 $10/月或 $48 一次性买断，最多可用于 3 台设备。"
+reviewed: "2026-11-17"
 locale: "zh-cn"
 translationOf: "best-file-renamer-windows-11"
 ---
@@ -18,132 +18,145 @@ translationOf: "best-file-renamer-windows-11"
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-简短回答：如果每个文件要做的是同一类修改，比如加前缀、加日期或按序编号，就用 **PowerRename**。它是微软推出的免费工具，能应付大多数规则类任务。如果每个文件都需要根据其内部内容取一个独立的名称，就用 [Zush](/windows) 这样的 AI 重命名工具。
+快速结论：如果每个文件要做的是同一类改动，比如加前缀、加日期或按序编号，就用 **PowerRename**。它是微软出品的免费工具，能处理大多数规则类任务。如果每个文件都需要根据其内容取一个专属名称，就用 [Zush](/windows) 这样的 AI 重命名工具：它会读取每个文件，并提供 50 次免费 AI 重命名，无需账号。
 
-这一区分决定了其余的一切。规则类工具快速而精确，但只能转换文件已有的名称。`IMG_4382.jpg` 可以变成 `Vacation_001.jpg`，却永远变不成 `lisbon-tram-at-night.jpg`。
+**我们如何核查：** 本文由 [Zush](/) 的开发者撰写。竞品的价格、功能和评分均于 2026 年 11 月 17 日在厂商官网和官方应用商店核查（[来源见下文](#sources-and-how-we-checked)）。本文比较的是有文档记载的功能，并非实验室测试。
 
-**最后核查日期：2026 年 9 月 22 日。** 本文作者为 AI 文件重命名与整理工具 [Zush](/zh-cn) 的开发者。其他工具的详细信息均来自其官方页面。
-
-**Zush 功能核查日期：2026 年 10 月 26 日。** 竞品信息仍以文中原有的核查日期为准。
+这个区别决定了其他一切。规则类工具快速而精确，但它们只能改造文件现有的名称。`IMG_4382.jpg` 可以变成 `Vacation_001.jpg`，却永远变不成 `lisbon-tram-at-night.jpg`。
 
 ## 六款工具一览
 
-| 工具 | 最适合 | 是否读取文件内容 | 撤销 | 价格 |
+| 工具 | 适合场景 | 读取文件内容 | 撤销 | 价格 |
 |---|---|---|---|---|
-| File Explorer | 少量文件、快速编号 | 否 | Ctrl+Z，仅限上一步操作 | 系统自带 |
-| PowerRename | 查找替换、正则表达式、日期 | 否（仅限 EXIF 字段） | 在 Explorer 中按 Ctrl+Z | 免费（PowerToys） |
-| Bulk Rename Utility | 大量规则处理、10 万以上文件 | 否（EXIF、ID3 字段） | 生成撤销批处理文件 | 个人使用免费 |
-| Advanced Renamer | 基于元数据和 GPS 的命名 | 否（EXIF、ID3、GPS、视频字段） | 完整批量撤销 | 轻度个人使用免费；个人版 $25，商业版 $45 |
-| ReNamer | 规则链、脚本 | 否（元标签） | 支持撤销 | Lite 版非商业使用免费；Pro 版付费 |
-| **Zush** | <BlogHighlight>为每个文件生成不同的描述性名称；可选 AI 文件夹分类</BlogHighlight> | 是，借助 AI | 完整的 Rename History | 50 次免费重命名；$10/月 或 $48 一次性买断 |
+| File Explorer | 少量文件，快速编号 | 否 | Ctrl+Z，仅最近一次操作 | 系统自带 |
+| PowerRename | 查找替换、正则表达式、日期 | 无 AI（仅 EXIF/XMP 标记） | Ctrl+Z | 免费（PowerToys） |
+| Bulk Rename Utility | 繁重的规则任务，10 万个以上文件 | 否（EXIF、ID3 字段） | 生成用于撤销的批处理文件 | 个人使用免费；JavaScript 重命名需付费许可证；商业用途每台电脑 $92.95 |
+| Advanced Renamer | 基于元数据和 GPS 的命名 | 元数据，另可通过脚本提取 PDF/TXT 文本；无 AI 或 OCR | 完整的批量撤销 | 轻度个人使用免费；个人版 $30，商业版 $50 |
+| ReNamer | 规则链、脚本 | 否（元数据标签） | 支持撤销 | Lite 版非商业用途免费；Pro 版付费 |
+| **Zush** | <BlogHighlight>为每个文件取不同的描述性名称；可选 AI 文件夹分类</BlogHighlight> | 是，借助 AI | 持久保存的 Rename History，支持批量撤销 | 50 次免费 AI 重命名，无需账号；$10/月或 $48 一次性买断 |
 
-## 1. File Explorer：处理五个文件足够了
+评分（截至 2026 年 11 月 17 日）：Zush 在美国区 Microsoft Store 获得 5.0 分（8 个评分），Softpedia 编辑评分 4.5/5；Advanced Renamer 在美国区 Microsoft Store 获得 4.2 分（23 个评分），Softpedia 评分 3.5/5；Bulk Rename Utility 的 Softpedia 评分为 4.0/5。
 
-选中多个文件，按 **F2**，输入名称，按 Enter。Windows 会把它们命名为 `Trip (1).jpg`、`Trip (2).jpg`，依此类推。按 **Ctrl+Z** 可以立即撤销。
+## 1. File Explorer：五个文件以内够用
 
-它能做的仅此而已：没有预览、没有日期、没有查找替换。当结果只需要整齐、不需要有意义时，可以用它。
+选中几个文件，按 **F2**，输入名称，按 Enter。Windows 会把它们命名为 `Trip (1).jpg`、`Trip (2).jpg`，依此类推。按 **Ctrl+Z** 可以立即撤销。
+
+它能做的就这么多。没有预览，没有日期，没有查找替换。如果结果只需要整齐、不需要有意义，就用它。
 
 ## 2. PowerRename：大多数人的最佳免费之选
 
-[PowerRename](https://learn.microsoft.com/en-us/windows/powertoys/powerrename) 随 Microsoft PowerToys 一起提供。选中文件，右键单击，选择 **使用 PowerRename 重命名**，即可进行带实时预览的搜索和替换。
+[PowerRename](https://learn.microsoft.com/en-us/windows/powertoys/powerrename) 随 Microsoft PowerToys 一起提供。选中文件，右键单击，选择 **Rename with PowerRename**，就能使用带实时预览的搜索替换。
 
-它的能力比看上去要强：
+它的能力比看上去更强：
 
 - 正则表达式，包括捕获组（`29-03-2020` → `2020-03-29`）
-- 带补零和起始值的计数器（`Image_${padding=4}`）
-- 文件创建日期变量，如 `$YYYY-$MM-$DD`
-- 照片 EXIF 字段，如 `$DATE_TAKEN_YYYY`、`$CAMERA_MODEL` 以及 GPS 坐标
+- 可设置补零位数和起始值的计数器（`Image_${padding=4}`）
+- 文件创建日期变量，例如 `$YYYY-$MM-$DD`
+- 照片 EXIF 和 XMP 标记，例如 `$DATE_TAKEN_YYYY` 和 `$CAMERA_MODEL`
 
-任何能用规则描述的任务，都可以选择 PowerRename。关于 AI 方案，请参阅我们的 [PowerRename 替代方案](/windows)页面。
+Ctrl+Z 可以撤销上一次重命名。它没有 AI，也从不打开文件，所以无法判断扫描件或截图里是什么。凡是能描述成规则的任务，都可以选 PowerRename。AI 方面的内容请看我们的 [PowerRename 替代品](/windows) 页面。
 
-## 3. Bulk Rename Utility：控制力最强
+## 3. Bulk Rename Utility：最大程度的控制
 
-Bulk Rename Utility 把所有规则选项都塞进了一个密集的窗口：正则表达式、JavaScript、自动编号、EXIF 日期、MP3 标签、由 CSV 驱动的重命名以及时间戳修改。它可以处理 10 万以上的文件而不会变慢。撤销的方式是生成一个批处理文件来还原改动。
+Bulk Rename Utility 把所有规则选项都塞进一个密集的窗口：正则表达式、JavaScript、自动编号、EXIF 日期、MP3 标签、基于 CSV 的重命名，以及时间戳修改。处理 10 万个以上的文件也不会变慢。撤销的方式是生成一个可以逆转改动的批处理文件。
 
-个人使用免费；商业使用需要商业许可证。界面需要一段时间适应。更多内容请见我们的 [Bulk Rename Utility 替代方案](/blog/bulk-rename-utility-alternatives)指南。
+个人使用免费，但 JavaScript 重命名需要付费许可证（$24.95），商业用途每台电脑 $92.95。4.1.0.1 版新增了一个 AI 助手，可以替你编写 JavaScript 和正则规则；它帮你构建规则，但不读取文件内容。界面需要一段时间适应。更多内容见我们的 [Bulk Rename Utility 替代品](/blog/bulk-rename-utility-alternatives) 指南。
 
 ## 4. Advanced Renamer：最适合照片和音乐元数据
 
-Advanced Renamer 通过叠加多种方法来构建名称：来自 EXIF、ID3、视频属性和 GPS 的标签（它可以把坐标转换成城市名称）。它提供实时预览，并且可以撤销整个批次。它同样支持 macOS。
+Advanced Renamer 通过叠加多种方法来生成名称：EXIF、ID3、视频属性和 GPS 中的标签（它能把坐标转换成城市名）。它提供实时预览，并能撤销整批操作。它也支持 macOS。当前版本为 4.28，其脚本方法可以从 PDF 和 TXT 文件中提取文本，但没有 AI 或 OCR：扫描的 PDF 和照片仍然无法读取，而且把文本转换成名称的脚本需要你自己写。
 
-轻度个人使用免费。经常使用的用户会被要求购买 $25 的个人许可证，工作用途则需要 $45 的商业许可证。两者均为一次性付费。请参阅我们的 [Advanced Renamer 评测](/blog/advanced-renamer-alternatives)。
+轻度个人使用免费。经常使用的用户需要购买 $30 的个人许可证，工作用途需要 $50 的商业许可证。两者都是一次性买断。请看我们的 [Advanced Renamer 评测](/blog/advanced-renamer-alternatives)。
 
-## 5. ReNamer：规则与脚本
+## 5. ReNamer：规则和脚本
 
-ReNamer 按顺序应用一组规则：插入、删除、替换、大小写、正则表达式、元标签，以及用于任何自定义需求的 Pascal Script。它是便携版，支持 25 种以上的界面语言。
+ReNamer 按顺序执行一系列规则：插入、删除、替换、大小写、正则表达式、元数据标签，以及用于自定义需求的 Pascal Script。它是便携版软件，界面支持 25 种以上语言。
 
-ReNamer Lite 非商业使用免费，限制为 5 条规则和 5 个预设。Pro 版取消了这些限制，并允许商业使用。
+ReNamer Lite 对非商业用途免费，限 5 条规则和 5 个预设。Pro 版取消这些限制，并允许商业使用。
 
-## 6. Zush：当每个文件都需要自己的名称时
+## 6. Zush：每个文件都需要专属名称时
 
-[Zush](/windows) 的工作方式不同。它不是修改旧名称，而是查看文件本身：PDF 中的文本、截图所显示的内容、照片中的场景、Word 或 Excel 文件的内容。然后它写出一个描述该文件的名称。
+[Zush](/windows) 的工作方式不同。它不是编辑旧名称，而是查看文件本身：PDF 中的文字、截图显示的内容、照片中的场景、Word 或 Excel 文件的内容。然后写出一个描述该文件的名称。
 
-| 之前 | 之后 |
+| 重命名前 | 重命名后 |
 |---|---|
 | `Screenshot 2026-09-18 141203.png` | `github-pull-request-review-comments.png` |
 | `scan_0042.pdf` | `2026-09-12_acme_invoice_1042.pdf` |
 | `Document1.docx` | `q3-marketing-plan-draft.docx` |
 | `IMG_4382.jpg` | `2026-08-30_lisbon_tram_street.jpg` |
 
-命名的格式始终由你掌控。Template 和 145 个以上的 Naming Blocks 可以固定顺序（日期、供应商、客户、标题）、大小写和分隔符。你可以在应用之前审阅每一条建议，之后还能通过 Rename History 恢复整个批次。文件夹监控会自动重命名“下载”文件夹或扫描仪文件夹中的新文件。
+名称的格式仍由你掌控。Templates 和 145+ 个 Naming Blocks 固定了顺序（日期、供应商、客户、标题）、大小写和分隔符。每条建议在应用之前都要经过你审阅，Rename History 之后还能还原整批操作。文件夹监控会自动重命名 Downloads 或扫描仪文件夹中的新文件。
 
-AI 可以通过 Zush Cloud AI、你自己的 API 密钥运行，也可以借助 Ollama 或 LM Studio 在本地运行。前 50 次重命名免费。
+AI 可以通过 Zush Cloud AI、你自己的 API 密钥运行，也可以用 Ollama 或 LM Studio 在本地运行。前 50 次 AI 重命名免费，无需账号、银行卡或 API 密钥。之后 Zush 的价格为 $10/月或 $48 一次性买断；一次性许可证包含托管云端 AI 和无限次重命名、今后所有更新、最多 3 台 Windows 和 Mac 设备，以及 14 天退款。它还能在 AI Rename 过程中发现重复文件（副本不消耗额度），根据语音和字幕为视频命名，并在 Windows 上识别没有标签的音乐。
 
 <BlogCTA placement='inline' platform='windows' />
 
-一个 Zush 许可证最多可用于 3 台 Mac 或 Windows 设备。
+一份 Zush 许可证最多可用于 3 台 Mac 和 Windows 设备。
 
-可以[导出 Templates](/docs/template-import-export)，将 Naming Blocks、Custom AI Blocks 和文件夹规则一起导入另一台电脑。目标文件夹、访问权限和 AI 连接需要在新电脑上重新设置。转移的是工作流程设置，不是文件本身。
+你可以连同 Naming Blocks、Custom AI Blocks 和文件夹规则一起 [导出 Templates](/docs/template-import-export)，再在另一台电脑上导入。在那台电脑上需要重新选择本地目标位置、文件夹权限和 AI 连接；迁移的是工作流设置，而不是你的文件。
 
-### 将重命名后的文件分类到文件夹
+### 把重命名后的文件分类到文件夹
 
-在 Windows 上，Zush 还可以**用 AI 将文件分类到文件夹**。选择 **Auto** 分组，或编写 **Folder rules**，例如“按公司归类发票，按月份归类收据。”你可以在查看文件名的同时审阅建议的文件夹分组；如果你只需要对一批文件做相同的文本修改，规则类重命名工具仍然足够。
+在 Windows 上，Zush 还能**用 AI 把文件分类到文件夹**。选择 **Auto** 分组，或者写下 **Folder rules**，例如“发票按公司分组，收据按月份分组”。建议的文件夹分组会和文件名一起供你审阅；如果你只需要对一批文件做同样的文本改动，规则类重命名工具仍然够用。
 
-选择一个 **Destination folder**，或者保留源文件夹作为根目录。启用 **Reuse existing folders** 可优先使用已有的合适文件夹；当没有合适的文件夹时，Zush 可以新建一个。在手动批次中，应用之前请同时审阅建议的名称和文件夹。如果只想原地重命名，请关闭分类功能并保留原来的目标位置。
+选择一个 **Destination folder**，或者把源文件夹作为根目录。启用 **Reuse existing folders** 可以优先使用已有的合适文件夹；没有合适的文件夹时，Zush 会新建一个。手动处理一批文件时，请在应用之前同时审阅建议的名称和文件夹。如果要原地重命名，就关闭分类并保留原来的目标位置。
 
-把分类设置保存到一个 **Template** 中，并将其分配给 **Monitor**，用于处理被监控文件夹内直接出现的新文件。这不会重新整理已经处理过的文件。请先在手动批次中测试该 Template。设置方法和监控范围请参阅[文件夹分类指南](/docs/folder-sorting)。
+把分类设置保存到一个 **Template** 中，并分配给 **Monitor**，用于处理直接放入受监控文件夹的新文件。更改 Monitor 的 Template 不会自动重新整理已经处理过的文件。请先在手动批处理中测试 Template。设置方法和监控范围见 [文件夹分类指南](/docs/folder-sorting)。
 
-Zush 支持嵌套文件夹规则，例如先按年份、再按月份分类。已经重命名的文件可以单独分类，无需再次改名或消耗另一次重命名额度。应用前请核对目标路径。这与 Monitor 是两个操作：修改 Template 不会自动重新整理之前的文件。[AI 文件夹分类](/docs/folder-sorting)在 Mac 和 Windows 上均可使用。
+Zush 还支持嵌套文件夹规则，例如先按年份再按月份分组。你可以对已经重命名的文件只做分类，而不再改名，也不再消耗重命名额度。应用之前请检查目标位置。这是一项单独的操作，用于处理现有的一批文件；更改 Monitor 的 Template 不会追溯重新整理它们。[AI 文件夹分类](/docs/folder-sorting) 支持 Mac 和 Windows。
 
-## 你应该使用哪款重命名工具？
+## 该用哪款重命名工具？
 
-- 对每个文件做相同的修改（前缀、日期、编号）：**PowerRename**。
-- 在超大文件夹上处理复杂规则：**Bulk Rename Utility**。
+- 每个文件做同样的改动（前缀、日期、编号）：**PowerRename**。
+- 对超大文件夹应用复杂规则：**Bulk Rename Utility**。
 - 根据照片、音乐或 GPS 元数据命名：**Advanced Renamer**。
 - 需要真正有意义名称的截图、扫描件、下载文件和照片：**Zush**。
 
-很多人两种都会保留。PowerRename 用于快速的机械式修正，Zush 则用于那些你目前需要逐个打开文件才能知道内容的文件夹。
+很多人两类工具都保留。PowerRename 用来做快速的机械修改，Zush 则用于那些你现在必须逐个打开才知道内容的文件夹。
 
 <BlogProductIntro
-  title="厌倦了为了看清文件内容而逐个打开它们？"
-  description="Zush 会读取你 Windows 电脑上的每个文件，并给出清晰、便于搜索的名称建议。审阅批次、应用更改，随时都可以撤销。"
+  title="厌倦了打开文件才知道里面是什么？"
+  description="Zush 读取你 Windows 电脑上的每个文件，并建议一个清晰、便于搜索的名称。审阅整批结果后应用，随时可以撤销。"
   links={[
-    { href: '/windows', label: '适用于 Windows 的 Zush' },
+    { href: '/windows', label: 'Windows 版 Zush' },
     { href: '/batch-rename-files', label: '用 AI 批量重命名' },
     { href: '/blog/batch-rename-files-windows-11', label: '在 Windows 11 中批量重命名' },
-    { href: '/blog/best-ai-file-renamer-tools-windows-compared', label: '适用于 Windows 的 AI 重命名工具' },
+    { href: '/blog/best-ai-file-renamer-tools-windows-compared', label: 'Windows AI 重命名工具' },
   ]}
 />
 
+## 来源与核查方法
+
+<BlogSources ids={['powerrename', 'bulk-rename-utility', 'advanced-renamer', 'renamer']} />
+
 ## 常见问题
 
-### Zush 除了重命名，还能把文件分类到文件夹吗？
+### Zush 能在 Windows 11 上重命名视频和音乐文件吗？
 
-可以。其可选的 AI 文件夹分类功能在 Mac 和 Windows 上均处于测试阶段。选择 Auto 或编写 Folder rules，选定目标位置，并在手动批次中同时审阅名称和分组。启用了分类的 Template 也可以处理被监控文件夹内直接出现的新文件；它不会重新整理已经处理过的文件。如果只需要命名，请关闭分类并保留原来的目标位置。
+能。Windows 版 Zush 可以根据语音、内嵌字幕和元数据为视频命名（包括 MKV），即使音轨没有标签也能识别音乐，这项功能目前仅限 Windows。如果需要离线工作，可以在 AI 设置中下载可选的本地语音识别，并与 Ollama 或 LM Studio 搭配使用。PowerRename 等规则类工具只能按规则改名，无法判断录音的内容。
 
-### Windows 11 上最好的免费文件重命名工具是什么？
+### Windows 11 上最好的免费文件重命名工具是哪款？
 
-PowerRename，它是 Microsoft PowerToys 的一部分。它免费、会预览每一处更改、支持正则表达式和日期变量，并且可以用 Ctrl+Z 撤销。对于较繁重的个人任务，Bulk Rename Utility 是免费的备选方案。
+PowerRename，它是 Microsoft PowerToys 的一部分。它免费，可以预览每处改动，支持正则表达式、计数器、日期变量和 EXIF/XMP 标记，并可用 Ctrl+Z 撤销。对于更繁重的个人任务，Bulk Rename Utility 也免费，不过 JavaScript 重命名需要付费许可证。Advanced Renamer 对轻度个人使用免费。它们都不读取文件内容；如需读取内容，Zush 提供 50 次免费 AI 重命名，无需账号。
 
 ### Windows 11 有内置的批量重命名功能吗？
 
-有，但比较基础。在 File Explorer 中选中文件并按 F2，即可为它们指定同一个名称，并在括号中加上编号。如果需要查找替换或日期，请安装 PowerToys 并使用 PowerRename。
+有，但很基础。在 File Explorer 中选中文件并按 F2，可以给它们统一命名，并在括号中加上编号。如果需要查找替换或日期，请安装 PowerToys 并使用 PowerRename。
 
-### 文件重命名工具能读取我文件里的内容吗？
+### 文件重命名工具能读取文件里的内容吗？
 
-规则类工具不能；它们只读取现有的名称以及 EXIF 或 ID3 等元数据字段。像 Zush 这样的 AI 重命名工具会读取内容本身（文本、图像、视频帧），并写出新的描述性名称。
+规则类工具大多不能。它们读取的是现有名称和 EXIF、ID3 等元数据字段。Advanced Renamer 可以通过脚本从 PDF 和 TXT 文件中提取文本，但没有 AI 或 OCR，扫描件和照片仍然无法读取。Zush 这类 AI 重命名工具会读取内容本身（文字、图像、语音和视频画面），并给出一个新的描述性名称，由你审阅后再应用。
 
 ### 哪款文件重命名工具最安全？
 
-任何带有预览和批量撤销功能的工具。PowerRename、Advanced Renamer 和 Zush 都会在应用之前显示结果。Zush 还会保留持久的 Rename History，因此你可以在几天之后还原某个批次，而不仅仅是在刚操作完之后。
+任何带预览和批量撤销的工具。PowerRename、Advanced Renamer 和 Zush 都会在应用前显示结果。Zush 还会持久保存 Rename History，所以几天之后也能还原一批操作，而不只是在刚改完时。
+
+### PowerRename 免费，Zush 还值得付费吗？
+
+只有当你的文件需要根据内容命名时才值得。对于统一的规则改动，PowerRename 是合适的工具，而且分文不花。如果你在命名之前需要打开截图、扫描件或下载文件看看是什么，Zush 会替你完成这一步。它的 $48 一次性许可证包含托管云端 AI 和无限次重命名、BYOK 和本地模型、今后所有更新、3 台设备，以及 14 天退款。
+
+### Zush 在 Windows 上在哪里处理我的文件？
+
+取决于模式。Zush Cloud AI 和 BYOK 会把文件内容发送到 AI 服务来生成名称；BYOK 使用的是你自己的服务商账号。使用 Ollama 或 LM Studio 时，分析在你的 PC 上进行，视频还可以使用本地语音识别。PowerRename、Bulk Rename Utility 和 Advanced Renamer 不分析内容，因此从不把文件发到任何地方。请看 [离线 AI 文件重命名工具](/offline-ai-file-renamer)。

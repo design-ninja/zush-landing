@@ -1,6 +1,6 @@
 ---
-title: "Die besten KI-Dateisortierer für Mac und Windows 2026: sieben Programme"
-description: "Zush, Sortio, RenameClick, Sparkle, NameQuick, AI File Sorter und Hazel: Ordnerregeln, Dateiformate, lokale KI und Preise im Vergleich."
+title: "Die besten KI-Dateisortierer für Mac und Windows 2026: 7 Apps im Vergleich"
+description: "7 KI-Dateisortierer, die Dateien nach Inhalt in Ordner verschieben, darunter Zush, Sortio, RenameClick, Sparkle und Hazel: Prompts, lokale KI und Preis."
 date: "2026-09-27"
 slug: "best-ai-file-sorters-de"
 platform: "general"
@@ -9,126 +9,177 @@ tags:
   - "File Organization"
   - "Tool Comparisons"
   - "Automation"
-tldr: "Zush sortiert Dateien auf Mac und Windows nach ihrem Inhalt: Ordner in Alltagssprache beschreiben oder Auto wählen, Namen und Ziele prüfen, dann anwenden. Video, Audio und lokale KI werden unterstützt; PRO hat kein monatliches Dateikontingent. Sortio ist die engste Alternative für Linux. Eine Zush-Lizenz gilt für bis zu 3 Geräte."
+tldr: "Zush ist für die meisten der beste KI-Dateisortierer auf Mac und Windows: Ordner in normaler Sprache beschreiben oder Auto nutzen, und Zush liest jede Datei, benennt sie um und verschiebt sie nach Ihrer Prüfung in den richtigen Ordner. Videos versteht es über Sprache und Untertitel, es läuft auch mit lokaler KI, und $48 einmalig enthalten die verwaltete Cloud-KI. Sortio ist die engste Alternative, wenn Sie Linux brauchen. Eine Zush-Lizenz gilt für bis zu 3 Geräte."
 earlyTaskExample: false
-reviewed: "2026-10-18"
+reviewed: "2026-11-17"
 locale: "de"
 translationOf: "best-ai-file-sorters"
 ---
-
-import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-Für inhaltsbezogene Ordner empfehlen wir **<BlogHighlight>[Zush](/ai-file-sorter)</BlogHighlight>**. Beschreiben Sie etwa „Rechnungen nach Unternehmen und Belege nach Monat gruppieren“ oder wählen Sie Auto. Zush liest PDFs, Scans, Fotos, Screenshots, Video und Audio, schlägt Namen und passende Ordner vor und wendet den Stapel nach Ihrer Prüfung an.
+Kurze Antwort: Um Dateien nach ihrem Inhalt in Ordner zu sortieren, nehmen Sie den [KI-Dateisortierer Zush](/ai-file-sorter). Sie beschreiben die Ordnerlogik in normaler Sprache, etwa „Rechnungen nach Firma und Belege nach Monat gruppieren“, oder lassen es auf Auto, und Zush benennt und legt jedes Dokument, Foto, Video und jede Audiodatei ab, nachdem Sie den Stapel geprüft haben. Nehmen Sie Sortio, wenn Sie Linux brauchen, RenameClick, wenn Ihre Kategorien vorab feststehen, und Hazel oder File Juggler, wenn Ihre Dateien exakten Mustern folgen.
 
-**Prüfstand des englischen Originals: 27. September 2026; Produktüberprüfung: 28. September.** Verfasst vom Entwickler von [Zush, dem KI-Dateisortierer für Mac und Windows](/de/ai-file-sorter). Wettbewerberangaben stammen aus offiziellen Produkt-, Preis- und Hilfeseiten; prüfen Sie Preise beim Kauf.
+**So haben wir geprüft:** Verfasst vom Entwickler von [Zush](/). Preise, Funktionen und Bewertungen der Mitbewerber haben wir am 17. November 2026 auf den Websites der Anbieter und in den offiziellen Stores geprüft ([Quellen unten](#sources-and-how-we-checked)). Verglichen werden dokumentierte Funktionen, es handelt sich nicht um einen Labortest.
+
+## Schneller Vergleich
+
+| App | Wie sie sortiert | Benennt auch um | Plattformen | Lokale KI | Preis |
+|---|---|---|---|---|---|
+| **Zush** | <BlogHighlight>Folder rules in normaler Sprache oder Auto</BlogHighlight> | <BlogHighlight>Ja, Templates und über 145 Naming Blocks</BlogHighlight> | Mac, Windows | Ollama, LM Studio | 50 kostenlose Umbenennungen, ohne Konto oder Karte; $10/Monat oder $48 einmalig inkl. Cloud-KI |
+| Sortio | Prompt in normaler Sprache oder Regeln | Ja (unbegrenzt mit Pro) | Mac, Windows, Linux | Ollama oder LM Studio, BYOK, in jedem Plan inkl. Free | Einmaliger KI-Test; $14.99/Monat oder $99/Jahr mit KI-Kontingent |
+| RenameClick | Ordnersets, Metadatenordner oder vorhandene Unterordner | Ja | Mac, Windows | Mitgeliefertes Modell (~4 GB) | 100 kostenlose Umbenennungen oder Verschiebungen/Monat; $36 + MwSt. Lifetime |
+| Sparkle | Von der KI aufgebaute Bibliothek | Nein | Mac | Vom Anbieter nicht angegeben | Keine Gratis-Stufe; $119/Jahr oder $179 Lifetime |
+| NameQuick | Bedingte Rules nach dem Umbenennen | Ja | Mac, Windows | Self-Managed-Plan | 30 kostenlose Umbenennungen; ab $12/Monat nach Verbrauch oder $69 Self-Managed |
+| AI File Sorter | Vorgeschlagene Kategorien und Whitelists | Vorschläge | Windows, Mac, Linux | Ja | Kostenlos, Open Source |
+| Hazel | Bedingungen, die Sie schreiben | Umbenennen nach Muster | Mac | Keine KI | $42 |
+
+## Wie KI-Dateisortierer entscheiden, wohin eine Datei gehört
+
+Jeder Sortierer braucht einen Weg, den Ordner zu wählen. Es gibt drei:
+
+| Ansatz | Sie liefern | Beispiel | Wer ihn nutzt |
+|---|---|---|---|
+| **Prompt** | Einen Satz, der die Ordner beschreibt | „Rechnungen nach Firma und Belege nach Monat gruppieren“ | Zush, Sortio |
+| **Kategorienliste** | Ordnernamen, aus denen die KI wählt | Rechnungen, Belege, Verträge, Sonstiges | RenameClick, AI File Sorter |
+| **Bedingungen** | Wenn-dann-Regeln zu Name, Datum oder Text | Wenn der Name „invoice“ enthält, nach Finanzen verschieben | Hazel, NameQuick Rules, File Juggler, DropIt |
+
+Ein Prompt ist am flexibelsten, weil Ordner aus dem Dateiinhalt entstehen können: einer pro Lieferant, Kunde, Monat oder Thema. Eine Kategorienliste ist berechenbar, aber Sie müssen sie pflegen. Bedingungen sind exakt, verfehlen aber jede Datei, die nicht zum Muster passt. Sparkle baut seine eigene Bibliothek mit wenig Zutun von Ihnen.
+
+Wer unter Windows Benennung, Überwachung und Rückgängig an einer Stelle verglichen haben will, liest den [Vergleich der KI-Dateiorganisatoren für Windows 11](/blog/best-ai-file-organizers-windows). Auf dem Mac siehe die [besten KI-Dateiorganisatoren für Mac](/blog/best-ai-file-organizers-mac).
+
+Bewertet nach: wie flexibel die App den Ordner bestimmt, ob sie im selben geprüften Durchgang umbenennt, Vorschau und Rückgängig, lokale KI-Optionen und was im Preis enthalten ist.
+
+## 1. Zush: der beste KI-Dateisortierer insgesamt
+
+Zush erledigt zwei Aufgaben in einem geprüften Stapel: Es benennt jede Datei nach ihrem Inhalt und sortiert sie in einen Ordner. Wie die Ordner aufgebaut sind, legen Sie unter **Folder rules** fest, einem Feld für normale Sprache mit bis zu 2.000 Zeichen. Lassen Sie es leer, gruppiert Auto die Dateien nach Inhalt in wenige breite, wiederverwendbare Ordner.
+
+![Der Folder-rules-Dialog von Zush mit der Anweisung, Rechnungen nach Firma und Belege nach Monat zu gruppieren, plus Beispielregeln](/images/showcase/macos/folder-rules-light.webp)
+
+Was es abhebt:
+
+- **Es liest mehr Dateiarten.** PDFs und reine Bild-Scans, Fotos inklusive RAW und HEIC, Screenshots, Office- und iWork-Dokumente, Designdateien, Audio und Video, darunter MP4, MOV, MKV, AVI und WMV. Videos versteht es über Einzelbilder, Sprache, eingebettete Untertitel und Metadaten, daher funktioniert „Videos nach Thema gruppieren“.
+- **Namen und Ordner werden gemeinsam geplant.** Ihr Template bestimmt den Dateinamen, Folder rules bestimmen den Ort, und Sie sehen beides, bevor sich etwas bewegt.
+- **Es legt in vorhandene Ordner ab.** Mit aktiviertem Reuse existing folders ordnet Zush Dateien passenden Ordnern zu und legt nur dann einen neuen an, wenn keiner passt. Statt im Quellordner kann auch ein eigener Destination folder die Wurzel sein. Verschachtelte Regeln (Jahr, dann Monat) funktionieren ebenfalls.
+- **Es erkennt Duplikate.** AI Rename kann Kopien behalten, markieren oder in den Papierkorb legen; Kopien kosten keine Credits, und Undo stellt sie wieder her.
+- **Es sortiert neue Dateien weiter.** Weisen Sie das Template Monitor zu, und neue Downloads oder Scans werden beim Eintreffen umbenannt und sortiert.
+- **Es beginnt kostenlos und bleibt einmalig.** 50 kostenlose KI-Umbenennungen über Zush Cloud AI ohne Konto, Karte oder Schlüssel. PRO kostet $10 pro Monat oder $48 einmalig, und die Einmallizenz umfasst unbegrenzte Umbenennungen in jedem Modus, Cloud inklusive, auf bis zu 3 Geräten unter Mac und Windows.
+
+Mit LM Studio oder Ollama bleiben Analyse und Ordnerplanung auf Ihrem Computer. Die Rename History bleibt nach einem Neustart erhalten, und Undo All stellt einen ganzen Stapel wieder her und markiert Konflikte. Sie können Dateien auf Mac und Windows auch sortieren, ohne sie umzubenennen, und Regeln mit Dateidetails wie Datum und Seitenzahl nutzen (die Mac-App nutzt außerdem Größe, Kamera und Dauer). Einrichtungsanleitungen: [Mac](/blog/sort-files-into-folders-with-ai-mac) und [Windows](/blog/sort-files-into-folders-with-ai-windows). Alle Einstellungen erklärt die [Dokumentation zur Ordnersortierung](/docs/folder-sorting).
+
+![Zush für Windows zeigt eine Vorschau inhaltsbasierter Ordnergruppen und vorgeschlagener Dateinamen vor „Rename & sort“](/videos/windows/folder-sorting-demo-light.mp4)
 
 <BlogCTA placement='inline' platform='general' />
 
-**Zush-Funktionen geprüft am 18. Oktober 2026.** Für Angaben zu anderen Produkten gelten weiterhin die im Artikel genannten Prüfzeitpunkte.
+Bewertungen, Stand 17. November 2026: 5,0 aus 8 Bewertungen im Microsoft Store (USA) und 4,5/5 im redaktionellen Test von Softpedia.
 
-## Wie ein Sortierer den Zielordner bestimmt
+## 2. Sortio: die engste Alternative, dazu Linux
 
-| Ansatz | Ihre Vorgabe | Beispiele |
-|---|---|---|
-| Anweisung in Alltagssprache | Gruppierung nach Lieferant, Monat oder Thema | Zush, Sortio, Sparkle |
-| Kategorienliste | Rechnungen, Belege, Verträge, Sonstiges | RenameClick, AI File Sorter |
-| Bedingungen | Wenn der Name „Rechnung“ enthält, nach Finanzen verschieben | Hazel, NameQuick Rules, File Juggler, DropIt |
+Auch Sortio arbeitet mit Prompts: Sie beschreiben die gewünschte Ordnung in normaler Sprache, prüfen den Plan, und es benennt Dateien um, legt Ordner an und verteilt die Dateien. Es kann die Sortierung auf vorhandene Ordner beschränken und nicht zugeordnete Dateien in einen Auffangordner schicken. Es läuft unter macOS, Windows und Linux, und neuere Versionen lesen Standortmetadaten aus Fotos und Videos.
 
-Anweisungen können Ordner aus dem Inhalt ableiten. Kategorien sind vorhersehbar, müssen aber gepflegt werden. Bedingungen sind präzise und scheitern, wenn Dateien vom erwarteten Muster abweichen.
+Der kostenlose Plan bietet unbegrenztes regelbasiertes Sortieren mit bis zu fünf Regeln und drei Spaces, einen einmaligen KI-Test, Vorschau, Sortierverlauf und Rückgängig. Überwachte Ordner und Automatisierungen brauchen Pro: $14.99 pro Monat oder $99 pro Jahr mit monatlichem KI-Kontingent (im App Store stehen $19.99/Monat). Lokale Modelle über Ollama oder LM Studio und BYOK gibt es in jedem Plan, auch in Free. Angemeldet wird mit einem E-Mail-Konto.
 
-Windows-Nutzer finden Benennung, Überwachung, Wiederherstellung und Ordnerverschiebung gemeinsam im [Vergleich der besten KI-Dateiorganisatoren für Windows 11](/blog/best-ai-file-organizers-windows).
+Nehmen Sie Sortio, wenn Sie Linux oder Team-Plätze brauchen. Schwäche: Der kostenlose Plan überwacht keine Ordner mehr, und gehostete KI wird nach Verbrauch abgerechnet, sofern Sie keinen eigenen Schlüssel oder kein lokales Modell nutzen. Alle Details: [Zush vs. Sortio](/blog/zush-vs-sortio).
 
-## Schnellvergleich
+## 3. RenameClick: in selbst definierte Kategorien sortieren
 
-| App | Sortierung und Umbenennung | Plattformen | Lokale KI | Preis beim Prüfstand |
-|---|---|---|---|---|
-| Zush | Folder rules oder Auto; Templates und 145+ Naming Blocks | Mac, Windows | Ollama, LM Studio | 50 kostenlose Umbenennungen; $10/Monat oder einmalig $48 ohne Dateikontingent |
-| Sortio | Anweisung; Umbenennen mit Pro | Mac, Windows, Linux | Ollama, BYOK | Test; $14.99/Monat oder $99/Jahr mit KI-Kontingent |
-| RenameClick | Kategorien oder vorhandene Ordner; Umbenennung | Mac, Windows | Mitgeliefertes Modell | 100 kostenlose Aktionen/Monat; $8/Monat oder $36 auf Lebenszeit, zuzüglich VAT |
-| Sparkle | KI-Bibliothek und Anweisungen; keine Umbenennung | Mac | Nicht angegeben | Ab $9.25/Monat; Preisseite: $119/Jahr |
-| NameQuick | Bedingte Rules nach dem Umbenennen | Mac, Windows | Self-Managed | Ab $12/Monat mit Kontingent; $69 Self-Managed |
-| AI File Sorter | Kategorien und erlaubte Listen; Namensvorschläge | Windows, Mac, Linux | Ja | Kostenlos, quelloffen |
-| Hazel | Bedingungen; Musterumbenennung | Mac | Keine KI | $42 |
+RenameClick hat drei Sortiermethoden: **Ordnersets**, bei denen die KI aus einem eingebauten oder eigenen Set wählt; **Metadata Folders** aus Datum oder EXIF-Feldern; und **Match Folders**, das die vorhandenen Unterordner Ihres Ausgabeordners bis zu drei Ebenen tief liest. Auto Flow überwacht einen Ordner und verschiebt oder kopiert Dateien, solange die App läuft.
 
-## 1. Zush: unsere allgemeine Empfehlung
+![RenameClick (hier die Mac-Version) sortiert umbenannte Dateien vor „Rename & Move“ in Legal Documents, Medical Documents und Uncategorized](/images/blog/competitors/renameclick.webp)
 
-Wählen Sie den **Destination folder** als Wurzel für die vorgeschlagenen Ordner.
+Der kostenlose KI-Weg ist ein mitgeliefertes lokales Modell (etwa 4 GB, 16 GB RAM empfohlen), Sie sparen sich also die Einrichtung von Ollama. Seit Version 4.1.2 verarbeitet es MP4-, MOV-, M4V- und 3GP-Videos; MKV, WebM, AVI, RAW und Designdateien werden nicht unterstützt. Der kostenlose Plan umfasst 100 Umbenennungen oder Verschiebungen pro Monat, Lifetime kostet $36 plus MwSt.
 
-**Folder rules** nimmt bis zu 2.000 Zeichen an. Ohne Eingabe gruppiert Auto nach Inhalt in wenige wiederverwendbare Ordner. Das **Template** legt den Namen fest, etwa Datum, Lieferant, Betrag, Kunde oder Thema; Folder rules bestimmt den Ablageort. Beides steht vor dem Verschieben in der Vorschau. Weil Zush Dateien benennt und einsortiert, ist es eher ein [KI-Dateiorganizer](/ai-file-organizer) als nur ein Sortierer.
+Nehmen Sie RenameClick, wenn Ihre Kategorien feststehen und vorab bekannt sind. Schwäche: Das Rückgängig fürs Umbenennen hält 10 Einträge im Speicher und wird beim Neustart gelöscht. Siehe [Zush vs. RenameClick](/blog/zush-vs-renameclick).
 
-![Dialog Folder rules in Zush mit der Anweisung, Rechnungen nach Firma und Belege nach Monat zu gruppieren, plus Beispielregeln](/images/showcase/macos/folder-rules-light.webp)
+## 4. Sparkle: Aufräumen ohne Zutun auf dem Mac
 
-Zush unterstützt PDFs und reine Bildscans, RAW und HEIC, Screenshots, Office und iWork, Designformate, 16 Videoformate und Audio. Bei Videos werden Bilder analysiert, statt nur den Dateinamen zu lesen. **Reuse existing folders** verwendet geeignete bestehende Ordner und erstellt bei Bedarf neue. **Monitor** verarbeitet neue Dateien mit einem gespeicherten Template und merkt sich angelegte Ordner. LM Studio und Ollama halten Analyse und Ordnerplanung lokal. PRO enthält auch Zush Cloud AI ohne monatliche Dateigrenze.
+Sparkle organisiert Schreibtisch, Downloads, Dokumente und andere Ordner nach Zeitplan. Es baut aus Ihren Dateien eine KI-Bibliothek von Ordnern auf, markiert Duplikate und kann seine Ordnung zurücknehmen.
 
-Ordner entstehen unter dem gewählten Ziel, verschachtelt (etwa Jahr, dann Monat), wenn eine Regel das ausdrücklich verlangt. Prüfen Sie mehrdeutige Dateien. Einrichtung: [Mac](/blog/sort-files-into-folders-with-ai-mac), [Windows](/blog/sort-files-into-folders-with-ai-windows).
+Es gibt es nur für den Mac, ohne Gratis-Stufe (die 15-Tage-Testversion verlangt eine Karte), und es kostet $119 pro Jahr für einen Mac oder $179 Lifetime für bis zu fünf. Dateien benennt es nicht um.
 
-![Zush für Windows mit der Vorschau vorgeschlagener Dateinamen und Ordnergruppen vor Rename & sort](/videos/windows/folder-sorting-demo-light.mp4)
+Nehmen Sie Sparkle, wenn ein privater Mac einmal eingerichtet von selbst aufgeräumt bleiben soll. Schwäche: Die Ordnerlogik legen Sie nicht selbst fest, und die Dateinamen bleiben, wie sie waren. Siehe [Sparkle-Alternativen](/blog/sparkle-alternatives).
 
-Eine Zush-Lizenz gilt für bis zu 3 Geräte mit Mac oder Windows.
+## 5. NameQuick: Regeln nach dem Umbenennen
 
-[Templates lassen sich exportieren](/docs/template-import-export) und auf einem anderen Computer importieren, einschließlich Naming Blocks, Custom AI Blocks und Ordnerregeln. Lokale Zielordner, Zugriffsrechte und KI-Verbindungen richten Sie dort neu ein. Übertragen werden die Einstellungen, nicht Ihre Dateien.
+NameQuick benennt Dokumente nach Inhalt um und führt dann bedingte Rules aus, die eine Datei in einen Ordner verschieben, Tags hinzufügen, ein Farbetikett setzen oder sie archivieren. Es läuft auf Mac und Windows.
 
-## 2. Sortio: ähnliche Anweisungen, zusätzlich Linux
+![Werbebild von NameQuick mit gescannten Rechnungen, Belegen und Verträgen, die mit Datum und Lieferantennamen umbenannt wurden](/images/blog/competitors/namequick.webp)
 
-Sortio erstellt einen Plan für Namen, Ordner und Verschieben. Es kann auf vorhandene Ordner beschränkt werden und unpassende Dateien in einen Auffangordner legen. Kostenlos sind unbegrenzte regelbasierte Sortierung mit bis zu fünf Regeln, überwachte Ordner, Undo und ein einmaliger KI-Test. BYOK und Ollama sind in allen Tarifen verfügbar; Pro enthält ein monatliches KI-Kontingent. Dokumente, Bilder, PDFs und Tabellen werden genannt, eine vollständige Formatliste fehlt. Sortio passt zu Linux und Teamlizenzen; Zush zu Video, Audio, ausführlicher Namenskontrolle und Einmalkauf. [Zush gegen Sortio](/blog/zush-vs-sortio).
+Sie bekommen 30 kostenlose Managed-Umbenennungen ohne Karte. Die Managed-Pläne beginnen bei $12 pro Monat für 500 Umbenennungen, Umbenennungspakete kosten $19 für 500 oder $39 für 1.500, und die Self-Managed-Lizenz für $69 braucht Ihren eigenen API-Schlüssel oder ein lokales Modell.
 
-## 3. RenameClick: Sortieren über Ordner-Sets
+Nehmen Sie NameQuick für Wenn-dann-Verteilung nach der KI-Benennung. Schwäche: Jedes Ziel braucht eine eigene Regel. Siehe [Zush vs. NameQuick](/blog/zush-vs-namequick).
 
-RenameClick bietet Ordner-Sets (integriert, als bearbeitbare Kopie oder selbst erstellt), Metadata Folders anhand von Datum oder EXIF und Match Folders über vorhandene Unterordner bis zu drei Ebenen tief, standardmäßig mit 12 und maximal 50 Ordnervorschlägen pro Datei. Auto Flow überwacht und verschiebt oder kopiert, solange die App läuft. Kostenlos: unbegrenzte Analyse und 100 erfolgreiche Umbenennungen oder Verschiebungen monatlich. Ein lokales Modell wird mitgeliefert. Video, RAW und Designformate fehlen in der veröffentlichten Liste. Wählen Sie es, wenn die Auswahl aus Ordner-Sets genügt, und Zush für eine Gruppierung nach Lieferant oder Monat aus dem Inhalt. [Zush gegen RenameClick](/blog/zush-vs-renameclick).
+## 6. AI File Sorter: kostenlos und Open Source
 
-![RenameClick (Mac-Version abgebildet) sortiert umbenannte Dateien vor Rename & Move in Legal Documents, Medical Documents und Uncategorized](/images/blog/competitors/renameclick.webp)
+AI File Sorter ist eine kostenlose Desktop-App unter AGPL-3.0 für Windows, macOS und Linux (Version 1.9.2). Sie schlägt für jede Datei Kategorien und optionale Unterkategorien vor, unterstützt Whitelists erlaubter Kategorien, liest Bilder mit einem lokalen Vision-Modell, zieht Text aus Dokumenten und kann neue Dateinamen vorschlagen. Sie läuft mit lokalen Modellen oder einer Remote-API, und Edit > Undo last run macht den letzten Stapel rückgängig.
 
-## 4. Sparkle: automatische Mac-Aufräumhilfe
+Nehmen Sie AI File Sorter für ein kostenloses, einmaliges Aufräumen, wenn Sie sich zutrauen, ein lokales Modell auszuwählen. Schwäche: Audio und Video werden nur anhand eingebetteter Metadaten benannt, und einen überwachten Ordner dokumentiert das Projekt nicht.
 
-Sparkle organisiert Desktop, Downloads und Dokumente nach Zeitplan, erstellt eine AI Library, versteht Anweisungen und entfernt Duplikate oder alte Screenshots zunächst in den Papierkorb. Nur Mac; auch im Every-Bundle enthalten. Es benennt Dateien nicht um. Passend für automatische private Aufräumaufgaben; Zush für aussagekräftige Namen, Windows und ausdrücklich definierte Ordnerlogik. [Sparkle-Alternativen](/blog/sparkle-alternatives).
+## 7. Hazel, File Juggler und DropIt: Regeln ohne KI
 
-## 5. NameQuick: Regeln nach der KI-Umbenennung
+Hazel 6 ($42, Mac), File Juggler ($50 plus Steuern, Windows, Version 3.1.9) und DropIt (kostenlos, Windows, letzte Version Februar 2018) überwachen Ordner und handeln nach Bedingungen: Namensmuster, Endungen, Datum oder gefundener Text. Die Softpedia-Redaktion bewertet Hazel mit 5,0/5 und File Juggler mit 4,5/5.
 
-NameQuick liest Dokumente, benennt sie um und führt danach Rules zum Verschieben, Markieren, Einfärben oder Archivieren aus. Managed beginnt bei $12/Monat für 500 Umbenennungen. Self-Managed für $69 benötigt einen eigenen API-Schlüssel oder ein lokales Modell. Jedes Ziel braucht eine Bedingung. [Zush gegen NameQuick](/blog/zush-vs-namequick).
+Schwäche: Keines davon versteht, was ein Foto, Scan oder Video zeigt, also braucht jeder Fall eine eigene Regel. Viele kombinieren sie mit einem KI-Umbenenner, weil aussagekräftige Namen das Schreiben von Regeln erleichtern. Siehe die Seite zur [Hazel-Alternative](/hazel-alternative) und [Hazel-Alternativen für Windows](/blog/hazel-for-windows-alternatives).
 
-![Werbebild von NameQuick: gescannte Rechnungen, Belege und Verträge mit Datum und Lieferant im Dateinamen](/images/blog/competitors/namequick.webp)
+## Welchen KI-Dateisortierer sollten Sie wählen?
 
-## 6. AI File Sorter: kostenlos und quelloffen
+- Sie wollen Ordner auf Mac oder Windows in normaler Sprache beschreiben: **Zush**.
+- Sie müssen Videos (auch MKV), Audio, RAW-Fotos oder Designdateien nach Inhalt sortieren: **Zush**.
+- Sie brauchen Linux oder Team-Plätze: **Sortio**.
+- Ihre Kategorien stehen fest, und Sie wollen ein mitgeliefertes lokales Modell: **RenameClick**.
+- Sie wollen einen Mac, der von selbst aufgeräumt bleibt, und Dateinamen sind Ihnen egal: **Sparkle**.
+- Sie wollen kostenlos und Open Source: **AI File Sorter**.
+- Ihre Dateien folgen exakten Mustern: **Hazel** auf dem Mac, **File Juggler** oder **DropIt** unter Windows.
 
-AI File Sorter ist eine AGPL-App. Sie schlägt Kategorien, optionale Unterkategorien und neue Namen vor, unterstützt erlaubte Kategorienlisten, liest Bilder mit lokaler Bilderkennung und extrahiert Dokumenttext. Lokale Modelle oder eigener API-Schlüssel; Undo für den letzten Lauf. Keine freie Gruppierungsanweisung und keine Ordnerüberwachung. Audio und Video werden nach eingebetteten Metadaten klassifiziert. Geeignet für einmaliges Aufräumen mit eigener Modelleinstellung.
+## Jeden Sortierer erst mit 20 Dateien testen
 
-## 7. Hazel, File Juggler und DropIt: ohne KI
+1. Kopieren Sie 20 gemischte Dateien in einen Testordner: Rechnungen, Belege, Fotos, einen Screenshot, einen Scan, ein Video.
+2. Schreiben Sie eine Regel, die Sie wirklich brauchen, etwa „Rechnungen nach Firma und Belege nach Monat gruppieren“.
+3. Prüfen Sie den Plan: Sind die Ordnernamen einheitlich, und ist jede Datei dort gelandet, wo Sie es erwartet haben?
+4. Anwenden, die App neu starten, dann Rückgängig ausprobieren.
+5. Erst danach lassen Sie den Sortierer auf Downloads oder ein echtes Archiv los.
 
-Hazel ($42, Mac), File Juggler ($50, Windows) und DropIt (kostenlos, Windows) überwachen Ordner und reagieren auf Namen, Erweiterungen, Datum oder Text. Vorhersehbare Dateien lassen sich zuverlässig routen; Fotos, Scans und Video werden nicht inhaltlich verstanden. KI-Namen können Regeln erleichtern, oder eine Zush-Anweisung ersetzt viele Bedingungen. [Hazel-Alternative](/hazel-alternative), [Windows-Alternativen](/blog/hazel-for-windows-alternatives).
-
-## Welches Programm wählen?
-
-Zush für frei beschriebene Ordner, Video, Audio, RAW, Design und Einmalkauf ohne Dateikontingent. Sortio für Linux oder Teams. RenameClick für feste Kategorien. Sparkle für Mac-Aufräumen ohne Umbenennen. AI File Sorter für kostenlose einmalige Aufgaben. Hazel, File Juggler oder DropIt für feste Muster.
-
-## Zuerst mit 20 Dateien testen
-
-Kopieren Sie Rechnungen, Belege, Fotos, einen Screenshot, Scan und Video in einen Testordner. Schreiben Sie eine benötigte Regel. Prüfen Sie konsistente Ordnernamen und Zuordnung, wenden Sie den Plan an und testen Sie Undo. Erst danach einen echten Downloads-Ordner oder ein Archiv verwenden. [30 Sortieranweisungen](/blog/ai-folder-sorting-prompts), [Dokumentation](/docs/folder-sorting), [Preise](/pricing).
-
-Zush unterstützt auch verschachtelte Ordnerregeln, etwa nach Jahr und darunter nach Monat. Bereits umbenannte Dateien lassen sich sortieren, ohne ihre Namen erneut zu ändern oder ein weiteres Umbenennungsguthaben zu verbrauchen. Prüfen Sie die Zielpfade vor dem Anwenden. Diese separate Aktion bearbeitet vorhandene Dateien; eine Änderung am Monitor-Template sortiert sie nicht rückwirkend. Die [KI-Ordnersortierung](/docs/folder-sorting) funktioniert auf Mac und Windows.
-
-## Häufige Fragen
-
-### Welcher KI-Sortierer ist allgemein am besten?
-Für Mac und Windows empfehlen wir Zush mit Prüfung von Namen und Zielen, breiter Formatabdeckung und PRO ohne monatliches Kontingent.
-
-### Geht die Ablage automatisch?
-Zush, Sortio, RenameClick und Sparkle können Inhalte in Ordner verschieben. Bei Zush Folder rules im Template speichern und Monitor zuweisen; neue Dateien direkt im beobachteten Ordner werden verarbeitet.
-
-### Gibt es kostenlose Optionen?
-AI File Sorter ist quelloffen. Zush bietet 50 kostenlose Umbenennungen, Sortio einen einmaligen KI-Test und RenameClick 100 kostenlose Umbenennungen oder Verschiebungen monatlich.
-
-### Was funktioniert offline?
-Zush mit LM Studio oder Ollama, RenameClick mit dem mitgelieferten Modell, Sortio mit Ollama und AI File Sorter mit lokalen Modellen.
-
-### Was unterscheidet KI von festen Regeln?
-Regeln prüfen Namen oder Erweiterungen. KI liest den Inhalt und kann beispielsweise Rechnungen nach Unternehmen gruppieren, obwohl der alte Name nichts darüber verrät.
+Sie brauchen Ideen für Regeln? Beginnen Sie mit diesen [30 Prompts zur Ordnersortierung](/blog/ai-folder-sorting-prompts).
 
 <BlogProductIntro
-  title="Mit Zush beginnen"
-  description="Zush sortiert Dateien auf Mac und Windows nach ihrem Inhalt: Ordner in Alltagssprache beschreiben oder Auto wählen, Namen und Ziele prüfen, dann anwenden. Video, Audio und lokale KI werden unterstützt; PRO hat kein monatliches Dateikontingent. Sortio ist die engste Alternative für Linux."
-  links={[{"href":"/ai-file-sorter","label":"KI-Dateien sortieren"},{"href":"/blog/ai-folder-sorting-prompts","label":"Sortieranweisungen"},{"href":"/docs/folder-sorting","label":"Sortierdokumentation"},{"href":"/pricing","label":"Preise"}]}
+  title="Ordner einmal beschreiben. Zush übernimmt das Ablegen."
+  description="Ordnerregeln in normaler Sprache, Dateinamen nach Inhalt und Monitor für neue Dateien auf Mac und Windows. Starten Sie mit 50 kostenlosen Umbenennungen."
+  links={[
+    { href: '/ai-file-sorter', label: 'KI-Dateisortierer Zush' },
+    { href: '/blog/ai-folder-sorting-prompts', label: '30 Prompts zur Ordnersortierung' },
+    { href: '/docs/folder-sorting', label: 'Doku zur Ordnersortierung' },
+    { href: '/pricing', label: 'Preise' },
+  ]}
 />
 
-[Mac-Anleitung](/blog/sort-files-into-folders-with-ai-mac) · [Windows-Anleitung](/blog/sort-files-into-folders-with-ai-windows) · [Sortieranweisungen](/blog/ai-folder-sorting-prompts) · [Sortierdokumentation](/docs/folder-sorting).
+## Quellen und wie wir geprüft haben
+
+<BlogSources ids={['sortio', 'renameclick', 'sparkle', 'namequick', 'ai-file-sorter', 'hazel', 'file-juggler', 'dropit']} />
+
+## Häufig gestellte Fragen
+
+### Was ist der beste KI-Dateisortierer?
+
+Zush ist für die meisten auf Mac und Windows unsere Wahl. Sie beschreiben die Ordner in normaler Sprache oder nutzen Auto, und Zush liest jede Datei, benennt sie um und verschiebt sie in den richtigen Ordner, nachdem Sie den Stapel geprüft haben. Es verarbeitet PDFs, Scans, Fotos, Video und Audio und funktioniert mit lokaler KI. Sortio ist die engste Alternative, wenn Sie Linux brauchen. Zush ist unser eigenes Produkt, testen Sie also beide mit Kopien.
+
+### Kann KI Dateien automatisch in Ordner sortieren?
+
+Ja. Zush, Sortio Pro, Auto Flow von RenameClick, NameQuick und Sparkle können neue Dateien in Ordner verschieben, ohne dass Sie jeden Stapel selbst starten. In Zush speichern Sie Ihre Folder rules in einem Template und weisen es Monitor zu: Jede neue Datei in diesem Ordner wird beim Eintreffen umbenannt und sortiert. Testen Sie das Template zuerst in einem manuellen Stapel, um die gewählten Ordner zu prüfen.
+
+### Gibt es einen kostenlosen KI-Dateisortierer?
+
+AI File Sorter ist kostenlos und Open Source. Zush enthält 50 kostenlose KI-Umbenennungen ohne Konto, Karte oder API-Schlüssel, genug für einen echten Test der Ordnersortierung. Sortio hat einen einmaligen KI-Test plus kostenloses regelbasiertes Sortieren, NameQuick gibt 30 kostenlose Umbenennungen, und RenameClick enthält nach dem Download seines lokalen Modells 100 kostenlose Umbenennungen oder Verschiebungen pro Monat.
+
+### Welcher KI-Dateisortierer bietet am meisten fürs Geld?
+
+Das hängt davon ab, was enthalten ist. Lifetime für $36 plus MwSt. deckt bei RenameClick das lokale Modell oder Ihren eigenen Schlüssel ab, und Sortio Pro kostet $99 pro Jahr mit KI-Kontingent. Die Einmallizenz von Zush für $48 enthält die verwaltete Zush Cloud AI sowie BYOK, Ollama und LM Studio, unbegrenzte Umbenennungen, künftige Updates und bis zu 3 Geräte unter Mac und Windows.
+
+### Welcher KI-Dateisortierer funktioniert offline?
+
+Zush sortiert offline mit LM Studio oder Ollama auf Mac und Windows: Dateianalyse und Ordnerplanung laufen beide auf Ihrem Computer. RenameClick liefert ein lokales Modell mit (16 GB RAM empfohlen), Sortio unterstützt Ollama und LM Studio in jedem Plan, auch in Free, und AI File Sorter läuft mit lokalen Modellen. Im Cloud-Modus schickt Zush den Dateiinhalt zur Analyse an Zush Cloud AI oder Ihren eigenen Anbieter.
+
+### Was ist der Unterschied zwischen einem KI-Dateisortierer und einem regelbasierten Organizer?
+
+Ein regelbasierter Organizer wie Hazel oder DropIt verschiebt Dateien, die auf von Ihnen geschriebene Bedingungen passen, etwa ein Namensmuster oder eine Endung. Ein KI-Dateisortierer wie Zush liest, was die Datei enthält, und folgt einer Anweisung wie „Rechnungen nach Firma gruppieren“. So kann er auch Dateien sortieren, deren Namen nichts verraten. Sie können beides kombinieren: Zuerst benennt die KI, dann verschieben die Regeln.

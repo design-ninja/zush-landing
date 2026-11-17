@@ -1,6 +1,6 @@
 ---
-title: "Windows 11 AI 文件整理软件对比（2026）"
-description: "比较Windows AI文件整理工具：Zush、Sortio等软件的重命名、文件夹分类、本地AI和规则整理方式。"
+title: "Windows 11 AI 文件整理软件：8 款对比（2026）"
+description: "对比 8 款 Windows 10 和 11 AI 文件整理工具：重命名、文件夹分类、监控、本地 AI、撤销、免费额度和一次性价格。"
 date: "2026-09-22"
 slug: "best-ai-file-organizers-windows-zh-cn"
 platform: "windows"
@@ -9,135 +9,170 @@ tags:
   - "File Organization"
   - "Tool Comparisons"
   - "Automation"
-tldr: "Zush 在 Windows 10 和 11 上结合内容命名与可选的 AI 文件夹分类。Auto 建议分组，Folder rules 则允许描述自己的结构。Sortio 和 Wisfile 提供其他 AI 工作流；File Juggler 和 DropIt 使用固定规则。应比较预览、恢复、格式支持和数据处理方式。 一个 Zush 许可证最多可用于 3 台设备。"
-reviewed: "2026-10-26"
+tldr: "Zush 在 Windows 10 和 11 上把基于内容的命名与 AI 文件夹分类结合在一起，提供 50 次免费 AI 重命名，无需账号、银行卡或 API 密钥。Sortio 适合 Linux 和团队用户，Wisfile 可免费处理 PDF 和 Word 文件，RenameClick 自带本地模型，File Juggler 或 DropIt 则提供不含 AI 的规则方案。一份 Zush 许可证最多可用于 3 台设备。"
+reviewed: "2026-11-17"
 locale: "zh-cn"
 translationOf: "best-ai-file-organizers-windows"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-Zush 在 Windows 10 和 11 上结合内容命名与可选的 AI 文件夹分类。Auto 建议分组，Folder rules 则允许描述自己的结构。Sortio 和 Wisfile 提供其他 AI 工作流；File Juggler 和 DropIt 使用固定规则。应比较预览、恢复、格式支持和数据处理方式。
+快速结论：对大多数 Windows 用户来说，最好的 AI 文件整理工具是 [Zush](/windows)，因为让电脑变乱的通常是文件名。`scan_0042.pdf` 和 `IMG_4382.jpg` 放在任何文件夹结构里都找不到。Zush 会读取每个文件，给出描述性的名称，还能按你自己的指令把文件分类到文件夹，任何改动之前都由你审阅。如果你还需要 Linux，选 Sortio；想免费一次性清理文档，选 Wisfile；想要自带的本地模型，选 RenameClick；想要不含 AI 的精确规则，选 File Juggler。
 
-**Zush 功能核查日期：2026 年 10 月 26 日。** 竞品信息仍以文中原有的核查日期为准。
-
-只需要更好的文件名、不想移动文件？请查看 [Windows AI 文件重命名工具对比](/zh-cn/blog/windows-ai-file-renamer-comparison-cn)。
+**我们如何核查：** 本文由 [Zush](/) 的开发者撰写。竞品的价格、功能和评分均于 2026 年 11 月 17 日在厂商官网和官方应用商店核查（[来源见下文](#sources-and-how-we-checked)）。本文比较的是有文档记载的功能，并非实验室测试。
 
 ## 快速对比
 
-| | 适用场景 | 价格与许可 |
-|---|---|---|
-| Zush | 内容命名与可选 AI 文件夹分类 | 50 次免费改名; $10/mo; $48 |
-| Sortio | 按指令分组、改名、预览与监控文件夹 | 免费; $14.99/mo; $99/yr |
-| Wisfile | 免费本地文档命名与分组；监控和撤销未在官方资料中明确 | 免费 |
-| RenameClick | 内置本地模型；Auto Flow 支持新文件命名和移动 | $8/mo + VAT; $36 + VAT |
-| File Juggler | 改名与移动的确定性规则；不使用 AI | $50 |
-| DropIt | 按名称、日期或扩展名的免费规则；不使用 AI | 免费 |
+| 应用 | 功能 | AI 在本机运行？ | 监控文件夹 | 撤销 | 价格 |
+|---|---|---|---|---|---|
+| **Zush** | <BlogHighlight>基于内容的重命名和 AI 文件夹分类</BlogHighlight> | 是，通过 Ollama 或 LM Studio（也支持 Zush Cloud AI 和 BYOK） | 是 | 持久保存的 Rename History，支持批量撤销 | 50 次免费重命名，无需账号或银行卡；$10/月或 $48 一次性买断，含云端 AI |
+| Sortio | 重命名、创建文件夹、移动文件 | 是，所有方案都支持 Ollama 或 LM Studio | 仅 Pro | 分类历史和撤销 | 一次性 AI 试用；Pro $14.99/月或 $99/年 |
+| Wisfile | 重命名文档并分到文件夹 | 是，仅本地 | 否 | 否 | 免费 |
+| RenameClick | 重命名；Auto Flow 也能移动文件 | 是，自带约 4 GB 的模型 | Auto Flow，应用运行时 | 保存在内存中，10 条记录，重启后清空 | 每月免费 100 次重命名或移动；终身版 $36 + 增值税 |
+| NudgeFile | 监控文件夹、重命名、分流、查找重复项 | 是，通过 Ollama（也有云端选项） | 是 | 是，据其官网 | 免费下载；厂商未说明付费档位 |
+| Foldora | 为一批文件建议文件夹和文件名 | 是，本地分析 | 否 | 未宣传 | 终身版 $14.99 |
+| File Juggler | 基于规则的重命名和移动，无 AI | 非 AI | 是，即时响应 | 厂商未说明 | $50 一次性 + 税，30 天试用 |
+| DropIt | 基于规则的分类和移动，无 AI | 非 AI | 是，定时扫描 | 否 | 免费，开源 |
 
-## 1. Zush
+只需要更好的文件名、不想移动任何文件？请看 [Windows AI 文件重命名工具对比](/blog/best-ai-file-renamer-tools-windows-compared)。
 
-内容命名与可选 AI 文件夹分类。[Zush AI 文件整理工具](/ai-file-organizer) 页面介绍了三种用法：原地重命名、重命名并分类，以及监控文件夹。
+<BlogProductIntro
+  title="Windows 电脑上的文件名看不出任何信息？"
+  description="Zush 读取截图、PDF、照片、Office 文件和视频，为每个文件给出清晰的名称，可原地重命名，也可分类到文件夹。先预览，之后任何一批都能撤销。"
+  links={[
+    { href: '/windows', label: 'Windows 版 Zush' },
+    { href: '/ai-file-organizer', label: 'AI 文件整理工具' },
+    { href: '/ai-file-sorter', label: 'AI 文件分类工具' },
+    { href: '/offline-ai-file-renamer', label: '离线 AI 重命名工具' },
+  ]}
+/>
 
-![Windows 版 Zush 按内容批量重命名混合文件，并在应用前显示每个建议的文件名](/videos/windows/zush-batch-rename.mp4)
+## 原地重命名，还是移到文件夹？
 
-Zush 文件夹分类在 Mac 和 Windows 上均可使用。它分析兼容文件的内容，提出名称和分组。使用 Auto 时将 Folder rules 留空，或用自然语言描述分类。Naming Blocks 单独控制文件名格式。
+每款 AI 文件整理工具都会做以下一件或两件事：
 
-请使用导出的图片或文件夹副本测试。不要重组 Photos 图库包内部的文件。已被目录软件跟踪的原始文件应遵循该软件的重命名或重新链接流程。重命名和移动都会改变路径。
+1. 重命名文件，让 File Explorer 和 Windows 搜索能按内容找到它们。
+2. 把文件移进一套文件夹结构，有时是它自己设计的结构。
 
-![Windows 版 Zush 的 Monitor 标签页监视 Screenshots 和 Downloads 文件夹，新文件一到就自动重命名](/images/showcase/windows/monitor-light.webp)
+两者都会改变文件路径，所以快捷方式和项目链接可能失效。移动的影响更大，因此需要预览，以及重启后依然有效的撤销。如果你得打开文件才知道它是什么，那你首先面临的是命名问题。
 
-一个 Zush 许可证最多可用于 3 台 Mac 或 Windows 设备。
+## 1. Zush：基于内容的名称和 AI 文件夹分类
 
-可以[导出 Templates](/docs/template-import-export)，将 Naming Blocks、Custom AI Blocks 和文件夹规则一起导入另一台电脑。目标文件夹、访问权限和 AI 连接需要在新电脑上重新设置。转移的是工作流程设置，不是文件本身。
+[Windows 版 Zush](/windows) 支持 Windows 10 和 11，可从 [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X) 安装。把一个装满截图、PDF、扫描件、照片、Office 文档、设计文件、音频或视频的文件夹拖进去。Zush 会读取每个文件，并建议类似 `2026-09-18_acme_invoice_1042.pdf` 或 `stripe-revenue-dashboard-september.png` 的名称。视频根据语音、内嵌字幕和元数据命名（包括 MKV），音乐即使没有标签也能识别。
 
-## 2. Sortio
+开箱即用。前 50 次 AI 重命名在托管的 Zush Cloud AI 上运行，无需账号、银行卡、API 密钥，也不用下载模型，云端模式只需 4 GB 内存。如果文件夹绝不能离开本机，可以切换到 Ollama 或 LM Studio；可选的本地语音识别也能让视频转写留在本地。
 
-Sortio根据指令显示重命名、创建文件夹和移动的计划。Smart Folders可处理新文件，也支持Linux。请检查AI额度和预览计划，因为移动会改变文件路径。
+任何改动之前你都能看到每条建议。双击名称即可编辑，也可以重新生成某一条，或应用整批。现成的 Templates（包括 Movies & TV 和 Remove Duplicates）以及 145+ 个 Naming Blocks 让名称保持一致：日期、供应商、金额、客户、带前导零的序号。
 
-Sortio.
+![Windows 版 Zush 按内容重命名一批混合文件，在应用之前列出每个拟定的文件名](/videos/windows/zush-batch-rename.mp4)
 
-## 3. Wisfile
+如果还要归档，可以使用 Auto，或者在 **Folder rules** 中写一条规则，例如“发票按公司分组，收据按月份分组”。预览分组，选择 **Destination folder**，并可启用 **Reuse existing folders** 复用已有文件夹。规则可以嵌套，也可以使用日期、页数等文件信息，你还可以只分类文件而保留当前名称。AI Rename 还能识别重复文件：保留、在名称中标记，或移到回收站。副本不消耗额度，Undo 可以恢复它们。分步教程：[在 Windows 上用 AI 把文件分类到文件夹](/blog/sort-files-into-folders-with-ai-windows) 和 [30 条现成的文件夹规则](/blog/ai-folder-sorting-prompts)。完整的设置说明见 [文件夹分类文档](/docs/folder-sorting)。
 
-Wisfile主要处理本地文档，例如PDF、论文和教学资料。它可根据内容生成名称，并按主题整理一批文件。产品页面未说明图片或视频工作流程、文件夹监控及撤销历史。
+![Windows 版 Zush 在执行 Rename & sort 之前预览按内容划分的文件夹分组和拟定的文件名](/images/showcase/windows/folder-sorting-light.webp)
 
-![Wisfile 官方插图：杂乱的 PDF 文件名变成带日期的描述性文档名](/images/blog/competitors/wisfile.webp)
+Monitor 会把保存好的 Template 应用到 Downloads 或扫描仪文件夹中的新文件上。Rename History 在重启后仍保留新旧名称，Undo All 可以还原整批操作，列出所有冲突，并提供以新名称恢复的选项。
 
-Wisfile.
+![Windows 版 Zush 的 Monitor 标签页正在监控 Screenshots 和 Downloads 文件夹，并在新文件到达时重命名](/images/showcase/windows/monitor-light.webp)
 
-## 4. RenameClick
+<BlogCTA placement='inline' platform='windows' />
 
-RenameClick在下载较大的模型后于本地运行。Auto Flow可重命名和移动新文件。普通Rename工作区最多在内存中保留十条撤销记录，重启后会清空；Auto Flow会保存符合条件的已应用记录，并支持在重启后撤销和重做。
+价格：$10/月或 $48 一次性买断。一次性许可证包含所有模式（Zush Cloud AI、BYOK、Ollama、LM Studio）下的无限次重命名、今后所有更新、最多 3 台 Mac 和 Windows 设备，以及 14 天退款。在 Microsoft Store（美国区）上，Zush 获得 5.0 分（8 个评分），Softpedia 编辑评测给出 4.5/5，均截至 2026 年 11 月 17 日。
 
-![RenameClick（Mac 版）在 Rename & Move 之前把重命名后的文件分到 Legal Documents、Medical Documents 和 Uncategorized](/images/blog/competitors/renameclick.webp)
+## 2. Sortio：基于指令的分类，还支持 Linux
 
-RenameClick.
+Sortio 接受一句日常语言的指令（“发票按年份放，截图按项目放”），展示方案，然后重命名、创建文件夹并移动文件。它支持 Windows 10/11、macOS 和 Linux，使用时需用电子邮件账号登录。
 
-## 5. File Juggler
+免费版包括最多 5 条规则和 3 个 Spaces 的规则分类、一次性 AI 试用、预览、分类历史和撤销。监控文件夹和自动化现在需要 Pro，价格为每月 $14.99 或每年 $99，含每月 AI 用量。使用你自己的密钥可以绕过该用量限制，Ollama 则让处理留在本地（至少 8 GB 内存）。
 
-File Juggler按明确条件重命名或移动匹配文件，包括依据PDF内容和属性。它适合无需AI的固定流程。每条规则都需要清楚定义，并使用有代表性的文件测试。
+如果你需要 Linux 或团队席位，就选 Sortio。不足：托管 AI 按月限量，免费版也不再监控文件夹。请看 [Zush 与 Sortio 对比](/blog/zush-vs-sortio)。
 
-File Juggler.
+## 3. Wisfile：面向文档的免费选择
 
-## 6. DropIt
+Wisfile 免费，完全在你的设备上运行，支持 Windows 和 Mac。它根据内容（标题、作者、年份）重命名文档，还能把一批文件按主题分到不同文件夹。支持 `Author-Year-Title` 这样的模板。
 
-DropIt按名称、扩展名、日期、大小或正则表达式整理文件。可以拖放文件，也可以定时检查监控文件夹。它免费，但没有内容分析AI，最后发布的版本来自2018年。
+![Wisfile 官方示意图：杂乱的 PDF 文件名被改成带日期、描述清楚的文档文件名](/images/blog/competitors/wisfile.webp)
 
-DropIt.
+如果预算最重要，想一次性清理 PDF 和 Word 归档，就选 Wisfile。不足：没有撤销，也没有文件夹监控，而且它专注于 PDF 和 Word，不处理图片或视频。请在副本上操作。
 
-## 用 AI 将文件分类到文件夹
+## 4. RenameClick：自带本地模型
 
-Zush 文件夹分类在 Mac 和 Windows 上均可使用。它分析兼容文件的内容，提出名称和分组。使用 Auto 时将 Folder rules 留空，或用自然语言描述分类。Naming Blocks 单独控制文件名格式。
+RenameClick 的免费 AI 方案是一个内置本地模型，下载约 4 GB，建议 16 GB 内存。你不需要配置 Ollama，这确实方便。它可以重命名图片、文档、音频，自 4.1.2 版起还支持视频（MP4、MOV、M4V 和 3GP，使用画面加本地语音转写）。MKV、WebM、AVI、RAW 照片和设计文件不在其支持格式列表中。Auto Flow 会在应用运行时重命名并移动新文件。
 
-> 按公司分组发票，按月份分组收据。月份文件夹命名为 YYYY-MM。
+免费版提供无限次分析和每月 100 次重命名或移动；首次应用之前，应用必须联网一次。终身版 $36 加增值税，直接下载版本最多可用于 3 台设备，仅在法律要求的情况下提供退款。Standard Rename 在内存中保存 10 条撤销记录，重启后清空。评分：Microsoft Store（美国区）3.0 分（6 个评分），Softpedia 编辑评分 3.5。
 
-1. 将一小批文件副本加入 AI Rename，并选择 Template。
-2. 启用 + Sort，将 Destination folder 设为子文件夹的根目录。未选择单独目标时，源文件夹仍为根目录。
-3. 在 Folder rules 中填写分组方法。启用 Reuse existing folders 可使用目标中的合适文件夹；没有合适的现有文件夹时，Zush 可以新建。
-4. 应用批次前检查并修正建议的文件名和分组。
+![RenameClick（图为 Mac 版）在执行 Rename & Move 之前把重命名后的文件分到 Legal Documents、Medical Documents 和 Uncategorized](/images/blog/competitors/renameclick.webp)
 
-![Windows 版 Zush 在执行 Rename & sort 前预览文件名与文件夹分组](/images/showcase/windows/folder-sorting-light.webp)
+如果你想要无需配置的离线 AI，并且内存足够，就选 RenameClick。完整分析：[Zush 与 RenameClick 对比](/blog/zush-vs-renameclick)。
 
-将经过测试的目标与规则保存到 Template。Monitor 可以处理直接进入监控文件夹的新文件，完成命名和分类，不会追溯重组已处理文件。关闭分类并保留原始目标时，文件留在当前文件夹。
+## 5. NudgeFile：免费的本地 AI 文件夹监控工具
 
-[AI 文件夹分类分步指南](/blog/sort-files-into-folders-with-ai-windows) · [文件夹分类文档](/docs/folder-sorting) · [30 个文件夹规则示例](/blog/ai-folder-sorting-prompts).
+NudgeFile 是一款较新的 Windows 10 和 11 应用，可从 Microsoft Store 免费下载。其官网称，它会监控 Downloads 和桌面等文件夹，为新文件统一命名，把它们分流到目标文件夹，并用校验和加本地视觉 AI 查找重复项。AI 通过 Ollama 在本地运行，也有云端选项。“Human Approval Pipeline”让你审阅建议，或让它们自动执行；官网还称任何操作都可以一键撤销。
 
-Zush 支持嵌套文件夹规则，例如先按年份、再按月份分类。已经重命名的文件可以单独分类，无需再次改名或消耗另一次重命名额度。应用前请核对目标路径。这与 Monitor 是两个操作：修改 Template 不会自动重新整理之前的文件。[AI 文件夹分类](/docs/folder-sorting)在 Mac 和 Windows 上均可使用。
+如果你想在 Windows 上有一款免费、始终运行的本地整理工具，就选 NudgeFile。不足：其 FAQ 称模型分析的是“文件元数据和结构”，官网既没有列出支持的文件类型，也没有列出付费档位，所以请先用你自己的文件测试。
 
-RenameClick 免费计划每月允许 100 次成功改名或移动。本地模型需要较大下载，公开支持列表未包含 RAW、设计格式或视频。普通Rename最多在内存中保留十条撤销记录并在重启后清空；Auto Flow则会跨重启保留符合条件的已应用记录。File Juggler 提供 30 天试用。DropIt 支持 21 项操作，最新的 8.5.1 发布于 2018 年 10 月。Sortio 免费计划包含最多五条规则及一次性 AI 试用额度，Pro 使用每月 AI 配额。
+## 6. Foldora：$14.99 的一次性本地清理
 
-## 如何选择合适的软件
+Foldora 支持 Windows 10、11 和 macOS。它在本地分析选中的文件，建议文件夹和更清晰的文件名，并在你确认预览后应用。终身版 $14.99。购买、激活和定期许可证检查都需要联网。
 
-按图库、编辑、元数据、固定规则或内容命名与分类的需求选择。Zush 适合普通文件夹中的兼容文件，提供预览及可选分组。它不能替代目录软件或备份。
+如果你想便宜地在本地一次性整理一批混合文件，就选 Foldora。不足：没有文件夹监控，厂商自己也表示并未宣传有保证的一键撤销，所以大规模改动前请先备份。
 
-## 迁移前先用副本测试
+## 7. File Juggler：不含 AI 的可预期规则
 
-先复制少量照片、截图、RAW、文档和名称不清晰的文件。检查预览、分组、元数据、附属文件、外接硬盘和恢复功能。图库还应测试导入、导出、备份和目录恢复。在新流程验证通过前保留旧档案。
+File Juggler 是一款历史悠久的 Windows 自动化工具，仍在维护（3.1.9 版于 2026 年 10 月 30 日发布）。你编写规则（“如果 Downloads 中的 PDF 包含‘Invoice’，就用日期重命名并移到 Finance”），它会在文件到达时执行这些规则。它可以读取 PDF、Word 和 Excel 文本用于规则判断。Softpedia 编辑评分为 4.5/5。
+
+一次性许可证 $50 加税，提供 30 天全功能试用。不足：没有 AI 也没有 OCR，所以每种情况都需要一条规则，纯图像扫描件也需要单独的 OCR 步骤。更多选择：[File Juggler 替代品](/blog/file-juggler-alternatives)。
+
+## 8. DropIt：免费的规则引擎
+
+DropIt 免费且开源。规则可以按名称、大小、日期或正则表达式匹配文件；你可以把文件拖到它上面，也可以让它定时扫描监控文件夹。它有 21 种操作，包括移动、复制、重命名、压缩和解压。
+
+不足：最新版本 8.5.1 发布于 2018 年 2 月，所以别指望有更新或 AI。如果只需按扩展名或名称格式免费分类，就选 DropIt。如果你是从 Mac 转过来的，请看 [Windows 上的 Hazel 替代品](/blog/hazel-for-windows-alternatives)。
+
+## 该选哪一款？
+
+- 问题出在文件名上，或者你想在一次审阅中同时处理名称和文件夹：**Zush**。
+- 需要 Linux 或团队席位：**Sortio**。
+- 免费、本地、只处理文档的清理：**Wisfile**。
+- 无需任何配置的离线 AI，并且有 16 GB 内存：**RenameClick**。
+- 愿意先测试的免费本地监控工具：**NudgeFile**。
+- 便宜的一次性本地整理：**Foldora**。
+- 精确规则，不要 AI：**File Juggler**；必须免费的话选 **DropIt**。
+
+## 先用 10 个文件测试任何整理工具
+
+把十个典型文件复制到一个测试文件夹：一张截图、一张发票、一张收据、一张手机照片、一份电子表格、一个 Word 文档、一份幻灯片、一个视频、一个音频文件，以及一个随手下载的文件。然后检查：
+
+1. 结果是否具体到可以搜索？
+2. 每处改动发生之前你能否看到？
+3. 能否撤销整批操作，即使重启了应用？
+4. 按你每月的实际用量，价格是否依然合理？
+
+更详细的检查清单，请阅读 [如何安全地批量重命名文件](/blog/how-to-safely-batch-rename-files)。
+
+## 来源与核查方法
+
+<BlogSources ids={['sortio', 'wisfile', 'renameclick', 'nudgefile', 'foldora', 'file-juggler', 'dropit']} />
 
 ## 常见问题
 
-### Zush 能把文件实际移动到文件夹吗？
+### Windows 11 上最好的 AI 文件整理工具是哪款？
 
-可以。启用可选的分类，选择目标并检查名称与分组。只在原位置改名时，关闭分类并保留原始目标。
+我们推荐 Zush：它按内容重命名文件，并通过 Auto 或你自己的指令把文件分类到文件夹，提供预览、Templates、监控和持久撤销。如果你需要 Linux，可以选 Sortio；想要自带本地模型，选 RenameClick；如果不含 AI 的精确规则就适合你的文件，选 File Juggler。Zush 是我们开发的，所以请先在副本上测试任何一款。
 
-### 能自动分类新文件吗？
+### Windows 上有免费的 AI 文件整理工具吗？
 
-可以，使用已测试并分配给 Monitor 的 Template。处理监控文件夹直属的新文件，不自动重新分配已处理的旧文件。
+有。Wisfile 免费且在本地处理 PDF 和 Word 文件，NudgeFile 可从 Microsoft Store 免费下载。Zush 提供 50 次免费 AI 重命名，无需账号、银行卡或 API 密钥。RenameClick 在下载 4 GB 模型后每月允许 100 次重命名或移动。DropIt 也免费，但它使用固定规则而不是 AI。
 
-### 支持现有文件夹和外接硬盘吗？
+### 哪款 Windows 整理工具的一次性价格最划算？
 
-Reuse existing folders 能使用目标根目录下的合适文件夹，并按需新建。硬盘与文件必须可访问；云端文件需先下载。
+Foldora $14.99，RenameClick $36 加增值税，但两者都只能使用本地 AI 或你自己的 AI。Zush 的 $48 许可证包含托管的 Zush Cloud AI 以及 BYOK、Ollama 和 LM Studio、无限次重命名、今后所有更新、最多 3 台 Windows 和 Mac 设备，以及 14 天退款。File Juggler 的 $50 许可证买到的是规则，而不是 AI。
 
-### 文件会发送给云端 AI 吗？
+### AI 文件整理工具会上传我的文件吗？
 
-Zush Cloud AI 和 BYOK 会将内容发送到选择的云端提供商。Ollama 和 LM Studio 提供支持的本地分析。本地分析不等于整个应用的所有功能都离线运行。
+取决于模式。使用 Ollama 或 LM Studio 的 Zush 会把分析留在你的 PC 上；Zush Cloud AI 和 BYOK 会把文件内容发送到云端模型来命名。Wisfile、Foldora 和 RenameClick 的内置模型在本地运行，NudgeFile 默认使用本地 AI。Sortio 提供托管 AI，所有方案也都支持 BYOK 或 Ollama 和 LM Studio。在让任何应用处理敏感文件夹之前，请先检查它的 AI 设置。
 
-## 来源与核查日期
+### AI 能在 Windows 上自动整理我的 Downloads 文件夹吗？
 
-对比依据官方产品、帮助及价格页面，而非共同性能测试。价格和要求可能变化。Zush 分类功能于 2026 年 9 月 28 日核查，其他产品核查日期沿用英文原文。
-
-Sortio · Wisfile · RenameClick · File Juggler · DropIt · [文件夹分类文档: Zush](/docs/folder-sorting).
-
-## 结论
-
-按图库、编辑、元数据、固定规则或内容命名与分类的需求选择。Zush 适合普通文件夹中的兼容文件，提供预览及可选分组。它不能替代目录软件或备份。
+能。Zush 可以监控 Downloads，重命名新文件，并应用 Template 中保存的文件夹规则。RenameClick 的 Auto Flow、Sortio Pro 和 NudgeFile 也能监控文件夹。在自动化重要目录之前，请先从一个测试文件夹开始。[Downloads 自动化指南](/ai-file-sorter) 介绍了 Zush 的设置方法。

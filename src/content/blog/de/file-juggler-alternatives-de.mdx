@@ -1,6 +1,6 @@
 ---
 title: "File-Juggler-Alternativen: 5 Windows-Organizer (2026)"
-description: "File Juggler automatisiert Windows-Dateien mit Regeln. Fünf Alternativen im Vergleich, darunter kostenlose: Zush für KI-Benennung und Sortierung, DropIt, Sortio, Wisfile und PowerShell."
+description: "File Juggler automatisiert Windows-Dateien per Regeln. 5 Alternativen, auch kostenlose: Zush für KI-Benennung, DropIt, Sortio, Wisfile und PowerShell."
 date: "2026-10-16"
 slug: "file-juggler-alternatives-de"
 locale: "de"
@@ -11,150 +11,161 @@ tags:
   - "Dateiorganisation"
   - "Tool-Vergleiche"
   - "Automatisierung"
-tldr: "File Juggler ist eine kostenpflichtige, aktiv gepflegte Regel-Engine für Windows: 50 $ einmalig vor Steuern, mit einer vollständigen 30-Tage-Testversion. Behalten Sie es, wenn Ihre Dateien Mustern folgen, die sich beschreiben lassen. Wechseln Sie zu Zush, wenn Dateien kein Muster haben, das sich abgleichen lässt, etwa Screenshots, Scans und Fotos, denn Zush liest jede Datei, benennt sie und kann sie in Ordner sortieren. DropIt und PowerShell sind die kostenlosen regelbasierten Optionen, und Wisfile ist für PDFs und Word-Dokumente kostenlos. Eine Zush-Lizenz deckt bis zu 3 Geräte ab."
+tldr: "File Juggler ist eine kostenpflichtige, aktiv gepflegte Regel-Engine für Windows (Version 3.1.9, Oktober 2026): 50 $ einmalig vor Steuern, mit einer vollständigen 30-Tage-Testversion. Behalten Sie es, wenn Ihre Dateien Mustern folgen, die sich beschreiben lassen. Wechseln Sie zu Zush, wenn Dateien kein Muster haben, etwa Screenshots, Scans und Fotos: Zush liest jede Datei, benennt sie und kann sie in Ordner sortieren. DropIt und PowerShell sind die kostenlosen regelbasierten Optionen, Wisfile ist für PDFs und Word-Dokumente kostenlos. Eine Zush-Lizenz gilt für bis zu 3 Geräte."
 earlyTaskExample: false
-reviewed: "2026-10-18"
+reviewed: "2026-11-17"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-Kurze Antwort: Wenn Ihre Regeln ständig Dateien übersehen, weil diese Dateien kein Muster haben, ist [Zush für Windows](/windows) die beste Alternative zu File Juggler. Es liest jede Datei, schreibt einen aussagekräftigen Namen und kann den Stapel anhand einer einzigen Anweisung in normaler Sprache in Ordner sortieren. Wenn Sie lieber eine weitere Regel-Engine möchten, ist DropIt kostenlos, und Sortio ergänzt Regeln um KI. File Juggler selbst ist nach wie vor ein gutes Tool: Es wird gepflegt, ist günstig und berechenbar.
+Kurze Antwort: Wenn Ihre Regeln ständig Dateien verfehlen, weil diese Dateien kein Muster haben, ist [Zush für Windows](/windows) die beste Alternative zu File Juggler. Es liest jede Datei, schreibt einen aussagekräftigen Namen und kann den ganzen Stapel nach einer einzigen Anweisung in normaler Sprache in Ordner sortieren. Wenn Sie lieber eine andere Regel-Engine möchten: DropIt ist kostenlos, und Sortio setzt KI auf Regeln auf. Behalten Sie File Juggler, wenn Ihre Dateien festen Mustern folgen. Es wird gepflegt, kostet einmalig und arbeitet berechenbar.
 
-**Zuletzt geprüft: 16. Oktober 2026.** Verfasst vom Entwickler von [Zush – KI-Dateiumbenenner für Mac und Windows](/). Die Angaben zu File Juggler stammen von der Website, aus der FAQ und den Versionshinweisen; die anderen Tools von ihren offiziellen Seiten, die in den jeweiligen Abschnitten verlinkt sind.
-
-**Zush-Funktionen geprüft am 18. Oktober 2026.** Die Informationen zu Mitbewerbern behalten die in diesem Artikel genannten Prüfdaten.
-
-## Was File Juggler gut kann
-
-File Juggler ist ein Windows-Automatisierungstool, das ein unabhängiger Entwickler in Dänemark gebaut hat. Sie erstellen Regeln aus drei Teilen:
-
-1. **Überwachte Ordner**, etwa Downloads, Desktop oder ein Scanner-Ordner.
-2. **Bedingungen**: Dateiname und Pfad, Text in der Datei, Größe sowie Erstellungs- oder Änderungsdatum.
-3. **Aktionen**: verschieben, kopieren, umbenennen, Dateiendung ändern, löschen oder in den Papierkorb verschieben, Archive entpacken, zu einer Zip-Datei hinzufügen, einen Befehl ausführen oder zu Evernote hochladen.
-
-Es reagiert fast sofort, weil es Benachrichtigungen über Ordneränderungen abonniert, statt in festen Zeitabständen zu scannen. Es kann Text in PDF-, Word- und Excel-Dateien lesen und gefundene Wörter und Datumsangaben in einem neuen Dateinamen wiederverwenden. Version 3.1.7 erschien im September 2026, im Oktober folgte eine Beta von 3.1.8; das Tool ist also nicht aufgegeben.
-
-Die Preisgestaltung ist einfach: 50 $ einmalig vor Steuern an der Kasse, gültig für alle künftigen Upgrades. Eine Lizenz deckt eine Person auf mehreren PCs oder einen PC ab, den mehrere Personen gemeinsam nutzen. Die 30-Tage-Testversion enthält alle Funktionen, und nach Ablauf erinnert die App an den Kauf, funktioniert aber weiter.
-
-## Warum Leute nach einer Alternative suchen
-
-- **Keine KI.** Jede Regel muss von Hand geschrieben werden. Eine Regel kann `Screenshot 2026-10-02 141203.png` oder `IMG_4382.jpg` nicht erfassen, weil nichts im Namen oder Text verrät, was die Datei ist.
-- **Keine OCR.** Laut der FAQ von File Juggler haben reine Bild-Scans keinen durchsuchbaren Text, daher brauchen Sie ein separates OCR-Programm, bevor die Inhaltsregeln greifen können.
-- **Nur Windows.** Es gibt keine Mac-Version. Auf dem Mac ist [Hazel](/hazel-alternative) das Gegenstück.
-- **Kein Dienst.** Es läuft nur, solange ein Benutzer angemeldet ist, und eignet sich daher nicht gut für Server.
-- **Der Preis**, wenn Sie nur eine einfache Sortierung nach Dateityp brauchen. Mehrere kostenlose Tools erledigen das.
+**So haben wir geprüft:** Verfasst vom Entwickler von [Zush](/). Preise, Funktionen und Bewertungen der Mitbewerber haben wir am 17. November 2026 auf den Websites der Anbieter und in den offiziellen Stores geprüft ([Quellen unten](#sources-and-how-we-checked)). Verglichen werden dokumentierte Funktionen, es handelt sich nicht um einen Labortest.
 
 ## File-Juggler-Alternativen im Überblick
 
 | Tool | Am besten für | Liest Dateiinhalt | Überwacht Ordner | Rückgängig | Preis |
 |---|---|---|---|---|---|
-| **Zush** | <BlogHighlight>Dateien ohne Muster: KI-Benennung plus Ordnersortierung</BlogHighlight> | Ja, mit KI: Scans, Fotos, Screenshots, Office, PDFs, Video, Audio | Ja (Monitor) | Rename History | 50 kostenlose Umbenennungen; $10/Monat oder $48 einmalig |
-| DropIt | Kostenlose Regeln nach Name, Größe, Datum | Einfache Filter | Ja, zeitgesteuerte Scans | Nein | Kostenlos, Open Source |
-| Sortio | KI-Ordnerpläne plus klassische Regeln | Ja, mit KI | Ja (Smart Folders) | Ja | Kostenlose Stufe; Pro $14,99/Monat oder $99/Jahr |
-| Wisfile | Kostenlose einmalige Bereinigung von PDFs und Word-Dateien | PDFs und Word, lokale KI | Nein | Nein | Kostenlos |
-| PowerShell + Aufgabenplanung | Alles, was sich skripten lässt | Was immer Sie programmieren | Nach Zeitplan | Nur, wenn Sie es bauen | Kostenlos |
-| File Juggler | Exakte Regeln, die umbenennen und verschieben | Text aus PDF, Word, Excel; keine OCR | Ja, sofort | Nicht dokumentiert | $50 einmalig + Steuer |
+| **Zush** | <BlogHighlight>Dateien ohne Muster: KI-Benennung plus Sortierung in Ordner</BlogHighlight> | Ja, per KI: Scans, Fotos, Screenshots, Office, PDFs, Video, Audio | Ja (Monitor) | Dauerhafte Rename History, Rückgängig für ganze Stapel | 50 kostenlose Umbenennungen, ohne Konto oder Karte; 10 $/Monat oder 48 $ einmalig inkl. Cloud-KI |
+| DropIt | Kostenlose Regeln nach Name, Größe, Datum | Einfache Filter | Ja, Scans in Intervallen | Nein | Kostenlos, Open Source |
+| Sortio | KI-Ordnerpläne plus klassische Regeln | Ja, per KI | Nur Pro (Smart Folders) | Sortierverlauf und Rückgängig | Gratis-Stufe; Pro 14,99 $/Monat oder 99 $/Jahr |
+| Wisfile | Kostenloses einmaliges Aufräumen von PDF- und Word-Dateien | PDFs und Word, lokale KI | Nein | Nein | Kostenlos |
+| PowerShell + Aufgabenplanung | Alles, was sich skripten lässt | Was Sie programmieren | Nach Zeitplan | Nur wenn Sie es selbst bauen | Kostenlos |
+| File Juggler | Exakte Regeln, die umbenennen und verschieben | Text aus PDF, Word, Excel; keine OCR | Ja, sofort | Vom Anbieter nicht angegeben | 50 $ einmalig + Steuern |
+
+## Was File Juggler gut kann
+
+File Juggler ist ein Windows-Automatisierungstool eines unabhängigen Entwicklers aus Dänemark. Regeln bestehen aus drei Teilen:
+
+1. **Überwachte Ordner**, etwa Downloads, Desktop oder ein Scanner-Ordner.
+2. **Bedingungen**: Dateiname und Pfad, Text in der Datei, Größe sowie Erstellungs- oder Änderungsdatum.
+3. **Aktionen**: verschieben, kopieren, umbenennen, Dateiendung ändern, löschen oder in den Papierkorb legen, Archive entpacken, zu einem Zip hinzufügen, einen Befehl ausführen oder zu Evernote hochladen.
+
+Es reagiert fast sofort, weil es Benachrichtigungen über Ordneränderungen abonniert, statt in festen Abständen zu scannen. Es liest Text in PDF-, Word- und Excel-Dateien und kann gefundene Wörter und Datumsangaben im neuen Dateinamen wiederverwenden. Version 3.1.9 erschien am 30. Oktober 2026, aufgegeben ist das Tool also nicht. Die Redaktion von Softpedia bewertet es mit 4,5/5, genauso wie Zush.
+
+Der Preis ist einfach: 50 $ einmalig vor Steuern an der Kasse, gültig für alle künftigen Upgrades. Eine Lizenz gilt für eine Person auf mehreren PCs oder für einen PC, den mehrere Personen teilen. Die 30-Tage-Testversion enthält alle Funktionen; danach erinnert die App an den Kauf, läuft aber weiter.
+
+## Warum Leute nach einer Alternative suchen
+
+- **Keine KI.** Jede Regel muss von Hand geschrieben werden. Eine Regel erfasst `Screenshot 2026-10-02 141203.png` oder `IMG_4382.jpg` nicht, weil weder Name noch Text verraten, was die Datei ist.
+- **Keine OCR.** Laut FAQ von File Juggler haben reine Bild-Scans keinen durchsuchbaren Text. Sie brauchen also erst ein separates OCR-Programm, bevor die Inhaltsregeln greifen.
+- **Nur Windows.** Eine Mac-Version gibt es nicht. Auf dem Mac ist [Hazel](/hazel-alternative) das Gegenstück.
+- **Kein Dienst.** Es läuft nur, solange ein Benutzer angemeldet ist, und passt deshalb schlecht auf Server.
+- **Der Preis**, wenn Sie nur nach Dateityp sortieren wollen. Das schaffen auch mehrere kostenlose Tools.
 
 ## 1. Zush: für die Dateien, die Regeln nicht beschreiben können
 
-[Zush für Windows](/windows) läuft unter Windows 10 und 11 und ist im [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X) erhältlich. Statt Bedingungen abzugleichen, liest es die Datei: den Text in einem PDF oder Scan, den Inhalt eines Fotos oder Screenshots, die Einzelbilder eines Videos. Dann schlägt es einen Namen vor, etwa `2026-09-12_acme_invoice_1042.pdf` oder `stripe-revenue-dashboard-september.png`.
+[Zush für Windows](/windows) läuft unter Windows 10 und 11 und kommt aus dem [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X). Statt Bedingungen abzugleichen, liest es die Datei: den Text in einem PDF oder Scan, den Inhalt eines Fotos oder Screenshots, Einzelbilder, Sprache und Untertitel eines Videos (auch MKV). Dann schlägt es einen Namen wie `2026-09-12_acme_invoice_1042.pdf` oder `stripe-revenue-dashboard-september.png` vor.
 
-![Zush für Windows benennt einen gemischten Stapel nach Inhalt um, wobei jeder vorgeschlagene Dateiname angezeigt wird, bevor der Stapel angewendet wird](/videos/windows/zush-batch-rename.mp4)
+![Zush für Windows benennt einen gemischten Stapel nach Inhalt um und zeigt jeden vorgeschlagenen Dateinamen, bevor der Stapel angewendet wird](/videos/windows/zush-batch-rename.mp4)
 
-Wo File Juggler eine Regel pro Ziel braucht, genügt Zush ein Satz unter **Folder rules**, etwa „Gruppiere Rechnungen nach Firma und Belege nach Monat“, oder es gruppiert Dateien auf Auto nach Inhalt. Sie prüfen vorgeschlagene Namen und Ordner gemeinsam, bevor irgendetwas verschoben wird. Prüfen Sie mehrdeutige Dateien, bevor Sie Änderungen anwenden.
+Wo File Juggler pro Ziel eine Regel braucht, genügt Zush ein Satz unter **Folder rules**, etwa „Rechnungen nach Firma und Belege nach Monat gruppieren“, oder es gruppiert Dateien im Modus Auto nach Inhalt. Vorgeschlagene Namen und Ordner prüfen Sie gemeinsam, bevor irgendetwas verschoben wird. Uneindeutige Dateien sollten Sie vor dem Anwenden ansehen.
 
-![Zush für Windows zeigt eine Vorschau inhaltsbasierter Ordnergruppen und vorgeschlagener Dateinamen vor Rename & sort](/images/showcase/windows/folder-sorting-light.webp)
+![Zush für Windows zeigt eine Vorschau inhaltsbasierter Ordnergruppen und vorgeschlagener Dateinamen vor „Rename & sort“](/images/showcase/windows/folder-sorting-light.webp)
 
-Für den Dauerbetrieb, den File Juggler bietet, speichern Sie die Einrichtung in einem Template und weisen es **Monitor** zu. Neue Dateien in Downloads oder einem Scanner-Ordner werden dann beim Eintreffen umbenannt und sortiert. Rename History speichert die alten und neuen Namen, sodass sich ein missglückter Stapel zurücksetzen lässt. Die KI läuft über Zush Cloud AI, Ihren eigenen API-Schlüssel oder lokal mit Ollama oder LM Studio, wenn die Dateien auf dem PC bleiben sollen.
+Für den Dauerbetrieb, den File Juggler bietet, speichern Sie die Einstellung als Template und weisen sie **Monitor** zu. Neue Dateien in Downloads oder einem Scanner-Ordner werden dann beim Eintreffen umbenannt und sortiert. Rename History behält alte und neue Namen auch nach einem Neustart, und Undo All macht einen ganzen Stapel rückgängig und listet eventuelle Konflikte auf. AI Rename erkennt außerdem doppelte Downloads und verschiebt sie in den Papierkorb; Kopien kosten keine Credits, und Undo stellt sie wieder her.
+
+Es funktioniert sofort: Die ersten 50 KI-Umbenennungen laufen über die verwaltete Zush Cloud AI, ohne Konto, Karte, API-Schlüssel oder Modell-Download. Für Dateien, die auf dem PC bleiben sollen, wechseln Sie zu Ollama oder LM Studio oder nutzen Ihren eigenen API-Schlüssel.
 
 ![Der Monitor-Tab von Zush für Windows überwacht die Ordner Screenshots und Downloads und benennt neue Dateien beim Eintreffen um](/images/showcase/windows/monitor-light.webp)
 
-Wählen Sie Zush, wenn Ihre Regelliste immer weiter wächst und trotzdem Dateien übersieht. Schritt für Schritt: [Dateien mit KI unter Windows in Ordner sortieren](/blog/sort-files-into-folders-with-ai-windows) und [30 fertige Ordnerregeln](/blog/ai-folder-sorting-prompts).
+Nehmen Sie Zush, wenn Ihre Regelliste immer länger wird und trotzdem Dateien verfehlt. Schritt für Schritt: [Dateien unter Windows mit KI in Ordner sortieren](/blog/sort-files-into-folders-with-ai-windows) und [30 fertige Ordnerregeln](/blog/ai-folder-sorting-prompts).
 
 <BlogCTA placement='inline' platform='windows' />
 
-Eine Zush-Lizenz deckt bis zu 3 Geräte unter Mac und Windows ab.
+Preis: 10 $ pro Monat oder 48 $ einmalig. Wie bei File Juggler enthält die Einmallizenz alle künftigen Updates. Dazu kommen die verwaltete Zush Cloud AI sowie BYOK, Ollama und LM Studio, unbegrenzte Umbenennungen, bis zu 3 Geräte unter Windows und Mac und 14 Tage Rückerstattung. Im Microsoft Store (USA) hat Zush 5,0 aus 8 Bewertungen, die Softpedia-Redaktion vergibt 4,5/5 (Stand 17. November 2026).
 
-Sie können [Templates exportieren](/docs/template-import-export), einschließlich Naming Blocks, Custom AI Blocks und Ordnerregeln, und sie auf einem anderen Computer importieren. Wählen Sie dort lokale Ziele, Ordnerberechtigungen und KI-Verbindungen erneut aus; übertragen werden die Workflow-Einstellungen, nicht Ihre Dateien.
-
-Zush unterstützt außerdem verschachtelte Ordnerregeln, etwa die Gruppierung nach Jahr und dann nach Monat. Sie können bereits umbenannte Dateien sortieren, ohne ihre Namen erneut zu ändern oder einen weiteren Umbenennungs-Credit zu verbrauchen. Prüfen Sie die Ziele, bevor Sie sie anwenden. Diese separate Aktion verarbeitet einen bestehenden Stapel; eine Änderung am Monitor-Template ordnet ihn nicht rückwirkend neu. Die [KI-Ordnersortierung](/docs/folder-sorting) funktioniert unter Mac und Windows.
+Schwäche gegenüber File Juggler: Zush hat keine Aktionen wie „Befehl ausführen“, Archiv entpacken oder Evernote-Upload. Eine Regelkette, die darauf angewiesen ist, ersetzt es also nicht.
 
 ## 2. DropIt: die kostenlose Regel-Engine
 
-DropIt ist kostenlos und Open Source. Regeln erfassen Dateien nach Name, Größe, Datum, Eigenschaften oder regulären Ausdrücken, und 21 Aktionen decken Verschieben, Kopieren, Umbenennen, Komprimieren, Entpacken und mehr ab. Sie ziehen Dateien auf ein schwebendes Ziel oder lassen überwachte Ordner in festen Zeitabständen scannen.
+DropIt ist kostenlos und Open Source. Regeln erkennen Dateien nach Name, Größe, Datum, Eigenschaften oder regulären Ausdrücken, und 21 Aktionen decken Verschieben, Kopieren, Umbenennen, Komprimieren, Entpacken und mehr ab. Sie ziehen Dateien auf ein schwebendes Ziel oder lassen überwachte Ordner in Intervallen scannen.
 
-Die neueste Version, 8.5.1, stammt vom Oktober 2018. Sie läuft weiterhin, aber erwarten Sie keine neuen Funktionen und keine KI.
+Schwäche: Die letzte Version, 8.5.1, stammt vom Februar 2018. Sie läuft noch, aber neue Funktionen oder KI sind nicht zu erwarten.
 
-Wählen Sie DropIt, wenn Sie nur „PDFs hierhin, Bilder dorthin“ brauchen und Bezahlen keine Option ist.
+Nehmen Sie DropIt, wenn Sie nur „PDFs hierhin, Bilder dorthin“ brauchen und nichts bezahlen wollen.
 
 ## 3. Sortio: KI-Pläne mit Regeln darunter
 
-Sortio kombiniert beide Ansätze. Sie können klassische Regeln schreiben oder die Organisation in einfachem Englisch beschreiben, einen Plan prüfen und dann umbenennen, Ordner anlegen und Dateien verschieben lassen. Smart Folders wenden den Plan weiter auf neu eintreffende Dateien an. Es läuft unter Windows, macOS und Linux.
+Sortio verbindet beide Ansätze. Sie schreiben klassische Regeln oder beschreiben die gewünschte Ordnung in normaler Sprache, prüfen einen Plan und lassen Sortio dann umbenennen, Ordner anlegen und Dateien verschieben. Smart Folders wenden den Plan weiter auf neue Dateien an. Es läuft unter Windows, macOS und Linux.
 
-Der kostenlose Tarif umfasst regelbasierte Sortierung mit bis zu fünf Regeln, überwachte Ordner, Rückgängig-Funktion und eine einmalige KI-Testversion. Pro kostet $14,99 pro Monat oder $99 pro Jahr mit einem monatlichen KI-Kontingent; Ollama hält die Verarbeitung lokal.
+Der kostenlose Plan umfasst regelbasiertes Sortieren mit bis zu fünf Regeln und drei Spaces, Vorschau, Sortierverlauf, Rückgängig und einen einmaligen KI-Test. Überwachte Ordner und Automatisierungen brauchen Pro für 14,99 $ pro Monat oder 99 $ pro Jahr, mit monatlichem KI-Kontingent. Mit Ollama bleibt die Verarbeitung lokal, angemeldet wird mit einem E-Mail-Konto.
 
-Wählen Sie Sortio, wenn Sie Regeln im Stil von File Juggler und KI in einer App möchten oder Linux brauchen. Ausführlicher Vergleich: [Zush vs. Sortio](/blog/zush-vs-sortio).
+Nehmen Sie Sortio, wenn Sie Regeln im Stil von File Juggler und KI in einer App wollen oder Linux brauchen. Schwäche: Der Dauerbetrieb gibt es nur mit Pro. Den genauen Vergleich finden Sie unter [Zush vs. Sortio](/blog/zush-vs-sortio).
 
-## 4. Wisfile: kostenlose KI-Bereinigung für Dokumente
+## 4. Wisfile: kostenloses KI-Aufräumen für Dokumente
 
-Wisfile ist kostenlos, läuft lokal unter Mac und Windows und benennt Dokumente anhand ihres Inhalts mit Vorlagen wie `Author-Year-Title` um. Es kann einen Stapel auch in Themenordner gruppieren. Laut der FAQ werden Word und PDF als Formate unterstützt.
+Wisfile ist kostenlos, läuft lokal auf Mac und Windows und benennt Dokumente anhand ihres Inhalts mit Vorlagen wie `Author-Year-Title` um. Einen Stapel kann es auch in Themenordner gruppieren. Laut FAQ werden Word und PDF unterstützt.
 
-Es gibt keine Ordnerüberwachung und keine Zeitplanung: Sie ziehen die Dateien hinein und starten es jedes Mal neu. Laut der FAQ gibt es außerdem keine eingebaute Rückgängig-Funktion, testen Sie also zuerst an Kopien.
+Ordnerüberwachung oder Zeitpläne gibt es nicht: Sie ziehen die Dateien jedes Mal hinein und starten den Lauf selbst. Laut FAQ fehlt außerdem eine eingebaute Rückgängig-Funktion, testen Sie also zuerst mit Kopien.
 
-Wählen Sie Wisfile für eine einmalige Bereinigung eines Papier- oder Dokumentenarchivs. Einen genaueren Blick bietet [Zush vs. Wisfile](/blog/zush-vs-wisfile).
+Nehmen Sie Wisfile für ein einmaliges Aufräumen eines Papier- oder Dokumentarchivs. Mehr dazu in [Zush vs. Wisfile](/blog/zush-vs-wisfile).
 
 ## 5. PowerShell und Aufgabenplanung: der Do-it-yourself-Weg
 
-Windows kann einfache File-Juggler-Aufgaben ohne zusätzliche Software erledigen. PowerShell verschiebt und benennt Dateien um; die Aufgabenplanung führt das Skript bei der Anmeldung oder alle paar Minuten aus:
+Einfache File-Juggler-Aufgaben erledigt Windows auch ohne zusätzliche Software. PowerShell verschiebt und benennt Dateien um, die Aufgabenplanung startet das Skript bei der Anmeldung oder alle paar Minuten:
 
 ```powershell
 Get-ChildItem "$env:USERPROFILE\Downloads" -Filter *.pdf |
   Move-Item -Destination "$env:USERPROFILE\Documents\PDFs"
 ```
 
-Das ist kostenlos und so flexibel wie Ihre Skriptkenntnisse. Sie kümmern sich aber auch selbst um doppelte Namen, gesperrte Dateien, Protokollierung und Rückgängigmachen. Weitere Optionen: [So organisieren Sie Ihren Downloads-Ordner unter Windows](/blog/organize-downloads-folder-windows).
+Das ist kostenlos und so flexibel wie Ihr Skript. Um doppelte Namen, gesperrte Dateien, Protokollierung und Rückgängig kümmern Sie sich allerdings selbst. Weitere Möglichkeiten: [den Downloads-Ordner unter Windows organisieren](/blog/organize-downloads-folder-windows).
 
 <BlogProductIntro
   title="Regeln können keinen Screenshot lesen. Zush schon."
-  description="Zush benennt Windows-Dateien nach ihrem Inhalt, sortiert sie anhand einer Anweisung in Ordner und tut das weiter für neue Dateien in einem überwachten Ordner."
+  description="Zush benennt Windows-Dateien nach ihrem Inhalt, sortiert sie nach einer einzigen Anweisung in Ordner und macht das bei neuen Dateien in einem überwachten Ordner automatisch weiter."
   links={[
     { href: '/windows', label: 'Zush für Windows' },
     { href: '/ai-file-sorter', label: 'KI-Dateisortierer' },
-    { href: '/docs/folder-monitoring', label: 'Dokumentation zur Ordnerüberwachung' },
+    { href: '/docs/folder-monitoring', label: 'Doku zur Ordnerüberwachung' },
   ]}
 />
 
 ## File Juggler behalten oder wechseln?
 
-- Ihre Dateien folgen festen Mustern (dieselbe Bank, dasselbe Layout, dasselbe Namenspräfix): **File Juggler behalten**.
-- Screenshots, Scans, Handyfotos und zufällige Downloads mit bedeutungslosen Namen: **Zush**.
-- Kostenlose Sortierung nach Dateiendung oder Name: **DropIt** oder **PowerShell**.
+- Ihre Dateien folgen festen Mustern (gleiche Bank, gleiches Layout, gleiches Namenspräfix): **File Juggler behalten**.
+- Screenshots, Scans, Handyfotos und zufällige Downloads mit nichtssagenden Namen: **Zush**.
+- Kostenlos nach Endung oder Name sortieren: **DropIt** oder **PowerShell**.
 - Regeln und KI in einem Tool oder Linux: **Sortio**.
-- Ein kostenloser einmaliger Durchlauf über PDFs und Word-Dateien: **Wisfile**.
+- Ein kostenloser einmaliger Durchgang durch PDF- und Word-Dateien: **Wisfile**.
 
-Sie können auch beide nutzen. Zush überwacht Downloads und schreibt vorhersehbare Namen wie `2026-10-02_acme_invoice.pdf`, und File Juggler verschiebt `*_invoice.pdf` in einen festen Ordner „Finanzen“. Jedes Tool übernimmt den Teil, den es gut kann. Testen Sie jede Einrichtung zuerst an Kopien; unsere Checkliste [So benennen Sie Dateien sicher im Stapel um](/blog/how-to-safely-batch-rename-files) zeigt, was Sie prüfen sollten.
+Sie können auch beides nutzen. Zush überwacht Downloads und schreibt vorhersehbare Namen wie `2026-10-02_acme_invoice.pdf`, und File Juggler verschiebt `*_invoice.pdf` in einen festen Finanzordner. Jedes Tool macht den Teil, den es gut kann. Testen Sie jede Einrichtung zuerst mit Kopien; worauf es ankommt, steht in unserer Checkliste zum [sicheren Stapel-Umbenennen von Dateien](/blog/how-to-safely-batch-rename-files).
 
-Für einen breiteren Vergleich von KI-Tools lesen Sie die [besten KI-Dateiorganizer für Windows 11](/blog/best-ai-file-organizers-windows).
+Einen breiteren Vergleich von KI-Tools finden Sie bei den [besten KI-Dateiorganisatoren für Windows 11](/blog/best-ai-file-organizers-windows). Sie kommen vom Mac? Lesen Sie [Hazel-Alternativen für Windows](/blog/hazel-for-windows-alternatives).
+
+## Quellen und wie wir geprüft haben
+
+<BlogSources ids={['file-juggler', 'dropit', 'sortio', 'wisfile']} />
 
 ## FAQ
 
 ### Gibt es eine kostenlose Alternative zu File Juggler?
 
-Ja. DropIt ist kostenlos und Open Source, wurde aber seit 2018 nicht mehr aktualisiert. Der kostenlose Tarif von Sortio umfasst bis zu fünf Regeln. PowerShell mit Aufgabenplanung ist kostenlos, wenn Sie skripten können. Zush enthält 50 kostenlose KI-Umbenennungen, falls Ihr Problem unklare Dateinamen sind.
+Ja. DropIt ist kostenlos und Open Source, die letzte Version stammt aber vom Februar 2018. Der kostenlose Plan von Sortio umfasst bis zu fünf Regeln, überwachte Ordner brauchen allerdings Pro. PowerShell mit der Aufgabenplanung ist kostenlos, wenn Sie skripten können. Wisfile ist für PDF- und Word-Dateien kostenlos. Zush enthält 50 kostenlose KI-Umbenennungen ohne Konto oder Karte, falls Ihr Problem unklare Dateinamen sind.
 
 ### Wird File Juggler noch gepflegt?
 
-Ja. Laut den Versionshinweisen erschien Version 3.1.7 im September 2026 und eine Beta von 3.1.8 im Oktober 2026.
+Ja. Laut der News-Seite von File Juggler erschien Version 3.1.9 am 30. Oktober 2026, und die Lizenz umfasst alle künftigen Upgrades. Damit gehört es zu den wenigen regelbasierten Windows-Organizern, die noch regelmäßig Updates bekommen. DropIt, die wichtigste kostenlose Alternative, hat seit Februar 2018 keine neue Version mehr erhalten.
 
 ### Nutzt File Juggler KI?
 
-Nein. Es gleicht Bedingungen ab, die Sie schreiben, einschließlich Wörtern in PDFs und Office-Dateien. Reine Bild-Scans kann es ohne separate OCR nicht lesen.
+Nein. Es gleicht Bedingungen ab, die Sie schreiben, darunter Wörter in PDF-, Word- und Excel-Dateien, und kann Datumsangaben aus dem Text wiederverwenden. Reine Bild-Scans liest es ohne separates OCR-Programm nicht, und was ein Foto oder Screenshot zeigt, erkennt es nicht. Für solche Dateien brauchen Sie ein KI-Tool wie Zush, Sortio oder Wisfile.
+
+### Lohnt sich File Juggler für 50 $ im Vergleich zu Zush für 48 $?
+
+Sie kaufen damit Verschiedenes. Für 50 $ plus Steuern bekommen Sie bei File Juggler eine Regel-Engine mit allen künftigen Upgrades, aber ohne KI. Die Einmallizenz von Zush für 48 $ enthält KI-Benennung und Ordnersortierung mit der verwalteten Zush Cloud AI, lokale und BYOK-Modi, unbegrenzte Umbenennungen, alle künftigen Updates und bis zu 3 Geräte unter Windows und Mac. Viele nutzen beide.
+
+### Schicken Zush oder File Juggler meine Dateien irgendwohin?
+
+File Juggler führt seine Regeln lokal aus. Bei Zush hängt es vom gewählten Modus ab: Mit Ollama oder LM Studio bleibt die Analyse auf Ihrem PC; mit Zush Cloud AI oder Ihrem eigenen API-Schlüssel geht der Dateiinhalt an das jeweilige Cloud-Modell, das den Namen erzeugt. Wählen Sie für vertrauliche Ordner einen lokalen Modus, und prüfen Sie auch die Einstellung in Sortio, das gehostete KI, BYOK oder Ollama anbietet.
 
 ### Gibt es File Juggler für den Mac?
 
-Nein, File Juggler gibt es nur für Windows. Hazel ist das nächstliegende Mac-Gegenstück für Regeln, und Zush für Mac deckt KI-Benennung und Ordnersortierung ab. Siehe unsere Seite zur [Hazel-Alternative](/hazel-alternative).
+Nein, File Juggler gibt es nur für Windows. Hazel ist für Regeln das nächste Gegenstück auf dem Mac, die Softpedia-Redaktion bewertet es mit 5,0/5. Zush für Mac übernimmt KI-Benennung und Ordnersortierung, auch mit überwachten Ordnern auf externen Laufwerken. Wie sich die beiden Ansätze auf dem Mac unterscheiden, zeigt unsere Seite zur [Hazel-Alternative](/hazel-alternative).
 
 ### Kann Zush File Juggler vollständig ersetzen?
 
-Für das Benennen von Dateien nach Inhalt und das Sortieren in Ordner ja, einschließlich überwachter Ordner. File Juggler hat noch Aktionen, die Zush nicht bietet, etwa einen Befehl ausführen, Archive entpacken oder zu Evernote hochladen. Wenn Sie darauf angewiesen sind, behalten Sie es neben Zush.
+Beim Benennen nach Inhalt und Sortieren in Ordner ja, auch mit überwachten Ordnern. File Juggler hat aber Aktionen, die Zush nicht bietet, etwa einen Befehl ausführen, Archive entpacken oder zu Evernote hochladen. Wenn Sie darauf angewiesen sind, behalten Sie File Juggler für diesen Teil und lassen Zush die aussagekräftigen Namen schreiben, auf die seine Regeln dann passen.

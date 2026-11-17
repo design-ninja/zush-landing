@@ -1,6 +1,6 @@
 ---
 title: "PDF·스캔 문서를 위한 최고의 AI 문서 정리 도구 (2026)"
-description: "Mac, Windows, 셀프 호스팅용 AI 문서 정리 도구 6종을 비교합니다: Zush, Paperless-ngx, DEVONthink, NameQuick, Wisfile, File Juggler. OCR, 파일명 짓기, 폴더 정리, 로컬 AI, 가격까지 다룹니다."
+description: "PDF·스캔본용 AI 문서 정리 도구 6종: Zush, Paperless-ngx, DEVONthink, NameQuick, Wisfile 등."
 date: "2026-10-16"
 slug: "best-ai-document-organizers-ko"
 locale: "ko"
@@ -11,149 +11,152 @@ tags:
   - "PDF 및 문서"
   - "도구 비교"
   - "파일 정리"
-tldr: "PDF, 스캔본, 청구서, Office 파일을 내용 기준으로 이름 짓고 Mac이나 Windows의 일반 폴더에 정리하고 싶다면 Zush가 가장 좋은 AI 문서 정리 도구입니다. 검색 가능한 아카이브를 직접 호스팅할 수 있다면 Paperless-ngx가 가장 좋은 무료 선택지입니다. DEVONthink는 완전한 문서 데이터베이스를 원하는 Mac 사용자에게 알맞습니다. NameQuick, Wisfile, File Juggler는 더 좁은 범위의 문서 워크플로를 다룹니다. Zush 라이선스 하나로 최대 3대의 기기에서 사용할 수 있습니다."
+tldr: "PDF, 스캔본, 청구서, Office 파일을 내용으로 이름 짓고 Mac이나 Windows의 일반 폴더로 정리하고 싶다면 Zush가 가장 좋은 AI 문서 정리 도구입니다. 계정 없이 50회 무료로 쓸 수 있습니다. 검색 가능한 아카이브를 직접 호스팅할 수 있다면 Paperless-ngx가 가장 좋은 무료 선택지입니다. DEVONthink는 완전한 문서 데이터베이스를 원하는 Mac 사용자에게 맞습니다. NameQuick, Wisfile, File Juggler는 더 좁은 범위의 문서 작업을 다룹니다. Zush 라이선스 하나로 최대 3대에서 쓸 수 있습니다."
 earlyTaskExample: false
-reviewed: "2026-10-26"
+reviewed: "2026-11-17"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-간단히 답하면, 대부분의 사람에게 가장 좋은 AI 문서 정리 도구는 [Zush](/ai-file-organizer)입니다. PDF, 스캔본, 청구서, 영수증, Office 파일을 하나하나 읽고 `2026-09-12_acme_invoice_1042.pdf` 같은 이름을 붙이며, Mac이나 Windows PC의 일반 폴더로 정리해 줄 수 있습니다. 문서를 검색 가능한 아카이브 서버로 옮기고 싶다면 무료이며 셀프 호스팅 방식인 **Paperless-ngx**를 쓰세요. Mac에서는 **DEVONthink**가 가장 완성도 높은 문서 데이터베이스입니다.
+짧은 답: 대부분의 사람에게 가장 좋은 AI 문서 정리 도구는 [Zush](/ai-file-organizer)입니다. PDF, 스캔본, 청구서, 영수증, Office 파일을 하나씩 읽고 `2026-09-12_acme_invoice_1042.pdf` 같은 이름을 붙이며, Mac이나 Windows에서 이미 쓰는 폴더로 분류할 수 있습니다. 문서를 검색 가능한 아카이브 서버로 가져오고 싶다면 무료 셀프 호스팅 도구인 **Paperless-ngx**를 쓰세요. Mac에서는 **DEVONthink**가 가장 완성도 높은 문서 데이터베이스입니다.
 
-**최종 확인일: 2026년 10월 16일.** [Zush – Mac 및 Windows용 AI 파일 이름 변경 도구](/)를 만든 팀이 작성했습니다. 경쟁 제품의 세부 정보는 각 업체의 사이트나 문서에서 가져왔으며, 해당 섹션에 링크가 있습니다. 이 글은 출처를 바탕으로 한 비교이며, 공통 벤치마크는 아닙니다.
+**확인 방법:** 이 글은 [Zush](/) 제작사가 썼습니다. 경쟁 제품의 가격, 기능, 평점은 2026년 11월 17일에 각 제조사 사이트와 공식 스토어에서 확인했습니다([아래 출처](#sources-and-how-we-checked)). 실험실 테스트가 아니라 문서로 확인된 기능을 비교한 글입니다.
 
-**Zush 기능은 2026년 10월 26일에 검토했습니다.** 경쟁 제품 정보는 이 글에 명시된 확인 날짜를 그대로 유지합니다.
+## 빠른 비교
+
+| 도구 | 유형 | 플랫폼 | 스캔본 읽기 | 파일 이름 짓기 | 폴더 분류 | 로컬 AI | 가격 |
+|---|---|---|---|---|---|---|---|
+| **Zush** | 폴더 기반 | Mac, Windows | <BlogHighlight>예, 이미지로만 된 스캔본 포함</BlogHighlight> | Templates + 145개 이상의 Naming Blocks | 예, Auto 또는 Folder rules | Ollama, LM Studio | 계정·카드 없이 50회 무료, 월 $10 또는 클라우드 AI 포함 1회 $48 |
+| Paperless-ngx | 아카이브 서버 | 셀프 호스팅(Docker) | 예, Tesseract OCR | 저장 이름 설정 가능 | 관리형 저장 경로 | 선택 사항, Ollama 사용 | 무료, 오픈 소스 |
+| DEVONthink | 아카이브 데이터베이스 | Mac(iOS 보조 앱) | OCR은 Pro와 Server에만 | 자체 데이터베이스 안에서 | 자체 데이터베이스의 그룹 | Ollama, LM Studio(Pro, Server) | $99, $199 또는 $499 |
+| NameQuick | 폴더 기반 | Mac, Windows | 예 | Presets | 조건부 Rules | Self-Managed 요금제 | 30회 무료, 월 $12부터 또는 1회 $69 |
+| Wisfile | 폴더 기반 | Mac, Windows | 예(FAQ 기준) | 템플릿 | 클릭 한 번으로 주제 폴더 | 내장 | 무료 |
+| File Juggler | 규칙, AI 없음 | Windows | OCR 없음 | 규칙 | 규칙 | AI 아님 | 1회 $50 + 세금 |
 
 ## AI로 문서를 정리하는 두 가지 방식
 
-AI 문서 정리 도구는 두 그룹으로 나뉘며, 어떤 그룹을 고르느냐가 기능 목록보다 더 중요합니다.
+어떤 기능 목록보다 이 두 그룹 중 무엇을 고르느냐가 더 중요합니다.
 
-1. **폴더 기반 도구**는 파일이 원래 있는 자리에서 이름을 바꾸고 이동합니다. 문서는 Finder, File Explorer, iCloud, OneDrive, Dropbox에서 평범한 파일로 그대로 남습니다. Zush, NameQuick, Wisfile, File Juggler가 이 방식입니다.
-2. **아카이브 도구**는 문서를 자체 라이브러리나 서버로 가져온 뒤 태그, 전문 검색, 메타데이터를 추가합니다. Paperless-ngx와 DEVONthink가 이 방식입니다.
+1. **폴더 기반 도구**는 파일이 원래 있던 곳에서 이름을 바꾸고 옮깁니다. 문서는 Finder, File Explorer, iCloud, OneDrive, Dropbox에서 여는 일반 파일로 남습니다. Zush, NameQuick, Wisfile, File Juggler가 이 방식입니다.
+2. **아카이브 도구**는 문서를 자체 라이브러리나 서버로 가져온 뒤 태그, 전문 검색, 메타데이터를 붙입니다. Paperless-ngx와 DEVONthink가 이 방식입니다.
 
 회계사, 팀, 다른 앱과 폴더를 공유한다면 폴더 기반 도구를 고르세요. 모든 것을 한곳에서 검색하고 싶고 그 앱 안에서 작업해도 괜찮다면 아카이브를 고르세요.
 
-## 간단 비교
+## 1. Zush: 이미 쓰는 폴더에 가장 잘 맞는 AI 문서 정리 도구
 
-| 도구 | 유형 | 플랫폼 | 스캔 읽기 | 파일명 짓기 | 폴더로 정리 | 로컬 AI | 가격 |
-|---|---|---|---|---|---|---|---|
-| **Zush** | 폴더 기반 | Mac, Windows | <BlogHighlight>예, 이미지 전용 스캔 포함</BlogHighlight> | 템플릿 + 145개 이상의 Naming Blocks | 예, Auto 또는 Folder rules | Ollama, LM Studio | 무료 이름 변경 50회; 월 $10 또는 1회 결제 $48 |
-| Paperless-ngx | 아카이브 서버 | 셀프 호스팅 (Docker) | 예, Tesseract OCR | 설정 가능한 저장 이름 | 관리형 저장 경로 | 선택 사항, Ollama 경유 | 무료, 오픈 소스 |
-| DEVONthink | 아카이브 데이터베이스 | Mac (iOS 보조 앱) | Pro와 Server에서 OCR | 자체 데이터베이스 내부 | 자체 데이터베이스의 그룹 | Ollama, LM Studio | $99, $199 또는 $499 |
-| NameQuick | 폴더 기반 | Mac, Windows | 예 | Presets | 조건부 규칙 | Self-Managed 플랜 | 월 $12부터 또는 1회 결제 $69 |
-| Wisfile | 폴더 기반 | Mac, Windows | 예, FAQ 기준 | 템플릿 | 원클릭 주제별 폴더 | 내장 | 무료 |
-| File Juggler | 규칙 기반, AI 없음 | Windows | OCR 없음 | 규칙 | 규칙 | AI 아님 | 1회 결제 $50 + 세금 |
+[Zush](/ai-file-organizer)는 Mac과 Windows에서 동작합니다. PDF, 스캔본, 영수증, 계약서, Word, Excel, Pages, EPUB 파일이 든 폴더를 넣으면 텍스트 레이어가 없는 이미지 스캔본까지 하나씩 읽습니다. 날짜, 거래처, 금액, 고객, 문서 유형, 청구서 번호처럼 검색할 때 쓰는 항목으로 이름을 제안합니다. Rename을 누르기 전에는 아무것도 바뀌지 않으며, 제안을 더블클릭해 수정할 수 있습니다.
 
-## 1. Zush: 이미 쓰는 폴더에 가장 알맞은 AI 문서 정리 도구
+![섞인 폴더의 묶음을 적용하기 전에 제안된 파일 이름을 하나씩 보여 주는 Mac용 Zush](/images/showcase/macos/batch-rename-light.webp)
 
-[Zush](/ai-file-organizer)는 Mac과 Windows에서 실행됩니다. PDF, 스캔본, 영수증, 계약서, Word, Excel, Pages 파일이 든 폴더를 끌어다 놓으면 텍스트 레이어가 없는 이미지 전용 스캔을 포함해 모든 파일을 읽습니다. 그런 다음 날짜, 거래처, 금액, 고객, 문서 유형, 청구서 번호처럼 중요한 항목으로 구성한 이름을 제안합니다.
+Zush의 이름은 Template을 따르므로 AI가 그때그때 지어내는 대신 모든 청구서가 같은 형식이 됩니다. Bookkeeper Expenses가 준비된 Templates 중 하나이고, 145개 이상의 Naming Blocks로 필요하면 일련번호까지 넣은 나만의 패턴을 만들 수 있습니다.
 
-![일괄 적용 전에 혼합 폴더의 각 제안 파일명을 보여주는 Mac용 Zush](/images/showcase/macos/batch-rename-light.webp)
+문서를 폴더로 정리하려면 **Folder rules**에 "청구서는 회사별로, 영수증은 월별로 묶기" 같은 문장을 쓰거나 Auto로 두세요. 이름과 폴더를 한 번의 미리 보기에서 검토합니다. 규칙에는 날짜나 페이지 수 같은 파일 정보도 쓸 수 있고, Mac과 Windows 모두에서 이름을 바꾸지 않고 분류만 할 수도 있습니다.
 
-이름은 템플릿을 따르므로, AI가 즉흥적으로 짓는 대신 모든 청구서가 같은 형태가 됩니다. Bookkeeper Expenses는 기본 제공 템플릿 중 하나이며, 145개 이상의 Naming Blocks로 나만의 패턴을 만들 수 있습니다.
+![청구서는 회사별, 영수증은 월별로 묶으라는 지시와 예시 규칙이 들어 있는 Zush의 Folder rules 대화 상자](/images/showcase/macos/folder-rules-light.webp)
 
-문서까지 정리하려면 **Folder rules**에 "청구서는 회사별로, 영수증은 월별로 묶어줘"와 같은 문장을 쓰거나 Auto로 두세요. 무엇이든 이동하기 전에 하나의 미리보기에서 이름과 폴더를 검토합니다.
+새로 들어오는 서류에는 스캐너 폴더나 다운로드 폴더의 **Monitor**에 Template을 연결하세요. Zush의 AI Rename은 중복 스캔본도 찾아냅니다. 그대로 두거나, 이름에 표시하거나, 휴지통으로 옮길 수 있으며 사본에는 크레딧을 쓰지 않습니다. Rename History는 재시작 후에도 남고, Undo All은 묶음을 복원하면서 충돌을 표시합니다.
 
-![청구서는 회사별로, 영수증은 월별로 묶으라는 지시문과 예시 규칙이 들어 있는 Zush Folder rules 대화상자](/images/showcase/macos/folder-rules-light.webp)
+바로 쓸 수 있습니다. 계정, 카드, API 키, 모델 다운로드 없이 Zush Cloud AI로 AI 이름 변경 50회가 무료입니다. 민감한 파일은 Ollama나 LM Studio로 내 컴퓨터 안에 둘 수 있습니다. $48 1회 결제 라이선스에는 관리형 클라우드 AI와 모든 로컬 및 BYOK 모드, 이후 모든 업데이트, Mac과 Windows를 합쳐 최대 3대, 14일 환불이 포함됩니다.
 
-새로 들어오는 서류는 스캐너 폴더나 Downloads 폴더의 **Monitor**에 템플릿을 지정하면, 새 문서가 도착하는 대로 이름이 붙고 정리됩니다. Rename History로 적용한 일괄 작업을 되돌릴 수 있습니다. 민감한 파일은 Ollama나 LM Studio를 사용해 컴퓨터 안에 둘 수 있으며, Zush Cloud AI와 직접 발급받은 API 키가 다른 선택지입니다.
-
-문서를 누구나 공유 폴더에서 열 수 있는 일반 파일로 유지하고 싶다면 Zush를 고르세요. 유용한 가이드: [스캔 문서 자동으로 이름 바꾸기](/blog/rename-scanned-documents-automatically), [AI로 청구서 이름 바꾸기](/rename-invoices-with-ai), [AI로 영수증 이름 바꾸기](/rename-receipts-with-ai).
+문서가 공유 폴더에서 누구나 열 수 있는 일반 파일로 남아야 한다면 Zush를 고르세요. 유용한 가이드: [스캔 문서 이름 자동 변경](/blog/rename-scanned-documents-automatically), [AI로 청구서 이름 변경](/rename-invoices-with-ai), [AI로 영수증 이름 변경](/rename-receipts-with-ai). 중복 스캔본이 있다면 [중복 파일 제거](/remove-duplicate-files)를 참고하세요.
 
 <BlogCTA placement='inline' platform='general' />
 
-Zush 라이선스 하나로 Mac과 Windows에서 최대 3대의 기기를 사용할 수 있습니다.
-
-Naming Blocks, Custom AI Blocks, 폴더 규칙이 포함된 [템플릿을 내보낸](/docs/template-import-export) 뒤 다른 컴퓨터에서 가져올 수 있습니다. 로컬 대상 폴더, 폴더 권한, AI 연결은 그 컴퓨터에서 다시 선택해야 합니다. 옮겨지는 것은 워크플로 설정이며 파일 자체는 아닙니다.
-
-Zush는 연도별로 묶은 다음 월별로 묶는 것 같은 중첩 폴더 규칙도 지원합니다. 이미 이름을 바꾼 파일은 이름을 다시 바꾸거나 이름 변경 크레딧을 추가로 쓰지 않고도 정리할 수 있습니다. 적용하기 전에 대상 폴더를 검토하세요. 이 별도 작업은 기존 일괄 작업을 처리하며, Monitor 템플릿을 바꿔도 이미 정리된 파일이 소급해서 재정리되지는 않습니다. [AI 폴더 정리](/docs/folder-sorting)는 Mac과 Windows에서 작동합니다.
-
 ## 2. Paperless-ngx: 가장 좋은 무료 셀프 호스팅 아카이브
 
-Paperless-ngx는 자체 서버나 NAS에서, 보통 Docker로 운영하는 오픈 소스 문서 관리 시스템(GPL-3.0)입니다. Tesseract로 100개 넘는 언어의 OCR을 수행하고, 원본을 PDF/A 아카이브 사본과 함께 보관하며, 머신러닝으로 태그, 거래 상대방, 문서 유형을 제안합니다. 이메일에서 문서를 가져오는 것도 가능합니다.
+Paperless-ngx(v3.4.2)는 직접 운영하는 서버나 NAS에서 보통 Docker로 실행하는 오픈 소스 문서 관리 시스템(GPL-3.0)입니다. 100개 이상의 언어로 Tesseract OCR을 실행하고, 원본 옆에 PDF/A 보관용 사본을 두며, 머신러닝으로 태그, 거래 상대, 문서 유형을 제안합니다. 이메일에서 문서를 가져올 수도 있습니다.
 
-최신 버전에는 기본값이 꺼짐인 선택형 AI 기능이 추가되었습니다. 문서 제안, 문서와의 대화, 유사 문서 검색입니다. 이 기능은 Ollama를 통해 로컬로 실행하거나 OpenAI 호환 API를 통해 실행할 수 있습니다. Paperless는 설정 가능한 형식으로 파일명과 폴더를 직접 관리합니다.
+AI 기능은 선택 사항이며 기본적으로 꺼져 있습니다. AI 제안, 문서와 대화하기, 유사 문서 검색이 있으며 Ollama를 통해 로컬로 또는 OpenAI 호환 API로 실행됩니다. 파일 이름과 저장 경로는 Paperless가 설정 가능한 형식에 따라 직접 관리합니다.
 
-셀프 호스팅이 익숙하고 가정이나 소규모 사무실을 위한 검색 가능한 종이 문서 아카이브를 원한다면 Paperless-ngx를 고르세요. 파일을 기존 폴더 구조에 그대로 두고 싶다면 건너뛰세요.
+셀프 호스팅에 익숙하고 가정이나 작은 사무실용으로 검색 가능한 종이 문서 아카이브를 원한다면 Paperless-ngx를 고르세요. 약점: 서버와 Docker 설정이 필요하고, 문서는 기존 폴더 구조가 아니라 Paperless 아카이브 안에 들어갑니다.
 
-## 3. DEVONthink: Mac에서 가장 좋은 문서 데이터베이스
+## 3. DEVONthink: Mac용 최고의 문서 데이터베이스
 
-DEVONthink는 문서를 저장, 검색, 분류하는 오래된 Mac 앱입니다. 버전 4.4.2는 macOS Ventura 이상이 필요합니다. 모든 에디션이 이전에 정리해 둔 방식을 바탕으로 문서를 그룹으로 분류할 수 있습니다. Pro와 Server는 OCR이 포함된 스캐너 연동과 채팅, 요약, 태그 지정, 스마트 규칙 일괄 처리 같은 생성형 AI 기능을 추가합니다. 지원 모델에는 ChatGPT, Claude, Mistral이 있고, Ollama나 LM Studio를 통한 로컬 모델도 쓸 수 있습니다.
+DEVONthink 4.4.2는 문서를 저장, 검색, 분류하는 오래된 Mac 앱입니다. OCR과 생성형 AI 기능(대화, 요약, 태그, 스마트 규칙 일괄 처리)은 Pro와 Server 에디션에만 있습니다. 지원 모델은 ChatGPT, Claude, Mistral이며, Ollama나 LM Studio로 로컬 모델도 쓸 수 있습니다.
 
-Standard는 $99, Pro는 $199, Server는 $499이며 세금 별도입니다. 모두 2개 좌석과 1년간의 업데이트가 포함됩니다.
+Standard는 $99, Pro는 $199, Server는 $499이며, 각각 Mac 2대 사용과 1년 업데이트가 포함됩니다. 라이선스는 만료되지 않고, 업데이트를 1년 더 받으려면 $44, $89, $134가 듭니다.
 
-Mac에서 연구용 수준의 문서 라이브러리를 원하고 문서를 그 안에 보관해도 괜찮다면 DEVONthink를 고르세요. 서류의 이름을 짓고 정리하는 용도로만 쓰기에는 대부분의 사람에게 과합니다.
+Mac에서 연구용 수준의 문서 라이브러리를 원한다면 DEVONthink를 고르세요. 약점: 스캔본을 읽으려면 최소 $199 Pro 에디션이 필요하고, 문서가 자체 데이터베이스 안에 들어가므로 서류 이름을 짓고 정리하려는 대부분의 사람에게는 과합니다.
 
-## 4. NameQuick: 조건부 규칙을 갖춘 문서 이름 변경 도구
+## 4. NameQuick: 조건부 규칙이 있는 문서 이름 변경
 
-NameQuick은 Mac과 Windows에서 반복적으로 생기는 PDF, 스캔본, 영수증, 청구서, 계약서, Word 문서, 스프레드시트에 초점을 맞춥니다. Presets로 내용에 따라 이름을 바꾸고, 폴더를 감시하며, 이름을 지은 뒤 파일을 이동하거나 태그를 달거나 보관하는 조건부 Rules를 실행할 수 있습니다.
+NameQuick은 Mac과 Windows에서 반복적으로 생기는 PDF, 스캔본, 영수증, 청구서, 계약서, Word 문서, 스프레드시트에 집중합니다. Presets로 내용에 따라 이름을 바꾸고, 폴더를 감시하며, 이름을 붙인 뒤 파일을 옮기거나 태그를 달거나 보관하는 조건부 Rules를 실행합니다.
 
-![날짜와 거래처 이름이 붙어 이름이 바뀐 스캔 청구서, 영수증, 계약서를 보여주는 NameQuick 홍보 이미지](/images/blog/competitors/namequick.webp)
+![스캔한 청구서, 영수증, 계약서가 날짜와 거래처가 담긴 이름으로 바뀌는 모습을 보여 주는 NameQuick 홍보 이미지](/images/blog/competitors/namequick.webp)
 
-관리형 플랜은 이름 변경 500회에 월 $12부터 시작해 10,000회에 월 $99까지 있습니다. $69짜리 Self-Managed 라이선스는 직접 준비한 API 키나 로컬 모델이 필요합니다.
+이메일이나 카드 없이 Managed 이름 변경 30회가 무료입니다. Managed 요금제는 500회에 월 $12부터 10,000회에 월 $99까지이고, 이름 변경 팩은 500회 $19 또는 1,500회 $39입니다(12개월 유효). $69 Self-Managed 라이선스는 컴퓨터 1대용이며 본인의 API 키나 로컬 모델이 필요합니다.
 
-if/then 규칙을 기반으로 한 문서 워크플로가 필요하다면 NameQuick을 고르세요. MLX와 Finder 관련 기능은 Mac 전용입니다. 전체 비교: [Zush vs NameQuick](/blog/zush-vs-namequick).
+if/then Rules로 문서 작업을 구성하고 싶다면 NameQuick을 고르세요. 약점: NameQuick의 1회 결제 라이선스에는 관리형 AI가 포함되지 않고, 파일을 나중에 옮기면 실행 취소가 실패할 수 있습니다. 전체 비교: [Zush vs NameQuick](/blog/zush-vs-namequick).
 
-## 5. Wisfile: PDF와 Word를 위한 무료 로컬 이름 변경 도구
+## 5. Wisfile: PDF와 Word용 무료 로컬 이름 변경
 
-Wisfile은 무료이며 Mac과 Windows에서 로컬로 실행됩니다. PDF와 Word 문서의 내용을 읽어 이름을 바꾸며, 예를 들어 연구 논문에는 `Author-Year-Title` 같은 이름을 붙이고, 파일을 주제별 폴더로 묶을 수 있습니다.
+Wisfile은 무료이고 Mac과 Windows에서 로컬로 동작합니다. 논문이라면 `Author-Year-Title`처럼 PDF와 Word 문서 내용에 따라 이름을 바꾸고, 파일을 주제별 폴더로 묶을 수 있습니다.
 
-![무작위 PDF 이름이 날짜와 설명이 담긴 문서 파일명으로 바뀌는 Wisfile 자체 일러스트](/images/blog/competitors/wisfile.webp)
+![무작위 PDF 이름이 날짜가 들어간 설명형 문서 이름으로 바뀌는 모습을 담은 Wisfile 자체 일러스트](/images/blog/competitors/wisfile.webp)
 
-FAQ에 따르면 폴더 감시, 예약 실행, 내장 되돌리기 기능이 없습니다. 예산 없이 문서 아카이브를 한 번 정리하려면 Wisfile을 고르세요. 자세한 내용: [Zush vs Wisfile](/blog/zush-vs-wisfile).
+예산 없이 문서 보관함을 한 번 정리하려면 Wisfile을 고르세요. 약점: FAQ에 따르면 폴더 감시, 예약 실행, 내장 실행 취소가 없으니 사본으로 작업하세요. 자세한 내용: [Zush vs Wisfile](/blog/zush-vs-wisfile).
 
-## 6. File Juggler: Windows에서 예측 가능한 문서를 위한 규칙
+## 6. File Juggler: Windows에서 형식이 일정한 문서를 위한 규칙
 
-File Juggler는 AI는 아니지만, 항상 같은 모양을 한 문서를 분류하는 믿을 만한 방법입니다. 규칙으로 PDF, Word, Excel 파일 안의 단어를 찾고, 텍스트에서 찾은 날짜를 재사용한 뒤 파일 이름을 바꾸고 이동할 수 있습니다. 별도의 OCR 없이는 이미지 전용 스캔을 읽지 못합니다.
+File Juggler는 AI가 아니지만 늘 같은 모양인 문서를 보내는 데는 쓸 만합니다. 규칙으로 PDF, Word, Excel 파일 안의 단어를 찾고, 텍스트에서 찾은 날짜를 다시 써서 이름을 바꾸고 옮길 수 있습니다. 3.1.9 버전이 2026년 10월 30일에 나왔고, Softpedia 편집자 평가는 4.5/5입니다.
 
-가격은 세금 별도 1회 결제 $50이며, 30일 전체 체험판이 있습니다. 같은 유형의 모든 문서가 동일한 레이아웃을 따를 때 고르세요. 그렇지 않다면 [File Juggler 대안](/blog/file-juggler-alternatives)을 보세요.
+가격은 세전 $50 1회이며 30일 전체 기능 체험판이 있습니다. 약점: 별도의 OCR 프로그램 없이는 이미지로만 된 스캔본을 읽지 못합니다. 문서 형식이 제각각이라면 [File Juggler 대안](/blog/file-juggler-alternatives)을 참고하세요.
 
 <BlogProductIntro
   title="서류가 scan_0042.pdf로 쌓이고 있나요?"
-  description="Zush는 PDF, 스캔본, 청구서, 영수증을 읽고 직접 고른 패턴으로 이름을 지은 뒤, Mac이나 Windows에서 이미 쓰고 있는 폴더로 정리합니다."
+  description="Zush가 PDF, 스캔본, 청구서, 영수증을 읽고, 직접 고른 패턴으로 이름을 붙이며, Mac이나 Windows에서 이미 쓰는 폴더로 분류합니다."
   links={[
-    { href: '/rename-pdf-with-ai', label: 'PDF 이름 바꾸기' },
+    { href: '/rename-pdf-with-ai', label: 'PDF 이름 변경' },
     { href: '/rename-scanned-documents', label: '스캔 문서' },
     { href: '/rename-invoices-with-ai', label: '청구서' },
     { href: '/rename-receipts-with-ai', label: '영수증' },
   ]}
 />
 
-## 어떤 도구가 내 문서에 맞을까요?
+## 내 문서에는 무엇이 맞을까요?
 
 - 공유 폴더의 청구서, 영수증, 계약서: **Zush**.
-- 가정이나 사무실용 검색 가능한 아카이브이며 셀프 호스팅이 가능한 경우: **Paperless-ngx**.
+- 가정이나 사무실용 검색 가능한 아카이브, 셀프 호스팅 가능: **Paperless-ngx**.
 - Mac의 연구용 라이브러리: **DEVONthink**.
-- 이름을 바꾼 뒤 규칙을 적용하려는 경우: **NameQuick**.
-- 연구 논문을 한 번만 무료로 정리하려는 경우: **Wisfile**.
-- Windows에서 동일한 형태의 문서를 AI 없이 처리하려는 경우: **File Juggler**.
+- 이름을 바꾼 뒤 적용하는 규칙: **NameQuick**.
+- 논문을 한 번, 무료로: **Wisfile**.
+- Windows에서 AI 없이 동일한 형식의 문서: **File Juggler**.
 
-명명 패턴이 담긴 업종별 가이드: [세무 서류 정리하기](/blog/how-to-organize-tax-documents), [법률 파일 명명 규칙](/blog/legal-file-naming-conventions), [소규모 병원에서 스캔한 의료 기록 정리하기](/blog/how-to-organize-scanned-medical-records-small-practice).
+이름 패턴을 담은 업종별 가이드: [세금 서류 정리](/blog/how-to-organize-tax-documents), [법률 파일 이름 규칙](/blog/legal-file-naming-conventions), [소규모 병원의 스캔 의료 기록 정리](/blog/how-to-organize-scanned-medical-records-small-practice). 문서 외에 섞인 파일까지 정리하려면 [Mac용 AI 파일 정리 도구 추천](/blog/best-ai-file-organizers-mac)을 보세요.
 
-## 실제 문서 15개로 테스트하기
+## 실제 문서 15개로 시험하기
 
-테스트 폴더에 문서 15개를 복사하세요. 청구서나 영수증 5개, 텍스트 레이어가 없는 스캔본 3개, 계약서 2개, 스프레드시트 2개, Word 파일 1개, 은행 명세서 1개, 손글씨 메모 사진 1장입니다. 그런 다음 확인하세요.
+문서 15개를 테스트 폴더에 복사하세요. 청구서나 영수증 5개, 텍스트 레이어가 없는 스캔본 3개, 계약서 2개, 스프레드시트 2개, Word 파일 1개, 은행 거래 내역서 1개, 손글씨 메모 사진 1장입니다. 그런 다음 확인하세요.
 
-1. 도구가 스캔본을 읽었나요, 건너뛰었나요?
-2. 이름에 날짜, 회사, 금액처럼 내가 검색할 때 쓰는 항목이 들어 있나요?
+1. 도구가 스캔본을 읽었나요, 아니면 건너뛰었나요?
+2. 이름에 날짜, 회사, 금액처럼 검색할 때 쓰는 항목이 들어갔나요?
 3. 모든 변경을 먼저 검토하고 나중에 되돌릴 수 있었나요?
-4. 다른 모든 사람이 같은 공유 폴더에서 파일을 여전히 열 수 있나요?
+4. 다른 사람들도 같은 공유 폴더에서 파일을 그대로 열 수 있나요?
+
+## 출처와 확인 방법
+
+<BlogSources ids={['paperless-ngx', 'devonthink', 'namequick', 'wisfile', 'file-juggler']} />
 
 ## 자주 묻는 질문
 
-### 가장 좋은 AI 문서 정리 도구는 무엇인가요?
+### 가장 좋은 AI 문서 정리 도구는?
 
-Mac이나 Windows의 일반 폴더에 그대로 두어야 하는 문서라면 Zush입니다. 미리보기와 되돌리기를 제공하면서 PDF, 스캔본, Office 파일을 내용 기준으로 이름 짓고 정리하기 때문입니다. 셀프 호스팅 아카이브를 원한다면 Paperless-ngx가 가장 좋은 무료 선택지입니다.
+Mac이나 Windows의 일반 폴더에 문서를 그대로 두고 싶다면 Zush입니다. PDF, 스캔본, Office 파일을 내용으로 이름 짓고 분류하며, 무엇이든 바뀌기 전에 미리 보기를 보여 주고 영구적인 실행 취소를 제공합니다. 셀프 호스팅 아카이브를 원한다면 Paperless-ngx가 가장 좋은 무료 선택지이고, 완전한 문서 데이터베이스를 원하는 Mac 사용자에게는 DEVONthink Pro가 맞습니다. Zush는 저희 제품이니 본인 서류의 사본으로 시험해 보세요.
 
 ### 무료 AI 문서 정리 도구가 있나요?
 
-네. Paperless-ngx는 무료 오픈 소스이지만 서버가 필요합니다. Wisfile은 Mac과 Windows에서 PDF와 Word 문서에 무료로 쓸 수 있습니다. Zush에는 무료 AI 이름 변경 50회가 포함되어 있습니다.
+네. Paperless-ngx는 무료 오픈 소스지만 서버가 필요합니다. Wisfile은 Mac과 Windows에서 PDF와 Word 문서용으로 무료지만 실행 취소가 없습니다. Zush는 계정, 카드, API 키 없이 AI 이름 변경 50회를 무료로 제공하고, NameQuick은 Managed 이름 변경 30회를 무료로 제공합니다. DEVONthink와 File Juggler는 무료 요금제 대신 체험판을 제공합니다.
 
 ### AI 문서 정리 도구가 스캔한 PDF를 읽을 수 있나요?
 
-Zush는 이미지 전용 스캔을 바로 읽습니다. Paperless-ngx와 DEVONthink Pro는 OCR을 실행합니다. File Juggler는 먼저 별도의 OCR 단계가 필요합니다.
+네, 하지만 모두 그런 것은 아닙니다. Zush는 별도의 OCR 단계 없이 이미지로만 된 스캔본을 바로 읽습니다. Paperless-ngx는 가져올 때 Tesseract OCR을 실행하고, DEVONthink는 Pro와 Server 에디션에서만 OCR을 실행합니다. NameQuick과 Wisfile도 스캔본을 처리합니다. File Juggler는 규칙이 파일에 이미 있는 텍스트만 찾으므로 먼저 별도의 OCR 프로그램이 필요합니다.
 
 ### 문서를 업로드하지 않고 AI로 정리할 수 있나요?
 
-네. Ollama나 LM Studio를 쓰는 Zush, Wisfile, 로컬 Ollama 백엔드를 쓰는 Paperless-ngx, 로컬 모델을 쓰는 DEVONthink는 모두 문서를 내 하드웨어에 그대로 둡니다.
+네. Ollama나 LM Studio를 쓰는 Zush, Wisfile, 로컬 Ollama 백엔드를 쓰는 Paperless-ngx, 로컬 모델을 쓰는 DEVONthink Pro, 로컬 모델을 쓰는 NameQuick Self-Managed 모두 문서를 내 하드웨어에 둡니다. Zush Cloud AI나 BYOK 모드에서는 분석을 위해 문서 내용이 클라우드 모델로 전송되므로, 기밀 파일에는 로컬 모드를 고르세요.
+
+### 1회 결제 문서 정리 도구 라이선스에는 무엇이 포함되나요?
+
+차이가 큽니다. DEVONthink의 $99~$499 라이선스에는 1년 업데이트가 포함됩니다. NameQuick의 $69 Self-Managed 라이선스는 컴퓨터 1대용이며 AI를 직접 준비해야 합니다. File Juggler의 $50로는 AI 없는 규칙을 삽니다. Zush의 $48 라이선스에는 관리형 Zush Cloud AI, 로컬 및 BYOK 모드, 무제한 이름 변경, 이후 모든 업데이트, Mac과 Windows를 합쳐 최대 3대가 포함됩니다.

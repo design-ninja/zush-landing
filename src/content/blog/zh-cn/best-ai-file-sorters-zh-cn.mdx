@@ -1,6 +1,6 @@
 ---
 title: "2026 年 Mac 与 Windows 的 AI 文件分类工具：7 款应用对比"
-description: "比较 Zush、Sortio、RenameClick、Sparkle、NameQuick、AI File Sorter 和 Hazel 的指令、格式、本地 AI 与价格。"
+description: "对比 7 款按内容分类文件的 AI 工具：Zush、Sortio、RenameClick、Sparkle、Hazel 等，看指令、本地 AI 与价格。"
 date: "2026-09-27"
 slug: "best-ai-file-sorters-zh-cn"
 platform: "general"
@@ -9,114 +9,177 @@ tags:
   - "File Organization"
   - "Tool Comparisons"
   - "Automation"
-tldr: "Zush 读取内容，建议名称和文件夹，确认后移动。可用自然语言规则或 Auto。支持 Mac、Windows、音频、视频和本地 AI；PRO 无每月文件上限。Linux 用户也可考虑 Sortio。 一个 Zush 许可证最多可用于 3 台设备。"
+tldr: "对大多数 Mac 和 Windows 用户来说，Zush 是最好的 AI 文件分类工具：用日常语言描述文件夹或使用 Auto，Zush 会读取每个文件、重命名，并在你审阅后把它移进正确的文件夹。它能根据语音和字幕处理视频，也能使用本地 AI，$48 一次性买断就包含托管云端 AI。如果你需要 Linux，Sortio 是最接近的替代品。一份 Zush 许可证最多可用于 3 台设备。"
 earlyTaskExample: false
-reviewed: "2026-10-18"
+reviewed: "2026-11-17"
 locale: "zh-cn"
 translationOf: "best-ai-file-sorters"
 ---
-
-import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-按内容分类文件，我们推荐 **<BlogHighlight>[Zush](/ai-file-sorter)</BlogHighlight>**。写“发票按公司、收据按月份分组”，或选 Auto。PDF、扫描件、照片、截图、视频和音频的名称与文件夹方案都可在应用前确认。
+快速结论：如果要按内容把文件分类到文件夹，请选择 [Zush AI 文件分类工具](/ai-file-sorter)。你用日常语言写下文件夹逻辑，例如“发票按公司分组，收据按月份分组”，或者交给 Auto，Zush 会在你审阅整批结果后，为每份文档、照片、视频或音频文件重命名并归档。如果你需要 Linux，选 Sortio；如果你的类别事先就固定好了，选 RenameClick；如果你的文件遵循精确的规律，选 Hazel 或 File Juggler。
 
-**英文原文核查日期：2026 年 9 月 27 日；产品复核：9 月 28 日。** 作者为 AI 文件分类工具 [Zush](/zh-cn/ai-file-sorter) 的开发者。竞品信息来自官方页面，购买时请确认价格。
-
-<BlogCTA placement='inline' platform='general' />
-
-**Zush 功能核查日期：2026 年 10 月 18 日。** 竞品信息仍以文中原有的核查日期为准。
-
-## 三种分类方式
-
-自然语言指令按供应商、客户、月份或主题分组：Zush、Sortio、Sparkle。固定类别列表：RenameClick、AI File Sorter。按名称、日期或文本条件分流：Hazel、NameQuick Rules、File Juggler、DropIt。指令灵活，列表需要维护，条件遇到意外文件可能失效。
-
-Windows 用户可以在 [Windows 11 AI 文件整理软件对比](/blog/best-ai-file-organizers-windows)中统一比较命名、监控、恢复和文件夹移动功能。
+**我们如何核查：** 本文由 [Zush](/) 的开发者撰写。竞品的价格、功能和评分均于 2026 年 11 月 17 日在厂商官网和官方应用商店核查（[来源见下文](#sources-and-how-we-checked)）。本文比较的是有文档记载的功能，并非实验室测试。
 
 ## 快速对比
 
-| 应用 | 分类和命名 | 平台 | 本地 AI | 核查时价格 |
-|---|---|---|---|---|
-| Zush | Folder rules 或 Auto；Templates 与 145+ Naming Blocks | Mac、Windows | Ollama、LM Studio | 50 次免费；每月 $10 或一次性 $48，无额度限制 |
-| Sortio | 指令；Pro 支持命名 | Mac、Windows、Linux | Ollama、BYOK | 试用；每月 $14.99 或每年 $99，有 AI 额度 |
-| RenameClick | 类别或现有文件夹；命名 | Mac、Windows | 内置模型 | 每月 100 次免费；每月 $8 或终身 $36，另加 VAT |
-| Sparkle | AI 文件库；不改名 | Mac | 未说明 | 每月 $9.25 起；方案页每年 $119 |
-| NameQuick | 命名后执行 Rules | Mac、Windows | Self-Managed | 每月 $12 起，有额度；Self-Managed $69 |
-| AI File Sorter | 类别、允许列表、名称建议 | Mac、Windows、Linux | 支持 | 免费、开源 |
-| Hazel | 条件和规则命名 | Mac | 无 | $42 |
+| 应用 | 分类方式 | 同时重命名 | 平台 | 本地 AI | 价格 |
+|---|---|---|---|---|---|
+| **Zush** | <BlogHighlight>日常语言的 Folder rules 或 Auto</BlogHighlight> | <BlogHighlight>是，Templates 和 145+ 个 Naming Blocks</BlogHighlight> | Mac、Windows | Ollama、LM Studio | 50 次免费重命名，无需账号或银行卡；$10/月或 $48 一次性买断，含云端 AI |
+| Sortio | 日常语言指令或规则 | 是（Pro 版无限次） | Mac、Windows、Linux | 所有方案（含免费版）均支持 Ollama 或 LM Studio、BYOK | 一次性 AI 试用；$14.99/月或 $99/年，含 AI 用量 |
+| RenameClick | 文件夹集合、元数据文件夹或现有子文件夹 | 是 | Mac、Windows | 自带约 4 GB 的模型 | 每月免费 100 次重命名或移动；终身版 $36 + 增值税 |
+| Sparkle | AI 构建的文件库 | 否 | Mac | 厂商未说明 | 无免费版；$119/年或终身版 $179 |
+| NameQuick | 重命名后执行条件 Rules | 是 | Mac、Windows | Self-Managed 方案 | 30 次免费重命名；按量计费 $12/月起，或 Self-Managed $69 |
+| AI File Sorter | 建议类别和白名单 | 提供建议 | Windows、Mac、Linux | 是 | 免费，开源 |
+| Hazel | 你编写的条件 | 按规则重命名 | Mac | 无 AI | $42 |
 
-## 1. Zush
+## AI 文件分类工具如何决定文件放在哪里
 
-选择 **Destination folder** 作为建议文件夹的根目录。
+每款分类工具都需要一种选择文件夹的方式。共有三种：
 
-**Folder rules** 最多 2,000 字符；留空时 Auto 建立少量通用、可复用的文件夹。**Template** 指定日期、供应商、金额、客户或主题等名称字段；Folder rules 指定位置，两者一起预览。支持 PDF、纯图像扫描件、RAW、HEIC、Office、iWork、设计文件、16 种视频格式和音频；视频通过帧分析理解。由于 Zush 同时负责命名和归类，它不只是分类工具，更是一款 [AI 文件整理工具](/ai-file-organizer)。
+| 方式 | 你需要提供 | 示例 | 采用的工具 |
+|---|---|---|---|
+| **指令** | 一句描述文件夹的话 | “发票按公司分组，收据按月份分组” | Zush、Sortio |
+| **类别列表** | 供 AI 挑选的文件夹名称 | 发票、收据、合同、其他 | RenameClick、AI File Sorter |
+| **条件** | 基于名称、日期或文本的“如果/那么”规则 | 如果名称包含“invoice”，就移到财务文件夹 | Hazel、NameQuick Rules、File Juggler、DropIt |
 
-![Zush 的 Folder rules 对话框，指令为按公司归类发票、按月份归类收据，并附示例规则](/images/showcase/macos/folder-rules-light.webp)
+指令最灵活，因为文件夹可以根据文件内容来创建：每个供应商、客户、月份或主题一个。类别列表可预期，但需要你自己维护。条件很精确，但会漏掉任何不符合规律的文件。Sparkle 则几乎不需要你输入，就会自己构建文件库。
 
-**Reuse existing folders** 使用合适的现有文件夹，必要时新建。**Monitor** 给新文件应用 Template，并记住创建过的文件夹。LM Studio 和 Ollama 让分析与文件夹规划在本机运行。PRO 包括 Zush Cloud AI，没有每月文件上限。分类会在目的地内建立文件夹；如需年份下再分月份等嵌套文件夹，请在规则中明确说明。模糊文件应先确认。[Mac 步骤](/blog/sort-files-into-folders-with-ai-mac)、[Windows 步骤](/blog/sort-files-into-folders-with-ai-windows)。
+想在同一处对比命名、监控和撤销功能的 Windows 用户，可以阅读 [Windows 11 AI 文件整理工具对比](/blog/best-ai-file-organizers-windows)。Mac 用户请看 [Mac 最佳 AI 文件整理工具](/blog/best-ai-file-organizers-mac)。
 
-![Windows 版 Zush 在执行 Rename & sort 前预览文件名与文件夹分组](/videos/windows/folder-sorting-demo-light.mp4)
+排名依据：应用决定文件夹的灵活程度、是否在同一次审阅中完成重命名、预览和撤销、本地 AI 选项，以及价格包含的内容。
 
-一个 Zush 许可证最多可用于 3 台 Mac 或 Windows 设备。
+## 1. Zush：综合最佳 AI 文件分类工具
 
-可以[导出 Templates](/docs/template-import-export)，将 Naming Blocks、Custom AI Blocks 和文件夹规则一起导入另一台电脑。目标文件夹、访问权限和 AI 连接需要在新电脑上重新设置。转移的是工作流程设置，不是文件本身。
+Zush 在同一次审阅的批处理中完成两件事：按内容为每个文件命名，并把它分类到文件夹。你在 **Folder rules** 中决定文件夹的组织方式，这是一个最多可输入 2,000 个字符的日常语言字段。留空时，Auto 会按内容把文件分到少数几个宽泛、可复用的文件夹中。
 
-## 2. Sortio
+![Zush 的 Folder rules 对话框，指令为发票按公司分组、收据按月份分组，并附有示例规则](/images/showcase/macos/folder-rules-light.webp)
 
-Sortio从指令生成名称、文件夹和移动计划。可以限制为现有文件夹，并给不匹配文件指定备用目录。免费方案包括最多五条规则的无限规则分类、监控、撤销和一次 AI 试用。所有方案支持 BYOK 与 Ollama；Pro 有月度 AI 额度。列出文档、图像、PDF、表格，但未发布完整格式表。Linux 或团队选 Sortio，音视频、精细命名和买断选 Zush。[对比](/blog/zush-vs-sortio)。
+它的独特之处：
 
-## 3. RenameClick
+- **它能读取更多类型的文件。** PDF 和纯图像扫描件、照片（包括 RAW 和 HEIC）、截图、Office 和 iWork 文档、设计文件、音频，以及包括 MP4、MOV、MKV、AVI 和 WMV 在内的视频。视频通过画面、语音、内嵌字幕和元数据来理解，所以“按主题给视频分组”也能实现。
+- **名称和文件夹一起规划。** Template 决定文件名，Folder rules 决定位置，在任何文件移动之前你都能同时看到两者。
+- **它能归档到你已有的文件夹。** 选择 **Destination folder** 并打开 **Reuse existing folders** 后，Zush 会把文件匹配到合适的现有文件夹，只有在都不合适时才新建。嵌套规则（先按年份，再按月份）也可以。
+- **它能找出重复文件。** AI Rename 可以保留、标记副本或把副本移到废纸篓；副本不消耗额度，Undo 可以恢复它们。
+- **它会持续分类新文件。** 把 Template 分配给 Monitor，新下载的文件或扫描件一到就会被重命名和分类。
+- **免费开始，一次性买断。** 在 Zush Cloud AI 上有 50 次免费 AI 重命名，无需账号、银行卡或密钥。PRO 价格为每月 $10 或 $48 一次性买断，一次性许可证涵盖所有模式（包括云端）下的无限次重命名，最多可用于 3 台 Mac 和 Windows 设备。
 
-RenameClick 提供文件夹集（内置、可编辑副本或自建）、基于日期或 EXIF 的 Metadata Folders，以及可读取已有子文件夹最多三层的 Match Folders，每个文件默认提供 12 个、最多 50 个文件夹候选。Auto Flow 在应用运行时监控、移动或复制。分析无限，每月 100 次成功改名或移动免费，附带本地模型。视频、RAW、设计不在公开格式列表中。从文件夹集中选择就够用时适合它；从内容生成公司等分组可选 Zush。[对比](/blog/zush-vs-renameclick)。
+使用 LM Studio 或 Ollama 时，分析和文件夹规划都留在你的电脑上。Rename History 在重启后仍会保留，Undo All 可以还原整批操作并标出冲突。在 Mac 和 Windows 上，你还可以只分类不重命名，并使用基于日期、页数等文件信息的规则（Mac 应用还能使用大小、相机和时长）。设置指南：[Mac](/blog/sort-files-into-folders-with-ai-mac) 和 [Windows](/blog/sort-files-into-folders-with-ai-windows)，完整说明见 [文件夹分类文档](/docs/folder-sorting)。
 
-![RenameClick（Mac 版）在 Rename & Move 之前把重命名后的文件分到 Legal Documents、Medical Documents 和 Uncategorized](/images/blog/competitors/renameclick.webp)
+![Windows 版 Zush 在执行 Rename & sort 之前预览按内容划分的文件夹分组和拟定的文件名](/videos/windows/folder-sorting-demo-light.mp4)
 
-## 4. Sparkle
+<BlogCTA placement='inline' platform='general' />
 
-Sparkle定时整理桌面、下载、文稿等目录，构建 AI Library，接受自然语言请求，清理重复项和旧截图时先放入废纸篓。仅 Mac，也包含在 Every 套装中。不改名。适合个人 Mac 自动清理；需要名称、Windows 或明确分类逻辑时选 Zush。[替代工具](/blog/sparkle-alternatives)。
+评分（截至 2026 年 11 月 17 日）：Microsoft Store（美国区）5.0 分（8 个评分），Softpedia 编辑评测 4.5/5。
 
-## 5. NameQuick
+## 2. Sortio：最接近的替代品，还支持 Linux
 
-NameQuick先按内容改名，再执行 Rules 移动、打标签、设颜色或归档。Managed 每月 $12 起，含 500 次改名。$69 的 Self-Managed 需要自己的 API 密钥或本地模型。每个目标都要设置条件。[对比](/blog/zush-vs-namequick)。
+Sortio 同样由指令驱动：用日常英语描述整理方式，审阅方案，它就会重命名文件、创建文件夹并把文件分流过去。它可以只把文件分到现有文件夹，并把无法匹配的文件放到备用文件夹。它支持 macOS、Windows 和 Linux，近期版本还能读取照片和视频的位置元数据。
 
-![NameQuick 宣传图：扫描的发票、收据和合同被重命名为带日期和供应商的文件名](/images/blog/competitors/namequick.webp)
+免费版提供无限次规则分类（最多 5 条规则和 3 个 Spaces）、一次性 AI 试用、预览、分类历史和撤销。监控文件夹和自动化需要 Pro：每月 $14.99 或每年 $99，含每月 AI 用量（App Store 上标价 $19.99/月）。所有方案（包括免费版）都可以通过 Ollama 或 LM Studio 使用本地模型，也支持 BYOK。使用时需用电子邮件账号登录。
 
-## 6. AI File Sorter
+如果你需要 Linux 或团队席位，就选 Sortio。不足：免费版不再监控文件夹，而且除非自带密钥或运行本地模型，托管 AI 都按量计费。完整分析：[Zush 与 Sortio 对比](/blog/zush-vs-sortio)。
 
-AI File Sorter是免费的 AGPL 应用。建议类别、可选子类别和名称，支持允许列表、本地视觉模型和文档文字提取。使用本地模型或个人密钥，可撤销最后一次操作。没有自由分组指令或文件夹监控。音视频按内嵌元数据分类。适合愿意配置模型的用户做一次性整理。
+## 3. RenameClick：分到你定义好的类别中
 
-## 7. Hazel、File Juggler、DropIt
+RenameClick 有三种分类方式：**文件夹集合**，由 AI 从内置或自定义集合中挑选；**Metadata Folders**，根据日期或 EXIF 字段生成；以及 **Match Folders**，读取输出文件夹中最多三层深的现有子文件夹。Auto Flow 会在应用运行时监控一个文件夹，并移动或复制文件。
 
-Hazel（Mac，$42）、File Juggler（Windows，$50）、DropIt（Windows，免费）监控名称、扩展名、日期或文本条件。可预测文件处理可靠，但不能理解照片、扫描或视频内容。AI 名称可简化规则。[Hazel 替代](/hazel-alternative)、[Windows 选项](/blog/hazel-for-windows-alternatives)。
+![RenameClick（图为 Mac 版）在执行 Rename & Move 之前把重命名后的文件分到 Legal Documents、Medical Documents 和 Uncategorized](/images/blog/competitors/renameclick.webp)
 
-## 选择与小规模测试
+它的免费 AI 方案是一个自带的本地模型（约 4 GB，建议 16 GB 内存），因此无需配置 Ollama。自 4.1.2 版起，它支持 MP4、MOV、M4V 和 3GP 视频；不支持 MKV、WebM、AVI、RAW 和设计文件。免费版每月包含 100 次重命名或移动，终身版 $36 加增值税。
 
-自由指令、多格式选 Zush；Linux、团队选 Sortio；固定类别选 RenameClick；Mac 清理选 Sparkle；免费选 AI File Sorter；精确规则选 Hazel 等。先复制 20 个混合文件，包括发票、收据、照片、截图、扫描和视频。写实际规则，检查文件夹名称与位置，应用后测试撤销，再用于真实下载目录或档案。[30 条指令](/blog/ai-folder-sorting-prompts)、[文档](/docs/folder-sorting)、[价格](/pricing)。
+如果你的类别固定且事先已知，就选 RenameClick。不足：重命名撤销只在内存中保存 10 条记录，重启后清空。请看 [Zush 与 RenameClick 对比](/blog/zush-vs-renameclick)。
 
-Zush 支持嵌套文件夹规则，例如先按年份、再按月份分类。已经重命名的文件可以单独分类，无需再次改名或消耗另一次重命名额度。应用前请核对目标路径。这与 Monitor 是两个操作：修改 Template 不会自动重新整理之前的文件。[AI 文件夹分类](/docs/folder-sorting)在 Mac 和 Windows 上均可使用。
+## 4. Sparkle：Mac 上省心的自动清理
+
+Sparkle 按计划整理桌面、Downloads、文稿和其他文件夹。它会根据你的文件建立一个由文件夹组成的 AI Library，标记重复文件，并可以撤回它的整理。
+
+它仅支持 Mac，没有免费版（15 天试用需要绑定银行卡），一台 Mac 每年 $119，或终身版 $179（最多 5 台）。它不会重命名文件。
+
+如果你想对个人 Mac 做一劳永逸的清理，就选 Sparkle。不足：你无法具体规定文件夹逻辑，文件名也保持原样。请看 [Sparkle 替代品](/blog/sparkle-alternatives)。
+
+## 5. NameQuick：重命名之后执行规则
+
+NameQuick 按内容重命名文档，然后运行条件 Rules，把文件移到某个文件夹、添加标签、设置颜色标记或归档。它支持 Mac 和 Windows。
+
+![NameQuick 宣传图，展示扫描的发票、收据和合同被重命名为带日期和供应商名称的文件](/images/blog/competitors/namequick.webp)
+
+你可以获得 30 次免费 Managed 重命名，无需银行卡。Managed 方案每月 $12 起（500 次重命名），重命名包为 $19 购 500 次或 $39 购 1,500 次，$69 的 Self-Managed 许可证需要使用你自己的 API 密钥或本地模型。
+
+如果你想在 AI 命名之后按“如果/那么”分流，就选 NameQuick。不足：每个目标位置都需要单独一条规则。请看 [Zush 与 NameQuick 对比](/blog/zush-vs-namequick)。
+
+## 6. AI File Sorter：免费开源
+
+AI File Sorter 是一款免费的 AGPL-3.0 桌面应用，支持 Windows、macOS 和 Linux（1.9.2 版）。它为每个文件建议类别和可选的子类别，支持允许类别的白名单，用本地视觉模型读取图片，从文档中提取文本，还能建议新的文件名。它可以使用本地模型或远程 API，“编辑 > 撤销上次运行”可以撤回最近一批操作。
+
+如果你想免费做一次性清理，并且能自己挑选本地模型，就选 AI File Sorter。不足：音频和视频只根据内嵌元数据命名，项目文档也没有提到监控文件夹功能。
+
+## 7. Hazel、File Juggler 和 DropIt：不含 AI 的规则
+
+Hazel 6（$42，Mac）、File Juggler（$50 加税，Windows，3.1.9 版）和 DropIt（免费，Windows，最后一次发布于 2018 年 2 月）会监控文件夹，并根据条件执行操作：名称格式、扩展名、日期或匹配的文本。Softpedia 编辑给 Hazel 的评分为 5.0/5，给 File Juggler 的评分为 4.5/5。
+
+不足：它们都无法理解照片、扫描件或视频的内容，所以每种情况都需要单独的规则。很多人会把它们与 AI 重命名工具搭配使用，因为描述性名称让规则更容易编写。请看 [Hazel 替代品](/hazel-alternative) 页面和 [Windows 上的 Hazel 替代品](/blog/hazel-for-windows-alternatives)。
+
+## 该选哪款 AI 文件分类工具？
+
+- 想在 Mac 或 Windows 上用日常语言描述文件夹：**Zush**。
+- 需要按内容分类视频（包括 MKV）、音频、RAW 照片或设计文件：**Zush**。
+- 需要 Linux 或团队席位：**Sortio**。
+- 类别固定，并且想要自带的本地模型：**RenameClick**。
+- 想要一劳永逸的 Mac 清理，不在乎文件名：**Sparkle**。
+- 想要免费开源：**AI File Sorter**。
+- 文件遵循精确的规律：Mac 上用 **Hazel**，Windows 上用 **File Juggler** 或 **DropIt**。
+
+## 先用 20 个文件测试任何分类工具
+
+1. 把 20 个混合文件复制到一个测试文件夹：发票、收据、照片、一张截图、一份扫描件、一个视频。
+2. 写一条你真正需要的规则，例如“发票按公司分组，收据按月份分组”。
+3. 检查方案：文件夹名称是否一致，每个文件是否都放到了你预期的位置？
+4. 应用，重启应用，然后尝试撤销。
+5. 之后再让分类工具处理 Downloads 或真实的归档。
+
+需要规则灵感？从这 [30 条文件夹分类指令](/blog/ai-folder-sorting-prompts) 开始。
+
+<BlogProductIntro
+  title="文件夹描述一次，归档交给 Zush。"
+  description="日常语言的文件夹规则、基于内容的文件名，以及在 Mac 和 Windows 上处理新文件的 Monitor。从 50 次免费重命名开始。"
+  links={[
+    { href: '/ai-file-sorter', label: 'Zush AI 文件分类工具' },
+    { href: '/blog/ai-folder-sorting-prompts', label: '30 条文件夹分类指令' },
+    { href: '/docs/folder-sorting', label: '文件夹分类文档' },
+    { href: '/pricing', label: '价格' },
+  ]}
+/>
+
+## 来源与核查方法
+
+<BlogSources ids={['sortio', 'renameclick', 'sparkle', 'namequick', 'ai-file-sorter', 'hazel', 'file-juggler', 'dropit']} />
 
 ## 常见问题
 
-### 一般推荐哪款？
-Mac 和 Windows 上需要预览、音视频、本地 AI、PRO 无月度上限时选 Zush。
+### 最好的 AI 文件分类工具是哪款？
 
-### 可以自动处理吗？
-Zush、Sortio、RenameClick、Sparkle 支持移动。在 Zush 中将 Folder rules 保存到 Template 并分配给 Monitor，处理监控文件夹直接包含的新文件。
+对大多数 Mac 和 Windows 用户，我们推荐 Zush。你用日常语言描述文件夹或使用 Auto，Zush 会读取每个文件、重命名，并在你审阅整批结果后把它移进正确的文件夹。它能处理 PDF、扫描件、照片、视频和音频，也支持本地 AI。如果你需要 Linux，Sortio 是最接近的替代品。Zush 是我们开发的，所以请在副本上测试这两款。
 
-### 免费选项有哪些？
-AI File Sorter、Zush 免费 50 次、Sortio 一次 AI 试用、RenameClick 每月 100 次改名或移动。
+### AI 能自动把文件分类到文件夹吗？
 
-### 哪些能离线运行？
-Zush 使用 LM Studio 或 Ollama；RenameClick 使用附带模型；Sortio 使用 Ollama；AI File Sorter 使用本地模型。
+能。Zush、Sortio Pro、RenameClick 的 Auto Flow、NameQuick 和 Sparkle 都能把新文件移进文件夹，而无需你每次手动启动。在 Zush 中，把 Folder rules 保存到 Template 并分配给 Monitor：该文件夹中的每个新文件一到就会被重命名和分类。请先在手动批处理中测试 Template，以便检查它选择的文件夹。
 
-### 与规则工具的区别？
-规则检查名称或扩展名。AI 读取内容，即使旧名称没有线索，也可把发票按公司分类。
+### 有免费的 AI 文件分类工具吗？
 
-<BlogProductIntro
-  title="开始使用 Zush"
-  description="Zush 读取内容，建议名称和文件夹，确认后移动。可用自然语言规则或 Auto。支持 Mac、Windows、音频、视频和本地 AI；PRO 无每月文件上限。Linux 用户也可考虑 Sortio。"
-  links={[{"href":"/ai-file-sorter","label":"AI 文件分类"},{"href":"/blog/ai-folder-sorting-prompts","label":"指令示例"},{"href":"/docs/folder-sorting","label":"分类文档"},{"href":"/pricing","label":"价格"}]}
-/>
+AI File Sorter 免费开源。Zush 提供 50 次免费 AI 重命名，无需账号、银行卡或 API 密钥，足以真正测试文件夹分类。Sortio 提供一次性 AI 试用和免费的规则分类，NameQuick 提供 30 次免费重命名，RenameClick 在下载本地模型后每月提供 100 次免费重命名或移动。
 
-[Mac 指南](/blog/sort-files-into-folders-with-ai-mac) · [Windows 指南](/blog/sort-files-into-folders-with-ai-windows) · [指令示例](/blog/ai-folder-sorting-prompts) · [分类文档](/docs/folder-sorting).
+### 哪款 AI 文件分类工具最物有所值？
+
+取决于包含哪些内容。RenameClick 的 $36 加增值税终身版涵盖其本地模型或你自己的密钥，Sortio Pro 每年 $99，含 AI 用量。Zush 的 $48 一次性许可证包含托管的 Zush Cloud AI 以及 BYOK、Ollama 和 LM Studio、无限次重命名、今后的更新，以及最多 3 台 Mac 和 Windows 设备。
+
+### 哪款 AI 文件分类工具能离线使用？
+
+Zush 在 Mac 和 Windows 上可以通过 LM Studio 或 Ollama 离线分类：文件分析和文件夹规划都在你的电脑上运行。RenameClick 自带本地模型（建议 16 GB 内存），Sortio 的所有方案（包括免费版）都支持 Ollama 和 LM Studio，AI File Sorter 可使用本地模型。在云端模式下，Zush 会把文件内容发送到 Zush Cloud AI 或你自己的服务商进行分析。
+
+### AI 文件分类工具和基于规则的整理工具有什么区别？
+
+Hazel 或 DropIt 这类基于规则的整理工具，会移动符合你所写条件（如文件名格式或扩展名）的文件。Zush 这类 AI 文件分类工具会读取文件内容，并遵循“发票按公司分组”这样的指令，所以连名称毫无线索的文件也能分类。你也可以把两者结合起来：先用 AI 命名，再用规则移动。

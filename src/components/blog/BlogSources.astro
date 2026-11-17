@@ -12,6 +12,8 @@ import {
   type CompetitorId,
   type CompetitorRating,
 } from '@/data/competitors';
+import { stripLocaleFromPath, localizeInternalHref } from '@/i18n/config';
+import { getBlogPostCopy } from '@/i18n/blogPost';
 
 interface Props {
   ids: CompetitorId[];
@@ -21,8 +23,39 @@ interface Props {
 
 const { ids, includeZush = true } = Astro.props;
 
+const { locale } = stripLocaleFromPath(Astro.url.pathname);
+const { dateLocale } = getBlogPostCopy(locale);
+
+// Vendor link labels stay in English (they point at English vendor pages);
+// the surrounding sentences follow the page locale.
+const COPY: Record<string, {
+  pricing: string;
+  changelog: string;
+  docs: string;
+  ratings: string;
+  ratingsChecked: (date: string) => string;
+  checked: (date: string) => string;
+  fromRatings: (count: number) => string;
+  policy: string;
+}> = {
+  en: { pricing: 'pricing', changelog: 'changelog', docs: 'docs', ratings: 'Ratings', ratingsChecked: (d) => `Ratings, checked ${d}`, checked: (d) => `Checked ${d}.`, fromRatings: (n) => `from ${n} ratings`, policy: 'Ratings come only from official app stores and independent editorial reviews. We leave out user-voted directories and ratings that vendors publish about themselves.' },
+  de: { pricing: 'Preise', changelog: 'Änderungsprotokoll', docs: 'Dokumentation', ratings: 'Bewertungen', ratingsChecked: (d) => `Bewertungen, geprüft am ${d}`, checked: (d) => `Geprüft am ${d}.`, fromRatings: (n) => `bei ${n} Bewertungen`, policy: 'Bewertungen stammen nur aus offiziellen App-Stores und unabhängigen redaktionellen Tests. Nutzerabstimmungen in Verzeichnissen und Bewertungen, die Anbieter selbst veröffentlichen, lassen wir weg.' },
+  fr: { pricing: 'tarifs', changelog: 'journal des modifications', docs: 'documentation', ratings: 'Notes', ratingsChecked: (d) => `Notes, vérifiées le ${d}`, checked: (d) => `Vérifié le ${d}.`, fromRatings: (n) => `sur ${n} évaluations`, policy: 'Les notes proviennent uniquement des boutiques d’applications officielles et de tests éditoriaux indépendants. Nous excluons les annuaires à votes d’utilisateurs et les notes publiées par les éditeurs eux-mêmes.' },
+  es: { pricing: 'precios', changelog: 'registro de cambios', docs: 'documentación', ratings: 'Valoraciones', ratingsChecked: (d) => `Valoraciones, revisadas el ${d}`, checked: (d) => `Revisado el ${d}.`, fromRatings: (n) => `con ${n} valoraciones`, policy: 'Las valoraciones proceden solo de tiendas de aplicaciones oficiales y de reseñas editoriales independientes. Excluimos directorios con votos de usuarios y valoraciones que publican los propios fabricantes.' },
+  'pt-br': { pricing: 'preços', changelog: 'histórico de versões', docs: 'documentação', ratings: 'Avaliações', ratingsChecked: (d) => `Avaliações, verificadas em ${d}`, checked: (d) => `Verificado em ${d}.`, fromRatings: (n) => `com ${n} avaliações`, policy: 'As avaliações vêm apenas de lojas de apps oficiais e de análises editoriais independentes. Deixamos de fora diretórios com votos de usuários e notas que os próprios fabricantes publicam.' },
+  it: { pricing: 'prezzi', changelog: 'registro delle modifiche', docs: 'documentazione', ratings: 'Valutazioni', ratingsChecked: (d) => `Valutazioni, verificate il ${d}`, checked: (d) => `Verificato il ${d}.`, fromRatings: (n) => `con ${n} valutazioni`, policy: 'Le valutazioni provengono solo da store ufficiali e da recensioni editoriali indipendenti. Escludiamo le directory con voti degli utenti e le valutazioni pubblicate dai produttori stessi.' },
+  nl: { pricing: 'prijzen', changelog: 'wijzigingslog', docs: 'documentatie', ratings: 'Beoordelingen', ratingsChecked: (d) => `Beoordelingen, gecontroleerd op ${d}`, checked: (d) => `Gecontroleerd op ${d}.`, fromRatings: (n) => `op basis van ${n} beoordelingen`, policy: 'Beoordelingen komen alleen uit officiële appwinkels en onafhankelijke redactionele reviews. Directory’s met gebruikersstemmen en beoordelingen die leveranciers zelf publiceren, laten we weg.' },
+  tr: { pricing: 'fiyatlar', changelog: 'sürüm notları', docs: 'belgeler', ratings: 'Puanlar', ratingsChecked: (d) => `Puanlar, kontrol tarihi ${d}`, checked: (d) => `Kontrol tarihi: ${d}.`, fromRatings: (n) => `${n} değerlendirme`, policy: 'Puanlar yalnızca resmi uygulama mağazalarından ve bağımsız editoryal incelemelerden alınır. Kullanıcı oylamalı dizinleri ve satıcıların kendileri hakkında yayımladığı puanları dahil etmiyoruz.' },
+  ja: { pricing: '料金', changelog: '変更履歴', docs: 'ドキュメント', ratings: '評価', ratingsChecked: (d) => `評価（${d} 確認）`, checked: (d) => `${d} 確認。`, fromRatings: (n) => `${n}件の評価`, policy: '評価は公式アプリストアと独立した編集部レビューのみを引用しています。ユーザー投票型のディレクトリや、ベンダー自身が公開する評価は含めていません。' },
+  ko: { pricing: '가격', changelog: '변경 기록', docs: '문서', ratings: '평점', ratingsChecked: (d) => `평점, ${d} 확인`, checked: (d) => `${d} 확인.`, fromRatings: (n) => `평가 ${n}개`, policy: '평점은 공식 앱 스토어와 독립적인 편집 리뷰만 인용합니다. 사용자 투표형 디렉터리와 공급업체가 직접 게시한 평점은 제외합니다.' },
+  'zh-cn': { pricing: '价格', changelog: '更新日志', docs: '文档', ratings: '评分', ratingsChecked: (d) => `评分（核实于 ${d}）`, checked: (d) => `核实于 ${d}。`, fromRatings: (n) => `共 ${n} 次评分`, policy: '评分仅来自官方应用商店和独立编辑评测。我们不采用用户投票型目录，也不采用厂商自行发布的评分。' },
+};
+const copy = COPY[locale] ?? COPY.en;
+// English pages get the #sources-and-how-we-checked id from their heading;
+// translated headings slug differently, so there the block carries the anchor.
+
 const formatDate = (iso: string) =>
-  new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', {
+  new Date(`${iso}T00:00:00Z`).toLocaleDateString(dateLocale, {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -30,7 +63,7 @@ const formatDate = (iso: string) =>
   });
 
 const formatRating = (rating: CompetitorRating) =>
-  `${rating.source}: ${rating.value}${rating.count ? ` from ${rating.count} ratings` : ''}`;
+  `${rating.source}: ${rating.value}${rating.count ? ` (${copy.fromRatings(rating.count)})` : ''}`;
 
 const entries = ids.map((id) => {
   const competitor = COMPETITORS[id] as Competitor | undefined;
@@ -41,18 +74,18 @@ const entries = ids.map((id) => {
 const externalRel = 'nofollow noopener noreferrer';
 ---
 
-<div class='blog-sources'>
+<div class='blog-sources' id={locale === 'en' ? undefined : 'sources-and-how-we-checked'}>
   <ul class='blog-sources__list'>
     {
       includeZush && (
         <li>
           <strong>Zush</strong>:{' '}
-          <a class='blog-sources__link' href='/pricing'>pricing</a> ·{' '}
-          <a class='blog-sources__link' href='/changelog'>changelog</a> ·{' '}
-          <a class='blog-sources__link' href='/docs'>docs</a>
+          <a class='blog-sources__link' href={localizeInternalHref('/pricing', locale)}>{copy.pricing}</a> ·{' '}
+          <a class='blog-sources__link' href={localizeInternalHref('/changelog', locale)}>{copy.changelog}</a> ·{' '}
+          <a class='blog-sources__link' href={localizeInternalHref('/docs', locale)}>{copy.docs}</a>
           {ZUSH_RATINGS.length > 0 && (
             <span class='blog-sources__ratings'>
-              Ratings, checked {formatDate(ZUSH_RATINGS_CHECKED)}:{' '}
+              {copy.ratingsChecked(formatDate(ZUSH_RATINGS_CHECKED))}:{' '}
               {ZUSH_RATINGS.map((rating, index) => (
                 <>
                   {index > 0 && '; '}
@@ -81,10 +114,10 @@ const externalRel = 'nofollow noopener noreferrer';
               ))
             : competitor.note}
           {competitor.sources.length > 0 && competitor.note && <span> ({competitor.note})</span>}
-          <span class='blog-sources__checked'> Checked {formatDate(competitor.checked)}.</span>
+          <span class='blog-sources__checked'> {copy.checked(formatDate(competitor.checked))}</span>
           {competitor.ratings && competitor.ratings.length > 0 && (
             <span class='blog-sources__ratings'>
-              Ratings:{' '}
+              {copy.ratings}:{' '}
               {competitor.ratings.map((rating, index) => (
                 <>
                   {index > 0 && '; '}
@@ -99,10 +132,7 @@ const externalRel = 'nofollow noopener noreferrer';
       ))
     }
   </ul>
-  <p class='blog-sources__policy'>
-    Ratings come only from official app stores and independent editorial reviews. We leave out user-voted
-    directories and ratings that vendors publish about themselves.
-  </p>
+  <p class='blog-sources__policy'>{copy.policy}</p>
 </div>
 
 <style is:global lang='scss'>

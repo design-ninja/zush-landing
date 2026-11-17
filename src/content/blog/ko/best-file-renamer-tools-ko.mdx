@@ -1,6 +1,6 @@
 ---
 title: "2026년 추천 파일 이름 변경 도구: 무료 규칙 도구와 AI 비교"
-description: "Mac과 Windows용 Zush, Finder, PowerRename, Bulk Rename Utility, Advanced Renamer, A Better Finder Rename을 비교합니다."
+description: "Finder, PowerRename, BRU, Advanced Renamer, Zush 비교. 같은 규칙엔 무료 도구, 내용별 이름엔 AI."
 date: "2026-07-31"
 slug: "best-file-renamer-tools-ko"
 platform: "general"
@@ -9,9 +9,9 @@ tags:
   - "Tool Comparisons"
   - "AI File Renaming"
   - "File Organization"
-tldr: "혼합 폴더에는 Zush를 추천합니다. 내용 기반 이름, Naming Blocks, 미리 보기, 폴더 감시와 실행 취소를 제공합니다. 무료 규칙과 메타데이터 도구는 제한된 작업에 적합합니다. AI 폴더 분류는 선택 사항입니다. Zush 라이선스 하나로 최대 3대에서 사용할 수 있습니다."
+tldr: "모든 파일에 같은 변경을 적용한다면 무료 규칙 도구로 충분합니다. Mac은 Finder, Windows는 PowerRename, 복잡한 규칙에는 Bulk Rename Utility나 Advanced Renamer를 쓰세요. 파일 안의 내용에 따라 각각 다른 이름이 필요하다면 Zush를 쓰세요. 계정 없이 AI 이름 변경 50회가 무료이고, 이후 월 $10 또는 1회 $48이며, Mac과 Windows에서 미리 보기, 폴더 감시, Rename History를 제공합니다."
 earlyTaskExample: false
-reviewed: "2026-10-26"
+reviewed: "2026-11-17"
 locale: "ko"
 translationOf: "best-file-renamer-tools"
 ---
@@ -19,82 +19,120 @@ translationOf: "best-file-renamer-tools"
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-파일마다 서로 다른 설명형 이름이 필요하다면 Mac과 Windows에서 **<BlogHighlight>[Zush](/)</BlogHighlight>**를 추천합니다. 같은 치환, 접두사 또는 번호만으로 전체 묶음을 해결할 수 있다면 무료 규칙 도구도 충분합니다. 필요한 정보가 기존 이름, 메타데이터, 실제 내용 중 어디에 있는지가 기준입니다.
+짧은 답: 모든 파일에 같은 종류의 변경(접두사, 날짜, 번호 붙이기)을 적용한다면 무료 규칙 도구를 쓰세요. Mac은 **Finder**, Windows는 **PowerRename**이면 되고, 규칙이 복잡하면 Bulk Rename Utility나 Advanced Renamer가 있습니다. 파일마다 내용에 맞는 이름이 따로 필요하다면 AI 이름 변경 도구가 맞습니다. **이 경우 저희 추천은 <BlogHighlight>[Zush](/)</BlogHighlight>입니다.** 계정, 카드, API 키 없이 AI 이름 변경 50회가 무료이고, 이후 월 $10 또는 1회 $48이며 Mac과 Windows를 지원합니다.
+
+**확인 방법:** 이 글은 [Zush](/) 제작사가 썼습니다. 경쟁 제품의 가격, 기능, 평점은 2026년 11월 17일에 각 제조사 사이트와 공식 스토어에서 확인했습니다([아래 출처](#sources-and-how-we-checked)). 실험실 테스트가 아니라 문서로 확인된 기능을 비교한 글입니다.
+
+## 파일 이름 변경 도구 한눈에 보기
+
+| 하려는 작업 | 추천 | OS | 내용을 읽나요? | 실행 취소 | 가격 |
+| --- | --- | --- | --- | --- | --- |
+| 파일마다 다른 설명형 이름 | <BlogHighlight>**Zush**</BlogHighlight> | Mac + Windows | **예, AI로 읽음** | 영구 Rename History, 묶음 단위 실행 취소 | AI 이름 변경 50회 무료, 월 $10 또는 1회 $48 |
+| 간단한 치환, 접두사, 번호 | Finder 이름 변경 | Mac | 아니요 | 편집 > 실행 취소 | 무료, 기본 내장 |
+| 찾아 바꾸기, 정규식, 날짜 | PowerRename (PowerToys) | Windows | 아니요(EXIF/XMP 토큰만) | Ctrl+Z | 무료 |
+| 복잡한 패턴과 정규식 작업 | Bulk Rename Utility | Windows | 아니요 | 실행 취소용 배치 파일 생성 | 개인 사용 무료, JavaScript 이름 변경은 유료 라이선스 필요, 상업용은 컴퓨터당 $92.95 |
+| EXIF, GPS, ID3 규칙, 스크립트로 PDF/TXT 텍스트 추출 | Advanced Renamer | Windows + Mac | 스크립트로 텍스트만, AI나 OCR 없음 | 묶음 단위 실행 취소 | 가벼운 개인 사용 무료, 개인용 $30, 상업용 $50 |
+| Mac 네이티브 패턴과 메타데이터 | A Better Finder Rename | Mac | 아니요 | 제조사 미기재 | $29.95 |
+
+평점(2026년 11월 17일 기준): Zush는 미국 Microsoft Store에서 평가 8개 기준 5.0, Softpedia 편집자 평가 4.5/5입니다. Advanced Renamer는 미국 Microsoft Store에서 평가 23개 기준 4.2, Softpedia 3.5/5입니다. Bulk Rename Utility는 Softpedia 4.0/5입니다.
+
+<BlogProductIntro
+  title="파일마다 이름이 모두 달라야 하나요?"
+  description="Zush는 스크린샷, PDF, 사진, 스캔본, 동영상을 읽고 파일마다 이름을 제안합니다. 먼저 미리 보고 나중에 되돌릴 수 있으며, Mac과 Windows에서 동작합니다."
+  links={[
+    { href: '/batch-rename-files', label: '파일 일괄 이름 변경' },
+    { href: '/rename-scanned-documents', label: '스캔 문서 이름 변경' },
+    { href: '/mac', label: 'Mac용 AI 파일 이름 변경' },
+    { href: '/windows', label: 'Windows용 AI 파일 이름 변경' },
+  ]}
+/>
+
+## 1유형: 기본 내장 및 무료 규칙 도구
+
+### Finder 이름 변경(Mac)
+
+파일을 선택하고 오른쪽 클릭한 뒤 **이름 변경**을 고르면 텍스트 대치, 텍스트 추가, 이름과 번호 지정을 할 수 있습니다. 따로 설치할 것이 없습니다. 정규식, 메타데이터, 내용 읽기는 지원하지 않습니다. Finder와 함께 Automator, 터미널을 다루는 [Mac 일괄 이름 변경 가이드](/blog/batch-rename-files-on-mac-complete-guide)도 참고하세요.
+
+**이럴 때 고르세요:** 규칙 하나로 모든 파일을 고칠 수 있을 때. **약점:** 정규식도 메타데이터도 전혀 없습니다.
+
+### PowerRename(Windows)
+
+Microsoft PowerToys에 포함된 도구입니다. 선택한 파일을 오른쪽 클릭하면 정규식 기반 찾아 바꾸기, 카운터, 생성 날짜 변수, 사진 EXIF/XMP 토큰을 실시간 미리 보기와 함께 쓸 수 있습니다. Ctrl+Z로 이름 변경을 되돌립니다. AI는 없고 파일 내용도 읽지 않습니다. 두 도구를 비교한 [Windows용 Zush](/windows) 페이지에서 더 자세히 볼 수 있습니다.
+
+**이럴 때 고르세요:** 변경 내용을 패턴으로 설명할 수 있을 때. **약점:** `scan_004.pdf`를 스캔 내용에 따라 이름 지을 수는 없습니다.
+
+### Bulk Rename Utility(Windows)
+
+BRU는 접두사, 번호, 대소문자, 정규식, EXIF와 ID3 태그 규칙을 빽빽한 창 하나에 겹겹이 쌓아 씁니다. 개인 사용은 무료입니다. JavaScript 이름 변경에는 유료 라이선스($24.95)가 필요하고, 상업용은 컴퓨터당 $92.95입니다. 4.1.0.1 버전에서 JavaScript와 정규식을 대신 써 주는 AI 도우미가 추가됐지만, 여전히 파일 내용은 읽지 않습니다. Mac 버전은 없습니다. [Bulk Rename Utility 대안](/blog/bulk-rename-utility-alternatives)도 참고하세요.
+
+**이럴 때 고르세요:** 아주 큰 폴더에 복잡한 기계적 규칙을 적용할 때. **약점:** 화면이 복잡하고, 업무용은 컴퓨터 대수만큼 비용이 듭니다.
+
+## 2유형: 메타데이터 기반 도구
+
+**Advanced Renamer**와 **A Better Finder Rename**은 EXIF 날짜, GPS 좌표, ID3 태그, 파일 날짜로 이름을 만듭니다. Advanced Renamer(4.28 버전)는 스크립트 방식으로 PDF와 TXT 파일에서 텍스트를 뽑아낼 수도 있지만, AI나 OCR이 없어서 스캔한 PDF와 이미지는 읽지 못하고, 추출한 텍스트를 이름으로 바꾸는 로직은 직접 작성해야 합니다. 가벼운 개인 사용은 무료이고, 자주 쓰는 사용자에게는 $30 개인용 라이선스 구매를 요청하며, 업무용은 $50 상업용 라이선스가 필요합니다. A Better Finder Rename은 Mac용이며 $29.95입니다.
+
+한계는 메타데이터가 *언제*, *무엇으로* 찍었는지는 알려 주지만 *무엇이* 담겼는지는 알려 주지 않는다는 점입니다. 사진의 EXIF는 촬영 시각을 알려 줄 뿐, 공원에 있는 골든 리트리버가 찍혔다는 사실은 모릅니다. 이런 규칙이 어디서 막히는지는 [Advanced Renamer 대안](/blog/advanced-renamer-alternatives) 리뷰에서 정리했습니다.
+
+**이럴 때 고르세요:** 원하는 이름 전체가 이미 EXIF, GPS, 태그 안에 있을 때. **약점:** 이미지나 스캔 문서의 내용은 이해하지 못합니다.
+
+## 3유형: 파일마다 고유한 이름이 필요할 때 쓰는 AI 도구
+
+`Screenshot 2026-03-23.png`, `Scan0001.pdf`, `IMG_4382.HEIC`, `download (7).pdf`처럼 위의 두 유형으로는 해결되지 않는 폴더가 있습니다. 파일마다 맞는 이름이 다르고, 그 정보는 픽셀, 텍스트, 음성 안에 들어 있습니다.
+
+[Zush](/)는 스크린샷, 사진(RAW, HEIC 포함), PDF, [스캔 문서](/rename-scanned-documents), Office와 iWork 파일, 디자인 파일, 오디오, 동영상의 내용을 읽습니다. 동영상은 음성, 내장 자막, 메타데이터로 이름을 짓고 MKV도 지원합니다. 준비된 Template을 고르거나 145개 이상의 [Naming Blocks](/docs/naming-blocks)로 규칙을 만들고, 제안된 이름을 모두 확인할 수 있으며, Rename을 누르기 전에는 아무것도 바뀌지 않습니다. Rename History는 재시작 후에도 남고 묶음 전체를 되돌립니다. [폴더 감시](/docs/folder-monitoring)를 켜면 다운로드 폴더나 스캐너 폴더에 들어오는 파일에 바로 이름을 붙입니다.
+
+비용을 내면 얻는 것:
+
+- **바로 쓸 수 있음:** 계정, 카드, API 키, 모델 다운로드 없이 Zush Cloud AI로 AI 이름 변경 50회 무료.
+- **1회 결제에 클라우드 포함:** $48 평생 라이선스에 Zush Cloud AI 무제한 이름 변경, BYOK, Ollama, LM Studio, 이후 모든 업데이트, Mac과 Windows를 합쳐 최대 3대, 14일 환불이 포함됩니다. 월 $10 요금제도 있습니다.
+- **중복 파일 처리:** AI Rename이 중복 파일을 찾아내고, 사본에는 크레딧을 쓰지 않으며, Undo로 복원됩니다. [중복 파일 제거](/remove-duplicate-files)를 참고하세요.
+- **클라우드 모드에서 가벼움:** 약 200 MB, RAM 4 GB.
+
+### 필요하면 폴더 분류까지
+
+Zush는 **Auto** 그룹화나 **Folder rules**로 파일을 폴더에 분류할 수도 있습니다. 중첩 폴더도 지원하고, 이름을 바꾸지 않고 분류만 할 수도 있습니다. **Destination folder**로 분류할 위치를 정하고, **Reuse existing folders**를 켜면 비슷한 폴더를 새로 만들지 않고 기존 폴더를 씁니다. 이름 규칙은 **Naming Blocks**로 만들고, 같은 설정을 **Monitor**에 연결하면 새로 들어오는 파일도 자동으로 처리됩니다. 자세한 내용은 [폴더 분류 가이드](/docs/folder-sorting), [Mac에서 AI로 파일을 폴더에 분류하는 방법](/blog/sort-files-into-folders-with-ai-mac), [AI 폴더 분류 지시 예시](/blog/ai-folder-sorting-prompts)를 참고하세요.
+
+장단점이 다른 AI 이름 변경 도구도 있습니다. [크로스플랫폼 AI 이름 변경 도구 비교](/blog/best-ai-file-renamer-tools-2026)에서 10개를 다뤘고, [Mac](/blog/best-ai-file-renamer-tools-mac-compared)과 [Windows](/blog/best-ai-file-renamer-tools-windows-compared) 순위도 따로 있습니다.
 
 <BlogCTA placement='inline' platform='general' />
 
-**Zush 기능 확인일: 2026년 10월 26일.** 경쟁 제품 정보에는 본문에 명시된 기존 확인 날짜가 적용됩니다.
+## 30초 안에 고르는 법
 
-## 빠른 비교
+1. 모든 파일에 같은 변경: **Finder** 또는 **PowerRename**.
+2. 아주 큰 폴더에 복잡한 규칙: **Bulk Rename Utility**.
+3. 원하는 이름이 이미 EXIF, GPS, 태그에 있음: **Advanced Renamer** 또는 **A Better Finder Rename**.
+4. 이름을 짓기 전에 파일을 열어 봐야 무엇인지 알 수 있음: **Zush**.
 
-| 작업 | 도구 | 운영체제 | 내용 분석 | 가격 |
-|---|---|---|---|---|
-| 혼합 파일, 개별 이름, 선택적 폴더 분류 | Zush | Mac, Windows | 지원 | 50회 무료, 월 $10 또는 일회성 $48 |
-| 텍스트 치환, 접두사, 번호 | Finder | Mac | 없음 | 기본 제공, 무료 |
-| 검색과 치환, 정규식 | PowerRename | Windows | 없음 | 무료 |
-| 복잡한 규칙 조합 | Bulk Rename Utility | Windows | 없음 | 개인 사용 무료 |
-| EXIF, 날짜, GPS, 메타데이터 | Advanced Renamer | Mac, Windows | 없음 | 일회성 라이선스 |
-| Mac용 규칙과 메타데이터 | A Better Finder Rename | Mac | 없음 | 일회성 라이선스 |
+두 종류를 함께 쓰는 사람도 많습니다. 간단한 기계적 수정에는 규칙 도구를, 이름에 의미가 담겨야 하는 폴더에는 AI를 씁니다. Windows만 따로 보려면 [Windows 11용 파일 이름 변경 도구 추천](/blog/best-file-renamer-windows-11)을 참고하세요.
 
-## 1. 기본 기능과 무료 규칙 도구
+## 출처와 확인 방법
 
-### Finder
-파일을 선택하고 우클릭한 뒤 Rename에서 텍스트를 바꾸거나 추가하고, 이름과 번호를 조합합니다. 설치는 필요 없지만 정규식, 내용 분석, 메타데이터 규칙, 감시, 지속적인 기록은 없습니다. [Mac 일괄 변경 안내](/blog/batch-rename-files-on-mac-complete-guide)는 Automator와 Terminal도 다룹니다.
-
-### PowerRename
-Microsoft PowerToys에 포함됩니다. File Explorer에서 검색과 치환, 정규식, 미리 보기를 사용합니다. 공통 규칙에는 적합하지만 내용을 읽거나 혼합 폴더를 감시하지 않습니다. [PowerRename 대안](/windows)을 참고하세요.
-
-### Bulk Rename Utility
-BRU는 접두사, 번호, 대소문자, 정규식을 조합합니다. 복잡한 화면은 Windows의 기계적인 작업을 위한 것입니다. Mac 버전과 내용 분석은 없습니다. [BRU 비교](/blog/bulk-rename-utility-alternatives)에서 범위를 설명합니다.
-
-## 2. 메타데이터로 이름 만들기
-
-Advanced Renamer와 A Better Finder Rename은 EXIF 날짜, GPS, ID3 태그, 파일 날짜를 사용합니다. 원하는 전체 이름이 이미 이 필드에 있을 때 선택하세요. EXIF는 사진을 찍은 시간을 알려줄 뿐 공원에 있는 개라는 내용은 알려주지 않습니다. PDF 메타데이터도 공급업체와 청구 금액을 반드시 담지는 않습니다. [Advanced Renamer 비교](/blog/advanced-renamer-alternatives)에서 한계를 확인할 수 있습니다.
-
-## 3. 파일마다 다른 이름이 필요하면 AI
-
-`Screenshot 2026-03-23.png`, `Scan0001.pdf`, `IMG_4382.HEIC`, `download (7).pdf`는 주제를 설명하지 않습니다. Zush는 스크린샷, RAW·HEIC 사진, PDF, [AI 시각 분석 스캔](/rename-scanned-documents), Office, iWork, 디자인, 오디오, 동영상을 읽습니다. [Naming Blocks](/docs/naming-blocks)로 공통 형식을 정하고, 적용 전에 모든 제안을 확인하며 기록에서 취소할 수 있습니다. [폴더 감시](/docs/folder-monitoring)는 새 다운로드와 스캔을 처리합니다.
-
-무료 50회는 네 가지 모드가 공유합니다. PRO는 월 $10 또는 일회성 $48이며 이름 변경 횟수 제한이 없습니다. 온라인 Zush Cloud AI와 BYOK 외에 Mac·Windows에서 LM Studio와 Ollama를 쓸 수 있습니다. [AI 종합 비교](/blog/best-ai-file-renamer-tools-2026)는 FilesDesk, RenameClick, Renamer.ai, NameQuick도 다룹니다.
-
-Zush 라이선스 하나로 Mac과 Windows를 합해 최대 3대에서 사용할 수 있습니다.
-
-Naming Blocks, Custom AI Blocks, 폴더 규칙을 포함한 [Templates를 내보내고](/docs/template-import-export) 다른 컴퓨터에서 가져올 수 있습니다. 대상 폴더, 접근 권한, AI 연결은 새 컴퓨터에서 다시 설정해야 합니다. 파일 자체가 아닌 설정을 옮기는 기능입니다.
-
-### 필요하면 폴더에도 분류
-
-선택적 AI 분류도 사용할 수 있습니다. Auto를 쓰거나 **Folder rules**에 “스크린샷은 프로젝트별, 청구서는 회사별”이라고 적습니다. 폴더 규칙은 Naming Blocks와 별개입니다. **Destination folder**를 선택하거나 원본 폴더를 루트로 유지합니다. **Reuse existing folders**는 적절한 기존 폴더를 사용하고 없으면 만듭니다. 적용 전에 이름과 위치를 확인하세요.
-
-설정을 **Template**에 저장해 먼저 수동으로 시험하고 **Monitor**에 연결합니다. 감시 폴더 바로 안에 들어오는 새 파일만 처리하며 처리된 파일을 다시 정리하지 않습니다. 제자리에서 이름만 바꾸려면 분류를 끄고 원래 목적지를 유지합니다. [분류 문서](/docs/folder-sorting).
-
-Zush는 연도 아래 월을 두는 식의 중첩 폴더 규칙도 지원합니다. 이미 이름을 바꾼 파일은 이름을 다시 변경하거나 추가 이름 변경 크레딧을 쓰지 않고 분류할 수 있습니다. 적용 전에 대상 경로를 확인하세요. 이 작업은 Monitor와 별개이며, Template을 바꿔도 이전 파일을 자동으로 다시 정리하지는 않습니다. [AI 폴더 정리](/docs/folder-sorting)는 Mac과 Windows에서 사용할 수 있습니다.
-
-## 30초 안에 선택하기
-
-혼합 내용, 설명형 이름, 감시, 검토, 복구에는 Zush. 동일한 치환, 접두사, 번호로 충분하면 무료 규칙 도구. EXIF, 날짜, GPS, 태그로 전체 이름을 만들 수 있으면 메타데이터 전문 도구. 함께 사용할 수도 있습니다. [Mac 비교](/blog/best-ai-file-renamer-tools-mac-compared), [Windows 비교](/blog/best-ai-file-renamer-tools-windows-compared), [Windows 11 추천](/blog/best-file-renamer-windows-11).
+<BlogSources ids={['powerrename', 'bulk-rename-utility', 'advanced-renamer', 'a-better-finder-rename']} />
 
 ## 자주 묻는 질문
 
-### 폴더로 이동할 수 있나요?
-네. 선택적 기능으로 이름과 폴더를 확인한 후 이동합니다. 시험한 Template은 Monitor로 새 파일을 처리할 수 있습니다.
+### 무료 파일 이름 변경 도구 중 가장 좋은 것은?
 
-### 무료라면 무엇을 쓰나요?
-공통 규칙에는 Mac의 Finder, Windows의 PowerRename. Zush는 AI 이름 변경 50회를 제공합니다. [무료 AI 안내](/blog/rename-files-with-ai-free)는 Cloud AI, BYOK, LM Studio, Ollama, 로컬 명령줄 도구를 다룹니다.
+패턴 작업이라면 Mac의 Finder와 Windows의 PowerRename이 무료이고 모든 변경을 미리 보여 줍니다. Bulk Rename Utility는 개인 사용 무료, Advanced Renamer는 가벼운 개인 사용 무료입니다. 파일 내용에 따른 이름이 필요하면 Zush가 계정, 카드, API 키 없이 AI 이름 변경 50회를 무료로 제공하며, 유료 버전과 같은 미리 보기와 Rename History를 씁니다. [무료 AI 이름 변경 가이드](/blog/rename-files-with-ai-free)를 참고하세요.
 
-### Mac과 Windows 추천은?
-혼합 파일에는 [Mac용 Zush](/mac)와 [Windows용 Zush](/windows). Finder, A Better Finder Rename, PowerRename, BRU는 좁은 규칙 작업용입니다.
+### 파일 안의 내용으로 이름을 지을 수 있나요?
 
-### 내용으로 이름을 만들 수 있나요?
-AI는 실제 텍스트나 이미지를 읽으며 텍스트 층이 없는 스캔도 처리합니다. 규칙 도구는 기존 이름과 태그를 재배치합니다.
+제대로 할 수 있는 것은 AI 이름 변경 도구뿐입니다. 규칙 도구는 기존 이름을 재배열하고, 메타데이터 도구는 EXIF나 ID3 태그를 읽습니다. Advanced Renamer는 스크립트로 PDF와 TXT 파일에서 텍스트를 뽑을 수 있지만 AI나 OCR이 없어 스캔본과 이미지는 읽지 못합니다. Zush 같은 AI 도구는 텍스트 레이어가 없는 스캔본을 포함해 텍스트, 이미지, 오디오, 동영상을 읽고, 먼저 검토할 수 있는 이름을 제안합니다.
 
-### 유료 AI가 필요한가요?
-기계적인 작업은 무료 규칙으로 충분합니다. 내용을 알아보려고 매번 파일을 연다면 AI가 그 작업을 줄일 수 있습니다. Zush PRO에는 일회성 $48 라이선스가 있습니다.
+### AI 파일 이름 변경 도구에 돈을 낼 가치가 있나요?
 
-<BlogProductIntro
-  title="Zush 시작하기"
-  description="혼합 폴더에는 Zush를 추천합니다. 내용 기반 이름, Naming Blocks, 미리 보기, 폴더 감시와 실행 취소를 제공합니다. 무료 규칙과 메타데이터 도구는 제한된 작업에 적합합니다. AI 폴더 분류는 선택 사항입니다."
-  links={[{"href":"/ai-file-sorter","label":"AI 파일 분류"},{"href":"/blog/ai-folder-sorting-prompts","label":"지시 예시"},{"href":"/docs/folder-sorting","label":"분류 문서"},{"href":"/pricing","label":"가격"}]}
-/>
+이름 변경이 기계적인 작업이라면 아닙니다. 무료 규칙 도구로 충분합니다. 무엇인지 확인하려고 파일을 자주 열어 본다면 가치가 있습니다. Zush의 $48 1회 결제 라이선스에는 무제한 이름 변경이 가능한 관리형 클라우드 AI, BYOK와 로컬 모델, 이후 모든 업데이트, Mac과 Windows를 합쳐 최대 3대, 14일 환불이 포함됩니다. 먼저 사본으로 무료 50회를 써 보세요.
 
-[Mac 안내](/blog/sort-files-into-folders-with-ai-mac) · [Windows 안내](/blog/sort-files-into-folders-with-ai-windows) · [지시 예시](/blog/ai-folder-sorting-prompts) · [분류 문서](/docs/folder-sorting).
+### Zush는 내 파일을 어디서 처리하나요?
+
+선택한 모드에 따라 다릅니다. Zush Cloud AI와 BYOK는 이름을 만들기 위해 파일 내용을 AI 서비스로 보냅니다. BYOK는 본인의 제공업체 계정을 씁니다. Ollama나 LM Studio를 쓰면 분석이 내 컴퓨터에서 실행되고 파일도 그 안에 머뭅니다. Finder, PowerRename, Bulk Rename Utility 같은 규칙 도구는 내용을 아예 읽지 않으므로 아무것도 컴퓨터 밖으로 나가지 않습니다. [오프라인 AI 파일 이름 변경](/offline-ai-file-renamer) 설정을 참고하세요.
+
+### Mac에서 가장 좋은 파일 이름 변경 도구는?
+
+파일마다 설명형 이름이 필요한 혼합 폴더라면 [Mac용 Zush](/mac)입니다. 스크린샷, PDF, RAW 사진, 디자인 파일, 오디오, 동영상을 읽고 영구 Rename History를 남깁니다. 공통 규칙 하나라면 기본 내장된 Finder가 있고, EXIF와 메타데이터 패턴에는 $29.95인 A Better Finder Rename이 있습니다. 전체 후보는 [Mac AI 이름 변경 도구 비교](/blog/best-ai-file-renamer-tools-mac-compared)에 있습니다.
+
+### Windows 11에서 가장 좋은 파일 이름 변경 도구는?
+
+패턴 작업이라면 PowerRename이 무료이고, 변경을 미리 보여 주며, Ctrl+Z로 되돌립니다. Bulk Rename Utility와 Advanced Renamer는 더 복잡한 규칙과 메타데이터를 다룹니다. 파일마다 내용에 맞는 이름이 필요하다면 [Windows용 Zush](/windows)를 Microsoft Store에서 설치하면 미리 보기, 폴더 감시, 영구 Rename History를 쓸 수 있습니다. [Windows AI 이름 변경 도구 비교](/blog/best-ai-file-renamer-tools-windows-compared)를 참고하세요.

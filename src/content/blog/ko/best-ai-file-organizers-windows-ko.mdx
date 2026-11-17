@@ -1,6 +1,6 @@
 ---
-title: "Windows 11 AI 파일 정리 프로그램 비교 (2026)"
-description: "Windows AI 파일 정리 프로그램 비교: Zush, Sortio 등의 이름 변경, 폴더 분류, 로컬 AI와 규칙 방식을 살펴보세요."
+title: "Windows 11 AI 파일 정리 프로그램 8종 비교 (2026)"
+description: "Windows 10·11 AI 파일 정리 프로그램 8종 비교: 이름 변경, 폴더 분류, 감시, 로컬 AI, 실행 취소, 무료 한도, 가격."
 date: "2026-09-22"
 slug: "best-ai-file-organizers-windows-ko"
 platform: "windows"
@@ -9,135 +9,170 @@ tags:
   - "File Organization"
   - "Tool Comparisons"
   - "Automation"
-tldr: "Zush는 Windows 10과 11에서 내용 기반 이름 변경과 선택적인 AI 폴더 분류를 제공합니다. Auto가 그룹을 제안하거나 Folder rules로 원하는 구조를 설명할 수 있습니다. Sortio와 Wisfile도 AI 작업 흐름을 제공하며 File Juggler와 DropIt은 고정 규칙을 사용합니다. 미리보기, 복구, 형식 지원, 데이터 처리 방식을 비교하세요. Zush 라이선스 하나로 최대 3대에서 사용할 수 있습니다."
-reviewed: "2026-10-26"
+tldr: "Zush는 Windows 10과 11에서 내용 기반 이름 짓기와 AI 폴더 분류를 함께 제공하며, 계정, 카드, API 키 없이 AI 이름 변경 50회가 무료입니다. Linux나 팀 사용자에게는 Sortio, PDF와 Word 파일 무료 정리에는 Wisfile, 내장 로컬 모델을 원하면 RenameClick, AI 없는 규칙에는 File Juggler나 DropIt이 맞습니다. Zush 라이선스 하나로 최대 3대에서 쓸 수 있습니다."
+reviewed: "2026-11-17"
 locale: "ko"
 translationOf: "best-ai-file-organizers-windows"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSources from '@/components/blog/BlogSources.astro';
 
-Zush는 Windows 10과 11에서 내용 기반 이름 변경과 선택적인 AI 폴더 분류를 제공합니다. Auto가 그룹을 제안하거나 Folder rules로 원하는 구조를 설명할 수 있습니다. Sortio와 Wisfile도 AI 작업 흐름을 제공하며 File Juggler와 DropIt은 고정 규칙을 사용합니다. 미리보기, 복구, 형식 지원, 데이터 처리 방식을 비교하세요.
+짧은 답: Windows 사용자 대부분에게 가장 좋은 AI 파일 정리 도구는 [Zush](/windows)입니다. PC가 어지러운 이유는 대개 파일 이름에 있기 때문입니다. `scan_0042.pdf`나 `IMG_4382.jpg`는 어떤 폴더 구조에 넣어도 찾기 어렵습니다. Zush는 파일을 하나씩 읽고 설명형 이름을 제안하며, 직접 쓴 지시에 따라 폴더로 분류할 수도 있고, 무엇이든 바뀌기 전에 모두 검토할 수 있습니다. Linux도 필요하면 Sortio, 무료로 문서를 한 번 정리하려면 Wisfile, 내장 로컬 모델을 원하면 RenameClick, AI 없이 정확한 규칙을 원하면 File Juggler를 고르세요.
 
-**Zush 기능 확인일: 2026년 10월 26일.** 경쟁 제품 정보에는 본문에 명시된 기존 확인 날짜가 적용됩니다.
-
-파일을 옮기지 않고 이름만 정리하고 싶다면 [Windows용 AI 파일 이름 변경 도구 비교](/ko/blog/windows-ai-file-renamer-comparison)를 확인하세요.
+**확인 방법:** 이 글은 [Zush](/) 제작사가 썼습니다. 경쟁 제품의 가격, 기능, 평점은 2026년 11월 17일에 각 제조사 사이트와 공식 스토어에서 확인했습니다([아래 출처](#sources-and-how-we-checked)). 실험실 테스트가 아니라 문서로 확인된 기능을 비교한 글입니다.
 
 ## 빠른 비교
 
-| | 적합한 용도 | 가격과 라이선스 |
-|---|---|---|
-| Zush | 내용 기반 이름과 선택적 AI 폴더 그룹 | 무료 이름 변경 50회; $10/mo; $48 |
-| Sortio | 지시 기반 그룹, 이름 변경, 미리보기, 감시 폴더 | 무료; $14.99/mo; $99/yr |
-| Wisfile | 무료 로컬 문서 이름과 그룹; 감시와 실행 취소는 문서화되지 않음 | 무료 |
-| RenameClick | 내장 로컬 모델; Auto Flow는 새 파일 이름 변경과 이동 지원 | $8/mo + VAT; $36 + VAT |
-| File Juggler | 이름 변경과 이동을 위한 결정적 규칙; AI 아님 | $50 |
-| DropIt | 이름, 날짜, 확장자로 정하는 무료 규칙; AI 아님 | 무료 |
+| 앱 | 하는 일 | PC에서 AI 실행? | 폴더 감시 | 실행 취소 | 가격 |
+|---|---|---|---|---|---|
+| **Zush** | <BlogHighlight>내용 기반 이름 변경과 AI 폴더 분류</BlogHighlight> | 예, Ollama나 LM Studio로(Zush Cloud AI와 BYOK도 지원) | 예 | 영구 Rename History, 묶음 단위 실행 취소 | 계정·카드 없이 50회 무료, 월 $10 또는 클라우드 AI 포함 1회 $48 |
+| Sortio | 이름 변경, 폴더 생성, 파일 이동 | 예, 모든 요금제에서 Ollama 또는 LM Studio | Pro 전용 | 분류 기록과 실행 취소 | 1회성 AI 체험, Pro 월 $14.99 또는 연 $99 |
+| Wisfile | 문서 이름 변경과 폴더 묶기 | 예, 로컬 전용 | 아니요 | 아니요 | 무료 |
+| RenameClick | 이름 변경, Auto Flow로 이동도 가능 | 예, 내장 모델 약 4 GB | Auto Flow, 앱 실행 중에만 | 메모리에 10개 항목, 재시작 시 삭제 | 월 100회 이름 변경 또는 이동 무료, 평생 $36 + VAT |
+| NudgeFile | 폴더 감시, 이름 변경, 이동, 중복 찾기 | 예, Ollama로(클라우드 옵션도 있음) | 예 | 예(사이트 기준) | 무료 다운로드, 유료 요금제는 제조사 미기재 |
+| Foldora | 묶음에 폴더와 파일 이름 제안 | 예, 로컬 분석 | 아니요 | 광고하지 않음 | 평생 $14.99 |
+| File Juggler | 규칙 기반 이름 변경과 이동, AI 없음 | AI 아님 | 예, 즉시 | 제조사 미기재 | 1회 $50 + 세금, 30일 체험 |
+| DropIt | 규칙 기반 분류와 이동, AI 없음 | AI 아님 | 예, 주기적 검사 | 아니요 | 무료, 오픈 소스 |
 
-## 1. Zush
+파일을 옮기지 않고 이름만 더 잘 짓고 싶다면 [Windows용 AI 파일 이름 변경 도구 비교](/blog/best-ai-file-renamer-tools-windows-compared)를 보세요.
 
-내용 기반 이름과 선택적 AI 폴더 그룹. [Zush AI 파일 정리 도구](/ai-file-organizer) 페이지에서 제자리 이름 변경, 이름 변경 후 폴더 분류, 폴더 모니터링의 세 가지 사용법을 확인할 수 있습니다.
+<BlogProductIntro
+  title="Windows PC의 파일 이름이 아무것도 알려 주지 않나요?"
+  description="Zush는 스크린샷, PDF, 사진, Office 파일, 동영상을 읽고 파일마다 명확한 이름을 제안한 뒤, 제자리에서 이름을 바꾸거나 폴더로 분류합니다. 먼저 미리 보고, 어떤 묶음이든 나중에 되돌릴 수 있습니다."
+  links={[
+    { href: '/windows', label: 'Windows용 Zush' },
+    { href: '/ai-file-organizer', label: 'AI 파일 정리' },
+    { href: '/ai-file-sorter', label: 'AI 파일 분류' },
+    { href: '/offline-ai-file-renamer', label: '오프라인 AI 이름 변경' },
+  ]}
+/>
+
+## 제자리에서 이름만 바꿀까, 폴더로 옮길까?
+
+모든 AI 파일 정리 도구는 다음 중 하나 또는 둘 다를 합니다.
+
+1. File Explorer와 Windows 검색이 내용으로 파일을 찾을 수 있도록 이름을 바꿉니다.
+2. 파일을 폴더 구조로 옮깁니다. 때로는 도구가 직접 만든 구조로 옮깁니다.
+
+둘 다 파일 경로를 바꾸므로 바로 가기와 프로젝트 링크가 깨질 수 있습니다. 옮기는 쪽이 더 큰 변화이므로, 미리 보기와 재시작 후에도 남는 실행 취소가 필요합니다. 무엇인지 알려고 파일을 열어 본다면 먼저 이름 문제부터 해결해야 합니다.
+
+## 1. Zush: 내용 기반 이름과 AI 폴더 분류
+
+[Windows용 Zush](/windows)는 Windows 10과 11에서 동작하며 [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X)에서 설치합니다. 스크린샷, PDF, 스캔본, 사진, Office 문서, 디자인 파일, 오디오, 동영상이 든 폴더를 넣으면, Zush가 파일을 하나씩 읽고 `2026-09-18_acme_invoice_1042.pdf`나 `stripe-revenue-dashboard-september.png` 같은 이름을 제안합니다. 동영상은 MKV를 포함해 음성, 내장 자막, 메타데이터로 이름을 짓고, 음악은 태그가 없어도 식별할 수 있습니다.
+
+바로 쓸 수 있습니다. 처음 50회 AI 이름 변경은 계정, 카드, API 키, 모델 다운로드 없이 관리형 Zush Cloud AI로 실행되며, 클라우드 모드는 RAM 4 GB면 충분합니다. 폴더가 PC 밖으로 나가면 안 될 때는 Ollama나 LM Studio로 전환하세요. 선택 사항인 기기 내 음성 인식을 쓰면 동영상 받아쓰기도 로컬에서 처리됩니다.
+
+무엇이든 바뀌기 전에 모든 제안을 볼 수 있습니다. 이름을 더블클릭해 수정하거나, 하나만 다시 생성하거나, 묶음을 적용하세요. 준비된 Templates(Movies & TV, Remove Duplicates 포함)와 145개 이상의 Naming Blocks가 날짜, 거래처, 금액, 고객, 앞자리 0을 채운 일련번호로 이름을 일관되게 유지합니다.
 
 ![Windows용 Zush가 여러 종류의 파일을 내용에 따라 일괄 이름 변경하고, 적용 전에 제안된 파일 이름을 모두 보여 주는 모습](/videos/windows/zush-batch-rename.mp4)
 
-Zush 폴더 분류는 Mac과 Windows에서 사용할 수 있습니다. 지원 파일의 내용을 분석해 이름과 그룹을 제안합니다. Auto를 쓰려면 Folder rules를 비우고, 직접 정하려면 자연어로 지시하세요. 파일 이름 형식은 Naming Blocks에서 별도로 설정합니다.
+폴더 정리까지 하려면 Auto를 쓰거나 "청구서는 회사별로, 영수증은 월별로 묶기" 같은 규칙을 **Folder rules**에 쓰세요. 그룹을 미리 보고, **Destination folder**를 고르고, **Reuse existing folders**로 기존 폴더를 다시 씁니다. 규칙은 중첩할 수 있고 날짜나 페이지 수 같은 파일 정보를 쓸 수 있으며, 현재 이름을 유지한 채 분류만 할 수도 있습니다. AI Rename은 중복도 찾아냅니다. 그대로 두거나, 이름에 표시하거나, 휴지통으로 옮길 수 있습니다. 사본에는 크레딧을 쓰지 않으며 Undo로 복원됩니다. 단계별 안내: [Windows에서 AI로 파일을 폴더에 분류하기](/blog/sort-files-into-folders-with-ai-windows), [바로 쓰는 폴더 규칙 30개](/blog/ai-folder-sorting-prompts). 각 설정은 [폴더 분류 문서](/docs/folder-sorting)에 설명돼 있습니다.
 
-내보낸 이미지나 복사 폴더로 시험하세요. Photos 보관함 패키지 내부를 재배치하지 마세요. 카탈로그에 등록된 원본은 해당 프로그램의 이름 변경 또는 다시 연결 절차를 따르세요. 이름 변경과 이동 모두 파일 경로를 바꿉니다.
+![Rename & sort를 적용하기 전에 내용 기반 폴더 그룹과 제안된 파일 이름을 미리 보여 주는 Windows용 Zush 화면](/images/showcase/windows/folder-sorting-light.webp)
+
+**Monitor**는 저장한 Template을 다운로드 폴더나 스캐너 폴더에 들어오는 새 파일에 적용합니다. Rename History는 재시작 후에도 이전 이름과 새 이름을 보관하고, Undo All은 묶음 전체를 복원하면서 충돌을 나열하고 새 이름으로 복원하는 옵션을 줍니다.
 
 ![Windows용 Zush의 Monitor 탭에서 Screenshots와 Downloads 폴더를 감시하며 새 파일이 들어오면 이름을 바꾸는 설정](/images/showcase/windows/monitor-light.webp)
 
-Zush 라이선스 하나로 Mac과 Windows를 합해 최대 3대에서 사용할 수 있습니다.
+<BlogCTA placement='inline' platform='windows' />
 
-Naming Blocks, Custom AI Blocks, 폴더 규칙을 포함한 [Templates를 내보내고](/docs/template-import-export) 다른 컴퓨터에서 가져올 수 있습니다. 대상 폴더, 접근 권한, AI 연결은 새 컴퓨터에서 다시 설정해야 합니다. 파일 자체가 아닌 설정을 옮기는 기능입니다.
+가격: 월 $10 또는 1회 $48. 1회 결제 라이선스에는 모든 모드(Zush Cloud AI, BYOK, Ollama, LM Studio)의 무제한 이름 변경, 이후 모든 업데이트, Mac과 Windows를 합쳐 최대 3대, 14일 환불이 포함됩니다. 미국 Microsoft Store에서 Zush는 평가 8개 기준 5.0이고, Softpedia 편집자 리뷰는 4.5/5입니다(둘 다 2026년 11월 17일 기준).
 
-## 2. Sortio
+## 2. Sortio: 프롬프트 기반 분류, Linux도 지원
 
-Sortio는 지시에 따라 이름 변경, 폴더 생성, 이동 계획을 보여 줍니다. Smart Folders는 새 파일을 처리하며 Linux도 지원합니다. AI 사용량과 계획을 확인하세요. 이동하면 파일 경로가 바뀝니다.
+Sortio는 "청구서는 연도별로, 스크린샷은 프로젝트별로" 같은 평범한 문장 지시를 받아 계획을 보여 준 뒤, 이름을 바꾸고 폴더를 만들어 파일을 옮깁니다. Windows 10/11, macOS, Linux에서 동작하며 이메일 계정으로 로그인해야 합니다.
 
-Sortio.
+무료 요금제에는 규칙 5개, Spaces 3개까지의 규칙 기반 분류, 1회성 AI 체험, 미리 보기, 분류 기록, 실행 취소가 있습니다. 폴더 감시와 자동화는 이제 Pro가 필요하며, 월간 AI 사용량을 포함해 월 $14.99 또는 연 $99입니다. 본인의 키를 쓰면 이 사용량 제한을 피할 수 있고, Ollama를 쓰면 처리가 로컬에 머뭅니다(RAM 최소 8 GB).
 
-## 3. Wisfile
+Linux나 팀 좌석이 필요하면 Sortio를 고르세요. 약점: 호스팅 AI는 월간 사용량 제한이 있고, 무료 요금제에서는 더 이상 폴더를 감시하지 않습니다. [Zush vs Sortio](/blog/zush-vs-sortio)를 참고하세요.
 
-Wisfile은 PDF, 논문, 교육 자료 같은 로컬 문서에 집중합니다. 내용에서 이름을 추출하고 묶음을 주제별로 정리할 수 있습니다. 제품 페이지에는 이미지·영상 작업 흐름, 폴더 모니터링, 실행 취소 기록이 설명되어 있지 않습니다.
+## 3. Wisfile: 문서용 무료 선택지
 
-![Wisfile 공식 일러스트: 무작위 PDF 이름이 날짜가 포함된 알기 쉬운 문서 이름으로 바뀌는 모습](/images/blog/competitors/wisfile.webp)
+Wisfile은 무료이고 Windows와 Mac에서 완전히 기기 안에서만 동작합니다. 문서 내용(제목, 저자, 연도)으로 이름을 바꾸고 묶음을 주제별 폴더로 나눌 수 있습니다. `Author-Year-Title` 같은 템플릿을 지원합니다.
 
-Wisfile.
+![무작위 PDF 이름이 날짜가 포함된 알기 쉬운 문서 이름으로 바뀌는 모습을 담은 Wisfile 공식 일러스트](/images/blog/competitors/wisfile.webp)
 
-## 4. RenameClick
+예산이 가장 중요하고 PDF와 Word 보관함을 한 번 정리하려면 Wisfile을 고르세요. 약점: 실행 취소와 폴더 감시가 없고, 이미지나 동영상보다는 PDF와 Word에 집중합니다. 사본으로 작업하세요.
 
-RenameClick은 큰 모델을 다운로드한 뒤 로컬에서 실행합니다. Auto Flow는 새 파일의 이름을 변경하고 이동할 수 있습니다. 일반 Rename 작업 공간은 실행 취소 항목을 최대 10개까지 메모리에 보관하고 재시작 시 지우지만, Auto Flow는 조건에 맞는 적용 기록을 저장해 재시작 후에도 실행 취소와 다시 실행을 지원합니다.
+## 4. RenameClick: 내장 로컬 모델
+
+RenameClick의 무료 AI는 내장 로컬 모델로 동작하며, 다운로드 크기는 약 4 GB이고 RAM 16 GB를 권장합니다. Ollama를 설정할 필요가 없다는 점은 확실히 편합니다. 이미지, 문서, 오디오, 그리고 4.1.2 버전부터는 동영상(MP4, MOV, M4V, 3GP, 프레임과 로컬 음성 받아쓰기 사용)의 이름을 바꿉니다. MKV, WebM, AVI, RAW 사진, 디자인 파일은 지원 형식 목록에 없습니다. Auto Flow는 앱이 실행 중일 때 새 파일의 이름을 바꾸고 옮깁니다.
+
+무료 요금제는 무제한 분석과 월 100회 이름 변경 또는 이동을 제공하며, 처음 적용하기 전에 한 번은 온라인에 연결해야 합니다. 평생 라이선스는 $36 + VAT로 직접 배포 빌드 기준 최대 3대이고, 환불은 법이 요구하는 경우에만 제공됩니다. Standard Rename은 실행 취소 항목 10개를 메모리에 보관하며 재시작하면 지워집니다. 평점: 미국 Microsoft Store 평가 6개 기준 3.0, Softpedia 편집자 3.5.
 
 ![RenameClick(Mac 버전)이 Rename & Move 전에 이름을 바꾼 파일을 Legal Documents, Medical Documents, Uncategorized로 분류하는 화면](/images/blog/competitors/renameclick.webp)
 
-RenameClick.
+설정 없이 오프라인 AI를 쓰고 싶고 RAM이 충분하다면 RenameClick을 고르세요. 자세한 비교: [Zush vs RenameClick](/blog/zush-vs-renameclick).
 
-## 5. File Juggler
+## 5. NudgeFile: 무료 로컬 AI 폴더 감시 도구
 
-File Juggler는 PDF 내용과 속성을 포함한 명시적인 조건으로 파일 이름을 바꾸거나 이동합니다. AI 없는 예측 가능한 작업에 적합합니다. 각 규칙을 구체적으로 정의하고 대표 파일로 시험해야 합니다.
+NudgeFile은 Windows 10과 11용 신생 앱으로 Microsoft Store에서 무료로 내려받을 수 있습니다. 사이트에 따르면 다운로드와 바탕 화면 같은 폴더를 감시하고, 새 파일에 표준화된 이름을 붙이며, 대상 폴더로 보내고, 체크섬과 로컬 시각 AI로 중복을 찾습니다. AI는 Ollama로 로컬에서 실행되며 클라우드 옵션도 있습니다. "Human Approval Pipeline"으로 제안을 검토하거나 자동으로 실행되게 할 수 있고, 사이트에는 모든 동작을 클릭 한 번으로 되돌릴 수 있다고 나와 있습니다.
 
-File Juggler.
+Windows에서 무료로 항상 켜 두는 로컬 정리 도구를 원한다면 NudgeFile을 고르세요. 약점: FAQ에는 모델이 "파일 메타데이터와 구조"를 분석한다고 되어 있고, 사이트에 지원 파일 형식도 유료 요금제도 나와 있지 않으니 먼저 본인 파일로 시험해 보세요.
 
-## 6. DropIt
+## 6. Foldora: $14.99짜리 일회성 로컬 정리
 
-DropIt은 이름, 확장자, 날짜, 크기, 정규식으로 정리합니다. 파일을 끌어 놓거나 모니터링 폴더를 주기적으로 검사할 수 있습니다. 무료지만 내용 분석 AI는 없으며 마지막 버전은 2018년에 나왔습니다.
+Foldora는 Windows 10, 11과 macOS에서 동작합니다. 선택한 파일을 로컬에서 분석해 폴더와 더 명확한 파일 이름을 제안하고, 미리 보기를 승인하면 적용합니다. 가격은 평생 $14.99입니다. 구매, 활성화, 주기적인 라이선스 확인에는 인터넷 연결이 필요합니다.
 
-DropIt.
+섞인 묶음을 싸게, 로컬에서, 한 번 정리하려면 Foldora를 고르세요. 약점: 폴더 감시가 없고, 제조사 스스로 클릭 한 번 실행 취소를 보장한다고 광고하지 않는다고 밝히므로 큰 변경 전에는 백업하세요.
 
-## AI로 파일을 폴더에 분류하기
+## 7. File Juggler: AI 없는 예측 가능한 규칙
 
-Zush 폴더 분류는 Mac과 Windows에서 사용할 수 있습니다. 지원 파일의 내용을 분석해 이름과 그룹을 제안합니다. Auto를 쓰려면 Folder rules를 비우고, 직접 정하려면 자연어로 지시하세요. 파일 이름 형식은 Naming Blocks에서 별도로 설정합니다.
+File Juggler는 오래된 Windows 자동화 도구이며 지금도 관리되고 있습니다(3.1.9 버전, 2026년 10월 30일). "다운로드 폴더의 PDF에 'Invoice'가 있으면 날짜로 이름을 바꾸고 Finance로 옮기기" 같은 규칙을 쓰면 파일이 들어오는 대로 적용합니다. 규칙에 쓰려고 PDF, Word, Excel 텍스트를 읽을 수 있습니다. Softpedia 편집자 평가는 4.5/5입니다.
 
-> 청구서는 회사별, 영수증은 월별로 묶어 주세요. 월 폴더 이름은 YYYY-MM으로 지정해 주세요.
+가격은 $50 + 세금의 1회 결제 라이선스이며, 모든 기능을 쓸 수 있는 30일 체험판이 있습니다. 약점: AI와 OCR이 없어서 경우마다 규칙이 필요하고, 이미지로만 된 스캔본에는 별도의 OCR 단계가 필요합니다. 다른 선택지: [File Juggler 대안](/blog/file-juggler-alternatives).
 
-1. 복사한 작은 묶음을 AI Rename에 추가하고 Template을 선택합니다.
-2. + Sort를 켜고 하위 폴더의 루트로 Destination folder를 선택합니다. 별도 대상이 없으면 원본 폴더가 루트입니다.
-3. Folder rules에 분류 방법을 적습니다. 대상 안의 적절한 기존 폴더를 쓰려면 Reuse existing folders를 켭니다. 맞는 폴더가 없으면 새로 만들 수 있습니다.
-4. 처리를 적용하기 전에 제안된 이름과 그룹을 확인하고 수정합니다.
+## 8. DropIt: 무료 규칙 엔진
 
-![Windows용 Zush에서 Rename & sort 적용 전 파일 이름과 폴더 그룹을 미리보기](/images/showcase/windows/folder-sorting-light.webp)
+DropIt은 무료 오픈 소스입니다. 규칙은 이름, 크기, 날짜, 정규식으로 파일을 찾고, 파일을 끌어다 놓거나 감시 폴더를 주기적으로 검사하게 할 수 있습니다. 이동, 복사, 이름 변경, 압축, 압축 풀기 등 21가지 동작이 있습니다.
 
-검증한 대상과 규칙을 Template에 저장하세요. Monitor는 감시 폴더 바로 안에 새로 들어오는 파일의 이름과 분류를 처리합니다. 이미 처리한 파일을 소급해 정리하지 않습니다. 분류를 끄고 원래 대상을 선택하면 파일은 현재 폴더에 남습니다.
+약점: 최신 릴리스인 8.5.1이 2018년 2월에 나왔으므로 업데이트나 AI는 기대하기 어렵습니다. 확장자나 이름 패턴으로 무료로 간단히 분류하려면 DropIt을 고르세요. Mac에서 넘어오셨다면 [Windows용 Hazel 대안](/blog/hazel-for-windows-alternatives)을 보세요.
 
-[AI 폴더 분류 단계별 가이드](/blog/sort-files-into-folders-with-ai-windows) · [폴더 분류 문서](/docs/folder-sorting) · [폴더 규칙 예시 30가지](/blog/ai-folder-sorting-prompts).
+## 무엇을 골라야 할까요?
 
-Zush는 연도 아래 월을 두는 식의 중첩 폴더 규칙도 지원합니다. 이미 이름을 바꾼 파일은 이름을 다시 변경하거나 추가 이름 변경 크레딧을 쓰지 않고 분류할 수 있습니다. 적용 전에 대상 경로를 확인하세요. 이 작업은 Monitor와 별개이며, Template을 바꿔도 이전 파일을 자동으로 다시 정리하지는 않습니다. [AI 폴더 정리](/docs/folder-sorting)는 Mac과 Windows에서 사용할 수 있습니다.
+- 파일 이름이 문제이거나, 한 번 검토하는 묶음에서 이름과 폴더를 함께 처리하고 싶다: **Zush**.
+- Linux나 팀 좌석이 필요하다: **Sortio**.
+- 무료, 로컬, 문서 전용 정리: **Wisfile**.
+- 설정 없는 오프라인 AI와 RAM 16 GB: **RenameClick**.
+- 직접 시험해 볼 의향이 있는 무료 로컬 감시 도구: **NudgeFile**.
+- 저렴한 일회성 로컬 정리: **Foldora**.
+- AI 없는 정확한 규칙: **File Juggler**, 무료여야 한다면 **DropIt**.
 
-RenameClick 무료 플랜은 월 100회의 성공한 이름 변경 또는 이동을 제공합니다. 로컬 모델은 큰 다운로드가 필요하며 RAW, 디자인 형식, 동영상은 공개 지원 목록에 없습니다. 일반 Rename은 실행 취소 항목을 최대 10개까지 메모리에 보관하고 재시작 시 지우며, Auto Flow는 조건에 맞는 적용 기록을 재시작 후에도 유지합니다. File Juggler는 30일 체험을 제공합니다. DropIt은 21가지 작업을 지원하며 최신 8.5.1은 2018년 10월 공개되었습니다. Sortio 무료 플랜은 최대 5개 규칙과 일회성 AI 체험을 포함하고 Pro에는 월간 AI 한도가 있습니다.
+## 어떤 정리 도구든 먼저 파일 10개로 시험하기
 
-## 어떤 프로그램을 선택할까요?
+스크린샷, 청구서, 영수증, 휴대폰 사진, 스프레드시트, Word 문서, 슬라이드, 동영상, 오디오 파일, 아무 다운로드 파일 등 평소 파일 10개를 테스트 폴더에 복사하세요. 그런 다음 확인하세요.
 
-보관함, 편집, 메타데이터, 고정 규칙, 내용 기반 이름과 폴더 중 필요한 작업으로 선택하세요. Zush는 일반 폴더의 지원 파일에 미리보기와 선택적 그룹 분류를 제공합니다. 카탈로그나 백업을 대체하지 않습니다.
+1. 결과가 검색할 수 있을 만큼 구체적인가요?
+2. 모든 변경을 일어나기 전에 볼 수 있었나요?
+3. 앱을 재시작한 뒤에도 묶음 전체를 되돌릴 수 있나요?
+4. 실제 월간 사용량에서도 가격이 맞나요?
 
-## 전환 전에 복사본으로 시험하기
+더 자세한 체크리스트는 [안전하게 파일 일괄 이름 변경하는 법](/blog/how-to-safely-batch-rename-files)을 읽어 보세요.
 
-사진, 스크린샷, RAW, 문서, 모호한 이름이 포함된 작은 복사본부터 시작하세요. 미리보기, 그룹, 메타데이터, 보조 파일, 외장 드라이브, 복구를 확인합니다. 보관함에서는 가져오기, 내보내기, 백업, 카탈로그 복원도 시험하세요. 새 절차가 검증될 때까지 기존 아카이브를 유지하세요.
+## 출처와 확인 방법
+
+<BlogSources ids={['sortio', 'wisfile', 'renameclick', 'nudgefile', 'foldora', 'file-juggler', 'dropit']} />
 
 ## 자주 묻는 질문
 
-### Zush는 파일을 실제 폴더로 이동하나요?
+### Windows 11에서 가장 좋은 AI 파일 정리 도구는?
 
-예. 선택적인 분류를 켜고 대상, 이름, 그룹을 확인하세요. 현재 위치에서 이름만 바꾸려면 분류를 끄고 원래 대상을 유지합니다.
+저희 추천은 Zush입니다. 내용으로 파일 이름을 바꾸고 Auto나 직접 쓴 지시로 폴더에 분류하며, 미리 보기, Templates, 폴더 감시, 영구 실행 취소를 제공합니다. Linux가 필요하면 Sortio, 내장 로컬 모델을 원하면 RenameClick, AI 없는 정확한 규칙이 파일에 맞다면 File Juggler가 대안입니다. Zush는 저희 제품이니 어떤 도구든 먼저 사본으로 시험하세요.
 
-### 새 파일을 자동으로 분류할 수 있나요?
+### Windows용 무료 AI 파일 정리 도구가 있나요?
 
-예. 시험한 Template을 Monitor에 지정합니다. 감시 폴더 바로 안의 새 파일이 대상이며 이미 처리한 파일은 재배치하지 않습니다.
+네. Wisfile은 PDF와 Word 파일용으로 무료이며 로컬에서 동작하고, NudgeFile은 Microsoft Store에서 무료로 내려받을 수 있습니다. Zush는 계정, 카드, API 키 없이 AI 이름 변경 50회를 무료로 제공합니다. RenameClick은 4 GB 모델을 내려받은 뒤 월 100회 이름 변경 또는 이동을 허용합니다. DropIt도 무료지만 AI가 아닌 고정 규칙을 씁니다.
 
-### 기존 폴더와 외장 드라이브를 사용할 수 있나요?
+### 1회 결제 가격으로 가장 많이 주는 Windows 정리 도구는?
 
-Reuse existing folders는 대상 루트 안의 적합한 폴더를 사용하고 필요하면 새 폴더를 만듭니다. 드라이브와 파일에 접근할 수 있어야 하며 클라우드 파일은 먼저 내려받습니다.
+Foldora는 $14.99, RenameClick은 $36 + VAT이지만 둘 다 로컬 AI나 본인 AI로만 동작합니다. Zush의 $48 라이선스에는 관리형 Zush Cloud AI와 BYOK, Ollama, LM Studio, 무제한 이름 변경, 이후 모든 업데이트, Windows와 Mac을 합쳐 최대 3대, 14일 환불이 포함됩니다. File Juggler의 $50 라이선스로는 AI가 아니라 규칙을 삽니다.
 
-### 파일이 클라우드 AI로 전송되나요?
+### AI 파일 정리 도구가 내 파일을 업로드하나요?
 
-Zush Cloud AI와 BYOK는 선택한 클라우드 제공자에게 내용을 보냅니다. Ollama와 LM Studio는 지원되는 로컬 분석을 제공합니다. 로컬 분석이 앱의 모든 기능이 오프라인이라는 뜻은 아닙니다.
+모드에 따라 다릅니다. Ollama나 LM Studio를 쓰는 Zush는 분석을 PC 안에서 처리하고, Zush Cloud AI와 BYOK는 이름을 짓기 위해 파일 내용을 클라우드 모델로 보냅니다. Wisfile, Foldora, RenameClick 내장 모델은 로컬에서 동작하고, NudgeFile은 기본값이 로컬 AI입니다. Sortio는 호스팅 AI와 함께 모든 요금제에서 BYOK, Ollama, LM Studio를 제공합니다. 민감한 폴더에 쓰기 전에 앱마다 AI 설정을 확인하세요.
 
-## 출처와 확인 날짜
+### Windows에서 AI가 다운로드 폴더를 자동으로 정리할 수 있나요?
 
-공식 제품, 도움말, 가격 페이지에 근거한 비교이며 공통 성능 시험은 아닙니다. 가격과 요구 사항은 바뀔 수 있습니다. Zush 분류는 2026년 9월 28일 확인했으며 다른 제품의 확인 날짜는 영어 원문을 따릅니다.
-
-Sortio · Wisfile · RenameClick · File Juggler · DropIt · [폴더 분류 문서: Zush](/docs/folder-sorting).
-
-## 결론
-
-보관함, 편집, 메타데이터, 고정 규칙, 내용 기반 이름과 폴더 중 필요한 작업으로 선택하세요. Zush는 일반 폴더의 지원 파일에 미리보기와 선택적 그룹 분류를 제공합니다. 카탈로그나 백업을 대체하지 않습니다.
+네. Zush는 다운로드 폴더를 감시하며 새 파일 이름을 바꾸고 Template에 저장한 폴더 규칙을 적용할 수 있습니다. RenameClick의 Auto Flow, Sortio Pro, NudgeFile도 폴더를 감시합니다. 중요한 폴더를 자동화하기 전에 테스트 폴더 하나로 시작하세요. Zush 설정 방법은 [다운로드 폴더 자동화 가이드](/ai-file-sorter)에서 단계별로 안내합니다.
