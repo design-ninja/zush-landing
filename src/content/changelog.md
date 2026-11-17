@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.23.3] - 2026-11-17
+### Improved
+- Folder sorting with Auto starts faster: files that already have AI names are grouped by those names without being read again.
+- Sorting with your own folder rule reads each file once instead of twice.
+- Sorting starts when you close the sorting settings, so picking a rule no longer starts grouping with the one you didn't want.
+- While sorting reads your files, the status shows Reading files, then Grouping files while it plans the folders.
+- TV episodes get a season and episode number only when the file name, metadata, subtitles, speech or on-screen text gives it, and an episode without one is named by what happens in it.
+### Fixed
+- Videos from DVD rips (MPEG-2 in MKV), AVI files, more MKV formats and 4:2:2 Motion JPEG are now named by what they show.
+- A song playing in a long video, such as a film soundtrack, no longer becomes the video's name.
+
 ## [3.23.2] - 2026-11-16
 ### Improved
 - Free users can add a full batch of files to AI Rename. Files covered by your free credits are analyzed right away, and the rest wait for PRO.
