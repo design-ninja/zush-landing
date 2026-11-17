@@ -8,7 +8,7 @@ import {
   getRelatedPosts,
   getTranslationsBySlug,
 } from '@/data/blog';
-import type { BlogLocale } from '@/data/blogSchema';
+import type { BlogItemList, BlogLocale } from '@/data/blogSchema';
 import { getBlogSeo, getCanonicalUrl } from '@/seo/config';
 import {
   buildBlogPostingJsonLd,
@@ -47,7 +47,7 @@ const howTo = HOW_TO_SCHEMAS[post.slug];
 const blogPath = `/blog/${post.slug}`;
 const isSelfCanonical = seo.canonicalPath === blogPath;
 const canonicalUrl = getCanonicalUrl(seo.canonicalPath);
-const itemListData = entry.data.itemList;
+const itemListData: BlogItemList | undefined = entry.data.itemList;
 const itemListJsonLd = itemListData
   ? {
       '@context': 'https://schema.org',

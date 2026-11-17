@@ -118,3 +118,5 @@ export const blogCollectionSchema = z.object({
    */
   translationOf: z.string().optional(),
 });
+
+export type BlogItemList = NonNullable<z.infer<typeof blogCollectionSchema>["itemList"]>;

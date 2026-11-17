@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.19.3.0] - 2026-11-17
+
+### Improved
+- Folder sorting starts after you close the Sort settings, so you can finish choosing your options first.
+- Auto sorting is faster when filenames already include AI titles. A progress indicator shows when Zush is still reading files for a folder plan.
+
+### Fixed
+- Offline speech recognition can now be set up in the Microsoft Store version.
+- Fixed a crash when analyzing some MKV videos.
+- Fixed a case where choosing Get PRO from the system tray opened the main window without showing the PRO window.
+
 ## [3.19.2.0] - 2026-11-16
 
 ### Added
