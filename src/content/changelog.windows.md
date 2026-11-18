@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.19.4.0] - 2026-11-18
+
+### Added
+- While Rename All runs, AI Rename shows "Renaming files…" with its progress. Sorting files into folders shows "Sorting files…".
+
+### Improved
+- Videos are prepared for analysis faster and upload less data, so video batches finish sooner.
+- Scrolling through large AI Rename lists is smoother, and thumbnails stay sharp after you move Zush to a display with a different scale.
+- Photos and PDFs saved with a Word, Excel or PowerPoint extension are now named from their actual content.
+
+### Fixed
+- Documents that are open in Word, Excel or PowerPoint can now be analyzed without closing them first.
+- Hidden "._" files that macOS leaves on shared and external drives are no longer added to the list.
+- Files with very long names can now be renamed when they have a metadata sidecar file.
+- When Zush cannot reach its server, it now says so and suggests checking the connection, instead of showing a generic error.
+
+
 ## [3.19.3.0] - 2026-11-17
 
 ### Improved
