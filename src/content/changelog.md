@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.23.4] - 2026-11-18
+### Improved
+- The file list stays fast with batches of up to 1,000 files, and photo previews appear sooner.
+- While files are renamed or sorted, the bar at the bottom shows the progress.
+- Folder sorting with your own folder rule uses the names you typed by hand.
+- Cloud AI tries again once when uploading a large file to the server takes too long.
+### Fixed
+- The file list no longer goes blank after jumping to the end of a large batch sorted into many folders.
+- Hidden "._" files that macOS leaves on external drives, network shares and zip archives are no longer added to AI Rename or Quick Rename.
+- When Cloud AI can't reach the server, for example because a VPN or firewall blocks it, the file says so instead of showing a technical error.
+- Switching folder sorting from Auto to your own rule asks again for file descriptions that failed before.
+- Parts of the original name that your rename rule keeps, such as a date, are kept even when a backup AI service names the file.
+- Activity shows the right AI service for every file in a large batch.
+
 ## [3.23.3] - 2026-11-17
 ### Improved
 - Folder sorting with Auto starts faster: files that already have AI names are grouped by those names without being read again.
