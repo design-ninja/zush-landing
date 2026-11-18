@@ -59,9 +59,9 @@ A name-based check would pair `scan_0041.pdf` with `scan_0041 (1).pdf` and stop 
 
 Content matching compares the bytes. Two files are a pair when they hold exactly the same data, whatever they are called and wherever they sit in the batch. That catches the copy you renamed to `invoice final.pdf` six months ago, and it refuses to pair two different PDFs that happen to share a name pattern.
 
-In Zush it is a Template setting, under Processing:
+In Zush it is a Template setting, under Processing, and the same switch sits behind the Duplicates button in AI Rename:
 
-![The Processing section of a Zush Template with Detect duplicate files turned on and the Copies menu open](/images/showcase/macos/duplicates-settings-light.webp)
+![Zush AI Rename with duplicate detection on: three copies are unchecked and labelled with the file they match](/images/showcase/macos/duplicates-keep-light.webp)
 
 Once it is on, every copy in the batch is labelled with the file it matches, and none of the copies are sent to the AI. That is where the 240 becomes 180.
 
@@ -79,6 +79,8 @@ The Copies setting has three options: Keep as is, Mark in name, and Move to Tras
 ![Zush with Mark in name selected, showing copies named after their originals with DUPLICATE appended](/images/showcase/macos/duplicates-mark-light.webp)
 
 If a folder's names are already fine and only the copies need to go, the built-in Remove Duplicates Template keeps every filename and moves the copies to the Trash.
+
+![The Remove Duplicates Template in Zush AI Rename: one Original Name block keeps every filename, and three exact copies are set to move to the Trash](/images/showcase/macos/duplicates-template-light.webp)
 
 <BlogCTA placement='inline' platform='general' />
 

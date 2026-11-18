@@ -30,6 +30,8 @@ export interface HeaderCopy {
   language: string;
   /** Burger-menu label; falls back to 'Menu' where a locale has none. */
   menu?: string;
+  /** Header link to /docs; English "Docs" when a locale leaves it out. */
+  docs?: string;
   homeAria?: string;
   skipToContent?: string;
 }
@@ -3763,7 +3765,7 @@ const withLocalizedFileExamples = (
 const COPY: Record<Locale, LocaleCopy> = {
   en: base,
   de: localized({
-    header: { features: 'Funktionen', reviews: 'Bewertungen', security: 'Cloud/Lokale KI', pricing: 'Preise', faq: 'FAQ', blog: 'Blog', buyPro: 'PRO kaufen', download: 'Herunterladen', downloadZush: 'Zush herunterladen', toggleTheme: 'Design wechseln', language: 'Sprache', menu: 'Menü', homeAria: 'Zur Startseite', skipToContent: 'Zum Inhalt springen' },
+    header: { features: 'Funktionen', reviews: 'Bewertungen', security: 'Cloud/Lokale KI', pricing: 'Preise', faq: 'FAQ', docs: 'Doku', blog: 'Blog', buyPro: 'PRO kaufen', download: 'Herunterladen', downloadZush: 'Zush herunterladen', toggleTheme: 'Design wechseln', language: 'Sprache', menu: 'Menü', homeAria: 'Zur Startseite', skipToContent: 'Zum Inhalt springen' },
     downloadMenu: localizedDownloadMenu.de,
     footer: {
       description: 'KI-Dateiumbenenner und Stapel-Umbenennungstool für Mac und Windows',
@@ -4300,7 +4302,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ], { '/rename-screenshots-with-ai': localizedScreenshotFeatureOverrides.it }),
   }),
   ja: localized({
-    header: { features: '機能', reviews: 'レビュー', security: 'クラウド/ローカルAI', pricing: '料金', faq: 'FAQ', blog: 'ブログ', buyPro: 'PROを購入', download: 'ダウンロード', downloadZush: 'Zushをダウンロード', toggleTheme: 'テーマ切替', language: '言語', menu: 'メニュー', homeAria: 'ホームへ移動', skipToContent: 'コンテンツへスキップ' },
+    header: { features: '機能', reviews: 'レビュー', security: 'クラウド/ローカルAI', pricing: '料金', faq: 'FAQ', docs: 'ドキュメント', blog: 'ブログ', buyPro: 'PROを購入', download: 'ダウンロード', downloadZush: 'Zushをダウンロード', toggleTheme: 'テーマ切替', language: '言語', menu: 'メニュー', homeAria: 'ホームへ移動', skipToContent: 'コンテンツへスキップ' },
     downloadMenu: localizedDownloadMenu.ja,
     footer: { description: 'Mac と Windows 向け AI ファイルリネーム兼一括リネームツール', product: '製品', byFileType: 'ファイル別', resources: 'リソース', support: 'サポート', pricing: '料金', contactSupport: 'サポートに連絡', feedback: '機能要望と不具合', terms: '利用規約', privacy: 'プライバシー', refund: '返金ポリシー', ...localizedFooterDetails.ja },
     home: {
@@ -4380,7 +4382,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ], { '/rename-screenshots-with-ai': localizedScreenshotFeatureOverrides.ja }),
   }),
   ko: localized({
-    header: { features: '기능', reviews: '리뷰', security: '클라우드/로컬 AI', pricing: '가격', faq: 'FAQ', blog: '블로그', buyPro: 'PRO 구매', download: '다운로드', downloadZush: 'Zush 다운로드', toggleTheme: '테마 전환', language: '언어', menu: '메뉴', homeAria: '홈으로 이동', skipToContent: '콘텐츠로 건너뛰기' },
+    header: { features: '기능', reviews: '리뷰', security: '클라우드/로컬 AI', pricing: '가격', faq: 'FAQ', docs: '문서', blog: '블로그', buyPro: 'PRO 구매', download: '다운로드', downloadZush: 'Zush 다운로드', toggleTheme: '테마 전환', language: '언어', menu: '메뉴', homeAria: '홈으로 이동', skipToContent: '콘텐츠로 건너뛰기' },
     downloadMenu: localizedDownloadMenu.ko,
     footer: { description: 'Mac 및 Windows용 AI 파일 이름 변경 및 일괄 이름 변경 도구', product: '제품', byFileType: '파일 유형별', resources: '리소스', support: '지원', pricing: '가격', contactSupport: '지원 문의', feedback: '기능 및 버그', terms: '이용 약관', privacy: '개인정보', refund: '환불 정책', ...localizedFooterDetails.ko },
     home: {
@@ -4460,7 +4462,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ], { '/rename-screenshots-with-ai': localizedScreenshotFeatureOverrides.ko }),
   }),
   'zh-cn': localized({
-    header: { features: '功能', reviews: '评价', security: '云端/本地 AI', pricing: '价格', faq: 'FAQ', blog: '博客', buyPro: '购买 PRO', download: '下载', downloadZush: '下载 Zush', toggleTheme: '切换主题', language: '语言', menu: '菜单', homeAria: '前往首页', skipToContent: '跳到内容' },
+    header: { features: '功能', reviews: '评价', security: '云端/本地 AI', pricing: '价格', faq: 'FAQ', docs: '文档', blog: '博客', buyPro: '购买 PRO', download: '下载', downloadZush: '下载 Zush', toggleTheme: '切换主题', language: '语言', menu: '菜单', homeAria: '前往首页', skipToContent: '跳到内容' },
     downloadMenu: localizedDownloadMenu['zh-cn'],
     footer: {
       description: '适用于 Mac 和 Windows 的 AI 文件重命名与批量重命名工具',
@@ -4619,6 +4621,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       security: 'Bulut/Yerel AI',
       pricing: 'Fiyatlandırma',
       faq: 'SSS',
+      docs: 'Belgeler',
       blog: 'Blog',
       buyPro: 'PRO satın al',
       download: 'İndir',

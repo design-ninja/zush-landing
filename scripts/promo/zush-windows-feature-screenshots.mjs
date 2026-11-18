@@ -84,6 +84,24 @@ const featureOrder = [
   },
   { id: 'template-transfer', fixture: 'template-transfer', title: 'Import and Export Templates', storeName: '08-template-transfer' },
   { id: 'folder-rules', fixture: 'folder-rules', title: 'Folder Rules', store: false },
+  // Duplicate files, as on macOS: one shot per copy handling and one with the Remove Duplicates template.
+  ...['keep', 'mark', 'trash', 'template'].map((scene) => ({
+    id: `duplicates-${scene}`,
+    fixture: `duplicates-${scene}`,
+    title: 'Duplicate Detection',
+    store: false,
+    uiPreferences: { aiRenameNamingBlocksExpanded: true },
+  })),
+];
+// The macOS duplicate scenes' folder: each copy is the byte-for-byte twin of its original.
+const duplicatesFolderFiles = [
+  ['wedding.jpg', 'IMG_2291.jpg'],
+  ['wedding.jpg', 'IMG_2291 copy.jpg'],
+  ['apasaric-1388030.jpg', 'DSC_0412.jpg'],
+  ['Employee Performance.docx', 'document.docx'],
+  ['Employee Performance.docx', 'document (2).docx'],
+  ['IMG_133.webp', 'IMG_133.webp'],
+  ['IMG_133.webp', 'IMG_133 (1).webp'],
 ];
 
 const defaultAppRepo = path.resolve(repoRoot, '../zush-windows');
@@ -949,6 +967,14 @@ function copyFixtureAssets(runId) {
   }
 
   seedMissingPromoAssets(targetRoot);
+
+  if (selectedFeatures.some((feature) => feature.id.startsWith('duplicates-'))) {
+    const duplicatesTarget = path.join(targetRoot, 'Duplicates');
+    fs.mkdirSync(duplicatesTarget, { recursive: true });
+    for (const [source, name] of duplicatesFolderFiles) {
+      fs.copyFileSync(path.join(sourceAssetRoot, source), path.join(duplicatesTarget, name));
+    }
+  }
 
   return targetRoot;
 }

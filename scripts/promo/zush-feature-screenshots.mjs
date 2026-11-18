@@ -82,8 +82,32 @@ const features = [
   { id: 'zush-cloud-ai', fixture: 'zush-cloud-ai' },
   { id: 'byok', fixture: 'byok' },
   { id: 'lm-studio', fixture: 'lm-studio' },
+  // Duplicate files: AI Rename after a real analysis of a folder with byte-identical
+  // copies, once per copy handling and once with the Remove Duplicates template.
+  { id: 'duplicates-keep', fixture: 'duplicates-keep', landingOnly: true, isolated: true },
+  { id: 'duplicates-mark', fixture: 'duplicates-mark', landingOnly: true, isolated: true },
+  { id: 'duplicates-trash', fixture: 'duplicates-trash', landingOnly: true, isolated: true },
+  { id: 'duplicates-template', fixture: 'duplicates-template', landingOnly: true, isolated: true },
 ];
-const realAnalysisFixtures = new Set(['batch-rename', 'activity']);
+const realAnalysisFixtures = new Set([
+  'batch-rename',
+  'activity',
+  'duplicates-keep',
+  'duplicates-mark',
+  'duplicates-trash',
+  'duplicates-template',
+]);
+// Each copy is the byte-for-byte twin of the file it duplicates; the names are the
+// ones copies usually get from Finder, browsers and scanners.
+const duplicatesFolderFiles = [
+  ['wedding.jpg', 'IMG_2291.jpg'],
+  ['wedding.jpg', 'IMG_2291 copy.jpg'],
+  ['apasaric-1388030.jpg', 'DSC_0412.jpg'],
+  ['Employee Performance.docx', 'document.docx'],
+  ['Employee Performance.docx', 'document (2).docx'],
+  ['IMG_133.webp', 'IMG_133.webp'],
+  ['IMG_133.webp', 'IMG_133 (1).webp'],
+];
 
 const args = new Set(process.argv.slice(2));
 const only = process.argv.find((arg) => arg.startsWith('--only='))?.split('=')[1];
@@ -425,6 +449,13 @@ function copyFixtureAssets(runId) {
     fs.mkdirSync(sortingTarget, { recursive: true });
     for (const file of ['doc.docx', '6.pptx', 'logo.ai', 'images.psd', 'IMG_133.webp', 'test.png']) {
       fs.copyFileSync(path.join(sortingAssetRoot, file), path.join(sortingTarget, file));
+    }
+  }
+  if (selectedFeatures.some((feature) => feature.id.startsWith('duplicates-'))) {
+    const duplicatesTarget = path.join(targetRoot, 'Duplicates');
+    fs.mkdirSync(duplicatesTarget, { recursive: true });
+    for (const [source, name] of duplicatesFolderFiles) {
+      fs.copyFileSync(path.join(sourceAssetRoot, source), path.join(duplicatesTarget, name));
     }
   }
   return targetRoot;

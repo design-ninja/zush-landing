@@ -1,0 +1,47 @@
+---
+// /remove-duplicate-files: the same batch of seven files, three of them exact copies,
+// in each copy handling mode. English only, like the page.
+import SectionHeader from '@/components/SectionHeader';
+import ThemedScreenshot from '@/components/ThemedScreenshot/ThemedScreenshot.astro';
+import b from '@/components/Blocks/Blocks.module.scss';
+
+const modes = [
+  {
+    id: 'duplicates-keep',
+    title: 'Keep as is',
+    text: 'Copies are unchecked and labelled with the file they match. Nothing about them changes.',
+    alt: 'Zush AI Rename with Keep selected: three copies are unchecked and labelled Duplicate of the file they match.',
+  },
+  {
+    id: 'duplicates-mark',
+    title: 'Mark in name',
+    text: 'Each copy takes its original’s new name plus the Duplicate Mark, so the pair sorts together.',
+    alt: 'Zush AI Rename with Mark selected: each copy takes its original’s new name followed by DUPLICATE.',
+  },
+  {
+    id: 'duplicates-trash',
+    title: 'Move to Trash',
+    text: 'Copies go to the Trash when you click Rename. Undo in Activity puts them back.',
+    alt: 'Zush AI Rename with Trash selected: each copy shows Moves to Trash, with Copies to Trash: 3 beside Rename.',
+  },
+];
+---
+
+<section class={b.Section}>
+  <SectionHeader
+    title="Keep, mark, or trash the copies"
+    description="One batch of seven files, three of them exact copies, in each mode. Copies are never sent to AI, so none of them use credits."
+  />
+  <ul class:list={[b.Columns, b.Columns_list]}>
+    {modes.map((mode) => (
+      <li class={b.Column}>
+        <div class={b.Frame}>
+          <ThemedScreenshot id={mode.id} alt={mode.alt} zoom sizes="(max-width: 768px) calc(135vw - 54px), 480px" />
+        </div>
+        <h3 class={b.ColumnTitle}>{mode.title}</h3>
+        <p class={b.ColumnText}>{mode.text}</p>
+      </li>
+    ))}
+  </ul>
+  <p class={b.Links}><a href="/docs/duplicates">How each mode works <span aria-hidden="true">→</span></a></p>
+</section>

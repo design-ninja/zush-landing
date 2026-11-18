@@ -75,9 +75,11 @@
         width: 100%;
     }
 
-    // Plain text tabs: 15px, faint; active is ink and bold. Padding 9px 0.
+    // Plain text tabs: 15px, faint; active is ink and bold. Padding 6px 0, tighter
+    // than the shared 9px, so fourteen tabs stay about as tall as the screenshot.
     &__Tab {
         @include text-tab;
+        padding-block: 0.375rem;
         position: relative;
         overflow: hidden;
         user-select: none;

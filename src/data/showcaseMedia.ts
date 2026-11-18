@@ -260,6 +260,13 @@ export const MACOS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
     alt: 'Zush grouping documents, design files, and photos into folders on Mac',
   },
   {
+    id: 'duplicates',
+    title: 'Duplicate Detection',
+    description: 'Find exact copies and keep them, mark them in the name, or move them to the Trash',
+    images: { light: '/images/showcase/macos/duplicates-template-light.webp', dark: '/images/showcase/macos/duplicates-template-dark.webp' },
+    alt: 'The Remove Duplicates template in Zush marking three exact copies to move to the Trash while the originals keep their names',
+  },
+  {
     id: 'monitor',
     title: 'Folder Monitoring',
     description: 'Automatically rename new files as they appear',
@@ -379,6 +386,13 @@ export const WINDOWS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
     description: 'Group files into folders automatically or with your own rules',
     images: { light: '/images/showcase/windows/folder-sorting-light.webp', dark: '/images/showcase/windows/folder-sorting-dark.webp' },
     alt: 'Automatic AI folder grouping in Zush for Windows',
+  },
+  {
+    id: 'duplicates',
+    title: 'Duplicate Detection',
+    description: 'Find exact copies and keep them, mark them in the name, or move them to the Recycle Bin',
+    images: { light: '/images/showcase/windows/duplicates-template-light.webp', dark: '/images/showcase/windows/duplicates-template-dark.webp' },
+    alt: 'The Remove Duplicates template in Zush for Windows marking three exact copies to move to the Recycle Bin while the originals keep their names',
   },
   {
     id: 'monitor',

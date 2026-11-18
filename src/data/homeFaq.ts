@@ -1,4 +1,5 @@
 import { ORGANIZATION_FEATURES } from '@/i18n/organizationFeatures';
+import { DUPLICATE_FEATURES } from '@/i18n/duplicateFeatures';
 import type { FAQItem } from '@/data/blog';
 import {
   AI_MODES_SUMMARY,
@@ -64,6 +65,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
       'Yes. Zush offers AI folder sorting and destination folders for batch renaming and Monitor on Mac and Windows. Use Auto grouping or write your own folder rules in plain language, and Zush can reuse folders that already exist. Keep sorting off to rename in place.',
   },
   { question: ORGANIZATION_FEATURES.en.sortingQuestion, answer: ORGANIZATION_FEATURES.en.sortingAnswer },
+  { question: DUPLICATE_FEATURES.en.faqQuestion, answer: DUPLICATE_FEATURES.en.faqAnswer },
   {
     question: 'How does folder monitoring work?',
     answer:

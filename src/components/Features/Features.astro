@@ -2,7 +2,7 @@
 // "Your naming system" — the homepage features block (design/homepage-concept/
 // native.dc.html), shared by every page that lists the core features: the
 // flagship (AI batch rename) with AI folder sorting beside it, then the six
-// everyday tools as hairline rows.
+// everyday tools and duplicate files as hairline rows.
 //
 // sorting={false} drops the sorting block; the flagship then shows batch rename.
 import SectionHeader from '@/components/SectionHeader';
@@ -10,6 +10,7 @@ import ThemedScreenshot from '@/components/ThemedScreenshot/ThemedScreenshot.ast
 import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
 import type { FeatureCardsCopy } from '@/i18n/copy';
 import { ORGANIZATION_FEATURES } from '@/i18n/organizationFeatures';
+import { DUPLICATE_FEATURES } from '@/i18n/duplicateFeatures';
 import b from '@/components/Blocks/Blocks.module.scss';
 
 interface Props {
@@ -33,6 +34,7 @@ const {
   platform = 'mac',
 } = Astro.props as Props;
 const org = ORGANIZATION_FEATURES[locale];
+const duplicates = DUPLICATE_FEATURES[locale];
 const sorterPath = getLocalizedPath('/ai-file-sorter', locale);
 const guidePath = getLocalizedPath(`/blog/sort-files-into-folders-with-ai-mac${locale === DEFAULT_LOCALE ? '' : `-${locale}`}`, locale);
 const sortingSummary = org.homeSummary ?? `${org.autoDescription} ${org.customDescription} “${org.ruleExample}”`;
@@ -98,6 +100,14 @@ const items = [
         <p class={b.ColumnText}>{item.description}</p>
       </li>
     ))}
+    <li class:list={[b.Column, 'column-wide']}>
+      <div class="flagship-title-row">
+        <h3 class={b.ColumnTitle}>{duplicates.title}</h3>
+        <span class={b.Badge}>NEW</span>
+      </div>
+      <p class={b.ColumnText}>{duplicates.summary}</p>
+      <p class={b.Links}><a href="/docs/duplicates">{duplicates.docsLink} <span aria-hidden="true">→</span></a></p>
+    </li>
   </ul>
 </section>
 
@@ -112,6 +122,9 @@ const items = [
   .flagship-title-row > :global(h3) { flex: 0 1 auto; min-width: 0; }
   .flagship-title-row > :global(span) { flex: none; }
   #organization-title { scroll-margin-top: 8rem; }
+
+  /* The seventh row would sit alone in a three-column grid, so it spans the row. */
+  .column-wide { grid-column: 1 / -1; }
 
   .flagship-visual { flex: 1.9 1 35rem; min-width: 0; position: relative; }
   .flagship-visual :global(.organization-screenshot img) { border-radius: 0; }

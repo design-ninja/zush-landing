@@ -31,6 +31,7 @@ import { PRODUCT_FACTS_REVIEWED_AT } from '@/constants';
 import TaskWorkflow from './TaskWorkflow.astro';
 import LandingWorkflow from './LandingWorkflow.astro';
 import PdfScenarios from './PdfScenarios.astro';
+import DuplicateModes from './DuplicateModes.astro';
 import { getLandingWorkflow } from '@/data/landingWorkflows';
 import {
   DEFAULT_LOCALE,
@@ -207,6 +208,8 @@ const relatedPageTitle = (href: string, fallback: string) =>
   )}
 
   {showPdfScenariosEarly && <PdfScenarios copy={pdfDeepDive} locale={currentLocale} showReviewNote />}
+
+  {currentRoute === '/remove-duplicate-files' && <DuplicateModes />}
 
   <Tour copy={currentCopy.home.showcase} />
   <Features title={currentCopy.home.featuresTitle} description={currentCopy.home.featuresDescription} copy={currentCopy.home.featureCards} locale={currentLocale} sorting={sortingRoute} sorterLink={false} />

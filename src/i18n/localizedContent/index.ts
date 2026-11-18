@@ -1,4 +1,5 @@
 import { ORGANIZATION_FEATURES } from '@/i18n/organizationFeatures';
+import { DUPLICATE_FEATURES } from '@/i18n/duplicateFeatures';
 import { LOCALIZED_TOUR_EXTRAS } from '@/i18n/tourItems';
 import type { Locale } from '@/i18n/config';
 import type { HomeCopy } from '@/i18n/copy';
@@ -26,6 +27,7 @@ export function getLocalizedContent(
   }
 
   const organization = ORGANIZATION_FEATURES[locale];
+  const duplicates = DUPLICATE_FEATURES[locale];
   return {
     ...content,
     home: {
@@ -45,6 +47,7 @@ export function getLocalizedContent(
       faqItems: [
         { question: organization.sortingQuestion, answer: organization.sortingAnswer },
         { question: organization.bestSorterQuestion, answer: organization.bestSorterAnswer },
+        { question: duplicates.faqQuestion, answer: duplicates.faqAnswer },
         ...content.home.faqItems,
       ],
     },
