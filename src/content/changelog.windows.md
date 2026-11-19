@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.19.5.0] - 2026-11-19
+
+### Added
+- Rename with Zush in the File Explorer context menu: right-click files and choose Smart, Screenshots or one of your templates to rename them in the background without opening Zush. Available in the Microsoft Store version.
+- A new Existing folders only option for folder sorting. Files go only into folders that are already there, and files that fit none stay where they are. It replaces Reuse existing folders, since existing folders are now always reused.
+
+### Improved
+- Templates that read file details are faster for files in large folders.
+- The progress shown next to Rename no longer moves back while a step runs, and no percentage is shown for a step with a single request.
+
+### Fixed
+- Sorting into folders with duplicate detection on could keep planning folders and make Zush unresponsive.
+- Small local AI models (Ollama, LM Studio) could fail to finish a folder plan.
+
+
 ## [3.19.4.0] - 2026-11-18
 
 ### Added
