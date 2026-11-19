@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.24.0] - 2026-11-19
+### New
+- Rename files right from Finder: right-click them, choose Rename with Zush, then Smart or one of your templates. Turn it on in Settings under Quick Rename. It replaces the Rename with Zush item in the Services menu.
+- Folder sorting has a new Existing folders only option: files go only into folders that are already there, and files that fit none stay where they are.
+### Improved
+- Renaming and sorting start sooner for files in folders that hold many items.
+- Folder sorting with a small local AI model finishes its plan more reliably.
+- The progress percentage no longer moves back when a step needs more work than expected.
+### Fixed
+- When an AI service can't come up with a name for a file, a backup service names it instead of showing an error.
+
 ## [3.23.4] - 2026-11-18
 ### Improved
 - The file list stays fast with batches of up to 1,000 files, and photo previews appear sooner.
