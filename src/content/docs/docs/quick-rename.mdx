@@ -1,56 +1,85 @@
 ---
 title: Quick Rename from Finder or File Explorer
-description: Rename selected files with a keyboard shortcut on Mac or Windows, or use the Mac Finder action. Learn how Quick Rename differs from a reviewed batch.
-lastUpdated: 2026-10-25
+description: Right-click files in Finder or File Explorer, choose Rename with Zush, then Smart or a Template. Or rename the selection with a keyboard shortcut on Mac or Windows.
+lastUpdated: 2026-11-20
 ---
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Quick Rename processes selected files using your current Smart Rename settings and AI mode. Use it for a few files when you have already tested the naming setup.
+Quick Rename renames selected files without opening the Zush window. Right-click files in Finder or File Explorer, choose **Rename with Zush**, then pick **Smart** or one of your [Templates](/docs/templates). You can also rename the selection with a keyboard shortcut.
 
 <Aside type="caution">
 Quick Rename applies names automatically. To review and edit suggestions first, use [AI Rename](/docs/batch-rename-files).
 </Aside>
 
-## Prepare the naming setup
+## Smart or a Template
 
-1. Open **Templates → Smart Rename** and check the Naming Blocks, language, and metadata settings.
-2. Choose the [AI mode](/docs/ai-modes) you want to use.
-3. Test those settings on a small batch in **AI Rename**.
+The **Rename with Zush** submenu lists **Smart** first, followed by your Templates, including the ones you created.
 
-Quick Rename uses the default Smart Rename setup, rather than the Template selected for a separate manual batch.
+- **Smart** uses the default setup in **Templates → Smart Rename**: its Naming Blocks, language, and metadata settings.
+- **A Template** renames the files with that Template's rules, so you can rename invoices, screenshots, or client files differently without switching settings first.
+
+The renaming runs with your current [AI mode](/docs/ai-modes). Before you use a Template on many files, test it on a small batch in **AI Rename**.
 
 ## On Mac
 
-Select supported files in Finder, open the context menu, and choose **Rename with Zush**. Depending on your Finder menu, the action may be under **Services**.
+<Aside type="note" title="Turn on the Finder menu first">
+**Rename with Zush** does not appear in Finder until you enable it: open Zush Settings → **Quick Rename**, click **Turn On…** next to **Finder Menu**, and enable the Zush extension in System Settings.
+</Aside>
 
-To use a keyboard shortcut:
+<Aside type="caution" title="Cloud drives are not supported">
+On Mac, the Finder menu does not work for files in cloud drives such as iCloud Drive, Dropbox, Google Drive, or OneDrive. To rename those files, add them to [AI Rename](/docs/batch-rename-files).
+</Aside>
+
+<figure>
+  <img src="/images/docs/quick-rename/finder-context-menu-1200.webp" alt="The Finder context menu for a selected PDF with Rename with Zush open, showing Smart and a list of Templates such as Screenshots, Bookkeeper Expenses, and Legal Matter Files." width="1200" height="1127" loading="lazy" decoding="async" />
+</figure>
 
 <Steps>
 1. Open Zush Settings and find **Quick Rename**.
-2. Turn on **Enable Shortcut** and choose the shortcut.
-3. Select files in Finder and press the shortcut.
-4. Check the renamed files or open **Activity** to inspect the results.
+2. Next to **Finder Menu**, click **Turn On…** and enable the Zush extension in System Settings.
+3. Select supported files in Finder and right-click them.
+4. Choose **Rename with Zush**, then **Smart** or a Template.
+5. Check the renamed files in Finder or open **Activity** to inspect the results.
 </Steps>
 
-The direct-download app reads your Finder selection; allow access to Finder if macOS asks. The Mac App Store app opens a file picker instead, where you select the files to rename.
+### With a keyboard shortcut
+
+<Steps>
+1. In Zush Settings → **Quick Rename**, turn on **Enable Shortcut** and choose the shortcut.
+2. Select files in Finder and press the shortcut. The shortcut uses the **Smart** setup.
+</Steps>
+
+The direct-download app reads your Finder selection; allow access to Finder if macOS asks. In the Mac App Store app, the shortcut opens a file picker instead, where you select the files to rename.
 
 ## On Windows
+
+<figure>
+  <img src="/images/docs/quick-rename/explorer-context-menu-1200.webp" alt="The Windows 11 File Explorer context menu for a selected screenshot with Rename with Zush open, showing Smart and a list of Templates such as Screenshots, Remove Duplicates, and Clinic Records." width="1200" height="933" loading="lazy" decoding="async" />
+</figure>
+
+<Steps>
+1. Select supported files in File Explorer and right-click them.
+2. Choose **Rename with Zush**, then **Smart** or a Template.
+3. Wait for processing, then inspect the names in File Explorer or **Activity**.
+</Steps>
+
+### With a keyboard shortcut
 
 <Steps>
 1. Open **Preferences** and find **Quick Rename Shortcut**.
 2. Enable the shortcut and use the shortcut button to change it if needed.
-3. Select supported files in File Explorer and press the shortcut.
-4. Wait for processing, then inspect the names in File Explorer or **Activity**.
+3. Select supported files in File Explorer and press the shortcut. The shortcut uses the **Smart** setup.
 </Steps>
 
-Windows Quick Rename processes up to 10 supported files from the selection per invocation. Use [AI Rename](/docs/batch-rename-files) for a larger batch.
+The shortcut processes up to 10 supported files from the selection per invocation. For more files, use the context menu or [AI Rename](/docs/batch-rename-files).
 
 ## If nothing happens
 
 - Keep Zush running and make sure an AI mode is enabled.
 - Select files, rather than a folder, and check [format support](/docs/supported-file-types).
 - Check the connection for your selected AI mode and your remaining [free allowance](/docs/pricing-limits).
+- On Mac, if **Rename with Zush** is missing from the Finder menu, check **Finder Menu** in Zush Settings → **Quick Rename** and turn the extension on. The menu also does not appear for files in iCloud Drive and other cloud drives.
 - On Mac, use the file picker when running the App Store version's shortcut.
 
 To restore a processed file, use [Undo in Activity](/docs/undo-history).
