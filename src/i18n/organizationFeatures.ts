@@ -29,7 +29,7 @@ interface OrganizationCopy {
 export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
   en: {
     windowsDescription: "Rename and sort files into folders with AI on Windows. Use Auto or write folder rules in plain language, preview results, and automate new files with Monitor.",
-    homeDescription: "Rename files by content on Mac and Windows. Sort files into folders with AI using Auto mode or your own prompts. Preview and try 50 renames free.",
+    homeDescription: "Zush is an AI file renamer for Mac and Windows. Rename files by content, sort them into folders with AI, preview every change, and try 50 renames free.",
     macDescription: "Rename and sort files into folders with AI on Mac. Use Auto mode or write folder rules in plain language, preview results, and automate new files with Monitor.",
     sortingQuestion: "Can I sort files into folders with my own AI prompt?",
     sortingAnswer: "Yes. Zush supports AI folder sorting. Auto mode groups files by content and suggests folder names. In Custom mode, write instructions such as “Group invoices by company and receipts by month.” Review the proposed names and folders before applying a batch. Save the rules in a Template for Monitor to process new files.",
