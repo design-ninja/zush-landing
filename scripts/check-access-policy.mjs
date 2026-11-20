@@ -30,6 +30,10 @@ const stubs = {
   '@/utils/checkoutAnalytics': {getCheckoutAnalyticsEvent:()=>null},
   '@/utils/supabase': {SUPABASE_URL:'https://test.invalid'},
   '@/utils/accessPolicyMessage': {accessPolicyMessage:()=> 'Service unavailable'},
+  '@/utils/checkoutSessionRequest': {
+    checkoutSessionUrl:(supabaseUrl,pinRegion)=>`${supabaseUrl}/functions/v1/create-paddle-checkout-session${pinRegion?'?forceFunctionRegion=ap-south-1':''}`,
+    isPinnedRegionUnavailable:status=>status===502||status===503||status===504,
+  },
 };
 async function load(path, extra='') {
   const code=ts.transpileModule(readFileSync(path,'utf8')+extra,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText;
