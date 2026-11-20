@@ -21,7 +21,7 @@ import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogSources from '@/components/blog/BlogSources.astro';
 
-Kort antwoord: wil je bestanden in mappen sorteren op basis van wat erin staat, kies dan de [AI-bestandssorteerder van Zush](/ai-file-sorter). Je schrijft de maplogica in gewone taal, zoals "Groepeer facturen per bedrijf en bonnetjes per maand", of laat het op Auto staan, en Zush hernoemt en archiveert elk document, elke foto, video of audiobestand nadat je de batch hebt gecontroleerd. Kies Sortio als je Linux nodig hebt, RenameClick als je categorieën vooraf vastliggen, en Hazel of File Juggler als je bestanden exacte patronen volgen.
+Kort antwoord: wil je bestanden in mappen sorteren op basis van wat erin staat, kies dan de [AI-bestandssorteerder van Zush](/ai-file-sorter). Je schrijft de maplogica in gewone taal, zoals "Groepeer facturen per bedrijf en bonnetjes per maand", of laat het op Auto staan, en Zush hernoemt en archiveert elk document, elke foto, video of audiobestand nadat je de batch hebt gecontroleerd. Zush kan ook op datum of bestandstype sorteren. Kies Sortio als je Linux nodig hebt, RenameClick als je categorieën vooraf vastliggen, en Hazel of File Juggler als je regels scripts of commando's moeten uitvoeren.
 
 **Hoe we dit controleerden:** geschreven door de maker van [Zush](/). Prijzen, functies en beoordelingen van concurrenten zijn op 17 november 2026 gecontroleerd op de sites van de makers en in de officiële stores ([bronnen onderaan](#sources-and-how-we-checked)). Dit is een vergelijking van gedocumenteerde functies, geen labtest.
 
@@ -124,7 +124,7 @@ Kies AI File Sorter voor een gratis, eenmalige opruiming als je zelf een lokaal 
 
 Hazel 6 ($42, Mac), File Juggler ($50 plus btw, Windows, versie 3.1.9) en DropIt (gratis, Windows, laatste release februari 2018) bewaken mappen en handelen op voorwaarden: naampatronen, extensies, datums of gevonden tekst. De redactie van Softpedia geeft Hazel 5,0/5 en File Juggler 4,5/5.
 
-Zwakte: geen van drieën begrijpt wat er op een foto, scan of video staat, dus elk geval heeft een eigen regel nodig. Veel mensen combineren ze met een AI-hernoemer, omdat beschrijvende namen het schrijven van regels makkelijker maken. Zie de pagina over een [Hazel-alternatief](/hazel-alternative) en [Hazel-alternatieven voor Windows](/blog/hazel-for-windows-alternatives).
+Zwakte: geen van drieën begrijpt wat er op een foto, scan of video staat, dus elk geval heeft een eigen regel nodig. Zush dekt ook de eenvoudige gevallen: een prompt als "Groepeer bonnetjes per jaar en daarna per maand" of "PDF's naar Documenten, afbeeldingen naar Afbeeldingen" sorteert op datum of type zonder regel per geval. Houd een regelengine voor scripts, commando's of het uitpakken van archieven. Zie de pagina over een [Hazel-alternatief](/hazel-alternative) en [Hazel-alternatieven voor Windows](/blog/hazel-for-windows-alternatives).
 
 ## Welke AI-bestandssorteerder moet je kiezen?
 
@@ -134,7 +134,7 @@ Zwakte: geen van drieën begrijpt wat er op een foto, scan of video staat, dus e
 - Je categorieën liggen vast en je wilt een meegeleverd lokaal model: **RenameClick**.
 - Je wilt de Mac opruimen zonder omkijken en bestandsnamen maken je niet uit: **Sparkle**.
 - Je wilt gratis en open source: **AI File Sorter**.
-- Je bestanden volgen exacte patronen: **Hazel** op Mac, **File Juggler** of **DropIt** op Windows.
+- Je regels moeten scripts, commando's of archiefacties uitvoeren: **Hazel** op Mac, **File Juggler** of **DropIt** op Windows.
 
 ## Test elke sorteerder eerst op 20 bestanden
 
@@ -185,4 +185,4 @@ Zush sorteert offline met LM Studio of Ollama op Mac en Windows: zowel de bestan
 
 ### Wat is het verschil tussen een AI-bestandssorteerder en een organizer op basis van regels?
 
-Een organizer op basis van regels, zoals Hazel of DropIt, verplaatst bestanden die voldoen aan voorwaarden die jij schrijft, zoals een naampatroon of extensie. Een AI-bestandssorteerder zoals Zush leest wat er in het bestand staat en volgt een instructie als "groepeer facturen per bedrijf", en kan dus bestanden sorteren waarvan de naam niets verraadt. Je kunt ze ook combineren: eerst AI-namen, daarna verplaatsen met regels.
+Een organizer op basis van regels, zoals Hazel of DropIt, verplaatst bestanden die voldoen aan voorwaarden die jij schrijft, zoals een naampatroon of extensie. Een AI-bestandssorteerder zoals Zush leest wat er in het bestand staat en volgt een instructie als "groepeer facturen per bedrijf", en kan dus bestanden sorteren waarvan de naam niets verraadt. Zush volgt ook een eenvoudige instructie op datum of bestandstype, dus een regelengine heb je alleen nodig voor acties zoals scripts of het uitpakken van archieven.

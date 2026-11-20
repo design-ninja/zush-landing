@@ -20,7 +20,7 @@ import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogSources from '@/components/blog/BlogSources.astro';
 
-快速结论：如果要按内容把文件分类到文件夹，请选择 [Zush AI 文件分类工具](/ai-file-sorter)。你用日常语言写下文件夹逻辑，例如“发票按公司分组，收据按月份分组”，或者交给 Auto，Zush 会在你审阅整批结果后，为每份文档、照片、视频或音频文件重命名并归档。如果你需要 Linux，选 Sortio；如果你的类别事先就固定好了，选 RenameClick；如果你的文件遵循精确的规律，选 Hazel 或 File Juggler。
+快速结论：如果要按内容把文件分类到文件夹，请选择 [Zush AI 文件分类工具](/ai-file-sorter)。你用日常语言写下文件夹逻辑，例如“发票按公司分组，收据按月份分组”，或者交给 Auto，Zush 会在你审阅整批结果后，为每份文档、照片、视频或音频文件重命名并归档。Zush 也能按日期或文件类型分类。如果你需要 Linux，选 Sortio；如果你的类别事先就固定好了，选 RenameClick；如果你的规则需要运行脚本或命令，选 Hazel 或 File Juggler。
 
 **我们如何核查：** 本文由 [Zush](/) 的开发者撰写。竞品的价格、功能和评分均于 2026 年 11 月 17 日在厂商官网和官方应用商店核查（[来源见下文](#sources-and-how-we-checked)）。本文比较的是有文档记载的功能，并非实验室测试。
 
@@ -121,7 +121,7 @@ AI File Sorter 是一款免费的 AGPL-3.0 桌面应用，支持 Windows、macOS
 
 Hazel 6（$42，Mac）、File Juggler（$50 加税，Windows，3.1.9 版）和 DropIt（免费，Windows，最后一次发布于 2018 年 2 月）会监控文件夹，并根据条件执行操作：名称格式、扩展名、日期或匹配的文本。Softpedia 编辑给 Hazel 的评分为 5.0/5，给 File Juggler 的评分为 4.5/5。
 
-不足：它们都无法理解照片、扫描件或视频的内容，所以每种情况都需要单独的规则。很多人会把它们与 AI 重命名工具搭配使用，因为描述性名称让规则更容易编写。请看 [Hazel 替代品](/hazel-alternative) 页面和 [Windows 上的 Hazel 替代品](/blog/hazel-for-windows-alternatives)。
+不足：它们都无法理解照片、扫描件或视频的内容，所以每种情况都需要单独的规则。简单的情况 Zush 也能处理：一句“收据先按年份、再按月份分组”或“PDF 放到文稿，图片放到图片”就能按日期或类型分类，不需要为每种情况单独写规则。规则引擎留给脚本、命令或解压归档这类任务。请看 [Hazel 替代品](/hazel-alternative) 页面和 [Windows 上的 Hazel 替代品](/blog/hazel-for-windows-alternatives)。
 
 ## 该选哪款 AI 文件分类工具？
 
@@ -131,7 +131,7 @@ Hazel 6（$42，Mac）、File Juggler（$50 加税，Windows，3.1.9 版）和 D
 - 类别固定，并且想要自带的本地模型：**RenameClick**。
 - 想要一劳永逸的 Mac 清理，不在乎文件名：**Sparkle**。
 - 想要免费开源：**AI File Sorter**。
-- 文件遵循精确的规律：Mac 上用 **Hazel**，Windows 上用 **File Juggler** 或 **DropIt**。
+- 你的规则需要运行脚本、命令或归档操作：Mac 上用 **Hazel**，Windows 上用 **File Juggler** 或 **DropIt**。
 
 ## 先用 20 个文件测试任何分类工具
 
@@ -182,4 +182,4 @@ Zush 在 Mac 和 Windows 上可以通过 LM Studio 或 Ollama 离线分类：文
 
 ### AI 文件分类工具和基于规则的整理工具有什么区别？
 
-Hazel 或 DropIt 这类基于规则的整理工具，会移动符合你所写条件（如文件名格式或扩展名）的文件。Zush 这类 AI 文件分类工具会读取文件内容，并遵循“发票按公司分组”这样的指令，所以连名称毫无线索的文件也能分类。你也可以把两者结合起来：先用 AI 命名，再用规则移动。
+Hazel 或 DropIt 这类基于规则的整理工具，会移动符合你所写条件（如文件名格式或扩展名）的文件。Zush 这类 AI 文件分类工具会读取文件内容，并遵循“发票按公司分组”这样的指令，所以连名称毫无线索的文件也能分类。Zush 也能执行简单的按日期或文件类型分类的指令，所以只有在需要脚本或解压归档等操作时，才需要规则引擎。

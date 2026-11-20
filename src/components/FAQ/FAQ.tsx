@@ -42,7 +42,7 @@ const STATIC_JSX_OVERRIDES: Record<string, React.ReactNode> = {
   ),
   'Is Zush a Hazel alternative?': (
     <>
-      For content-aware naming, yes. Hazel is a rule engine that acts on files by conditions like name, date, or kind, while Zush reads what each file actually contains and suggests a descriptive name, then monitors folders and keeps full undo history. Zush also runs on Windows, while Hazel is macOS-only, and many people use both.{' '}
+      For naming and sorting, yes. Hazel is a rule engine that acts on files by conditions like name, date, or kind. Zush can name and sort files by the same details, and it also reads what each file contains to suggest a descriptive name. It monitors folders and keeps full undo history. Zush also runs on Windows, while Hazel is macOS-only. Keep Hazel if your rules run scripts.{' '}
       <AppLink href="/hazel-alternative">See the full Hazel comparison →</AppLink>
     </>
   ),

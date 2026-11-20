@@ -8,7 +8,7 @@ topic: "automation"
 tags:
   - "Automation"
   - "Tool Comparisons"
-tldr: "There is no Hazel for Windows. File Juggler is the closest match for rule-based renaming and moving, and DropIt is the free option. Zush covers what rules cannot do: it reads each file, gives it a descriptive name, and can sort it into folders from one plain-language instruction. Use File Juggler when you need commands, archive extraction or other fixed actions. One Zush license covers up to 3 devices."
+tldr: "There is no Hazel for Windows. File Juggler is the closest match for rule-based renaming and moving, and DropIt is the free option. Zush handles the same name, date and file-type basics, then reads each file, gives it a descriptive name, and can sort it into folders from one plain-language instruction. Use File Juggler when you need commands, archive extraction or other fixed actions. One Zush license covers up to 3 devices."
 reviewed: "2026-11-17"
 ---
 
@@ -16,7 +16,7 @@ import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogSources from '@/components/blog/BlogSources.astro';
 
-Quick answer: Hazel only runs on macOS, and Noodlesoft does not make a Windows version. The closest Windows match is File Juggler, which watches folders and renames or moves files by rules you write. DropIt is the free, older option. If your files have no pattern to match, such as screenshots, scans and phone photos, use [Zush for Windows](/windows), which names and sorts files by what is inside them.
+Quick answer: Hazel only runs on macOS, and Noodlesoft does not make a Windows version. The closest Windows match is File Juggler, which watches folders and renames or moves files by rules you write. DropIt is the free, older option. [Zush for Windows](/windows) names and sorts files by date, file type and what is inside them, so it also handles screenshots, scans and phone photos that no rule can match.
 
 **How we checked:** Written by the maker of [Zush](/). Competitor prices, features and ratings were checked on vendor sites and official stores on November 17, 2026 ([sources below](#sources-and-how-we-checked)). This compares documented features, not a lab test.
 
@@ -26,7 +26,7 @@ Quick answer: Hazel only runs on macOS, and Noodlesoft does not make a Windows v
 |---|---|---|---|---|
 | File Juggler | Rules that rename and move | PDF, Word and Excel text; no OCR | Yes, instant | $50 one-time + tax, 30-day trial |
 | DropIt | Free rule-based sorting | Basic content filters | Yes, timed scans | Free, open source (last release 2018) |
-| Zush | Content-based naming and AI folder sorting | Yes, with AI (images, scans, PDFs, Office, video, audio) | Yes (Monitor) | 50 free renames, no account or card; $10/mo or $48 one-time incl. cloud AI |
+| Zush | Renaming and sorting by date, type and content | Yes, with AI (images, scans, PDFs, Office, video, audio) | Yes (Monitor) | 50 free renames, no account or card; $10/mo or $48 one-time incl. cloud AI |
 | Sortio | AI folder plans that move files | Yes, with AI | Pro only | Free tier; Pro $14.99/mo or $99/yr |
 | PowerShell + Task Scheduler | Anything you can script | Whatever you code | On a schedule | Free |
 
@@ -58,9 +58,9 @@ DropIt is free and open source. Rules match files by name, size, date, propertie
 
 Pick it for simple sorting by extension or name pattern when paying is not an option. Weakness: the last release, 8.5.1, came out in February 2018, so it will not get new features.
 
-## 3. Zush: the part rules cannot do
+## 3. Zush: rules plus file content
 
-[Zush](/windows) handles the files that break rules. It reads each file, including screenshots, scans, photos, Office documents, audio and video (named from speech, subtitles and metadata, MKV included), and writes a descriptive name:
+[Zush](/windows) covers the basic Hazel jobs: Naming Blocks such as Created Date, Modified Date, Extension and Original Name build names from file details, and Monitor can watch only the file types you pick. It also handles the files that break rules. It reads each file, including screenshots, scans, photos, Office documents, audio and video (named from speech, subtitles and metadata, MKV included), and writes a descriptive name:
 
 - `Screenshot 2026-09-18 141203.png` → `stripe-revenue-dashboard-september.png`
 - `scan_0042.pdf` → `2026-09-12_acme_invoice_1042.pdf`
@@ -110,10 +110,10 @@ It is free and as flexible as your scripting. You also own everything: duplicate
 
 For content-based grouping, save a Zush Template with Folder rules, a destination and Reuse existing folders, then assign it to Monitor. New files directly inside the watched folder are renamed and sorted; changing the Template later does not reorganize files already processed. Preview a manual batch first. See [AI folder sorting](/docs/folder-sorting).
 
-For a deterministic action chain on top of that, use two tools:
+Zush can do the moves from a typical rule itself, for example “Invoices to Finance\Invoices, receipts to Finance\Receipts.” Add a second tool only for actions Zush lacks:
 
-1. **Zush monitors Downloads** and renames each new file by content, using a Template such as `{Created Date}_{Vendor}_{Document Type}`.
-2. **File Juggler watches the same folder** and moves files by the now-predictable name: `*_invoice.pdf` to `Finance\Invoices`, `*_receipt.pdf` to `Finance\Receipts`.
+1. **Zush monitors Downloads** and renames and sorts each new file, using a Template such as `{Created Date}_{Vendor}_{Document Type}`.
+2. **File Juggler watches the destination folder** and runs the extra action, such as extracting archives or running a command.
 
 Test with copies first. Once both steps look right, point them at the real folder.
 
@@ -125,11 +125,11 @@ Test with copies first. Once both steps look right, point them at the real folde
 
 ### Is there a Hazel for Windows?
 
-No. Hazel is macOS-only, and Noodlesoft does not make a Windows version. File Juggler is the closest Windows equivalent for rule-based renaming and moving, with instant folder monitoring and a $50 one-time license. DropIt is a free alternative, though its last release is from 2018. For files with no pattern, Zush adds AI naming and folder sorting.
+No. Hazel is macOS-only, and Noodlesoft does not make a Windows version. File Juggler is the closest Windows equivalent for rule-based renaming and moving, with instant folder monitoring and a $50 one-time license. DropIt is a free alternative, though its last release is from 2018. Zush renames and sorts by date and file type too, and adds AI naming and folder sorting for files with no pattern.
 
 ### What is the best free Hazel alternative for Windows?
 
-DropIt is free and open source, but it has not been updated since February 2018. PowerShell with Task Scheduler is free if you can script. Sortio's free plan covers up to five rules without folder watching. Zush gives 50 free AI renames with no account or card if your main problem is unclear filenames rather than routing.
+DropIt is free and open source, but it has not been updated since February 2018. PowerShell with Task Scheduler is free if you can script. Sortio's free plan covers up to five rules without folder watching. Zush gives 50 free AI renames with no account or card, and it sorts files into folders as well.
 
 ### Is a Hazel alternative for Windows worth paying for?
 
@@ -145,7 +145,7 @@ Yes. Choose Auto or write Folder rules, select the destination, and review both 
 
 ### Can Zush replace Hazel on Windows?
 
-Partly. Zush can name files by content and move them into AI-planned folders, including through Monitor, which covers the most common Hazel jobs. It does not provide a general scripting engine, archive extraction or every conditional action Hazel has. If you rely on those, pair Zush with File Juggler, or compare the actions your workflow actually needs.
+Partly. Zush can name files by date, file type and content and move them into AI-planned folders, including through Monitor, which covers the most common Hazel jobs. It does not provide a general scripting engine, archive extraction or every conditional action Hazel has. If you rely on those, pair Zush with File Juggler, or compare the actions your workflow actually needs.
 
 ### Can Windows organize files automatically without extra software?
 

@@ -20,7 +20,7 @@ import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogSources from '@/components/blog/BlogSources.astro';
 
-Kısa cevap: Dosyaları içerdiklerine göre klasörlere ayırmak için [Zush yapay zekâ dosya sıralayıcısını](/ai-file-sorter) seçin. Klasör mantığını "Faturaları şirkete, fişleri aya göre grupla" gibi sade bir dille yazarsınız ya da Auto'da bırakırsınız; Zush da grubu gözden geçirmenizin ardından her belgeyi, fotoğrafı, videoyu ya da ses dosyasını yeniden adlandırıp dosyalar. Linux gerekiyorsa Sortio'yu, kategorileriniz önceden belliyse RenameClick'i, dosyalarınız kesin kalıpları izliyorsa Hazel'i ya da File Juggler'ı seçin.
+Kısa cevap: Dosyaları içerdiklerine göre klasörlere ayırmak için [Zush yapay zekâ dosya sıralayıcısını](/ai-file-sorter) seçin. Klasör mantığını "Faturaları şirkete, fişleri aya göre grupla" gibi sade bir dille yazarsınız ya da Auto'da bırakırsınız; Zush da grubu gözden geçirmenizin ardından her belgeyi, fotoğrafı, videoyu ya da ses dosyasını yeniden adlandırıp dosyalar. Zush tarihe veya dosya türüne göre de ayırabilir. Linux gerekiyorsa Sortio'yu, kategorileriniz önceden belliyse RenameClick'i, kurallarınızın betik ya da komut çalıştırması gerekiyorsa Hazel'i ya da File Juggler'ı seçin.
 
 **Nasıl kontrol ettik:** Bu yazı [Zush](/) geliştiricisi tarafından yazıldı. Rakiplerin fiyatları, özellikleri ve puanları 17 Kasım 2026'da üretici sitelerinde ve resmî mağazalarda kontrol edildi ([kaynaklar aşağıda](#sources-and-how-we-checked)). Bu yazı belgelenmiş özellikleri karşılaştırır; bir laboratuvar testi değildir.
 
@@ -121,7 +121,7 @@ Yerel bir model seçmekten çekinmiyorsanız ücretsiz, bir kerelik bir temizlik
 
 Hazel 6 ($42, Mac), File Juggler ($50 artı vergi, Windows, sürüm 3.1.9) ve DropIt (ücretsiz, Windows, son sürüm Şubat 2018) klasörleri izler ve koşullara göre işlem yapar: ad kalıpları, uzantılar, tarihler ya da eşleşen metin. Softpedia editörleri Hazel'e 5,0/5, File Juggler'a 4,5/5 veriyor.
 
-Zayıf yanı: hiçbiri bir fotoğrafın, taramanın ya da videonun ne gösterdiğini anlamaz; bu yüzden her durum kendi kuralını ister. Açıklayıcı adlar kuralları yazmayı kolaylaştırdığı için birçok kişi onları bir yapay zekâ yeniden adlandırıcıyla birlikte kullanır. [Hazel alternatifi](/hazel-alternative) sayfasına ve [Windows için Hazel alternatifleri](/blog/hazel-for-windows-alternatives) yazısına bakın.
+Zayıf yanı: hiçbiri bir fotoğrafın, taramanın ya da videonun ne gösterdiğini anlamaz; bu yüzden her durum kendi kuralını ister. Basit durumları Zush da karşılar: "Fişleri önce yıla, sonra aya göre grupla" ya da "PDF'ler Belgeler'e, görüntüler Resimler'e" gibi bir talimat, her durum için ayrı kural yazmadan tarihe veya türe göre ayırır. Kural motorunu betikler, komutlar ya da arşiv açma için saklayın. [Hazel alternatifi](/hazel-alternative) sayfasına ve [Windows için Hazel alternatifleri](/blog/hazel-for-windows-alternatives) yazısına bakın.
 
 ## Hangi yapay zekâ dosya sıralayıcıyı seçmelisiniz?
 
@@ -131,7 +131,7 @@ Zayıf yanı: hiçbiri bir fotoğrafın, taramanın ya da videonun ne gösterdi�
 - Kategorileriniz sabit ve pakete dahil yerel bir model istiyorsunuz: **RenameClick**.
 - Kur-ve-unut bir Mac temizliği istiyorsunuz ve dosya adları umurunuzda değil: **Sparkle**.
 - Ücretsiz ve açık kaynak istiyorsunuz: **AI File Sorter**.
-- Dosyalarınız kesin kalıpları izliyor: Mac'te **Hazel**, Windows'ta **File Juggler** ya da **DropIt**.
+- Kurallarınızın betik, komut ya da arşiv işlemi çalıştırması gerekiyor: Mac'te **Hazel**, Windows'ta **File Juggler** ya da **DropIt**.
 
 ## Her sıralayıcıyı önce 20 dosyada deneyin
 
@@ -182,4 +182,4 @@ Zush, Mac ve Windows'ta LM Studio ya da Ollama ile çevrimdışı sıralar: hem 
 
 ### Yapay zekâ dosya sıralayıcı ile kural tabanlı düzenleyici arasındaki fark nedir?
 
-Hazel ya da DropIt gibi kural tabanlı bir düzenleyici, sizin yazdığınız bir dosya adı kalıbı ya da uzantı gibi koşullara uyan dosyaları taşır. Zush gibi bir yapay zekâ dosya sıralayıcı ise dosyanın ne içerdiğini okur ve "faturaları şirkete göre grupla" gibi bir talimatı izler; böylece adı hiçbir ipucu vermeyen dosyaları da ayırabilir. İkisini birleştirebilirsiniz de: önce yapay zekâ adlandırır, sonra kurallar taşır.
+Hazel ya da DropIt gibi kural tabanlı bir düzenleyici, sizin yazdığınız bir dosya adı kalıbı ya da uzantı gibi koşullara uyan dosyaları taşır. Zush gibi bir yapay zekâ dosya sıralayıcı ise dosyanın ne içerdiğini okur ve "faturaları şirkete göre grupla" gibi bir talimatı izler; böylece adı hiçbir ipucu vermeyen dosyaları da ayırabilir. Zush sade bir tarih ya da dosya türü talimatını da izler; bu yüzden kural motoru yalnızca betik ya da arşiv açma gibi eylemler için gerekir.

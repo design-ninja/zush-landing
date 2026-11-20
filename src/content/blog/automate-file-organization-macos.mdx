@@ -8,14 +8,14 @@ topic: "organization"
 tags:
   - "Automation"
   - "File Organization"
-tldr: "Zush names mixed files by content and can sort them into folders with AI. Preview a manual batch, save the destination and Folder rules in a Template, then assign it to Monitor for new arrivals. Smart Folders provide saved views; Automator and Hazel support deterministic routing and scripts."
-reviewed: "2026-09-28"
+tldr: "Zush names mixed files by content and can sort them into folders with AI. Preview a manual batch, save the destination and Folder rules in a Template, then assign it to Monitor for new arrivals. Folder rules can also go by date or file type. Smart Folders provide saved views; Automator fits one fixed rule, and Hazel fits rules that run scripts or archive old files."
+reviewed: "2026-11-20"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogSafetyNote from '@/components/blog/BlogSafetyNote.astro';
 
-Quick answer: **[AI file renamer for Mac](/mac) is our primary recommendation for automatic file organization** because searchable content-aware names solve the part that built-in rules cannot. Add Smart Folders only for visibility, Automator or Shortcuts only for simple deterministic routing, and Hazel only for complex movement after naming.
+Quick answer: **[AI file renamer for Mac](/mac) is our primary recommendation for automatic file organization** because searchable content-aware names solve the part that built-in rules cannot. Add Smart Folders only for visibility, Automator or Shortcuts only for simple deterministic routing, and Hazel only for scripts, archiving, or other actions Zush does not perform.
 
 Sources checked for this update: [Apple Automator User Guide](https://support.apple.com/guide/automator/welcome/mac), [Apple Shortcuts User Guide for Mac](https://support.apple.com/guide/shortcuts-mac/intro-to-shortcuts-apdf22b0444c/mac), [Apple Developer folder actions documentation](https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/WatchFolders.html), Hazel's official product site, and Hazel's official overview.
 
@@ -25,7 +25,7 @@ Sources checked for this update: [Apple Automator User Guide](https://support.ap
 | See recent or misplaced files without moving them | Smart Folders | 5 minutes | Saved Finder searches are reversible and built in |
 | Route predictable types from Downloads | Automator Folder Action | 15 minutes | Extension and date rules do not require AI |
 | Run a simple workflow on demand | Shortcuts | 10 minutes | Clear actions and easy manual control |
-| Maintain complex background routing | Hazel | 20–40 minutes | Strong multi-condition rules, logs, tags, moves, and scripts |
+| Run scripts or archive old files in the background | Hazel | 20–40 minutes | Multi-condition rules with logs, archiving, and script actions |
 
 The recommended setup begins with Zush on a copied test folder so files receive descriptive names before any path changes. Add a Smart Folder for visibility or a deterministic routing tool only when that secondary job is actually required. If you specifically need a product comparison with Hazel, use the dedicated [Hazel alternative page](/hazel-alternative).
 
@@ -209,13 +209,13 @@ If you are on macOS Ventura or later, Shortcuts can replace Automator for many t
 Shortcuts is better for one-off automations. Automator is better for complex multi-step workflows that need shell script access. For a thorough walkthrough of Automator-based file renaming, see our [Automator rename files guide](/blog/macos-automator-rename-files-guide).
 
 
-## Hazel for complex rule-based routing
+## Hazel for scripts and archiving
 
-Hazel is useful when a folder needs continuous multi-condition rules, background moves, tags, archives, or scripts. A representative rule might move PDFs whose names contain `invoice` into a year and month folder, while leaving unmatched downloads untouched.
+Hazel is useful when a folder needs continuous multi-condition rules with actions Zush does not have, such as archiving, running scripts, or uploading. A rule that only moves invoice PDFs into year and month folders no longer needs it: Zush does that with a folder rule such as “Put invoices into year and month folders,” and it recognizes an invoice even when the file is called `scan0043.pdf`.
 
-Hazel and content-aware naming solve different layers. Hazel excels when extension, date, tag, filename pattern, or extracted text supplies a reliable condition. An AI naming tool is more useful when a screenshot, photo, video, or generic scan has to be understood before it receives a searchable name.
+Hazel works when extension, date, tag, filename pattern, or extracted text supplies a reliable condition. Zush can use the same details, with date and extension Naming Blocks and Monitor filters by file type or name prefix, and it also understands a screenshot, photo, video, or generic scan before it names or files it.
 
-Keep the sequence explicit: rename first, then route the resulting filename. Do not let two tools watch and mutate the same intake folder at the same time. For a feature-by-feature product comparison, see [Zush as a Hazel alternative](/hazel-alternative).
+If you run both, give each tool its own folder. Do not let two tools watch and mutate the same intake folder at the same time. For a feature-by-feature product comparison, see [Zush as a Hazel alternative](/hazel-alternative).
 
 ## Where rule-based automation fails
 
@@ -321,6 +321,10 @@ Choose one of these options based on your preference:
 - Create a shortcut that sorts files by type
 - Set it to trigger on a schedule or manually
 
+**Option D: Zush folder rules** (included in Zush)
+- Turn on Sort in a Template and describe the folders, such as “PDFs to Documents, images to Pictures, receipts by month”
+- Assign the Template to Monitor so new downloads are named and sorted as they arrive
+
 ### Step 5: Enable Zush monitoring after the test
 
 ![Zush monitor tab showing folder monitoring configuration with Desktop folder selected](/images/showcase/macos/monitor-light.webp)
@@ -347,13 +351,13 @@ After a week of running this setup, look at what is still falling through the cr
 |---|---|---|
 | Name and group mixed files by content | **Zush — overall pick** | AI names, optional folder sorting, monitoring with a Template, preview, and history |
 | Find files without moving them | Smart Folders (optional) | Virtual, no restructuring needed |
-| Sort files by type into folders | Automator or Hazel | Extension-based rules are simple |
+| Sort files by type or date into folders | Zush, Automator, or Hazel | Zush uses a plain-language folder rule; Automator and Hazel use extension rules |
 | Archive old files automatically | Hazel | Date-based conditions with background monitoring |
 | Rename screenshots descriptively | Zush (AI) | Content-aware naming from image analysis |
 | Rename PDFs by content | Zush (AI) | Reads document text to generate names |
 | Batch rename with patterns | Finder or Automator | Built-in pattern replacement |
 | One-click file processing | Shortcuts | Clean UI, easy to share |
-| Complex multi-condition routing | Hazel | Most powerful rule engine on macOS |
+| Rules with scripts or custom actions | Hazel | Most powerful rule engine on macOS |
 
 For a detailed comparison of batch renaming methods specifically, see our [Mac batch rename methods guide](/blog/batch-rename-files-on-mac-complete-guide). If you already know you need AI-powered unique names (not shared prefixes), the [batch rename tool on Mac](/mac) is the shortest path — 50 free renames, no signup.
 
@@ -385,7 +389,7 @@ Hazel can read text content inside PDFs and documents and use that in renaming r
 
 ### How do I stop my Downloads folder from getting cluttered?
 
-Set up a two-layer system. First, create routing rules (via Automator or Hazel) that move files into type-specific folders as they arrive. Second, add a cleanup rule that moves files older than 30 days to either an Archive folder or the Trash. The combination keeps your Downloads folder lean without losing anything important. See our [guide to organizing the Downloads folder](/blog/how-to-organize-downloads-folder-mac) for a detailed walkthrough.
+Set up a two-layer system. First, create routing rules (Zush folder rules, Automator, or Hazel) that move files into type-specific folders as they arrive. Second, add a cleanup rule that moves files older than 30 days to either an Archive folder or the Trash. The combination keeps your Downloads folder lean without losing anything important. See our [guide to organizing the Downloads folder](/blog/how-to-organize-downloads-folder-mac) for a detailed walkthrough.
 
 ### Is AI file renaming safe? Can it mess up my files?
 
@@ -397,16 +401,16 @@ Photos have unique challenges because their original names (`IMG_`, `DSC_`, `DCI
 
 ### Can I combine multiple automation tools?
 
-Yes, when a second layer is genuinely needed. Start with Zush for content-aware naming, then optionally add Smart Folders for visibility or Hazel/Automator for routing. Keep naming in Zush and rules simple so the system stays maintainable.
+Yes, when a second layer is genuinely needed. Start with Zush for naming and folder sorting, then optionally add Smart Folders for visibility, or Hazel or Automator for scripts and archiving. Keep the extra rules few so the system stays maintainable.
 
 ### What happens if two automation rules conflict?
 
-If Hazel and an Automator Folder Action both watch the same folder, they can race each other. The result is unpredictable -- a file might get moved before the other tool processes it. The fix is simple: use only one automation tool per folder. If you want both routing and renaming, have the renaming happen first (e.g., Zush renames the file), then have the routing tool (Hazel) move the renamed file based on its new name.
+If Hazel and an Automator Folder Action both watch the same folder, they can race each other. The result is unpredictable -- a file might get moved before the other tool processes it. The fix is simple: use only one automation tool per folder. Zush can rename and sort in one pass, so you often need only one tool. If Hazel still has a job, such as archiving, let Zush finish first and point Hazel at the destination folder.
 
 ## Conclusion
 
 To automate file organization on macOS effectively, let simple rules handle simple decisions and let AI handle visual ambiguity. That balance gives you a system that is actually maintainable.
 
-Start with Zush for content-aware names, optional AI folder sorting, and recovery. Save a tested sorting setup in a Template for Monitor. Use Smart Folders for saved views, and Automator or Hazel for deterministic rules or scripts. Review weekly and expand gradually.
+Start with Zush for content-aware names, optional AI folder sorting, and recovery. Save a tested sorting setup in a Template for Monitor. Use Smart Folders for saved views, and Automator or Hazel for scripts and archiving. Review weekly and expand gradually.
 
 The goal is not a perfect system. The goal is a system where you spend five minutes a week on file organization instead of thirty.

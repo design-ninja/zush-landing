@@ -8,7 +8,7 @@ topic: "automation"
 tags:
   - "Automation"
 tldr: "Watch folders let you rename files automatically as they arrive instead of cleaning up after the fact. Zush monitors folders in real time and applies AI-powered content-aware names to images, audio, videos, screenshots, PDFs, and documents."
-reviewed: "2026-09-28"
+reviewed: "2026-11-20"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
@@ -206,7 +206,7 @@ Apple's built-in automation tools can trigger folder actions, but they are limit
 
 ### Hazel
 
-Hazel is a strong rule-based automation tool for Mac. It excels at moving files into folders based on conditions (file type, date, name pattern). Where it falls short is content-aware renaming. Hazel can route a PDF to a folder, but it cannot read the PDF and name it based on its contents. Zush can also group new files by content with a sorting-enabled Template. Pair it with Hazel when the job requires deterministic conditions or scripts, using separate intake stages.
+Hazel is a strong rule-based automation tool for Mac. It moves and renames files by conditions such as file type, date, name pattern, or text found in a PDF. Where it falls short is descriptive naming: a rule can pull a date or keyword out of a PDF, but it cannot tell what a screenshot, photo, or video shows. Zush covers the same basics, with date, extension, and original-name blocks and Monitor filters by file type, then adds content-aware names and AI folder sorting through a sorting-enabled Template. Pair it with Hazel when the job requires scripts or archiving, using separate intake stages.
 
 ### Manual batch rename
 

@@ -37,7 +37,7 @@ import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogSources from '@/components/blog/BlogSources.astro';
 
-Quick answer: to sort files into folders by what they contain, choose the [Zush AI file sorter](/ai-file-sorter). You write the folder logic in plain language, such as "Group invoices by company and receipts by month," or leave it on Auto, and Zush renames and files each document, photo, video or audio file after you review the batch. Choose Sortio if you need Linux, RenameClick if your categories are fixed in advance, and Hazel or File Juggler if your files follow exact patterns.
+Quick answer: to sort files into folders by what they contain, choose the [Zush AI file sorter](/ai-file-sorter). You write the folder logic in plain language, such as "Group invoices by company and receipts by month," or leave it on Auto, and Zush renames and files each document, photo, video or audio file after you review the batch. Zush can also sort by date or file type. Choose Sortio if you need Linux, RenameClick if your categories are fixed in advance, and Hazel or File Juggler if your rules have to run scripts or commands.
 
 **How we checked:** Written by the maker of [Zush](/). Competitor prices, features and ratings were checked on vendor sites and official stores on November 17, 2026 ([sources below](#sources-and-how-we-checked)). This compares documented features, not a lab test.
 
@@ -138,7 +138,7 @@ Choose AI File Sorter for a free, one-off cleanup when you are comfortable picki
 
 Hazel 6 ($42, Mac), File Juggler ($50 plus tax, Windows, version 3.1.9) and DropIt (free, Windows, last release February 2018) watch folders and act on conditions: name patterns, extensions, dates or matched text. Softpedia's editors rate Hazel 5.0/5 and File Juggler 4.5/5.
 
-Weakness: none of them understands what a photo, scan or video shows, so every case needs its own rule. Many people pair them with an AI renamer, since descriptive names make rules easier to write. See the [Hazel alternative](/hazel-alternative) page and [Hazel for Windows alternatives](/blog/hazel-for-windows-alternatives).
+Weakness: none of them understands what a photo, scan or video shows, so every case needs its own rule. Zush covers the simple cases too: a prompt such as “Group receipts by year, then by month” or “PDFs to Documents, images to Pictures” sorts by date or type without a rule per case. Keep a rule engine for scripts, commands or archive extraction. See the [Hazel alternative](/hazel-alternative) page and [Hazel for Windows alternatives](/blog/hazel-for-windows-alternatives).
 
 ## Which AI file sorter should you choose?
 
@@ -148,7 +148,7 @@ Weakness: none of them understands what a photo, scan or video shows, so every c
 - Your categories are fixed and you want a bundled local model: **RenameClick**.
 - You want set-and-forget Mac cleanup and do not care about filenames: **Sparkle**.
 - You want free and open source: **AI File Sorter**.
-- Your files follow exact patterns: **Hazel** on Mac, **File Juggler** or **DropIt** on Windows.
+- Your rules have to run scripts, commands or archive actions: **Hazel** on Mac, **File Juggler** or **DropIt** on Windows.
 
 ## Test any sorter on 20 files first
 
@@ -199,4 +199,4 @@ Zush sorts offline with LM Studio or Ollama on Mac and Windows: both file analys
 
 ### What is the difference between an AI file sorter and a rules-based organizer?
 
-A rules-based organizer such as Hazel or DropIt moves files that match conditions you write, like a filename pattern or extension. An AI file sorter such as Zush reads what the file contains and follows an instruction like "group invoices by company," so it can sort files whose names give no clue. You can also combine them: AI names first, rules move second.
+A rules-based organizer such as Hazel or DropIt moves files that match conditions you write, like a filename pattern or extension. An AI file sorter such as Zush reads what the file contains and follows an instruction like "group invoices by company," so it can sort files whose names give no clue. Zush also follows a plain date or file-type instruction, so a rule engine is only needed for actions such as scripts or archive extraction.

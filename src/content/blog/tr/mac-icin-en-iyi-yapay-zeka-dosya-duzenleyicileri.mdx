@@ -11,7 +11,7 @@ tags:
   - "Dosya Organizasyonu"
   - "Takım Karşılaştırmaları"
   - "Otomasyon"
-tldr: "Zush, Mac için genel olarak en iyi yapay zekâ dosya düzenleyicidir: dosyaları içeriğe göre yeniden adlandırır ve Auto ya da “Faturaları şirkete, fişleri aya göre grupla” gibi sade dilli kendi kurallarınızla klasörlere ayırır. Hesap, kart ya da API anahtarı olmadan 50 ücretsiz yapay zekâ yeniden adlandırması alırsınız; tek seferlik $48 yönetilen bulut yapay zekâsını içerir. Katı kurallar için Hazel, Linux kullanıcıları için Sortio, Apple Silicon'da cihaz üzerinde ayırma için Floxtop uygundur."
+tldr: "Zush, Mac için genel olarak en iyi yapay zekâ dosya düzenleyicidir: dosyaları içeriğe göre yeniden adlandırır ve Auto ya da “Faturaları şirkete, fişleri aya göre grupla” gibi sade dilli kendi kurallarınızla klasörlere ayırır. Hesap, kart ya da API anahtarı olmadan 50 ücretsiz yapay zekâ yeniden adlandırması alırsınız; tek seferlik $48 yönetilen bulut yapay zekâsını içerir. Betik çalıştıran kurallar için Hazel, Linux kullanıcıları için Sortio, Apple Silicon'da cihaz üzerinde ayırma için Floxtop uygundur."
 reviewed: "2026-11-17"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
@@ -19,7 +19,7 @@ import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogSources from '@/components/blog/BlogSources.astro';
 
-Kısa cevap: Mac'te dosyalarınızı yapay zekânın düzenlemesini istiyorsanız [Zush](/mac) ile başlayın. Her dosyayı okur, ona aranabilir bir ad verir ve sade dilli tek bir talimatla klasörlere ayırabilir; hiçbir şey değişmeden önce bir önizleme gösterir. Katı eğer/ise kurallarıyla düşünüyorsanız Hazel'i, Linux da gerekiyorsa Sortio'yu, yeni bir Apple Silicon Mac'te cihaz üzerinde ayırma için Floxtop'u, aynı uygulamada bir sistem temizleyici istiyorsanız Files Magic AI'ı seçin.
+Kısa cevap: Mac'te dosyalarınızı yapay zekânın düzenlemesini istiyorsanız [Zush](/mac) ile başlayın. Her dosyayı okur, ona aranabilir bir ad verir ve sade dilli tek bir talimatla klasörlere ayırabilir; hiçbir şey değişmeden önce bir önizleme gösterir. Adlarda tarih, uzantı ve özgün ad da kullanılabilir. Kurallarınız betik çalıştırıyor ya da dosya arşivliyorsa Hazel'i, Linux da gerekiyorsa Sortio'yu, yeni bir Apple Silicon Mac'te cihaz üzerinde ayırma için Floxtop'u, aynı uygulamada bir sistem temizleyici istiyorsanız Files Magic AI'ı seçin.
 
 **Nasıl kontrol ettik:** Bu yazı [Zush](/) geliştiricisi tarafından yazıldı. Rakiplerin fiyatları, özellikleri ve puanları 17 Kasım 2026'da üretici sitelerinde ve resmî mağazalarda kontrol edildi ([kaynaklar aşağıda](#sources-and-how-we-checked)). Bu yazı belgelenmiş özellikleri karşılaştırır; bir laboratuvar testi değildir.
 
@@ -35,7 +35,7 @@ Kısa cevap: Mac'te dosyalarınızı yapay zekânın düzenlemesini istiyorsanı
 | Floxtop | Ayda 100 dosya, e-posta ya da kart yok | Pro tek seferlik $19.99 (v1 güncellemeleri) | Önerilen klasörler; özel biçimli Smart Rename | Klasör önerir, onaylanan dosyaları taşır, isteğe bağlı yeniden adlandırma | Activity History; taşıma ve yeniden adlandırmaları Cmd+Z ile geri alma |
 | Files Magic AI | 25 yeniden adlandırma kredisi ve 1 klasör düzenleme | Aylık $6.99, yıllık $34.99 veya Lifetime $49.99 | Magic Rename ve önerilen klasör yapısı | Klasör önerir, dosyaları taşır, yeniden adlandırabilir | Son işlemleri geri alma |
 
-Önemli olan ayrım şu: Zush, NameQuick ve Floxtop dosya adının kendisini değiştirebilir; Sparkle ve Hazel ise daha çok dosyaların nerede durduğuyla ilgilenir. Buradaki birkaç uygulama yapay zekâyı yerelde çalıştırıyor; yani tek başına bu bir seçim nedeni değil. Zush'un $48'lık lisansındaki fark, yönetilen Zush Cloud AI'ı da içermesidir; böylece yeniden adlandırmaya devam etmek için kendi API anahtarınıza ya da yerel bir modele ihtiyacınız olmaz.
+Önemli olan ayrım şu: Zush, NameQuick ve Floxtop dosya adının kendisini değiştirebilir; Sparkle daha çok dosyaların nerede durduğuyla ilgilenir, Hazel ise yalnızca sabit kalıplara göre yeniden adlandırır. Buradaki birkaç uygulama yapay zekâyı yerelde çalıştırıyor; yani tek başına bu bir seçim nedeni değil. Zush'un $48'lık lisansındaki fark, yönetilen Zush Cloud AI'ı da içermesidir; böylece yeniden adlandırmaya devam etmek için kendi API anahtarınıza ya da yerel bir modele ihtiyacınız olmaz.
 
 <BlogProductIntro
   title="Klasörlerinizi değiştirmeden aranabilir Mac dosyaları mı istiyorsunuz?"
@@ -92,7 +92,7 @@ Hazel 6 (güncel sürüm 6.1.2) klasörleri izler ve ada, tarihe, türe, kaynağ
 
 Hazel'de yapay zekâ yoktur. Bir koşulu tam olarak ifade edebildiğiniz yerde parlar: bir tarayıcı klasöründeki her PDF'i `Documents/Scans` klasörüne taşımak, 90 günden eski dosyaları arşivlemek gibi. Rastgele bir ekran görüntüsüne ya da fotoğrafa bakıp ne gösterdiğini çıkaramaz.
 
-Şu durumda Hazel'i seçin: dosyalarınız öngörülebilirse ve betikler ile ayrıntılı koşullar istiyorsanız. Zayıf yanı: her durum kendi kuralını ister; bu da kurulum ve test gerektirir. Birçok kişi önce Zush'a açıklayıcı adlar yazdırır, sonra Hazel'in dosyaları bu adlara göre taşımasına izin verir. Bu iş bölümü hakkında daha fazlası: [Hazel alternatifi olarak Zush](/hazel-alternative).
+Şu durumda Hazel'i seçin: kurallarınız betik, AppleScript ya da arşivleme gerektiriyorsa. Zayıf yanı: her durum kendi kuralını ister; bu da kurulum ve test gerektirir. Zush, Hazel'in basit işlerini de karşılar: tarih, uzantı ve özgün ad blokları, dosya türüne ya da ad önekine göre Monitor filtreleri ve yıla ve aya göre klasör kuralları. Bu iş bölümü hakkında daha fazlası: [Hazel alternatifi olarak Zush](/hazel-alternative).
 
 ## 3. Sparkle: elinizi sürmeden klasör yeniden yapılandırma
 
@@ -139,7 +139,7 @@ Fiyat: 25 yeniden adlandırma kredisi ve bir klasör düzenleme içeren Free sü
 ## Mac için en iyi yapay zekâ dosya düzenleyici: karar
 
 - İçeriğe dayalı dosya adları, kendi kurallarınıza göre ayrılan klasörler, her değişiklikten önce önizleme ve kalıcı Rename History için **Zush**'u seçin. Bir kerelik $48 bulut yapay zekâsını da kapsar.
-- İş açık kurallar, betikler ve etiketlerse **Hazel**'i seçin.
+- İş betikler, arşivleme ve diğer özel eylemlerse **Hazel**'i seçin.
 - Yapay zekânın kurduğu klasör yapısı dosya adlarından daha önemliyse **Sparkle**'ı seçin.
 - Adlandırmadan sonra belge Rules olmazsa olmazsa **NameQuick**'i seçin.
 - Linux'a ya da ekip çalışma alanlarına ihtiyacınız varsa **Sortio**'yu seçin.
@@ -166,7 +166,7 @@ Hiçbir düzenleyiciyi ilk iş olarak tüm ana klasörünüze yönlendirmeyin. O
 
 ### Mac için en iyi yapay zekâ dosya düzenleyici hangisi?
 
-Çoğu kişi için önerimiz Zush. Dosyalara içeriğe dayalı, aranabilir adlar verir ve onları Auto ya da sade dilli kendi kurallarınızla klasörlere ayırır; önizleme ve kalıcı geri alma sunar. Betikler ve katı koşullar için Hazel, Linux için Sortio, Apple Silicon'da tamamen cihaz üzerinde ayırma için Floxtop, bir sistem temizleyici de istiyorsanız Files Magic AI daha iyidir. Zush'u biz geliştiriyoruz, bu yüzden hangisini seçerseniz seçin önce kopyalar üzerinde deneyin.
+Çoğu kişi için önerimiz Zush. Dosyalara içeriğe dayalı, aranabilir adlar verir ve onları Auto ya da sade dilli kendi kurallarınızla klasörlere ayırır; önizleme ve kalıcı geri alma sunar. Betikler ve arşivleme için Hazel, Linux için Sortio, Apple Silicon'da tamamen cihaz üzerinde ayırma için Floxtop, bir sistem temizleyici de istiyorsanız Files Magic AI daha iyidir. Zush'u biz geliştiriyoruz, bu yüzden hangisini seçerseniz seçin önce kopyalar üzerinde deneyin.
 
 ### Yapay zekâ Mac'te dosyalarımı otomatik olarak düzenleyebilir mi?
 

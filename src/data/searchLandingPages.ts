@@ -414,7 +414,7 @@ const fileSorterFaq = [
   {
     question: 'What is the best app to sort files into folders with AI?',
     answer:
-      'It depends on what decides the folder. If the destination depends on what is inside the file, such as the company on an invoice or the subject of a photo, Zush sorts by your plain-language Folder rules or Auto on Mac and Windows and renames each file in the same reviewed batch. If extension, name, or date is enough, a rule engine such as Hazel, File Juggler, or DropIt is simpler. Sortio also takes a prompt but is billed monthly or yearly with an AI allowance.',
+      'Zush, on Mac and Windows. It sorts by your plain-language Folder rules or Auto and renames each file in the same reviewed batch. A rule can rely on the file type or date, such as “Group receipts by year, then by month,” or on what is inside the file, such as the company on an invoice or the subject of a photo. Rule engines such as Hazel, File Juggler, or DropIt fit when a rule has to run scripts or other fixed actions. Sortio also takes a prompt but is billed monthly or yearly with an AI allowance.',
   },
   {
     question: 'Can AI organize my Downloads folder automatically on Windows?',
@@ -437,7 +437,7 @@ const hazelAlternativeFaq = [
   {
     question: 'Is Zush a replacement for Hazel?',
     answer:
-      'Yes for the naming workflow: Zush reads file content, creates descriptive names, monitors folders, and keeps undo history on Mac and Windows. Keep Hazel only as an optional companion when complex conditional moves or shell scripts are mandatory.',
+      'For naming and sorting, yes. Zush builds names from the same file details Hazel rules check, with Naming Blocks such as Created Date, Modified Date, Year, Month, Extension, and Original Name. It also reads what each file contains, sorts files into folders, monitors folders, and keeps undo history on Mac and Windows. Keep Hazel if a rule has to run shell scripts or AppleScript, extract archives, or clean up the disk.',
   },
   {
     question: 'Can Zush move files into folders like Hazel?',
@@ -447,22 +447,22 @@ const hazelAlternativeFaq = [
   {
     question: 'Can Zush watch folders like Hazel?',
     answer:
-      'Yes. Zush has folder monitoring: point it at a folder such as Downloads and new files get content-aware names automatically as they arrive, using the template you choose. If the Template has folder rules, new files are sorted into folders too. Every change stays in rename history, so you can undo any batch.',
+      'Yes. Zush has folder monitoring: point it at a folder such as Downloads and new files get names automatically as they arrive, using the Template you choose. You can limit Monitor to certain file types, and on Mac to filenames that start with a given prefix, much like a Hazel condition. If the Template has folder rules, new files are sorted into folders too. Every change stays in rename history, so you can undo any batch.',
   },
   {
     question: 'Does Zush work on Windows? Hazel does not.',
     answer:
-      'Yes. Hazel is macOS-only. Zush has a native Mac app and a Windows build in the Microsoft Store, so the same content-aware renaming workflow follows you across both platforms.',
+      'Yes. Hazel is macOS-only. Zush has a native Mac app and a Windows build in the Microsoft Store, so the same naming and sorting workflow works on both platforms.',
   },
   {
     question: 'When should Hazel be kept as a narrow companion?',
     answer:
-      'Keep Hazel when the workflow requires AppleScript, shell scripts, tagging, archiving, or strictly deterministic conditions. For naming and content-based sorting, Zush is the better fit because it understands what files contain, works on Mac and Windows, monitors folders, and keeps recovery history.',
+      'Keep Hazel when the workflow requires AppleScript, shell scripts, archive extraction, or disk cleanup. Rules that check a name, date, or file type do not need it: Zush covers them with date and extension Naming Blocks, Monitor filters, and folder rules, and it also reads what the file contains. On Mac, Zush can add Finder tags too.',
   },
   {
     question: 'Can I use Zush and Hazel together?',
     answer:
-      'Yes. Let Zush name and sort files by content, and keep Hazel for scripts, tags, archiving, or cleanup rules that Zush does not perform.',
+      'Yes. Let Zush name and sort files, and keep Hazel for scripts, archive extraction, or cleanup rules that Zush does not perform.',
   },
 ];
 
@@ -930,27 +930,27 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     // detection default is Mac; state it so a change to that default cannot
     // silently break it.
     forceOS: 'mac',
-    definitionTitle: 'Zush vs Hazel: Rules vs Content',
+    definitionTitle: 'Zush vs Hazel: File Details Plus Content',
     definitionText:
-      'Hazel is a rule engine for macOS: it watches folders and acts on files based on conditions you write, such as name patterns, dates, or kind. Zush works the other way around — it reads what each file actually contains and suggests a descriptive, searchable name. Zush can also sort files into folders: instead of building conditions, you describe the folders in plain language, such as “Group invoices by company and receipts by month.” Monitor applies the same rules to new files, every batch stays in undo history, and Zush runs on Mac and Windows, while Hazel is macOS-only. Rules ask where a file came from; AI asks what is inside it.',
+      'Hazel is a rule engine for macOS: it watches folders and acts on files by conditions you write, such as name patterns, dates, or kind. Zush works with the same file details. Naming Blocks such as Created Date, Modified Date, Year, Month, Extension, and Original Name build a name from them, Monitor can watch only certain file types (and on Mac, only names that start with a given prefix), and folder rules can sort files by year and month. On top of that, Zush reads what each file contains, so the vendor on an invoice or the subject of a photo can decide the name or folder. You describe folders in plain language, such as “Group invoices by company and receipts by month,” instead of building conditions. Every batch stays in undo history, and Zush runs on Mac and Windows, while Hazel is macOS-only.',
     showcaseSlides: sharedSlides,
     faqItems: hazelAlternativeFaq,
     directAnswerSection: {
       heading: 'What is the best Hazel alternative?',
       answer:
-        'It depends on your platform and on what decides the destination. If the rule is already visible in the filename, extension, or date, a rule engine is enough: File Juggler and DropIt are the closest Hazel equivalents on Windows. If the right name or folder depends on what is inside the file, such as the vendor on an invoice or the subject of a photo, use Zush: it reads the file, names it, and sorts it by plain-language rules on Mac and Windows. Many Mac users keep Hazel for path-based housekeeping and use Zush for naming and content-based sorting.',
+        'For naming and sorting files, Zush. It handles what Hazel rules do with names, dates, and file types, and it also reads the file, so the vendor on an invoice or the subject of a photo can decide the name or folder. It runs on Mac and Windows. Keep Hazel if your rules run shell scripts or AppleScript, extract archives, or clean up the disk. If you want a classic rule engine on Windows, File Juggler and DropIt are the closest Hazel equivalents.',
       steps: [
-        'List the Hazel rules you rely on and mark the ones that only check names, kinds, or dates. Those can stay rule-based.',
-        'For folders where you rename or sort by hand after reading the file, add a sample batch to Zush and choose a Template for the filenames.',
-        'Turn on Sort and describe the folders, such as “Group invoices by company and receipts by month,” then review the proposed names and folders.',
-        'Once the result is reliable, assign the Template to Monitor so new files in that folder are named and sorted as they arrive.',
+        'List the Hazel rules you rely on. Rules that rename or move files can move to Zush; only rules that run scripts, extract archives, or clean up the disk still need Hazel.',
+        'Rebuild each naming rule as a Zush Template. Use Created Date, Modified Date, Year, Month, Extension, or Original Name for the parts Hazel took from the file, and add AI blocks such as Title or Vendor where the name depends on what is inside.',
+        'Turn on Sort and describe the folders, such as “Group receipts by year, then by month,” then review the proposed names and folders on a sample batch.',
+        'Assign the Template to Monitor and limit it to the file types your Hazel rule matched, so new files are named and sorted as they arrive.',
       ],
     },
     comparison: {
       eyebrow: 'Hazel alternatives compared',
       title: 'Rule engines vs content-aware organizers',
       intro:
-        'Hazel and its Windows counterparts act on conditions you write. AI organizers read the file itself. Choose by what has to decide the name or folder. Competitor details were checked on vendor pages on September 27, 2026.',
+        'Hazel and its Windows counterparts act on conditions you write. Zush can build names and folders from the same file details and also reads the file itself. Competitor details were checked on vendor pages on September 27, 2026.',
       headers: { tool: 'Tool', bestFor: 'Best for', gap: 'Where it stops' },
       rows: [
         {
@@ -960,8 +960,8 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
         },
         {
           tool: 'Zush',
-          bestFor: 'Naming and sorting by what each file contains, with plain-language Folder rules, Monitor for new files, and undo on Mac and Windows',
-          gap: 'Not a general automation engine: no shell-script actions or disk cleanup rules like Hazel.',
+          bestFor: 'Naming and sorting by dates, extension, and original name, and by what each file contains, with plain-language Folder rules, Monitor for new files, and undo on Mac and Windows',
+          gap: 'Not a general automation engine: no shell-script actions, archive extraction, or disk cleanup rules like Hazel.',
         },
         {
           tool: 'File Juggler',
@@ -997,11 +997,11 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     ],
     jsonLd: buildFeaturePageJsonLd({
       howTo: {
-        name: 'Switch from Hazel to content-aware naming with Zush',
-        description: 'Use Zush as a Hazel alternative that names files by content on Mac and Windows.',
+        name: 'Switch from Hazel to Zush',
+        description: 'Move Hazel naming and sorting rules to Zush, which names files by their details and content on Mac and Windows.',
         steps: [
           { name: 'Point Zush at a folder', text: 'Add a watched folder such as Downloads, or drop in an existing batch of files.' },
-          { name: 'Choose a naming convention', text: 'Combine an AI title with dates, categories, clients, and metadata using templates and Naming Blocks.' },
+          { name: 'Choose a naming convention', text: 'Combine Created Date, Modified Date, Extension, or Original Name with AI blocks such as Title or Client using Templates and Naming Blocks.' },
           { name: 'Describe the folders', text: 'Turn on Sort and write folder rules in plain language, such as “Group invoices by company and receipts by month,” instead of building Hazel conditions.' },
           { name: 'Review, apply, and monitor', text: 'Preview every name and folder, apply the batch, then enable folder monitoring so new files are named and sorted automatically.' },
         ],
@@ -1012,9 +1012,9 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
         description:
           'Hazel alternative for Mac and Windows that names files by content. Zush reads screenshots, PDFs, photos, and documents, monitors folders, and keeps full undo history.',
         featureList: [
-          'Content-aware file naming instead of pattern rules',
+          'File naming from dates, extension, and original name, plus file content',
           'AI folder sorting with plain-language folder rules instead of conditions',
-          'Folder monitoring for automatic renaming and sorting',
+          'Folder monitoring with file type filters for automatic renaming and sorting',
           'Works on macOS and Windows, not macOS only',
           'Templates, Naming Blocks, and Custom AI Blocks',
           'Preview every filename before applying',

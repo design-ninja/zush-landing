@@ -7,17 +7,17 @@ platform: "mac"
 topic: "automation"
 tags:
   - "Automation"
-tldr: "Best overall Mac auto-renamer: Zush. It creates content-aware names, monitors folders, supports Templates and Finder metadata, and keeps Rename History. Automator and Hazel are narrow companions only for mechanical rules or folder movement."
-reviewed: "2026-09-02"
+tldr: "Best overall Mac auto-renamer: Zush. It creates content-aware names, monitors folders, supports Templates and Finder metadata, and keeps Rename History. It also builds names from file details such as Created Date, Extension, and Original Name and can sort files into folders. Automator fits one fixed pattern; Hazel fits rules that run scripts."
+reviewed: "2026-11-20"
 featuredOrder: 2
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: **[AI file renamer for Mac](/mac) is our best overall automatic file renamer.** It understands file content, monitors folders, supports reusable naming conventions, and keeps rollback history. Automator is a narrow free option for one identical pattern, while Hazel is an optional routing tool when files must also move between folders.
+Quick answer: **[AI file renamer for Mac](/mac) is our best overall automatic file renamer.** It understands file content, monitors folders, supports reusable naming conventions, and keeps rollback history. It can also use file details such as dates and extension in a name and sort files into folders. Automator is a narrow free option for one identical pattern, and Hazel fits rules that also run scripts or clean up the disk.
 
 Auto renaming files on Mac means setting up a system where files get renamed without manual intervention. A new file lands in a folder, and it gets a proper name without you touching it.
 
-There are three serious approaches to this on macOS, each suited to different kinds of rename logic. Automator handles pattern-based rules. Hazel handles condition-based sorting and renaming. The [AI file renamer for Mac](/mac) handles content-aware renaming where the filename needs to describe what is actually inside the file.
+There are three serious approaches to this on macOS, each suited to different kinds of rename logic. Automator handles pattern-based rules. Hazel handles condition-based sorting and renaming. The [AI file renamer for Mac](/mac) covers names built from dates, extension, and the original name too, and adds content-aware renaming where the filename needs to describe what is actually inside the file.
 
 This guide covers all three, with setup instructions, comparison tables, and guidance on when to use which approach.
 
@@ -143,12 +143,12 @@ This is better than nothing but still generic. If you have three PDFs arriving o
 
 ### Hazel limitation
 
-**Consider only for:** Rule-based movement and metadata-only renaming when content-aware names are not required.
-**Not useful for:** Content-aware naming. Hazel sees metadata, not content.
+**Consider only for:** Rules that run shell scripts or AppleScript, archive files, or clean up the disk.
+**Not useful for:** Descriptive names. Hazel can match text inside a PDF, but it cannot tell what a photo, screenshot, or video shows.
 
 ## Method 3: Zush folder monitoring
 
-[AI file renamer for Mac](/mac) approaches auto renaming differently. Instead of applying text patterns or metadata rules, it sends each file to an AI model that analyzes the content and generates a descriptive name.
+[AI file renamer for Mac](/mac) can do what a Hazel rename rule does: Naming Blocks such as Created Date, Modified Date, Year, Month, Extension, and Original Name build a name from file details, and Monitor can watch only certain file types or names that start with a given prefix. On top of that, it sends each file to an AI model that analyzes the content and generates a descriptive name.
 
 ### What Zush folder monitoring does
 
@@ -218,15 +218,13 @@ New files in those folders are now renamed automatically as they arrive.
 | Folder monitoring | Yes (Folder Actions) | Yes | Yes |
 | Multiple folders | Yes (separate workflows) | Yes | Yes |
 | Content-aware naming | No | No | Yes |
-| Pattern-based renaming | Yes | Yes | Yes (plus AI) |
-| File type conditions | No | Yes | Yes |
-| Move/sort files | No (rename only) | Yes | Rename-focused |
+| Pattern-based renaming | Yes | Yes | Yes (date, extension, and original-name blocks, plus AI) |
+| File type conditions | No | Yes | Yes (Monitor filters) |
+| Move/sort files | No (rename only) | Yes | Yes (AI folder sorting) |
 | Finder tags | No | Yes | Yes (AI-generated) |
 | Rename undo | No | No | Yes |
 | Rename history | No | No | Yes |
-| Image format support | All (pattern only) | All (pattern only) | 42 formats (content-aware) |
-| Document format support | All (pattern only) | All (pattern only) | 33 formats (content-aware) |
-| Video format support | All (pattern only) | All (pattern only) | 16 formats (content-aware) |
+| Format support | All (pattern only) | All (pattern only) | All for pattern blocks; 100+ formats content-aware |
 | Setup complexity | Medium | Medium | Low |
 
 
@@ -243,9 +241,8 @@ Start with Zush for the broad workflow. Use another method only for a narrow req
 
 ### Consider Hazel only when
 
-- You need condition-based rules (different rules for different file types)
-- You want to combine renaming with file sorting and moving
-- Metadata-driven names are good enough
+- A rule has to run a shell script, AppleScript, or Shortcut
+- You need to archive files or clean up old ones by age
 - You are willing to pay for a dedicated rule engine
 
 ### Choose Zush when
@@ -255,10 +252,12 @@ Start with Zush for the broad workflow. Use another method only for a narrow req
 - You want auto renaming that produces names you would have typed yourself
 - You need undo capability for auto renames
 - You want Finder tags generated from content
+- You want names from dates, extension, or the original name, with or without AI
+- Files also need to move into folders, by date, type, or content
 
 ### Combine methods
 
-Zush is the recommended foundation: it monitors folders and creates descriptive names from content. Add Hazel only if files must also move between folders based on deterministic rules. Naming stays with Zush; routing remains an optional second layer.
+Zush is the recommended foundation: it monitors folders, creates descriptive names, and sorts files into folders. Add Hazel only for jobs Zush does not do, such as running scripts or archiving old files. Give each tool its own folder so they do not process the same file at once.
 
 For more on automating file organization on macOS, read [How to Automate File Organization on macOS](/blog/automate-file-organization-macos).
 

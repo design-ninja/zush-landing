@@ -161,7 +161,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/hazel-alternative': {
     title: 'Hazel Alternatives for Mac & Windows: Rules vs AI Sorting',
     description:
-      'Hazel vs File Juggler, DropIt, Sparkle, and Zush. Keep rules where the filename decides; let Zush name and sort files by content on Mac and Windows.',
+      'Hazel vs File Juggler, DropIt, Sparkle, and Zush. Zush names and sorts files by date, type, and content on Mac and Windows; keep Hazel for scripts.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:

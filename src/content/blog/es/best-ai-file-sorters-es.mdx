@@ -20,7 +20,7 @@ import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogSources from '@/components/blog/BlogSources.astro';
 
-Respuesta rápida: para clasificar archivos en carpetas según lo que contienen, elige el [clasificador de archivos con IA Zush](/ai-file-sorter). Escribes la lógica de las carpetas en lenguaje natural, por ejemplo «Agrupa las facturas por empresa y los recibos por mes», o lo dejas en Auto, y Zush renombra y archiva cada documento, foto, vídeo o archivo de audio después de que revises el lote. Elige Sortio si necesitas Linux, RenameClick si tus categorías están fijadas de antemano, y Hazel o File Juggler si tus archivos siguen patrones exactos.
+Respuesta rápida: para clasificar archivos en carpetas según lo que contienen, elige el [clasificador de archivos con IA Zush](/ai-file-sorter). Escribes la lógica de las carpetas en lenguaje natural, por ejemplo «Agrupa las facturas por empresa y los recibos por mes», o lo dejas en Auto, y Zush renombra y archiva cada documento, foto, vídeo o archivo de audio después de que revises el lote. Zush también puede clasificar por fecha o tipo de archivo. Elige Sortio si necesitas Linux, RenameClick si tus categorías están fijadas de antemano, y Hazel o File Juggler si tus reglas tienen que ejecutar scripts o comandos.
 
 **Cómo lo comprobamos:** escrito por el creador de [Zush](/). Los precios, funciones y valoraciones de la competencia se revisaron en las webs de los fabricantes y en las tiendas oficiales el 17 de noviembre de 2026 ([fuentes más abajo](#sources-and-how-we-checked)). Esto compara funciones documentadas, no es una prueba de laboratorio.
 
@@ -121,7 +121,7 @@ Elige AI File Sorter para una limpieza puntual y gratuita si te manejas bien eli
 
 Hazel 6 ($42, Mac), File Juggler ($50 más impuestos, Windows, versión 3.1.9) y DropIt (gratis, Windows, última versión de febrero de 2018) vigilan carpetas y actúan según condiciones: patrones de nombre, extensiones, fechas o texto encontrado. Los editores de Softpedia le dan a Hazel un 5,0/5 y a File Juggler un 4,5/5.
 
-Punto débil: ninguno entiende lo que muestra una foto, un escaneo o un vídeo, así que cada caso necesita su propia regla. Mucha gente los combina con un renombrador con IA, porque los nombres descriptivos hacen que las reglas sean más fáciles de escribir. Consulta la página de [alternativa a Hazel](/hazel-alternative) y las [alternativas a Hazel para Windows](/blog/hazel-for-windows-alternatives).
+Punto débil: ninguno entiende lo que muestra una foto, un escaneo o un vídeo, así que cada caso necesita su propia regla. Zush también cubre los casos sencillos: un prompt como «Agrupa los recibos por año y luego por mes» o «PDF a Documentos, imágenes a Imágenes» clasifica por fecha o tipo sin una regla para cada caso. Deja el motor de reglas para scripts, comandos o la extracción de archivos comprimidos. Consulta la página de [alternativa a Hazel](/hazel-alternative) y las [alternativas a Hazel para Windows](/blog/hazel-for-windows-alternatives).
 
 ## ¿Qué clasificador de archivos con IA deberías elegir?
 
@@ -131,7 +131,7 @@ Punto débil: ninguno entiende lo que muestra una foto, un escaneo o un vídeo, 
 - Tus categorías son fijas y quieres un modelo local incluido: **RenameClick**.
 - Quieres una limpieza del Mac sin intervención y te dan igual los nombres de archivo: **Sparkle**.
 - Quieres algo gratuito y de código abierto: **AI File Sorter**.
-- Tus archivos siguen patrones exactos: **Hazel** en Mac, **File Juggler** o **DropIt** en Windows.
+- Tus reglas tienen que ejecutar scripts, comandos o acciones con archivos comprimidos: **Hazel** en Mac, **File Juggler** o **DropIt** en Windows.
 
 ## Prueba cualquier clasificador antes con 20 archivos
 
@@ -182,4 +182,4 @@ Zush clasifica sin conexión con LM Studio u Ollama en Mac y Windows: tanto el a
 
 ### ¿Qué diferencia hay entre un clasificador de archivos con IA y un organizador basado en reglas?
 
-Un organizador basado en reglas como Hazel o DropIt mueve los archivos que cumplen las condiciones que escribes, como un patrón de nombre o una extensión. Un clasificador de archivos con IA como Zush lee lo que contiene el archivo y sigue una instrucción como «agrupa las facturas por empresa», así que puede clasificar archivos cuyos nombres no dan ninguna pista. También puedes combinarlos: primero la IA pone los nombres y después las reglas mueven los archivos.
+Un organizador basado en reglas como Hazel o DropIt mueve los archivos que cumplen las condiciones que escribes, como un patrón de nombre o una extensión. Un clasificador de archivos con IA como Zush lee lo que contiene el archivo y sigue una instrucción como «agrupa las facturas por empresa», así que puede clasificar archivos cuyos nombres no dan ninguna pista. Zush también sigue una instrucción sencilla por fecha o tipo de archivo, así que un motor de reglas solo hace falta para acciones como scripts o la extracción de archivos comprimidos.

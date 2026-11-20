@@ -1,6 +1,6 @@
 ---
 title: "Come automatizzare l'organizzazione dei file su Mac: 4 metodi sicuri"
-description: "Automatizza l'organizzazione dei file su Mac con \"Smart Folders\", \"Shortcuts\", azioni sulle cartelle e denominazione AI. Segui flussi di lavoro sicuri per download e screenshot."
+description: "Automatizza l'organizzazione dei file su Mac con Smart Folders, Shortcuts, azioni cartella e nomi con l'IA. Flussi sicuri per Download e screenshot."
 date: "2026-02-25"
 slug: "automatizzare-organizzazione-file-macos-it"
 locale: "it"
@@ -10,164 +10,163 @@ topic: "organization"
 tags:
   - "Automazione"
   - "Organizzazione dei file"
-tldr: "Il miglior organizzatore di file automatico in assoluto per Mac: Zush. Fornisce screenshot disordinati, PDF, foto, documenti, nomi audio e video in base al contenuto con monitoraggio e annullamento delle cartelle. \"Smart Folders\", \"Automator\", \"Shortcuts\" e \"Hazel\" sono livelli di sistema o di routing opzionali, non la raccomandazione principale."
-reviewed: "2026-09-28"
+tldr: "Zush dà un nome ai file misti in base al contenuto e può ordinarli in cartelle con l'IA. Controlla l'anteprima di un lotto manuale, salva la destinazione e le Folder rules in un Template, poi assegnalo a Monitor per i nuovi file. Le Folder rules possono basarsi anche sulla data o sul tipo di file. Le Smart Folders offrono viste salvate; Automator va bene per una sola regola fissa, Hazel per regole che eseguono script o archiviano i file vecchi."
+reviewed: "2026-11-20"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogSafetyNote from '@/components/blog/BlogSafetyNote.astro';
 
-Risposta rapida: **[Rinominatore di file IA per Mac](/mac) è il nostro consiglio principale per l'organizzazione automatica dei file** perché i nomi in base al contenuto ricercabili risolvono la parte che le regole integrate non possono. Aggiungi "Smart Folders" solo per la visibilità, "Automator" o "Shortcuts" solo per il routing deterministico semplice e "Hazel" solo per movimenti complessi dopo la denominazione.
+Risposta rapida: **per organizzare i file in automatico consigliamo prima di tutto il [rinominatore di file con IA per Mac](/mac)**, perché nomi ricercabili e basati sul contenuto risolvono proprio la parte che le regole integrate non sanno gestire. Aggiungi le Smart Folders solo per avere una vista d'insieme, Automator o Shortcuts solo per smistamenti semplici e prevedibili, e Hazel solo per script, archiviazione o altre azioni che Zush non esegue.
 
-Sorgenti controllate per questo aggiornamento: "[Guida per l'utente di Apple Automator](https://support.apple.com/guide/automator/welcome/mac)", "[Guida utente Apple Shortcuts per Mac](https://support.apple.com/guide/shortcuts-mac/intro-to-shortcuts-apdf22b0444c/mac)", "[Documentazione sulle azioni della cartella Apple Developer](https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/WatchFolders.html)", "Sito ufficiale del prodotto "Hazel"." e "Panoramica ufficiale di "Hazel".".
+Fonti consultate per questo aggiornamento: [Manuale utente di Automator](https://support.apple.com/guide/automator/welcome/mac), [Manuale utente di Shortcuts per Mac](https://support.apple.com/guide/shortcuts-mac/intro-to-shortcuts-apdf22b0444c/mac), [documentazione Apple Developer sulle azioni cartella](https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/WatchFolders.html), il sito ufficiale di Hazel e la panoramica ufficiale di Hazel.
 
-|Problema|Ruolo consigliato|Tempo di installazione|Perché|
+| Problema | Ruolo consigliato | Tempo di configurazione | Perché |
 |---|---|---:|---|
-|Assegna nomi ricercabili a screenshot, scansioni, foto, documenti, audio e video|**Zush — inizia qui**|10 minuti|L'analisi del contenuto descrive i file i cui nomi e metadati sono generici, con monitoraggio e annullamento|
-|Visualizza i file recenti o smarriti senza spostarli| Smart Folders |5 minuti|Le ricerche "Finder" salvate sono reversibili e integrate|
-|Instradare i tipi prevedibili dai download|Azione cartella "Automator"|15 minuti|Le regole di estensione e data non richiedono l'intelligenza artificiale|
-|Esegui un semplice flusso di lavoro su richiesta| Shortcuts |10 minuti|Azioni chiare e facile controllo manuale|
-|Mantenere il routing in background complesso| Hazel |20–40 minuti|Regole, log, tag, mosse e script multi-condizione efficaci|
+| Dare nomi ricercabili a screenshot, scansioni, foto, documenti, audio e video | **Zush, da qui si parte** | 10 minuti | L'analisi del contenuto descrive i file con nomi e metadati generici, con monitoraggio e annullamento |
+| Vedere i file recenti o finiti nel posto sbagliato senza spostarli | Smart Folders | 5 minuti | Ricerche salvate del Finder, reversibili e già integrate |
+| Smistare da Download i file di tipo prevedibile | Azione cartella di Automator | 15 minuti | Le regole su estensione e data non richiedono l'IA |
+| Eseguire un flusso semplice quando serve | Shortcuts | 10 minuti | Azioni chiare e pieno controllo manuale |
+| Eseguire script o archiviare file vecchi in background | Hazel | 20–40 minuti | Regole con più condizioni, log, archiviazione e azioni con script |
 
-La configurazione consigliata inizia con "Zush" su una cartella di prova copiata in modo che i file ricevano nomi descrittivi prima di qualsiasi modifica del percorso. Aggiungi una cartella intelligente per la visibilità o uno strumento di routing deterministico solo quando il lavoro secondario è effettivamente richiesto. Se hai specificamente bisogno di un confronto del prodotto con Hazel, utilizza il [Pagina alternativa "Hazel".](/hazel-alternative) dedicato.
+La configurazione consigliata parte da Zush su una copia di prova della cartella, così i file ricevono nomi descrittivi prima che cambi qualsiasi percorso. Aggiungi una Smart Folder per la visibilità, o uno strumento di smistamento a regole fisse, solo quando quel secondo compito serve davvero. Se ti interessa un confronto diretto con Hazel, c'è la [pagina dedicata all'alternativa a Hazel](/hazel-alternative).
 
 <BlogProductIntro
-  title="Hai bisogno di una denominazione AI prima del routing?"
-  description="&quot;Zush&quot; per Mac aggiunge il livello di denominazione in base al contenuto che &quot;Hazel&quot;, &quot;Automator&quot; e &quot;Smart Folders&quot; non possono fornire. Visualizza l'anteprima dei nomi proposti prima di applicarli e utilizza la Cronologia per annullare le operazioni di ridenominazione completate."
+  title="Ti servono nomi con l'IA prima dello smistamento?"
+  description="Zush per Mac propone nomi basati sul contenuto e, se vuoi, gruppi di cartelle creati dall'IA. Controlla i nomi proposti prima di applicarli e usa History per annullare le rinomine già eseguite."
   links={[
-    { href: '/ai-file-organizer', label: 'Organizzatore di file AI' },
-    { href: '/mac', label: 'Rinominatore AI per Mac' },
-    { href: '/offline-ai-file-renamer', label: 'Rinominatore AI offline' },
-    { href: '/batch-rename-files', label: 'Rinominare i file in batch' },
+    { href: '/ai-file-organizer', label: 'Organizzatore di file con IA' },
+    { href: '/mac', label: 'Rinominatore con IA per Mac' },
+    { href: '/offline-ai-file-renamer', label: 'Rinominatore con IA offline' },
+    { href: '/batch-rename-files', label: 'Rinominare file in blocco' },
     { href: '/blog/best-ai-file-renamer-tools-mac-compared', label: 'Confronto tra app per Mac' },
   ]}
 />
 
-## Ciò che un organizzatore di file automatico dovrebbe gestire per primo
+## Di quali file dovrebbe occuparsi per primi un organizzatore automatico
 
-Inizia con i file che sono frequenti e fastidiosi. L’obiettivo non è costruire fin dal primo giorno un grande sistema unificato. L'obiettivo è eliminare uno o due punti critici ricorrenti, vedere i risultati ed espandere da lì.
+Comincia dai file che arrivano spesso e che ti danno più fastidio. Il primo giorno non serve costruire un grande sistema unico. Basta togliere di mezzo uno o due problemi ricorrenti, vedere i risultati e allargare da lì.
 
-I migliori candidati per l'automazione:
+I candidati migliori per l'automazione:
 
-- **Screenshot** - macOS li chiama `Screenshot 2026-03-12 at 10.44.11.png`, che non dice nulla sul contenuto
-- **Cartella Download**: i download del browser, gli allegati e-mail e i file AirDrop si accumulano rapidamente con nomi generici
-- **Esportazioni ricorrenti**: fatture, estratti conto, report dalle stesse app ogni settimana
-- **Foto della fotocamera in arrivo** - `IMG_4382.HEIC` non è più utile sei mesi dopo
-- **Dump di documenti ripetitivi**: risultati finali del cliente, PDF di ricerca, risorse di progetto
+- **Screenshot** - macOS li chiama `Screenshot 2026-03-12 at 10.44.11.png`, un nome che non dice nulla del contenuto
+- **Cartella Download** - download del browser, allegati email e file AirDrop si accumulano in fretta con nomi generici
+- **Esportazioni ricorrenti** - fatture, estratti conto, report che escono ogni settimana dalle stesse app
+- **Foto in arrivo dalla fotocamera** - tra sei mesi `IMG_4382.HEIC` non ti servirà a niente
+- **Mucchi di documenti ripetitivi** - consegne per i clienti, PDF di ricerca, materiali di progetto
 
-L’automazione è più efficace quando rimuove un’irritazione settimanale, non quando crea un sistema elaborato che non manteni mai.
+L'automazione rende di più quando elimina una seccatura settimanale, non quando crea un sistema complicato che poi nessuno mantiene.
 
-### Come identificare i tuoi peggiori trasgressori
+### Come trovare le cartelle messe peggio
 
-Apri "Finder" e ordina la cartella Download o Desktop per data di modifica. Guarda gli ultimi 50 file. Conta quanti hanno nomi che ti dicono cosa c'è dentro. Se la risposta è meno della metà, quella cartella è un forte candidato all'automazione.
+Apri il Finder e ordina la cartella Download o la Scrivania per data di modifica. Guarda gli ultimi 50 file e conta quanti hanno un nome che ti dice cosa contengono. Se sono meno della metà, quella cartella è un'ottima candidata all'automazione.
 
-Puoi anche controllare il volume dei file che finiscono in una cartella. Apri "Terminal" ed esegui:
+Puoi anche controllare quanti file finiscono in una cartella. Apri il Terminale ed esegui:
 
 ```bash
 ls -1 ~/Downloads | wc -l
 ```
 
-Se il numero è superiore a 200, hai un arretrato che vale la pena automatizzare.
+Se il numero supera 200, hai un arretrato che vale la pena automatizzare.
 
 
-## Ordinare i file in cartelle con l'IA
+## Parti dai nomi di Zush e, se vuoi, dall'ordinamento in cartelle con l'IA
 
-[ordinatore di file con IA di Zush](/ai-file-sorter) — L'ordinamento di Zush funziona su Mac e Windows. Analizza i file supportati e propone nomi e gruppi. Lascia Folder rules vuoto per Auto o descrivi il raggruppamento in linguaggio naturale. Naming Blocks configura separatamente il formato dei nomi.
+Se vuoi un'unica app che dia i nomi, archivi i file e tenga d'occhio una cartella, parti dall'[organizzatore di file con IA di Zush](/ai-file-organizer). macOS include diversi strumenti per automatizzare la gestione dei file e le app di terze parti coprono quello che manca. Ecco come si confrontano a grandi linee.
 
-Se vuoi un'unica app per rinominare, ordinare e monitorare una cartella, parti dall'[organizzatore di file con IA di Zush](/ai-file-organizer).
-
-> Raggruppa le fatture per azienda e le ricevute per mese. Chiama le cartelle mensili YYYY-MM.
-
-1. Aggiungi un piccolo lotto copiato in AI Rename e scegli un Template.
-2. Attiva + Sort e scegli Destination folder come radice delle sottocartelle. Senza una destinazione separata, la radice resta la cartella di origine.
-3. Descrivi i gruppi in Folder rules. Attiva Reuse existing folders per usare cartelle adatte nella destinazione; Zush può crearne di nuove se nessuna corrisponde.
-4. Controlla e correggi nomi e gruppi prima di applicare il lotto.
-
-![Zush su Mac mostra nomi proposti e gruppi di cartelle per contenuto prima di Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
-
-Salva destinazione e regole verificate nel Template. Monitor può rinominare e ordinare nuovi file che arrivano direttamente nella cartella monitorata; non riorganizza retroattivamente quelli già elaborati. Con ordinamento disattivato e destinazione originale, i file restano nella cartella attuale.
-
-[Guida passo passo all'ordinamento con IA](/blog/sort-files-into-folders-with-ai-mac) · [Documentazione dell'ordinamento in cartelle](/docs/folder-sorting) · [30 esempi di regole per cartelle](/blog/ai-folder-sorting-prompts).
-
-## Inizia con il livello di denominazione "Zush".
-
-"macOS" viene fornito con diversi strumenti integrati per l'automazione dei file. Le app di terze parti colmano le lacune. Ecco come si confrontano ad alto livello.
-
-|Attrezzo|Integrato|Monitora le cartelle|Sposta i file|Rinomina i file|Consapevole del contenuto|
+| Strumento | Integrato | Monitora le cartelle | Sposta i file | Rinomina i file | Capisce il contenuto |
 |---|---|---|---|---|---|
-| Smart Folders |SÌ|No (virtuale)|NO|NO|NO|
-| Automator |SÌ|Sì (Azioni cartella)|SÌ|Sì (modelli)|NO|
-| Shortcuts |SÌ|Sì (trigger)|SÌ|Sì (modelli)|NO|
-| Hazel |No ($42)|SÌ|SÌ|Sì (regole)|NO|
-| [Rinominatore di file IA per Mac](/mac) |NO|SÌ| Nomi dal contenuto e gruppi di cartelle IA facoltativi |Sì (AI)|SÌ|
+| Smart Folders | Sì | No (virtuali) | No | No | No |
+| Automator | Sì | Sì (azioni cartella) | Sì | Sì (schemi) | No |
+| Shortcuts | Sì | Sì (attivazioni) | Sì | Sì (schemi) | No |
+| Hazel | No ($42) | Sì | Sì | Sì (regole) | No |
+| [Rinominatore di file con IA per Mac](/mac) | No | Sì | Sì, con ordinamento in cartelle con l'IA facoltativo | Sì (IA) | Sì |
 
-"Zush" è il core consigliato perché la denominazione rende più utile ogni ricerca o regola downstream. Gli altri strumenti sono livelli opzionali per la visibilità o il movimento.
+Consigliamo Zush come base perché i nomi rendono più utili tutte le ricerche e le regole che vengono dopo. Zush sa anche creare gruppi di cartelle in base al contenuto; gli altri strumenti offrono viste salvate, condizioni fisse o script.
 
 <BlogSafetyNote
-  title="Costruisci l'automazione in livelli reversibili"
-  description="Inizia con una cartella controllata e una regola. Visualizza in anteprima le modifiche ai nomi dei file in base al contenuto prima di applicarle, conferma l'output e solo dopo lascia che gli strumenti di routing spostino i file rinominati. Mantieni la cronologia &quot;Zush&quot; disponibile per l'annullamento."
+  title="Costruisci l'automazione a strati reversibili"
+  description="Comincia con una sola cartella monitorata e una sola regola. Controlla in anteprima i nuovi nomi basati sul contenuto prima di applicarli, verifica il risultato e i gruppi di cartelle, poi salva la configurazione provata in un Template per Monitor. Usa un altro strumento di smistamento solo per regole o script che il Template non copre. Tieni a portata di mano History di Zush per poter annullare."
   links={[
-    { href: '/blog/how-to-safely-batch-rename-files', label: 'Lista di controllo per l\'automazione sicura' },
-    { href: '/docs/undo-history', label: 'Annulla con la cronologia' },
+    { href: '/blog/how-to-safely-batch-rename-files', label: 'Checklist per un\'automazione sicura' },
+    { href: '/docs/undo-history', label: 'Annullare con History' },
   ]}
 />
 
 <BlogCTA placement='inline' platform='mac' />
 
+## Ordinare file misti in cartelle con l'IA
+
+L'[ordinatore di file con IA di Zush](/ai-file-sorter) può dare nomi descrittivi ai file supportati e raggrupparli in cartelle vere in base al contenuto, nello stesso lotto. **L'ordinamento in cartelle con l'IA funziona su Mac e Windows.** Lascia vuoto **Folder rules** per il raggruppamento Auto, oppure descrivi i gruppi in linguaggio naturale. Per file misti, prova con:
+
+> Raggruppa le fatture per azienda e le ricevute per mese.
+
+1. Aggiungi in **AI Rename** un piccolo lotto di file copiati e scegli un Template.
+2. Attiva **+ Sort** e scegli la **Destination folder**, cioè la cartella principale che conterrà le sottocartelle ordinate. Se non indichi una destinazione separata, la cartella principale resta quella di origine.
+3. Scrivi l'istruzione di raggruppamento in **Folder rules**. Il formato del nome dei file si imposta a parte con i **Naming Blocks**.
+4. Attiva **Reuse existing folders** se nella cartella di destinazione ci sono già gruppi adatti. Se nessuno va bene, Zush può creare una cartella nuova.
+5. Controlla sia i nomi proposti sia i gruppi di cartelle. Correggi i nomi delle cartelle o la posizione dei file prima di applicare il lotto.
+
+![Zush per Mac che mostra in anteprima i gruppi di cartelle basati sul contenuto e i nomi proposti prima di Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Salva nel Template la destinazione e le regole che hai provato. Assegnalo a **Monitor** per rinominare e ordinare i nuovi file che arrivano direttamente nella cartella monitorata. I file già elaborati non vengono riorganizzati a posteriori. Con l'ordinamento disattivato e la destinazione originale selezionata, i file restano nella cartella in cui si trovano.
+
+Segui la [guida passo passo all'ordinamento su Mac](/blog/sort-files-into-folders-with-ai-mac) oppure consulta la [documentazione sull'ordinamento in cartelle](/docs/folder-sorting) e [30 esempi di Folder rules](/blog/ai-folder-sorting-prompts).
+
 ## Smart Folders: configurazione passo passo
 
-"Smart Folders" non sposta i file. Presentano i file in modo dinamico in base ai criteri di ricerca. Considerale come ricerche "Spotlight" salvate che vengono visualizzate nella barra laterale "Finder".
+Le Smart Folders non spostano i file. Li mostrano in modo dinamico in base a criteri di ricerca: sono in pratica ricerche Spotlight salvate che compaiono nella barra laterale del Finder.
 
-Sono utili per trovare file in posizioni sparse senza ristrutturare la gerarchia delle cartelle.
+Servono a trovare file sparsi in posti diversi senza cambiare la struttura delle cartelle.
 
-### Come creare una cartella intelligente
+### Come creare una Smart Folder
 
-1. Apri "Finder".
-2. Premi **Cmd + F** o vai su **File > Nuova cartella intelligente**
-3. Fare clic sul pulsante **++** in alto a destra per aggiungere criteri
-4. Imposta le tue condizioni (vedi esempi sotto)
-5. Fare clic su **Salva** e assegnare un nome alla cartella smart
-6. Seleziona **Aggiungi alla barra laterale** in modo che rimanga accessibile
-7. Scegli una posizione in cui salvare il file `.savedSearch` (l'impostazione predefinita va bene)
+1. Apri il Finder
+2. Premi **Cmd + F** oppure scegli **File > Nuova cartella smart**
+3. Fai clic sul pulsante **+** in alto a destra per aggiungere criteri
+4. Imposta le condizioni (trovi degli esempi qui sotto)
+5. Fai clic su **Salva** e dai un nome alla Smart Folder
+6. Seleziona **Aggiungi alla barra laterale** per averla sempre a portata di mano
+7. Scegli dove salvare il file `.savedSearch` (la posizione predefinita va bene)
 
-### Criteri più utili per le cartelle intelligenti
+### I criteri più utili per le Smart Folders
 
-|Scopo della cartella intelligente|Criteri da stabilire|
+| A cosa serve la Smart Folder | Criteri da impostare |
 |---|---|
-|Screenshot recenti|Tipo = Immagine, Il nome contiene "Screenshot", Data di modifica = Ultimi 7 giorni|
-|File di grandi dimensioni che consumano il disco|Dimensione file > 500 MB|
-|PDF recenti|Tipo = PDF, Data di modifica = Ultimi 30 giorni|
-|Documenti da rivedere|Tag = "Recensione", Tipo = Documento|
-|Tutte le presentazioni|Tipo = Presentazione|
-|Download recenti|Cartella = Download, Data di modifica = Ultimi 3 giorni|
+| Screenshot recenti | Tipo = Immagine, Nome contiene "Screenshot", Data ultima modifica = ultimi 7 giorni |
+| File grandi che occupano il disco | Dimensione > 500 MB |
+| PDF recenti | Tipo = PDF, Data ultima modifica = ultimi 30 giorni |
+| Documenti da rivedere | Tag = "Da rivedere", Tipo = Documento |
+| Tutte le presentazioni | Tipo = Presentazione |
+| Download recenti | Cartella = Download, Data ultima modifica = ultimi 3 giorni |
 
-### Suggerimenti avanzati per la cartella intelligente
+### Suggerimenti avanzati per le Smart Folders
 
-- Tieni premuto **Opzione** mentre fai clic sul pulsante **+** per aggiungere criteri composti (raggruppamenti AND/OR)
-- Puoi filtrare per estensione del file, data di creazione, data dell'ultima apertura e decine di altri campi di metadati
-- Aggiornamento "Smart Folders" in tempo reale, in modo che riflettano sempre lo stato attuale del tuo disco
-- Funzionano su tutti i volumi montati, comprese le unità esterne
+- Tieni premuto **Opzione** mentre fai clic sul pulsante **+** per aggiungere criteri composti (gruppi AND/OR)
+- Puoi filtrare per estensione, data di creazione, data dell'ultima apertura e decine di altri campi di metadati
+- Le Smart Folders si aggiornano in tempo reale, quindi mostrano sempre lo stato attuale del disco
+- Funzionano su tutti i volumi montati, dischi esterni compresi
 
-"Smart Folders" non sono vere e proprie automazioni poiché non spostano né rinominano nulla. Ma sono un ottimo primo passo perché ti permettono di vedere cosa è necessario organizzare prima di impegnarti a rispettare le regole.
+Le Smart Folders non sono una vera automazione, perché non spostano né rinominano nulla. Sono però un ottimo primo passo: ti fanno vedere cosa va sistemato prima di fissare delle regole.
 
-Per un'analisi più approfondita, vedere il nostro [Guida agli strumenti elettrici per la ricerca di file macOS](/blog/finder-tags-guide-organize-files-mac).
+Per approfondire, leggi la nostra [guida agli strumenti di ricerca file di macOS](/blog/finder-tags-guide-organize-files-mac).
 
-## Automator e Shortcuts: costruire flussi di lavoro reali
+## Automator e Shortcuts: flussi di lavoro veri e propri
 
-"Automator" (e il suo fratello più recente, "Shortcuts") ti consentono di creare flussi di lavoro effettivi per l'elaborazione dei file. Possono rinominare, spostare, copiare, ridimensionare e convertire file utilizzando un'interfaccia drag-and-drop.
+Automator (e il suo successore più recente, Shortcuts) ti permette di creare veri flussi di elaborazione dei file. Può rinominare, spostare, copiare, ridimensionare e convertire file con un'interfaccia a trascinamento.
 
-### Azione cartella "Automator": ordinamento automatico dei download per tipo di file
+### Azione cartella di Automator: smistare i download per tipo di file
 
-Questo è uno dei flussi di lavoro "Automator" più pratici. Controlla la cartella Download e sposta i file in sottocartelle in base alla loro estensione.
+È uno dei flussi di Automator più pratici. Tiene d'occhio la cartella Download e sposta i file in sottocartelle in base all'estensione.
 
 **Configurazione passo passo:**
 
-1. Apri **Automator** (cerca in Spotlight)
+1. Apri **Automator** (cercalo con Spotlight)
 2. Scegli **Azione cartella** come tipo di documento
-3. In alto, imposta "Azione cartella riceve file e cartelle aggiunti a" nella cartella **Download**
-4. Aggiungere un'azione **Esegui script shell**
+3. In alto, imposta la cartella **Download** come cartella da cui l'azione riceve i file e le cartelle aggiunti
+4. Aggiungi l'azione **Esegui script shell**
 5. Imposta "Passa input" su **come argomenti**
-6. Incolla il seguente script:
+6. Incolla questo script:
 
 ```bash
 for f in "$@"; do
@@ -192,224 +191,228 @@ for f in "$@"; do
 done
 ```
 
-7. Salva il flusso di lavoro con un nome descrittivo come "Ordina download per tipo"
-8. L'Azione Cartella è ora attiva. I nuovi file in Download verranno ordinati automaticamente.
+7. Salva il flusso con un nome descrittivo, per esempio "Smista Download per tipo"
+8. L'azione cartella ora è attiva: i nuovi file in Download verranno smistati in automatico.
 
-### Shortcuts: un'alternativa più semplice a macOS Ventura+
+### Shortcuts: un'alternativa più semplice da macOS Ventura in poi
 
-Se utilizzi "macOS" Ventura o versioni successive, "Shortcuts" può sostituire "Automator" per molte attività. Il vantaggio è un'interfaccia più pulita e una più stretta integrazione con i trigger di sistema.
+Con macOS Ventura o versioni successive, Shortcuts può sostituire Automator in molti casi. Il vantaggio è un'interfaccia più pulita e un'integrazione più stretta con le attivazioni di sistema.
 
-**Esempio: rinominare e spostare screenshot**
+**Esempio: rinominare e spostare gli screenshot**
 
 1. Apri **Shortcuts**
-2. Crea un nuovo collegamento
-3. Aggiungi azione: **Ottieni contenuto della cartella** (imposta nella cartella Screenshot)
-4. Aggiungi azione: **Filtra file** dove Nome contiene "Screenshot"
-5. Aggiungi l'azione: **Rinomina file** utilizzando uno schema come "Screenshot-[Data di creazione]"
-6. Aggiungi l'azione: **Sposta file** nella cartella di destinazione desiderata
-7. Per eseguire automaticamente, vai alla scheda **Automazione** e crea un trigger quando i file vengono aggiunti alla cartella Screenshot
+2. Crea un nuovo comando
+3. Aggiungi l'azione **Ottieni contenuto della cartella** (impostata sulla cartella degli screenshot)
+4. Aggiungi l'azione **Filtra file** con la condizione Nome contiene "Screenshot"
+5. Aggiungi l'azione **Rinomina file** con uno schema come `Screenshot-[Date Created]`
+6. Aggiungi l'azione **Sposta file** verso la cartella di destinazione che preferisci
+7. Per farlo partire da solo, vai nella scheda **Automazione** e crea un'attivazione per quando vengono aggiunti file alla cartella degli screenshot
 
-"Shortcuts" è migliore per le automazioni una tantum. "Automator" è migliore per flussi di lavoro complessi in più fasi che richiedono l'accesso agli script di shell. Per una guida dettagliata sulla ridenominazione dei file basata su Automator, consulta il nostro [Guida per rinominare i file Automator](/blog/macos-automator-rename-files-guide).
+Shortcuts è più adatto alle automazioni singole, Automator ai flussi complessi in più passaggi che richiedono script shell. Per una guida completa alla rinomina dei file con Automator, leggi la nostra [guida per rinominare file con Automator](/blog/macos-automator-rename-files-guide).
 
 
-## "Hazel" per routing complesso basato su regole
+## Hazel per script e archiviazione
 
-"Hazel" è utile quando una cartella necessita di regole multi-condizione continue, spostamenti in background, tag, archivi o script. Una regola rappresentativa potrebbe spostare i PDF i cui nomi contengono "fattura" in una cartella dell'anno e del mese, lasciando intatti i download senza corrispondenza.
+Hazel è utile quando una cartella ha bisogno di regole continue con più condizioni e di azioni che Zush non ha, come archiviare, eseguire script o caricare file online. Una regola che si limita a spostare le fatture PDF in cartelle per anno e mese non ne ha più bisogno: Zush lo fa con una Folder rule come "Metti le fatture in cartelle per anno e mese", e riconosce una fattura anche quando il file si chiama `scan0043.pdf`.
 
-"Hazel" e la denominazione basata sul contenuto risolvono diversi livelli. "Hazel" eccelle quando l'estensione, la data, il tag, il modello del nome file o il testo estratto forniscono una condizione affidabile. Uno strumento di denominazione AI è più utile quando uno screenshot, una foto, un video o una scansione generica devono essere compresi prima di ricevere un nome ricercabile.
+Hazel funziona quando estensione, data, tag, uno schema nel nome del file o il testo estratto forniscono una condizione affidabile. Zush può usare gli stessi dati, con i Naming Blocks di data ed estensione e i filtri di Monitor per tipo di file o prefisso del nome, e in più capisce cosa c'è in uno screenshot, una foto, un video o una scansione generica prima di dargli un nome o archiviarlo.
 
-Mantieni la sequenza esplicita: prima rinomina, quindi instrada il nome file risultante. Non consentire a due strumenti di monitorare e modificare la stessa cartella di assunzione contemporaneamente. Per un confronto dei prodotti funzionalità per funzionalità, vedere "["Zush" come alternativa a "Hazel".](/hazel-alternative)".
+Se li usi entrambi, assegna a ciascuno una cartella diversa. Non lasciare che due strumenti monitorino e modifichino nello stesso momento la stessa cartella di arrivo. Per un confronto funzione per funzione, leggi [Zush come alternativa a Hazel](/hazel-alternative).
 
-## Dove l’automazione basata su regole fallisce
+## Dove l'automazione a regole non basta
 
-Le regole funzionano quando il file ti dice già di cosa si tratta attraverso il nome, l'estensione o i metadati.
+Le regole funzionano quando il file dice già cos'è attraverso il nome, l'estensione o i metadati.
 
-Falliscono quando il file arriva come:
+Non funzionano quando il file arriva così:
 
-- "IMG_4382.HEIC".
-- `Schermata del 12-03-2026 alle 10.44.11.png`
-- `scarica (7).jpg`
-- "Documento.pdf".
-- "Senza titolo.png".
-- `immagine (3).webp`
+- `IMG_4382.HEIC`
+- `Screenshot 2026-03-12 at 10.44.11.png`
+- `download (7).jpg`
+- `Document.pdf`
+- `Untitled.png`
+- `image (3).webp`
 
-Una regola può spostare tali file in una cartella specifica. Non può spiegare cosa contengono. E senza un nome descrittivo, non li troverai più tardi, anche se sono perfettamente organizzati in cartelle.
+Una regola può spostare questi file in una cartella precisa, ma non può dire cosa contengono. E senza un nome descrittivo non li ritroverai più, anche se sono archiviati in cartelle perfette.
 
-È proprio qui che diventa utile la denominazione basata sull’intelligenza artificiale. Gli strumenti che analizzano il contenuto del file (i pixel effettivi di un'immagine, i fotogrammi campionati di un video, il testo di un PDF, il layout di un documento) possono generare nomi che descrivono cos'è effettivamente il file.
+È qui che i nomi generati dall'IA diventano utili. Gli strumenti che analizzano il contenuto del file (i pixel di un'immagine, alcuni fotogrammi di un video, il testo di un PDF, l'impaginazione di un documento) possono creare nomi che descrivono davvero cosa c'è nel file.
 
-Per ulteriori informazioni su come funziona nella pratica la ridenominazione dei file AI, consulta il nostro [Rinomina file per Mac e Windows](/).
+Per capire come funziona in pratica la rinomina dei file con l'IA, visita il nostro [rinominatore di file per Mac e Windows](/).
 
-## Rinominazione dei file basata sull'intelligenza artificiale: prima e dopo
+## Rinomina dei file con l'IA: prima e dopo
 
-Il modo più chiaro per comprendere la ridenominazione dell’IA è vedere i risultati. Ecco cosa succede quando uno strumento AI analizza il contenuto del file e genera nomi descrittivi.
+Il modo più chiaro per capire la rinomina con l'IA è guardare i risultati. Ecco cosa succede quando uno strumento con IA analizza il contenuto dei file e genera nomi descrittivi.
 
-### Schermate
+### Screenshot
 
-|Prima|Dopo|
+| Prima | Dopo |
 |---|---|
-|`Schermata del 12-03-2026 alle 10.44.11.png`|"slack-conversation-project-update.png".|
-|`Schermata del 12-03-2026 alle 14.22.08.png`|`figma-dashboard-layout-dark-mode.png`|
-|`Schermata del 05-01-2026 alle 09.15.33.png`|`google-analytics-traffic-report-jan.png`|
-|`Schermata del 18-02-2026 alle 16.30.00.png`|"vscode-react-component-error.png".|
+| `Screenshot 2026-03-12 at 10.44.11.png` | `slack-conversation-project-update.png` |
+| `Screenshot 2026-03-12 at 14.22.08.png` | `figma-dashboard-layout-dark-mode.png` |
+| `Screenshot 2026-01-05 at 09.15.33.png` | `google-analytics-traffic-report-jan.png` |
+| `Screenshot 2026-02-18 at 16.30.00.png` | `vscode-react-component-error.png` |
 
 ### Foto
 
-|Prima|Dopo|
+| Prima | Dopo |
 |---|---|
-|"IMG_4382.HEIC".|"golden-gate-bridge-mattinata-nebbiosa.heic".|
-|"IMG_7291.HEIC".|`cena-di-squadra-ristorante-italiano.heic`|
-|`DSC_0034.NEF`|"tramonto-sull'oceano-pacifico-malibu.nef".|
-|`foto_2026.jpg`|`whiteboard-sprint-planning-notes.jpg`|
+| `IMG_4382.HEIC` | `golden-gate-bridge-foggy-morning.heic` |
+| `IMG_7291.HEIC` | `team-dinner-italian-restaurant.heic` |
+| `DSC_0034.NEF` | `sunset-over-pacific-ocean-malibu.nef` |
+| `photo_2026.jpg` | `whiteboard-sprint-planning-notes.jpg` |
 
 ### Documenti e PDF
 
-|Prima|Dopo|
+| Prima | Dopo |
 |---|---|
-|"Documento.pdf".|`contratto-di-locazione-appartamento-2026.pdf`|
-|"scarica (3).pdf".|"aws-fattura-mensile-febbraio.pdf".|
-|"Scansiona 14.pdf".|`modulo-di-richiesta-di-rinnovo-passaporto.pdf`|
-|"esporta.csv".|"report-vendite-trimestrale-q1-2026.csv".|
+| `Document.pdf` | `apartment-lease-agreement-2026.pdf` |
+| `download (3).pdf` | `aws-monthly-invoice-february.pdf` |
+| `Scan 14.pdf` | `passport-renewal-application-form.pdf` |
+| `export.csv` | `quarterly-sales-report-q1-2026.csv` |
 
 ### Immagini scaricate
 
-|Prima|Dopo|
+| Prima | Dopo |
 |---|---|
-|`scarica (7).jpg`|`minimalist-desk-setup-inspiration.jpg`|
-|`immagine (2).webp`|"react-component-lifecycle-diagram.webp".|
-|`Senza titolo.png`|`brand-color-palette-primary-shades.png`|
+| `download (7).jpg` | `minimalist-desk-setup-inspiration.jpg` |
+| `image (2).webp` | `react-component-lifecycle-diagram.webp` |
+| `Untitled.png` | `brand-color-palette-primary-shades.png` |
 
 
-La differenza non è estetica. I nomi di file descrittivi indicano che la ricerca "Spotlight" funziona. Significa che puoi scansionare una cartella e sapere cosa c'è dentro ogni file senza aprirlo. Significa che ogni sistema a valle (regole "Smart Folders", "Hazel", navigazione manuale) funziona meglio.
+Non è una questione estetica. Con nomi descrittivi la ricerca di Spotlight funziona, puoi scorrere una cartella e sapere cosa c'è in ogni file senza aprirlo, e tutto quello che viene dopo (Smart Folders, regole di Hazel, navigazione manuale) funziona meglio.
 
-![Scheda di elaborazione "Zush" che mostra la configurazione del modello di denominazione con il formato del nome del titolo e le opzioni di localizzazione](/images/showcase/macos/naming-light.webp)
+![Scheda di elaborazione di Zush con la configurazione dello schema dei nomi, il formato del titolo e le opzioni di localizzazione](/images/showcase/macos/naming-light.webp)
 
-Per una panoramica completa della ridenominazione automatica basata sull'intelligenza artificiale, consulta il nostro "[rinominare automaticamente i file sulla guida Mac](/blog/auto-rename-files-mac-guide)".
+Per una guida completa alla rinomina automatica con l'IA, leggi la nostra [guida per rinominare automaticamente i file su Mac](/blog/auto-rename-files-mac-guide).
 
-## Configurazione consigliata dell'organizzatore automatico dei file: passo dopo passo
+## Configurazione consigliata per organizzare i file in automatico, passo passo
 
-Ecco una configurazione pratica che puoi realizzare in meno di un'ora e che combina gli strumenti di cui sopra in un unico sistema coerente. Questo è l’approccio che bilancia gli sforzi con i risultati.
+Ecco una configurazione pratica che puoi mettere in piedi in meno di un'ora e che unisce gli strumenti visti finora in un unico sistema coerente. È l'approccio con il miglior rapporto tra impegno e risultati.
 
-### Passaggio 1: controlla il tuo pasticcio attuale
+### Passo 1: valuta il disordine attuale
 
-Apri le cartelle Download, Desktop e Documenti. Nota quali cartelle contengono il maggior numero di file con nomi inutili. Scegli le due cartelle con i problemi principali.
+Apri le cartelle Download, Scrivania e Documenti. Annota quali contengono più file con nomi inutili e scegli le due messe peggio.
 
-### Passaggio 2: aggiungi la denominazione in base al contenuto "Zush".
+### Passo 2: controlla in anteprima i nomi di Zush e gli eventuali gruppi di cartelle
 
-Installa "[Rinominatore di file IA per Mac](/mac)", puntalo sulla cartella di assunzione copiata, scegli un modello e rivedi i primi nomi proposti. Mantenere "Rename History" disponibile prima di abilitare il monitoraggio continuo.
+Installa il [rinominatore di file con IA per Mac](/mac), indicagli la copia della cartella di arrivo, scegli un Template e controlla i primi nomi proposti. Assicurati che Rename History sia disponibile prima di attivare il monitoraggio continuo.
 
-### Passaggio 3: crea facoltativamente "Smart Folders" per la visibilità
+### Passo 3: se vuoi, crea delle Smart Folders per la visibilità
 
-Imposta tre "Smart Folders" in "Finder":
+Imposta tre Smart Folders nel Finder:
 
-1. **File recenti di grandi dimensioni** -- Dimensioni file > 100 MB, data di modifica = ultimi 30 giorni
-2. **Screenshot non ordinati** -- Tipo = Immagine, il nome contiene "Screenshot", Data di modifica = Ultimi 14 giorni
-3. **Documenti recenti** -- Tipo = Documento O Tipo = PDF, Data di modifica = Ultimi 7 giorni
+1. **File grandi recenti** -- Dimensione > 100 MB, Data ultima modifica = ultimi 30 giorni
+2. **Screenshot da sistemare** -- Tipo = Immagine, Nome contiene "Screenshot", Data ultima modifica = ultimi 14 giorni
+3. **Documenti recenti** -- Tipo = Documento OPPURE Tipo = PDF, Data ultima modifica = ultimi 7 giorni
 
-Questi ti danno visibilità immediata su ciò che richiede attenzione.
+Così vedi subito cosa richiede attenzione.
 
-### Passaggio 4: facoltativamente, configura il routing dei file di base
+### Passo 4: se vuoi, imposta uno smistamento di base
 
 Scegli una di queste opzioni in base alle tue preferenze:
 
-**Opzione A: Azione cartella Automator** (gratuita, integrata)
-- Crea il flusso di lavoro di ordinamento dei download descritto sopra
-- Richiede 10 minuti, gestisce i tipi di file più comuni
+**Opzione A: azione cartella di Automator** (gratuita, integrata)
+- Crea il flusso di smistamento dei download descritto sopra
+- Richiede 10 minuti e gestisce i tipi di file più comuni
 
-**Opzione B: regole Hazel** (a pagamento, più potente)
-- Installa "Hazel" e imposta 3-5 regole per la cartella Download
-- Focus su: PDF in documenti, immagini in immagini, archivi in ​​una cartella dedicata
+**Opzione B: regole di Hazel** (a pagamento, più potente)
+- Installa Hazel e imposta 3-5 regole per la cartella Download
+- Concentrati su: PDF in Documenti, immagini in Immagini, archivi in una cartella dedicata
 - Aggiungi una regola di pulizia per i file più vecchi di 30 giorni
 
-**Opzione C: automazione Shortcuts** (gratuita, macOS Ventura+)
-- Crea un collegamento che ordina i file per tipo
-- Impostalo per l'attivazione in base a una pianificazione o manualmente
+**Opzione C: automazione con Shortcuts** (gratuita, macOS Ventura e successivi)
+- Crea un comando che smista i file per tipo
+- Fallo partire secondo una pianificazione o a mano
 
-### Passaggio 5: abilitare il monitoraggio "Zush" dopo il test
+**Opzione D: Folder rules di Zush** (incluse in Zush)
+- Attiva Sort in un Template e descrivi le cartelle, per esempio "PDF in Documenti, immagini in Immagini, ricevute per mese"
+- Assegna il Template a Monitor, così i nuovi download vengono rinominati e ordinati appena arrivano
 
-![Scheda di monitoraggio "Zush" che mostra la configurazione del monitoraggio della cartella con la cartella Desktop selezionata](/images/showcase/macos/monitor-light.webp)
+### Passo 5: attiva il monitoraggio di Zush dopo la prova
 
-Dopo aver verificato il batch di prova, imposta "Zush" per monitorare la cartella Screenshot e la cartella Download. Gestisce i file a cui gli strumenti basati su regole non possono denominare correttamente:
+![Scheda Monitor di Zush con la configurazione del monitoraggio e la cartella Scrivania selezionata](/images/showcase/macos/monitor-light.webp)
+
+Dopo aver verificato il lotto di prova, imposta Zush per monitorare la cartella degli screenshot e la cartella Download. Così gestisci i file a cui gli strumenti a regole non sanno dare un nome sensato:
 
 - Gli screenshot vengono rinominati in base all'app e al contenuto visibili
-- I PDF vengono rinominati in base al contenuto testuale
-- Le foto vengono rinominate in base a ciò che c'è nell'immagine
-- Le immagini scaricate ricevono nomi descrittivi invece di `download (7).jpg`
+- I PDF vengono rinominati in base al testo che contengono
+- Le foto vengono rinominate in base a cosa mostrano
+- Le immagini scaricate ricevono nomi descrittivi al posto di `download (7).jpg`
 
-### Passaggio 6: imposta una revisione settimanale
+### Passo 6: fissa un controllo settimanale
 
-Anche con l'automazione, trascorri 5 minuti una volta alla settimana guardando il tuo "Smart Folders". Questo rileva i casi limite e ti aiuta a perfezionare le tue regole nel tempo.
+Anche con l'automazione, dedica 5 minuti alla settimana a dare un'occhiata alle tue Smart Folders. Così intercetti i casi particolari e affini le regole nel tempo.
 
-### Passaggio 7: espandere gradualmente
+### Passo 7: allarga un po' alla volta
 
-Dopo una settimana di utilizzo di questa configurazione, guarda cosa sta ancora cadendo nelle fessure. Aggiungi nuove regole "Hazel" o "Smart Folders" secondo necessità. Non cercare di coprire ogni caso limite in anticipo.
+Dopo una settimana con questa configurazione, guarda cosa continua a sfuggire. Aggiungi nuove regole di Hazel o nuove Smart Folders quando serve. Non cercare di coprire ogni caso particolare fin dall'inizio.
 
 
-## Confronto: quale strumento per quale lavoro
+## Confronto: quale strumento per quale compito
 
-|Compito|Raccomandazione|Perché|
+| Compito | Consiglio | Perché |
 |---|---|---|
-|Denomina in modo ricercabile i file misti|**Zush: scelta assoluta**|Legge il contenuto, monitora le cartelle, visualizza l'anteprima delle modifiche e conserva la cronologia del rollback|
-|Trova i file senza spostarli|"Smart Folders" (opzionale)|Virtuale, nessuna ristrutturazione necessaria|
-|Ordina i file per tipo in cartelle|"Automator" o "Hazel".|Le regole basate sull'estensione sono semplici|
-|Archivia automaticamente i vecchi file| Hazel |Condizioni basate sulla data con monitoraggio in background|
-|Rinominare gli screenshot in modo descrittivo|"Zush" (AI)|Denominazione in base al contenuto dall'analisi delle immagini|
-|Rinominare i PDF in base al contenuto|"Zush" (AI)|Legge il testo del documento per generare nomi|
-|Rinominare batch con modelli|"Finder" o "Automator".|Sostituzione del modello incorporata|
-|Elaborazione dei file con un clic| Shortcuts |Interfaccia utente pulita, facile da condividere|
-|Routing multi-condizione complesso| Hazel |Il motore di regole più potente su "macOS".|
+| Dare nomi e raggruppare file misti in base al contenuto | **Zush, la scelta migliore in generale** | Nomi con l'IA, ordinamento in cartelle facoltativo, monitoraggio con un Template, anteprima e cronologia |
+| Trovare file senza spostarli | Smart Folders (facoltative) | Virtuali, nessuna riorganizzazione necessaria |
+| Ordinare i file in cartelle per tipo o data | Zush, Automator o Hazel | Zush usa una Folder rule in linguaggio naturale; Automator e Hazel usano regole sull'estensione |
+| Archiviare automaticamente i file vecchi | Hazel | Condizioni basate sulla data con monitoraggio in background |
+| Dare nomi descrittivi agli screenshot | Zush (IA) | Nomi basati sul contenuto grazie all'analisi delle immagini |
+| Rinominare i PDF in base al contenuto | Zush (IA) | Legge il testo del documento per generare i nomi |
+| Rinominare in blocco con schemi | Finder o Automator | Sostituzione con schemi già integrata |
+| Elaborare file con un clic | Shortcuts | Interfaccia pulita, facile da condividere |
+| Regole con script o azioni personalizzate | Hazel | Il motore di regole più potente su macOS |
 
-Per un confronto dettagliato specifico dei metodi di ridenominazione batch, consultare il nostro [Guida ai metodi di rinomina batch per Mac](/blog/batch-rename-files-on-mac-complete-guide). Se sai già che hai bisogno di nomi univoci basati sull'intelligenza artificiale (non prefissi condivisi), "[strumento di ridenominazione batch su Mac](/mac)" è il percorso più breve: 50 rinominazioni gratuite, nessuna registrazione.
+Per un confronto dettagliato dei metodi di rinomina in blocco, leggi la nostra [guida ai metodi di rinomina in blocco su Mac](/blog/batch-rename-files-on-mac-complete-guide). Se sai già che ti servono nomi unici generati dall'IA (e non prefissi comuni), lo [strumento di rinomina in blocco per Mac](/mac) è la strada più breve: 50 rinomine gratuite, senza registrazione.
 
 ## Errori comuni da evitare
 
-**Automazione eccessiva troppo presto.** Non creare una configurazione Hazel di 20 regole prima di sapere quali file necessitano effettivamente del routing. Inizia con 2-3 regole ed espandi.
+**Automatizzare troppo e troppo presto.** Non costruire un sistema Hazel da 20 regole prima di sapere quali file hanno davvero bisogno di essere smistati. Parti con 2-3 regole e allarga.
 
-**Ignorare il problema dei nomi.** Lo spostamento dei file in cartelle ordinate non aiuta se ogni file è denominato "IMG_4382.HEIC". Aprirai comunque ciascun file per trovare quello che ti serve. La ridenominazione è importante almeno quanto l'ordinamento.
+**Trascurare il problema dei nomi.** Spostare i file in cartelle ordinate non serve se ogni file si chiama `IMG_4382.HEIC`. Dovrai comunque aprirli uno a uno per trovare quello che ti serve. Rinominare conta almeno quanto ordinare.
 
-**Non testare le tue regole.** Prima di abilitare un'Azione cartella o una regola "Hazel" sulla tua cartella Download reale, provala su una cartella fittizia con file di esempio. Una regola di spostamento errata può disperdere i file sul disco.
+**Non provare le regole.** Prima di attivare un'azione cartella o una regola di Hazel sulla vera cartella Download, provala su una cartella di prova con file di esempio. Una sola regola di spostamento sbagliata può spargere file per tutto il disco.
 
-**Dimenticandosi delle cartelle nidificate.** La maggior parte degli strumenti di automazione controlla un singolo livello di cartella per impostazione predefinita. Se i file si trovano all'interno di sottocartelle, è necessario configurare esplicitamente il monitoraggio ricorsivo.
+**Dimenticare le sottocartelle.** Quasi tutti gli strumenti di automazione, di default, controllano un solo livello di cartella. Se i file finiscono in sottocartelle, devi attivare esplicitamente il monitoraggio ricorsivo.
 
-**Nessun piano di rollback.** Qualsiasi automazione che rinomina o sposta i file deve avere un percorso di annullamento. "Hazel" conserva i registri. "Zush" supporta il rollback. Automator no, quindi fai attenzione alle azioni distruttive.
+**Non avere un modo per tornare indietro.** Ogni automazione che rinomina o sposta file deve poter essere annullata. Hazel tiene dei log. Zush permette di annullare le modifiche. Automator no, quindi attenzione alle azioni distruttive.
 
 ## Domande frequenti
 
-### Come posso automatizzare l'organizzazione dei file su Mac senza installare nulla?
+### Come si automatizza l'organizzazione dei file su Mac senza installare nulla?
 
-Utilizza gli strumenti integrati: "Smart Folders" per i file in superficie e "Automator" o "Shortcuts" per il routing dei file. "Smart Folders" si trova in "Finder" in File > Nuova cartella intelligente. "Automator" può creare azioni cartella che si attivano quando i file arrivano in una directory specifica. Questi coprono l'ordinamento di base per tipo di file, data e modelli di nome senza alcun software di terze parti.
+Usa gli strumenti integrati: le Smart Folders per far emergere i file, e Automator o Shortcuts per smistarli. Le Smart Folders si creano nel Finder da File > Nuova cartella smart. Automator può creare azioni cartella che partono quando arrivano file in una certa cartella. Così copri lo smistamento di base per tipo di file, data e schemi nel nome, senza software di terze parti.
 
-### Qual è la differenza tra "Automator" e "Shortcuts" su "macOS"?
+### Che differenza c'è tra Automator e Shortcuts su macOS?
 
-"Automator" è lo strumento più vecchio con più tipi di azioni, supporto per script di shell e integrazione delle azioni delle cartelle. "Shortcuts" è più recente (macOS Monterey+), ha un'interfaccia più pulita e supporta i trigger di sistema e l'integrazione di Siri. Nello specifico, per l'automazione dei file, "Automator" è ancora più efficace grazie alle sue azioni di script di shell e alle opzioni più ampie di manipolazione dei file. Apple sta lentamente migrando le funzionalità su "Shortcuts", quindi vale la pena conoscerle entrambe.
+Automator è lo strumento più vecchio, con più tipi di azioni, supporto agli script shell e integrazione con le azioni cartella. Shortcuts è più recente (macOS Monterey e successivi), ha un'interfaccia più pulita e supporta le attivazioni di sistema e Siri. Per l'automazione dei file in particolare, Automator resta più capace grazie alle azioni con script shell e alle maggiori possibilità di gestione dei file. Apple sta spostando a poco a poco le funzioni su Shortcuts, quindi conviene conoscerli entrambi.
 
-### Hazel può rinominare i file in base al loro contenuto?
+### Hazel può rinominare i file in base al contenuto?
 
-"Hazel" può leggere il contenuto di testo all'interno di PDF e documenti e utilizzarlo per rinominare le regole. Ad esempio, puoi estrarre una data o una parola chiave da un PDF e includerla nel nome del file. Tuttavia, "Hazel" non può analizzare contenuti di immagini o video: non ha capacità di visione. Per screenshot, foto, registrazioni dello schermo e altri file visivi, è necessario uno strumento basato sull'intelligenza artificiale in grado di esaminare effettivamente cosa c'è nel file.
+Hazel può leggere il testo dentro PDF e documenti e usarlo nelle regole di rinomina. Per esempio, puoi estrarre una data o una parola chiave da un PDF e inserirla nel nome del file. Hazel però non sa analizzare il contenuto di immagini o video, perché non ha capacità di visione. Per screenshot, foto, registrazioni dello schermo e altri file visivi ti serve uno strumento con IA che guardi davvero cosa c'è nel file.
 
-### Come posso evitare che la mia cartella Download venga ingombrata?
+### Come evito che la cartella Download si riempia di confusione?
 
-Configura un sistema a due livelli. Innanzitutto, crea regole di routing (tramite "Automator" o "Hazel") che spostano i file in cartelle specifiche per tipo non appena arrivano. In secondo luogo, aggiungi una regola di pulizia che sposti i file più vecchi di 30 giorni in una cartella Archivio o nel Cestino. La combinazione mantiene la cartella Download snella senza perdere nulla di importante. Consulta il nostro "[guida all'organizzazione della cartella Download](/blog/how-to-organize-downloads-folder-mac)" per una procedura dettagliata.
+Imposta un sistema a due livelli. Prima crea regole di smistamento (Folder rules di Zush, Automator o Hazel) che spostano i file in cartelle per tipo appena arrivano. Poi aggiungi una regola di pulizia che sposta i file più vecchi di 30 giorni in una cartella Archivio o nel Cestino. Insieme, le due cose tengono snella la cartella Download senza perdere nulla di importante. Per una procedura dettagliata, leggi la nostra [guida per organizzare la cartella Download](/blog/how-to-organize-downloads-folder-mac).
 
-### La ridenominazione dei file AI è sicura? Può rovinare i miei file?
+### La rinomina dei file con l'IA è sicura? Può rovinarmi i file?
 
-La ridenominazione AI modifica solo il nome del file, non il contenuto del file. Buoni strumenti come Zush mantengono anche una cronologia delle ridenominazioni in modo da poter ripristinare immediatamente qualsiasi modifica del nome. Il rischio è basso, ma dovresti sempre eseguire prima un test su un piccolo batch e confermare la qualità della denominazione prima di abilitare il monitoraggio delle cartelle su directory con volumi elevati.
+La rinomina con l'IA cambia solo il nome del file, non il contenuto. Gli strumenti fatti bene come Zush tengono anche una cronologia delle rinomine, così puoi annullare all'istante qualsiasi cambio di nome. Il rischio è basso, ma conviene sempre provare prima su un piccolo lotto e verificare la qualità dei nomi prima di attivare il monitoraggio su cartelle con molto traffico.
 
-### Come posso automatizzare l'organizzazione dei file per le foto in modo specifico?
+### Come si automatizza l'organizzazione delle foto in particolare?
 
-Le foto presentano sfide uniche perché i loro nomi originali (`IMG_`, `DSC_`, `DCIM`) non contengono informazioni sul contenuto. L'approccio migliore è la ridenominazione AI per aggiungere nomi descrittivi, combinata con l'ordinamento delle cartelle per data o evento. Per un flusso di lavoro specifico per le foto, consulta il nostro [guida per organizzare le foto su Mac](/blog/best-ways-to-organize-photos-on-mac).
+Le foto sono un caso a parte, perché i nomi originali (`IMG_`, `DSC_`, `DCIM`) non dicono nulla del contenuto. L'approccio migliore è la rinomina con l'IA per dare nomi descrittivi, abbinata all'ordinamento in cartelle per data o per evento. Per un flusso pensato per le foto, leggi la nostra [guida per organizzare le foto su Mac](/blog/best-ways-to-organize-photos-on-mac).
 
 ### Posso combinare più strumenti di automazione?
 
-Sì, quando è veramente necessario un secondo strato. Inizia con "Zush" per la denominazione basata sul contenuto, quindi aggiungi facoltativamente "Smart Folders" per la visibilità o "Hazel"/`Automator" per il routing. Continua a nominare in "Zush" e regole semplici in modo che il sistema rimanga gestibile.
+Sì, quando serve davvero un secondo livello. Parti da Zush per i nomi e l'ordinamento in cartelle, poi aggiungi se vuoi le Smart Folders per la visibilità, oppure Hazel o Automator per script e archiviazione. Tieni poche regole aggiuntive, così il sistema resta facile da gestire.
 
-### Cosa succede se due regole di automazione entrano in conflitto?
+### Cosa succede se due regole di automazione vanno in conflitto?
 
-Se "Hazel" e un'azione cartella "Automator" guardano entrambi la stessa cartella, possono gareggiare tra loro. Il risultato è imprevedibile: un file potrebbe essere spostato prima che l'altro strumento lo elabori. La soluzione è semplice: utilizza un solo strumento di automazione per cartella. Se desideri sia il routing che la ridenominazione, fai prima eseguire la ridenominazione (ad esempio, Zush rinomina il file), quindi fai in modo che lo strumento di routing (Hazel) sposti il ​​file rinominato in base al suo nuovo nome.
+Se Hazel e un'azione cartella di Automator controllano la stessa cartella, possono intralciarsi a vicenda. Il risultato è imprevedibile: un file potrebbe essere spostato prima che l'altro strumento lo elabori. La soluzione è semplice: un solo strumento di automazione per cartella. Zush può rinominare e ordinare in un solo passaggio, quindi spesso basta un unico strumento. Se Hazel ha ancora un compito, come l'archiviazione, lascia che Zush finisca prima e fai controllare a Hazel la cartella di destinazione.
 
 ## Conclusione
 
-Per automatizzare in modo efficace l'organizzazione dei file su "macOS", lascia che regole semplici gestiscano decisioni semplici e lascia che l'intelligenza artificiale gestisca l'ambiguità visiva. Questo equilibrio ti dà un sistema che è effettivamente mantenibile.
+Per automatizzare bene l'organizzazione dei file su macOS, lascia le decisioni semplici a regole semplici e affida all'IA i file visivi ambigui. Con questo equilibrio ottieni un sistema che riesci davvero a mantenere.
 
-Inizia con "Zush" per la denominazione e il ripristino in base al contenuto. Aggiungi "Smart Folders" solo per la visibilità e "Automator" o "Hazel" solo quando è realmente richiesto il routing deterministico. Rivedi settimanalmente ed espandi gradualmente.
+Parti da Zush per i nomi basati sul contenuto, l'ordinamento facoltativo in cartelle con l'IA e la possibilità di annullare. Salva in un Template per Monitor una configurazione di ordinamento già provata. Usa le Smart Folders per le viste salvate, e Automator o Hazel per script e archiviazione. Fai un controllo ogni settimana e allarga un po' alla volta.
 
-L’obiettivo non è un sistema perfetto. L'obiettivo è un sistema in cui si dedicano cinque minuti a settimana all'organizzazione dei file invece di trenta.
+Non serve un sistema perfetto. Serve un sistema che ti faccia passare cinque minuti a settimana a organizzare i file invece di trenta.

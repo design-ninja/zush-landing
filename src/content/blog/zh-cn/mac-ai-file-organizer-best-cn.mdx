@@ -11,7 +11,7 @@ tags:
   - "文件组织"
   - "工具比较"
   - "自动化"
-tldr: "Zush 是 Mac 上综合最佳的 AI 文件整理工具：它按内容重命名文件，并通过 Auto 或你自己写的日常语言规则（例如“发票按公司分组，收据按月份分组”）把文件分类到文件夹。你可以获得 50 次免费 AI 重命名，无需账号、银行卡或 API 密钥，$48 一次性买断就包含托管云端 AI。Hazel 适合严格的规则，Sortio 适合 Linux 用户，Floxtop 适合在 Apple Silicon 上完全本地分类。"
+tldr: "Zush 是 Mac 上综合最佳的 AI 文件整理工具：它按内容重命名文件，并通过 Auto 或你自己写的日常语言规则（例如“发票按公司分组，收据按月份分组”）把文件分类到文件夹。你可以获得 50 次免费 AI 重命名，无需账号、银行卡或 API 密钥，$48 一次性买断就包含托管云端 AI。Hazel 适合需要运行脚本的规则，Sortio 适合 Linux 用户，Floxtop 适合在 Apple Silicon 上完全本地分类。"
 reviewed: "2026-11-17"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
@@ -19,7 +19,7 @@ import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogSources from '@/components/blog/BlogSources.astro';
 
-快速结论：如果你想在 Mac 上让 AI 替你整理文件，先从 [Zush](/mac) 开始。它会读取每个文件，给出便于搜索的名称，还能根据一句日常语言的指令把文件分类到文件夹，任何改动之前都有预览。如果你习惯严格的“如果/那么”规则，选 Hazel；还需要 Linux，选 Sortio；想在较新的 Apple Silicon Mac 上完全本地分类，选 Floxtop；想在同一个应用里顺便清理系统，选 Files Magic AI。
+快速结论：如果你想在 Mac 上让 AI 替你整理文件，先从 [Zush](/mac) 开始。它会读取每个文件，给出便于搜索的名称，还能根据一句日常语言的指令把文件分类到文件夹，任何改动之前都有预览。文件名还可以用上日期、扩展名和原始文件名。如果你的规则需要运行脚本或归档文件，选 Hazel；还需要 Linux，选 Sortio；想在较新的 Apple Silicon Mac 上完全本地分类，选 Floxtop；想在同一个应用里顺便清理系统，选 Files Magic AI。
 
 **我们如何核查：** 本文由 [Zush](/) 的开发者撰写。竞品的价格、功能和评分均于 2026 年 11 月 17 日在厂商官网和官方应用商店核查（[来源见下文](#sources-and-how-we-checked)）。本文比较的是有文档记载的功能，并非实验室测试。
 
@@ -35,7 +35,7 @@ import BlogSources from '@/components/blog/BlogSources.astro';
 | Floxtop | 每月 100 个文件，无需电子邮件或银行卡 | Pro $19.99 一次性买断（v1 更新） | 建议文件夹；可自定义格式的 Smart Rename | 建议文件夹，移动已批准的文件，可选重命名 | Activity History；Cmd+Z 撤销移动和重命名 |
 | Files Magic AI | 25 个重命名额度和 1 个文件夹整理 | $6.99/月、$34.99/年，或终身版 $49.99 | Magic Rename 加建议的文件夹结构 | 建议文件夹、移动文件、可以重命名 | 撤销最近的操作 |
 
-关键的区别在于：Zush、NameQuick 和 Floxtop 能改文件名本身，而 Sparkle 和 Hazel 主要关心文件放在哪里。这里有好几款应用都能在本地运行 AI，所以单凭这一点不足以作为选择理由。Zush 的 $48 许可证的不同之处在于，它还包含托管的 Zush Cloud AI，所以你不需要自己的 API 密钥或本地模型就能持续重命名。
+关键的区别在于：Zush、NameQuick 和 Floxtop 能改文件名本身，而 Sparkle 主要关心文件放在哪里，Hazel 只能按固定格式重命名。这里有好几款应用都能在本地运行 AI，所以单凭这一点不足以作为选择理由。Zush 的 $48 许可证的不同之处在于，它还包含托管的 Zush Cloud AI，所以你不需要自己的 API 密钥或本地模型就能持续重命名。
 
 <BlogProductIntro
   title="想让 Mac 文件便于搜索，又不改动文件夹结构？"
@@ -92,7 +92,7 @@ Hazel 6（当前版本 6.1.2）会监控文件夹，并根据名称、日期、�
 
 Hazel 没有 AI。当你能精确描述条件时它最出色：把扫描仪文件夹里的每个 PDF 移到 `Documents/Scans`，归档超过 90 天的文件。它无法查看一张随意的截图或照片并判断其中的内容。
 
-适合选择 Hazel 的情况：你的文件很有规律，并且你想要脚本和精细的条件。不足：每种情况都需要单独的规则，需要花时间设置和测试。很多人会先让 Zush 写出描述性名称，再让 Hazel 根据这些名称移动文件。关于这种分工的更多内容：[Zush 作为 Hazel 替代品](/hazel-alternative)。
+适合选择 Hazel 的情况：你的规则需要脚本、AppleScript 或归档。不足：每种情况都需要单独的规则，需要花时间设置和测试。比较简单的 Hazel 任务 Zush 也能完成：日期、扩展名和原始文件名的 Naming Blocks，Monitor 按文件类型或文件名前缀筛选，以及按年份和月份分类的文件夹规则。关于这种分工的更多内容：[Zush 作为 Hazel 替代品](/hazel-alternative)。
 
 ## 3. Sparkle：省心的文件夹重组
 
@@ -139,7 +139,7 @@ Files Magic AI 把文件夹整理、Magic Rename、重复文件和闲置应用�
 ## Mac 最佳 AI 文件整理工具：结论
 
 - 如果你想要基于内容的文件名、按你自己的规则分类的文件夹、任何改动前的预览，以及持久保存的 Rename History，就选 **Zush**。一次性 $48 也包含云端 AI。
-- 如果工作就是明确的规则、脚本和标签，就选 **Hazel**。
+- 如果要做的是脚本、归档和其他自定义操作，就选 **Hazel**。
 - 如果 AI 构建的文件夹结构比文件名更重要，就选 **Sparkle**。
 - 如果命名之后的文档 Rules 必不可少，就选 **NameQuick**。
 - 如果你需要 Linux 或团队工作区，就选 **Sortio**。
@@ -166,7 +166,7 @@ Files Magic AI 把文件夹整理、Magic Rename、重复文件和闲置应用�
 
 ### Mac 上最好的 AI 文件整理工具是哪款？
 
-对大多数人，我们推荐 Zush。它为文件取基于内容、便于搜索的名称，并通过 Auto 或你自己写的日常语言规则把文件分类到文件夹，提供预览和持久撤销。Hazel 更适合脚本和严格条件，Sortio 适合 Linux，Floxtop 适合在 Apple Silicon 上完全本地分类，如果你还想要系统清理，可以选 Files Magic AI。Zush 是我们开发的，所以请先在副本上测试任何一款。
+对大多数人，我们推荐 Zush。它为文件取基于内容、便于搜索的名称，并通过 Auto 或你自己写的日常语言规则把文件分类到文件夹，提供预览和持久撤销。Hazel 更适合脚本和归档，Sortio 适合 Linux，Floxtop 适合在 Apple Silicon 上完全本地分类，如果你还想要系统清理，可以选 Files Magic AI。Zush 是我们开发的，所以请先在副本上测试任何一款。
 
 ### AI 能在 Mac 上自动替我整理文件吗？
 

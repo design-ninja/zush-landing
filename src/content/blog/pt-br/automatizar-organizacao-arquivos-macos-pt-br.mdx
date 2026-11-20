@@ -8,7 +8,7 @@ topic: "organization"
 tags:
   - "Automation"
   - "File Organization"
-tldr: "Melhor organizador de arquivos automático geral para Mac: Zush. Ele fornece capturas de tela confusas, PDFs, fotos, documentos, nomes com reconhecimento de conteúdo de áudio e vídeo com monitoramento e desfazer de pastas. Smart Folders, Automator, Shortcuts e Hazel são camadas opcionais de sistema ou roteamento, não a recomendação principal."
+tldr: "Zush nomeia arquivos variados pelo conteúdo e pode organizá-los em pastas com IA. Visualize um lote manual, salve o destino e as Folder rules em um Template e depois atribua-o ao Monitor para os arquivos novos. As regras de pasta também podem usar data ou tipo de arquivo. Smart Folders oferecem visualizações salvas; Automator serve para uma regra fixa, e Hazel para regras que executam scripts ou arquivam arquivos antigos."
 reviewed: "2026-09-28"
 locale: "pt-br"
 translationOf: "automate-file-organization-macos"
@@ -17,7 +17,7 @@ import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogSafetyNote from '@/components/blog/BlogSafetyNote.astro';
 
-Resposta rápida: **[Renomeador de arquivos com IA para Mac](/mac) é nossa principal recomendação para organização automática de arquivos** porque nomes pesquisáveis ​​com reconhecimento de conteúdo resolvem a parte que as regras integradas não conseguem. Adicione Smart Folders apenas para visibilidade, Automator ou Shortcuts apenas para roteamento determinístico simples e Hazel apenas para movimentos complexos após a nomeação.
+Resposta rápida: **[Renomeador de arquivos com IA para Mac](/mac) é nossa principal recomendação para organização automática de arquivos** porque nomes pesquisáveis ​​com reconhecimento de conteúdo resolvem a parte que as regras integradas não conseguem. Adicione Smart Folders apenas para visibilidade, Automator ou Shortcuts apenas para roteamento determinístico simples e Hazel apenas para scripts, arquivamento ou outras ações que o Zush não faz.
 
 Fontes verificadas para esta atualização: [Guia do usuário Apple Automator](https://support.apple.com/guide/automator/welcome/mac), [Guia do usuário Apple Shortcuts para Mac](https://support.apple.com/guide/shortcuts-mac/intro-to-shortcuts-apdf22b0444c/mac), [Documentação de ações da pasta Apple Developer](https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/WatchFolders.html), Site oficial do produto Hazel e Visão geral oficial do Hazel.
 
@@ -27,7 +27,7 @@ Fontes verificadas para esta atualização: [Guia do usuário Apple Automator](h
 |Veja arquivos recentes ou perdidos sem movê-los| Smart Folders |5 minutos|As pesquisas Finder salvas são reversíveis e integradas|
 |Rotear tipos previsíveis de downloads|Ação da pasta Automator|15 minutos|As regras de extensão e data não exigem IA|
 |Execute um fluxo de trabalho simples sob demanda| Shortcuts |10 minutos|Ações claras e controle manual fácil|
-|Mantenha roteamento complexo em segundo plano| Hazel |20–40 minutos|Regras, logs, tags, movimentações e scripts fortes de múltiplas condições|
+|Executar scripts ou arquivar arquivos antigos em segundo plano| Hazel |20–40 minutos|Regras de múltiplas condições com logs, arquivamento e ações de script|
 
 A configuração recomendada começa com Zush em uma pasta de teste copiada para que os arquivos recebam nomes descritivos antes de qualquer alteração de caminho. Adicione uma pasta inteligente para visibilidade ou uma ferramenta de roteamento determinístico somente quando esse trabalho secundário for realmente necessário. Se você precisar especificamente de uma comparação de produto com Hazel, use o [Página alternativa Hazel](/hazel-alternative) dedicado.
 
@@ -212,13 +212,13 @@ Se você estiver no macOS Ventura ou posterior, o Shortcuts pode substituir o Au
 Shortcuts é melhor para automações únicas. Automator é melhor para fluxos de trabalho complexos de várias etapas que precisam de acesso a script de shell. Para um passo a passo completo sobre renomeação de arquivos baseada em Automator, consulte nosso [Automator guia para renomear arquivos](/blog/macos-automator-rename-files-guide).
 
 
-## Hazel para roteamento complexo baseado em regras
+## Hazel para scripts e arquivamento
 
-Hazel é útil quando uma pasta precisa de regras contínuas de múltiplas condições, movimentações em segundo plano, tags, arquivos ou scripts. Uma regra representativa pode mover PDFs cujos nomes contenham “fatura” para uma pasta de ano e mês, deixando intactos os downloads incomparáveis.
+Hazel é útil quando uma pasta precisa de regras contínuas de múltiplas condições com ações que o Zush não tem, como arquivar, executar scripts ou fazer upload. Uma regra que só move PDFs de faturas para pastas de ano e mês não precisa mais dele: o Zush faz isso com uma regra de pasta como “Coloque as faturas em pastas de ano e mês” e reconhece a fatura mesmo quando o arquivo se chama `scan0043.pdf`.
 
-Hazel e a nomenclatura com reconhecimento de conteúdo resolvem diferentes camadas. Hazel é excelente quando extensão, data, tag, padrão de nome de arquivo ou texto extraído fornecem uma condição confiável. Uma ferramenta de nomenclatura de IA é mais útil quando uma captura de tela, foto, vídeo ou digitalização genérica precisa ser compreendida antes de receber um nome pesquisável.
+Hazel funciona quando extensão, data, tag, padrão de nome de arquivo ou texto extraído fornecem uma condição confiável. O Zush pode usar os mesmos dados, com Naming Blocks de data e extensão e filtros do Monitor por tipo de arquivo ou prefixo do nome. Além disso, ele entende uma captura de tela, foto, vídeo ou digitalização genérica antes de nomeá-la ou guardá-la numa pasta.
 
-Mantenha a sequência explícita: renomeie primeiro e depois roteie o nome do arquivo resultante. Não deixe que duas ferramentas observem e alterem a mesma pasta de entrada ao mesmo tempo. Para uma comparação de produtos recurso por recurso, consulte [Zush como alternativa Hazel](/hazel-alternative).
+Se você usar os dois, dê a cada ferramenta a sua própria pasta. Não deixe que duas ferramentas observem e alterem a mesma pasta de entrada ao mesmo tempo. Para uma comparação de produtos recurso por recurso, consulte [Zush como alternativa Hazel](/hazel-alternative).
 
 ## Onde a automação baseada em regras falha
 
@@ -324,6 +324,10 @@ Escolha uma destas opções com base em sua preferência:
 - Crie um atalho que classifique os arquivos por tipo
 - Configure-o para acionar de forma programada ou manualmente
 
+**Opção D: regras de pasta do Zush** (incluído no Zush)
+- Ative Sort em um Template e descreva as pastas, por exemplo “PDFs em Documentos, imagens em Imagens, recibos por mês”
+- Atribua o Template ao Monitor para que os novos downloads sejam nomeados e organizados assim que chegarem
+
 ### Etapa 5: Habilite o monitoramento Zush após o teste
 
 ![Guia do monitor Zush mostrando a configuração de monitoramento de pasta com a pasta Desktop selecionada](/images/showcase/macos/monitor-light.webp)
@@ -350,13 +354,13 @@ Depois de uma semana executando esta configuração, veja o que ainda está falh
 |---|---|---|
 |Nomeie arquivos mistos de forma pesquisável|**Zush — escolha geral**|Lê conteúdo, monitora pastas, visualiza alterações e mantém histórico de reversão|
 |Encontre arquivos sem movê-los|Smart Folders (opcional)|Virtual, sem necessidade de reestruturação|
-|Classifique os arquivos por tipo em pastas|Automator ou Hazel|As regras baseadas em extensão são simples|
+|Classifique os arquivos por tipo ou data em pastas|Zush, Automator ou Hazel|O Zush usa uma regra de pasta em linguagem simples; Automator e Hazel usam regras de extensão|
 |Arquive arquivos antigos automaticamente| Hazel |Condições baseadas em data com monitoramento em segundo plano|
 |Renomeie as capturas de tela de forma descritiva|Zush (AI)|Nomenclatura com reconhecimento de conteúdo a partir da análise de imagens|
 |Renomear PDFs por conteúdo|Zush (AI)|Lê o texto do documento para gerar nomes|
 |Renomeação em lote com padrões|Finder ou Automator|Substituição de padrão integrado|
 |Processamento de arquivos com um clique| Shortcuts |UI limpa, fácil de compartilhar|
-|Roteamento complexo de múltiplas condições| Hazel |Mecanismo de regras mais poderoso em macOS|
+|Regras com scripts ou ações personalizadas| Hazel |Mecanismo de regras mais poderoso em macOS|
 
 Para uma comparação detalhada especificamente dos métodos de renomeação de lote, consulte nosso [Guia de métodos de renomeação em lote do Mac](/blog/batch-rename-files-on-mac-complete-guide). Se você já sabe que precisa de nomes exclusivos com tecnologia de IA (não de prefixos compartilhados), o [ferramenta de renomeação em lote no Mac](/mac) é o caminho mais curto – 50 renomeações gratuitas, sem inscrição.
 
@@ -388,7 +392,7 @@ Hazel pode ler conteúdo de texto dentro de PDFs e documentos e usá-lo para ren
 
 ### Como faço para evitar que minha pasta Downloads fique desordenada?
 
-Configure um sistema de duas camadas. Primeiro, crie regras de roteamento (via Automator ou Hazel) que movam os arquivos para pastas específicas do tipo conforme eles chegam. Em segundo lugar, adicione uma regra de limpeza que mova os arquivos com mais de 30 dias para uma pasta Arquivo ou para a Lixeira. A combinação mantém sua pasta de downloads organizada, sem perder nada importante. Veja nosso [guia para organizar a pasta Downloads](/blog/how-to-organize-downloads-folder-mac) para um passo a passo detalhado.
+Configure um sistema de duas camadas. Primeiro, crie regras de roteamento (regras de pasta do Zush, Automator ou Hazel) que movam os arquivos para pastas específicas do tipo conforme eles chegam. Em segundo lugar, adicione uma regra de limpeza que mova os arquivos com mais de 30 dias para uma pasta Arquivo ou para a Lixeira. A combinação mantém sua pasta de downloads organizada, sem perder nada importante. Veja nosso [guia para organizar a pasta Downloads](/blog/how-to-organize-downloads-folder-mac) para um passo a passo detalhado.
 
 ### A renomeação de arquivos AI é segura? Isso pode bagunçar meus arquivos?
 
@@ -400,16 +404,16 @@ As fotos têm desafios únicos porque seus nomes originais (`IMG_`, `DSC_`, `DCI
 
 ### Posso combinar várias ferramentas de automação?
 
-Sim, quando uma segunda camada é realmente necessária. Comece com Zush para nomenclatura com reconhecimento de conteúdo e, opcionalmente, adicione Smart Folders para visibilidade ou Hazel/Automator para roteamento. Mantenha a nomenclatura em Zush e as regras simples para que o sistema permaneça sustentável.
+Sim, quando uma segunda camada é realmente necessária. Comece com Zush para nomear e organizar em pastas e, se precisar, adicione Smart Folders para visibilidade ou Hazel ou Automator para scripts e arquivamento. Mantenha poucas regras extras para que o sistema continue fácil de manter.
 
 ### O que acontece se duas regras de automação entrarem em conflito?
 
-Se Hazel e uma ação de pasta Automator vigiarem a mesma pasta, eles poderão competir entre si. O resultado é imprevisível: um arquivo pode ser movido antes que outra ferramenta o processe. A solução é simples: use apenas uma ferramenta de automação por pasta. Se você deseja rotear e renomear, faça com que a renomeação aconteça primeiro (por exemplo, Zush renomeia o arquivo) e, em seguida, faça com que a ferramenta de roteamento (Hazel) mova o arquivo renomeado com base em seu novo nome.
+Se Hazel e uma ação de pasta Automator vigiarem a mesma pasta, eles poderão competir entre si. O resultado é imprevisível: um arquivo pode ser movido antes que outra ferramenta o processe. A solução é simples: use apenas uma ferramenta de automação por pasta. O Zush renomeia e organiza numa única passagem, então muitas vezes basta uma ferramenta. Se o Hazel ainda tiver uma tarefa, como arquivar, deixe o Zush terminar primeiro e aponte o Hazel para a pasta de destino.
 
 ## Conclusão
 
 Para automatizar a organização de arquivos no macOS de maneira eficaz, deixe regras simples lidarem com decisões simples e deixe a IA lidar com a ambiguidade visual. Esse equilíbrio fornece um sistema que pode ser realmente mantido.
 
-Comece com Zush para nomeação e recuperação com reconhecimento de conteúdo. Adicione Smart Folders apenas para visibilidade e Automator ou Hazel somente quando o roteamento determinístico for realmente necessário. Revise semanalmente e expanda gradualmente.
+Comece com Zush para nomes com reconhecimento de conteúdo, organização opcional em pastas com IA e recuperação. Salve uma configuração de organização testada em um Template para o Monitor. Use Smart Folders para visualizações salvas e Automator ou Hazel para scripts e arquivamento. Revise semanalmente e expanda gradualmente.
 
 O objetivo não é um sistema perfeito. O objetivo é um sistema onde você gaste cinco minutos por semana na organização de arquivos, em vez de trinta.

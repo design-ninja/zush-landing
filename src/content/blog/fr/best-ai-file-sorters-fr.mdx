@@ -20,7 +20,7 @@ import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogSources from '@/components/blog/BlogSources.astro';
 
-Réponse rapide : pour ranger des fichiers dans des dossiers selon leur contenu, choisissez [Zush, l'outil de tri de fichiers par IA](/ai-file-sorter). Vous écrivez la logique des dossiers en langage courant, par exemple « Regroupe les factures par entreprise et les reçus par mois », ou vous laissez le mode Auto, et Zush renomme et classe chaque document, photo, vidéo ou fichier audio une fois le lot vérifié. Choisissez Sortio si vous avez besoin de Linux, RenameClick si vos catégories sont fixées à l'avance, et Hazel ou File Juggler si vos fichiers suivent des schémas exacts.
+Réponse rapide : pour ranger des fichiers dans des dossiers selon leur contenu, choisissez [Zush, l'outil de tri de fichiers par IA](/ai-file-sorter). Vous écrivez la logique des dossiers en langage courant, par exemple « Regroupe les factures par entreprise et les reçus par mois », ou vous laissez le mode Auto, et Zush renomme et classe chaque document, photo, vidéo ou fichier audio une fois le lot vérifié. Zush peut aussi trier par date ou par type de fichier. Choisissez Sortio si vous avez besoin de Linux, RenameClick si vos catégories sont fixées à l'avance, et Hazel ou File Juggler si vos règles doivent lancer des scripts ou des commandes.
 
 **Notre méthode :** rédigé par l'éditeur de [Zush](/). Les prix, fonctions et notes des concurrents ont été vérifiés sur les sites des éditeurs et les boutiques officielles le 17 novembre 2026 ([sources en bas de page](#sources-and-how-we-checked)). Ce comparatif porte sur les fonctions documentées, pas sur un test en laboratoire.
 
@@ -123,7 +123,7 @@ Choisissez AI File Sorter pour un nettoyage ponctuel et gratuit, si choisir un m
 
 Hazel 6 ($42, Mac), File Juggler ($50 plus taxes, Windows, version 3.1.9) et DropIt (gratuit, Windows, dernière version en février 2018) surveillent des dossiers et agissent selon des conditions : motifs de nom, extensions, dates ou texte reconnu. La rédaction de Softpedia donne 5,0/5 à Hazel et 4,5/5 à File Juggler.
 
-Point faible : aucun d'eux ne comprend ce que montre une photo, un scan ou une vidéo, si bien que chaque cas demande sa propre règle. Beaucoup les associent à un outil de renommage par IA, car des noms descriptifs rendent les règles plus faciles à écrire. Consultez la page [alternative à Hazel](/hazel-alternative) et les [alternatives à Hazel pour Windows](/blog/hazel-for-windows-alternatives).
+Point faible : aucun d'eux ne comprend ce que montre une photo, un scan ou une vidéo, si bien que chaque cas demande sa propre règle. Zush couvre aussi les cas simples : une consigne comme « Regroupe les reçus par année, puis par mois » ou « PDF dans Documents, images dans Images » trie par date ou par type sans une règle par cas. Gardez un moteur de règles pour les scripts, les commandes ou l'extraction d'archives. Consultez la page [alternative à Hazel](/hazel-alternative) et les [alternatives à Hazel pour Windows](/blog/hazel-for-windows-alternatives).
 
 ## Quel outil de tri de fichiers IA choisir ?
 
@@ -133,7 +133,7 @@ Point faible : aucun d'eux ne comprend ce que montre une photo, un scan ou une 
 - Vos catégories sont fixes et vous voulez un modèle local intégré : **RenameClick**.
 - Vous voulez un rangement automatique de votre Mac et les noms de fichiers vous importent peu : **Sparkle**.
 - Vous voulez du gratuit et de l'open source : **AI File Sorter**.
-- Vos fichiers suivent des schémas exacts : **Hazel** sur Mac, **File Juggler** ou **DropIt** sous Windows.
+- Vos règles doivent lancer des scripts, des commandes ou des actions sur des archives : **Hazel** sur Mac, **File Juggler** ou **DropIt** sous Windows.
 
 ## Testez d'abord n'importe quel outil sur 20 fichiers
 
@@ -184,4 +184,4 @@ Zush trie hors ligne avec LM Studio ou Ollama sur Mac et Windows : l'analyse de
 
 ### Quelle différence entre un outil de tri IA et un organiseur à base de règles ?
 
-Un organiseur à base de règles comme Hazel ou DropIt déplace les fichiers qui remplissent des conditions que vous écrivez, comme un motif de nom ou une extension. Un outil de tri IA comme Zush lit le contenu du fichier et suit une instruction comme « regroupe les factures par entreprise » : il peut donc trier des fichiers dont le nom ne donne aucun indice. Vous pouvez aussi les combiner : l'IA nomme d'abord, les règles déplacent ensuite.
+Un organiseur à base de règles comme Hazel ou DropIt déplace les fichiers qui remplissent des conditions que vous écrivez, comme un motif de nom ou une extension. Un outil de tri IA comme Zush lit le contenu du fichier et suit une instruction comme « regroupe les factures par entreprise » : il peut donc trier des fichiers dont le nom ne donne aucun indice. Zush suit aussi une simple consigne de date ou de type de fichier : un moteur de règles ne sert donc que pour des actions comme les scripts ou l'extraction d'archives.

@@ -1,6 +1,6 @@
 ---
-title: "So automatisieren Sie die Dateiorganisation auf dem Mac: 4 sichere Methoden"
-description: "Automatisieren Sie die Dateiorganisation auf dem Mac mit „Smart Folders“, „Shortcuts“, Ordneraktionen und KI-Benennung. Befolgen Sie sichere Arbeitsabläufe für Downloads und Screenshots."
+title: "Dateiorganisation auf dem Mac automatisieren: 4 sichere Methoden"
+description: "Dateien auf dem Mac automatisch organisieren mit Smart Folders, Shortcuts, Ordneraktionen und KI-Benennung, mit sicheren Abläufen für Downloads und Screenshots."
 date: "2026-02-25"
 slug: "dateien-automatisch-organisieren-mac"
 platform: "mac"
@@ -8,8 +8,8 @@ topic: "organization"
 tags:
   - "Automation"
   - "File Organization"
-tldr: "Insgesamt der beste automatische Datei-Organizer für Mac: „Zush“. Es liefert unordentliche Screenshots, PDFs, Fotos, Dokumente, Audio- und Videoinhalte mit Namen mit Ordnerüberwachung und Rückgängigmachen. „Smart Folders“, „Automator“, „Shortcuts“ und „Hazel“ sind optionale System- oder Routing-Ebenen und nicht die primäre Empfehlung."
-reviewed: "2026-09-28"
+tldr: "Zush benennt gemischte Dateien nach ihrem Inhalt und kann sie mit KI in Ordner sortieren. Prüfen Sie zuerst einen manuellen Stapel in der Vorschau, speichern Sie Zielordner und Folder rules in einem Template und weisen Sie es Monitor für neu eintreffende Dateien zu. Folder rules können auch nach Datum oder Dateityp sortieren. Smart Folders liefern gespeicherte Ansichten, Automator eignet sich für eine feste Regel und Hazel für Regeln, die Skripte ausführen oder alte Dateien archivieren."
+reviewed: "2026-11-20"
 locale: "de"
 translationOf: "automate-file-organization-macos"
 ---
@@ -17,157 +17,156 @@ import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogSafetyNote from '@/components/blog/BlogSafetyNote.astro';
 
-Kurze Antwort: **„[KI-Dateiumbenenner für Mac](/mac)“ ist unsere primäre Empfehlung für die automatische Dateiorganisation**, da durchsuchbare inhaltsbewusste Namen den Teil lösen, den integrierte Regeln nicht lösen können. Fügen Sie „Smart Folders“ nur zur Sichtbarkeit, „Automator“ oder „Shortcuts“ nur für einfaches deterministisches Routing und „Hazel“ nur für komplexe Bewegungen nach der Benennung hinzu.
+Kurze Antwort: **Für die automatische Dateiorganisation empfehlen wir in erster Linie den [KI-Dateiumbenenner für Mac](/mac)**, denn durchsuchbare Namen, die den Inhalt beschreiben, lösen genau das, was eingebaute Regeln nicht leisten. Smart Folders brauchen Sie nur für den Überblick, Automator oder Shortcuts nur für einfaches, festes Verschieben und Hazel nur für Skripte, Archivierung oder andere Aktionen, die Zush nicht übernimmt.
 
-Auf dieses Update überprüfte Quellen: „[Apple „Automator“-Benutzerhandbuch](https://support.apple.com/guide/automator/welcome/mac)“, „[Apple „Shortcuts“-Benutzerhandbuch für Mac](https://support.apple.com/guide/shortcuts-mac/intro-to-shortcuts-apdf22b0444c/mac)“, „[Dokumentation zu Apple Developer-Ordneraktionen](https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/WatchFolders.html)“, „Offizielle Produktseite von „Hazel“.“ und „Offizielle Übersicht von „Hazel“.“.
+Für dieses Update geprüfte Quellen: [Automator-Benutzerhandbuch von Apple](https://support.apple.com/guide/automator/welcome/mac), [Shortcuts-Benutzerhandbuch für den Mac von Apple](https://support.apple.com/guide/shortcuts-mac/intro-to-shortcuts-apdf22b0444c/mac), [Dokumentation zu Ordneraktionen bei Apple Developer](https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/WatchFolders.html), die offizielle Produktseite von Hazel und die offizielle Übersicht zu Hazel.
 
-|Problem|Empfohlene Rolle|Rüstzeit|Warum|
+| Problem | Empfohlene Rolle | Einrichtungszeit | Warum |
 |---|---|---:|---|
-|Geben Sie Screenshots, Scans, Fotos, Dokumente, Audio- und Videodateien durchsuchbare Namen|**Zush — hier beginnen**|10 Minuten|Die Inhaltsanalyse beschreibt Dateien, deren Namen und Metadaten generisch sind, mit Überwachung und Rückgängigmachung|
-|Sehen Sie sich aktuelle oder verlegte Dateien an, ohne sie zu verschieben| Smart Folders |5 Minuten|Gespeicherte „Finder“-Suchen sind umkehrbar und integriert|
-|Leiten Sie vorhersehbare Typen aus Downloads weiter|Ordneraktion „Automator“.|15 Minuten|Verlängerungs- und Datumsregeln erfordern keine KI|
-|Führen Sie bei Bedarf einen einfachen Workflow aus| Shortcuts |10 Minuten|Klare Aktionen und einfache manuelle Steuerung|
-|Pflegen Sie komplexe Hintergrundroutings| Hazel |20–40 Minuten|Starke Regeln, Protokolle, Tags, Verschiebungen und Skripte mit mehreren Bedingungen|
+| Screenshots, Scans, Fotos, Dokumenten, Audio- und Videodateien durchsuchbare Namen geben | **Zush, hier anfangen** | 10 Minuten | Die Inhaltsanalyse beschreibt Dateien, deren Namen und Metadaten nichtssagend sind, mit Überwachung und Rückgängig |
+| Neue oder verlegte Dateien sehen, ohne sie zu verschieben | Smart Folders | 5 Minuten | Gespeicherte Finder-Suchen sind umkehrbar und schon eingebaut |
+| Vorhersehbare Dateitypen aus Downloads verteilen | Automator-Ordneraktion | 15 Minuten | Regeln nach Dateiendung und Datum brauchen keine KI |
+| Einen einfachen Ablauf bei Bedarf starten | Shortcuts | 10 Minuten | Klare Aktionen und leicht von Hand zu steuern |
+| Skripte ausführen oder alte Dateien im Hintergrund archivieren | Hazel | 20–40 Minuten | Regeln mit mehreren Bedingungen, Protokollen, Archivierung und Skriptaktionen |
 
-Das empfohlene Setup beginnt mit „Zush“ in einem kopierten Testordner, sodass Dateien vor Pfadänderungen beschreibende Namen erhalten. Fügen Sie einen intelligenten Ordner für mehr Transparenz oder ein deterministisches Routing-Tool nur dann hinzu, wenn dieser sekundäre Job tatsächlich erforderlich ist. Wenn Sie speziell einen Produktvergleich mit „Hazel“ benötigen, verwenden Sie den dedizierten „[Alternative Seite „Hazel“.](/hazel-alternative)“.
+Die empfohlene Einrichtung beginnt mit Zush in einem kopierten Testordner, damit die Dateien aussagekräftige Namen bekommen, bevor sich irgendein Pfad ändert. Einen Smart Folder für den Überblick oder ein Werkzeug für festes Verschieben fügen Sie nur hinzu, wenn Sie diese Zusatzaufgabe wirklich brauchen. Wenn Sie gezielt einen Produktvergleich mit Hazel suchen, lesen Sie die eigene Seite zur [Hazel-Alternative](/hazel-alternative).
 
 <BlogProductIntro
-  title="Benötigen Sie vor dem Routing eine KI-Benennung?"
-  description="„Zush“ für Mac fügt die inhaltsbewusste Benennungsebene hinzu, die „Hazel“, „Automator“ und „Smart Folders“ nicht bieten können. Sehen Sie sich vorgeschlagene Namen in der Vorschau an, bevor Sie sie anwenden, und verwenden Sie den Verlauf, um abgeschlossene Umbenennungsvorgänge rückgängig zu machen."
+  title="Erst KI-Benennung, dann Verschieben?"
+  description="Zush für Mac schlägt Namen nach Dateiinhalt und auf Wunsch KI-Ordnergruppen vor. Prüfen Sie die vorgeschlagenen Namen in der Vorschau, bevor Sie sie übernehmen, und machen Sie abgeschlossene Umbenennungen über History rückgängig."
   links={[
-    { href: '/ai-file-organizer', label: 'AI-Dateiorganisator' },
-    { href: '/mac', label: 'Umbenennung von Mac AI' },
-    { href: '/offline-ai-file-renamer', label: 'Offline-KI-Umbenennung' },
+    { href: '/ai-file-organizer', label: 'KI-Dateiorganisator' },
+    { href: '/mac', label: 'KI-Umbenenner für Mac' },
+    { href: '/offline-ai-file-renamer', label: 'Offline-KI-Umbenenner' },
     { href: '/batch-rename-files', label: 'Dateien stapelweise umbenennen' },
-    { href: '/blog/best-ai-file-renamer-tools-mac-compared', label: 'Vergleich der Mac-Apps' },
+    { href: '/blog/best-ai-file-renamer-tools-mac-compared', label: 'Mac-Apps im Vergleich' },
   ]}
 />
 
-## Was ein automatischer Dateiorganisator zuerst erledigen sollte
+## Womit ein automatischer Dateiorganisator anfangen sollte
 
-Beginnen Sie mit den Dateien, die sowohl häufig als auch lästig sind. Das Ziel besteht nicht darin, vom ersten Tag an ein großes einheitliches System aufzubauen. Das Ziel besteht darin, ein oder zwei wiederkehrende Schmerzpunkte zu beseitigen, Ergebnisse zu sehen und von dort aus zu expandieren.
+Fangen Sie mit den Dateien an, die häufig auftauchen und zugleich nerven. Es geht nicht darum, am ersten Tag ein großes, allumfassendes System aufzubauen. Es geht darum, ein oder zwei wiederkehrende Ärgernisse loszuwerden, das Ergebnis zu sehen und von dort aus weiterzumachen.
 
-Beste Kandidaten für die Automatisierung:
+Die besten Kandidaten für Automatisierung:
 
-- **Screenshots** – „macOS“ nennt sie „Screenshot 2026-03-12 at 10.44.11.png“, was nichts über den Inhalt aussagt
-- **Downloads-Ordner** – Browser-Downloads, E-Mail-Anhänge und AirDrop-Dateien häufen sich schnell unter generischen Namen
-- **Wiederkehrende Exporte** – Rechnungen, Kontoauszüge, Berichte aus denselben Apps jede Woche
-- **Eingehende Kamerafotos** – „IMG_4382.HEIC“ ist sechs Monate später nicht mehr nützlich
-- **Wiederholte Dokument-Dumps** – Kundenergebnisse, Forschungs-PDFs, Projektressourcen
+- **Screenshots**: macOS nennt sie `Screenshot 2026-03-12 at 10.44.11.png`, und das verrät nichts über den Inhalt
+- **Downloads-Ordner**: Browser-Downloads, E-Mail-Anhänge und AirDrop-Dateien stapeln sich schnell unter nichtssagenden Namen
+- **Wiederkehrende Exporte**: Rechnungen, Kontoauszüge und Berichte, jede Woche aus denselben Apps
+- **Neue Kamerafotos**: `IMG_4382.HEIC` hilft Ihnen in sechs Monaten nicht weiter
+- **Immer gleiche Dokumentstapel**: Lieferungen an Kunden, Recherche-PDFs, Projektdateien
 
-Automatisierung ist dann am effektivsten, wenn sie wöchentliche Irritationen beseitigt, und nicht, wenn sie ein kompliziertes System schafft, das Sie nie warten.
+Automatisierung bringt am meisten, wenn sie ein wöchentliches Ärgernis beseitigt, und am wenigsten, wenn sie ein aufwendiges System erzeugt, das Sie nie pflegen.
 
-### So identifizieren Sie Ihre schlimmsten Straftäter
+### So finden Sie die schlimmsten Problemfälle
 
-Öffnen Sie „Finder“ und sortieren Sie Ihren Download- oder Desktop-Ordner nach Änderungsdatum. Sehen Sie sich die letzten 50 Dateien an. Zählen Sie, wie viele Namen haben, die Ihnen verraten, was sich darin befindet. Wenn die Antwort weniger als die Hälfte beträgt, ist dieser Ordner ein starker Kandidat für die Automatisierung.
+Öffnen Sie den Finder und sortieren Sie Ihren Downloads- oder Schreibtisch-Ordner nach Änderungsdatum. Sehen Sie sich die letzten 50 Dateien an und zählen Sie, wie viele Namen verraten, was drinsteckt. Ist es weniger als die Hälfte, lohnt sich Automatisierung für diesen Ordner besonders.
 
-Sie können auch die Menge der Dateien überprüfen, die in einem Ordner landen. Öffnen Sie „Terminal“ und führen Sie Folgendes aus:
+Sie können auch prüfen, wie viele Dateien in einem Ordner liegen. Öffnen Sie das Terminal und führen Sie aus:
 
 ```bash
 ls -1 ~/Downloads | wc -l
 ```
 
-Wenn die Zahl über 200 liegt, liegt ein Rückstand vor, der es wert ist, automatisiert zu werden.
+Liegt die Zahl über 200, haben Sie einen Rückstau, dessen Automatisierung sich lohnt.
 
 
-## Dateien mit KI in Ordner sortieren
+## Mit Zush-Namen und optionaler KI-Ordnersortierung anfangen
 
-[Zush KI-Dateisortierer](/ai-file-sorter) — Die KI-Ordnersortierung von Zush funktioniert auf Mac und Windows. Sie analysiert unterstützte Dateiinhalte und schlägt Namen sowie Ordnergruppen vor. Lassen Sie Folder rules für Auto leer, oder beschreiben Sie die gewünschte Gruppierung in Alltagssprache. Naming Blocks legen den Aufbau des Dateinamens getrennt davon fest.
+Wenn eine einzige App Dateien benennen, ablegen und einen Ordner überwachen soll, beginnen Sie mit dem [KI-Dateiorganisator Zush](/ai-file-organizer). macOS bringt mehrere eingebaute Werkzeuge zur Dateiautomatisierung mit, Apps von Drittanbietern schließen die Lücken. So schneiden sie im groben Vergleich ab.
 
-Wenn eine App Dateien benennen, einsortieren und Ordner überwachen soll, beginnen Sie mit dem [Zush KI-Dateiorganizer](/ai-file-organizer).
-
-> Rechnungen nach Unternehmen und Belege nach Monat gruppieren. Monatsordner YYYY-MM nennen.
-
-1. Fügen Sie einen kleinen kopierten Stapel in AI Rename hinzu und wählen Sie ein Template.
-2. Aktivieren Sie + Sort und wählen Sie den Destination folder als Wurzel für die Unterordner. Ohne separates Ziel bleibt der Quellordner die Wurzel.
-3. Tragen Sie die Gruppierung in Folder rules ein. Aktivieren Sie Reuse existing folders, wenn passende Ordner bereits im Ziel liegen; andernfalls kann Zush neue anlegen.
-4. Prüfen und korrigieren Sie die vorgeschlagenen Dateinamen und Ordnergruppen, bevor Sie den Stapel anwenden.
-
-![Zush für Mac mit vorgeschlagenen Dateinamen und inhaltsbezogenen Ordnergruppen vor Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
-
-Speichern Sie das getestete Ziel und die Regeln im Template. Monitor kann damit neue Dateien direkt im überwachten Ordner umbenennen und sortieren; bereits verarbeitete Dateien werden nicht nachträglich neu organisiert. Bei ausgeschalteter Sortierung und ursprünglichem Ziel bleiben die Dateien im bisherigen Ordner.
-
-[Schritt-für-Schritt-Anleitung zur KI-Ordnersortierung](/blog/sort-files-into-folders-with-ai-mac) · [Dokumentation zur Ordnersortierung](/docs/folder-sorting) · [30 Beispiele für Ordnerregeln](/blog/ai-folder-sorting-prompts).
-
-## Beginnen Sie mit der Namensebene „Zush“.
-
-„macOS“ wird mit mehreren integrierten Tools zur Dateiautomatisierung geliefert. Apps von Drittanbietern füllen die Lücken. So vergleichen sie sich auf hohem Niveau.
-
-|Werkzeug|Eingebaut|Überwacht Ordner|Verschiebt Dateien|Benennt Dateien um|Inhaltsbewusst|
+| Werkzeug | Eingebaut | Überwacht Ordner | Verschiebt Dateien | Benennt Dateien um | Versteht Inhalte |
 |---|---|---|---|---|---|
-| Smart Folders |Ja|Nein (virtuell)|NEIN|NEIN|NEIN|
-| Automator |Ja|Ja (Ordneraktionen)|Ja|Ja (Muster)|NEIN|
-| Shortcuts |Ja|Ja (Trigger)|Ja|Ja (Muster)|NEIN|
-| Hazel |Nein (42 $)|Ja|Ja|Ja (Regeln)|NEIN|
-| [KI-Dateiumbenenner für Mac](/mac) |NEIN|Ja| Inhaltsbezogene Dateinamen und optionale KI-Ordnergruppen |Ja (KI)|Ja|
+| Smart Folders | Ja | Nein (virtuell) | Nein | Nein | Nein |
+| Automator | Ja | Ja (Ordneraktionen) | Ja | Ja (Muster) | Nein |
+| Shortcuts | Ja | Ja (Auslöser) | Ja | Ja (Muster) | Nein |
+| Hazel | Nein (42 $) | Ja | Ja | Ja (Regeln) | Nein |
+| [KI-Dateiumbenenner für Mac](/mac) | Nein | Ja | Ja, optionale KI-Ordnersortierung | Ja (KI) | Ja |
 
-„Zush“ ist der empfohlene Kern, da die Benennung jede nachgelagerte Suche oder Regel nützlicher macht. Die anderen Werkzeuge sind optionale Ebenen für Sichtbarkeit oder Bewegung.
+Zush ist der empfohlene Kern, weil gute Namen jede spätere Suche und jede Regel nützlicher machen. Zush kann auch Ordnergruppen nach Inhalt bilden; die anderen Werkzeuge liefern gespeicherte Ansichten, feste Bedingungen oder Skripte.
 
 <BlogSafetyNote
-  title="Bauen Sie die Automatisierung in umkehrbaren Schichten auf"
-  description="Beginnen Sie mit einem überwachten Ordner und einer Regel. Zeigen Sie inhaltsbezogene Dateinamenänderungen in der Vorschau an, bevor Sie sie anwenden, bestätigen Sie die Ausgabe und lassen Sie die umbenannten Dateien erst dann durch Routing-Tools verschieben. Halten Sie den „Zush“-Verlauf zum Rückgängigmachen bereit."
+  title="Automatisierung in umkehrbaren Schritten aufbauen"
+  description="Fangen Sie mit einem überwachten Ordner und einer Regel an. Prüfen Sie die neuen Dateinamen in der Vorschau, bevor Sie sie übernehmen, kontrollieren Sie Ergebnis und Ordnergruppen und speichern Sie die getestete Einrichtung in einem Template für Monitor. Ein separates Werkzeug zum Verschieben brauchen Sie nur für Regeln oder Skripte, die das Template nicht abdeckt. Lassen Sie die Zush-History zum Rückgängigmachen verfügbar."
   links={[
     { href: '/blog/how-to-safely-batch-rename-files', label: 'Checkliste für sichere Automatisierung' },
-    { href: '/docs/undo-history', label: 'Mit Verlauf rückgängig machen' },
+    { href: '/docs/undo-history', label: 'Mit History rückgängig machen' },
   ]}
 />
 
 <BlogCTA placement='inline' platform='mac' />
 
-## „Smart Folders“: Schritt-für-Schritt-Einrichtung
+## Gemischte Dateien mit KI in Ordner sortieren
 
-„Smart Folders“ verschiebt keine Dateien. Sie zeigen Dateien dynamisch basierend auf Suchkriterien an. Betrachten Sie sie als gespeicherte „Spotlight“-Suchen, die in Ihrer „Finder“-Seitenleiste angezeigt werden.
+Der [KI-Dateisortierer Zush](/ai-file-sorter) kann unterstützten Dateien aussagekräftige Namen geben und sie im selben Durchgang nach Inhalt in echte Ordner einsortieren. **Die KI-Ordnersortierung funktioniert auf Mac und Windows.** Lassen Sie **Folder rules** für die automatische Gruppierung leer oder beschreiben Sie die Gruppen in normaler Sprache. Für gemischte Dateien probieren Sie zum Beispiel:
 
-Sie sind nützlich, um Dateien an verstreuten Orten zu finden, ohne Ihre Ordnerhierarchie umzustrukturieren.
+> Rechnungen nach Firma und Belege nach Monat gruppieren.
 
-### So erstellen Sie einen Smart Folder
+1. Fügen Sie in **AI Rename** einen kleinen, kopierten Stapel hinzu und wählen Sie ein Template.
+2. Aktivieren Sie **+ Sort** und wählen Sie den **Destination folder**, also den Stammordner für die sortierten Unterordner. Ohne eigenes Ziel bleibt der Quellordner der Stammordner.
+3. Tragen Sie die Anweisung zur Gruppierung unter **Folder rules** ein. Das Format des Dateinamens legen die **Naming Blocks** getrennt davon fest.
+4. Aktivieren Sie **Reuse existing folders**, wenn passende Gruppen im Zielordner schon existieren. Passt keine, kann Zush einen neuen Ordner anlegen.
+5. Prüfen Sie sowohl die vorgeschlagenen Namen als auch die Ordnergruppen. Korrigieren Sie Ordnernamen oder die Zuordnung einzelner Dateien, bevor Sie den Stapel anwenden.
 
-1. Öffnen Sie „Finder“.
-2. Drücken Sie **Cmd + F** oder gehen Sie zu **Datei > Neuer intelligenter Ordner**
-3. Klicken Sie oben rechts auf die Schaltfläche ***, um Kriterien hinzuzufügen
-4. Legen Sie Ihre Bedingungen fest (siehe Beispiele unten)
-5. Klicken Sie auf **Speichern** und benennen Sie den Smart Folder
-6. Aktivieren Sie **Zur Seitenleiste hinzufügen**, damit es weiterhin zugänglich bleibt
-7. Wählen Sie einen Speicherort für die Datei „.savedSearch“ (Standard ist in Ordnung).
+![Zush für Mac zeigt vor Rename & sort eine Vorschau der Ordnergruppen nach Inhalt und der vorgeschlagenen Dateinamen](/images/showcase/macos/folder-sorting-light.webp)
 
-### Die nützlichsten Smart Folder-Kriterien
+Speichern Sie das getestete Ziel und die Regeln im Template. Weisen Sie es **Monitor** zu, damit neue Dateien, die direkt im überwachten Ordner landen, umbenannt und einsortiert werden. Bereits verarbeitete Dateien werden dabei nicht nachträglich neu geordnet. Ist die Sortierung aus und das ursprüngliche Ziel gewählt, bleiben die Dateien in ihrem bisherigen Ordner.
 
-|Zweck des intelligenten Ordners|Zu setzende Kriterien|
+Folgen Sie der [Schritt-für-Schritt-Anleitung zum Sortieren auf dem Mac](/blog/sort-files-into-folders-with-ai-mac) oder lesen Sie die [Dokumentation zur Ordnersortierung](/docs/folder-sorting) und die [30 Beispiele für Folder rules](/blog/ai-folder-sorting-prompts).
+
+## Smart Folders Schritt für Schritt einrichten
+
+Smart Folders verschieben keine Dateien. Sie zeigen Dateien anhand von Suchkriterien dynamisch an. Man kann sie sich als gespeicherte Spotlight-Suchen vorstellen, die in der Seitenleiste des Finders erscheinen.
+
+Sie helfen, Dateien an verstreuten Orten zu finden, ohne dass Sie Ihre Ordnerstruktur umbauen müssen.
+
+### So legen Sie einen Smart Folder an
+
+1. Öffnen Sie den Finder
+2. Drücken Sie **Cmd + F** oder wählen Sie **Ablage > Neuer intelligenter Ordner**
+3. Klicken Sie oben rechts auf **+**, um Kriterien hinzuzufügen
+4. Legen Sie Ihre Bedingungen fest (Beispiele siehe unten)
+5. Klicken Sie auf **Sichern** und geben Sie dem Smart Folder einen Namen
+6. Aktivieren Sie **Zur Seitenleiste hinzufügen**, damit er schnell erreichbar bleibt
+7. Wählen Sie einen Speicherort für die `.savedSearch`-Datei (der Standard passt)
+
+### Die nützlichsten Kriterien für Smart Folders
+
+| Zweck des Smart Folders | Kriterien |
 |---|---|
-|Aktuelle Screenshots|Art = Bild, Name enthält „Screenshot“, Änderungsdatum = Letzte 7 Tage|
-|Große Dateien fressen die Festplatte|Dateigröße > 500 MB|
-|Aktuelle PDFs|Art = PDF, Änderungsdatum = Letzte 30 Tage|
-|Dokumente, die überprüft werden müssen|Tag = „Rezension“, Art = Dokument|
-|Alle Vorträge|Art = Präsentation|
-|Aktuelle Downloads|Ordner = Downloads, Änderungsdatum = Letzte 3 Tage|
+| Neue Screenshots | Art = Bild, Name enthält „Screenshot“, Änderungsdatum = letzte 7 Tage |
+| Große Dateien, die Speicher fressen | Dateigröße > 500 MB |
+| Neue PDFs | Art = PDF, Änderungsdatum = letzte 30 Tage |
+| Dokumente zur Durchsicht | Tag = „Prüfen“, Art = Dokument |
+| Alle Präsentationen | Art = Präsentation |
+| Neue Downloads | Ordner = Downloads, Änderungsdatum = letzte 3 Tage |
 
-### Erweiterte Tipps für intelligente Ordner
+### Fortgeschrittene Tipps für Smart Folders
 
-- Halten Sie **Option** gedrückt, während Sie auf die Schaltfläche ***** klicken, um zusammengesetzte Kriterien (UND/ODER-Gruppierungen) hinzuzufügen.
-- Sie können nach Dateierweiterung, Erstellungsdatum, Datum des letzten Öffnens und Dutzenden anderer Metadatenfelder filtern
-- „Smart Folders“-Updates in Echtzeit, sodass sie immer den aktuellen Status Ihres Laufwerks widerspiegeln
-– Sie funktionieren auf allen bereitgestellten Volumes, einschließlich externer Laufwerke
+- Halten Sie **Option** gedrückt, während Sie auf **+** klicken, um verschachtelte Kriterien (UND/ODER-Gruppen) hinzuzufügen
+- Sie können nach Dateiendung, Erstellungsdatum, letztem Öffnen und Dutzenden weiteren Metadatenfeldern filtern
+- Smart Folders aktualisieren sich in Echtzeit und zeigen immer den aktuellen Stand Ihres Laufwerks
+- Sie funktionieren auf allen eingebundenen Volumes, auch auf externen Laufwerken
 
-„Smart Folders“ sind keine echte Automatisierung, da sie nichts verschieben oder umbenennen. Aber sie sind ein ausgezeichneter erster Schritt, weil sie Ihnen zeigen, was organisiert werden muss, bevor Sie sich auf Regeln festlegen.
+Smart Folders sind keine echte Automatisierung, weil sie nichts verschieben oder umbenennen. Als erster Schritt eignen sie sich aber sehr gut, weil Sie damit sehen, was Ordnung braucht, bevor Sie sich auf Regeln festlegen.
 
-Weitere Informationen finden Sie in unserem „[„macOS“-Anleitung für Power Tools zur Dateisuche](/blog/finder-tags-guide-organize-files-mac)“.
+Mehr dazu finden Sie in unserem [Leitfaden zu den Suchwerkzeugen von macOS](/blog/finder-tags-guide-organize-files-mac).
 
-## „Automator“ und „Shortcuts“: Erstellen echter Arbeitsabläufe
+## Automator und Shortcuts: echte Abläufe bauen
 
-Mit „Automator“ (und seinem neueren Bruder „Shortcuts“) können Sie echte Dateiverarbeitungs-Workflows erstellen. Sie können Dateien mithilfe einer Drag-and-Drop-Oberfläche umbenennen, verschieben, kopieren, in der Größe ändern und konvertieren.
+Mit Automator (und dem neueren Shortcuts) bauen Sie richtige Abläufe zur Dateiverarbeitung. Per Drag-and-drop lassen sich Dateien umbenennen, verschieben, kopieren, skalieren und umwandeln.
 
-### Ordneraktion „Automator“: Downloads automatisch nach Dateityp sortieren
+### Automator-Ordneraktion: Downloads automatisch nach Dateityp sortieren
 
-Dies ist einer der praktischsten „Automator“-Workflows. Es überwacht Ihren Download-Ordner und verschiebt Dateien basierend auf ihrer Erweiterung in Unterordner.
+Das ist einer der praktischsten Automator-Abläufe. Er überwacht Ihren Downloads-Ordner und verschiebt Dateien je nach Dateiendung in Unterordner.
 
-**Schritt-für-Schritt-Einrichtung:**
+**Einrichtung Schritt für Schritt:**
 
-1. Öffnen Sie **Automator** (suchen Sie in Spotlight)
+1. Öffnen Sie **Automator** (über Spotlight)
 2. Wählen Sie **Ordneraktion** als Dokumenttyp
-3. Stellen Sie oben „Ordneraktion empfängt hinzugefügte Dateien und Ordner“ auf Ihren Ordner **Downloads** ein
-4. Fügen Sie eine Aktion **Shell-Skript ausführen** hinzu
-5. Setzen Sie „Eingabe übergeben“ auf **als Argumente**
-6. Fügen Sie das folgende Skript ein:
+3. Stellen Sie oben bei „Ordneraktion empfängt Dateien und Ordner, hinzugefügt zu“ Ihren Ordner **Downloads** ein
+4. Fügen Sie die Aktion **Shell-Skript ausführen** hinzu
+5. Stellen Sie „Eingabe übergeben“ auf **als Argumente**
+6. Fügen Sie dieses Skript ein:
 
 ```bash
 for f in "$@"; do
@@ -192,224 +191,228 @@ for f in "$@"; do
 done
 ```
 
-7. Speichern Sie den Workflow unter einem aussagekräftigen Namen wie „Downloads nach Typ sortieren“.
-8. Die Ordneraktion ist jetzt aktiv. Neue Dateien in Downloads werden automatisch sortiert.
+7. Sichern Sie den Ablauf unter einem klaren Namen wie „Downloads nach Typ sortieren“
+8. Die Ordneraktion ist jetzt aktiv. Neue Dateien in Downloads werden automatisch einsortiert.
 
-### „Shortcuts“: eine einfachere Alternative für „macOS“ Ventura+
+### Shortcuts: die einfachere Alternative ab macOS Ventura
 
-Wenn Sie „macOS“ Ventura oder höher verwenden, kann „Shortcuts“ „Automator“ für viele Aufgaben ersetzen. Der Vorteil ist eine übersichtlichere Benutzeroberfläche und eine engere Integration mit Systemtriggern.
+Ab macOS Ventura kann Shortcuts (auf Deutsch „Kurzbefehle“) Automator bei vielen Aufgaben ersetzen. Die Oberfläche ist aufgeräumter, und die App ist enger mit den Auslösern des Systems verzahnt.
 
 **Beispiel: Screenshots umbenennen und verschieben**
 
 1. Öffnen Sie **Shortcuts**
-2. Erstellen Sie eine neue Verknüpfung
-3. Aktion hinzufügen: **Inhalte des Ordners abrufen** (auf Ihren Screenshots-Ordner festgelegt)
-4. Aktion hinzufügen: **Dateien filtern**, wobei der Name „Screenshot“ enthält.
-5. Aktion hinzufügen: **Datei umbenennen** mit einem Muster wie „Screenshot-[Erstellungsdatum]“.
-6. Aktion hinzufügen: **Datei verschieben** in den gewünschten Zielordner
-7. Um die Funktion automatisch auszuführen, gehen Sie zur Registerkarte **Automatisierung** und erstellen Sie einen Auslöser, wenn Dateien zum Ordner „Screenshots“ hinzugefügt werden
+2. Legen Sie einen neuen Kurzbefehl an
+3. Fügen Sie die Aktion **Get Contents of Folder** hinzu (auf Ihren Screenshot-Ordner eingestellt)
+4. Fügen Sie die Aktion **Filter Files** hinzu, mit der Bedingung, dass der Name „Screenshot“ enthält
+5. Fügen Sie die Aktion **Rename File** mit einem Muster wie `Screenshot-[Date Created]` hinzu
+6. Fügen Sie die Aktion **Move File** mit dem gewünschten Zielordner hinzu
+7. Damit das automatisch läuft, öffnen Sie den Tab **Automation** und legen einen Auslöser an, der greift, sobald Dateien im Screenshot-Ordner landen
 
-„Shortcuts“ eignet sich besser für einmalige Automatisierungen. „Automator“ eignet sich besser für komplexe mehrstufige Arbeitsabläufe, die Shell-Skriptzugriff benötigen. Eine ausführliche Anleitung zum „Automator“-basierten Dateiumbenennen finden Sie in unserem „[Anleitung zum Umbenennen von Dateien mit „Automator“.](/blog/macos-automator-rename-files-guide)“.
+Shortcuts eignet sich besser für einzelne, kleine Automatisierungen, Automator besser für komplexe Abläufe in mehreren Schritten, die Shell-Skripte brauchen. Eine ausführliche Anleitung zum Umbenennen mit Automator finden Sie in unserem [Leitfaden zum Umbenennen von Dateien mit Automator](/blog/macos-automator-rename-files-guide).
 
 
-## „Hazel“ für komplexes regelbasiertes Routing
+## Hazel für Skripte und Archivierung
 
-„Hazel“ ist nützlich, wenn ein Ordner kontinuierliche Regeln mit mehreren Bedingungen, Hintergrundverschiebungen, Tags, Archive oder Skripte benötigt. Eine repräsentative Regel könnte PDFs, deren Namen „Rechnung“ enthalten, in einen Jahres- und Monatsordner verschieben, während nicht zugeordnete Downloads unberührt bleiben.
+Hazel ist nützlich, wenn ein Ordner dauerhaft Regeln mit mehreren Bedingungen braucht und dabei Aktionen, die Zush nicht hat, etwa Archivieren, Skripte ausführen oder Hochladen. Für eine Regel, die nur Rechnungs-PDFs in Jahres- und Monatsordner verschiebt, brauchen Sie es nicht mehr: Zush erledigt das mit einer Ordnerregel wie „Rechnungen in Jahres- und Monatsordner legen“ und erkennt eine Rechnung auch dann, wenn die Datei `scan0043.pdf` heißt.
 
-„Hazel“ und inhaltsbewusste Benennung lösen verschiedene Ebenen. „Hazel“ zeichnet sich aus, wenn Erweiterung, Datum, Tag, Dateinamenmuster oder extrahierter Text eine zuverlässige Bedingung liefern. Ein KI-Benennungstool ist nützlicher, wenn ein Screenshot, ein Foto, ein Video oder ein allgemeiner Scan verstanden werden muss, bevor es einen durchsuchbaren Namen erhält.
+Hazel funktioniert, wenn Dateiendung, Datum, Tag, Dateinamenmuster oder ausgelesener Text eine verlässliche Bedingung liefern. Zush kann dieselben Angaben nutzen, mit Naming Blocks für Datum und Dateiendung und Monitor-Filtern nach Dateityp oder Namenspräfix. Zusätzlich versteht es einen Screenshot, ein Foto, ein Video oder einen nichtssagend benannten Scan, bevor es die Datei benennt oder ablegt.
 
-Halten Sie die Reihenfolge klar: Zuerst umbenennen, dann den resultierenden Dateinamen weiterleiten. Lassen Sie nicht zu, dass zwei Tools gleichzeitig denselben Aufnahmeordner überwachen und ändern. Einen Produktvergleich der einzelnen Funktionen finden Sie unter „[„Zush“ als „Hazel“-Alternative](/hazel-alternative)“.
+Wenn Sie beide nutzen, geben Sie jedem Werkzeug einen eigenen Ordner. Lassen Sie nie zwei Werkzeuge gleichzeitig denselben Eingangsordner überwachen und verändern. Einen Vergleich Funktion für Funktion finden Sie unter [Zush als Hazel-Alternative](/hazel-alternative).
 
-## Wo regelbasierte Automatisierung versagt
+## Wo regelbasierte Automatisierung scheitert
 
-Regeln funktionieren, wenn die Datei Ihnen bereits anhand ihres Namens, ihrer Erweiterung oder ihrer Metadaten sagt, um was es sich handelt.
+Regeln funktionieren, wenn die Datei schon über Namen, Dateiendung oder Metadaten verrät, was sie ist.
 
-Sie schlagen fehl, wenn die Datei wie folgt ankommt:
+Sie scheitern, wenn die Datei so ankommt:
 
-- „IMG_4382.HEIC“.
-- „Screenshot 2026-03-12 at 10.44.11.png“.
+- `IMG_4382.HEIC`
+- `Screenshot 2026-03-12 at 10.44.11.png`
 - `download (7).jpg`
-- „Dokument.pdf“.
-- „Untitled.png“.
+- `Document.pdf`
+- `Untitled.png`
 - `image (3).webp`
 
-Eine Regel kann diese Dateien in einen bestimmten Ordner verschieben. Es kann nicht erklären, was sie enthalten. Und ohne einen aussagekräftigen Namen können Sie sie später nicht wiederfinden, selbst wenn sie perfekt in Ordnern organisiert sind.
+Eine Regel kann diese Dateien in einen bestimmten Ordner verschieben. Sie kann nicht erklären, was darin steckt. Und ohne aussagekräftigen Namen finden Sie sie später nicht wieder, selbst wenn sie ordentlich in Ordnern liegen.
 
-Genau hier kommt die KI-basierte Benennung zum Einsatz. Tools, die Dateiinhalte analysieren – die tatsächlichen Pixel in einem Bild, aufgenommene Frames aus einem Video, den Text in einer PDF-Datei, das Layout eines Dokuments – können Namen generieren, die beschreiben, was die Datei tatsächlich ist.
+Genau hier hilft KI-gestützte Benennung. Werkzeuge, die den Dateiinhalt analysieren, also die Pixel eines Bildes, einzelne Frames aus einem Video, den Text eines PDFs oder das Layout eines Dokuments, können Namen erzeugen, die beschreiben, was die Datei tatsächlich ist.
 
-Weitere Informationen dazu, wie das Umbenennen von AI-Dateien in der Praxis funktioniert, finden Sie in unserem „[Dateiumbenenner für Mac und „Windows“.](/)“.
+Wie KI-Umbenennung in der Praxis funktioniert, sehen Sie auf der Seite zu unserem [Dateiumbenenner für Mac und Windows](/).
 
-## KI-gestütztes Umbenennen von Dateien: vorher und nachher
+## KI-Umbenennung von Dateien: vorher und nachher
 
-Der klarste Weg, die KI-Umbenennung zu verstehen, besteht darin, die Ergebnisse zu sehen. Folgendes passiert, wenn ein KI-Tool Dateiinhalte analysiert und beschreibende Namen generiert.
+Am besten versteht man KI-Umbenennung an Ergebnissen. So sieht es aus, wenn ein KI-Werkzeug den Inhalt von Dateien analysiert und beschreibende Namen erzeugt.
 
 ### Screenshots
 
-|Vor|Nach|
+| Vorher | Nachher |
 |---|---|
-|„Screenshot 2026-03-12 um 10.44.11.png“.|`slack-conversation-project-update.png`|
-|„Screenshot 2026-03-12 am 14.22.08.png“.|`figma-dashboard-layout-dark-mode.png`|
-|„Screenshot 2026-01-05 am 09.15.33.png“.|`google-analytics-traffic-report-jan.png`|
-|„Screenshot 2026-02-18 um 16.30.00.png“.|`vscode-react-component-error.png`|
+| `Screenshot 2026-03-12 at 10.44.11.png` | `slack-conversation-project-update.png` |
+| `Screenshot 2026-03-12 at 14.22.08.png` | `figma-dashboard-layout-dark-mode.png` |
+| `Screenshot 2026-01-05 at 09.15.33.png` | `google-analytics-traffic-report-jan.png` |
+| `Screenshot 2026-02-18 at 16.30.00.png` | `vscode-react-component-error.png` |
 
 ### Fotos
 
-|Vor|Nach|
+| Vorher | Nachher |
 |---|---|
-|„IMG_4382.HEIC“.|`golden-gate-bridge-foggy-morning.heic`|
-|„IMG_7291.HEIC“.|`team-dinner-italian-restaurant.heic`|
-|„DSC_0034.NEF“.|`sunset-over-pacific-ocean-malibu.nef`|
-|`photo_2026.jpg`|„whiteboard-sprint-planning-notes.jpg“.|
+| `IMG_4382.HEIC` | `golden-gate-bridge-foggy-morning.heic` |
+| `IMG_7291.HEIC` | `team-dinner-italian-restaurant.heic` |
+| `DSC_0034.NEF` | `sunset-over-pacific-ocean-malibu.nef` |
+| `photo_2026.jpg` | `whiteboard-sprint-planning-notes.jpg` |
 
 ### Dokumente und PDFs
 
-|Vor|Nach|
+| Vorher | Nachher |
 |---|---|
-|„Dokument.pdf“.|„Wohnungsmietvertrag-2026.pdf“.|
-|`download (3).pdf`|`aws-monthly-invoice-february.pdf`|
-|„14.pdf scannen“.|„Antragsformular zur Verlängerung des Reisepasses.pdf“.|
-|`export.csv`|„quartally-sales-report-q1-2026.csv“.|
+| `Document.pdf` | `apartment-lease-agreement-2026.pdf` |
+| `download (3).pdf` | `aws-monthly-invoice-february.pdf` |
+| `Scan 14.pdf` | `passport-renewal-application-form.pdf` |
+| `export.csv` | `quarterly-sales-report-q1-2026.csv` |
 
 ### Heruntergeladene Bilder
 
-|Vor|Nach|
+| Vorher | Nachher |
 |---|---|
-|`download (7).jpg`|`minimalist-desk-setup-inspiration.jpg`|
-|`image (2).webp`|`react-component-lifecycle-diagram.webp`|
-|„Ohne Titel.png“.|`brand-color-palette-primary-shades.png`|
+| `download (7).jpg` | `minimalist-desk-setup-inspiration.jpg` |
+| `image (2).webp` | `react-component-lifecycle-diagram.webp` |
+| `Untitled.png` | `brand-color-palette-primary-shades.png` |
 
 
-Der Unterschied ist nicht kosmetischer Natur. Beschreibende Dateinamen bedeuten, dass die Suche nach „Spotlight“ funktioniert. Das bedeutet, dass Sie einen Ordner scannen und wissen können, was sich in jeder Datei befindet, ohne sie öffnen zu müssen. Das bedeutet, dass jedes Downstream-System – „Smart Folders“-, „Hazel“-Regeln, manuelles Browsing – besser funktioniert.
+Der Unterschied ist mehr als Kosmetik. Mit beschreibenden Dateinamen funktioniert die Spotlight-Suche. Sie können einen Ordner überfliegen und wissen, was in jeder Datei steckt, ohne sie zu öffnen. Und alles, was darauf aufbaut, von Smart Folders über Hazel-Regeln bis zum Durchsehen von Hand, funktioniert besser.
 
-![Die Verarbeitungsregisterkarte „Zush“ zeigt die Namensmusterkonfiguration mit Titelnamenformat und Lokalisierungsoptionen](/images/showcase/macos/naming-light.webp)
+![Verarbeitungs-Tab von Zush mit den Einstellungen für das Namensmuster, dem Format für Titelnamen und den Sprachoptionen](/images/showcase/macos/naming-light.webp)
 
-Eine vollständige Anleitung zur KI-gestützten automatischen Umbenennung finden Sie in unserem „[Anleitung zum automatischen Umbenennen von Dateien auf dem Mac](/blog/auto-rename-files-mac-guide)“.
+Eine vollständige Anleitung zum automatischen Umbenennen mit KI finden Sie in unserem [Leitfaden zum automatischen Umbenennen von Dateien auf dem Mac](/blog/auto-rename-files-mac-guide).
 
-## Empfohlene Einrichtung des automatischen Datei-Organizers: Schritt für Schritt
+## Empfohlene Einrichtung für die automatische Dateiorganisation, Schritt für Schritt
 
-Hier ist ein praktischer Aufbau, den Sie in weniger als einer Stunde aufbauen können und der die oben genannten Tools in einem einzigen kohärenten System vereint. Dies ist der Ansatz, der Aufwand und Ergebnisse in Einklang bringt.
+Diese praktische Einrichtung bauen Sie in weniger als einer Stunde auf. Sie verbindet die oben genannten Werkzeuge zu einem stimmigen System und hält Aufwand und Ergebnis im Gleichgewicht.
 
-### Schritt 1: Überprüfen Sie Ihr aktuelles Chaos
+### Schritt 1: Das aktuelle Chaos sichten
 
-Öffnen Sie die Ordner „Downloads“, „Desktop“ und „Dokumente“. Beachten Sie, welche Ordner die meisten Dateien mit nutzlosen Namen enthalten. Wählen Sie die beiden Ordner mit den größten Problemen aus.
+Öffnen Sie die Ordner Downloads, Schreibtisch und Dokumente. Notieren Sie, in welchen Ordnern die meisten Dateien mit nutzlosen Namen liegen. Wählen Sie die zwei schlimmsten aus.
 
-### Schritt 2: Fügen Sie die inhaltsbezogene Benennung „Zush“ hinzu
+### Schritt 2: Zush-Namen und optionale Ordnergruppen in der Vorschau prüfen
 
-Installieren Sie „[KI-Dateiumbenenner für Mac](/mac)“, zeigen Sie auf den kopierten Aufnahmeordner, wählen Sie eine Vorlage aus und überprüfen Sie die ersten vorgeschlagenen Namen. Halten Sie „Rename History“ verfügbar, bevor Sie die laufende Überwachung aktivieren.
+Installieren Sie den [KI-Dateiumbenenner für Mac](/mac), richten Sie ihn auf den kopierten Eingangsordner, wählen Sie ein Template und prüfen Sie die ersten vorgeschlagenen Namen. Lassen Sie die Rename History verfügbar, bevor Sie die dauerhafte Überwachung einschalten.
 
-### Schritt 3: Erstellen Sie optional „Smart Folders“ für die Sichtbarkeit
+### Schritt 3: Optional Smart Folders für den Überblick anlegen
 
-Richten Sie drei „Smart Folders“ in „Finder“ ein:
+Richten Sie im Finder drei Smart Folders ein:
 
-1. **Aktuelle große Dateien** – Dateigröße > 100 MB, Änderungsdatum = Letzte 30 Tage
-2. **Unsortierte Screenshots** – Art = Bild, Name enthält „Screenshot“, Änderungsdatum = Letzte 14 Tage
-3. **Aktuelle Dokumente** – Art = Dokument ODER Art = PDF, Änderungsdatum = Letzte 7 Tage
+1. **Neue große Dateien**: Dateigröße > 100 MB, Änderungsdatum = letzte 30 Tage
+2. **Unsortierte Screenshots**: Art = Bild, Name enthält „Screenshot“, Änderungsdatum = letzte 14 Tage
+3. **Neue Dokumente**: Art = Dokument ODER Art = PDF, Änderungsdatum = letzte 7 Tage
 
-Dadurch erhalten Sie sofort einen Überblick darüber, was Ihrer Aufmerksamkeit bedarf.
+So sehen Sie sofort, was Aufmerksamkeit braucht.
 
-### Schritt 4: Richten Sie optional die grundlegende Dateiweiterleitung ein
+### Schritt 4: Optional ein einfaches Verteilen von Dateien einrichten
 
-Wählen Sie je nach Wunsch eine dieser Optionen:
+Wählen Sie je nach Vorliebe eine dieser Optionen:
 
-**Option A: „Automator“-Ordneraktion** (kostenlos, integriert)
-- Erstellen Sie den oben beschriebenen Workflow zum Sortieren von Downloads
-- Dauert 10 Minuten und verarbeitet die gängigsten Dateitypen
+**Option A: Automator-Ordneraktion** (kostenlos, eingebaut)
+- Legen Sie den oben beschriebenen Ablauf zum Sortieren von Downloads an
+- Dauert 10 Minuten und deckt die häufigsten Dateitypen ab
 
-**Option B: „Hazel“-Regeln** (kostenpflichtig, leistungsfähiger)
-- Installieren Sie „Hazel“ und richten Sie 3-5 Regeln für Ihren Downloads-Ordner ein
-- Konzentrieren Sie sich auf: PDFs in Dokumente, Bilder in Bilder, Archive in einen speziellen Ordner
-- Fügen Sie eine Bereinigungsregel für Dateien hinzu, die älter als 30 Tage sind
+**Option B: Hazel-Regeln** (kostenpflichtig, leistungsfähiger)
+- Installieren Sie Hazel und richten Sie 3–5 Regeln für Ihren Downloads-Ordner ein
+- Konzentrieren Sie sich auf: PDFs nach Dokumente, Bilder nach Bilder, Archive in einen eigenen Ordner
+- Fügen Sie eine Aufräumregel für Dateien hinzu, die älter als 30 Tage sind
 
-**Option C: Automatisierung „Shortcuts“** (kostenlos, „macOS“ Ventura+)
-- Erstellen Sie eine Verknüpfung, die Dateien nach Typ sortiert
-- Stellen Sie die Auslösung nach einem Zeitplan oder manuell ein
+**Option C: Shortcuts-Automation** (kostenlos, ab macOS Ventura)
+- Legen Sie einen Kurzbefehl an, der Dateien nach Typ sortiert
+- Lassen Sie ihn nach Zeitplan oder von Hand starten
 
-### Schritt 5: Aktivieren Sie die „Zush“-Überwachung nach dem Test
+**Option D: Folder rules in Zush** (in Zush enthalten)
+- Schalten Sie Sort in einem Template ein und beschreiben Sie die Ordner, etwa „PDFs nach Dokumente, Bilder nach Bilder, Belege nach Monat“
+- Weisen Sie das Template Monitor zu, damit neue Downloads beim Eintreffen benannt und einsortiert werden
 
-![„Zush“-Überwachungsregisterkarte mit der Ordnerüberwachungskonfiguration mit ausgewähltem Desktop-Ordner](/images/showcase/macos/monitor-light.webp)
+### Schritt 5: Nach dem Test die Überwachung in Zush einschalten
 
-Nachdem Sie den Teststapel überprüft haben, stellen Sie „Zush“ ein, um Ihren Screenshots-Ordner und Downloads-Ordner zu überwachen. Dies behandelt die Dateien, die regelbasierte Tools nicht richtig benennen können:
+![Monitor-Tab von Zush mit der Einrichtung der Ordnerüberwachung und dem ausgewählten Schreibtisch-Ordner](/images/showcase/macos/monitor-light.webp)
 
-- Screenshots werden basierend auf der sichtbaren App und dem sichtbaren Inhalt umbenannt
-- PDFs werden basierend auf ihrem Textinhalt umbenannt
-- Fotos werden basierend auf dem Bildinhalt umbenannt
-- Heruntergeladene Bilder erhalten beschreibende Namen anstelle von „download (7).jpg“.
+Wenn der Teststapel passt, lassen Sie Zush Ihren Screenshot-Ordner und Ihren Downloads-Ordner überwachen. Damit sind die Dateien abgedeckt, die regelbasierte Werkzeuge nicht sinnvoll benennen können:
 
-### Schritt 6: Richten Sie eine wöchentliche Überprüfung ein
+- Screenshots werden nach der sichtbaren App und dem Inhalt umbenannt
+- PDFs werden nach ihrem Text umbenannt
+- Fotos werden nach dem Bildinhalt umbenannt
+- Heruntergeladene Bilder bekommen beschreibende Namen statt `download (7).jpg`
 
-Verbringen Sie trotz Automatisierung einmal pro Woche 5 Minuten damit, einen Blick auf Ihren „Smart Folders“ zu werfen. Dadurch werden Grenzfälle erfasst und Sie können Ihre Regeln im Laufe der Zeit verfeinern.
+### Schritt 6: Eine wöchentliche Durchsicht einplanen
 
-### Schritt 7: Erweitern Sie schrittweise
+Auch mit Automatisierung lohnt es sich, einmal pro Woche 5 Minuten in Ihre Smart Folders zu schauen. So fallen Sonderfälle auf, und Sie können Ihre Regeln mit der Zeit verfeinern.
 
-Nachdem Sie dieses Setup eine Woche lang ausgeführt haben, schauen Sie sich an, was immer noch durch das Raster fällt. Fügen Sie nach Bedarf neue „Hazel“-Regeln oder „Smart Folders“-Regeln hinzu. Versuchen Sie nicht, jeden Randfall von vornherein abzudecken.
+### Schritt 7: Schrittweise erweitern
+
+Wenn die Einrichtung eine Woche läuft, sehen Sie nach, was noch durchrutscht. Ergänzen Sie bei Bedarf Hazel-Regeln oder Smart Folders. Versuchen Sie nicht, jeden Sonderfall von Anfang an abzudecken.
 
 
-## Vergleich: Welches Werkzeug für welche Aufgabe
+## Vergleich: welches Werkzeug für welche Aufgabe
 
-|Aufgabe|Empfehlung|Warum|
+| Aufgabe | Empfehlung | Warum |
 |---|---|---|
-|Benennen Sie gemischte Dateien durchsuchbar|**„Zush“ – Gesamtauswahl**|Liest Inhalte, überwacht Ordner, zeigt Änderungen in der Vorschau an und führt den Rollback-Verlauf|
-|Finden Sie Dateien, ohne sie zu verschieben|„Smart Folders“ (optional)|Virtuell, keine Umstrukturierung erforderlich|
-|Sortieren Sie Dateien nach Typ in Ordner|„Automator“ oder „Hazel“.|Erweiterungsbasierte Regeln sind einfach|
-|Alte Dateien automatisch archivieren| Hazel |Datumsbasierte Bedingungen mit Hintergrundüberwachung|
-|Benennen Sie Screenshots beschreibend um|„Zush“ (AI)|Inhaltsbewusste Benennung aus Bildanalyse|
-|Benennen Sie PDFs nach Inhalt um|„Zush“ (AI)|Liest Dokumenttext, um Namen zu generieren|
-|Stapelumbenennung mit Mustern|„Finder“ oder „Automator“.|Integrierter Musteraustausch|
-|Dateiverarbeitung mit einem Klick| Shortcuts |Saubere Benutzeroberfläche, einfach zu teilen|
-|Komplexes Routing mit mehreren Bedingungen| Hazel |Leistungsstärkste Regel-Engine auf „macOS“.|
+| Gemischte Dateien nach Inhalt benennen und gruppieren | **Zush, Gesamtempfehlung** | KI-Namen, optionale Ordnersortierung, Überwachung mit einem Template, Vorschau und Verlauf |
+| Dateien finden, ohne sie zu verschieben | Smart Folders (optional) | Virtuell, kein Umbau nötig |
+| Dateien nach Typ oder Datum in Ordner sortieren | Zush, Automator oder Hazel | Zush nutzt eine Ordnerregel in normaler Sprache, Automator und Hazel nutzen Regeln nach Dateiendung |
+| Alte Dateien automatisch archivieren | Hazel | Datumsbedingungen mit Überwachung im Hintergrund |
+| Screenshots beschreibend umbenennen | Zush (KI) | Benennung nach Inhalt per Bildanalyse |
+| PDFs nach Inhalt umbenennen | Zush (KI) | Liest den Dokumenttext und erzeugt daraus Namen |
+| Stapelweise nach Muster umbenennen | Finder oder Automator | Eingebautes Ersetzen nach Muster |
+| Dateiverarbeitung mit einem Klick | Shortcuts | Aufgeräumte Oberfläche, leicht zu teilen |
+| Regeln mit Skripten oder eigenen Aktionen | Hazel | Die leistungsfähigste Regel-Engine auf macOS |
 
-Einen detaillierten Vergleich speziell der Batch-Umbenennungsmethoden finden Sie in unserem „[Anleitung zu Batch-Umbenennungsmethoden für Mac](/blog/batch-rename-files-on-mac-complete-guide)“. Wenn Sie bereits wissen, dass Sie KI-gestützte eindeutige Namen (keine gemeinsamen Präfixe) benötigen, ist „[Batch-Umbenennungstool auf dem Mac](/mac)“ der kürzeste Weg – 50 kostenlose Umbenennungen, keine Anmeldung.
+Einen ausführlichen Vergleich der Methoden zum Stapelumbenennen finden Sie in unserem [Leitfaden zum Stapelumbenennen auf dem Mac](/blog/batch-rename-files-on-mac-complete-guide). Wenn Sie schon wissen, dass Sie eindeutige Namen per KI brauchen (keine gemeinsamen Präfixe), ist das [Werkzeug zum Stapelumbenennen auf dem Mac](/mac) der kürzeste Weg: 50 kostenlose Umbenennungen, ohne Anmeldung.
 
-## Häufige Fehler, die es zu vermeiden gilt
+## Häufige Fehler
 
-**Überautomatisierung zu früh.** Erstellen Sie kein „Hazel“-Setup mit 20 Regeln, bevor Sie wissen, welche Dateien tatsächlich weitergeleitet werden müssen. Beginnen Sie mit 2-3 Regeln und erweitern Sie diese.
+**Zu früh zu viel automatisieren.** Bauen Sie kein Hazel-Setup mit 20 Regeln, bevor Sie wissen, welche Dateien überhaupt verschoben werden müssen. Fangen Sie mit 2–3 Regeln an und erweitern Sie dann.
 
-**Das Namensproblem wird ignoriert.** Das Verschieben von Dateien in übersichtliche Ordner hilft nicht, wenn jede Datei den Namen „IMG_4382.HEIC“ trägt. Sie müssen weiterhin jede Datei öffnen, um die benötigte Datei zu finden. Das Umbenennen ist mindestens genauso wichtig wie das Sortieren.
+**Das Namensproblem übersehen.** Ordentliche Ordner helfen wenig, wenn jede Datei `IMG_4382.HEIC` heißt. Sie müssen dann trotzdem jede Datei öffnen, um die richtige zu finden. Umbenennen ist mindestens so wichtig wie Sortieren.
 
-**Testen Sie Ihre Regeln nicht.** Bevor Sie eine Ordneraktion oder „Hazel“-Regel für Ihren echten Download-Ordner aktivieren, testen Sie sie an einem Dummy-Ordner mit Beispieldateien. Eine fehlerhafte Verschiebungsregel kann dazu führen, dass Dateien über Ihr Laufwerk verteilt werden.
+**Regeln nicht testen.** Bevor Sie eine Ordneraktion oder Hazel-Regel auf Ihren echten Downloads-Ordner loslassen, testen Sie sie an einem Testordner mit Beispieldateien. Eine einzige falsche Verschieberegel kann Dateien quer über Ihr Laufwerk verteilen.
 
-**Verschachtelte Ordner vergessen.** Die meisten Automatisierungstools überwachen standardmäßig eine einzelne Ordnerebene. Wenn Dateien in Unterordnern landen, müssen Sie die rekursive Überwachung explizit konfigurieren.
+**Unterordner vergessen.** Die meisten Automatisierungswerkzeuge überwachen standardmäßig nur eine Ordnerebene. Landen Dateien in Unterordnern, müssen Sie die Überwachung von Unterordnern ausdrücklich einschalten.
 
-**Kein Rollback-Plan.** Jede Automatisierung, die Dateien umbenennt oder verschiebt, sollte einen Rückgängig-Pfad haben. „Hazel“ führt Protokolle. „Zush“ unterstützt Rollback. „Automator“ tut dies nicht – seien Sie also vorsichtig mit destruktiven Aktionen.
+**Kein Weg zurück.** Jede Automatisierung, die Dateien umbenennt oder verschiebt, braucht eine Möglichkeit zum Rückgängigmachen. Hazel führt Protokolle. Zush kann Änderungen zurücknehmen. Automator kann das nicht, seien Sie also vorsichtig mit Aktionen, die etwas zerstören können.
 
 ## FAQ
 
 ### Wie automatisiere ich die Dateiorganisation auf dem Mac, ohne etwas zu installieren?
 
-Verwenden Sie die integrierten Tools: „Smart Folders“ zum Anzeigen von Dateien und „Automator“ oder „Shortcuts“ zum Dateirouting. „Smart Folders“ befinden sich in „Finder“ unter „Datei“ > „Neuer intelligenter Ordner“. „Automator“ kann Ordneraktionen erstellen, die ausgelöst werden, wenn Dateien in einem bestimmten Verzeichnis landen. Diese umfassen die grundlegende Sortierung nach Dateityp, Datum und Namensmustern ohne Software von Drittanbietern.
+Nutzen Sie die eingebauten Werkzeuge: Smart Folders, um Dateien sichtbar zu machen, und Automator oder Shortcuts, um sie zu verteilen. Smart Folders finden Sie im Finder unter Ablage > Neuer intelligenter Ordner. Mit Automator lassen sich Ordneraktionen anlegen, die starten, sobald Dateien in einem bestimmten Ordner landen. Damit decken Sie einfaches Sortieren nach Dateityp, Datum und Namensmuster ab, ganz ohne Software von Drittanbietern.
 
-### Was ist der Unterschied zwischen „Automator“ und „Shortcuts“ auf „macOS“?
+### Was ist der Unterschied zwischen Automator und Shortcuts auf macOS?
 
-„Automator“ ist das ältere Tool mit mehr Aktionstypen, Shell-Skript-Unterstützung und Ordneraktionsintegration. „Shortcuts“ ist neuer („macOS“ Monterey+), verfügt über eine übersichtlichere Benutzeroberfläche und unterstützt Systemauslöser und Siri-Integration. Speziell für die Dateiautomatisierung ist „Automator“ aufgrund seiner Shell-Skriptaktionen und umfangreicheren Optionen zur Dateibearbeitung noch leistungsfähiger. Apple migriert die Funktionalität langsam auf „Shortcuts“, daher ist beides wissenswert.
+Automator ist das ältere Werkzeug mit mehr Aktionstypen, Unterstützung für Shell-Skripte und Ordneraktionen. Shortcuts ist neuer (ab macOS Monterey), hat eine aufgeräumtere Oberfläche und unterstützt Systemauslöser und Siri. Speziell für Dateiautomatisierung ist Automator immer noch leistungsfähiger, weil es Shell-Skripte ausführen und Dateien vielseitiger bearbeiten kann. Apple verlagert Funktionen nach und nach zu Shortcuts, deshalb lohnt es sich, beide zu kennen.
 
-### Kann „Hazel“ Dateien basierend auf ihrem Inhalt umbenennen?
+### Kann Hazel Dateien nach ihrem Inhalt umbenennen?
 
-„Hazel“ kann Textinhalte in PDFs und Dokumenten lesen und diese zum Umbenennen von Regeln verwenden. Sie können beispielsweise ein Datum oder ein Schlüsselwort aus einer PDF-Datei extrahieren und in den Dateinamen einfügen. Allerdings kann „Hazel“ keine Bild- oder Videoinhalte analysieren – es verfügt über keine Sehfähigkeit. Für Screenshots, Fotos, Bildschirmaufzeichnungen und andere visuelle Dateien benötigen Sie ein KI-basiertes Tool, das tatsächlich sehen kann, was in der Datei enthalten ist.
+Hazel kann Text in PDFs und Dokumenten lesen und in Umbenennungsregeln verwenden. Sie können zum Beispiel ein Datum oder ein Stichwort aus einem PDF auslesen und in den Dateinamen übernehmen. Bild- oder Videoinhalte kann Hazel aber nicht analysieren, denn es kann nicht sehen. Für Screenshots, Fotos, Bildschirmaufnahmen und andere visuelle Dateien brauchen Sie ein KI-Werkzeug, das tatsächlich erkennt, was in der Datei zu sehen ist.
 
-### Wie verhindere ich, dass mein Download-Ordner unübersichtlich wird?
+### Wie verhindere ich, dass mein Downloads-Ordner zumüllt?
 
-Richten Sie ein zweischichtiges System ein. Erstellen Sie zunächst Routing-Regeln (über „Automator“ oder „Hazel“), die Dateien bei ihrem Eintreffen in typspezifische Ordner verschieben. Zweitens fügen Sie eine Bereinigungsregel hinzu, die Dateien, die älter als 30 Tage sind, entweder in einen Archivordner oder in den Papierkorb verschiebt. Durch diese Kombination bleibt Ihr Download-Ordner übersichtlich, ohne dass etwas Wichtiges verloren geht. Eine detaillierte Anleitung finden Sie in unserem „[Anleitung zum Organisieren des Download-Ordners](/blog/how-to-organize-downloads-folder-mac)“.
+Richten Sie ein System mit zwei Ebenen ein. Legen Sie zuerst Regeln zum Verteilen an (Folder rules in Zush, Automator oder Hazel), die neue Dateien gleich beim Eintreffen in Ordner nach Typ verschieben. Fügen Sie dann eine Aufräumregel hinzu, die Dateien, die älter als 30 Tage sind, in einen Archivordner oder in den Papierkorb verschiebt. Zusammen halten beide den Downloads-Ordner schlank, ohne dass Wichtiges verloren geht. Eine ausführliche Anleitung finden Sie in unserem [Leitfaden zum Aufräumen des Downloads-Ordners](/blog/how-to-organize-downloads-folder-mac).
 
-### Ist das Umbenennen von AI-Dateien sicher? Kann es meine Dateien durcheinander bringen?
+### Ist KI-Umbenennung sicher? Kann sie meine Dateien durcheinanderbringen?
 
-Durch die KI-Umbenennung wird nur der Dateiname geändert, nicht der Dateiinhalt. Gute Tools wie „Zush“ führen außerdem einen Umbenennungsverlauf, sodass Sie jede Namensänderung sofort rückgängig machen können. Das Risiko ist gering, aber Sie sollten immer zuerst einen kleinen Batch testen und die Benennungsqualität bestätigen, bevor Sie die Ordnerüberwachung für Verzeichnisse mit großem Volumen aktivieren.
+KI-Umbenennung ändert nur den Dateinamen, nicht den Inhalt. Gute Werkzeuge wie Zush führen außerdem einen Umbenennungsverlauf, sodass Sie jede Namensänderung sofort zurücknehmen können. Das Risiko ist gering, trotzdem sollten Sie immer zuerst einen kleinen Stapel testen und die Qualität der Namen prüfen, bevor Sie die Ordnerüberwachung für Ordner mit vielen Dateien einschalten.
 
-### Wie automatisiere ich die Dateiorganisation speziell für Fotos?
+### Wie automatisiere ich die Organisation speziell von Fotos?
 
-Fotos stellen besondere Herausforderungen dar, da ihre ursprünglichen Namen („IMG_“, „DSC_“, „DCIM“) keine Informationen über den Inhalt enthalten. Der beste Ansatz ist die KI-Umbenennung, um beschreibende Namen hinzuzufügen, kombiniert mit der Sortierung der Ordner nach Datum oder Ereignis. Einen fotospezifischen Workflow finden Sie in unserem „[Anleitung zum Organisieren von Fotos auf dem Mac](/blog/best-ways-to-organize-photos-on-mac)“.
+Fotos sind ein Sonderfall, weil ihre ursprünglichen Namen (`IMG_`, `DSC_`, `DCIM`) null Information über den Inhalt enthalten. Am besten kombinieren Sie KI-Umbenennung für beschreibende Namen mit einer Ordnersortierung nach Datum oder Anlass. Einen Ablauf speziell für Fotos finden Sie in unserem [Leitfaden zum Organisieren von Fotos auf dem Mac](/blog/best-ways-to-organize-photos-on-mac).
 
-### Kann ich mehrere Automatisierungstools kombinieren?
+### Kann ich mehrere Automatisierungswerkzeuge kombinieren?
 
-Ja, wenn eine zweite Schicht wirklich benötigt wird. Beginnen Sie mit „Zush“ für die inhaltsbezogene Benennung und fügen Sie dann optional „Smart Folders“ für die Sichtbarkeit oder „Hazel“/„Automator“ für die Weiterleitung hinzu. Benennen Sie weiterhin „Zush“ und halten Sie die Regeln einfach, damit das System wartbar bleibt.
+Ja, wenn Sie eine zweite Ebene wirklich brauchen. Beginnen Sie mit Zush für Benennung und Ordnersortierung und ergänzen Sie bei Bedarf Smart Folders für den Überblick oder Hazel bzw. Automator für Skripte und Archivierung. Halten Sie die zusätzlichen Regeln knapp, damit das System pflegbar bleibt.
 
-### Was passiert, wenn zwei Automatisierungsregeln in Konflikt geraten?
+### Was passiert, wenn sich zwei Automatisierungsregeln in die Quere kommen?
 
-Wenn „Hazel“ und eine „Automator“-Ordneraktion beide denselben Ordner überwachen, können sie gegeneinander antreten. Das Ergebnis ist unvorhersehbar – eine Datei wird möglicherweise verschoben, bevor das andere Tool sie verarbeitet. Die Lösung ist einfach: Verwenden Sie nur ein Automatisierungstool pro Ordner. Wenn Sie sowohl Routing als auch Umbenennen möchten, lassen Sie die Umbenennung zuerst durchführen (z. B. „Zush“ benennt die Datei um) und lassen Sie dann das Routing-Tool („Hazel“) die umbenannte Datei basierend auf ihrem neuen Namen verschieben.
+Überwachen Hazel und eine Automator-Ordneraktion denselben Ordner, kommen sie sich womöglich in die Quere. Das Ergebnis ist nicht vorhersehbar: Eine Datei wird vielleicht verschoben, bevor das andere Werkzeug sie bearbeitet. Die Lösung ist einfach: Pro Ordner nur ein Automatisierungswerkzeug. Zush kann in einem Durchgang umbenennen und sortieren, oft reicht also ein einziges Werkzeug. Hat Hazel noch eine Aufgabe, etwa das Archivieren, lassen Sie Zush zuerst fertig werden und richten Sie Hazel auf den Zielordner.
 
-## Abschluss
+## Fazit
 
-Um die Dateiorganisation auf „macOS“ effektiv zu automatisieren, lassen Sie einfache Regeln einfache Entscheidungen und KI mit visuellen Mehrdeutigkeiten umgehen. Durch dieses Gleichgewicht erhalten Sie ein System, das tatsächlich wartbar ist.
+Wer die Dateiorganisation unter macOS wirksam automatisieren will, überlässt einfache Entscheidungen einfachen Regeln und Bilder oder Scans ohne klaren Namen der KI. Diese Aufteilung ergibt ein System, das sich tatsächlich pflegen lässt.
 
-Beginnen Sie mit „Zush“ für inhaltsbezogene Benennung und Wiederherstellung. Fügen Sie „Smart Folders“ nur für die Sichtbarkeit und „Automator“ oder „Hazel“ nur hinzu, wenn deterministisches Routing wirklich erforderlich ist. Überprüfen Sie es wöchentlich und erweitern Sie es schrittweise.
+Beginnen Sie mit Zush für Namen nach Inhalt, optionale KI-Ordnersortierung und die Möglichkeit, alles rückgängig zu machen. Speichern Sie eine getestete Sortierung in einem Template für Monitor. Nutzen Sie Smart Folders für gespeicherte Ansichten und Automator oder Hazel für Skripte und Archivierung. Schauen Sie wöchentlich drauf und erweitern Sie Schritt für Schritt.
 
-Das Ziel ist kein perfektes System. Das Ziel ist ein System, bei dem Sie fünf statt dreißig Minuten pro Woche für die Dateiorganisation aufwenden.
+Ein perfektes System ist nicht das Ziel. Das Ziel ist ein System, mit dem Sie pro Woche fünf Minuten statt dreißig mit Dateiorganisation verbringen.

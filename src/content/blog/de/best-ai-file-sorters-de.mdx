@@ -20,7 +20,7 @@ import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogSources from '@/components/blog/BlogSources.astro';
 
-Kurze Antwort: Um Dateien nach ihrem Inhalt in Ordner zu sortieren, nehmen Sie den [KI-Dateisortierer Zush](/ai-file-sorter). Sie beschreiben die Ordnerlogik in normaler Sprache, etwa „Rechnungen nach Firma und Belege nach Monat gruppieren“, oder lassen es auf Auto, und Zush benennt und legt jedes Dokument, Foto, Video und jede Audiodatei ab, nachdem Sie den Stapel geprüft haben. Nehmen Sie Sortio, wenn Sie Linux brauchen, RenameClick, wenn Ihre Kategorien vorab feststehen, und Hazel oder File Juggler, wenn Ihre Dateien exakten Mustern folgen.
+Kurze Antwort: Um Dateien nach ihrem Inhalt in Ordner zu sortieren, nehmen Sie den [KI-Dateisortierer Zush](/ai-file-sorter). Sie beschreiben die Ordnerlogik in normaler Sprache, etwa „Rechnungen nach Firma und Belege nach Monat gruppieren“, oder lassen es auf Auto, und Zush benennt und legt jedes Dokument, Foto, Video und jede Audiodatei ab, nachdem Sie den Stapel geprüft haben. Zush kann auch nach Datum oder Dateityp sortieren. Nehmen Sie Sortio, wenn Sie Linux brauchen, RenameClick, wenn Ihre Kategorien vorab feststehen, und Hazel oder File Juggler, wenn Ihre Regeln Skripte oder Befehle ausführen müssen.
 
 **So haben wir geprüft:** Verfasst vom Entwickler von [Zush](/). Preise, Funktionen und Bewertungen der Mitbewerber haben wir am 17. November 2026 auf den Websites der Anbieter und in den offiziellen Stores geprüft ([Quellen unten](#sources-and-how-we-checked)). Verglichen werden dokumentierte Funktionen, es handelt sich nicht um einen Labortest.
 
@@ -121,7 +121,7 @@ Nehmen Sie AI File Sorter für ein kostenloses, einmaliges Aufräumen, wenn Sie 
 
 Hazel 6 ($42, Mac), File Juggler ($50 plus Steuern, Windows, Version 3.1.9) und DropIt (kostenlos, Windows, letzte Version Februar 2018) überwachen Ordner und handeln nach Bedingungen: Namensmuster, Endungen, Datum oder gefundener Text. Die Softpedia-Redaktion bewertet Hazel mit 5,0/5 und File Juggler mit 4,5/5.
 
-Schwäche: Keines davon versteht, was ein Foto, Scan oder Video zeigt, also braucht jeder Fall eine eigene Regel. Viele kombinieren sie mit einem KI-Umbenenner, weil aussagekräftige Namen das Schreiben von Regeln erleichtern. Siehe die Seite zur [Hazel-Alternative](/hazel-alternative) und [Hazel-Alternativen für Windows](/blog/hazel-for-windows-alternatives).
+Schwäche: Keines davon versteht, was ein Foto, Scan oder Video zeigt, also braucht jeder Fall eine eigene Regel. Zush deckt auch die einfachen Fälle ab: Ein Prompt wie „Belege nach Jahr, dann nach Monat gruppieren“ oder „PDFs in den Ordner Dokumente, Bilder in den Ordner Bilder“ sortiert nach Datum oder Typ, ohne Regel für jeden Fall. Eine Regel-Engine brauchen Sie weiterhin für Skripte, Befehle oder das Entpacken von Archiven. Siehe die Seite zur [Hazel-Alternative](/hazel-alternative) und [Hazel-Alternativen für Windows](/blog/hazel-for-windows-alternatives).
 
 ## Welchen KI-Dateisortierer sollten Sie wählen?
 
@@ -131,7 +131,7 @@ Schwäche: Keines davon versteht, was ein Foto, Scan oder Video zeigt, also brau
 - Ihre Kategorien stehen fest, und Sie wollen ein mitgeliefertes lokales Modell: **RenameClick**.
 - Sie wollen einen Mac, der von selbst aufgeräumt bleibt, und Dateinamen sind Ihnen egal: **Sparkle**.
 - Sie wollen kostenlos und Open Source: **AI File Sorter**.
-- Ihre Dateien folgen exakten Mustern: **Hazel** auf dem Mac, **File Juggler** oder **DropIt** unter Windows.
+- Ihre Regeln müssen Skripte, Befehle oder Archivaktionen ausführen: **Hazel** auf dem Mac, **File Juggler** oder **DropIt** unter Windows.
 
 ## Jeden Sortierer erst mit 20 Dateien testen
 
@@ -182,4 +182,4 @@ Zush sortiert offline mit LM Studio oder Ollama auf Mac und Windows: Dateianalys
 
 ### Was ist der Unterschied zwischen einem KI-Dateisortierer und einem regelbasierten Organizer?
 
-Ein regelbasierter Organizer wie Hazel oder DropIt verschiebt Dateien, die auf von Ihnen geschriebene Bedingungen passen, etwa ein Namensmuster oder eine Endung. Ein KI-Dateisortierer wie Zush liest, was die Datei enthält, und folgt einer Anweisung wie „Rechnungen nach Firma gruppieren“. So kann er auch Dateien sortieren, deren Namen nichts verraten. Sie können beides kombinieren: Zuerst benennt die KI, dann verschieben die Regeln.
+Ein regelbasierter Organizer wie Hazel oder DropIt verschiebt Dateien, die auf von Ihnen geschriebene Bedingungen passen, etwa ein Namensmuster oder eine Endung. Ein KI-Dateisortierer wie Zush liest, was die Datei enthält, und folgt einer Anweisung wie „Rechnungen nach Firma gruppieren“. So kann er auch Dateien sortieren, deren Namen nichts verraten. Zush folgt auch einer einfachen Anweisung nach Datum oder Dateityp. Eine Regel-Engine brauchen Sie also nur für Aktionen wie Skripte oder das Entpacken von Archiven.
