@@ -56,7 +56,7 @@ export const home = {
     },
     "templates": {
       "title": "模板",
-      "description": "为截图、报销、音乐轨道、客户工作、法律文件、旅行预订和监控文件夹保存可复用设置。"
+      "description": "为截图、报销、音乐轨道、客户工作、法律文件和监控文件夹保存可复用设置。"
     },
     "namingBlocks": {
       "title": "命名块",
@@ -107,7 +107,7 @@ export const home = {
     "templateNames": [
       "截图",
       "音乐轨道",
-      "客户会议笔记"
+      "记账支出"
     ],
     "namingBlockLabels": [
       "{date}",
@@ -251,7 +251,7 @@ export const home = {
     ],
     "priceEyebrow": "可重复使用的模板",
     "priceTitle": "每个文件夹一个设置",
-    "priceDescription": "保存屏幕截图、费用、音乐曲目、客户注释、法律文件、旅行预订和受监控文件夹的命名规则。",
+    "priceDescription": "保存屏幕截图、费用、音乐曲目、法律文件和受监控文件夹的命名规则。",
     "priceLabel": "11 内置",
     "speedEyebrow": "非常快",
     "speedTitle": "几秒完成重命名",

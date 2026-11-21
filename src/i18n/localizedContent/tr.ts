@@ -56,7 +56,7 @@ export const home = {
     },
     "templates": {
       "title": "Şablonlar",
-      "description": "Ekran görüntüleri, giderler, müzik parçaları, müşteri çalışmaları, yasal dosyalar, seyahat rezervasyonları ve izlenen klasörler için yeniden kullanılabilir ayarlar kaydedin."
+      "description": "Ekran görüntüleri, giderler, müzik parçaları, müşteri çalışmaları, yasal dosyalar ve izlenen klasörler için yeniden kullanılabilir ayarlar kaydedin."
     },
     "namingBlocks": {
       "title": "Adlandırma Blokları",
@@ -107,7 +107,7 @@ export const home = {
     "templateNames": [
       "Ekran Görüntüleri",
       "Müzik Parçaları",
-      "Müşteri Notları"
+      "Muhasebe Giderleri"
     ],
     "namingBlockLabels": [
       "{date}",
@@ -251,7 +251,7 @@ export const home = {
     ],
     "priceEyebrow": "Yeniden kullanılabilir şablonlar",
     "priceTitle": "Her klasör için tek ayar",
-    "priceDescription": "Ekran görüntüleri, giderler, müzik parçaları, müşteri notları, yasal dosyalar, seyahat rezervasyonları ve izlenen klasörler için adlandırma kurallarını kaydedin.",
+    "priceDescription": "Ekran görüntüleri, giderler, müzik parçaları, yasal dosyalar ve izlenen klasörler için adlandırma kurallarını kaydedin.",
     "priceLabel": "11 yerleşik şablon",
     "speedEyebrow": "Çok hızlı",
     "speedTitle": "Saniyeler içinde yeniden adlandırın",
