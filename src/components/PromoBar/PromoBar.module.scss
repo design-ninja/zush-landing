@@ -1,0 +1,81 @@
+@use '../../styles/variables' as *;
+
+@keyframes promo-bar-marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+// Full-width Black Friday strip at the top of the page; it scrolls away with
+// the page. utils/landingPromo marks <html> from the backend
+// `landing_promo_enabled` flag; BaseLayout pushes the page down by
+// --promo-bar-height and the floating header by the strip's visible part.
+.PromoBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    height: var(--promo-bar-height);
+    overflow: hidden;
+    background: #e0fe52;
+    color: #000;
+    font-size: 0.8125rem;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+
+    :global(html:not([data-landing-promo='on'])) &,
+    :global(html[data-pricing-hidden]) & {
+        display: none;
+    }
+
+    &__Track {
+        display: flex;
+        width: max-content;
+        animation: promo-bar-marquee 40s linear infinite;
+    }
+
+    &:hover &__Track,
+    &:focus-visible &__Track {
+        animation-play-state: paused;
+    }
+
+    &__Group {
+        display: flex;
+    }
+
+    &__Item {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding-right: 0.75rem;
+
+        strong {
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        b {
+            font-family: var(--font-mono);
+            font-weight: 600;
+        }
+    }
+
+    &__Mark {
+        margin-left: 0.25rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        &__Track {
+            animation: none;
+        }
+    }
+}

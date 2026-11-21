@@ -269,46 +269,39 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        // "[BLACK FRIDAY] 25% off with code [ZUSH25]" as one line.
-        flex-wrap: wrap;
+        // "BLACK FRIDAY 25% off with code [ZUSH25]" on one lime line.
+        flex-wrap: nowrap;
         justify-content: flex-start;
-        gap: 0.375rem;
-        // Light violet plate so the offer reads as one unit.
+        gap: 0.5rem;
         width: max-content;
         max-width: 100%;
         margin: 0;
-        padding: 0.5rem 0.625rem 0.5rem 0.875rem;
+        padding: 0.4375rem 0.5rem 0.4375rem 0.75rem;
         border: 0;
         border-radius: 0.5rem;
-        background: color-mix(in oklch, var(--primary) 9%, transparent);
+        background: #e0fe52;
+        color: #000;
     }
 
     &__PromotionSaving {
         display: inline-flex;
         align-items: center;
         gap: 0.3rem;
-        padding: 0.1875rem 0.5rem;
-        border-radius: 0.3125rem;
-        background: #e0fe52;
-        color: #000;
+        color: inherit;
         font-size: 0.75rem;
         font-weight: 700;
         letter-spacing: 0.06em;
         line-height: 1.4;
         text-transform: uppercase;
         white-space: nowrap;
-
-        > span[aria-hidden] {
-            display: none;
-        }
     }
 
     &__PromotionMessage {
         display: inline-flex;
         align-items: center;
         gap: 0.28rem;
-        color: var(--muted-foreground);
-        font-size: 0.875rem;
+        color: inherit;
+        font-size: 0.8125rem;
         white-space: nowrap;
 
         strong {
@@ -323,16 +316,17 @@
         justify-content: center;
         gap: 0.28rem;
         min-height: 0;
-        padding: 0.1875rem 0.5625rem;
-        border: 1px dashed color-mix(in oklch, var(--primary) 35%, transparent);
+        flex-shrink: 0;
+        padding: 0.125rem 0.4375rem;
+        border: 1px dashed color-mix(in srgb, #000, transparent 55%);
         border-radius: 0.3125rem;
         background: transparent;
-        color: var(--primary);
+        color: #000;
         transition: border-color $transition-fast, background-color $transition-fast, transform $transition-fast;
 
         &:hover,
         &:focus-visible {
-            border-color: var(--text-faint);
+            border-color: #000;
         }
 
         &:active {

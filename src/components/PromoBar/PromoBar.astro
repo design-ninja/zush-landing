@@ -1,0 +1,30 @@
+---
+import { PRO_ONE_TIME_PROMOTION } from '@/constants/promotion';
+import styles from './PromoBar.module.scss';
+
+const { code, discountPercent } = PRO_ONE_TIME_PROMOTION;
+const itemCount = 8;
+---
+
+<a
+  class={styles.PromoBar}
+  href="/#pricing"
+  data-landing-promo="off"
+  data-promo-bar
+  data-pro-click-source="promo_bar"
+  aria-label={`Black Friday: ${discountPercent}% off PRO One-Time with code ${code}`}
+>
+  <span class={styles.PromoBar__Track} aria-hidden="true">
+    {[0, 1].map(() => (
+      <span class={styles.PromoBar__Group}>
+        {Array.from({ length: itemCount }, () => (
+          <span class={styles.PromoBar__Item}>
+            <strong>Black Friday</strong>
+            <span>{discountPercent}% off PRO One-Time with code <b>{code}</b></span>
+            <span class={styles.PromoBar__Mark}>✦</span>
+          </span>
+        ))}
+      </span>
+    ))}
+  </span>
+</a>

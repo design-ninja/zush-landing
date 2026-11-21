@@ -12,6 +12,7 @@ import interLatinFontUrl from '@fontsource-variable/inter/files/inter-latin-opsz
 import manropeLatinFontUrl from '@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url';
 import '@/styles/main.scss';
 import Header from '@/components/Header/Header.astro';
+import PromoBar from '@/components/PromoBar/PromoBar.astro';
 import type { HeaderWidth } from '@/components/Header/types';
 import Footer from '@/components/Footer/Footer.astro';
 import ScrollToTopButton from '@/components/ScrollToTopButton/ScrollToTopButton.astro';
@@ -231,6 +232,17 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
       }
     </script>
 
+    {/* Reapply the cached landing promo flag (utils/landingPromo) before first
+        paint so the Black Friday strip does not shift the page on navigation. */}
+    <script is:inline>
+      try {
+        const promo = JSON.parse(sessionStorage.getItem('zush_landing_promo') || 'null');
+        if (typeof promo?.enabled === 'boolean' && Date.now() - promo.at <= 600000) {
+          document.documentElement.dataset.landingPromo = promo.enabled ? 'on' : 'off';
+        }
+      } catch {}
+    </script>
+
     <script is:inline>
       (() => {
         const THEME_STORAGE_KEY = 'zush-theme';
@@ -410,8 +422,9 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
 
   </head>
   <body data-paddle-retain={isHomePage ? 'true' : undefined}>
-    <div class="site-shell">
+    <div class:list={['site-shell', { 'site-shell_promo': includeChrome }]}>
       <a class="skip-link" href="#main-content">{layoutCopy.header.skipToContent ?? 'Skip to content'}</a>
+      {includeChrome && <PromoBar />}
       {includeChrome && (
         <Header
           forceOS={forceOS}
@@ -589,6 +602,20 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
 
   .site-main_offset {
     padding-top: calc(var(--navbar-height, 4.375rem) + 1.65rem);
+  }
+
+  :global(:root) {
+    --promo-bar-height: 2.25rem;
+  }
+
+  /* --promo-bar-offset is the strip's still-visible height; utils/landingPromo
+     shrinks it on scroll so the floating header slides up to its usual spot. */
+  :global(html[data-landing-promo='on']:not([data-pricing-hidden])) {
+    --promo-bar-offset: var(--promo-bar-height);
+  }
+
+  :global(html[data-landing-promo='on']:not([data-pricing-hidden])) .site-shell_promo {
+    padding-top: var(--promo-bar-height);
   }
 
   @media (max-width: 768px) {

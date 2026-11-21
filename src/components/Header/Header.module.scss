@@ -9,7 +9,8 @@
 // TV landing keeps its compact override.
 .Header {
     position: fixed;
-    top: 0.875rem;
+    // --promo-bar-offset: the Black Friday strip above the header (PromoBar).
+    top: calc(0.875rem + var(--promo-bar-offset, 0px));
     left: 0;
     right: 0;
     margin-inline: auto;
@@ -36,7 +37,7 @@
         // Sticky on phones too: the pill is the only download CTA once the hero
         // has scrolled past, so it has to stay in view.
         position: fixed;
-        top: 0.5rem;
+        top: calc(0.5rem + var(--promo-bar-offset, 0px));
         width: calc(100% - 1rem);
         max-width: none;
         border-radius: $radius-full;

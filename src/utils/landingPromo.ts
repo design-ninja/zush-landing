@@ -32,6 +32,10 @@ function writeCachedPromo(enabled: boolean): void {
 }
 
 async function fetchLandingPromoEnabled(): Promise<boolean> {
+  // The config endpoint rejects localhost origins (CORS), so the dev server
+  // renders the promo as if the backend flag were on.
+  if (import.meta.env.DEV) return true;
+
   try {
     const response = await fetch(`${SUPABASE_URL}/functions/v1/config`, {
       signal: AbortSignal.timeout(8000),
@@ -50,6 +54,8 @@ async function fetchLandingPromoEnabled(): Promise<boolean> {
 
 function applyLandingPromo(enabled: boolean): void {
   document.documentElement.dataset.landingPromo = enabled ? 'on' : 'off';
+  if (enabled) bindPromoBarScroll();
+  else document.documentElement.style.removeProperty('--promo-bar-offset');
   document.querySelectorAll<HTMLElement>('[data-landing-promo]').forEach((section) => {
     section.dataset.landingPromo = enabled ? 'on' : 'off';
     section.querySelectorAll<HTMLElement>('[data-pro-plan-price]').forEach((button) => {
@@ -57,6 +63,32 @@ function applyLandingPromo(enabled: boolean): void {
       if (price) button.dataset.proPlanPrice = price;
     });
   });
+}
+
+let promoBarScrollBound = false;
+
+function bindPromoBarScroll(): void {
+  if (promoBarScrollBound) return;
+  promoBarScrollBound = true;
+
+  let frame = 0;
+  const update = () => {
+    frame = 0;
+    const root = document.documentElement;
+    if (root.dataset.landingPromo !== 'on') return;
+    const bar = document.querySelector<HTMLElement>('[data-promo-bar]');
+    const height = bar?.offsetHeight ?? 0;
+    root.style.setProperty('--promo-bar-offset', `${Math.max(0, height - window.scrollY)}px`);
+  };
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      frame ||= requestAnimationFrame(update);
+    },
+    { passive: true },
+  );
+  update();
 }
 
 export function bindLandingPromo(): void {
