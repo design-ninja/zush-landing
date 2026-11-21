@@ -49,6 +49,7 @@ async function fetchLandingPromoEnabled(): Promise<boolean> {
 }
 
 function applyLandingPromo(enabled: boolean): void {
+  document.documentElement.dataset.landingPromo = enabled ? 'on' : 'off';
   document.querySelectorAll<HTMLElement>('[data-landing-promo]').forEach((section) => {
     section.dataset.landingPromo = enabled ? 'on' : 'off';
     section.querySelectorAll<HTMLElement>('[data-pro-plan-price]').forEach((button) => {

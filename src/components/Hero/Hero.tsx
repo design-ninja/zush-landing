@@ -8,6 +8,7 @@ import Heading from "../Heading";
 import StarRating from "../StarRating";
 import ExternalRatings from "@/components/ExternalRatings";
 import Text from "../Text";
+import { PromotionBanner } from "../PromotionBanner/PromotionBanner";
 import styles from "./Hero.module.scss";
 import type { DownloadOS } from "@/utils/download";
 import type { DownloadMenuCopy } from "@/i18n/copy";
@@ -41,6 +42,7 @@ interface HeroProps {
    */
   splitByOS?: boolean;
   compactTopSpacing?: boolean;
+  showPromotion?: boolean;
   forceOS?: DownloadOS;
   secondaryHref?: string;
   buyLabel?: string;
@@ -115,6 +117,7 @@ const Hero = ({
   waveBackground = false,
   splitByOS = false,
   compactTopSpacing = false,
+  showPromotion = false,
   forceOS,
   downloadLabel = "Download",
   downloadMenu,
@@ -185,6 +188,7 @@ const Hero = ({
     >
       <div className={styles.Hero__Container}>
         <div className={styles.Hero__Intro}>
+          {showPromotion && <PromotionBanner />}
           {(softpediaReviewAriaLabel || microsoftStoreRatingAriaLabel) && (
             <ExternalRatings
               className={styles.Hero__ExternalRatings}
