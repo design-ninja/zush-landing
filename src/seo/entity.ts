@@ -39,15 +39,11 @@ const ZUSH_SITE_ALTERNATE_NAMES = [
 
 /**
  * Reference to the product entity, which is fully described only on the homepage.
- * Pages that merely point at the product carry this typed stub instead of a bare
- * `@id`, so the reference identifies something on its own page. Deliberately holds
- * no claims (no price, no version) that could contradict the homepage node.
+ * A bare `@id`: a typed SoftwareApplication stub is validated by Google as a
+ * standalone app and fails rich-results checks for missing offers and ratings.
  */
 export const SOFTWARE_REF = {
-  '@type': 'SoftwareApplication',
   '@id': SOFTWARE_ID,
-  name: 'Zush',
-  url: SITE_ORIGIN,
 } as const;
 
 /**

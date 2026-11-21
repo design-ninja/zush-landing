@@ -200,8 +200,8 @@ export function buildWebPageJsonLd(data: WebPageJsonLdData) {
     publisher: ORGANIZATION_REF,
     ...(data.mainEntityId
       ? {
-          mainEntity: { '@type': 'SoftwareApplication', '@id': data.mainEntityId },
-          about: { '@type': 'SoftwareApplication', '@id': data.mainEntityId },
+          mainEntity: { '@id': data.mainEntityId },
+          about: { '@id': data.mainEntityId },
         }
       : {}),
     speakable: {
