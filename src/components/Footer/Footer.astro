@@ -84,22 +84,6 @@ const professionSectionTitles: Record<Locale, string> = {
   'zh-cn': '专业人士',
 };
 const professionSectionTitle = professionSectionTitles[locale];
-const directoryBadges = [
-  {
-    href: 'https://goodaitools.com/ai/zushapp',
-    src: 'https://goodaitools.com/assets/images/badge.png',
-    width: 207,
-    height: 54,
-    alt: 'Good AI Tools',
-  },
-  {
-    href: 'https://foundrlist.com/product/zush?utm_source=badge&utm_medium=embed',
-    src: 'https://foundrlist.com/api/badge/zush',
-    width: 150,
-    height: 48,
-    alt: 'Featured on FoundrList',
-  },
-] as const;
 ---
 
 <footer class={styles.Footer} data-site-footer>
@@ -423,12 +407,6 @@ const directoryBadges = [
           </svg>
           <Tooltip label={homebrewLabel} />
         </a>
-
-        {Astro.url.pathname === '/' && directoryBadges.map(({ href, src, width, height, alt }) => (
-          <a href={href} target='_blank' rel='noopener noreferrer' class={styles.Footer__DirectoryBadge}>
-            <img src={src} width={width} height={height} alt={alt} loading='lazy' decoding='async' />
-          </a>
-        ))}
 
         {showTaaftBadge && (
           <a
