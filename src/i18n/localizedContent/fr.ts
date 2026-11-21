@@ -56,7 +56,7 @@ export const home: HomeCopy = {
     },
     "templates": {
       "title": "Modèles",
-      "description": "Enregistrez des réglages réutilisables pour captures, dépenses, pistes audio, clients, juridique, voyages et dossiers surveillés."
+      "description": "Enregistrez des réglages réutilisables pour captures, dépenses, pistes audio, clients, juridique et dossiers surveillés."
     },
     "namingBlocks": {
       "title": "Blocs de nommage",
@@ -107,7 +107,7 @@ export const home: HomeCopy = {
     "templateNames": [
       "Captures",
       "Pistes audio",
-      "Notes client"
+      "Dépenses comptables"
     ],
     "namingBlockLabels": [
       "{date}",
@@ -251,7 +251,7 @@ export const home: HomeCopy = {
     ],
     "priceEyebrow": "Modèles réutilisables",
     "priceTitle": "Une configuration pour chaque dossier",
-    "priceDescription": "Enregistrez des règles de nommage pour les captures d’écran, les dépenses, les morceaux de musique, les notes client, les dossiers juridiques, les réservations et les dossiers surveillés.",
+    "priceDescription": "Enregistrez des règles de nommage pour les captures d’écran, les dépenses, les morceaux de musique, les dossiers juridiques et les dossiers surveillés.",
     "priceLabel": "11 inclus",
     "speedEyebrow": "Ultra rapide",
     "speedTitle": "Renommage en quelques secondes",

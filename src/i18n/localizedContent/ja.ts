@@ -56,7 +56,7 @@ export const home = {
     },
     "templates": {
       "title": "テンプレート",
-      "description": "スクリーンショット、経費、音楽トラック、クライアント作業、法務、旅行、監視フォルダ向けの設定を再利用できます。"
+      "description": "スクリーンショット、経費、音楽トラック、クライアント作業、法務、監視フォルダ向けの設定を再利用できます。"
     },
     "namingBlocks": {
       "title": "命名ブロック",
@@ -107,7 +107,7 @@ export const home = {
     "templateNames": [
       "スクリーンショット",
       "音楽トラック",
-      "クライアント議事録"
+      "経理経費"
     ],
     "namingBlockLabels": [
       "{date}",
@@ -251,7 +251,7 @@ export const home = {
     ],
     "priceEyebrow": "再利用可能なテンプレート",
     "priceTitle": "フォルダごとに設定を1つ保存",
-    "priceDescription": "スクリーンショット、経費、音楽、クライアントのメモ、法務文書、旅行予約、監視フォルダなど、用途別の命名ルールを保存できます。",
+    "priceDescription": "スクリーンショット、経費、音楽、法務文書、監視フォルダなど、用途別の命名ルールを保存できます。",
     "priceLabel": "11種類を内蔵",
     "speedEyebrow": "超高速",
     "speedTitle": "リネームは数秒で完了",

@@ -56,7 +56,7 @@ export const home: HomeCopy = {
     },
     "templates": {
       "title": "Sjablonen",
-      "description": "Bewaar herbruikbare instellingen voor screenshots, uitgaven, muziektracks, klantwerk, juridisch, reizen en bewaakte mappen."
+      "description": "Bewaar herbruikbare instellingen voor screenshots, uitgaven, muziektracks, klantwerk, juridisch en bewaakte mappen."
     },
     "namingBlocks": {
       "title": "Naamblokken",
@@ -107,7 +107,7 @@ export const home: HomeCopy = {
     "templateNames": [
       "Screenshots",
       "Muziektracks",
-      "Klantnotities"
+      "Boekhoudkosten"
     ],
     "namingBlockLabels": [
       "{date}",
@@ -251,7 +251,7 @@ export const home: HomeCopy = {
     ],
     "priceEyebrow": "Herbruikbare templates",
     "priceTitle": "Eén configuratie voor elke map",
-    "priceDescription": "Bewaar naamgevingsregels voor screenshots, uitgaven, muzieknummers, klantnotities, juridische bestanden, reisboekingen en bewaakte mappen.",
+    "priceDescription": "Bewaar naamgevingsregels voor screenshots, uitgaven, muzieknummers, juridische bestanden en bewaakte mappen.",
     "priceLabel": "11 inbegrepen",
     "speedEyebrow": "Supersnel",
     "speedTitle": "Hernoemen in seconden",

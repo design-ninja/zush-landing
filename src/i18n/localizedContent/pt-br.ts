@@ -56,7 +56,7 @@ export const home = {
     },
     "templates": {
       "title": "Modelos",
-      "description": "Salve configurações reutilizáveis para capturas de tela, despesas, faixas de música, clientes, jurídico, viagens e pastas monitoradas."
+      "description": "Salve configurações reutilizáveis para capturas de tela, despesas, faixas de música, clientes, jurídico e pastas monitoradas."
     },
     "namingBlocks": {
       "title": "Blocos de nomes",
@@ -107,7 +107,7 @@ export const home = {
     "templateNames": [
       "Capturas de tela",
       "Faixas de música",
-      "Notas de cliente"
+      "Despesas contábeis"
     ],
     "namingBlockLabels": [
       "{date}",
@@ -251,7 +251,7 @@ export const home = {
     ],
     "priceEyebrow": "Modelos reutilizáveis",
     "priceTitle": "Uma configuração para cada pasta",
-    "priceDescription": "Salve regras de nomenclatura para capturas de tela, despesas, faixas de música, notas de clientes, arquivos jurídicos, reservas de viagem e pastas monitoradas.",
+    "priceDescription": "Salve regras de nomenclatura para capturas de tela, despesas, faixas de música, arquivos jurídicos e pastas monitoradas.",
     "priceLabel": "11 integrados",
     "speedEyebrow": "Muito rápido",
     "speedTitle": "Renomeações em segundos",
