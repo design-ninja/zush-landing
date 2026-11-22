@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.25.0] - 2026-11-22
+### New
+- The new Financial Statements template names bank, card, mortgage, loan and investment statements by date, bank, account holder and account number.
+### Improved
+- Sketch files are now named by what their design shows.
+- Movie and TV recognition keeps working when the online catalog is busy.
+- Client Meeting Notes, Store Orders & Shipping and Travel Bookings are no longer added as new templates. If you already have them, they stay.
+### Fixed
+- Zush no longer freezes for a moment while it waits for files that are still downloading from iCloud.
+- Statistics show the right days when your Mac uses a non-Gregorian calendar, such as Buddhist or Japanese.
+
 ## [3.24.0] - 2026-11-19
 ### New
 - Rename files right from Finder: right-click them, choose Rename with Zush, then Smart or one of your templates. Turn it on in Settings under Quick Rename. It replaces the Rename with Zush item in the Services menu.
