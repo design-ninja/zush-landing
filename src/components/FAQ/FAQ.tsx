@@ -27,6 +27,18 @@ const STATIC_JSX_OVERRIDES: Record<string, React.ReactNode> = {
       <AppLink href="/blog/best-ai-file-renamer-tools-windows-compared">Windows comparison</AppLink> list the sources and check dates.
     </>
   ),
+  'Is Zush safe to use?': (
+    <>
+      Yes. Zush is a code-signed, Apple-notarized Mac app and a Microsoft Store app for Windows. It renames files on your computer, previews every batch before applying it, and can undo it from Rename History. Original files are not uploaded, and with LM Studio or Ollama no file content leaves your device.{' '}
+      <AppLink href="/security">How Zush handles your files →</AppLink>
+    </>
+  ),
+  'Where can I download Zush safely?': (
+    <>
+      Download Zush for Mac from zushapp.com, the Mac App Store, or Homebrew, and Zush for Windows from the Microsoft Store. Other sites that offer repackaged or &ldquo;cracked&rdquo; installers are not affiliated with Zush, and the app is free to try, so there is no reason to use them.{' '}
+      <AppLink href="/security#official-downloads">See all official sources →</AppLink>
+    </>
+  ),
   'What is BYOK (Bring Your Own Key)?': (
     <>
       BYOK lets users on every plan connect their own API key from Gemini, OpenRouter, OpenAI, or Claude. The free plan shares a 50-rename limit across Zush Cloud, BYOK, LM Studio, and Ollama; PRO removes that limit. Your key is stored locally in secure platform storage and is sent only when Zush needs to call your selected provider through the backend relay.{' '}

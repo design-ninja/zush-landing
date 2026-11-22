@@ -3,6 +3,11 @@ import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
 const faqItems = [
   {
+    question: 'How do I rename multiple PDFs at once?',
+    answer:
+      'Drop the PDFs or the whole folder into Zush. It reads each document and suggests its own name, such as vendor, date, and document type, instead of one shared pattern with a counter. Review the suggested names and apply the whole batch at once; Rename History can undo it.',
+  },
+  {
     question: 'Can Zush rename scanned PDFs that contain images instead of text?',
     answer:
       'Yes. When a PDF contains scanned pages rather than selectable text, Zush falls back to AI vision models that can read the content from the page images. This works well for scanned invoices, receipts, and letters.',

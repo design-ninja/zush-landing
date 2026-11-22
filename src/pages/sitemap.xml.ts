@@ -294,6 +294,9 @@ function getRouteHints(route: string): { changefreq: Changefreq; priority: strin
   if (route === '/changelog') {
     return { changefreq: 'weekly', priority: '0.6' };
   }
+  if (route === '/security') {
+    return { changefreq: 'monthly', priority: '0.6' };
+  }
   if (route === '/methodology') {
     return { changefreq: 'monthly', priority: '0.5' };
   }

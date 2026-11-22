@@ -18,7 +18,7 @@ Um KI-gestützte Organisations- und Umbenennungsfunktionen bereitzustellen, vera
 - **Visuelle Dateien** wie Bilder, RAW-Vorschauen, SVGs und einige PDFs können vor der Analyse in ein komprimiertes Vorschaubild umgewandelt werden.
 - **Unterstützte Dokumente** wie Textdateien, E-Mails, Tabellen, Präsentationen und einige PDFs können mit extrahiertem Text oder einer kompakten Inhaltszusammenfassung analysiert werden, die auf deinem Gerät erstellt wird, bevor die Anfrage gesendet wird.
 
-Deine originalen Dateien in voller Auflösung verlassen dein Gerät im normalen Cloud-Betrieb nicht. Wenn du den Offline-KI-Modus aktivierst, läuft die unterstützte Dateianalyse über private lokale Modelle via Ollama statt über Zush Cloud oder Drittanbieter-KI.
+Deine originalen Dateien in voller Auflösung verlassen dein Gerät im normalen Cloud-Betrieb nicht. Wenn du den Offline-KI-Modus aktivierst, läuft die unterstützte Dateianalyse über private lokale Modelle via Ollama oder LM Studio statt über Zush Cloud oder Drittanbieter-KI.
 
 **1.2 Prompt- und Anweisungsdaten**
 Wenn du den KI-Prompt-Editor oder andere Anpassungsfunktionen verwendest, werden der eingegebene benutzerdefinierte Umbenennungs-Prompt und Tagging-Prompt mit der Analyseanfrage gesendet, damit der KI-Anbieter deinen Anweisungen folgen kann.
@@ -52,10 +52,10 @@ Wir verwenden die erfassten Informationen, um:
 
 Zush sendet Datei-Analyse-Payloads zur Analyse an Drittanbieter-KI-Dienste:
 
-- **Standardablauf:** Datei-Analyseanfragen können je nach Plan, Nutzung, Verfügbarkeit und Fallback-Routing über Zush-Server an Groq, Google Gemini oder Alibaba Cloud Model Studio (Qwen) weitergeleitet werden.
+- **Standardablauf (Zush Cloud AI):** Datei-Analyse- und Ordnersortierungsanfragen werden je nach Plan, Nutzung, Dateityp, Verfügbarkeit und Fallback-Routing über Zush-Server an Google Gemini, OpenRouter oder Alibaba Cloud Model Studio (Qwen) weitergeleitet. OpenRouter leitet eine Anfrage an den Anbieter weiter, der das gewählte Modell bereitstellt, etwa DeepSeek-Modelle bei Inferenzpartnern von OpenRouter. Anfragen zur Audio-Transkription gehen an Groq.
 - **Globale Qwen-Verarbeitung:** Wenn der globale Dienstbereitstellungsbereich von Alibaba Cloud Model Studio verwendet wird, bleiben statische Anfragedaten in der ausgewählten US-Region (Virginia), während verschlüsselte transiente Inferenzdaten auf verfügbaren Knoten in anderen Regionen verarbeitet werden können, einschließlich innerhalb oder außerhalb Chinas. Transiente Inferenzdaten werden vom Inferenzknoten nicht dauerhaft gespeichert. Nutzer mit geografischen Anforderungen an die Datenspeicherung sollten Offline-KI oder eine BYOK-Anbietervereinbarung verwenden, die diese Anforderungen erfüllt.
 - **Bring Your Own Key (BYOK):** Nutzer aller Pläne können eigene API-Schlüssel für Google Gemini, OpenRouter, OpenAI oder Anthropic Claude konfigurieren. BYOK-Schlüssel werden lokal im sicheren Systemspeicher abgelegt. Im BYOK-Modus wird der Schlüssel nur zur Validierung und Verarbeitung von KI-Anfragen an das Zush-Backend und den ausgewählten KI-Anbieter gesendet. Bei OpenRouter können sowohl OpenRouter als auch der Anbieter des ausgewählten Modells die Anfrage verarbeiten. Das Zush-Backend speichert BYOK-API-Schlüssel nicht dauerhaft.
-- **Offline-KI-Modus:** Nutzer aller Pläne können unterstützte Dateien mit privaten lokalen Modellen via Ollama verarbeiten. Im Offline-KI-Modus werden Datei-Inhalte auf dem Gerät des Nutzers verarbeitet und nicht zur Analyse an Zush-Server oder Drittanbieter-KI gesendet. Zush kann weiterhin Backend-Dienste für Lizenzierung, Updates, Support oder nicht-inhaltliche Betriebsprüfungen kontaktieren.
+- **Offline-KI-Modus:** Nutzer aller Pläne können unterstützte Dateien mit privaten lokalen Modellen via Ollama oder LM Studio verarbeiten. Im Offline-KI-Modus werden Datei-Inhalte auf dem Gerät des Nutzers verarbeitet und nicht zur Analyse an Zush-Server oder Drittanbieter-KI gesendet. Zush kann weiterhin Backend-Dienste für Lizenzierung, Updates, Support oder nicht-inhaltliche Betriebsprüfungen kontaktieren.
 
 **Was in Cloud- und BYOK-Modi gesendet wird:** Je nach Dateityp kann dies ein komprimiertes Vorschaubild, eine Design-Vorschau, gesampelte Videoframes, Untertitelkontext, extrahierter Dokumenttext, eine temporäre iWork-PDF-Vorschau, Audiometadaten, Transkriptkontext, begrenzte Audiodaten bei erforderlicher Transkription oder eine kompakte Inhaltszusammenfassung sein, zusammen mit MIME-Typ, Dateierweiterung, Spracheinstellung, Regenerate- und BYOK-Einstellungen, einer anonymen Gerätekennung und benutzerdefinierten Umbenennungs- oder Tagging-Prompts, die du übermittelst. Einige Anfragen können auch grundlegende Dateimetadaten wie den Dateinamen enthalten, um bessere Umbenennungsvorschläge zu erzeugen.
 
@@ -67,8 +67,8 @@ Zush sendet Datei-Analyse-Payloads zur Analyse an Drittanbieter-KI-Dienste:
 
 Wir teilen Daten mit folgenden Dienstleistern:
 
-- **KI-Anbieter:** Groq, Google Gemini und [Alibaba Cloud Model Studio (Qwen)](https://www.alibabacloud.com/help/en/model-studio/privacy-notice). Mit BYOK: Google Gemini, OpenRouter und dessen Modellanbieter, OpenAI oder Anthropic Claude.
-- **Lokale KI-Laufzeit:** Ollama, wenn du den Offline-KI-Modus installierst und aktivierst. Ollama läuft auf deinem Gerät und wird von deiner lokalen Ollama-Installation verwaltet.
+- **KI-Anbieter:** Google Gemini, [OpenRouter](https://openrouter.ai/privacy) und dessen Modellanbieter, [Alibaba Cloud Model Studio (Qwen)](https://www.alibabacloud.com/help/en/model-studio/privacy-notice) sowie Groq (Audio-Transkription). Mit BYOK: Google Gemini, OpenRouter und dessen Modellanbieter, OpenAI oder Anthropic Claude.
+- **Lokale KI-Laufzeit:** Ollama oder LM Studio, wenn du eines davon installierst und in Zush auswählst. Beide laufen auf deinem Gerät und werden von deiner lokalen Installation verwaltet.
 - **Cloud-Infrastruktur:** Supabase (Backend-Datenbank, Lizenzierung und API-Relay).
 - **Zahlungsdienstleister:** [Paddle.com](https://www.paddle.com) (Direktkäufe), [Apple](https://www.apple.com/legal/privacy/) (Mac-App-Store-Käufe), [Microsoft](https://privacy.microsoft.com/privacystatement) (Microsoft-Store-Käufe).
 - **Fehlertracking:** Sentry (anonyme Absturz- und Fehlerberichte).
@@ -204,7 +204,7 @@ Pour fournir les fonctions d’organisation et de renommage assistées par IA, Z
 - **Fichiers visuels** comme les images, aperçus RAW, SVG et certains PDF peuvent être convertis en image d’aperçu compressée avant analyse.
 - **Documents pris en charge** comme les fichiers texte, e-mails, feuilles de calcul, présentations et certains PDF peuvent être analysés à partir de texte extrait ou d’un résumé compact généré sur votre appareil avant l’envoi de la requête.
 
-Vos fichiers originaux en pleine résolution ne quittent pas votre appareil dans le fonctionnement cloud normal, sauf lorsqu’une charge audio limitée est nécessaire à la transcription ou lorsqu’un fichier iWork doit être temporairement converti pour l’analyse. Si vous activez le mode IA hors ligne, l’analyse des fichiers pris en charge s’exécute via des modèles locaux privés avec Ollama plutôt que via le cloud Zush ou des fournisseurs IA tiers.
+Vos fichiers originaux en pleine résolution ne quittent pas votre appareil dans le fonctionnement cloud normal, sauf lorsqu’une charge audio limitée est nécessaire à la transcription ou lorsqu’un fichier iWork doit être temporairement converti pour l’analyse. Si vous activez le mode IA hors ligne, l’analyse des fichiers pris en charge s’exécute via des modèles locaux privés avec Ollama ou LM Studio plutôt que via le cloud Zush ou des fournisseurs IA tiers.
 
 **1.2 Données de prompts et d’instructions**
 Si vous utilisez l’éditeur de prompt IA ou d’autres fonctions de personnalisation, le texte de prompt de renommage et de tagging personnalisé que vous saisissez est envoyé avec la requête d’analyse afin que le fournisseur IA puisse suivre vos instructions.
@@ -238,10 +238,10 @@ Nous utilisons les informations collectées pour :
 
 Zush envoie des charges utiles d’analyse de fichiers à des services IA tiers :
 
-- **Flux par défaut :** selon l’offre, l’utilisation, la disponibilité et le routage de secours, les requêtes d’analyse peuvent être acheminées via les serveurs Zush vers Groq, Google Gemini ou Alibaba Cloud Model Studio (Qwen).
+- **Flux par défaut (Zush Cloud AI) :** selon l’offre, l’utilisation, le type de fichier, la disponibilité et le routage de secours, les requêtes d’analyse et de tri de dossiers sont acheminées via les serveurs Zush vers Google Gemini, OpenRouter ou Alibaba Cloud Model Studio (Qwen). OpenRouter transmet la requête au fournisseur qui sert le modèle choisi, par exemple des modèles DeepSeek hébergés par les partenaires d’inférence d’OpenRouter. Les requêtes de transcription audio sont envoyées à Groq.
 - **Traitement Qwen global :** lorsque la portée de déploiement Global d’Alibaba Cloud Model Studio est utilisée, les données statiques de la requête restent dans la région US (Virginie) sélectionnée, tandis que les données transitoires d’inférence chiffrées peuvent être traitées sur des nœuds disponibles dans d’autres régions, y compris en Chine ou hors de Chine. Les données transitoires d’inférence ne sont pas conservées par le nœud d’inférence. Les utilisateurs soumis à des exigences géographiques de résidence des données doivent utiliser l’IA hors ligne ou un fournisseur BYOK répondant à ces exigences.
 - **Bring Your Own Key (BYOK) :** les utilisateurs de toutes les offres peuvent configurer leurs propres clés API pour Google Gemini, OpenRouter, OpenAI ou Anthropic Claude. Les clés BYOK sont stockées localement dans le stockage sécurisé du système. En mode BYOK, la clé est envoyée au backend Zush et au fournisseur IA sélectionné uniquement pour valider la clé et traiter les requêtes IA. Avec OpenRouter, OpenRouter et le fournisseur du modèle sélectionné peuvent traiter la requête. Le backend Zush ne stocke pas durablement les clés API BYOK.
-- **Mode IA hors ligne :** les utilisateurs de toutes les offres peuvent traiter les fichiers pris en charge avec des modèles locaux privés via Ollama. En mode IA hors ligne, le contenu d’analyse est traité sur l’appareil de l’utilisateur et n’est pas envoyé aux serveurs Zush ni aux fournisseurs IA tiers pour analyse. Zush peut encore contacter des services backend pour la licence, les mises à jour, le support ou des contrôles opérationnels ne portant pas sur le contenu.
+- **Mode IA hors ligne :** les utilisateurs de toutes les offres peuvent traiter les fichiers pris en charge avec des modèles locaux privés via Ollama ou LM Studio. En mode IA hors ligne, le contenu d’analyse est traité sur l’appareil de l’utilisateur et n’est pas envoyé aux serveurs Zush ni aux fournisseurs IA tiers pour analyse. Zush peut encore contacter des services backend pour la licence, les mises à jour, le support ou des contrôles opérationnels ne portant pas sur le contenu.
 
 **Ce qui est envoyé en modes Cloud et BYOK :** selon le type de fichier, cela peut inclure une image d’aperçu compressée, un aperçu design, des images vidéo échantillonnées, du contexte de sous-titres, du texte extrait, un aperçu PDF temporaire iWork, des métadonnées audio, du contexte de transcription, une charge audio limitée si la transcription est requise, ou un résumé compact du contenu, avec le type MIME, l’extension, la préférence de langue, les paramètres de régénération et BYOK, un identifiant d’appareil anonyme, et tout prompt personnalisé de renommage ou de tagging soumis. Certaines requêtes peuvent aussi inclure des métadonnées de base comme le nom du fichier afin de générer de meilleures suggestions.
 
@@ -253,8 +253,8 @@ Zush envoie des charges utiles d’analyse de fichiers à des services IA tiers 
 
 Nous partageons des données avec les prestataires suivants :
 
-- **Fournisseurs IA :** Groq, Google Gemini et [Alibaba Cloud Model Studio (Qwen)](https://www.alibabacloud.com/help/en/model-studio/privacy-notice). Avec BYOK : Google Gemini, OpenRouter et ses fournisseurs de modèles, OpenAI ou Anthropic Claude.
-- **Runtime IA local :** Ollama, si vous installez et activez le mode IA hors ligne. Ollama fonctionne sur votre appareil et est géré par votre installation locale d’Ollama.
+- **Fournisseurs IA :** Google Gemini, [OpenRouter](https://openrouter.ai/privacy) et ses fournisseurs de modèles, [Alibaba Cloud Model Studio (Qwen)](https://www.alibabacloud.com/help/en/model-studio/privacy-notice) et Groq (transcription audio). Avec BYOK : Google Gemini, OpenRouter et ses fournisseurs de modèles, OpenAI ou Anthropic Claude.
+- **Runtime IA local :** Ollama ou LM Studio, si vous en installez un et le sélectionnez dans Zush. Les deux fonctionnent sur votre appareil et sont gérés par votre installation locale.
 - **Infrastructure cloud :** Supabase (base de données backend, licence et relais API).
 - **Prestataires de paiement :** [Paddle.com](https://www.paddle.com) (achats directs), [Apple](https://www.apple.com/legal/privacy/) (achats Mac App Store), [Microsoft](https://privacy.microsoft.com/privacystatement) (achats Microsoft Store).
 - **Suivi d’erreurs :** Sentry (rapports anonymes de crash et d’erreur).
@@ -390,7 +390,7 @@ Para oferecer recursos de organização e renomeação com IA, o Zush processa o
 - **Arquivos visuais** como imagens, prévias RAW, SVGs e alguns PDFs podem ser convertidos em uma imagem de prévia compactada antes da análise.
 - **Documentos compatíveis** como arquivos de texto, e-mails, planilhas, apresentações e alguns PDFs podem ser analisados usando texto extraído ou um resumo compacto gerado no seu dispositivo antes do envio da solicitação.
 
-Seus arquivos originais em resolução completa não saem do seu dispositivo durante a operação normal na nuvem. Se você ativar o modo IA offline, a análise de arquivos compatíveis é executada por modelos locais privados via Ollama em vez da nuvem do Zush ou provedores de IA de terceiros.
+Seus arquivos originais em resolução completa não saem do seu dispositivo durante a operação normal na nuvem. Se você ativar o modo IA offline, a análise de arquivos compatíveis é executada por modelos locais privados via Ollama ou LM Studio em vez da nuvem do Zush ou provedores de IA de terceiros.
 
 **1.2 Dados de prompts e instruções**
 Se você usar o editor de prompts de IA ou outros recursos de personalização, o texto do prompt personalizado de renomeação e de tags que você inserir será enviado com a solicitação de análise para que o provedor de IA siga suas instruções.
@@ -424,10 +424,10 @@ Usamos as informações coletadas para:
 
 O Zush envia cargas de análise de arquivos a serviços de IA de terceiros:
 
-- **Fluxo padrão:** dependendo do plano, uso, disponibilidade e roteamento de fallback, as solicitações de análise podem ser encaminhadas pelos servidores do Zush para Groq, Google Gemini ou Alibaba Cloud Model Studio (Qwen).
+- **Fluxo padrão (Zush Cloud AI):** dependendo do plano, uso, tipo de arquivo, disponibilidade e roteamento de fallback, as solicitações de análise e de organização de pastas são encaminhadas pelos servidores do Zush para Google Gemini, OpenRouter ou Alibaba Cloud Model Studio (Qwen). O OpenRouter encaminha a solicitação ao provedor que serve o modelo selecionado, como modelos DeepSeek hospedados por parceiros de inferência do OpenRouter. Solicitações de transcrição de áudio são enviadas ao Groq.
 - **Processamento global do Qwen:** quando o escopo de implantação Global do Alibaba Cloud Model Studio é usado, os dados estáticos da solicitação permanecem na região selecionada dos EUA (Virgínia), enquanto dados transitórios de inferência criptografados podem ser processados em nós disponíveis em outras regiões, inclusive dentro ou fora da China. Os dados transitórios de inferência não são armazenados pelo nó de inferência. Usuários com requisitos geográficos de residência de dados devem usar a IA offline ou uma configuração BYOK que atenda a esses requisitos.
 - **Bring Your Own Key (BYOK):** usuários de todos os planos podem configurar suas próprias chaves de API para Google Gemini, OpenRouter, OpenAI ou Anthropic Claude. As chaves BYOK são armazenadas localmente no armazenamento seguro do sistema. No modo BYOK, a chave é enviada ao backend do Zush e ao provedor selecionado apenas para validar a chave e processar solicitações de IA. Com o OpenRouter, tanto o OpenRouter quanto o provedor do modelo selecionado podem processar a solicitação. O backend do Zush não armazena chaves BYOK permanentemente.
-- **Modo IA offline:** usuários de todos os planos podem processar arquivos compatíveis com modelos locais privados via Ollama. No modo IA offline, o conteúdo de análise é processado no dispositivo do usuário e não é enviado aos servidores do Zush nem a provedores de IA de terceiros para análise. O Zush ainda pode contatar serviços de backend para licenciamento, atualizações, suporte ou verificações operacionais sem conteúdo.
+- **Modo IA offline:** usuários de todos os planos podem processar arquivos compatíveis com modelos locais privados via Ollama ou LM Studio. No modo IA offline, o conteúdo de análise é processado no dispositivo do usuário e não é enviado aos servidores do Zush nem a provedores de IA de terceiros para análise. O Zush ainda pode contatar serviços de backend para licenciamento, atualizações, suporte ou verificações operacionais sem conteúdo.
 
 **O que é enviado nos modos Cloud e BYOK:** dependendo do tipo de arquivo, isso pode incluir uma imagem de prévia compactada, texto extraído do documento ou um resumo compacto do conteúdo, além de tipo MIME, extensão, preferência de idioma, configurações de regeneração e BYOK, identificador anônimo do dispositivo e qualquer prompt personalizado de renomeação ou tags enviado. Algumas solicitações também podem incluir metadados básicos, como o nome do arquivo, para gerar sugestões melhores.
 
@@ -439,8 +439,8 @@ O Zush envia cargas de análise de arquivos a serviços de IA de terceiros:
 
 Compartilhamos dados com os seguintes provedores:
 
-- **Provedores de IA:** Groq, Google Gemini e [Alibaba Cloud Model Studio (Qwen)](https://www.alibabacloud.com/help/en/model-studio/privacy-notice). Com BYOK: Google Gemini, OpenRouter e seus provedores de modelos, OpenAI ou Anthropic Claude.
-- **Runtime local de IA:** Ollama, se você instalar e ativar o modo IA offline. O Ollama roda no seu dispositivo e é gerenciado pela sua instalação local.
+- **Provedores de IA:** Google Gemini, [OpenRouter](https://openrouter.ai/privacy) e seus provedores de modelos, [Alibaba Cloud Model Studio (Qwen)](https://www.alibabacloud.com/help/en/model-studio/privacy-notice) e Groq (transcrição de áudio). Com BYOK: Google Gemini, OpenRouter e seus provedores de modelos, OpenAI ou Anthropic Claude.
+- **Runtime local de IA:** Ollama ou LM Studio, se você instalar um deles e selecioná-lo no Zush. Ambos rodam no seu dispositivo e são gerenciados pela sua instalação local.
 - **Infraestrutura em nuvem:** Supabase (banco de dados backend, licenciamento e relay de API).
 - **Processadores de pagamento:** [Paddle.com](https://www.paddle.com) (compras diretas), [Apple](https://www.apple.com/legal/privacy/) (compras na Mac App Store), [Microsoft](https://privacy.microsoft.com/privacystatement) (compras na Microsoft Store).
 - **Rastreamento de erros:** Sentry (relatórios anônimos de falhas e erros).
@@ -576,7 +576,7 @@ Para ofrecer funciones de organización y renombrado con IA, Zush procesa los ar
 - **Archivos visuales** como imágenes, vistas previas RAW, SVG y algunos PDF pueden convertirse en una imagen de vista previa comprimida antes del análisis.
 - **Documentos compatibles** como archivos de texto, correos, hojas de cálculo, presentaciones y algunos PDF pueden analizarse usando texto extraído o un resumen compacto generado en tu dispositivo antes de enviar la solicitud.
 
-Tus archivos originales en resolución completa no salen de tu dispositivo durante la operación normal en la nube. Si activas el modo IA offline, el análisis de archivos compatibles se ejecuta con modelos locales privados mediante Ollama en lugar de la nube de Zush o proveedores de IA externos.
+Tus archivos originales en resolución completa no salen de tu dispositivo durante la operación normal en la nube. Si activas el modo IA offline, el análisis de archivos compatibles se ejecuta con modelos locales privados mediante Ollama o LM Studio en lugar de la nube de Zush o proveedores de IA externos.
 
 **1.2 Datos de prompts e instrucciones**
 Si usas el editor de prompts de IA u otras funciones de personalización, el texto de prompt personalizado para renombrado y etiquetado que ingreses se envía con la solicitud de análisis para que el proveedor de IA pueda seguir tus instrucciones.
@@ -610,10 +610,10 @@ Usamos la información recopilada para:
 
 Zush envía payloads de análisis de archivos a servicios de IA de terceros:
 
-- **Flujo predeterminado:** según el plan, el uso, la disponibilidad y el enrutamiento de respaldo, las solicitudes de análisis pueden enviarse mediante servidores de Zush a Groq, Google Gemini o Alibaba Cloud Model Studio (Qwen).
+- **Flujo predeterminado (Zush Cloud AI):** según el plan, el uso, el tipo de archivo, la disponibilidad y el enrutamiento de respaldo, las solicitudes de análisis y de organización de carpetas se envían mediante servidores de Zush a Google Gemini, OpenRouter o Alibaba Cloud Model Studio (Qwen). OpenRouter reenvía la solicitud al proveedor que sirve el modelo seleccionado, como modelos DeepSeek alojados por socios de inferencia de OpenRouter. Las solicitudes de transcripción de audio se envían a Groq.
 - **Procesamiento global de Qwen:** cuando se utiliza el ámbito de despliegue Global de Alibaba Cloud Model Studio, los datos estáticos de la solicitud permanecen en la región seleccionada de EE. UU. (Virginia), mientras que los datos transitorios de inferencia cifrados pueden procesarse en nodos disponibles de otras regiones, incluso dentro o fuera de China. El nodo de inferencia no conserva los datos transitorios. Los usuarios con requisitos geográficos de residencia de datos deben usar IA sin conexión o un proveedor BYOK que cumpla esos requisitos.
 - **Bring Your Own Key (BYOK):** usuarios de todos los planes pueden configurar sus propias claves API para Google Gemini, OpenRouter, OpenAI o Anthropic Claude. Las claves BYOK se almacenan localmente en el almacenamiento seguro del sistema. En modo BYOK, la clave se envía al backend de Zush y al proveedor seleccionado solo para validar la clave y procesar solicitudes de IA. Con OpenRouter, tanto OpenRouter como el proveedor del modelo seleccionado pueden procesar la solicitud. El backend de Zush no almacena permanentemente claves API BYOK.
-- **Modo IA offline:** usuarios de todos los planes pueden procesar archivos compatibles con modelos locales privados mediante Ollama. En modo IA offline, el contenido de análisis se procesa en el dispositivo del usuario y no se envía a servidores de Zush ni a proveedores de IA externos para análisis. Zush puede seguir contactando servicios backend para licencias, actualizaciones, soporte o comprobaciones operativas sin contenido.
+- **Modo IA offline:** usuarios de todos los planes pueden procesar archivos compatibles con modelos locales privados mediante Ollama o LM Studio. En modo IA offline, el contenido de análisis se procesa en el dispositivo del usuario y no se envía a servidores de Zush ni a proveedores de IA externos para análisis. Zush puede seguir contactando servicios backend para licencias, actualizaciones, soporte o comprobaciones operativas sin contenido.
 
 **Qué se envía en modos Cloud y BYOK:** según el tipo de archivo, puede incluir una imagen de vista previa comprimida, texto extraído del documento o un resumen compacto del contenido, junto con tipo MIME, extensión, preferencia de idioma, ajustes de regeneración y BYOK, identificador anónimo del dispositivo y cualquier prompt personalizado de renombrado o etiquetado que envíes. Algunas solicitudes también pueden incluir metadatos básicos como el nombre de archivo para generar mejores sugerencias.
 
@@ -625,8 +625,8 @@ Zush envía payloads de análisis de archivos a servicios de IA de terceros:
 
 Compartimos datos con los siguientes proveedores:
 
-- **Proveedores de IA:** Groq, Google Gemini y [Alibaba Cloud Model Studio (Qwen)](https://www.alibabacloud.com/help/en/model-studio/privacy-notice). Con BYOK: Google Gemini, OpenRouter y sus proveedores de modelos, OpenAI o Anthropic Claude.
-- **Runtime local de IA:** Ollama, si instalas y activas el modo IA offline. Ollama se ejecuta en tu dispositivo y es gestionado por tu instalación local.
+- **Proveedores de IA:** Google Gemini, [OpenRouter](https://openrouter.ai/privacy) y sus proveedores de modelos, [Alibaba Cloud Model Studio (Qwen)](https://www.alibabacloud.com/help/en/model-studio/privacy-notice) y Groq (transcripción de audio). Con BYOK: Google Gemini, OpenRouter y sus proveedores de modelos, OpenAI o Anthropic Claude.
+- **Runtime local de IA:** Ollama o LM Studio, si instalas uno de ellos y lo seleccionas en Zush. Ambos se ejecutan en tu dispositivo y los gestiona tu instalación local.
 - **Infraestructura cloud:** Supabase (base de datos backend, licencias y relay API).
 - **Procesadores de pago:** [Paddle.com](https://www.paddle.com) (compras directas), [Apple](https://www.apple.com/legal/privacy/) (compras en Mac App Store), [Microsoft](https://privacy.microsoft.com/privacystatement) (compras en Microsoft Store).
 - **Seguimiento de errores:** Sentry (informes anónimos de fallos y errores).
@@ -762,7 +762,7 @@ Om AI-gestuurde organisatie- en hernoemfuncties te bieden, verwerkt Zush de best
 - **Visuele bestanden** zoals afbeeldingen, RAW-previews, SVG's en sommige PDF's kunnen vóór analyse worden omgezet naar een gecomprimeerde preview-afbeelding.
 - **Ondersteunde documenten** zoals tekstbestanden, e-mails, spreadsheets, presentaties en sommige PDF's kunnen worden geanalyseerd met geëxtraheerde tekst of een compacte inhoudssamenvatting die op je apparaat wordt gegenereerd voordat het verzoek wordt verzonden.
 
-Je originele bestanden in volledige resolutie verlaten je apparaat niet bij normale cloudwerking, behalve wanneer een begrensde audiopayload nodig is voor transcriptie of wanneer een iWork-bestand tijdelijk moet worden geconverteerd voor analyse. Als je Offline AI inschakelt, wordt ondersteunde bestandsanalyse uitgevoerd via private lokale modellen met Ollama in plaats van Zush cloud of externe AI-providers.
+Je originele bestanden in volledige resolutie verlaten je apparaat niet bij normale cloudwerking, behalve wanneer een begrensde audiopayload nodig is voor transcriptie of wanneer een iWork-bestand tijdelijk moet worden geconverteerd voor analyse. Als je Offline AI inschakelt, wordt ondersteunde bestandsanalyse uitgevoerd via private lokale modellen met Ollama of LM Studio in plaats van Zush cloud of externe AI-providers.
 
 **1.2 Prompt- en instructiegegevens**
 Als je de AI-prompteditor of andere promptaanpassingen gebruikt, worden de aangepaste hernoem- en taggingprompts die je invoert meegestuurd met het analyseverzoek zodat de AI-provider je instructies kan volgen.
@@ -796,10 +796,10 @@ We gebruiken de verzamelde informatie om:
 
 Zush stuurt bestandsanalyse-payloads naar externe AI-diensten voor analyse:
 
-- **Standaardflow:** afhankelijk van abonnement, gebruik, beschikbaarheid en fallbackroutering kunnen bestandsanalyseverzoeken via Zush-servers worden doorgestuurd naar Groq, Google Gemini of Alibaba Cloud Model Studio (Qwen).
+- **Standaardflow (Zush Cloud AI):** afhankelijk van abonnement, gebruik, bestandstype, beschikbaarheid en fallbackroutering worden verzoeken voor bestandsanalyse en mapsortering via Zush-servers doorgestuurd naar Google Gemini, OpenRouter of Alibaba Cloud Model Studio (Qwen). OpenRouter stuurt een verzoek door naar de provider die het gekozen model aanbiedt, zoals DeepSeek-modellen bij inferentiepartners van OpenRouter. Verzoeken voor audiotranscriptie gaan naar Groq.
 - **Wereldwijde Qwen-verwerking:** wanneer het Global-bereik van Alibaba Cloud Model Studio wordt gebruikt, blijven statische aanvraaggegevens in de geselecteerde Amerikaanse regio (Virginia), terwijl versleutelde tijdelijke inferentiegegevens kunnen worden verwerkt op beschikbare knooppunten in andere regio’s, waaronder binnen of buiten China. Tijdelijke inferentiegegevens worden niet door het inferentieknooppunt bewaard. Gebruikers met geografische vereisten voor gegevensresidentie moeten Offline AI of een BYOK-provider gebruiken die aan die vereisten voldoet.
 - **Bring Your Own Key (BYOK):** Gebruikers van elk abonnement kunnen eigen API-sleutels configureren voor Google Gemini, OpenRouter, OpenAI of Anthropic Claude. BYOK-sleutels worden lokaal opgeslagen in de beveiligde systeemopslag. In BYOK-modus wordt de sleutel alleen naar de Zush-backend en de gekozen AI-provider verzonden om de sleutel te valideren en AI-verzoeken te verwerken. Met OpenRouter kunnen zowel OpenRouter als de provider van het gekozen model het verzoek verwerken. De Zush-backend slaat BYOK API-sleutels niet permanent op.
-- **Offline AI-modus:** Gebruikers van elk abonnement kunnen ondersteunde bestanden verwerken met private lokale modellen via Ollama. In Offline AI wordt bestandsanalyse-inhoud verwerkt op het apparaat van de gebruiker en niet naar Zush-servers of externe AI-providers gestuurd voor analyse. Zush kan nog steeds backenddiensten contacteren voor licenties, updates, support of operationele controles zonder inhoud.
+- **Offline AI-modus:** Gebruikers van elk abonnement kunnen ondersteunde bestanden verwerken met private lokale modellen via Ollama of LM Studio. In Offline AI wordt bestandsanalyse-inhoud verwerkt op het apparaat van de gebruiker en niet naar Zush-servers of externe AI-providers gestuurd voor analyse. Zush kan nog steeds backenddiensten contacteren voor licenties, updates, support of operationele controles zonder inhoud.
 
 **Wat wordt verzonden in Cloud- en BYOK-modi:** afhankelijk van het bestandstype kan dit een gecomprimeerde preview-afbeelding, designpreview, bemonsterde videoframes, ondertitelcontext, geëxtraheerde documenttekst, tijdelijke iWork-PDF-preview, audiometadata, transcriptcontext, een begrensde audiopayload wanneer transcriptie nodig is, of compacte inhoudssamenvatting omvatten, samen met MIME-type, bestandsextensie, taalvoorkeur, regenerate- en BYOK-instellingen, een anonieme apparaat-ID en aangepaste hernoem- of taggingprompts die je indient. Sommige verzoeken kunnen ook basale bestandsmetadata bevatten, zoals de bestandsnaam, om betere suggesties te genereren.
 
@@ -811,8 +811,8 @@ Zush stuurt bestandsanalyse-payloads naar externe AI-diensten voor analyse:
 
 We delen gegevens met de volgende dienstverleners:
 
-- **AI-providers:** Groq, Google Gemini en [Alibaba Cloud Model Studio (Qwen)](https://www.alibabacloud.com/help/en/model-studio/privacy-notice). Met BYOK: Google Gemini, OpenRouter en zijn modelproviders, OpenAI of Anthropic Claude.
-- **Lokale AI-runtime:** Ollama, als je Offline AI installeert en inschakelt. Ollama draait op je apparaat en wordt beheerd door je lokale Ollama-installatie.
+- **AI-providers:** Google Gemini, [OpenRouter](https://openrouter.ai/privacy) en zijn modelproviders, [Alibaba Cloud Model Studio (Qwen)](https://www.alibabacloud.com/help/en/model-studio/privacy-notice) en Groq (audiotranscriptie). Met BYOK: Google Gemini, OpenRouter en zijn modelproviders, OpenAI of Anthropic Claude.
+- **Lokale AI-runtime:** Ollama of LM Studio, als je een van beide installeert en in Zush kiest. Beide draaien op je apparaat en worden beheerd door je lokale installatie.
 - **Cloudinfrastructuur:** Supabase (backenddatabase, licenties en API-relay).
 - **Betalingsverwerkers:** [Paddle.com](https://www.paddle.com) (directe aankopen), [Apple](https://www.apple.com/legal/privacy/) (Mac App Store-aankopen), [Microsoft](https://privacy.microsoft.com/privacystatement) (Microsoft Store-aankopen).
 - **Fouttracking:** Sentry (anonieme crash- en foutrapporten).
@@ -948,7 +948,7 @@ Per fornire funzioni di organizzazione e rinomina basate su IA, Zush elabora i f
 - **File visivi** come immagini, anteprime RAW, SVG e alcuni PDF possono essere convertiti in un’immagine di anteprima compressa prima dell’analisi.
 - **Documenti supportati** come file di testo, email, fogli di calcolo, presentazioni e alcuni PDF possono essere analizzati usando testo estratto o un riepilogo compatto generato sul tuo dispositivo prima dell’invio della richiesta.
 
-I file originali a piena risoluzione non lasciano il tuo dispositivo durante il normale funzionamento cloud. Se abiliti la modalità IA offline, l’analisi dei file supportati avviene tramite modelli locali privati via Ollama invece che tramite cloud Zush o provider IA di terze parti.
+I file originali a piena risoluzione non lasciano il tuo dispositivo durante il normale funzionamento cloud. Se abiliti la modalità IA offline, l’analisi dei file supportati avviene tramite modelli locali privati via Ollama o LM Studio invece che tramite cloud Zush o provider IA di terze parti.
 
 **1.2 Dati di prompt e istruzioni**
 Se usi l’editor di prompt IA o altre funzioni di personalizzazione, il testo dei prompt personalizzati per rinomina e tagging che inserisci viene inviato con la richiesta di analisi affinché il provider IA possa seguire le tue istruzioni.
@@ -982,10 +982,10 @@ Usiamo le informazioni raccolte per:
 
 Zush invia payload di analisi dei file a servizi IA di terze parti:
 
-- **Flusso predefinito:** in base al piano, all’utilizzo, alla disponibilità e al routing di fallback, le richieste di analisi possono essere inoltrate tramite i server Zush a Groq, Google Gemini o Alibaba Cloud Model Studio (Qwen).
+- **Flusso predefinito (Zush Cloud AI):** in base al piano, all’utilizzo, al tipo di file, alla disponibilità e al routing di fallback, le richieste di analisi e di ordinamento delle cartelle vengono inoltrate tramite i server Zush a Google Gemini, OpenRouter o Alibaba Cloud Model Studio (Qwen). OpenRouter inoltra la richiesta al provider che serve il modello selezionato, ad esempio modelli DeepSeek ospitati dai partner di inferenza di OpenRouter. Le richieste di trascrizione audio vengono inviate a Groq.
 - **Elaborazione globale Qwen:** quando viene utilizzato l’ambito di distribuzione Global di Alibaba Cloud Model Studio, i dati statici della richiesta rimangono nella regione USA (Virginia) selezionata, mentre i dati transitori di inferenza cifrati possono essere elaborati su nodi disponibili in altre regioni, incluse aree dentro o fuori la Cina. I dati transitori di inferenza non vengono conservati dal nodo di inferenza. Gli utenti con requisiti geografici di residenza dei dati devono usare l’IA offline o un provider BYOK conforme a tali requisiti.
 - **Bring Your Own Key (BYOK):** gli utenti di tutti i piani possono configurare le proprie chiavi API per Google Gemini, OpenRouter, OpenAI o Anthropic Claude. Le chiavi BYOK sono archiviate localmente nello spazio sicuro del sistema. In modalità BYOK, la chiave viene inviata al backend Zush e al provider IA selezionato solo per validare la chiave ed elaborare le richieste IA. Con OpenRouter, sia OpenRouter sia il provider del modello selezionato possono elaborare la richiesta. Il backend Zush non memorizza permanentemente le chiavi API BYOK.
-- **Modalità IA offline:** gli utenti di tutti i piani possono elaborare file supportati con modelli locali privati via Ollama. In modalità IA offline, il contenuto di analisi viene elaborato sul dispositivo dell’utente e non viene inviato ai server Zush o a provider IA di terze parti per l’analisi. Zush può comunque contattare servizi backend per licenze, aggiornamenti, supporto o controlli operativi non legati al contenuto.
+- **Modalità IA offline:** gli utenti di tutti i piani possono elaborare file supportati con modelli locali privati via Ollama o LM Studio. In modalità IA offline, il contenuto di analisi viene elaborato sul dispositivo dell’utente e non viene inviato ai server Zush o a provider IA di terze parti per l’analisi. Zush può comunque contattare servizi backend per licenze, aggiornamenti, supporto o controlli operativi non legati al contenuto.
 
 **Cosa viene inviato nelle modalità Cloud e BYOK:** a seconda del tipo di file, può includere un’immagine di anteprima compressa, testo estratto dal documento o un riepilogo compatto del contenuto, insieme a tipo MIME, estensione, preferenza lingua, impostazioni regenerate e BYOK, identificatore anonimo del dispositivo e qualsiasi prompt personalizzato di rinomina o tagging inviato. Alcune richieste possono includere anche metadati di base come il nome del file per generare suggerimenti migliori.
 
@@ -997,8 +997,8 @@ Zush invia payload di analisi dei file a servizi IA di terze parti:
 
 Condividiamo dati con i seguenti fornitori:
 
-- **Provider IA:** Groq, Google Gemini e [Alibaba Cloud Model Studio (Qwen)](https://www.alibabacloud.com/help/en/model-studio/privacy-notice). Con BYOK: Google Gemini, OpenRouter e i relativi provider di modelli, OpenAI o Anthropic Claude.
-- **Runtime IA locale:** Ollama, se installi e abiliti la modalità IA offline. Ollama gira sul tuo dispositivo ed è gestito dalla tua installazione locale.
+- **Provider IA:** Google Gemini, [OpenRouter](https://openrouter.ai/privacy) e i relativi provider di modelli, [Alibaba Cloud Model Studio (Qwen)](https://www.alibabacloud.com/help/en/model-studio/privacy-notice) e Groq (trascrizione audio). Con BYOK: Google Gemini, OpenRouter e i relativi provider di modelli, OpenAI o Anthropic Claude.
+- **Runtime IA locale:** Ollama o LM Studio, se ne installi uno e lo selezioni in Zush. Entrambi girano sul tuo dispositivo e sono gestiti dalla tua installazione locale.
 - **Infrastruttura cloud:** Supabase (database backend, licenze e relay API).
 - **Processori di pagamento:** [Paddle.com](https://www.paddle.com) (acquisti diretti), [Apple](https://www.apple.com/legal/privacy/) (acquisti Mac App Store), [Microsoft](https://privacy.microsoft.com/privacystatement) (acquisti Microsoft Store).
 - **Tracciamento errori:** Sentry (report anonimi di crash ed errori).
@@ -1134,7 +1134,7 @@ AI による整理・リネーム機能を提供するため、Zush はユーザ
 - **画像、RAW プレビュー、SVG、一部の PDF などの視覚ファイル**は、分析前に圧縮されたプレビュー画像へ変換される場合があります。
 - **テキストファイル、メール、スプレッドシート、プレゼンテーション、一部の PDF などの対応ドキュメント**は、リクエスト送信前にデバイス上で生成される抽出テキストまたはコンパクトな内容要約を使って分析される場合があります。
 
-通常のクラウド動作では、文字起こしに必要な限定的な音声ペイロードや iWork ファイルの一時変換が必要な場合を除き、元のフル解像度ファイルがデバイス外へ送信されることはありません。オフライン AI モードを有効にした場合、対応ファイルの分析は Zush クラウドや第三者 AI プロバイダーではなく、Ollama 経由のプライベートなローカルモデルで実行されます。
+通常のクラウド動作では、文字起こしに必要な限定的な音声ペイロードや iWork ファイルの一時変換が必要な場合を除き、元のフル解像度ファイルがデバイス外へ送信されることはありません。オフライン AI モードを有効にした場合、対応ファイルの分析は Zush クラウドや第三者 AI プロバイダーではなく、Ollama または LM Studio 経由のプライベートなローカルモデルで実行されます。
 
 **1.2 プロンプトおよび指示データ**
 AI プロンプトエディタやその他のプロンプトカスタマイズ機能を使用する場合、入力したカスタムリネームプロンプトおよびタグ付けプロンプトは、AI プロバイダーが指示に従えるよう分析リクエストとともに送信されます。
@@ -1168,10 +1168,10 @@ AI プロンプトエディタやその他のプロンプトカスタマイズ�
 
 Zush はファイル分析ペイロードを第三者 AI サービスへ送信します。
 
-- **デフォルトフロー:** ファイル分析リクエストは、プラン、利用状況、可用性、フォールバックルーティングに応じて、Zush サーバー経由で Groq、Google Gemini、または Alibaba Cloud Model Studio（Qwen）へ送信される場合があります。
+- **デフォルトフロー（Zush Cloud AI）:** ファイル分析とフォルダ整理のリクエストは、プラン、利用状況、ファイル形式、可用性、フォールバックルーティングに応じて、Zush サーバー経由で Google Gemini、OpenRouter、または Alibaba Cloud Model Studio（Qwen）へ送信されます。OpenRouter は、選択されたモデルを提供する事業者（OpenRouter の推論パートナーがホストする DeepSeek モデルなど）にリクエストを転送します。音声の文字起こしリクエストは Groq に送信されます。
 - **Qwen のグローバル処理:** Alibaba Cloud Model Studio の Global サービス展開範囲を使用する場合、静的なリクエストデータは選択された米国（バージニア）リージョンに残りますが、暗号化された一時的な推論データは、中国国内または中国国外を含む他のリージョンの利用可能なノードで処理される場合があります。一時的な推論データは推論ノードに永続保存されません。地理的なデータレジデンシー要件があるユーザーは、その要件を満たすオフライン AI または BYOK プロバイダー構成を使用してください。
 - **Bring Your Own Key (BYOK):** すべてのプランのユーザーは Google Gemini、OpenRouter、OpenAI、Anthropic Claude 用の独自 API キーを設定できます。BYOK キーはシステムの安全なストレージにローカル保存されます。BYOK モードでは、キーの検証と AI リクエスト処理に必要な場合にのみ、Zush バックエンドおよび選択された AI プロバイダーへ送信されます。OpenRouter では、OpenRouter と選択したモデルの提供元の両方がリクエストを処理する場合があります。Zush バックエンドは BYOK API キーを永続保存しません。
-- **オフライン AI モード:** すべてのプランのユーザーは Ollama 経由のプライベートなローカルモデルで対応ファイルを処理できます。オフライン AI モードでは、ファイル分析内容はユーザーのデバイス上で処理され、分析のために Zush サーバーや第三者 AI プロバイダーへ送信されません。Zush はライセンス、更新、サポート、内容を伴わない運用確認のためにバックエンドサービスへ接続する場合があります。
+- **オフライン AI モード:** すべてのプランのユーザーは Ollama または LM Studio 経由のプライベートなローカルモデルで対応ファイルを処理できます。オフライン AI モードでは、ファイル分析内容はユーザーのデバイス上で処理され、分析のために Zush サーバーや第三者 AI プロバイダーへ送信されません。Zush はライセンス、更新、サポート、内容を伴わない運用確認のためにバックエンドサービスへ接続する場合があります。
 
 **Cloud および BYOK モードで送信される内容:** ファイル種別に応じて、圧縮プレビュー画像、抽出されたドキュメントテキスト、またはコンパクトな内容要約、MIME タイプ、拡張子、言語設定、再生成および BYOK 設定、匿名デバイス識別子、送信したカスタムリネームまたはタグ付けプロンプトが含まれる場合があります。より良い候補生成のため、ファイル名などの基本メタデータが含まれる場合もあります。
 
@@ -1183,8 +1183,8 @@ Zush はファイル分析ペイロードを第三者 AI サービスへ送信�
 
 当社は以下のサービス提供者とデータを共有します。
 
-- **AI プロバイダー:** Groq、Google Gemini、および [Alibaba Cloud Model Studio（Qwen）](https://www.alibabacloud.com/help/en/model-studio/privacy-notice)。BYOK では Google Gemini、OpenRouter とそのモデル提供元、OpenAI、Anthropic Claude を利用できます。
-- **ローカル AI ランタイム:** オフライン AI モードをインストールして有効にした場合の Ollama。Ollama はユーザーのデバイス上で動作し、ローカルの Ollama インストールにより管理されます。
+- **AI プロバイダー:** Google Gemini、[OpenRouter](https://openrouter.ai/privacy) とそのモデル提供元、[Alibaba Cloud Model Studio（Qwen）](https://www.alibabacloud.com/help/en/model-studio/privacy-notice)、Groq（音声の文字起こし）。BYOK では Google Gemini、OpenRouter とそのモデル提供元、OpenAI、Anthropic Claude を利用できます。
+- **ローカル AI ランタイム:** Ollama または LM Studio をインストールし、Zush で選択した場合のそのランタイム。いずれもユーザーのデバイス上で動作し、ローカルのインストールにより管理されます。
 - **クラウドインフラ:** Supabase（バックエンドデータベース、ライセンス、API リレー）。
 - **決済処理業者:** [Paddle.com](https://www.paddle.com)（直接購入）、[Apple](https://www.apple.com/legal/privacy/)（Mac App Store 購入）、[Microsoft](https://privacy.microsoft.com/privacystatement)（Microsoft Store 購入）。
 - **エラートラッキング:** Sentry（匿名のクラッシュおよびエラーレポート）。
@@ -1320,7 +1320,7 @@ AI 기반 정리 및 이름 변경 기능을 제공하기 위해 Zush는 사용�
 - **이미지, RAW 미리보기, SVG, 일부 PDF 같은 시각 파일**은 분석 전에 압축된 미리보기 이미지로 변환될 수 있습니다.
 - **텍스트 파일, 이메일, 스프레드시트, 프레젠테이션, 일부 PDF 같은 지원 문서**는 요청 전송 전에 기기에서 생성된 추출 텍스트 또는 간결한 콘텐츠 요약을 사용해 분석될 수 있습니다.
 
-일반적인 클라우드 작업에서 원본 전체 해상도 파일은 기기를 떠나지 않습니다. 오프라인 AI 모드를 활성화하면 지원 파일 분석은 Zush 클라우드나 타사 AI 제공자가 아니라 Ollama를 통한 개인 로컬 모델에서 실행됩니다.
+일반적인 클라우드 작업에서 원본 전체 해상도 파일은 기기를 떠나지 않습니다. 오프라인 AI 모드를 활성화하면 지원 파일 분석은 Zush 클라우드나 타사 AI 제공자가 아니라 Ollama 또는 LM Studio를 통한 개인 로컬 모델에서 실행됩니다.
 
 **1.2 프롬프트 및 지시 데이터**
 AI 프롬프트 편집기 또는 기타 프롬프트 사용자 지정 기능을 사용하는 경우, 입력한 사용자 지정 이름 변경 프롬프트와 태그 프롬프트가 분석 요청과 함께 전송되어 AI 제공자가 지시를 따를 수 있습니다.
@@ -1354,10 +1354,10 @@ AI 프롬프트 편집기 또는 기타 프롬프트 사용자 지정 기능을 
 
 Zush는 파일 분석 payload를 타사 AI 서비스로 전송합니다.
 
-- **기본 흐름:** 파일 분석 요청은 플랜, 사용량, 가용성 및 대체 라우팅에 따라 Zush 서버를 통해 Groq, Google Gemini 또는 Alibaba Cloud Model Studio(Qwen)로 전달될 수 있습니다.
+- **기본 흐름(Zush Cloud AI):** 파일 분석 및 폴더 정리 요청은 플랜, 사용량, 파일 유형, 가용성 및 대체 라우팅에 따라 Zush 서버를 통해 Google Gemini, OpenRouter 또는 Alibaba Cloud Model Studio(Qwen)로 전달됩니다. OpenRouter는 선택된 모델을 제공하는 업체(예: OpenRouter 추론 파트너가 호스팅하는 DeepSeek 모델)로 요청을 전달합니다. 오디오 전사 요청은 Groq로 전송됩니다.
 - **Qwen 글로벌 처리:** Alibaba Cloud Model Studio의 Global 서비스 배포 범위를 사용하는 경우 정적 요청 데이터는 선택한 미국(버지니아) 리전에 유지되지만, 암호화된 임시 추론 데이터는 중국 안팎을 포함한 다른 리전의 사용 가능한 노드에서 처리될 수 있습니다. 임시 추론 데이터는 추론 노드에 영구 저장되지 않습니다. 지리적 데이터 레지던시 요구 사항이 있는 사용자는 해당 요구 사항을 충족하는 오프라인 AI 또는 BYOK 제공자 구성을 사용해야 합니다.
 - **Bring Your Own Key (BYOK):** 모든 플랜의 사용자는 Google Gemini, OpenRouter, OpenAI, Anthropic Claude용 자체 API 키를 구성할 수 있습니다. BYOK 키는 시스템의 안전한 저장소에 로컬 저장됩니다. BYOK 모드에서 키는 키 검증 및 AI 요청 처리에 필요한 경우에만 Zush 백엔드와 선택한 AI 제공자에게 전송됩니다. OpenRouter를 사용하면 OpenRouter와 선택한 모델의 제공자가 모두 요청을 처리할 수 있습니다. Zush 백엔드는 BYOK API 키를 영구 저장하지 않습니다.
-- **오프라인 AI 모드:** 모든 플랜의 사용자는 Ollama를 통한 개인 로컬 모델로 지원 파일을 처리할 수 있습니다. 오프라인 AI 모드에서는 파일 분석 콘텐츠가 사용자의 기기에서 처리되며 분석을 위해 Zush 서버나 타사 AI 제공자에게 전송되지 않습니다. Zush는 라이선스, 업데이트, 지원 또는 콘텐츠가 아닌 운영 점검을 위해 백엔드 서비스에 계속 접속할 수 있습니다.
+- **오프라인 AI 모드:** 모든 플랜의 사용자는 Ollama 또는 LM Studio를 통한 개인 로컬 모델로 지원 파일을 처리할 수 있습니다. 오프라인 AI 모드에서는 파일 분석 콘텐츠가 사용자의 기기에서 처리되며 분석을 위해 Zush 서버나 타사 AI 제공자에게 전송되지 않습니다. Zush는 라이선스, 업데이트, 지원 또는 콘텐츠가 아닌 운영 점검을 위해 백엔드 서비스에 계속 접속할 수 있습니다.
 
 **Cloud 및 BYOK 모드에서 전송되는 항목:** 파일 유형에 따라 압축 미리보기 이미지, 추출된 문서 텍스트 또는 간결한 콘텐츠 요약, MIME 타입, 파일 확장자, 언어 설정, 재생성 및 BYOK 설정, 익명 기기 식별자, 제출한 사용자 지정 이름 변경 또는 태그 프롬프트가 포함될 수 있습니다. 더 나은 이름 제안을 생성하기 위해 파일 이름 같은 기본 파일 메타데이터가 포함될 수도 있습니다.
 
@@ -1369,8 +1369,8 @@ Zush는 파일 분석 payload를 타사 AI 서비스로 전송합니다.
 
 당사는 다음 서비스 제공자와 데이터를 공유합니다.
 
-- **AI 제공자:** Groq, Google Gemini 및 [Alibaba Cloud Model Studio(Qwen)](https://www.alibabacloud.com/help/en/model-studio/privacy-notice). BYOK 사용 시 Google Gemini, OpenRouter 및 해당 모델 제공자, OpenAI 또는 Anthropic Claude를 사용할 수 있습니다.
-- **로컬 AI 런타임:** 오프라인 AI 모드를 설치하고 활성화한 경우 Ollama. Ollama는 사용자의 기기에서 실행되며 로컬 Ollama 설치에 의해 관리됩니다.
+- **AI 제공자:** Google Gemini, [OpenRouter](https://openrouter.ai/privacy) 및 해당 모델 제공자, [Alibaba Cloud Model Studio(Qwen)](https://www.alibabacloud.com/help/en/model-studio/privacy-notice), Groq(오디오 전사). BYOK 사용 시 Google Gemini, OpenRouter 및 해당 모델 제공자, OpenAI 또는 Anthropic Claude를 사용할 수 있습니다.
+- **로컬 AI 런타임:** Ollama 또는 LM Studio를 설치하고 Zush에서 선택한 경우 해당 런타임. 둘 다 사용자의 기기에서 실행되며 로컬 설치에 의해 관리됩니다.
 - **클라우드 인프라:** Supabase(백엔드 데이터베이스, 라이선스, API relay).
 - **결제 처리자:** [Paddle.com](https://www.paddle.com)(직접 구매), [Apple](https://www.apple.com/legal/privacy/)(Mac App Store 구매), [Microsoft](https://privacy.microsoft.com/privacystatement)(Microsoft Store 구매).
 - **오류 추적:** Sentry(익명 크래시 및 오류 보고서).
@@ -1507,7 +1507,7 @@ Zush PRO는 월간 플랜 또는 일회성 구매로 제공됩니다. 구매일�
 - **支持的文档**，例如文本文件、邮件、表格、演示文稿、iWork 文件和部分 PDF，可能会使用提取文本、临时 iWork PDF 预览或在你的设备上生成的紧凑内容摘要进行分析，然后再发送请求。
 - **支持的音频文件** 可能会使用嵌入元数据、识别上下文、转录上下文、sidecar 转录数据，或在需要转录时使用受限音频 payload。
 
-在正常云端操作中，除转录需要的受限音频 payload 或 iWork 分析所需的临时转换外，你的原始全分辨率文件不会离开你的设备。如果你启用离线 AI 模式，支持文件的分析会通过 Ollama 的私有本地模型运行，而不是通过 Zush 云端或第三方 AI 提供商。
+在正常云端操作中，除转录需要的受限音频 payload 或 iWork 分析所需的临时转换外，你的原始全分辨率文件不会离开你的设备。如果你启用离线 AI 模式，支持文件的分析会通过 Ollama 或 LM Studio 的私有本地模型运行，而不是通过 Zush 云端或第三方 AI 提供商。
 
 **1.2 提示词和指令数据**
 如果你使用 AI 提示词编辑器或其他提示词自定义功能，你输入的自定义重命名提示词和自定义标签提示词会随分析请求一起发送，以便 AI 提供商遵循你的指令。
@@ -1541,10 +1541,10 @@ Zush PRO는 월간 플랜 또는 일회성 구매로 제공됩니다. 구매일�
 
 Zush 会将文件分析 payload 发送给第三方 AI 服务进行分析：
 
-- **默认流程：** 根据方案、使用情况、可用性和备用路由，文件分析请求可能会通过 Zush 服务器发送给 Groq、Google Gemini 或 Alibaba Cloud Model Studio（Qwen）。
+- **默认流程（Zush Cloud AI）：** 根据方案、使用情况、文件类型、可用性和备用路由，文件分析和文件夹整理请求会通过 Zush 服务器发送给 Google Gemini、OpenRouter 或 Alibaba Cloud Model Studio（Qwen）。OpenRouter 会把请求转发给提供所选模型的服务商，例如由 OpenRouter 推理合作伙伴托管的 DeepSeek 模型。音频转录请求会发送给 Groq。
 - **Qwen Global 处理：** 使用 Alibaba Cloud Model Studio 的 Global 服务部署范围时，静态请求数据会保留在所选的美国（弗吉尼亚）区域，而加密的临时推理数据可能会在其他区域的可用节点上处理，包括中国境内或境外。推理节点不会持久保留临时推理数据。有地理数据驻留要求的用户应使用离线 AI，或使用符合这些要求的 BYOK 提供商配置。
 - **Bring Your Own Key (BYOK)：** 所有方案的用户都可以为 Google Gemini、OpenRouter、OpenAI 或 Anthropic Claude 配置自己的 API 密钥。BYOK 密钥会存储在系统的安全存储中。BYOK 模式下，密钥只会在验证密钥和处理 AI 请求时发送给 Zush 后端和所选 AI 提供商。使用 OpenRouter 时，OpenRouter 和所选模型的提供商都可能处理请求。Zush 后端不会永久存储 BYOK API 密钥。
-- **离线 AI 模式：** 所有方案的用户都可以通过 Ollama 的私有本地模型处理支持的文件。在离线 AI 模式下，文件分析内容会在用户设备上处理，不会发送给 Zush 服务器或第三方 AI 提供商进行分析。Zush 仍可能为许可证、更新、支持或非内容类运营检查而联系后端服务。
+- **离线 AI 模式：** 所有方案的用户都可以通过 Ollama 或 LM Studio 的私有本地模型处理支持的文件。在离线 AI 模式下，文件分析内容会在用户设备上处理，不会发送给 Zush 服务器或第三方 AI 提供商进行分析。Zush 仍可能为许可证、更新、支持或非内容类运营检查而联系后端服务。
 
 **Cloud 和 BYOK 模式下会发送的内容：** 根据文件类型，这可能包括压缩预览图、设计预览、采样视频帧、字幕上下文、提取的文档文本、临时 iWork PDF 预览、音频元数据、转录上下文、转录所需的受限音频 payload 或紧凑内容摘要，以及 MIME 类型、文件扩展名、语言偏好、重新生成和 BYOK 设置、匿名设备标识符，以及你提交的任何自定义重命名或标签提示词。某些请求还可能包含基本文件元数据，例如用于生成更好重命名建议的文件名。
 
@@ -1556,8 +1556,8 @@ Zush 会将文件分析 payload 发送给第三方 AI 服务进行分析：
 
 我们会与以下服务提供商共享数据：
 
-- **AI 提供商：** Groq、Google Gemini 和 [Alibaba Cloud Model Studio（Qwen）](https://www.alibabacloud.com/help/en/model-studio/privacy-notice)。使用 BYOK 时，可使用 Google Gemini、OpenRouter 及其模型提供商、OpenAI 或 Anthropic Claude。
-- **本地 AI 运行时：** 如果你安装并启用离线 AI 模式，则为 Ollama。Ollama 在你的设备上运行，并由你的本地 Ollama 安装管理。
+- **AI 提供商：** Google Gemini、[OpenRouter](https://openrouter.ai/privacy) 及其模型提供商、[Alibaba Cloud Model Studio（Qwen）](https://www.alibabacloud.com/help/en/model-studio/privacy-notice)，以及 Groq（音频转录）。使用 BYOK 时，可使用 Google Gemini、OpenRouter 及其模型提供商、OpenAI 或 Anthropic Claude。
+- **本地 AI 运行时：** 如果你安装 Ollama 或 LM Studio 并在 Zush 中选择它，则为该运行时。两者都在你的设备上运行，并由你的本地安装管理。
 - **云基础设施：** Supabase（后端数据库、许可证和 API relay）。
 - **支付处理方：** [Paddle.com](https://www.paddle.com)（直接购买）、[Apple](https://www.apple.com/legal/privacy/)（Mac App Store 购买）、[Microsoft](https://privacy.microsoft.com/privacystatement)（Microsoft Store 购买）。
 - **错误跟踪：** Sentry（匿名崩溃和错误报告）。

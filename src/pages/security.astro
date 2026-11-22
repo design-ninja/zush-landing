@@ -1,0 +1,35 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SecurityPage from '@/components/SecurityPage/SecurityPage.astro';
+import FAQ from '@/components/FAQ';
+import { getSeoForPath } from '@/seo/config';
+import { SOFTWARE_REF } from '@/seo/entity';
+import { SECURITY_FAQ, SECURITY_PAGE_PATH, SECURITY_PAGE_REVIEWED_AT } from '@/data/securityPage';
+import { buildFAQPageJsonLd, buildPageBreadcrumbJsonLd, buildWebPageJsonLd } from '@/utils/jsonLd';
+
+const seo = getSeoForPath(SECURITY_PAGE_PATH);
+const jsonLd = [
+  buildWebPageJsonLd({
+    pagePath: SECURITY_PAGE_PATH,
+    title: seo.title,
+    description: seo.description,
+    dateModified: SECURITY_PAGE_REVIEWED_AT,
+    inLanguage: 'en',
+    mainEntityId: SOFTWARE_REF['@id'],
+    speakableSelectors: ['h1', '.security__answer'],
+  }),
+  buildFAQPageJsonLd(SECURITY_FAQ),
+  buildPageBreadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Security & Privacy', path: SECURITY_PAGE_PATH },
+  ]),
+];
+---
+
+<BaseLayout seo={seo} jsonLd={jsonLd}>
+  <SecurityPage />
+  <FAQ
+    items={SECURITY_FAQ}
+    description="Common questions about Zush security, privacy, and safe downloads."
+  />
+</BaseLayout>

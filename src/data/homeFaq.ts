@@ -87,6 +87,16 @@ export const HOME_FAQ_DATA: FAQItem[] = [
       `Your original files stay on your device. Zush Cloud AI sends only the content needed for analysis, BYOK sends it to the provider you choose, and ${LOCAL_AI_MODES_SUMMARY} keep supported analysis on your computer without cloud processing.`,
   },
   {
+    question: 'Is Zush safe to use?',
+    answer:
+      'Yes. Zush is a code-signed, Apple-notarized Mac app and a Microsoft Store app for Windows. It renames files on your computer, previews every batch before applying it, and can undo it from Rename History. Original files are not uploaded, and with LM Studio or Ollama no file content leaves your device.',
+  },
+  {
+    question: 'Where can I download Zush safely?',
+    answer:
+      'Download Zush for Mac from zushapp.com, the Mac App Store, or Homebrew, and Zush for Windows from the Microsoft Store. Other sites that offer repackaged or "cracked" installers are not affiliated with Zush, and the app is free to try, so there is no reason to use them.',
+  },
+  {
     question: 'Can Zush rename files offline?',
     answer:
       `Yes. LM Studio and Ollama work offline after you configure a compatible local model. Both local modes are available on the free plan for supported files and share the ${APP_CONFIG.free_tier_limit}-rename limit with Zush Cloud AI and BYOK; PRO removes that limit.`,

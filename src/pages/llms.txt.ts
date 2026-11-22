@@ -43,6 +43,7 @@ export async function GET() {
     `- [AI File Sorter: sort files into folders with your own rules](${SITE_ORIGIN}/ai-file-sorter)`,
     `- [Remove Duplicate Files While Renaming](${SITE_ORIGIN}/remove-duplicate-files)`,
     `- [Offline AI File Renamer](${SITE_ORIGIN}/offline-ai-file-renamer)`,
+    `- [Is Zush safe? Security, privacy, and official downloads](${SITE_ORIGIN}/security)`,
     `- [Zush for Mac](${SITE_ORIGIN}/mac)`,
     `- [Zush for Windows](${SITE_ORIGIN}/windows)`,
     `- [Documentation](${SITE_ORIGIN}/docs)`,

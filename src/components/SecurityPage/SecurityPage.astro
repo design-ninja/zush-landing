@@ -1,0 +1,319 @@
+---
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import PillLink from '@/components/PillLink';
+import { MAC_APP_VERSION, WINDOWS_APP_VERSION } from '@/constants';
+import {
+  SECURITY_ACCOUNT_DATA,
+  SECURITY_DOWNLOAD_SOURCES,
+  SECURITY_FILE_SAFETY_STEPS,
+  SECURITY_MODE_ROWS,
+  SECURITY_NOT_SENT,
+  SECURITY_PAGE_REVIEWED_AT,
+  SECURITY_SHORT_ANSWER,
+} from '@/data/securityPage';
+
+const referenceLinks = [
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+  { label: 'Privacy and security docs', href: '/docs/privacy-security' },
+  { label: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
+  { label: 'Offline AI setup', href: '/docs/offline-ai' },
+  { label: 'BYOK setup', href: '/docs/byok' },
+  { label: 'For medical practices', href: '/for-medical' },
+  { label: 'For law firms', href: '/for-legal' },
+];
+---
+
+<article class="security">
+  <div class="security__container">
+    <header class="security__hero">
+      <p class="security__kicker">Security &amp; Privacy</p>
+      <Heading as="h1">Is Zush Safe? How the AI File Renamer Handles Your Files</Heading>
+      <p class="security__lead security__answer">{SECURITY_SHORT_ANSWER}</p>
+      <div class="security__heroMeta">
+        <span>Reviewed {SECURITY_PAGE_REVIEWED_AT}</span>
+        <span aria-hidden="true">·</span>
+        <span>Mac {MAC_APP_VERSION}</span>
+        <span aria-hidden="true">·</span>
+        <span>Windows {WINDOWS_APP_VERSION}</span>
+      </div>
+    </header>
+
+    <div class="security__layout">
+      <main class="security__main">
+        <section id="ai-modes" class="security__section">
+          <div class="security__sectionHead">
+            <span class="security__eyebrow">Data flow</span>
+            <Heading as="h2" size="h3" className="security__sectionTitle">What leaves your device in each AI mode</Heading>
+          </div>
+          <Text as="p" color="subtle" className="security__copy">
+            Zush has four AI modes. You pick one in AI Modes, and you can switch per task: keep a local model for sensitive folders and cloud AI for everything else.
+          </Text>
+          <div class="security__tableWrap">
+            <table class="security__table">
+              <thead>
+                <tr>
+                  <th>Mode</th>
+                  <th>What is sent</th>
+                  <th>Where it goes</th>
+                  <th>Storage and training</th>
+                </tr>
+              </thead>
+              <tbody>
+                {SECURITY_MODE_ROWS.map((row) => (
+                  <tr>
+                    <td>{row.mode}</td>
+                    <td>{row.sent}</td>
+                    <td>{row.destination}</td>
+                    <td>{row.retention}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="not-sent" class="security__section">
+          <div class="security__sectionHead">
+            <span class="security__eyebrow">Stays local</span>
+            <Heading as="h2" size="h3" className="security__sectionTitle">What Zush never sends</Heading>
+          </div>
+          <ul class="security__bulletList">
+            {SECURITY_NOT_SENT.map((item) => <li>{item}</li>)}
+          </ul>
+        </section>
+
+        <section id="file-safety" class="security__section">
+          <div class="security__sectionHead">
+            <span class="security__eyebrow">File safety</span>
+            <Heading as="h2" size="h3" className="security__sectionTitle">Renames you can review and undo</Heading>
+          </div>
+          <ol class="security__steps">
+            {SECURITY_FILE_SAFETY_STEPS.map((step, index) => (
+              <li class="security__step">
+                <span class="security__stepIndex">{String(index + 1).padStart(2, '0')}</span>
+                <Text as="p" color="subtle">{step}</Text>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section id="official-downloads" class="security__section">
+          <div class="security__sectionHead">
+            <span class="security__eyebrow">Downloads</span>
+            <Heading as="h2" size="h3" className="security__sectionTitle">Where to download Zush safely</Heading>
+          </div>
+          <Text as="p" color="subtle" className="security__copy">
+            These are the only official sources. Other download sites that repackage Zush are not affiliated with us, and Zush is free to try, so there is no reason to install a modified copy.
+          </Text>
+          <div class="security__facts" role="list" aria-label="Official Zush download sources">
+            {SECURITY_DOWNLOAD_SOURCES.map((source) => (
+              <div class="security__fact" role="listitem">
+                <a class="security__factLabel" href={source.href}>{source.label}</a>
+                <Text as="p" color="subtle">{source.note}</Text>
+              </div>
+            ))}
+          </div>
+        </section>
+      </main>
+
+      <aside class="security__rail">
+        <section class="security__section">
+          <div class="security__sectionHead security__sectionHead_compact">
+            <span class="security__eyebrow">Sensitive files</span>
+            <Heading as="h2" size="h3" className="security__sectionTitle">Which mode to choose</Heading>
+          </div>
+          <Text as="p" color="subtle" className="security__copy">
+            For patient records, contracts, and client documents, use LM Studio or Ollama so no file content leaves your computer. Zush Cloud AI may process requests outside your country, so if you have data-residency requirements, use a local model or a BYOK provider whose terms meet them.
+          </Text>
+        </section>
+
+        <section class="security__section">
+          <div class="security__sectionHead security__sectionHead_compact">
+            <span class="security__eyebrow">Your account</span>
+            <Heading as="h2" size="h3" className="security__sectionTitle">What Zush knows about you</Heading>
+          </div>
+          <ul class="security__bulletList">
+            {SECURITY_ACCOUNT_DATA.map((item) => <li>{item}</li>)}
+          </ul>
+        </section>
+
+        <section class="security__section">
+          <div class="security__sectionHead security__sectionHead_compact">
+            <span class="security__eyebrow">References</span>
+            <Heading as="h2" size="h3" className="security__sectionTitle">Policies and setup guides</Heading>
+          </div>
+          <div class="security__links">
+            {referenceLinks.map((link) => (
+              <PillLink href={link.href} withArrow size="sm">{link.label}</PillLink>
+            ))}
+          </div>
+        </section>
+      </aside>
+    </div>
+  </div>
+</article>
+
+<style lang="scss">
+  @use 'styles/variables' as *;
+  @use 'styles/mixins' as *;
+
+  .security {
+    padding: 4rem 0 2rem;
+
+    @include tablet {
+      padding: 3rem 0 1.5rem;
+    }
+  }
+
+  .security__container {
+    @include container;
+  }
+
+  .security__hero {
+    max-width: 46rem;
+    margin: 0 0 4rem;
+  }
+
+  .security__kicker,
+  .security__eyebrow {
+    @include eyebrow;
+  }
+
+  .security__eyebrow {
+    margin: 0;
+  }
+
+  .security__lead {
+    @include body-copy(1.0625rem);
+    margin: 1rem 0 0;
+  }
+
+  .security__heroMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--text-faint);
+  }
+
+  .security__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.85fr);
+    gap: 3rem 4rem;
+    align-items: start;
+
+    @include tablet {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .security__main,
+  .security__rail {
+    display: grid;
+    gap: 3rem;
+  }
+
+  .security__section {
+    @include hairline-item;
+  }
+
+  .security__sectionHead {
+    display: grid;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+  }
+
+  .security__sectionHead_compact {
+    margin-bottom: 0.8rem;
+  }
+
+  // Set on <Heading>/<Text>, which Astro's scoped styles don't reach.
+  .security :global(.security__sectionTitle) {
+    margin: 0;
+  }
+
+  .security :global(.security__copy) {
+    line-height: 1.7;
+  }
+
+  .security__tableWrap {
+    overflow-x: auto;
+    margin-top: 1.1rem;
+  }
+
+  .security__table {
+    @include content-table;
+    min-width: 44rem;
+
+    th,
+    td {
+      vertical-align: top;
+    }
+
+    td:first-child {
+      color: var(--foreground);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+  }
+
+  .security__bulletList {
+    @include body-copy(0.9375rem);
+    margin: 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .security__steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+  }
+
+  .security__step {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 0.75rem;
+    align-items: baseline;
+    padding: 1rem 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .security__step p,
+  .security__fact p {
+    margin: 0;
+  }
+
+  .security__stepIndex {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--primary);
+  }
+
+  .security__facts {
+    display: grid;
+    margin-top: 1rem;
+  }
+
+  .security__fact {
+    display: grid;
+    gap: 0.25rem;
+    padding: 0.875rem 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .security__factLabel {
+    color: var(--foreground);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .security__links {
+    @include link-row(0.5rem 1.25rem);
+  }
+</style>

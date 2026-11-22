@@ -310,6 +310,15 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     robots: 'index, follow',
     ogType: 'website',
   },
+  '/security': {
+    title: 'Is Zush Safe? Security & Privacy of the AI File Renamer',
+    description:
+      'What Zush sends in each AI mode, what it never uploads, how undo protects your files, and where to download Zush safely on Mac and Windows.',
+    robots: 'index, follow',
+    ogType: 'website',
+    keywords:
+      'is Zush safe, Zush security, Zush privacy, is AI file renamer safe, private AI file renamer, does AI file renamer upload files, safe AI file organizer, AI file renamer data privacy, Zush official download',
+  },
   '/methodology': {
     title: 'AI File Renaming Methodology & Benchmarks — Zush',
     description:
