@@ -48,7 +48,7 @@ We use the collected information to:
 
 Zush sends file analysis payloads to third-party AI services for analysis:
 
-- **Default flow:** File analysis requests may be routed via Zush servers to Groq, Google Gemini, or Alibaba Cloud Model Studio (Qwen), depending on plan, usage, availability, and fallback routing.
+- **Default flow:** File analysis and folder sorting requests may be routed via Zush servers to Google Gemini, OpenRouter, Alibaba Cloud Model Studio (Qwen), or Groq (speech transcription), depending on plan, usage, availability, and fallback routing. OpenRouter forwards a request to an upstream provider that serves the selected model, such as a DeepSeek model hosted by DeepInfra; both OpenRouter and that provider receive the request.
 - **Global Qwen processing:** When Alibaba Cloud Model Studio's Global service deployment scope is used, static request data remains in the selected US (Virginia) region, while encrypted transient inference data may be processed on available nodes in other regions, including within or outside China. Transient inference data is not persisted by the inference node. Users with geographic data-residency requirements should use Offline AI or a BYOK provider arrangement that meets those requirements.
 - **Bring Your Own Key (BYOK):** Users on every plan may configure their own API keys for Google Gemini, OpenRouter, OpenAI, or Anthropic Claude. BYOK keys are stored locally in secure platform storage. In BYOK mode, the key is sent to Zush backend and the selected AI provider only to validate the key and process AI requests. OpenRouter may route a request to the upstream provider serving the selected model. Zush backend does not permanently store BYOK API keys.
 - **Offline AI mode:** Users on every plan may process supported files with private local models via Ollama. In Offline AI mode, file analysis content is processed on the user's device and is not sent to Zush servers or third-party AI providers for analysis. Zush may still contact backend services for licensing, updates, support, or non-content operational checks.
@@ -63,7 +63,7 @@ Zush sends file analysis payloads to third-party AI services for analysis:
 
 We share data with the following service providers:
 
-- **AI Providers:** Groq, Google Gemini, and [Alibaba Cloud Model Studio (Qwen)](https://www.alibabacloud.com/help/en/model-studio/privacy-notice). With BYOK: Google Gemini, OpenRouter and its upstream model providers, OpenAI, or Anthropic Claude.
+- **AI Providers:** Google Gemini, [OpenRouter](https://openrouter.ai/privacy) and its upstream model providers, [Alibaba Cloud Model Studio (Qwen)](https://www.alibabacloud.com/help/en/model-studio/privacy-notice), and Groq. With BYOK: Google Gemini, OpenRouter and its upstream model providers, OpenAI, or Anthropic Claude.
 - **Local AI Runtime:** Ollama, if you install and enable Offline AI mode. Ollama runs on your device and is managed by your local Ollama installation.
 - **Cloud Infrastructure:** Supabase (backend database, licensing, and API relay).
 - **Payment Processors:** [Paddle.com](https://www.paddle.com) (direct purchases), [Apple](https://www.apple.com/legal/privacy/) (Mac App Store purchases), [Microsoft](https://privacy.microsoft.com/privacystatement) (Microsoft Store purchases).
