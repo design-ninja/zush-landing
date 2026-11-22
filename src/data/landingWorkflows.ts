@@ -76,7 +76,7 @@ const workflows: Record<string, LandingWorkflow> = {
     answer: 'Zush sorts by what a file contains, not by its extension. Write Folder rules the way you would brief an assistant, or leave them empty for Auto. Rules can create nested folders, such as year and then month. Zush analyzes each file, proposes a filename and a folder, and waits for your review before anything moves.',
     steps: [
       'Open AI Rename, choose a Template for the filenames, and pick a destination with the folder control below the Naming Blocks. Keep the original location if the folders should be created next to the files.',
-      'Turn on Sort. Write a rule such as “Group invoices by company and receipts by month, name month folders YYYY-MM,” or leave Folder rules empty for Auto. Turn on Reuse existing folders to file into folders you already have.',
+      'Turn on Sort. Write a rule such as “Group invoices by company and receipts by month, name month folders YYYY-MM,” or leave Folder rules empty for Auto. Zush files into suitable folders you already have; turn on Existing folders only if it should not create new ones.',
       'Add a small batch, review the proposed names and groups, rename a folder or move a file if needed, then apply. Save the setup in a Template and assign it to Monitor to sort new files automatically.',
     ],
     example: { before: 'Downloads/scan_0042.pdf', after: 'Finance/Acme Supply/2026-06-12 – Invoice 10234.pdf', caption: 'Illustrative result: Finance is the destination, Acme Supply is a company folder from the rule “Group invoices by company,” and the filename comes from the Template.' },

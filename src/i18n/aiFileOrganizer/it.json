@@ -1,22 +1,46 @@
 {
   "seo": {
-    "title": "Organizzatore di file con AI per Mac e Windows: nomi basati sul contenuto | Zush",
-    "description": "Zush assegna a ogni file un nome in base al suo contenuto, lo archivia in cartelle quando vuoi e mantiene in ordine i nuovi file con Monitor. Mac e Windows, con anteprima e annullamento."
+    "title": "Organizzatore di file con AI per Mac e Windows: per contenuto",
+    "description": "Zush legge ogni file, lo sposta in cartelle in base al contenuto o alle tue regole e gli dà un nome chiaro. Mac e Windows, AI locale, 50 rinomine gratis."
   },
-  "h1": "Organizzatore di file con AI: assegna nomi e ordina i file in base al contenuto",
-  "accent": "assegna nomi e ordina i file",
-  "definitionText": "Zush è un organizzatore di file con AI per Mac e Windows. Legge ogni file e gli assegna un nome ricercabile, lo archivia in cartelle quando attivi l'ordinamento delle cartelle con AI e mantiene in ordine Download o le cartelle dei clienti grazie al monitoraggio delle cartelle. Controlla ogni batch prima di applicarlo; l'annullamento ripristina nomi e cartelle.",
+  "h1": "Organizzatore di file con AI: ordina e assegna nomi ai file in base al contenuto",
+  "accent": "ordina e assegna nomi ai file",
+  "definitionText": "Zush è un organizzatore di file con AI per Mac e Windows. Legge ogni file, dai PDF e documenti scansionati a foto, video e audio (100+ formati), lo ordina in cartelle in base al contenuto o a regole che scrivi in linguaggio semplice e gli assegna un nome facile da cercare. Controlli ogni nome e ogni cartella prima che venga spostato qualcosa, e l'annullamento ripristina entrambi. Le prime 50 rinomine con AI sono gratuite, senza account né carta; PRO costa $10 al mese o $48 una tantum per un massimo di 3 dispositivi. L'AI funziona nel cloud di Zush, con la tua chiave API o sul tuo computer con Ollama o LM Studio.",
   "faqTitle": "Domande frequenti",
   "relatedToolsTitle": "Strumenti correlati",
   "relatedGuidesTitle": "Guide correlate",
   "faqItems": [
     {
       "question": "Che cos'è un organizzatore di file con AI?",
-      "answer": "Un organizzatore di file con AI legge il contenuto di ciascun file e lo trasforma in nomi di file chiari e ricercabili, con convenzioni di denominazione coerenti. Invece di ordinare solo con regole basate su schemi, Zush analizza screenshot, PDF, foto, documenti, video, audio e file di design, poi assegna a ciascuno un nome in base al contenuto, così Finder, Spotlight e la Ricerca di Windows possono davvero trovarlo."
+      "answer": "Un organizzatore di file con AI legge cosa contiene ogni file e usa queste informazioni per metterlo nella cartella giusta e dargli un nome chiaro. Gli strumenti basati su regole vedono solo il nome del file, l'estensione o la data, quindi non distinguono una fattura da un contratto né la foto di uno scontrino da uno screenshot. Zush legge screenshot, PDF e scansioni, foto, documenti, file di design, video e audio, e li ordina e rinomina in un unico batch che controlli prima."
+    },
+    {
+      "question": "Esiste un'AI che ordina automaticamente i file in cartelle?",
+      "answer": "Sì. Zush ordina i file in cartelle in base al contenuto su Mac e Windows. Lascia vuote le Regole cartelle e Auto raggruppa i file in poche cartelle generali, oppure scrivi una regola come “Raggruppa le fatture per azienda e le ricevute per mese.” Salva la regola in un Modello, punta Monitor su Download e i nuovi file vengono ordinati appena arrivano. Con l'annullamento ogni file torna al suo posto."
+    },
+    {
+      "question": "Qual è il miglior organizzatore di file con AI per Windows?",
+      "answer": "Per le cartelle miste su Windows 10 e 11 consigliamo Zush, che sviluppiamo noi. Legge PDF, scansioni, foto, file Office, video e audio, assegna a ogni file un nome in base al contenuto e lo ordina in cartelle con Auto o con una tua regola, con anteprima e annullamento. Si installa dal Microsoft Store, dove ha 5,0 da 8 valutazioni negli Stati Uniti al 17 novembre 2026. Sortio fa per te se ti serve anche Linux; File Juggler va bene per regole fisse che non richiedono l'AI."
+    },
+    {
+      "question": "Qual è il miglior organizzatore di file con AI per Mac?",
+      "answer": "Per le cartelle in cui contano sia i nomi sia le cartelle, consigliamo Zush, che sviluppiamo noi. Funziona su macOS 15 o successivo con Apple Silicon e Intel, legge foto RAW e HEIC, file iWork, scansioni e video, e ordina in base al contenuto o alle tue regole. Hazel è adatto a regole che eseguono script. Sparkle va bene per riordinare un Mac personale senza interventi, ma non rinomina i file."
+    },
+    {
+      "question": "Esiste un organizzatore di file con AI gratuito?",
+      "answer": "Zush ti offre 50 rinomine con AI gratuite senza account, carta o chiave API, e tutte e quattro le modalità AI sono disponibili nel piano gratuito: Zush Cloud AI, la tua chiave API, Ollama e LM Studio. AI File Sorter è un'app open source gratuita, ma devi configurare da solo un modello locale o un'API, e il progetto non documenta una cartella monitorata. DropIt è gratuito e basato su regole, senza AI, e la sua ultima versione risale al 2018."
+    },
+    {
+      "question": "Quanto costa Zush?",
+      "answer": "Le prime 50 rinomine con AI sono gratuite. PRO costa $10 al mese o $48 una tantum. La licenza una tantum include rinomine illimitate in ogni modalità AI (Zush Cloud AI, la tua chiave API, Ollama e LM Studio), tutti gli aggiornamenti futuri, fino a 3 dispositivi tra Mac e Windows e un rimborso entro 14 giorni."
+    },
+    {
+      "question": "Un organizzatore di file con AI può funzionare offline?",
+      "answer": "Sì, con un modello locale. In Zush scegli Ollama o LM Studio e sia l'analisi dei file sia la pianificazione delle cartelle avvengono sul tuo computer, senza caricare nulla. Finché è selezionata una modalità locale, Zush non passa mai al cloud da solo. I modelli locali richiedono più memoria e un computer più veloce; a Zush Cloud AI bastano 4 GB di RAM."
     },
     {
       "question": "In che cosa un organizzatore di file con AI è diverso da un ordinatore di file con AI?",
-      "answer": "Un ordinatore di file con AI raggruppa i file in cartelle in base al contenuto; uno strumento AI per rinominare i file assegna a ciascun file un nome descrittivo. Zush unisce entrambe le funzioni in un unico batch da rivedere: la modalità Auto suggerisce i gruppi, oppure puoi descrivere in linguaggio naturale le tue regole per le cartelle."
+      "answer": "Un ordinatore di file decide in quale cartella va ogni file. Un organizzatore di file con AI assegna anche a ogni file un nome chiaro e mantiene in ordine i nuovi file man mano che arrivano. Zush fa tutte e tre le cose in un unico batch controllato. Per scrivere le tue Regole cartelle, consulta la pagina dell'ordinatore di file con AI."
     },
     {
       "question": "Zush è un software AI per assegnare nomi a file e cartelle?",
@@ -24,7 +48,7 @@
     },
     {
       "question": "Zush può organizzare automaticamente la mia cartella Download?",
-      "answer": "Sì. Imposta il monitoraggio delle cartelle su Download e Zush assegnerà un nome in base al contenuto a screenshot, fatture, ricevute ed esportazioni nuovi non appena arrivano, usando il modello che scegli. Ogni modifica resta nella cronologia dei rinomina, così puoi annullare qualsiasi batch."
+      "answer": "Sì. Assegna un Modello a Download in Monitor e Zush assegna un nome in base al contenuto a nuovi screenshot, fatture, ricevute ed esportazioni appena arrivano. Attiva Ordina in quel Modello e verranno anche spostati in cartelle con Auto o con le tue Regole cartelle. Ogni modifica resta nella cronologia delle rinomine, quindi puoi annullare qualsiasi batch."
     },
     {
       "question": "L'organizzatore di file con AI funziona sia su Mac sia su Windows?",

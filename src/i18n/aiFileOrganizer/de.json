@@ -1,22 +1,46 @@
 {
   "seo": {
-    "title": "KI-Dateiorganizer für Mac & Windows: Benennung nach Inhalt | Zush",
-    "description": "Zush benennt jede Datei nach ihrem Inhalt, legt sie auf Wunsch in Ordnern ab und hält neue Dateien mit Monitor in Ordnung. Mac und Windows, mit Vorschau und Rückgängig."
+    "title": "KI-Dateiorganizer für Mac & Windows: nach Inhalt sortieren",
+    "description": "Zush liest jede Datei, sortiert sie nach Inhalt oder Ihren Regeln in Ordner und gibt ihr einen klaren Namen. Mac und Windows, lokale KI, 50 Umbenennungen gratis."
   },
-  "h1": "KI-Dateiorganizer: Dateien benennen und sortieren – nach Inhalt",
-  "accent": "Dateien benennen und sortieren",
-  "definitionText": "Zush ist ein KI-Dateiorganizer für Mac und Windows. Er liest jede Datei und gibt ihr einen durchsuchbaren Namen, legt sie in Ordnern ab, wenn Sie die KI-Ordnersortierung aktivieren, und hält Downloads oder Kundenordner mit der Ordnerüberwachung in Ordnung. Prüfen Sie jeden Stapel, bevor Sie ihn anwenden; „Rückgängig“ stellt Namen und Ordner wieder her.",
+  "h1": "KI-Dateiorganizer: Dateien sortieren und benennen – nach Inhalt",
+  "accent": "Dateien sortieren und benennen",
+  "definitionText": "Zush ist ein KI-Dateiorganizer für Mac und Windows. Er liest jede Datei, von PDFs und Scans bis zu Fotos, Videos und Audio (100+ Formate), sortiert sie nach Inhalt oder nach Regeln, die Sie in einfacher Sprache schreiben, in Ordner und gibt ihr einen Namen, nach dem Sie suchen können. Sie prüfen jeden Namen und jeden Ordner, bevor etwas verschoben wird, und „Rückgängig“ stellt beides wieder her. Die ersten 50 KI-Umbenennungen sind kostenlos, ohne Konto oder Karte; PRO kostet 10 $ im Monat oder einmalig 48 $ für bis zu 3 Geräte. Die KI läuft in der Zush-Cloud, über Ihren eigenen API-Schlüssel oder mit Ollama oder LM Studio auf Ihrem Computer.",
   "faqTitle": "Häufig gestellte Fragen",
   "relatedToolsTitle": "Verwandte Tools",
   "relatedGuidesTitle": "Verwandte Anleitungen",
   "faqItems": [
     {
       "question": "Was ist ein KI-Dateiorganizer?",
-      "answer": "Ein KI-Dateiorganizer liest, was jede Datei enthält, und macht daraus saubere, durchsuchbare Dateinamen und einheitliche Benennungskonventionen. Statt nur nach Musterregeln zu sortieren, analysiert Zush Screenshots, PDFs, Fotos, Dokumente, Videos, Audiodateien und Designdateien und benennt jede nach ihrem Inhalt, damit Finder, Spotlight und die Windows-Suche sie tatsächlich finden."
+      "answer": "Ein KI-Dateiorganizer liest, was in jeder Datei steht, legt sie danach im passenden Ordner ab und gibt ihr einen klaren Namen. Regelbasierte Tools sehen nur Dateinamen, Endung oder Datum. Sie können eine Rechnung nicht von einem Vertrag unterscheiden und ein Belegfoto nicht von einem Screenshot. Zush liest Screenshots, PDFs und Scans, Fotos, Dokumente, Designdateien, Videos und Audio und sortiert und benennt sie in einem Stapel, den Sie vorher prüfen."
+    },
+    {
+      "question": "Gibt es eine KI, die Dateien automatisch in Ordner sortiert?",
+      "answer": "Ja. Zush sortiert Dateien auf Mac und Windows nach Inhalt in Ordner. Lassen Sie die Ordnerregeln leer, dann verteilt Auto die Dateien auf einige grobe Ordner. Oder Sie schreiben eine Regel wie „Rechnungen nach Firma und Belege nach Monat gruppieren.“ Speichern Sie die Regel in einer Vorlage und richten Sie Monitor auf Downloads, dann werden neue Dateien sortiert, sobald sie eintreffen. Mit „Rückgängig“ kommt jede Datei wieder an ihren alten Platz."
+    },
+    {
+      "question": "Was ist der beste KI-Dateiorganizer für Windows?",
+      "answer": "Für gemischte Ordner unter Windows 10 und 11 empfehlen wir Zush, das wir selbst entwickeln. Es liest PDFs, Scans, Fotos, Office-Dateien, Videos und Audio, benennt jede Datei nach ihrem Inhalt und sortiert sie per Auto oder nach Ihrer eigenen Regel in Ordner, mit Vorschau und Rückgängig. Sie installieren es aus dem Microsoft Store, wo es Stand 17. November 2026 5,0 aus 8 Bewertungen in den USA hat. Sortio passt, wenn Sie auch Linux brauchen; File Juggler passt zu festen Regeln, die keine KI benötigen."
+    },
+    {
+      "question": "Was ist der beste KI-Dateiorganizer für Mac?",
+      "answer": "Für Ordner, in denen Namen und Ablage gleich wichtig sind, empfehlen wir Zush, das wir selbst entwickeln. Es läuft ab macOS 15 auf Apple Silicon und Intel, liest RAW- und HEIC-Fotos, iWork-Dateien, Scans und Videos und sortiert nach Inhalt oder nach Ihren Regeln. Hazel passt zu Regeln, die Skripte ausführen. Sparkle eignet sich, wenn ein privater Mac ohne Ihr Zutun aufgeräumt werden soll, benennt Dateien aber nicht um."
+    },
+    {
+      "question": "Gibt es einen kostenlosen KI-Dateiorganizer?",
+      "answer": "Zush bietet 50 kostenlose KI-Umbenennungen ohne Konto, Karte oder API-Schlüssel, und alle vier KI-Modi sind im Gratisplan verfügbar: Zush Cloud AI, Ihr eigener API-Schlüssel, Ollama und LM Studio. AI File Sorter ist eine kostenlose Open-Source-App, aber das lokale Modell oder die API richten Sie selbst ein, und das Projekt dokumentiert keinen überwachten Ordner. DropIt ist kostenlos und regelbasiert, ohne KI; die letzte Version erschien 2018."
+    },
+    {
+      "question": "Was kostet Zush?",
+      "answer": "Die ersten 50 KI-Umbenennungen sind kostenlos. PRO kostet 10 $ im Monat oder einmalig 48 $. Die Einmallizenz enthält unbegrenzte Umbenennungen in jedem KI-Modus (Zush Cloud AI, eigener API-Schlüssel, Ollama und LM Studio), alle künftigen Updates, bis zu 3 Geräte unter Mac und Windows und 14 Tage Rückerstattung."
+    },
+    {
+      "question": "Funktioniert ein KI-Dateiorganizer auch offline?",
+      "answer": "Ja, mit einem lokalen Modell. Wählen Sie in Zush Ollama oder LM Studio, dann laufen Dateianalyse und Ordnerplanung auf Ihrem Computer, und nichts wird hochgeladen. Solange ein lokaler Modus gewählt ist, wechselt Zush nie von selbst in die Cloud. Lokale Modelle brauchen mehr Arbeitsspeicher und einen schnelleren Computer; Zush Cloud AI kommt mit 4 GB RAM aus."
     },
     {
       "question": "Worin unterscheidet sich ein KI-Dateiorganizer von einem KI-Dateisortierer?",
-      "answer": "Ein KI-Dateisortierer gruppiert Dateien anhand ihres Inhalts in Ordnern; ein KI-Dateiumbenenner gibt jeder Datei einen aussagekräftigen Namen. Zush kombiniert beides in einem geprüften Stapel: Der Auto-Modus schlägt Gruppen vor, oder Sie beschreiben Ihre eigenen Ordnerregeln in einfacher Sprache."
+      "answer": "Ein Dateisortierer entscheidet, in welchen Ordner jede Datei kommt. Ein KI-Dateiorganizer gibt jeder Datei außerdem einen klaren Namen und hält neue Dateien in Ordnung, sobald sie eintreffen. Zush erledigt alle drei Schritte in einem geprüften Stapel. Wie Sie eigene Ordnerregeln schreiben, zeigt die Seite zum KI-Dateisortierer."
     },
     {
       "question": "Ist Zush eine KI-Software zur Benennung von Dateien und Ordnern?",
@@ -24,7 +48,7 @@
     },
     {
       "question": "Kann Zush meinen Downloads-Ordner automatisch organisieren?",
-      "answer": "Ja. Richten Sie die Ordnerüberwachung auf Downloads, und Zush benennt neue Screenshots, Rechnungen, Belege und Exporte nach Inhalt, sobald sie eintreffen – mit der Vorlage, die Sie wählen. Jede Änderung bleibt im Umbenennungsverlauf erhalten, sodass Sie jeden Stapel rückgängig machen können."
+      "answer": "Ja. Weisen Sie Downloads in Monitor eine Vorlage zu, und Zush benennt neue Screenshots, Rechnungen, Belege und Exporte nach Inhalt, sobald sie eintreffen. Aktivieren Sie in dieser Vorlage „Sortieren“, dann landen sie außerdem per Auto oder nach Ihren Ordnerregeln in Ordnern. Jede Änderung bleibt im Umbenennungsverlauf erhalten, sodass Sie jeden Stapel rückgängig machen können."
     },
     {
       "question": "Funktioniert der KI-Dateiorganizer sowohl auf Mac als auch auf Windows?",

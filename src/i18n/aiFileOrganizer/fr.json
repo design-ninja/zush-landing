@@ -1,22 +1,46 @@
 {
   "seo": {
-    "title": "Organisateur de fichiers IA pour Mac et Windows : nommage par contenu | Zush",
-    "description": "Zush nomme chaque fichier selon son contenu, le range dans des dossiers si vous le souhaitez et garde vos nouveaux fichiers en ordre grâce à Monitor. Mac et Windows, avec aperçu et annulation."
+    "title": "Organisateur de fichiers IA pour Mac et Windows : tri par contenu",
+    "description": "Zush lit chaque fichier, le range dans un dossier selon son contenu ou vos règles et lui donne un nom clair. Mac et Windows, IA locale, 50 renommages gratuits."
   },
-  "h1": "Organisateur de fichiers IA : nommez et triez vos fichiers selon leur contenu",
-  "accent": "nommez et triez vos fichiers",
-  "definitionText": "Zush est un organisateur de fichiers IA pour Mac et Windows. Il lit chaque fichier et lui donne un nom facilement retrouvable, le range dans des dossiers lorsque vous activez le tri de dossiers par IA, et garde en ordre vos dossiers Téléchargements ou vos dossiers clients grâce à la surveillance de dossiers. Vérifiez chaque lot avant de l'appliquer ; l'annulation rétablit les noms et les dossiers.",
+  "h1": "Organisateur de fichiers IA : triez et nommez vos fichiers selon leur contenu",
+  "accent": "triez et nommez vos fichiers",
+  "definitionText": "Zush est un organisateur de fichiers IA pour Mac et Windows. Il lit chaque fichier, des PDF et scans aux photos, vidéos et fichiers audio (100+ formats), le range dans des dossiers selon son contenu ou selon des règles que vous rédigez en langage courant, et lui donne un nom facile à retrouver. Vous vérifiez chaque nom et chaque dossier avant que quoi que ce soit ne bouge, et l'annulation rétablit les deux. Les 50 premiers renommages IA sont gratuits, sans compte ni carte ; PRO coûte 10 $ par mois ou 48 $ en paiement unique, pour 3 appareils maximum. L'IA tourne dans le cloud de Zush, avec votre propre clé API, ou sur votre ordinateur avec Ollama ou LM Studio.",
   "faqTitle": "Questions fréquentes",
   "relatedToolsTitle": "Outils associés",
   "relatedGuidesTitle": "Guides associés",
   "faqItems": [
     {
       "question": "Qu'est-ce qu'un organisateur de fichiers IA ?",
-      "answer": "Un organisateur de fichiers IA lit le contenu de chaque fichier et le transforme en noms de fichiers clairs et faciles à rechercher, ainsi qu'en conventions de nommage cohérentes. Au lieu de trier uniquement selon des règles de motifs, Zush analyse les captures d'écran, PDF, photos, documents, vidéos, fichiers audio et fichiers de design, puis nomme chacun d'eux selon son contenu afin que le Finder, Spotlight et la recherche Windows puissent réellement le retrouver."
+      "answer": "Un organisateur de fichiers IA lit le contenu de chaque fichier et s'en sert pour le ranger dans le bon dossier et lui donner un nom clair. Les outils à base de règles ne voient que le nom du fichier, son extension ou sa date : ils ne distinguent pas une facture d'un contrat, ni la photo d'un reçu d'une capture d'écran. Zush lit les captures d'écran, les PDF et les scans, les photos, les documents, les fichiers de design, les vidéos et l'audio, puis les trie et les nomme en un seul lot que vous vérifiez d'abord."
+    },
+    {
+      "question": "Existe-t-il une IA qui range automatiquement les fichiers dans des dossiers ?",
+      "answer": "Oui. Zush trie les fichiers dans des dossiers selon leur contenu, sur Mac et Windows. Laissez les règles de dossier vides et Auto regroupe les fichiers dans quelques grands dossiers, ou rédigez une règle comme « Regrouper les factures par entreprise et les reçus par mois ». Enregistrez la règle dans un modèle, pointez Monitor vers Téléchargements, et les nouveaux fichiers sont triés dès leur arrivée. L'annulation remet n'importe quel fichier à sa place d'origine."
+    },
+    {
+      "question": "Quel est le meilleur organisateur de fichiers IA pour Windows ?",
+      "answer": "Pour les dossiers variés sous Windows 10 et 11, nous recommandons Zush, que nous développons. Il lit les PDF, les scans, les photos, les fichiers Office, les vidéos et l'audio, nomme chaque fichier selon son contenu et le range dans des dossiers avec Auto ou votre propre règle, avec aperçu et annulation. Il s'installe depuis le Microsoft Store, où il obtient 5,0 sur 8 avis aux États-Unis au 17 novembre 2026. Sortio vous conviendra si vous avez aussi besoin de Linux ; File Juggler convient aux règles fixes qui n'ont pas besoin d'IA."
+    },
+    {
+      "question": "Quel est le meilleur organisateur de fichiers IA pour Mac ?",
+      "answer": "Pour les dossiers où les noms comptent autant que le classement, nous recommandons Zush, que nous développons. Il fonctionne sous macOS 15 ou version ultérieure, sur Apple Silicon et Intel, lit les photos RAW et HEIC, les fichiers iWork, les scans et les vidéos, et trie selon le contenu ou selon vos règles. Hazel convient aux règles qui lancent des scripts. Sparkle convient pour ranger un Mac personnel sans intervention, mais il ne renomme pas les fichiers."
+    },
+    {
+      "question": "Existe-t-il un organisateur de fichiers IA gratuit ?",
+      "answer": "Zush vous offre 50 renommages IA gratuits, sans compte, carte ni clé API, et les quatre modes d'IA sont disponibles dans l'offre gratuite : Zush Cloud AI, votre propre clé API, Ollama et LM Studio. AI File Sorter est une application open source gratuite, mais vous configurez vous-même un modèle local ou une API, et le projet ne documente pas de dossier surveillé. DropIt est gratuit et fonctionne par règles, sans IA, et sa dernière version date de 2018."
+    },
+    {
+      "question": "Combien coûte Zush ?",
+      "answer": "Les 50 premiers renommages IA sont gratuits. PRO coûte 10 $ par mois ou 48 $ en paiement unique. La licence unique inclut des renommages illimités dans tous les modes d'IA (Zush Cloud AI, votre propre clé API, Ollama et LM Studio), toutes les mises à jour futures, jusqu'à 3 appareils entre Mac et Windows, et un remboursement sous 14 jours."
+    },
+    {
+      "question": "Un organisateur de fichiers IA peut-il fonctionner hors ligne ?",
+      "answer": "Oui, avec un modèle local. Dans Zush, choisissez Ollama ou LM Studio : l'analyse des fichiers et la planification des dossiers se font alors sur votre ordinateur, sans aucun envoi. Tant qu'un mode local est sélectionné, Zush ne bascule jamais de lui-même vers le cloud. Les modèles locaux demandent plus de mémoire et un ordinateur plus rapide ; Zush Cloud AI se contente de 4 Go de RAM."
     },
     {
       "question": "En quoi un organisateur de fichiers IA diffère-t-il d'un trieur de fichiers IA ?",
-      "answer": "Un trieur de fichiers IA regroupe les fichiers dans des dossiers selon leur contenu ; un renommeur de fichiers IA donne à chaque fichier un nom descriptif. Zush réunit les deux dans un même lot à vérifier : le mode Auto suggère des groupes, ou vous pouvez décrire vos propres règles de dossiers en langage courant."
+      "answer": "Un trieur de fichiers décide dans quel dossier va chaque fichier. Un organisateur de fichiers IA donne en plus un nom clair à chaque fichier et garde les nouveaux fichiers en ordre dès leur arrivée. Zush fait les trois dans un seul lot vérifié. Pour rédiger vos propres règles de dossier, consultez la page Trieur de fichiers IA."
     },
     {
       "question": "Zush est-il un logiciel IA de nommage de fichiers et de dossiers ?",
@@ -24,7 +48,7 @@
     },
     {
       "question": "Zush peut-il organiser automatiquement mon dossier Téléchargements ?",
-      "answer": "Oui. Pointez la surveillance de dossiers vers Téléchargements et Zush nommera selon leur contenu les nouvelles captures d'écran, factures, reçus et exports dès leur arrivée, en utilisant le modèle de votre choix. Chaque modification est conservée dans l'historique des renommages, ce qui vous permet d'annuler n'importe quel lot."
+      "answer": "Oui. Associez un modèle à Téléchargements dans Monitor, et Zush nomme selon leur contenu les nouvelles captures d'écran, factures, reçus et exports dès leur arrivée. Activez le tri dans ce modèle et ils sont aussi rangés dans des dossiers avec Auto ou vos règles de dossier. Chaque modification est conservée dans l'historique des renommages, ce qui vous permet d'annuler n'importe quel lot."
     },
     {
       "question": "L'organisateur de fichiers IA fonctionne-t-il à la fois sur Mac et sur Windows ?",

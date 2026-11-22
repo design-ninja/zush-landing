@@ -311,12 +311,42 @@ const fileOrganizerFaq = [
   {
     question: 'What is an AI file organizer?',
     answer:
-      'An AI file organizer reads what each file contains and turns that into clean, searchable filenames and consistent naming conventions. Instead of sorting by pattern rules alone, Zush analyzes screenshots, PDFs, photos, documents, videos, audio, and design files, then names each one by its content so Finder, Spotlight, and Windows Search can actually find it.',
+      'An AI file organizer reads what each file contains, then uses that to put it in the right folder and give it a clear name. Rule-based tools only see the filename, extension, or date, so they cannot tell an invoice from a contract or a receipt photo from a screenshot. Zush reads screenshots, PDFs and scans, photos, documents, design files, video, and audio, and sorts and names them in one batch you review first.',
+  },
+  {
+    question: 'Is there an AI that organizes files into folders automatically?',
+    answer:
+      'Yes. Zush sorts files into folders by content on Mac and Windows. Leave Folder rules empty and Auto groups files into a few broad folders, or write a rule such as “Group invoices by company and receipts by month.” Save the rule in a Template and point Monitor at Downloads, and new files are sorted as they arrive. Undo moves any file back.',
+  },
+  {
+    question: 'What is the best AI file organizer for Windows?',
+    answer:
+      'For mixed folders on Windows 10 and 11 we recommend Zush, which we make. It reads PDFs, scans, photos, Office files, video, and audio, names each file by content, and sorts it into folders by Auto or your own rule, with a preview and undo. It installs from the Microsoft Store, where it has 5.0 from 8 US ratings as of November 17, 2026. Sortio suits you if you also need Linux; File Juggler suits fixed rules that do not need AI.',
+  },
+  {
+    question: 'What is the best AI file organizer for Mac?',
+    answer:
+      'For folders where both names and folders matter, we recommend Zush, which we make. It runs on macOS 15 or later on Apple Silicon and Intel, reads RAW and HEIC photos, iWork files, scans, and video, and sorts by content or by your rules. Hazel suits rules that run scripts. Sparkle suits hands-off cleanup of a personal Mac, but it does not rename files.',
+  },
+  {
+    question: 'Is there a free AI file organizer?',
+    answer:
+      'Zush gives you 50 free AI renames with no account, card, or API key, and all four AI modes are available on the free plan: Zush Cloud AI, your own API key, Ollama, and LM Studio. AI File Sorter is a free open-source app, but you set up a local model or API yourself, and the project does not document a watch folder. DropIt is free and rule-based, with no AI, and its last release was in 2018.',
+  },
+  {
+    question: 'How much does Zush cost?',
+    answer:
+      'The first 50 AI renames are free. PRO costs $10 a month or $48 once. The one-time license includes unlimited renames in every AI mode (Zush Cloud AI, your own API key, Ollama, and LM Studio), all future updates, up to 3 devices across Mac and Windows, and a 14-day refund.',
+  },
+  {
+    question: 'Can an AI file organizer work offline?',
+    answer:
+      'Yes, with a local model. In Zush, pick Ollama or LM Studio and both file analysis and folder planning run on your computer, with nothing uploaded. Zush never switches to the cloud on its own while a local mode is selected. Local models need more memory and a faster computer; Zush Cloud AI needs only 4 GB of RAM.',
   },
   {
     question: 'How is an AI file organizer different from an AI file sorter?',
     answer:
-      'An AI file sorter groups files into folders based on content; an AI file renamer gives each file a descriptive name. Zush combines both in one reviewed batch: Auto mode suggests groups, or you can describe your own folder rules in plain language.',
+      'A file sorter decides which folder each file goes into. An AI file organizer also gives each file a clear name and keeps new files in order as they arrive. Zush does all three in one reviewed batch. For writing your own folder rules, see the AI File Sorter page.',
   },
   {
     question: 'Is Zush AI file and folder naming software?',
@@ -326,7 +356,7 @@ const fileOrganizerFaq = [
   {
     question: 'Can Zush automatically organize my Downloads folder?',
     answer:
-      'Yes. Point folder monitoring at Downloads and Zush will name new screenshots, invoices, receipts, and exports by content as they land, using the template you choose. Every change stays in rename history, so you can undo any batch.',
+      'Yes. Assign a Template to Downloads in Monitor, and Zush names new screenshots, invoices, receipts, and exports by content as they arrive. Turn on Sort in that Template and they also move into folders by Auto or your Folder rules. Every change stays in rename history, so you can undo any batch.',
   },
   {
     question: 'Does the AI file organizer work on both Mac and Windows?',
@@ -384,7 +414,7 @@ const fileSorterFaq = [
   {
     question: 'Does Zush sort files into folders that already exist?',
     answer:
-      'Yes. With Reuse existing folders turned on, Zush matches files to suitable folders already inside the destination and creates a new folder only when nothing fits. Files that fit no folder are renamed without being grouped.',
+      'Yes. Zush matches files to suitable folders already inside the destination and creates a new folder only when nothing fits. If it should never create folders, turn on Existing folders only: files go only into folders that are already there, and files that fit none stay where they are.',
   },
   {
     question: 'Can Zush sort new files automatically as they arrive?',
@@ -394,7 +424,7 @@ const fileSorterFaq = [
   {
     question: 'Does AI folder sorting work on Windows?',
     answer:
-      'Yes. Zush for Windows 10 and 11 has the same Destination folder, Folder sorting, Reuse existing folders, and Folder rules settings as the Mac app. Templates exported on one platform import on the other; you pick the destination folder again on the new computer.',
+      'Yes. Zush for Windows 10 and 11 has the same Destination folder, Folder sorting, Existing folders only, and Folder rules settings as the Mac app. Templates exported on one platform import on the other; you pick the destination folder again on the new computer.',
   },
   {
     question: 'Can I sort files into folders offline?',
@@ -424,7 +454,7 @@ const fileSorterFaq = [
   {
     question: 'Is there a one-time purchase alternative to Sortio or Sparkle?',
     answer:
-      'Yes. Zush PRO is available as a $48 one-time purchase with no monthly file meter, and folder sorting is included. Sortio Pro is $14.99 per month or $99 per year with a monthly AI allowance, and Sparkle is a Mac-only subscription (vendor pages checked September 27, 2026).',
+      'Yes. Zush PRO is a $48 one-time purchase with no monthly file meter, and it includes folder sorting, the Zush cloud AI, and up to 3 devices across Mac and Windows. Sortio Pro is a subscription ($14.99 a month or $99 a year) with a hosted AI allowance. Sparkle has a $179 lifetime plan for up to 5 Macs, but it is Mac only and does not rename files. Vendor pages checked November 17, 2026.',
   },
   {
     question: 'Can I undo AI folder sorting?',
@@ -720,40 +750,45 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     }),
   },
   'ai-file-organizer': {
-    h1: 'AI File Organizer: Name and Sort Files by Content',
-    h1Accent: 'Name and Sort Files',
+    h1: 'AI File Organizer: Sort and Name Files by Content',
+    h1Accent: 'Sort and Name Files',
     category: 'general',
     definitionTitle: 'What Is an AI File Organizer?',
     definitionText:
-      'Zush is an AI file organizer for Mac and Windows. It reads each file and gives it a searchable name, files it into folders when you turn on AI folder sorting, and keeps Downloads or client folders in order with folder monitoring. Review every batch before applying it; undo restores names and folders.',
+      `Zush is an AI file organizer for Mac and Windows. It reads each file, from PDFs and scans to photos, video, and audio (${SUPPORTED_FORMAT_COUNT} formats), sorts it into folders by content or by rules you write in plain language, and gives it a name you can search for. You review every name and folder before anything moves, and undo restores both. The first 50 AI renames are free with no account or card; PRO is $10 a month or $48 once for up to 3 devices. The AI runs in the Zush cloud, through your own API key, or on your computer with Ollama or LM Studio.`,
     showcaseSlides: sharedSlides,
     faqItems: fileOrganizerFaq,
     comparison: {
       eyebrow: 'AI file organizers compared',
       title: 'The best AI file organizer depends on what decides where a file goes',
       intro:
-        `For mixed folders on Mac and Windows, our pick is Zush: it reads ${SUPPORTED_FORMAT_COUNT} formats including scans, video, and audio, gives each file a descriptive name, and sorts it by your plain-language Folder rules or Auto grouping, with a preview before anything moves and undo afterwards. Rule engines fit when the condition is already in the filename or date; Sparkle fits hands-off Mac cleanup. Competitor details were checked on vendor pages on September 27, 2026.`,
+        `For mixed folders on Mac and Windows, our pick is Zush, which we make. It reads ${SUPPORTED_FORMAT_COUNT} formats including scans, video, and audio, sorts each file by Auto grouping or your plain-language Folder rules, and gives it a descriptive name, with a preview before anything moves and undo afterwards. 50 AI renames are free; $48 once covers unlimited renames with the Zush cloud AI included. Rule engines fit when the condition is already in the filename or date, and Sparkle fits hands-off cleanup of one Mac. We checked competitor details on vendor pages and official stores on November 17, 2026.`,
       headers: { tool: 'Organizer', bestFor: 'Best for', gap: 'Where it stops' },
       rows: [
         {
           tool: 'Zush',
-          bestFor: 'Naming and sorting mixed files by content in one reviewed batch, with Templates, Naming Blocks, folder monitoring, and local AI on Mac and Windows',
-          gap: 'Not a disk cleaner or document-management system, and not a photo library; it clears exact copies during a rename but does not compare files that merely look alike.',
+          bestFor: 'Sorting and naming mixed files by content in one reviewed batch on Mac and Windows, with Templates, Naming Blocks, Monitor for new files, right-click renaming in Finder and File Explorer, exact-duplicate detection in the same batch, and cloud, own-key, or local AI. $10 a month or $48 once for up to 3 devices.',
+          gap: 'Not a disk cleaner, document-management system, or photo library. Duplicate detection finds exact copies, not files that only look alike. No Linux version.',
         },
         {
           tool: 'Sparkle',
           bestFor: 'Hands-off cleanup of Desktop, Downloads, and Documents on a schedule',
-          gap: 'Mac only and subscription based; it builds its own library structure rather than a naming convention you control.',
+          gap: 'Mac only and does not rename files. It builds its own folder library rather than following rules you write. No free tier; the trial needs a card.',
         },
         {
           tool: 'Sortio',
           bestFor: 'A plain-language prompt that renames and routes files on Mac, Windows, and Linux',
-          gap: 'Pro is $14.99/month or $99/year with a monthly AI allowance; free plan is a one-time AI trial.',
+          gap: 'Watch folders and hosted AI need Pro, a subscription with an AI allowance. The free plan has rule-based sorting and a one-time AI trial, and every plan needs an email account.',
         },
         {
           tool: 'RenameClick',
           bestFor: 'Folder sets you pick, copy, or create, or matching existing subfolders up to three levels deep',
-          gap: 'You maintain the category list rather than describing the grouping; video is not in its format list.',
+          gap: 'You maintain the category list rather than describing the grouping. The lifetime license has no hosted AI: it runs a bundled local model (16 GB of RAM recommended) or your own API key.',
+        },
+        {
+          tool: 'AI File Sorter (open source)',
+          bestFor: 'A free app for Windows, macOS, and Linux that suggests categories and filenames from file content',
+          gap: 'You set up a local model or API yourself and pick from category lists rather than writing folder rules. The project does not document a watch folder.',
         },
         {
           tool: 'Hazel, File Juggler, DropIt',
@@ -807,11 +842,12 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       page: {
         pagePath: '/ai-file-organizer',
         description:
-          'AI file organizer for Mac and Windows. Zush names files in place by content, keeps folders consistent with templates and Naming Blocks, monitors folders, and supports full undo with optional AI folder sorting.',
+          'AI file organizer for Mac and Windows. Zush reads each file, sorts it into folders by content or plain-language rules, and gives it a searchable name, with a preview before anything moves and undo afterwards. 50 free AI renames; $10 a month or $48 one-time.',
         featureList: [
           'AI file organizer for Mac and Windows',
+          'Sort files into folders by content with Auto or plain-language Folder rules',
           'Name files by content, not just by pattern',
-          'Rename in place or use optional AI folder sorting',
+          'Find exact duplicates in the same batch and keep them, mark them in the name, or move them to the Trash or Recycle Bin; copies do not use renames',
           'Organize screenshots, PDFs, invoices, photos, documents, audio, and videos',
           'Automatic naming for Downloads via folder monitoring',
           'Consistent naming conventions with templates and 145+ Naming Blocks',
@@ -834,7 +870,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       eyebrow: 'File sorters compared',
       title: 'Rules, categories, or a prompt: how file sorters decide',
       intro:
-        `Every sorter needs a way to decide where a file goes. Rule engines match names and dates, category sorters pick from a list you maintain, and prompt-based sorters follow instructions you write. Zush follows your prompt, reads ${SUPPORTED_FORMAT_COUNT} formats including video and audio, and renames each file in the same batch. Competitor details were checked on vendor pages on September 27, 2026, and for the open-source AI File Sorter on October 19, 2026.`,
+        `Every sorter needs a way to decide where a file goes. Rule engines match names and dates, category sorters pick from a list you maintain, and prompt-based sorters follow instructions you write. Zush follows your prompt, reads ${SUPPORTED_FORMAT_COUNT} formats including video and audio, and renames each file in the same batch. We checked competitor details on vendor pages, official stores, and the AI File Sorter GitHub repository on November 17, 2026.`,
       headers: { tool: 'Sorter', bestFor: 'How it decides', gap: 'Where it stops' },
       rows: [
         {
@@ -850,17 +886,17 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
         {
           tool: 'Sortio',
           bestFor: 'A plain-language prompt that renames and routes files on Mac, Windows, and Linux',
-          gap: 'Pro is $14.99/month or $99/year with a monthly AI allowance; free plan is a one-time AI trial.',
+          gap: 'Watch folders and hosted AI need Pro, a subscription with an AI allowance. The free plan has up to five sorting rules and a one-time AI trial, and every plan needs an email account.',
         },
         {
           tool: 'RenameClick',
           bestFor: 'Folder sets you pick, copy, or create, or matching existing subfolders up to three levels deep',
-          gap: 'You maintain the category list rather than describing the grouping; video is not in its format list.',
+          gap: 'You maintain the category list rather than describing the grouping. The lifetime license has no hosted AI: it runs a bundled local model or your own API key.',
         },
         {
           tool: 'Sparkle',
           bestFor: 'Hands-off cleanup of Desktop, Downloads, and Documents on a schedule',
-          gap: 'Mac only and subscription based; it builds its own library structure rather than a naming convention you control.',
+          gap: 'Mac only and does not rename files. It builds its own folder library rather than following rules you write.',
         },
         {
           tool: 'Hazel, File Juggler, DropIt',
@@ -913,7 +949,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
           'Sort files into folders by content on Mac and Windows',
           'Plain-language Folder rules up to 2,000 characters, or Auto grouping',
           'Rename and sort files in one reviewed batch',
-          'Choose a destination folder and reuse suitable existing folders',
+          'Choose a destination folder, reuse folders you already have, or sort only into existing folders',
           'Sort PDFs, scans, photos, screenshots, documents, videos, and audio',
           'Automatic sorting of new files with folder monitoring',
           'Local AI folder sorting with LM Studio or Ollama',

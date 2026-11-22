@@ -1,22 +1,46 @@
 {
   "seo": {
-    "title": "AI-bestandsorganizer voor Mac & Windows: Benoemen op inhoud | Zush",
-    "description": "Zush geeft elk bestand een naam op basis van de inhoud, plaatst het desgewenst in mappen en houdt nieuwe bestanden op orde met Monitor. Mac en Windows, met voorbeeld en ongedaan maken."
+    "title": "AI-bestandsorganizer voor Mac & Windows: sorteren op inhoud",
+    "description": "Zush leest elk bestand, sorteert het in mappen op inhoud of eigen regels en geeft het een duidelijke naam. Mac en Windows, lokale AI, 50 gratis hernoemingen."
   },
-  "h1": "AI-bestandsorganizer: bestanden benoemen en sorteren op inhoud",
-  "accent": "bestanden benoemen en sorteren",
-  "definitionText": "Zush is een AI-bestandsorganizer voor Mac en Windows. Het leest elk bestand en geeft het een doorzoekbare naam, plaatst het in mappen wanneer je AI-mapsortering inschakelt, en houdt Downloads of klantmappen op orde met mapmonitoring. Controleer elke batch voordat je die toepast; ongedaan maken herstelt namen en mappen.",
+  "h1": "AI-bestandsorganizer: bestanden sorteren en benoemen op inhoud",
+  "accent": "bestanden sorteren en benoemen",
+  "definitionText": "Zush is een AI-bestandsorganizer voor Mac en Windows. Het leest elk bestand, van pdf's en scans tot foto's, video en audio (100+ formaten), sorteert het in mappen op inhoud of volgens regels die je in gewone taal schrijft, en geeft het een naam waarop je kunt zoeken. Je controleert elke naam en map voordat er iets wordt verplaatst, en ongedaan maken herstelt allebei. De eerste 50 AI-hernoemingen zijn gratis, zonder account of creditcard; PRO kost $10 per maand of $48 eenmalig voor maximaal 3 apparaten. De AI draait in de Zush-cloud, via je eigen API-sleutel of op je eigen computer met Ollama of LM Studio.",
   "faqTitle": "Veelgestelde vragen",
   "relatedToolsTitle": "Gerelateerde tools",
   "relatedGuidesTitle": "Gerelateerde handleidingen",
   "faqItems": [
     {
       "question": "Wat is een AI-bestandsorganizer?",
-      "answer": "Een AI-bestandsorganizer leest wat elk bestand bevat en zet dat om in nette, doorzoekbare bestandsnamen en consistente naamgevingsconventies. In plaats van alleen op basis van patroonregels te sorteren, analyseert Zush screenshots, pdf's, foto's, documenten, video's, audio en ontwerpbestanden en geeft het elk bestand een naam op basis van de inhoud, zodat Finder, Spotlight en Windows Search het echt kunnen vinden."
+      "answer": "Een AI-bestandsorganizer leest wat elk bestand bevat en gebruikt dat om het in de juiste map te zetten en een duidelijke naam te geven. Tools met vaste regels zien alleen de bestandsnaam, de extensie of de datum. Ze kunnen dus een factuur niet van een contract onderscheiden, en een foto van een bonnetje niet van een screenshot. Zush leest screenshots, pdf's en scans, foto's, documenten, ontwerpbestanden, video en audio, en sorteert en benoemt ze in één batch die je eerst controleert."
+    },
+    {
+      "question": "Is er een AI die bestanden automatisch in mappen sorteert?",
+      "answer": "Ja. Zush sorteert bestanden op inhoud in mappen, op Mac en Windows. Laat je de mapregels leeg, dan groepeert Auto de bestanden in een paar brede mappen. Je kunt ook een regel schrijven zoals “Groepeer facturen per bedrijf en bonnetjes per maand.” Sla de regel op in een sjabloon, richt Monitor op Downloads, en nieuwe bestanden worden gesorteerd zodra ze binnenkomen. Met ongedaan maken zet je elk bestand terug."
+    },
+    {
+      "question": "Wat is de beste AI-bestandsorganizer voor Windows?",
+      "answer": "Voor gemengde mappen op Windows 10 en 11 raden we Zush aan, dat we zelf maken. Het leest pdf's, scans, foto's, Office-bestanden, video en audio, geeft elk bestand een naam op basis van de inhoud en sorteert het in mappen met Auto of je eigen regel. Je ziet eerst een voorbeeld en kunt alles ongedaan maken. Je installeert het via de Microsoft Store, waar het per 17 november 2026 een 5,0 heeft uit 8 beoordelingen in de VS. Sortio past bij je als je ook Linux nodig hebt; File Juggler past bij vaste regels zonder AI."
+    },
+    {
+      "question": "Wat is de beste AI-bestandsorganizer voor Mac?",
+      "answer": "Voor mappen waarin zowel de namen als de mappen ertoe doen, raden we Zush aan, dat we zelf maken. Het draait op macOS 15 of later, op Apple Silicon en Intel, leest RAW- en HEIC-foto's, iWork-bestanden, scans en video, en sorteert op inhoud of volgens je eigen regels. Hazel past bij regels die scripts uitvoeren. Sparkle past als je een persoonlijke Mac zonder omkijken wilt opruimen, maar het hernoemt geen bestanden."
+    },
+    {
+      "question": "Bestaat er een gratis AI-bestandsorganizer?",
+      "answer": "Zush geeft je 50 gratis AI-hernoemingen zonder account, creditcard of API-sleutel, en alle vier AI-modi zijn beschikbaar in het gratis plan: Zush Cloud AI, je eigen API-sleutel, Ollama en LM Studio. AI File Sorter is een gratis opensource-app, maar je moet zelf een lokaal model of een API instellen, en het project documenteert geen bewaakte map. DropIt is gratis en werkt met regels, zonder AI; de laatste release was in 2018."
+    },
+    {
+      "question": "Wat kost Zush?",
+      "answer": "De eerste 50 AI-hernoemingen zijn gratis. PRO kost $10 per maand of $48 eenmalig. De eenmalige licentie omvat onbeperkt hernoemen in elke AI-modus (Zush Cloud AI, je eigen API-sleutel, Ollama en LM Studio), alle toekomstige updates, maximaal 3 apparaten verdeeld over Mac en Windows, en 14 dagen geld-terug."
+    },
+    {
+      "question": "Kan een AI-bestandsorganizer offline werken?",
+      "answer": "Ja, met een lokaal model. Kies in Zush Ollama of LM Studio, dan draaien zowel de bestandsanalyse als de mapplanning op je computer en wordt er niets geüpload. Zush schakelt nooit uit zichzelf over naar de cloud zolang een lokale modus is gekozen. Lokale modellen hebben meer geheugen en een snellere computer nodig; Zush Cloud AI heeft maar 4 GB RAM nodig."
     },
     {
       "question": "Hoe verschilt een AI-bestandsorganizer van een AI-bestandssorteerder?",
-      "answer": "Een AI-bestandssorteerder groepeert bestanden in mappen op basis van inhoud; een AI-bestandshernoemer geeft elk bestand een beschrijvende naam. Zush combineert beide in één gecontroleerde batch: de modus Auto stelt groepen voor, of je beschrijft je eigen maprichtlijnen in gewone taal."
+      "answer": "Een bestandssorteerder bepaalt in welke map elk bestand komt. Een AI-bestandsorganizer geeft elk bestand ook een duidelijke naam en houdt nieuwe bestanden op orde zodra ze binnenkomen. Zush doet alle drie in één gecontroleerde batch. Wil je zelf mapregels schrijven, kijk dan op de pagina AI-bestandssorteerder."
     },
     {
       "question": "Is Zush software voor AI-naamgeving van bestanden en mappen?",
@@ -24,7 +48,7 @@
     },
     {
       "question": "Kan Zush mijn map Downloads automatisch organiseren?",
-      "answer": "Ja. Richt mapmonitoring op Downloads en Zush benoemt nieuwe screenshots, facturen, bonnetjes en exports op inhoud zodra ze binnenkomen, met het sjabloon dat je kiest. Elke wijziging blijft in de hernoemgeschiedenis staan, zodat je elke batch ongedaan kunt maken."
+      "answer": "Ja. Koppel in Monitor een sjabloon aan Downloads, en Zush benoemt nieuwe screenshots, facturen, bonnetjes en exports op inhoud zodra ze binnenkomen. Zet je ‘Sorteren’ aan in dat sjabloon, dan gaan ze ook naar mappen via Auto of je mapregels. Elke wijziging blijft in de hernoemgeschiedenis staan, zodat je elke batch ongedaan kunt maken."
     },
     {
       "question": "Werkt de AI-bestandsorganizer op zowel Mac als Windows?",

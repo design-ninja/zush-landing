@@ -141,9 +141,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'offline AI file renamer, local AI file renamer, private AI file renamer, on-device AI file renamer, rename files offline, offline file renamer for Mac, offline file renamer for Windows, local AI server file renamer, LM Studio file renamer, Ollama file renamer',
   },
   '/ai-file-organizer': {
-    title: 'AI File Organizer for Mac & Windows: Name by Content | Zush',
+    title: 'AI File Organizer for Mac & Windows: Sort Files by Content',
     description:
-      'Zush names each file by its content, files it into folders when you want, and keeps new files in order with Monitor. Mac and Windows, with preview and undo.',
+      'Zush reads each file, sorts it into folders by content or your own rules, and gives it a clear name. Mac and Windows, local AI option, 50 free renames.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:

@@ -1,22 +1,46 @@
 {
   "seo": {
-    "title": "Mac ve Windows için Yapay Zekâ Dosya Düzenleyici: İçeriğe Göre Adlandırın | Zush",
-    "description": "Zush her dosyayı içeriğine göre adlandırır, istediğinizde klasörlere yerleştirir ve Monitor ile yeni dosyaları düzenli tutar. Mac ve Windows için, önizleme ve geri alma ile."
+    "title": "Yapay Zekâ Dosya Düzenleyici: Mac ve Windows'ta İçeriğe Göre Sıralama",
+    "description": "Zush her dosyayı okur, içeriğe veya kendi kurallarınıza göre klasörlere ayırır ve anlaşılır bir ad verir. Mac ve Windows, yerel yapay zekâ, 50 ücretsiz adlandırma."
   },
-  "h1": "Yapay Zekâ Dosya Düzenleyici: Dosyaları İçeriğe Göre Adlandırın ve Sıralayın",
-  "accent": "Adlandırın ve Sıralayın",
-  "definitionText": "Zush, Mac ve Windows için bir yapay zekâ dosya düzenleyicisidir. Her dosyayı okuyup ona aranabilir bir ad verir, yapay zekâ klasör sıralamasını açtığınızda dosyaları klasörlere yerleştirir ve klasör izleme ile İndirilenler veya müşteri klasörlerinizi düzenli tutar. Uygulamadan önce her toplu işlemi gözden geçirin; geri alma adları ve klasörleri eski haline getirir.",
+  "h1": "Yapay Zekâ Dosya Düzenleyici: Dosyaları İçeriğe Göre Sıralayın ve Adlandırın",
+  "accent": "Sıralayın ve Adlandırın",
+  "definitionText": "Zush, Mac ve Windows için bir yapay zekâ dosya düzenleyicisidir. PDF'lerden ve taramalardan fotoğraflara, videolara ve ses dosyalarına kadar (100+ biçim) her dosyayı okur, içeriğine göre ya da günlük dilde yazdığınız kurallara göre klasörlere ayırır ve ona aramayla bulabileceğiniz bir ad verir. Hiçbir şey taşınmadan önce her adı ve klasörü gözden geçirirsiniz; geri alma ikisini de eski haline getirir. İlk 50 yapay zekâ adlandırması hesap veya kart olmadan ücretsizdir. PRO'nun fiyatı en fazla 3 cihaz için aylık $10 ya da tek seferlik $48. Yapay zekâ Zush bulutunda, kendi API anahtarınızla ya da Ollama veya LM Studio ile bilgisayarınızda çalışır.",
   "faqTitle": "Sık Sorulan Sorular",
   "relatedToolsTitle": "İlgili Araçlar",
   "relatedGuidesTitle": "İlgili Rehberler",
   "faqItems": [
     {
       "question": "Yapay zekâ dosya düzenleyici nedir?",
-      "answer": "Yapay zekâ dosya düzenleyici, her dosyanın içeriğini okur ve bunu temiz, aranabilir dosya adlarına ve tutarlı adlandırma kurallarına dönüştürür. Yalnızca desen kurallarına göre sıralamak yerine Zush; ekran görüntülerini, PDF'leri, fotoğrafları, belgeleri, videoları, ses dosyalarını ve tasarım dosyalarını analiz eder, ardından her birini içeriğine göre adlandırır; böylece Finder, Spotlight ve Windows Arama onları gerçekten bulabilir."
+      "answer": "Yapay zekâ dosya düzenleyici, her dosyanın içinde ne olduğunu okur ve bu bilgiyle dosyayı doğru klasöre koyup ona anlaşılır bir ad verir. Kurala dayalı araçlar yalnızca dosya adını, uzantıyı veya tarihi görür; bu yüzden bir faturayı sözleşmeden, bir fiş fotoğrafını da ekran görüntüsünden ayıramazlar. Zush ekran görüntülerini, PDF'leri ve taramaları, fotoğrafları, belgeleri, tasarım dosyalarını, videoları ve ses dosyalarını okur; hepsini önce sizin gözden geçirdiğiniz tek bir toplu işlemde sıralar ve adlandırır."
+    },
+    {
+      "question": "Dosyaları otomatik olarak klasörlere ayıran bir yapay zekâ var mı?",
+      "answer": "Evet. Zush, Mac ve Windows'ta dosyaları içeriğe göre klasörlere ayırır. Klasör kurallarını boş bırakırsanız Auto dosyaları birkaç geniş klasörde toplar. İsterseniz “Faturaları şirkete, makbuzları aya göre grupla.” gibi bir kural da yazabilirsiniz. Kuralı bir şablona kaydedip Monitor'ü İndirilenler klasörüne yönlendirdiğinizde yeni dosyalar geldikleri anda sıralanır. Geri alma, her dosyayı eski yerine taşır."
+    },
+    {
+      "question": "Windows için en iyi yapay zekâ dosya düzenleyici hangisi?",
+      "answer": "Windows 10 ve 11'deki karışık klasörler için, kendi geliştirdiğimiz Zush'u öneriyoruz. PDF'leri, taramaları, fotoğrafları, Office dosyalarını, videoları ve ses dosyalarını okur, her dosyayı içeriğine göre adlandırır ve Auto ya da kendi kuralınızla klasörlere ayırır; önizleme ve geri alma da vardır. Microsoft Store'dan yüklenir ve 17 Kasım 2026 itibarıyla ABD'de 8 değerlendirmeden 5,0 puan almıştır. Linux'a da ihtiyacınız varsa Sortio, yapay zekâ gerektirmeyen sabit kurallar içinse File Juggler uygun olabilir."
+    },
+    {
+      "question": "Mac için en iyi yapay zekâ dosya düzenleyici hangisi?",
+      "answer": "Hem adların hem de klasörlerin önemli olduğu klasörler için, kendi geliştirdiğimiz Zush'u öneriyoruz. Apple Silicon ve Intel Mac'lerde macOS 15 veya sonrasında çalışır; RAW ve HEIC fotoğrafları, iWork dosyalarını, taramaları ve videoları okur, dosyaları içeriğe ya da kendi kurallarınıza göre sıralar. Betik çalıştıran kurallar için Hazel uygundur. Sparkle kişisel bir Mac'i kendiliğinden toparlamak için uygundur, ancak dosyaları yeniden adlandırmaz."
+    },
+    {
+      "question": "Ücretsiz bir yapay zekâ dosya düzenleyici var mı?",
+      "answer": "Zush, hesap, kart veya API anahtarı istemeden 50 ücretsiz yapay zekâ adlandırması sunar ve dört yapay zekâ modunun hepsi ücretsiz planda kullanılabilir: Zush Cloud AI, kendi API anahtarınız, Ollama ve LM Studio. AI File Sorter ücretsiz ve açık kaynaklı bir uygulamadır, ancak yerel modeli veya API'yi kendiniz kurmanız gerekir ve projenin belgelerinde izlenen klasör özelliği yer almaz. DropIt ücretsizdir ve kurallarla çalışır, yapay zekâ içermez; son sürümü 2018'de çıkmıştır."
+    },
+    {
+      "question": "Zush'un fiyatı nedir?",
+      "answer": "İlk 50 yapay zekâ adlandırması ücretsizdir. PRO'nun fiyatı aylık $10 ya da tek seferlik $48. Tek seferlik lisans her yapay zekâ modunda (Zush Cloud AI, kendi API anahtarınız, Ollama ve LM Studio) sınırsız yeniden adlandırmayı, gelecekteki tüm güncellemeleri, Mac ve Windows arasında en fazla 3 cihazı ve 14 günlük iade hakkını kapsar."
+    },
+    {
+      "question": "Yapay zekâ dosya düzenleyici çevrimdışı çalışabilir mi?",
+      "answer": "Evet, yerel bir modelle. Zush'ta Ollama veya LM Studio'yu seçtiğinizde hem dosya analizi hem de klasör planlaması bilgisayarınızda çalışır ve hiçbir şey yüklenmez. Yerel mod seçiliyken Zush kendiliğinden buluta geçmez. Yerel modeller daha fazla bellek ve daha hızlı bir bilgisayar ister; Zush Cloud AI için 4 GB RAM yeterlidir."
     },
     {
       "question": "Yapay zekâ dosya düzenleyici, yapay zekâ dosya sıralayıcıdan nasıl farklıdır?",
-      "answer": "Yapay zekâ dosya sıralayıcı, dosyaları içeriğe göre klasörlere ayırır; yapay zekâ dosya yeniden adlandırıcı ise her dosyaya açıklayıcı bir ad verir. Zush ikisini tek bir gözden geçirilen toplu işlemde birleştirir: Otomatik mod grup önerir ya da kendi klasör kurallarınızı sade bir dille tarif edebilirsiniz."
+      "answer": "Dosya sıralayıcı, her dosyanın hangi klasöre gideceğine karar verir. Yapay zekâ dosya düzenleyici ise ayrıca her dosyaya anlaşılır bir ad verir ve yeni dosyaları geldikçe düzenli tutar. Zush bu üçünü de tek bir gözden geçirilen toplu işlemde yapar. Kendi klasör kurallarınızı yazmak için yapay zekâ dosya sıralayıcı sayfasına bakın."
     },
     {
       "question": "Zush, yapay zekâ destekli dosya ve klasör adlandırma yazılımı mı?",
@@ -24,7 +48,7 @@
     },
     {
       "question": "Zush İndirilenler klasörümü otomatik olarak düzenleyebilir mi?",
-      "answer": "Evet. Klasör izlemeyi İndirilenler klasörüne yönlendirin; Zush yeni ekran görüntülerini, faturaları, makbuzları ve dışa aktarımları, seçtiğiniz şablonu kullanarak geldikleri anda içeriğe göre adlandırsın. Her değişiklik yeniden adlandırma geçmişinde kalır, böylece herhangi bir toplu işlemi geri alabilirsiniz."
+      "answer": "Evet. Monitor'de İndirilenler klasörüne bir şablon atayın; Zush yeni ekran görüntülerini, faturaları, makbuzları ve dışa aktarımları geldikleri anda içeriğe göre adlandırır. O şablonda “Sırala”yı açarsanız dosyalar ayrıca Auto ya da klasör kurallarınızla klasörlere taşınır. Her değişiklik yeniden adlandırma geçmişinde kalır, böylece herhangi bir toplu işlemi geri alabilirsiniz."
     },
     {
       "question": "Yapay zekâ dosya düzenleyici hem Mac'te hem Windows'ta çalışır mı?",

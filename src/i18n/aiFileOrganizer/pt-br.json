@@ -1,22 +1,46 @@
 {
   "seo": {
-    "title": "Organizador de Arquivos com IA para Mac e Windows: Nomeie por Conteúdo | Zush",
-    "description": "O Zush nomeia cada arquivo pelo conteúdo, guarda em pastas quando você quiser e mantém os novos arquivos em ordem com o Monitor. Mac e Windows, com pré-visualização e desfazer."
+    "title": "Organizador de Arquivos com IA para Mac e Windows: Por Conteúdo",
+    "description": "O Zush lê cada arquivo, coloca em pastas pelo conteúdo ou pelas suas regras e dá a ele um nome claro. Mac e Windows, opção de IA local, 50 renomeações grátis."
   },
-  "h1": "Organizador de Arquivos com IA: Nomeie e Classifique Arquivos por Conteúdo",
-  "accent": "Nomeie e Classifique Arquivos",
-  "definitionText": "O Zush é um organizador de arquivos com IA para Mac e Windows. Ele lê cada arquivo e dá a ele um nome pesquisável, guarda em pastas quando você ativa a classificação de pastas com IA e mantém Downloads ou pastas de clientes em ordem com o monitoramento de pastas. Revise cada lote antes de aplicar; desfazer restaura nomes e pastas.",
+  "h1": "Organizador de Arquivos com IA: Classifique e Nomeie Arquivos por Conteúdo",
+  "accent": "Classifique e Nomeie Arquivos",
+  "definitionText": "O Zush é um organizador de arquivos com IA para Mac e Windows. Ele lê cada arquivo, de PDFs e digitalizações a fotos, vídeos e áudio (100+ formatos), coloca em pastas pelo conteúdo ou por regras que você escreve em linguagem simples e dá a ele um nome fácil de pesquisar. Você revisa cada nome e cada pasta antes de qualquer coisa ser movida, e desfazer restaura os dois. As primeiras 50 renomeações com IA são grátis, sem conta nem cartão; o PRO custa $10 por mês ou $48 em pagamento único para até 3 dispositivos. A IA roda na nuvem do Zush, com a sua própria chave de API ou no seu computador com Ollama ou LM Studio.",
   "faqTitle": "Perguntas Frequentes",
   "relatedToolsTitle": "Ferramentas Relacionadas",
   "relatedGuidesTitle": "Guias Relacionados",
   "faqItems": [
     {
       "question": "O que é um organizador de arquivos com IA?",
-      "answer": "Um organizador de arquivos com IA lê o que cada arquivo contém e transforma isso em nomes de arquivo limpos e pesquisáveis, com convenções de nomenclatura consistentes. Em vez de classificar apenas por regras de padrão, o Zush analisa capturas de tela, PDFs, fotos, documentos, vídeos, áudios e arquivos de design e nomeia cada um pelo conteúdo, para que o Finder, o Spotlight e a Pesquisa do Windows consigam realmente encontrá-lo."
+      "answer": "Um organizador de arquivos com IA lê o que cada arquivo contém e usa isso para colocá-lo na pasta certa e dar a ele um nome claro. Ferramentas baseadas em regras só veem o nome do arquivo, a extensão ou a data, então não conseguem diferenciar uma fatura de um contrato, nem a foto de um recibo de uma captura de tela. O Zush lê capturas de tela, PDFs e digitalizações, fotos, documentos, arquivos de design, vídeo e áudio, e classifica e nomeia tudo em um único lote que você revisa antes."
+    },
+    {
+      "question": "Existe uma IA que organiza arquivos em pastas automaticamente?",
+      "answer": "Sim. O Zush classifica arquivos em pastas pelo conteúdo no Mac e no Windows. Deixe as Regras de pasta vazias e o modo Automático agrupa os arquivos em algumas pastas amplas, ou escreva uma regra como “Agrupe as faturas por empresa e os recibos por mês.” Salve a regra em um modelo e aponte o Monitor para Downloads, e os novos arquivos serão classificados assim que chegarem. Desfazer devolve qualquer arquivo para onde ele estava."
+    },
+    {
+      "question": "Qual é o melhor organizador de arquivos com IA para Windows?",
+      "answer": "Para pastas mistas no Windows 10 e 11, recomendamos o Zush, que é feito por nós. Ele lê PDFs, digitalizações, fotos, arquivos do Office, vídeo e áudio, nomeia cada arquivo pelo conteúdo e o coloca em pastas com o modo Automático ou com a sua própria regra, com pré-visualização e desfazer. Ele é instalado pela Microsoft Store, onde tem nota 5,0 com 8 avaliações nos EUA em 17 de novembro de 2026. O Sortio serve para você se também precisa de Linux; o File Juggler serve para regras fixas que não precisam de IA."
+    },
+    {
+      "question": "Qual é o melhor organizador de arquivos com IA para Mac?",
+      "answer": "Para pastas em que tanto os nomes quanto as pastas importam, recomendamos o Zush, que é feito por nós. Ele roda no macOS 15 ou posterior, em Apple Silicon e Intel, lê fotos RAW e HEIC, arquivos do iWork, digitalizações e vídeo, e classifica pelo conteúdo ou pelas suas regras. O Hazel serve para regras que executam scripts. O Sparkle serve para arrumar um Mac pessoal sem intervenção, mas não renomeia arquivos."
+    },
+    {
+      "question": "Existe um organizador de arquivos com IA grátis?",
+      "answer": "O Zush oferece 50 renomeações com IA grátis, sem conta, cartão ou chave de API, e os quatro modos de IA estão disponíveis no plano grátis: Zush Cloud AI, sua própria chave de API, Ollama e LM Studio. O AI File Sorter é um app gratuito e de código aberto, mas você mesmo precisa configurar um modelo local ou uma API, e o projeto não documenta uma pasta monitorada. O DropIt é gratuito e baseado em regras, sem IA, e sua última versão saiu em 2018."
+    },
+    {
+      "question": "Quanto custa o Zush?",
+      "answer": "As primeiras 50 renomeações com IA são grátis. O PRO custa $10 por mês ou $48 em pagamento único. A licença única inclui renomeações ilimitadas em todos os modos de IA (Zush Cloud AI, sua própria chave de API, Ollama e LM Studio), todas as atualizações futuras, até 3 dispositivos entre Mac e Windows e reembolso em 14 dias."
+    },
+    {
+      "question": "Um organizador de arquivos com IA funciona offline?",
+      "answer": "Sim, com um modelo local. No Zush, escolha Ollama ou LM Studio e tanto a análise dos arquivos quanto o planejamento das pastas rodam no seu computador, sem enviar nada. O Zush nunca muda para a nuvem por conta própria enquanto um modo local estiver selecionado. Modelos locais precisam de mais memória e de um computador mais rápido; o Zush Cloud AI precisa de apenas 4 GB de RAM."
     },
     {
       "question": "Qual é a diferença entre um organizador de arquivos com IA e um classificador de arquivos com IA?",
-      "answer": "Um classificador de arquivos com IA agrupa os arquivos em pastas com base no conteúdo; um renomeador de arquivos com IA dá a cada arquivo um nome descritivo. O Zush combina os dois em um único lote revisado: o modo Automático sugere grupos, ou você pode descrever suas próprias regras de pasta em linguagem natural."
+      "answer": "Um classificador de arquivos decide para qual pasta cada arquivo vai. Um organizador de arquivos com IA também dá a cada arquivo um nome claro e mantém os novos arquivos em ordem conforme eles chegam. O Zush faz as três coisas em um único lote revisado. Para escrever suas próprias regras de pasta, veja a página do classificador de arquivos com IA."
     },
     {
       "question": "O Zush é um software de nomeação de arquivos e pastas com IA?",
@@ -24,7 +48,7 @@
     },
     {
       "question": "O Zush consegue organizar automaticamente minha pasta Downloads?",
-      "answer": "Sim. Aponte o monitoramento de pastas para Downloads e o Zush nomeará por conteúdo as novas capturas de tela, faturas, recibos e exportações assim que elas chegarem, usando o modelo que você escolher. Cada alteração fica no histórico de renomeação, então você pode desfazer qualquer lote."
+      "answer": "Sim. Atribua um modelo a Downloads no Monitor e o Zush nomeará por conteúdo as novas capturas de tela, faturas, recibos e exportações assim que elas chegarem. Ative a Classificação nesse modelo e eles também serão movidos para pastas pelo modo Automático ou pelas suas Regras de pasta. Cada alteração fica no histórico de renomeação, então você pode desfazer qualquer lote."
     },
     {
       "question": "O organizador de arquivos com IA funciona no Mac e no Windows?",
