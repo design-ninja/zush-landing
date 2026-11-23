@@ -1,6 +1,6 @@
 ---
 title: "Bestandsorganisatie op Mac automatiseren: 4 veilige methoden"
-description: "Automatiseer Mac-bestanden met Smart Folders, Shortcuts, Folder Actions en AI-naamgeving. Veilige workflows voor Downloads en screenshots."
+description: "Automatiseer Mac-bestanden met slimme mappen, Shortcuts, maptaken en AI-naamgeving. Veilige workflows voor Downloads en screenshots."
 date: "2026-02-25"
 slug: "bestandsorganisatie-macos-automatiseren"
 platform: "mac"
@@ -8,8 +8,8 @@ topic: "organization"
 tags:
   - "Automation"
   - "File Organization"
-tldr: "Zush geeft gemengde bestanden een naam op basis van de inhoud en kan ze met AI in mappen sorteren. Bekijk eerst een handmatige batch, sla de bestemming en Folder rules op in een Template en koppel die aan Monitor voor nieuwe bestanden. Mapregels kunnen ook op datum of bestandstype werken. Smart Folders geven opgeslagen weergaven; Automator past bij één vaste regel en Hazel bij regels die scripts uitvoeren of oude bestanden archiveren."
-reviewed: "2026-09-28"
+tldr: "Zush geeft gemengde bestanden een naam op basis van de inhoud en kan ze met AI in mappen sorteren. Bekijk eerst een handmatige batch, sla de bestemming en Folder rules op in een Template en koppel die aan Monitor voor nieuwe bestanden. Mapregels kunnen ook op datum of bestandstype sorteren. Slimme mappen geven opgeslagen weergaven; Automator past bij één vaste regel en Hazel bij regels die scripts uitvoeren of oude bestanden archiveren."
+reviewed: "2026-11-20"
 locale: "nl"
 translationOf: "automate-file-organization-macos"
 ---
@@ -17,157 +17,156 @@ import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogSafetyNote from '@/components/blog/BlogSafetyNote.astro';
 
-Snel antwoord: **[AI-bestandshernoemer voor Mac](/mac) is onze belangrijkste aanbeveling voor automatische bestandsorganisatie** omdat doorzoekbare, inhoudbewuste namen het deel oplossen dat ingebouwde regels niet kunnen. Voeg 'Smart Folders' alleen toe voor zichtbaarheid, 'Automator' of 'Shortcuts' alleen voor eenvoudige deterministische routering, en 'Hazel' alleen voor scripts, archiveren of andere acties die Zush niet uitvoert.
+Kort antwoord: **de [AI-bestandshernoemer voor Mac](/mac) is onze eerste aanbeveling om bestandsorganisatie te automatiseren**, omdat doorzoekbare namen op basis van de inhoud het deel oplossen waar ingebouwde regels niet bij kunnen. Voeg slimme mappen alleen toe voor overzicht, Automator of Shortcuts alleen voor eenvoudige vaste routering, en Hazel alleen voor scripts, archiveren of andere acties die Zush niet uitvoert.
 
-Bronnen gecontroleerd voor deze update: [Apple Automator Gebruikershandleiding](https://support.apple.com/guide/automator/welcome/mac), [Apple Shortcuts Gebruikershandleiding voor Mac](https://support.apple.com/guide/shortcuts-mac/intro-to-shortcuts-apdf22b0444c/mac), [Apple Developer folder actions documentatie](https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/WatchFolders.html), Hazel's officiële productsite, en Hazels officiële overzicht.
+Bronnen gecontroleerd voor deze update: [Automator-gebruikershandleiding van Apple](https://support.apple.com/guide/automator/welcome/mac), [Shortcuts-gebruikershandleiding voor Mac](https://support.apple.com/guide/shortcuts-mac/intro-to-shortcuts-apdf22b0444c/mac), [documentatie over folder actions van Apple Developer](https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/WatchFolders.html), de officiële productsite van Hazel en het officiële overzicht van Hazel.
 
-|Probleem|Aanbevolen rol|Insteltijd|Waarom|
+| Probleem | Aanbevolen rol | Insteltijd | Waarom |
 |---|---|---:|---|
-|Geef schermafbeeldingen, scans, foto's, documenten, audio en video doorzoekbare namen|**Zush — begin hier**|10 minuten|Inhoudsanalyse beschrijft bestanden waarvan de namen en metagegevens generiek zijn, met monitoring en ongedaan maken|
-|Bekijk recente of zoekgeraakte bestanden zonder ze te verplaatsen|Smart Folders|5 minuten|Opgeslagen Finder-zoekopdrachten zijn omkeerbaar en ingebouwd|
-|Routevoorspelbare typen uit downloads|Automator Mapactie|15 minuten|Regels voor verlenging en datum vereisen geen AI|
-|Voer op aanvraag een eenvoudige workflow uit|Shortcuts|10 minuten|Duidelijke acties en eenvoudige handmatige bediening|
-|Scripts uitvoeren of oude bestanden archiveren op de achtergrond|Hazel|20–40 minuten|Regels met meerdere voorwaarden, logs, archiveren en scriptacties|
+| Screenshots, scans, foto's, documenten, audio en video doorzoekbare namen geven | **Zush: begin hier** | 10 minuten | Inhoudsanalyse beschrijft bestanden met nietszeggende namen en metadata, met bewaking en ongedaan maken |
+| Recente of zoekgeraakte bestanden zien zonder ze te verplaatsen | Slimme mappen | 5 minuten | Opgeslagen Finder-zoekopdrachten zijn ingebouwd en veranderen niets aan je bestanden |
+| Voorspelbare bestandstypen uit Downloads verplaatsen | Automator-maptaak | 15 minuten | Regels op extensie en datum hebben geen AI nodig |
+| Een eenvoudige workflow op verzoek uitvoeren | Shortcuts | 10 minuten | Overzichtelijke acties en makkelijk handmatig te starten |
+| Scripts uitvoeren of oude bestanden op de achtergrond archiveren | Hazel | 20–40 minuten | Regels met meerdere voorwaarden, logs, archiveren en scriptacties |
 
-De aanbevolen installatie begint met Zush op een gekopieerde testmap, zodat bestanden beschrijvende namen krijgen voordat er padwijzigingen plaatsvinden. Voeg alleen een slimme map toe voor zichtbaarheid of een deterministische routeringstool als die secundaire taak daadwerkelijk nodig is. Als u specifiek een productvergelijking met Hazel nodig heeft, gebruik dan de speciale [Hazel alternatieve pagina](/hazel-alternative).
+De aanbevolen opzet begint met Zush op een gekopieerde testmap, zodat bestanden een beschrijvende naam krijgen voordat er iets wordt verplaatst. Voeg een slimme map voor overzicht of een tool voor vaste routering alleen toe als je die tweede taak echt nodig hebt. Zoek je een productvergelijking met Hazel, kijk dan op de [pagina over Hazel-alternatieven](/hazel-alternative).
 
 <BlogProductIntro
-  title="AI-naamgeving nodig vóór routering?"
-  description="Zush voor Mac voegt de inhoudbewuste naamgevingslaag toe die Hazel, Automator en Smart Folders niet kunnen bieden. Bekijk een voorbeeld van voorgestelde namen voordat u ze toepast en gebruik Geschiedenis om voltooide hernoemingsbewerkingen ongedaan te maken."
+  title="Eerst AI-namen, dan routeren?"
+  description="Zush voor Mac stelt namen op basis van de inhoud voor en kan bestanden optioneel met AI in mappen groeperen. Bekijk de voorgestelde namen voordat je ze toepast en maak voltooide hernoemingen ongedaan via History."
   links={[
-    { href: '/ai-file-organizer', label: 'AI-bestandsorganisator' },
-    { href: '/mac', label: 'Mac AI-hernoemer' },
+    { href: '/ai-file-organizer', label: 'AI-bestandsorganizer' },
+    { href: '/mac', label: 'AI-hernoemer voor Mac' },
     { href: '/offline-ai-file-renamer', label: 'Offline AI-hernoemer' },
-    { href: '/batch-rename-files', label: 'Bestanden batchgewijs hernoemen' },
-    { href: '/blog/best-ai-file-renamer-tools-mac-compared', label: 'Vergelijking van Mac-apps' },
+    { href: '/batch-rename-files', label: 'Bestanden in batch hernoemen' },
+    { href: '/blog/best-ai-file-renamer-tools-mac-compared', label: 'Mac-apps vergeleken' },
   ]}
 />
 
-## Wat een automatische bestandsorganisator als eerste moet afhandelen
+## Wat een automatische bestandsorganizer eerst moet aanpakken
 
-Begin met de bestanden die zowel frequent als vervelend zijn. Het doel is niet om vanaf dag één een groots verenigd systeem op te bouwen. Het doel is om een ​​of twee terugkerende pijnpunten te elimineren, resultaten te zien en van daaruit uit te breiden.
+Begin met bestanden die vaak binnenkomen en je steeds ergeren. Je hoeft op dag één geen compleet systeem te bouwen. Het doel is om een of twee terugkerende ergernissen weg te nemen, het resultaat te zien en daarna uit te breiden.
 
-Beste kandidaten voor automatisering:
+Goede kandidaten voor automatisering:
 
-- **Screenshots** - macOS noemt ze `Screenshot 2026-03-12 at 10.44.11.png`, wat je niets vertelt over de inhoud
-- **Map Downloads** - browserdownloads, e-mailbijlagen en AirDrop-bestanden stapelen zich snel op onder algemene namen
-- **Terugkerende exports** - facturen, bankafschriften, rapporten van dezelfde apps elke week
-- **Binnenkomende camerafoto's** - `IMG_4382.HEIC` is zes maanden later niet meer bruikbaar
-- **Herhaalde documentdumps** - klantresultaten, onderzoeks-pdf's, projectmiddelen
+- **Screenshots**: macOS noemt ze `Screenshot 2026-03-12 at 10.44.11.png`, wat niets zegt over de inhoud
+- **De map Downloads**: browserdownloads, e-mailbijlagen en AirDrop-bestanden stapelen zich snel op onder algemene namen
+- **Terugkerende exports**: facturen, bankafschriften en rapporten die elke week uit dezelfde apps komen
+- **Foto's van je camera**: `IMG_4382.HEIC` zegt je over zes maanden niets meer
+- **Steeds terugkerende stapels documenten**: opleveringen voor klanten, onderzoeks-pdf's, projectbestanden
 
-Automatisering is het meest effectief als het een wekelijkse irritatie wegneemt, niet als er een uitgebreid systeem ontstaat dat u nooit onderhoudt.
+Automatisering werkt het best als ze een wekelijkse ergernis wegneemt, niet als ze een ingewikkeld systeem oplevert dat je nooit onderhoudt.
 
-### Hoe u uw ergste overtreders kunt identificeren
+### Zo vind je de grootste probleemmappen
 
-Open Finder en sorteer uw map Downloads of Desktop op Datum gewijzigd. Kijk naar de laatste 50 bestanden. Tel hoeveel exemplaren een naam hebben die aangeeft wat er in zit. Als het antwoord minder dan de helft is, is die map een sterke automatiseringskandidaat.
+Open Finder en sorteer je map Downloads of Bureaublad op wijzigingsdatum. Bekijk de laatste 50 bestanden en tel hoeveel een naam hebben die zegt wat erin zit. Is dat minder dan de helft, dan is die map een goede kandidaat voor automatisering.
 
-U kunt ook het volume controleren van de bestanden die in een map terechtkomen. Open Terminal en voer het volgende uit:
+Je kunt ook kijken hoeveel bestanden er in een map staan. Open Terminal en voer uit:
 
 ```bash
 ls -1 ~/Downloads | wc -l
 ```
 
-Als het aantal boven de 200 ligt, heb je een achterstand die de moeite waard is om te automatiseren.
+Komt het aantal boven de 200, dan heb je een achterstand die het automatiseren waard is.
 
 
-## Bestanden met AI in mappen sorteren
+## Begin met namen van Zush en optioneel sorteren met AI
 
-[Zush AI-bestandssorteerder](/ai-file-sorter) — Zush-mapsortering werkt op Mac en Windows. Het analyseert ondersteunde inhoud en stelt namen en groepen voor. Laat Folder rules leeg voor Auto of beschrijf de indeling in gewone taal. Naming Blocks bepaalt afzonderlijk de bestandsnamen.
+Wil je één app die bestanden een naam geeft, ze opbergt en een map bewaakt, begin dan met de [AI-bestandsorganizer van Zush](/ai-file-organizer). macOS heeft zelf ook een paar tools voor bestandsautomatisering, en apps van derden vullen de gaten. Zo verhouden ze zich tot elkaar.
 
-Wil je één app die bestanden benoemt, in mappen sorteert en een map bewaakt, begin dan met de [Zush AI-bestandsorganizer](/ai-file-organizer).
-
-> Groepeer facturen op bedrijf en bonnetjes op maand. Noem maandmappen YYYY-MM.
-
-1. Voeg een kleine gekopieerde batch toe in AI Rename en kies een Template.
-2. Schakel + Sort in en kies Destination folder als hoofdmap voor submappen. Zonder aparte bestemming blijft de bronmap de hoofdmap.
-3. Beschrijf de groepen in Folder rules. Gebruik Reuse existing folders voor passende mappen onder de bestemming; Zush kan nieuwe maken als geen bestaande past.
-4. Controleer en verbeter namen en groepen voordat je de batch toepast.
-
-![Zush op Mac met voorgestelde bestandsnamen en inhoudelijke mapgroepen vóór Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
-
-Bewaar de geteste bestemming en regels in het Template. Monitor kan nieuwe bestanden direct in de bewaakte map hernoemen en sorteren; reeds verwerkte bestanden worden niet achteraf opnieuw ingedeeld. Met sortering uit en de oorspronkelijke bestemming blijven bestanden in hun huidige map.
-
-[Stapsgewijze handleiding voor AI-mapsortering](/blog/sort-files-into-folders-with-ai-mac) · [Documentatie voor mapsortering](/docs/folder-sorting) · [30 voorbeelden van mapregels](/blog/ai-folder-sorting-prompts).
-
-## Begin met de naamgevingslaag Zush
-
-macOS wordt geleverd met verschillende ingebouwde tools voor bestandsautomatisering. Apps van derden vullen de gaten. Hier ziet u hoe ze op een hoog niveau met elkaar vergelijken.
-
-|Hulpmiddel|Ingebouwd|Bewaakt mappen|Verplaatst bestanden|Hernoemt bestanden|Inhoudsbewust|
+| Tool | Ingebouwd | Bewaakt mappen | Verplaatst bestanden | Hernoemt bestanden | Leest de inhoud |
 |---|---|---|---|---|---|
-|Smart Folders|Ja|Nee (virtueel)|Nee|Nee|Nee|
-|Automator|Ja|Ja (mapacties)|Ja|Ja (patronen)|Nee|
-|Shortcuts|Ja|Ja (triggers)|Ja|Ja (patronen)|Nee|
-|Hazel|Nee ($42)|Ja|Ja|Ja (regels)|Nee|
-|[AI-bestandshernoemer voor Mac](/mac)|Nee|Ja| Namen op inhoud en optionele AI-mapgroepen |Ja (AI)|Ja|
+| Slimme mappen | Ja | Nee (virtueel) | Nee | Nee | Nee |
+| Automator | Ja | Ja (maptaken) | Ja | Ja (patronen) | Nee |
+| Shortcuts | Ja | Ja (triggers) | Ja | Ja (patronen) | Nee |
+| Hazel | Nee ($42) | Ja | Ja | Ja (regels) | Nee |
+| [AI-bestandshernoemer voor Mac](/mac) | Nee | Ja | Ja, optioneel sorteren in mappen met AI | Ja (AI) | Ja |
 
-Zush is de aanbevolen kern omdat naamgeving elke downstream-zoekopdracht of regel nuttiger maakt. De andere hulpmiddelen zijn optionele lagen voor zichtbaarheid of beweging.
+Zush is de aanbevolen basis, omdat goede namen elke zoekopdracht of regel daarna bruikbaarder maken. Zush kan ook mapgroepen op basis van de inhoud maken; de andere tools leveren opgeslagen weergaven, vaste voorwaarden of scripts.
 
 <BlogSafetyNote
-  title="Bouw de automatisering in omkeerbare lagen"
-  description="Begin met één bewaakte map en één regel. Bekijk een voorbeeld van inhoudsbewuste wijzigingen in bestandsnamen voordat u ze toepast, bevestig de uitvoer en laat routeringstools pas daarna de hernoemde bestanden verplaatsen. Houd de 'Zush'-geschiedenis beschikbaar voor ongedaan maken."
+  title="Bouw de automatisering op in omkeerbare stappen"
+  description="Begin met één bewaakte map en één regel. Bekijk de nieuwe bestandsnamen voordat je ze toepast, controleer het resultaat en de mapgroepen, en sla de geteste opzet op in een Template voor Monitor. Gebruik alleen een aparte routeringstool voor regels of scripts die de Template niet dekt. Houd History in Zush beschikbaar om wijzigingen ongedaan te maken."
   links={[
-    { href: '/blog/how-to-safely-batch-rename-files', label: 'Controlelijst voor veilige automatisering' },
-    { href: '/docs/undo-history', label: 'Ongedaan maken met Geschiedenis' },
+    { href: '/blog/how-to-safely-batch-rename-files', label: 'Checklist voor veilige automatisering' },
+    { href: '/docs/undo-history', label: 'Ongedaan maken met History' },
   ]}
 />
 
 <BlogCTA placement='inline' platform='mac' />
 
-## Smart Folders: stapsgewijze installatie
+## Gemengde bestanden met AI in mappen sorteren
 
-Smart Folders verplaats geen bestanden. Ze brengen bestanden dynamisch naar boven op basis van zoekcriteria. Beschouw ze als opgeslagen 'Spotlight'-zoekopdrachten die in uw 'Finder'-zijbalk verschijnen.
+De [AI-bestandssorteerder van Zush](/ai-file-sorter) kan ondersteunde bestanden in dezelfde batch een beschrijvende naam geven en ze op inhoud in echte mappen groeperen. **Sorteren in mappen met AI werkt op Mac en Windows.** Laat **Folder rules** leeg voor automatische groepering, of beschrijf de groepen in gewone taal. Voor gemengde bestanden kun je dit proberen:
 
-Ze zijn handig voor het vinden van bestanden op verspreide locaties zonder uw mappenhiërarchie te herstructureren.
+> Groepeer facturen per bedrijf en bonnetjes per maand.
+
+1. Voeg een kleine gekopieerde batch toe in **AI Rename** en kies een Template.
+2. Zet **+ Sort** aan en kies de **Destination folder**: de hoofdmap voor de gesorteerde submappen. Kies je geen aparte bestemming, dan blijft de bronmap de hoofdmap.
+3. Typ de groeperingsinstructie in **Folder rules**. **Naming Blocks** bepalen los daarvan het formaat van de bestandsnaam.
+4. Zet **Reuse existing folders** aan als er in de hoofdmap al passende groepen staan. Past er geen, dan kan Zush een nieuwe map maken.
+5. Controleer zowel de voorgestelde namen als de mapgroepen. Verbeter mapnamen of de plek van bestanden voordat je de batch toepast.
+
+![Zush voor Mac met een voorbeeld van mapgroepen op inhoud en voorgestelde bestandsnamen vóór Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Sla de geteste bestemming en regels op in de Template. Koppel die aan **Monitor** om nieuwe bestanden die direct in de bewaakte map binnenkomen te hernoemen en te sorteren. Bestanden die al verwerkt zijn, worden niet achteraf opnieuw ingedeeld. Staat sorteren uit en is de oorspronkelijke bestemming gekozen, dan blijven bestanden in hun huidige map.
+
+Volg de [stapsgewijze handleiding voor sorteren op Mac](/blog/sort-files-into-folders-with-ai-mac) of bekijk de [documentatie over sorteren in mappen](/docs/folder-sorting) en [30 voorbeelden van Folder rules](/blog/ai-folder-sorting-prompts).
+
+## Slimme mappen: stap voor stap instellen
+
+Slimme mappen verplaatsen geen bestanden. Ze tonen bestanden die aan zoekcriteria voldoen, als opgeslagen Spotlight-zoekopdrachten in de navigatiekolom van Finder.
+
+Ze zijn handig om bestanden op verschillende plekken terug te vinden zonder je mappenstructuur om te gooien.
 
 ### Een slimme map maken
 
 1. Open Finder
-2. Druk op **Cmd + F** of ga naar **Bestand > Nieuwe slimme map**
+2. Druk op **Cmd + F** of kies **Archief > Nieuwe slimme map**
 3. Klik rechtsboven op de knop **+** om criteria toe te voegen
-4. Stel uw voorwaarden in (zie onderstaande voorbeelden)
-5. Klik op **Opslaan** en geef de slimme map een naam
-6. Vink **Toevoegen aan zijbalk** aan, zodat deze toegankelijk blijft
-7. Kies een locatie om het `.savedSearch`-bestand op te slaan (standaard is prima)
+4. Stel je voorwaarden in (zie de voorbeelden hieronder)
+5. Klik op **Bewaar** en geef de slimme map een naam
+6. Vink **Voeg toe aan navigatiekolom** aan, zodat je hem snel terugvindt
+7. Kies een locatie voor het `.savedSearch`-bestand (de standaardlocatie is prima)
 
-### Meest bruikbare slimme mapcriteria
+### Handige criteria voor slimme mappen
 
-|Doel van slimme map|Criteria om in te stellen|
+| Doel van de slimme map | In te stellen criteria |
 |---|---|
-|Recente schermafbeeldingen|Soort = Afbeelding, Naam bevat "Screenshot", Datum gewijzigd = Laatste 7 dagen|
-|Grote bestanden eten schijf|Bestandsgrootte > 500 MB|
-|Recente pdf's|Soort = PDF, Datum gewijzigd = Laatste 30 dagen|
-|Documenten die moeten worden beoordeeld|Tag = "Review", Soort = Document|
-|Alle presentaties|Soort = Presentatie|
-|Recente downloads|Map = Downloads, Datum gewijzigd = Laatste 3 dagen|
+| Recente screenshots | Soort = Afbeelding, Naam bevat "Screenshot", Wijzigingsdatum = afgelopen 7 dagen |
+| Grote bestanden die schijfruimte innemen | Bestandsgrootte > 500 MB |
+| Recente pdf's | Soort = PDF, Wijzigingsdatum = afgelopen 30 dagen |
+| Documenten die nagekeken moeten worden | Tag = "Review", Soort = Document |
+| Alle presentaties | Soort = Presentatie |
+| Recente downloads | Map = Downloads, Wijzigingsdatum = afgelopen 3 dagen |
 
-### Geavanceerde slimme maptips
+### Tips voor gevorderden
 
-- Houd **Option** ingedrukt terwijl u op de knop **+** klikt om samengestelde criteria (EN/OF-groeperingen) toe te voegen
-- U kunt filteren op bestandsextensie, aanmaakdatum, datum van laatste opening en tientallen andere metadatavelden
-- 'Smart Folders'-update in realtime, zodat ze altijd de huidige status van uw schijf weerspiegelen
-- Ze werken op alle gekoppelde volumes, inclusief externe schijven
+- Houd **Option** ingedrukt terwijl je op **+** klikt om samengestelde criteria toe te voegen (EN/OF-groepen)
+- Je kunt filteren op extensie, aanmaakdatum, datum van laatste opening en tientallen andere metadatavelden
+- Slimme mappen werken zich direct bij, dus ze tonen altijd de actuele stand van je schijf
+- Ze werken op alle gekoppelde volumes, ook externe schijven
 
-Smart Folders is geen echte automatisering, aangezien ze niets verplaatsen of hernoemen. Maar ze zijn een uitstekende eerste stap, omdat ze je laten zien wat er moet worden georganiseerd voordat je je aan regels vastlegt.
+Slimme mappen zijn geen echte automatisering, want ze verplaatsen en hernoemen niets. Wel zijn ze een goede eerste stap: je ziet wat er opgeruimd moet worden voordat je regels gaat instellen.
 
-Voor een diepere duik, zie onze [macOS File Search Power Tools-gids](/blog/finder-tags-guide-organize-files-mac).
+Meer weten? Lees onze [gids over zoeken en ordenen op macOS](/blog/finder-tags-guide-organize-files-mac).
 
 ## Automator en Shortcuts: echte workflows bouwen
 
-Met Automator (en zijn nieuwere broer, Shortcuts) kunt u daadwerkelijke workflows voor bestandsverwerking creëren. Ze kunnen bestanden hernoemen, verplaatsen, kopiëren, vergroten of verkleinen en converteren met behulp van een drag-and-drop-interface.
+Met Automator en het nieuwere Shortcuts maak je echte workflows voor bestandsverwerking. Ze kunnen bestanden hernoemen, verplaatsen, kopiëren, verkleinen en converteren via slepen en neerzetten.
 
-### Automator Mapactie: downloads automatisch sorteren op bestandstype
+### Automator-maptaak: Downloads automatisch op bestandstype sorteren
 
-Dit is een van de meest praktische Automator-workflows. Het houdt uw map Downloads in de gaten en verplaatst bestanden naar submappen op basis van hun extensie.
+Dit is een van de handigste Automator-workflows. Hij bewaakt je map Downloads en verplaatst bestanden op basis van hun extensie naar submappen.
 
-**Stapsgewijze installatie:**
+**Zo stel je het in:**
 
-1. Open **Automator** (zoek in Spotlight)
-2. Kies **Mapactie** als documenttype
-3. Stel bovenaan "Mapactie ontvangt bestanden en mappen toegevoegd aan" in op uw map **Downloads**
-4. Voeg een actie **Shell-script uitvoeren** toe
-5. Stel "Invoer doorgeven" in op **als argumenten**
-6. Plak het volgende script:
+1. Open **Automator** (zoek ernaar met Spotlight)
+2. Kies **Maptaak** als documenttype
+3. Stel bovenaan in dat de maptaak bestanden en mappen ontvangt die aan je map **Downloads** worden toegevoegd
+4. Voeg de actie **Voer shellscript uit** toe
+5. Zet "Geef invoer door" op **als argumenten**
+6. Plak dit script:
 
 ```bash
 for f in "$@"; do
@@ -192,228 +191,228 @@ for f in "$@"; do
 done
 ```
 
-7. Sla de workflow op met een beschrijvende naam, zoals 'Downloads sorteren op type'
-8. De mapactie is nu actief. Nieuwe bestanden in Downloads worden automatisch gesorteerd.
+7. Bewaar de workflow onder een duidelijke naam, zoals "Downloads sorteren op type"
+8. De maptaak is nu actief. Nieuwe bestanden in Downloads worden automatisch gesorteerd.
 
-### Shortcuts: een eenvoudiger alternatief voor macOS Ventura+
+### Shortcuts: een eenvoudiger alternatief vanaf macOS Ventura
 
-Als u macOS Ventura of later gebruikt, kan Shortcuts Automator voor veel taken vervangen. Het voordeel is een schonere interface en nauwere integratie met systeemtriggers.
+Gebruik je macOS Ventura of nieuwer, dan kan Shortcuts (in het Nederlands: Opdrachten) Automator voor veel taken vervangen. Het voordeel is een overzichtelijkere interface en betere koppeling met systeemtriggers.
 
 **Voorbeeld: screenshots hernoemen en verplaatsen**
 
 1. Open **Shortcuts**
-2. Maak een nieuwe snelkoppeling
-3. Actie toevoegen: **Inhoud van map ophalen** (instellen op uw map Screenshots)
-4. Actie toevoegen: **Bestanden filteren** waarbij Naam 'Screenshot' bevat
-5. Actie toevoegen: **Hernoem bestand** met behulp van een patroon zoals `Screenshot-[Aanmaakdatum]`
-6. Actie toevoegen: **Bestand verplaatsen** naar de gewenste doelmap
-7. Om automatisch uit te voeren, gaat u naar het tabblad **Automatisering** en maakt u een trigger wanneer bestanden worden toegevoegd aan de map Screenshots
+2. Maak een nieuwe opdracht
+3. Voeg de actie **Haal inhoud van map op** toe (ingesteld op je map met screenshots)
+4. Voeg **Filter bestanden** toe, met als voorwaarde dat de naam "Screenshot" bevat
+5. Voeg **Wijzig naam van bestand** toe met een patroon als `Screenshot-[aanmaakdatum]`
+6. Voeg **Verplaats bestand** toe, naar de gewenste doelmap
+7. Wil je dat het automatisch gebeurt, maak dan in het tabblad **Automatisering** een trigger voor bestanden die aan de screenshotmap worden toegevoegd
 
-Shortcuts is beter voor eenmalige automatiseringen. Automator is beter voor complexe meerstapsworkflows waarvoor shellscripttoegang nodig is. Voor een uitgebreid overzicht van het hernoemen van bestanden op basis van Automator, zie onze [Automator handleiding voor het hernoemen van bestanden](/blog/macos-automator-rename-files-guide).
+Shortcuts is beter voor losse automatiseringen. Automator is beter voor ingewikkelde workflows met meerdere stappen waarvoor je shellscripts nodig hebt. Een uitgebreide uitleg over hernoemen met Automator staat in onze [handleiding voor hernoemen met Automator](/blog/macos-automator-rename-files-guide).
 
 
 ## Hazel voor scripts en archiveren
 
-Hazel is handig wanneer een map doorlopend regels met meerdere voorwaarden nodig heeft, met acties die Zush niet heeft, zoals archiveren, scripts uitvoeren of uploaden. Voor een regel die alleen factuur-PDF's naar jaar- en maandmappen verplaatst, heb je Hazel niet meer nodig. Zush doet dat met een mapregel als ‘Zet facturen in mappen per jaar en maand’ en herkent een factuur ook als het bestand `scan0043.pdf` heet.
+Hazel is handig als een map doorlopend regels met meerdere voorwaarden nodig heeft, met acties die Zush niet heeft, zoals archiveren, scripts uitvoeren of uploaden. Voor een regel die alleen factuur-pdf's naar mappen per jaar en maand verplaatst, heb je Hazel niet meer nodig. Zush doet dat met een mapregel als "Zet facturen in mappen per jaar en maand" en herkent een factuur ook als het bestand `scan0043.pdf` heet.
 
-Hazel werkt wanneer extensie, datum, tag, bestandsnaampatroon of geëxtraheerde tekst een betrouwbare voorwaarde opleveren. Zush kan dezelfde gegevens gebruiken, met Naming Blocks voor datum en extensie en Monitor-filters op bestandstype of naamvoorvoegsel. Daarnaast begrijpt het een screenshot, foto, video of generieke scan voordat het die een naam geeft of in een map zet.
+Hazel werkt als extensie, datum, tag, naampatroon of uitgelezen tekst een betrouwbare voorwaarde oplevert. Zush kan dezelfde gegevens gebruiken, met Naming Blocks voor datum en extensie en Monitor-filters op bestandstype of naamvoorvoegsel. Daarnaast begrijpt het een screenshot, foto, video of nietszeggende scan voordat het die een naam geeft of in een map zet.
 
-Gebruik je beide, geef dan elke tool een eigen map. Laat niet twee tools tegelijkertijd dezelfde innamemap bekijken en muteren. Voor een productvergelijking per functie, zie [Zush als Hazel alternatief](/hazel-alternative).
+Gebruik je beide, geef dan elke tool een eigen map. Laat nooit twee tools tegelijk dezelfde invoermap bewaken en wijzigen. Een vergelijking per functie vind je op [Zush als alternatief voor Hazel](/hazel-alternative).
 
-## Waar op regels gebaseerde automatisering faalt
+## Waar automatisering met regels tekortschiet
 
-Regels werken wanneer het bestand u al vertelt wat het is via de naam, extensie of metagegevens.
+Regels werken als het bestand via de naam, extensie of metadata al laat zien wat het is.
 
-Ze mislukken wanneer het bestand arriveert als:
+Ze schieten tekort als het bestand binnenkomt als:
 
 - `IMG_4382.HEIC`
-- `Schermopname 12-03-2026 om 10.44.11.png`
-- `downloaden (7).jpg`
+- `Screenshot 2026-03-12 at 10.44.11.png`
+- `download (7).jpg`
 - `Document.pdf`
-- `Zonder titel.png`
-- `afbeelding (3).webp`
+- `Untitled.png`
+- `image (3).webp`
 
-Een regel kan deze bestanden naar een specifieke map verplaatsen. Het kan niet verklaren wat ze inhouden. En zonder een beschrijvende naam kun je ze later niet meer vinden, ook al zijn ze perfect georganiseerd in mappen.
+Een regel kan zulke bestanden naar een bepaalde map verplaatsen, maar kan niet vertellen wat erin staat. En zonder beschrijvende naam vind je ze later niet terug, hoe netjes ze ook in mappen staan.
 
-Dit is precies waar op AI gebaseerde naamgeving nuttig wordt. Hulpmiddelen die de bestandsinhoud analyseren (de werkelijke pixels in een afbeelding, gesamplede frames uit een video, de tekst in een pdf, de lay-out van een document) kunnen namen genereren die beschrijven wat het bestand eigenlijk is.
+Precies hier helpt naamgeving met AI. Tools die de inhoud analyseren (de pixels van een afbeelding, frames uit een video, de tekst in een pdf, de opmaak van een document) kunnen namen maken die beschrijven wat het bestand echt is.
 
-Voor meer informatie over hoe het hernoemen van AI-bestanden in de praktijk werkt, zie onze [Bestandshernoemer voor Mac en Windows](/).
+Hoe hernoemen met AI in de praktijk werkt, lees je op de pagina over onze [bestandshernoemer voor Mac en Windows](/).
 
-## AI-aangedreven bestandshernoeming: voor en na
+## Hernoemen met AI: voor en na
 
-De duidelijkste manier om het hernoemen van AI te begrijpen, is door de resultaten te bekijken. Dit is wat er gebeurt als een AI-tool de inhoud van bestanden analyseert en beschrijvende namen genereert.
+Je begrijpt hernoemen met AI het snelst aan de hand van resultaten. Dit gebeurt er als een AI-tool de inhoud van bestanden analyseert en beschrijvende namen maakt.
 
-### Schermafbeeldingen
+### Screenshots
 
-|Voor|Na|
+| Voor | Na |
 |---|---|
-|`Schermopname 12-03-2026 om 10.44.11.png`|`slack-conversation-project-update.png`|
-|`Schermopname 12-03-2026 om 14.22.08.png`|`figma-dashboard-layout-dark-mode.png`|
-|`Schermopname 05-01-2026 om 09.15.33.png`|`google-analytics-traffic-report-jan.png`|
-|`Schermopname 18-02-2026 om 16.30.00.png`|`vscode-react-component-error.png`|
+| `Screenshot 2026-03-12 at 10.44.11.png` | `slack-gesprek-projectupdate.png` |
+| `Screenshot 2026-03-12 at 14.22.08.png` | `figma-dashboard-indeling-donkere-modus.png` |
+| `Screenshot 2026-01-05 at 09.15.33.png` | `google-analytics-verkeersrapport-jan.png` |
+| `Screenshot 2026-02-18 at 16.30.00.png` | `vscode-react-component-fout.png` |
 
 ### Foto's
 
-|Voor|Na|
+| Voor | Na |
 |---|---|
-|`IMG_4382.HEIC`|`golden-gate-bridge-foggy-morning.heic`|
-|`IMG_7291.HEIC`|`team-diner-Italiaans-restaurant.heic`|
-|`DSC_0034.NEF`|`zonsondergang-over-pacific-oceaan-malibu.nef`|
-|`foto_2026.jpg`|`whiteboard-sprint-planning-notes.jpg`|
+| `IMG_4382.HEIC` | `golden-gate-bridge-mistige-ochtend.heic` |
+| `IMG_7291.HEIC` | `teamdiner-italiaans-restaurant.heic` |
+| `DSC_0034.NEF` | `zonsondergang-stille-oceaan-malibu.nef` |
+| `photo_2026.jpg` | `whiteboard-notities-sprintplanning.jpg` |
 
-### Documenten en PDF's
+### Documenten en pdf's
 
-|Voor|Na|
+| Voor | Na |
 |---|---|
-|`Document.pdf`|`huurovereenkomst appartement-2026.pdf`|
-|`downloaden (3).pdf`|`aws-maandelijkse factuur-februari.pdf`|
-|`Scan 14.pdf`|`paspoort-verlenging-aanvraagformulier.pdf`|
-|`export.csv`|`kwartaal-verkooprapport-q1-2026.csv`|
+| `Document.pdf` | `huurcontract-appartement-2026.pdf` |
+| `download (3).pdf` | `aws-maandfactuur-februari.pdf` |
+| `Scan 14.pdf` | `aanvraagformulier-paspoortverlenging.pdf` |
+| `export.csv` | `verkooprapport-q1-2026.csv` |
 
 ### Gedownloade afbeeldingen
 
-|Voor|Na|
+| Voor | Na |
 |---|---|
-|`downloaden (7).jpg`|`minimalist-desk-setup-inspiration.jpg`|
-|`afbeelding (2).webp`|`react-component-lifecycle-diagram.webp`|
-|`Zonder titel.png`|`brand-color-palette-primary-shades.png`|
+| `download (7).jpg` | `minimalistisch-bureau-inspiratie.jpg` |
+| `image (2).webp` | `react-component-lifecycle-diagram.webp` |
+| `Untitled.png` | `merkkleurenpalet-primaire-tinten.png` |
 
 
-Het verschil is niet cosmetisch. Beschrijvende bestandsnamen betekenen dat de zoekfunctie 'Spotlight' werkt. Het betekent dat u een map kunt scannen en weet wat zich in elk bestand bevindt zonder het te openen. Het betekent dat elk downstream-systeem (Smart Folders, Hazel-regels, handmatig browsen) beter werkt.
+Het verschil is meer dan cosmetisch. Met beschrijvende bestandsnamen werkt zoeken in Spotlight. Je ziet in een map wat er in elk bestand zit zonder het te openen. En alles wat daarna komt, van slimme mappen en Hazel-regels tot gewoon bladeren, werkt beter.
 
-![Zush-verwerkingstabblad toont naampatroonconfiguratie met titelnaamformaat en lokalisatieopties](/images/showcase/macos/naming-light.webp)
+![Verwerkingstabblad van Zush met de instellingen voor het naampatroon, het titelformaat en taalopties](/images/showcase/macos/naming-light.webp)
 
-Voor een volledig overzicht van automatisch hernoemen op basis van AI, zie onze [handleiding voor het automatisch hernoemen van bestanden op de Mac](/blog/auto-rename-files-mac-guide).
+Een volledige uitleg over automatisch hernoemen met AI vind je in onze [handleiding voor automatisch hernoemen op Mac](/blog/auto-rename-files-mac-guide).
 
-## Aanbevolen automatische installatie van bestandsbeheer: stap voor stap
+## Aanbevolen opzet voor automatische bestandsorganisatie, stap voor stap
 
-Hier is een praktische opstelling die u in minder dan een uur kunt bouwen en die de bovenstaande tools combineert tot één samenhangend systeem. Dit is de aanpak die inspanning en resultaat in evenwicht brengt.
+Deze opzet bouw je in minder dan een uur. Hij combineert de tools hierboven tot één samenhangend systeem, met een goede verhouding tussen moeite en resultaat.
 
-### Stap 1: Controleer uw huidige puinhoop
+### Stap 1: Breng de rommel in kaart
 
-Open uw mappen Downloads, Bureaublad en Documenten. Merk op welke mappen de meeste bestanden met nutteloze namen bevatten. Kies de bovenste twee probleemmappen.
+Open je mappen Downloads, Bureaublad en Documenten. Kijk welke mappen de meeste bestanden met nietszeggende namen bevatten en kies de twee ergste.
 
-### Stap 2: Voeg 'Zush' inhoudbewuste naamgeving toe
+### Stap 2: Bekijk de namen en optionele mapgroepen van Zush
 
-Installeer [AI-bestandshernoemer voor Mac](/mac), wijs het naar de gekopieerde intakemap, kies een sjabloon en bekijk de eerste voorgestelde namen. Houd Rename History beschikbaar voordat u doorlopende monitoring inschakelt.
+Installeer de [AI-bestandshernoemer voor Mac](/mac), richt hem op de gekopieerde invoermap, kies een Template en bekijk de eerste voorgestelde namen. Zorg dat Rename History beschikbaar is voordat je doorlopende bewaking aanzet.
 
-### Stap 3: Maak eventueel Smart Folders aan voor zichtbaarheid
+### Stap 3: Maak eventueel slimme mappen voor overzicht
 
-Stel drie Smart Folders in Finder in:
+Stel in Finder drie slimme mappen in:
 
-1. **Recente grote bestanden** -- Bestandsgrootte > 100 MB, wijzigingsdatum = afgelopen 30 dagen
-2. **Ongesorteerde screenshots** -- Soort = Afbeelding, Naam bevat "Screenshot", Datum gewijzigd = Afgelopen 14 dagen
-3. **Recente documenten** -- Soort = Document OF Soort = PDF, Datum gewijzigd = Afgelopen 7 dagen
+1. **Recente grote bestanden**: Bestandsgrootte > 100 MB, Wijzigingsdatum = afgelopen 30 dagen
+2. **Ongesorteerde screenshots**: Soort = Afbeelding, Naam bevat "Screenshot", Wijzigingsdatum = afgelopen 14 dagen
+3. **Recente documenten**: Soort = Document OF Soort = PDF, Wijzigingsdatum = afgelopen 7 dagen
 
-Deze geven u direct inzicht in wat aandacht nodig heeft.
+Zo zie je meteen wat aandacht nodig heeft.
 
-### Stap 4: Stel optioneel basisbestandsroutering in
+### Stap 4: Stel eventueel eenvoudige routering in
 
-Kies een van deze opties op basis van uw voorkeur:
+Kies een van deze opties:
 
-**Optie A: Automator Mapactie** (gratis, ingebouwd)
-- Maak de hierboven beschreven sorteerworkflow voor downloads
-- Duurt 10 minuten, verwerkt de meest voorkomende bestandstypen
+**Optie A: Automator-maptaak** (gratis, ingebouwd)
+- Maak de sorteerworkflow voor Downloads die hierboven staat
+- Kost 10 minuten en verwerkt de meest voorkomende bestandstypen
 
-**Optie B: Hazel regels** (betaald, krachtiger)
-- Installeer Hazel en stel 3-5 regels in voor uw map Downloads
-- Focus op: PDF's naar documenten, afbeeldingen naar afbeeldingen, archieven naar een speciale map
-- Voeg een opschoonregel toe voor bestanden die ouder zijn dan 30 dagen
+**Optie B: Hazel-regels** (betaald, uitgebreider)
+- Installeer Hazel en maak 3 tot 5 regels voor je map Downloads
+- Richt je op: pdf's naar Documenten, afbeeldingen naar Afbeeldingen, archieven naar een eigen map
+- Voeg een opruimregel toe voor bestanden ouder dan 30 dagen
 
-**Optie C: Shortcuts automatisering** (gratis, macOS Ventura+)
-- Maak een snelkoppeling die bestanden op type sorteert
-- Stel in dat het volgens een schema of handmatig wordt geactiveerd
+**Optie C: Automatisering met Shortcuts** (gratis, vanaf macOS Ventura)
+- Maak een opdracht die bestanden op type sorteert
+- Laat hem volgens een schema of handmatig draaien
 
-**Optie D: Zush mapregels** (inbegrepen bij Zush)
-- Zet Sort aan in een Template en beschrijf de mappen, bijvoorbeeld ‘PDF's naar Documenten, afbeeldingen naar Afbeeldingen, bonnetjes per maand’
+**Optie D: Mapregels in Zush** (inbegrepen in Zush)
+- Zet Sort aan in een Template en beschrijf de mappen, bijvoorbeeld "pdf's naar Documenten, afbeeldingen naar Afbeeldingen, bonnetjes per maand"
 - Koppel de Template aan Monitor, zodat nieuwe downloads bij binnenkomst een naam krijgen en gesorteerd worden
 
-### Stap 5: Schakel Zush monitoring in na de test
+### Stap 5: Zet bewaking in Zush aan na de test
 
-![Zush monitortabblad toont mapbewakingsconfiguratie met geselecteerde bureaubladmap](/images/showcase/macos/monitor-light.webp)
+![Monitor-tabblad van Zush met de instellingen voor mapbewaking en de map Bureaublad geselecteerd](/images/showcase/macos/monitor-light.webp)
 
-Nadat u de testbatch heeft geverifieerd, stelt u Zush in om uw map Screenshots en Downloads te controleren. Dit verwerkt de bestanden die op regels gebaseerde tools niet correct kunnen benoemen:
+Klopt de testbatch, laat Zush dan je map met screenshots en je map Downloads bewaken. Zo worden de bestanden afgehandeld die tools met regels geen goede naam kunnen geven:
 
-- Schermafbeeldingen worden hernoemd op basis van welke app en inhoud zichtbaar is
-- PDF's worden hernoemd op basis van hun tekstinhoud
-- Foto's worden hernoemd op basis van wat er in de afbeelding staat
-- Gedownloade afbeeldingen krijgen beschrijvende namen in plaats van `download (7).jpg`
+- Screenshots krijgen een naam op basis van de app en de inhoud die zichtbaar is
+- Pdf's krijgen een naam op basis van hun tekst
+- Foto's krijgen een naam op basis van wat er op de afbeelding staat
+- Gedownloade afbeeldingen krijgen een beschrijvende naam in plaats van `download (7).jpg`
 
-### Stap 6: Stel een wekelijkse beoordeling in
+### Stap 6: Plan een wekelijkse controle
 
-Zelfs met automatisering kunt u één keer per week vijf minuten naar uw Smart Folders kijken. Hierdoor worden randgevallen opgespoord en kunt u uw regels in de loop van de tijd verfijnen.
+Ook met automatisering is het goed om eens per week vijf minuten naar je slimme mappen te kijken. Zo vang je uitzonderingen op en kun je je regels in de loop van de tijd bijstellen.
 
 ### Stap 7: Breid geleidelijk uit
 
-Na een week deze opstelling te hebben uitgevoerd, kijk eens wat er nog steeds door de kieren valt. Voeg indien nodig nieuwe 'Hazel'-regels of 'Smart Folders' toe. Probeer niet elk randgeval van tevoren af ​​te dekken.
+Kijk na een week wat er nog tussen wal en schip valt. Voeg zo nodig Hazel-regels of slimme mappen toe. Probeer niet vooraf elke uitzondering af te dekken.
 
 
-## Vergelijking: welk gereedschap voor welke klus
+## Vergelijking: welke tool voor welke taak
 
-|Taak|Aanbeveling|Waarom|
+| Taak | Aanbeveling | Waarom |
 |---|---|---|
-|Geef gemengde bestanden een doorzoekbare naam|**Zush — algemene keuze**|Leest inhoud, controleert mappen, bekijkt wijzigingen en houdt de terugdraaigeschiedenis bij|
-|Vind bestanden zonder ze te verplaatsen|Smart Folders (optioneel)|Virtueel, geen herstructurering nodig|
-|Sorteer bestanden op type of datum in mappen|Zush, Automator of Hazel|Zush gebruikt een mapregel in gewone taal; Automator en Hazel gebruiken extensieregels|
-|Archiveer oude bestanden automatisch|Hazel|Datumgebaseerde omstandigheden met achtergrondmonitoring|
-|Hernoem schermafbeeldingen beschrijvend|Zush (AI)|Inhoudsbewust benoemen uit beeldanalyse|
-|Hernoem PDF's op inhoud|Zush (AI)|Leest documenttekst om namen te genereren|
-|Batch hernoemen met patronen|Finder of Automator|Ingebouwde patroonvervanging|
-|Bestandsverwerking met één klik|Shortcuts|Schone gebruikersinterface, gemakkelijk te delen|
-|Regels met scripts of aangepaste acties|Hazel|Meest krachtige regelengine op macOS|
+| Gemengde bestanden op inhoud benoemen en groeperen | **Zush: beste keuze overall** | AI-namen, optioneel sorteren in mappen, bewaking met een Template, voorbeeldweergave en geschiedenis |
+| Bestanden vinden zonder ze te verplaatsen | Slimme mappen (optioneel) | Virtueel, geen herindeling nodig |
+| Bestanden op type of datum in mappen sorteren | Zush, Automator of Hazel | Zush gebruikt een mapregel in gewone taal; Automator en Hazel gebruiken regels op extensie |
+| Oude bestanden automatisch archiveren | Hazel | Voorwaarden op datum met bewaking op de achtergrond |
+| Screenshots een beschrijvende naam geven | Zush (AI) | Namen op basis van beeldanalyse |
+| Pdf's op inhoud hernoemen | Zush (AI) | Leest de tekst van het document om namen te maken |
+| In batch hernoemen met patronen | Finder of Automator | Ingebouwd zoeken en vervangen op patroon |
+| Bestanden met één klik verwerken | Shortcuts | Overzichtelijke interface, makkelijk te delen |
+| Regels met scripts of eigen acties | Hazel | De uitgebreidste regelengine op macOS |
 
-Voor een gedetailleerde vergelijking van methoden voor het specifiek hernoemen van batches, zie onze [Handleiding voor batchhernoemingsmethoden voor Mac](/blog/batch-rename-files-on-mac-complete-guide). Als je al weet dat je door AI aangedreven unieke namen nodig hebt (geen gedeelde voorvoegsels), is de [batch rename tool op Mac](/mac) de kortste weg: 50 gratis hernoemen, geen aanmelding.
+Een uitgebreide vergelijking van manieren om in batch te hernoemen staat in onze [gids over batch hernoemen op Mac](/blog/batch-rename-files-on-mac-complete-guide). Weet je al dat je unieke namen met AI nodig hebt (geen gedeelde voorvoegsels), dan is de [batch-hernoemtool voor Mac](/mac) de kortste weg: 50 gratis hernoemingen, zonder account.
 
-## Veelgemaakte fouten om te vermijden
+## Veelgemaakte fouten
 
-**Te vroeg geautomatiseerd.** Bouw geen 'Hazel'-installatie van 20 regels voordat u weet welke bestanden daadwerkelijk moeten worden gerouteerd. Begin met 2-3 regels en breid uit.
+**Te vroeg te veel automatiseren.** Bouw geen Hazel-opzet met 20 regels voordat je weet welke bestanden echt verplaatst moeten worden. Begin met 2 of 3 regels en breid daarna uit.
 
-**Het naamgevingsprobleem negeren.** Het verplaatsen van bestanden naar nette mappen helpt niet als elk bestand de naam `IMG_4382.HEIC` heeft. Je zult nog steeds elk bestand openen om het bestand te vinden dat je nodig hebt. Hernoemen is minstens zo belangrijk als sorteren.
+**Het naamprobleem negeren.** Bestanden in nette mappen zetten helpt niet als elk bestand `IMG_4382.HEIC` heet. Je moet dan nog steeds elk bestand openen om het juiste te vinden. Hernoemen is minstens zo belangrijk als sorteren.
 
-**Je regels niet testen.** Voordat je een mapactie of Hazel-regel inschakelt voor je echte map Downloads, test je deze op een dummy-map met voorbeeldbestanden. Eén foutieve verplaatsingsregel kan bestanden over uw schijf verspreiden.
+**Je regels niet testen.** Test een maptaak of Hazel-regel eerst op een testmap met voorbeeldbestanden voordat je hem op je echte map Downloads loslaat. Eén verkeerde verplaatsregel kan bestanden over je hele schijf verspreiden.
 
-**Geneste mappen vergeten.** De meeste automatiseringstools kijken standaard naar één mapniveau. Als bestanden in submappen terechtkomen, moet u recursieve monitoring expliciet configureren.
+**Submappen vergeten.** De meeste automatiseringstools bewaken standaard maar één mapniveau. Komen bestanden in submappen terecht, dan moet je recursieve bewaking zelf instellen.
 
-**Geen terugdraaiplan.** Elke automatisering die bestanden hernoemt of verplaatst, moet een pad voor ongedaan maken hebben. Hazel houdt logbestanden bij. Zush ondersteunt terugdraaien. Automator niet - dus wees voorzichtig met destructieve acties.
+**Geen weg terug.** Elke automatisering die bestanden hernoemt of verplaatst, moet ongedaan te maken zijn. Hazel houdt logs bij. Zush kan wijzigingen terugdraaien. Automator kan dat niet, dus wees voorzichtig met acties die iets onherroepelijk veranderen.
 
 ## Veelgestelde vragen
 
-### Hoe automatiseer ik de bestandsorganisatie op Mac zonder iets te installeren?
+### Hoe automatiseer ik bestandsorganisatie op Mac zonder iets te installeren?
 
-Gebruik de ingebouwde tools: Smart Folders voor het weergeven van bestanden, en Automator of Shortcuts voor bestandsroutering. Smart Folders bevindt zich in Finder onder Bestand > Nieuwe slimme map. Automator kan mapacties maken die worden geactiveerd wanneer bestanden in een specifieke map terechtkomen. Deze omvatten de basissortering op bestandstype, datum en naampatronen zonder software van derden.
+Gebruik de ingebouwde tools: slimme mappen om bestanden zichtbaar te maken, en Automator of Shortcuts om ze te verplaatsen. Slimme mappen vind je in Finder onder Archief > Nieuwe slimme map. Met Automator maak je maptaken die starten zodra er bestanden in een bepaalde map terechtkomen. Daarmee sorteer je op bestandstype, datum en naampatroon zonder software van derden.
 
 ### Wat is het verschil tussen Automator en Shortcuts op macOS?
 
-Automator is de oudere tool met meer actietypen, ondersteuning voor shell-scripts en integratie van mapacties. Shortcuts is nieuwer (macOS Monterey+), heeft een schonere interface en ondersteunt systeemtriggers en Siri-integratie. Specifiek voor bestandsautomatisering is Automator nog beter in staat vanwege zijn shellscriptacties en bredere opties voor bestandsmanipulatie. Apple migreert langzaam de functionaliteit naar Shortcuts, dus beide zijn de moeite waard om te weten.
+Automator is de oudere tool, met meer soorten acties, ondersteuning voor shellscripts en maptaken. Shortcuts is nieuwer (vanaf macOS Monterey), heeft een overzichtelijkere interface en ondersteunt systeemtriggers en Siri. Voor bestandsautomatisering kan Automator nog steeds meer, dankzij shellscripts en meer mogelijkheden om bestanden te bewerken. Apple verhuist functies langzaam naar Shortcuts, dus het loont om beide te kennen.
 
 ### Kan Hazel bestanden hernoemen op basis van hun inhoud?
 
-Hazel kan tekstinhoud in PDF's en documenten lezen en die gebruiken bij het hernoemen van regels. U kunt bijvoorbeeld een datum of trefwoord uit een PDF extraheren en in de bestandsnaam opnemen. 'Hazel' kan echter geen beeld- of video-inhoud analyseren - het heeft geen zichtvermogen. Voor schermafbeeldingen, foto's, schermopnamen en andere visuele bestanden heb je een op AI gebaseerde tool nodig die daadwerkelijk kan kijken naar wat er in het bestand staat.
+Hazel kan tekst in pdf's en documenten lezen en die gebruiken in hernoemregels. Je kunt bijvoorbeeld een datum of trefwoord uit een pdf halen en in de bestandsnaam zetten. Hazel kan geen beelden of video analyseren. Voor screenshots, foto's, schermopnamen en andere visuele bestanden heb je een AI-tool nodig die echt kan zien wat er in het bestand staat.
 
-### Hoe voorkom ik dat mijn map Downloads rommelig wordt?
+### Hoe voorkom ik dat mijn map Downloads volloopt?
 
-Zet een tweelaags systeem op. Maak eerst routeringsregels (Zush-mapregels, Automator of Hazel) die bestanden naar typespecifieke mappen verplaatsen zodra ze aankomen. Voeg ten tweede een opschoonregel toe die bestanden die ouder zijn dan 30 dagen naar een archiefmap of de prullenbak verplaatst. De combinatie zorgt ervoor dat uw map Downloads overzichtelijk blijft zonder dat er iets belangrijks verloren gaat. Zie onze [gids voor het organiseren van de map Downloads](/blog/how-to-organize-downloads-folder-mac) voor een gedetailleerd overzicht.
+Werk met twee lagen. Maak eerst routeringsregels (mapregels in Zush, Automator of Hazel) die bestanden bij binnenkomst naar mappen per type verplaatsen. Voeg daarna een opruimregel toe die bestanden ouder dan 30 dagen naar een archiefmap of de Prullenmand verplaatst. Zo blijft je map Downloads overzichtelijk zonder dat je iets belangrijks kwijtraakt. Een uitgebreide uitleg staat in onze [gids voor het ordenen van de map Downloads](/blog/how-to-organize-downloads-folder-mac).
 
-### Is het hernoemen van AI-bestanden veilig? Kan het mijn bestanden verpesten?
+### Is hernoemen met AI veilig? Kan het mijn bestanden beschadigen?
 
-AI-hernoemen verandert alleen de bestandsnaam, niet de bestandsinhoud. Goede tools zoals Zush houden ook een hernoemingsgeschiedenis bij, zodat je elke naamswijziging onmiddellijk kunt terugdraaien. Het risico is laag, maar u moet altijd eerst een kleine batch testen en de naamgevingskwaliteit bevestigen voordat u mapbewaking inschakelt voor mappen met een hoog volume.
+Hernoemen met AI verandert alleen de bestandsnaam, niet de inhoud. Zush houdt ook een hernoemgeschiedenis bij, zodat je elke naamswijziging direct kunt terugdraaien. Het risico is klein, maar test altijd eerst een kleine batch en controleer de namen voordat je bewaking aanzet op mappen waar veel binnenkomt.
 
-### Hoe automatiseer ik de bestandsorganisatie specifiek voor foto's?
+### Hoe automatiseer ik de organisatie van foto's?
 
-Foto's hebben unieke uitdagingen omdat hun oorspronkelijke namen (`IMG_`, `DSC_`, `DCIM`) geen enkele informatie over de inhoud bevatten. De beste aanpak is het hernoemen van AI om beschrijvende namen toe te voegen, gecombineerd met het sorteren van mappen op datum of gebeurtenis. Voor een fotospecifieke workflow raadpleegt u onze [gids voor het organiseren van foto's op Mac](/blog/best-ways-to-organize-photos-on-mac).
+Foto's zijn lastig omdat hun oorspronkelijke namen (`IMG_`, `DSC_`, `DCIM`) niets over de inhoud zeggen. De beste aanpak is hernoemen met AI voor beschrijvende namen, gecombineerd met sorteren in mappen op datum of gebeurtenis. Voor een workflow speciaal voor foto's, zie onze [gids voor het ordenen van foto's op Mac](/blog/best-ways-to-organize-photos-on-mac).
 
 ### Kan ik meerdere automatiseringstools combineren?
 
-Ja, wanneer een tweede laag echt nodig is. Begin met Zush voor naamgeving en sorteren in mappen. Voeg daarna eventueel Smart Folders toe voor zichtbaarheid, of Hazel of Automator voor scripts en archiveren. Houd het aantal extra regels klein, zodat het systeem onderhoudbaar blijft.
+Ja, als een tweede laag echt nodig is. Begin met Zush voor namen en sorteren in mappen, en voeg daarna eventueel slimme mappen toe voor overzicht, of Hazel of Automator voor scripts en archiveren. Houd het aantal extra regels klein, zodat het systeem te onderhouden blijft.
 
-### Wat gebeurt er als twee automatiseringsregels conflicteren?
+### Wat gebeurt er als twee automatiseringsregels botsen?
 
-Als Hazel en een Automator Mapactie beide dezelfde map bekijken, kunnen ze tegen elkaar racen. Het resultaat is onvoorspelbaar: een bestand kan worden verplaatst voordat het andere hulpprogramma het heeft verwerkt. De oplossing is eenvoudig: gebruik slechts één automatiseringstool per map. Zush kan in één keer hernoemen en sorteren, dus vaak heeft u maar één tool nodig. Heeft Hazel nog een taak, zoals archiveren, laat Zush dan eerst klaar zijn en richt Hazel op de doelmap.
+Bewaken Hazel en een Automator-maptaak dezelfde map, dan kunnen ze elkaar in de weg zitten. Het resultaat is onvoorspelbaar: een bestand kan al verplaatst zijn voordat de andere tool het verwerkt. De oplossing is simpel: gebruik per map maar één automatiseringstool. Zush kan in één keer hernoemen en sorteren, dus vaak heb je maar één tool nodig. Heeft Hazel nog een taak, zoals archiveren, laat Zush dan eerst zijn werk doen en richt Hazel op de doelmap.
 
 ## Conclusie
 
-Om de bestandsorganisatie op macOS effectief te automatiseren, moeten eenvoudige regels eenvoudige beslissingen afhandelen en AI visuele dubbelzinnigheid laten afhandelen. Die balans geeft je een systeem dat daadwerkelijk onderhoudbaar is.
+Wie bestandsorganisatie op macOS goed wil automatiseren, laat eenvoudige regels de eenvoudige beslissingen nemen en AI de bestanden die je aan de naam niet herkent. Die verdeling levert een systeem op dat je ook echt kunt bijhouden.
 
-Begin met Zush voor inhoudsbewuste namen, optioneel sorteren in mappen met AI en herstel. Sla een geteste sorteeropzet op in een Template voor Monitor. Gebruik 'Smart Folders' voor opgeslagen weergaven en 'Automator' of 'Hazel' voor scripts en archiveren. Evalueer wekelijks en breid geleidelijk uit.
+Begin met Zush voor namen op basis van de inhoud, optioneel sorteren in mappen met AI en de mogelijkheid om terug te draaien. Sla een geteste sorteeropzet op in een Template voor Monitor. Gebruik slimme mappen voor opgeslagen weergaven, en Automator of Hazel voor scripts en archiveren. Kijk wekelijks even mee en breid geleidelijk uit.
 
-Het doel is niet een perfect systeem. Het doel is een systeem waarbij je vijf minuten per week besteedt aan het ordenen van bestanden in plaats van dertig.
+Het doel is geen perfect systeem. Het doel is een systeem waarbij je vijf minuten per week aan bestandsorganisatie kwijt bent in plaats van dertig.

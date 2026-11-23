@@ -435,7 +435,43 @@ export async function GET() {
       priority: '0.55',
     }));
 
-  const urls = [...staticEntries.map((entry) => ({ ...entry, route: entry.loc.replace(SITE_ORIGIN, '') || '/' })), ...localizedEntries, ...blogEntries, ...translatedBlogEntries, ...tagEntries, ...docsEntries]
+  // Translated blog lists (`/de/blog` …) form one hreflang cluster with `/blog`.
+  const blogIndexLocales = [
+    ...new Set(translatedPosts.map((post) => post.locale)),
+  ];
+  const blogIndexCluster: AlternateLink[] | undefined = blogIndexLocales.length > 0
+    ? [
+        { hreflang: 'en', href: `${SITE_ORIGIN}/blog` },
+        ...blogIndexLocales.map((locale) => ({
+          hreflang: LOCALE_META[locale as keyof typeof LOCALE_META].lang,
+          href: `${SITE_ORIGIN}/${LOCALE_META[locale as keyof typeof LOCALE_META].slug}/blog`,
+        })),
+      ]
+    : undefined;
+  const translatedBlogIndexEntries = blogIndexLocales.map((locale) => {
+    const dates = translatedPosts
+      .filter((post) => post.locale === locale)
+      .map(getBlogPostLastModifiedDate)
+      .sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
+    const { changefreq, priority } = getRouteHints('/blog');
+
+    return {
+      loc: `${SITE_ORIGIN}/${LOCALE_META[locale as keyof typeof LOCALE_META].slug}/blog`,
+      route: undefined,
+      lastmod: dates[0] ?? getStaticRouteLastModifiedDate('/blog'),
+      changefreq,
+      priority,
+      alternateLinks: blogIndexCluster,
+    };
+  });
+  const staticEntriesWithRoutes = staticEntries.map((entry) => {
+    const route = entry.loc.replace(SITE_ORIGIN, '') || '/';
+    return route === '/blog' && blogIndexCluster
+      ? { ...entry, route, alternateLinks: blogIndexCluster }
+      : { ...entry, route };
+  });
+
+  const urls = [...staticEntriesWithRoutes, ...localizedEntries, ...blogEntries, ...translatedBlogEntries, ...translatedBlogIndexEntries, ...tagEntries, ...docsEntries]
     .map((entry) => {
       const { loc, route, lastmod, changefreq, priority } = entry;
       const alternateLinks = (entry as { alternateLinks?: AlternateLink[] }).alternateLinks;

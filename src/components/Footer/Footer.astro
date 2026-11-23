@@ -19,6 +19,7 @@ import {
   type LocalizedRoute,
 } from '@/i18n/config';
 import { getCopy } from '@/i18n/copy';
+import { getBlogIndexPath } from '@/data/blog';
 import { getLocalizedContent } from '@/i18n/localizedContent';
 import { LOCALIZED_PROFESSION_KEYS } from '@/i18n/professions/types';
 import Tooltip from '@/components/Tooltip/Tooltip.astro';
@@ -35,6 +36,7 @@ interface Props {
 
 const { locale = DEFAULT_LOCALE, hidePlatform, showTaaftBadge = false } = Astro.props as Props;
 const copy = getCopy(locale).footer;
+const blogHref = await getBlogIndexPath(locale);
 const shouldShowAppStore = hidePlatform !== 'mac';
 const shouldShowMicrosoftStore = hidePlatform !== 'windows';
 
@@ -261,7 +263,7 @@ const professionSectionTitle = professionSectionTitles[locale];
         <h4 class={sectionTitleClass}>{copy.resources}</h4>
         <ul class={styles.Footer__Links}>
           <li><a href='/pricing' class={linkClass}>{copy.pricing}</a></li>
-          <li><a href='/blog' class={linkClass}>{copy.blog}</a></li>
+          <li><a href={blogHref} class={linkClass}>{copy.blog}</a></li>
           <li><a href='/docs' class={linkClass}>{copy.productLinks.docs}</a></li>
           <li><a href='/about' class={linkClass}>{copy.productLinks.about}</a></li>
           <li><a href='/press' class={linkClass}>{copy.productLinks.press}</a></li>

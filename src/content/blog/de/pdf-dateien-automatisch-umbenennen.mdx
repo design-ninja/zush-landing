@@ -1,6 +1,6 @@
 ---
-title: "PDF-Dateien automatisch umbenennen: mit KI und Ordnerüberwachung"
-description: "PDF-Dateien automatisch nach Inhalt umbenennen: Zush überwacht deinen Eingangsordner und benennt Kontoauszüge, Rechnungen und Scans per KI. Mit Beispielen."
+title: "PDF-Dateien automatisch umbenennen, sobald sie ankommen (Mac und Windows)"
+description: "Eingehende PDFs automatisch nach Inhalt umbenennen: Zush Monitor auf Mac oder Windows einrichten, in Anbieterordner sortieren, in Activity rückgängig machen."
 date: "2026-11-11"
 slug: "pdf-dateien-automatisch-umbenennen"
 locale: "de"
@@ -11,33 +11,24 @@ tags:
   - "Automatisierung"
   - "Dateiorganisation"
   - "PDFs & Dokumente"
-tldr: "Für PDFs, die laufend ankommen, überwachst du einen eigenen Eingangsordner, lässt die Namen aus dem Dokumentinhalt erzeugen, testest das Namensmuster vorher an 10 bis 20 Dateien und behältst die Rückgängig-Funktion in Reichweite."
-reviewed: "2026-11-11"
+tldr: "Füge deinen PDF-Eingangsordner in Zush Monitor hinzu, beschränke ihn auf PDF und weise ein Template zu, das du vorher in AI Rename getestet hast. Jede neue PDF wird dann ohne Prüfschritt nach ihrem Inhalt umbenannt, auf Wunsch in Ordner wie Finanzen/Anbieter sortiert, und jede Änderung lässt sich in Activity rückgängig machen."
+reviewed: "2026-11-23"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Kurz gesagt: PDF-Dateien benennst du automatisch um, indem du den Ordner überwachst, in dem sie landen, jedes Dokument nach den wichtigen Angaben auslesen lässt und daraus einen einheitlichen Dateinamen baust, etwa `2026-10-31_sparkasse_kontoauszug_oktober.pdf`. Teste das Muster zuerst an 10 bis 20 Dateien, prüf die vorgeschlagenen Namen und schalte erst dann die dauerhafte Ordnerüberwachung ein.
+Zush Monitor überwacht einen Ordner auf dem Mac oder unter Windows und benennt jede neue PDF nach dem um, was im Dokument steht. Aus `scan_0042.pdf` wird zum Beispiel `2026-11-03_telekom_rechnung_123456789.pdf`. Monitor setzt den Namen, sobald die Datei ankommt, ohne Prüfschritt, und listet jede Änderung unter Activity auf, wo du sie rückgängig machen kannst.
 
-**Zuletzt geprüft: 11. November 2026.** Geschrieben vom Entwickler von [Zush – KI-Dateiumbenenner für Mac und Windows](/de).
+Diese Anleitung behandelt genau diese eine Aufgabe: PDFs, die immer wieder am selben Ort landen, vom Scanner, aus dem E-Mail-Programm oder von einer externen Festplatte. Für andere PDF-Aufgaben fängst du woanders an:
 
-Diese Anleitung ist für wiederkehrende PDFs gedacht: Kontoauszüge aus dem Onlinebanking, Rechnungen von Telekom, Vodafone oder Amazon, Briefe der Krankenkasse, Gehaltsabrechnungen, Versicherungspolicen, Exporte aus DATEV oder lexoffice und Scannerausgaben. Sie heißen meist `Kontoauszug.pdf`, `Rechnung (3).pdf` oder `scan_0042.pdf`. Statt den Stapel jeden Monat neu aufzuräumen, verhinderst du, dass er überhaupt entsteht.
+- Ein einmaliger Rückstand, den du Datei für Datei prüfen willst: [PDFs mit KI auf dem Mac umbenennen](/blog/rename-pdf-files-with-ai-mac) oder [unter Windows](/blog/rename-pdf-files-with-ai-windows) (beide Englisch). Die Mac-Anleitung erklärt auch Regeln für Dateinamen und vergleicht KI-Umbenennung mit Finder, OCR und Skripten.
+- Angaben für Rechnungen und Belege wie Anbieter, Betrag und Zeitraum: [Rechnungen automatisch umbenennen](/de/blog/rechnungen-automatisch-umbenennen).
+- Scannereinstellungen und OCR: [gescannte Dokumente automatisch umbenennen](/de/blog/gescannte-dokumente-automatisch-umbenennen).
 
-## Welcher PDF-Workflow passt zu dir?
-
-| Dein Ziel | Nächster Schritt |
-|---|---|
-| Einen einmaligen Stapel auf dem Mac umbenennen | Folge dem [Mac-Workflow für PDFs mit KI](/blog/rename-pdf-files-with-ai-mac) (Englisch) |
-| Jedes neue PDF in einem Ordner automatisch umbenennen | Lies hier weiter |
-| PDF-Unterstützung prüfen und die App laden | Öffne [PDFs mit KI umbenennen](/de/rename-pdf-with-ai) |
-| Rechnungen nach Anbieter, Datum und Betrag benennen | Nutze die Anleitung [Rechnungen automatisch umbenennen](/de/blog/rechnungen-automatisch-umbenennen) |
-
-Der Unterschied ist wichtig. Ein einmaliger Stapel braucht eine sorgfältige Prüfung. Ein automatischer Ablauf braucht zusätzlich ein stabiles Namensmuster, einen überwachten Eingangsordner und einen sicheren Umgang mit Ausnahmen.
-
-![Zush zeigt unter macOS inhaltsbasierte Dateinamen für einen gemischten Ordner](/images/showcase/macos/batch-rename-light.webp)
+![Zush Monitor unter macOS mit einem überwachten Ordner und seinem Template](/images/showcase/macos/monitor-light.webp)
 
 <BlogProductIntro
-  title="Jede Woche dieselbe PDF-Aufräumaktion?"
-  description="Zush überwacht den Ordner, in dem deine PDFs landen, und benennt Rechnungen, Kontoauszüge, Verträge und Scans nach ihrem Inhalt, sobald sie ankommen. Die Aufräumroutine fällt weg."
+  title="PDFs stapeln sich unter Namen wie scan_0042.pdf?"
+  description="Zush überwacht den Ordner, in dem deine PDFs landen, und benennt jede nach ihrem Inhalt um, sobald sie ankommt, auf Mac und Windows."
   links={[
     { href: '/de/rename-pdf-with-ai', label: '50 PDF-Umbenennungen gratis testen' },
     { href: '/docs/folder-monitoring', label: 'Ordnerüberwachung einrichten' },
@@ -45,192 +36,131 @@ Der Unterschied ist wichtig. Ein einmaliger Stapel braucht eine sorgfältige Pr�
   ]}
 />
 
-## Was dein Eingangsordner verkraften muss
+## PDFs automatisch umbenennen mit Monitor
 
-Eingehende PDFs enthalten auswählbaren Text, eingescannte Seitenbilder oder beides. Teste die Formate, die deine Quellen tatsächlich liefern: Ein Kontoauszug aus dem Browser, ein gespeicherter E-Mail-Anhang und eine Scannerdatei brauchen oft unterschiedliche Angaben im Namen, obwohl alle drei auf `.pdf` enden.
+Die Einrichtung ist in Zush für [Mac](/de/mac) und Zush für [Windows](/de/windows) gleich.
 
-Ein Sonderfall sind ZUGFeRD- oder Factur-X-Rechnungen: ein normales PDF mit eingebetteter XML-Datei. Zush liest das PDF selbst, also das, was auf der Rechnung steht. Da nur der Dateiname geändert wird, bleibt die eingebettete XML unverändert, und deine Buchhaltungssoftware kann sie weiterhin auslesen.
+### 1. Eingangsordner in Monitor hinzufügen
 
-Für Scannereinstellungen und die Wahl zwischen OCR und visueller Analyse lies [gescannte Dokumente automatisch umbenennen](/de/blog/gescannte-dokumente-automatisch-umbenennen). Für Rechnungen gibt es den eigenen [Rechnungs-Workflow](/de/blog/rechnungen-automatisch-umbenennen). Diese Anleitung sorgt dafür, dass der laufende Eingang nach dem ersten Test einheitlich bleibt.
+Leg einen Ordner an, in dem nur Dokumente landen, die umbenannt werden sollen, etwa `PDF-Eingang` oder den Zielordner deines Scanners. Öffne **Monitor** in Zush und füge ihn hinzu. Ein enger Ordner ist leichter zu kontrollieren als der ganze Downloads-Ordner, in dem auch Installer, Bilder und Archive liegen.
 
-## Vorher und nachher: PDFs nach Inhalt umbenennen
+### 2. Auf PDF beschränken
 
-| Vorher | Nachher |
+Nimm in den Optionen des überwachten Ordners PDF als Dateityp auf und lass andere Typen weg. In denselben Optionen stellst du Unterordner und Dateinamenfilter ein. So kannst du Monitor auch auf Namen beschränken, die mit dem Präfix deines Scanners beginnen, etwa `Scan`.
+
+### 3. Ein Template wählen
+
+Klick auf den Template-Button neben dem Ordner und wähle das Template, das Monitor verwenden soll. Ein Template enthält die [Naming Blocks](/docs/naming-blocks), aus denen jeder Name gebaut wird, dazu eventuelle eigene Anweisungen und die Einstellungen für die Ordnersortierung. Jeder überwachte Ordner kann sein eigenes Template haben.
+
+Ein Muster für gemischte Geschäftsdokumente:
+
+```text
+{Detected Date}_{Vendor}_{Document Type}_{Title}
+```
+
+**Detected Date** ist das Datum, das im Dokument steht, und meist das, das du willst. **Created Date** ist der Tag, an dem die Datei erstellt oder heruntergeladen wurde. Für Rechnungen ergänzt die [Anleitung zum Invoices-Template](/docs/templates/invoices) **Invoice Number** und **Amount**. Zush für Mac 3.25.0 bringt außerdem das eingebaute Template **Financial Statements** mit. Es benennt Konto-, Kreditkarten-, Hypotheken-, Kredit- und Depotauszüge nach Datum, Bank, Kontoinhaber und Kontonummer. Seit Mac 3.23.2 benennt Zush Cloud AI Rechnungen genauer, mit Anbieter und Abrechnungszeitraum.
+
+### 4. Den KI-Modus prüfen
+
+Der KI-Modus ist eine globale Einstellung in Settings und gilt für alle überwachten Ordner. Zush hat vier: Zush Cloud AI (ohne Schlüssel), BYOK mit deinem eigenen Schlüssel für Gemini, OpenRouter, OpenAI oder Claude, Ollama und LM Studio. Ollama und LM Studio analysieren auf deinem eigenen Rechner. Das ist wichtig, wenn du Kontoauszüge oder Verträge lieber nicht an einen Clouddienst schickst. Die Unterschiede erklärt die Seite [AI modes](/docs/ai-modes).
+
+### 5. Das Template an Kopien in AI Rename testen
+
+Monitor zeigt keine Vorschläge, bevor es umbenennt. Teste deshalb vorher. Kopiere 10 bis 20 typische PDFs in einen Testordner, öffne **AI Rename**, wähle dasselbe Template und füge die Kopien hinzu. AI Rename zeigt jeden vorgeschlagenen Namen, bevor sich etwas ändert. Nimm die schwierigen Fälle mit: eine gescannte Seite, einen Kontoauszug mit zwei Daten, zwei Rechnungen vom selben Anbieter. Pass das Template an, bis die Namen stimmen.
+
+### 6. Monitor einschalten
+
+Schalte die Überwachung für den Ordner ein und lass Zush laufen. Ab jetzt wird jede neue PDF direkt in diesem Ordner analysiert und umbenannt. Unter **Activity** siehst du, was sich geändert hat, und kannst eine [Umbenennung rückgängig machen](/docs/undo-history), wenn ein Name falsch ist.
+
+![Zush Monitor unter Windows mit einem überwachten Ordner und seinem Template](/images/showcase/windows/monitor-light.webp)
+
+## Eingehende PDFs automatisch in Ordner sortieren
+
+Ein Monitor-Template kann jede umbenannte PDF auch in einen Unterordner verschieben. Schalte im Template **Folder sorting** ein, wähle einen Zielordner und schreib eine Ordnerregel in normaler Sprache. Alle Optionen erklärt die Seite [AI folder sorting](/docs/folder-sorting).
+
+Beispiel: Die Dokumente jedes Anbieters sollen in `Finanzen/<Anbieter>` landen.
+
+| Template-Einstellung | Wert |
 |---|---|
-| `Kontoauszug.pdf` | `2026-10-31_sparkasse_kontoauszug_oktober.pdf` |
-| `Rechnung_123456789.pdf` | `2026-10-05_telekom_rechnung_festnetz_oktober.pdf` |
-| `Rechnung (3).pdf` | `2026-10-12_amazon_rechnung_usb-c-ladegeraet.pdf` |
-| `scan_0042.pdf` | `2026-09-18_tk_bescheinigung_mitgliedschaft.pdf` |
-| `download.pdf` | `2026-10_gehaltsabrechnung_oktober.pdf` |
-| `Dokument.pdf` | `2026-01-01_huk_kfz-versicherung_police.pdf` |
-| `export_20261102.pdf` | `2026-10_datev_buchungsliste_oktober.pdf` |
-| `Scan 20261103.pdf` | `2026-11-03_mietvertrag_nachtrag_staffelmiete.pdf` |
+| Zielordner | `Finanzen` |
+| Folder sorting | Custom |
+| Ordnerregel | Sortiere Rechnungen und Kontoauszüge nach Firma und benenne jeden Ordner nach der Firma. |
 
-Jede umbenannte Datei findest du über Spotlight oder die Windows-Suche wieder und erkennst sie schon beim Öffnen des Ordners.
-
-![Zush-Dialog mit Umbenennungsregeln für PDF-Dateinamen per Anweisung auf dem Mac](/images/showcase/macos/custom-prompts-light.webp)
-
-## Schritt für Schritt: PDFs automatisch umbenennen mit Zush
-
-### 1. Fang mit deinem schlimmsten Ordner an
-
-Fast jeder hat einen Ordner, in dem sich die meisten schlecht benannten PDFs sammeln: Downloads, der Zielordner des Scanners, ein Ordner „Steuer 2026“ oder ein Kundenordner. Dort fängst du an.
-
-### 2. Öffne den Ordner in Zush
-
-Lade den Ordner in [den KI-PDF-Umbenenner](/de/rename-pdf-with-ai). Zush erkennt die PDF-Dateien und bereitet sie für die Stapelverarbeitung vor. Die App gibt es für [Mac](/de/mac) und [Windows](/de/windows).
-
-### 3. Wähle dein Namensmuster
-
-Nimm ein Muster, das zu deiner Ablage passt:
-
-- <code>{'{title}'}</code> für einfache, beschreibende Namen
-- <code>{'{date}_{title}'}</code> für Ordner, in denen die zeitliche Reihenfolge zählt
-- <code>{'{category}_{title}'}</code> für die Sortierung nach Dokumenttyp
-- <code>{'{date}_{category}_{title}'}</code> für maximale Struktur
-
-So sieht das Ergebnis jeweils aus:
-
-| Muster | Ergebnis |
+| Kommt in PDF-Eingang an | Landet als |
 |---|---|
-| <code>{'{title}'}</code> | `vodafone-rechnung-mobilfunk-oktober-2026.pdf` |
-| <code>{'{date}_{title}'}</code> | `2026-10-15_vodafone-rechnung-mobilfunk-oktober-2026.pdf` |
-| <code>{'{category}_{title}'}</code> | `rechnung_vodafone-mobilfunk-oktober-2026.pdf` |
-| <code>{'{date}_{category}_{title}'}</code> | `2026-10-15_rechnung_vodafone-mobilfunk-oktober-2026.pdf` |
+| `scan_0042.pdf` | `Finanzen/Telekom/2026-11-03_telekom_rechnung_123456789.pdf` |
+| `Kontoauszug.pdf` | `Finanzen/Sparkasse/2026-10-31_sparkasse_kontoauszug_oktober.pdf` |
+| `Rechnung (3).pdf` | `Finanzen/Vodafone/2026-11-02_vodafone_rechnung_november.pdf` |
 
-Ein Tipp für deutsche Dokumente: Nimm ein ISO-Datum (`2026-10-15`) statt `15.10.2026`. Nur so sortieren Finder und Explorer die Dateien korrekt nach Datum.
+Wenn du schon einen Ordner pro Anbieter hast, schalte **Existing folders only** ein (Mac 3.24.0, Windows 3.19.5.0). Dann landen Dateien nur in Ordnern, die es schon gibt, und eine PDF, die zu keinem passt, bleibt, wo sie ist. Im überwachten Eingang zeigt dir so eine liegengebliebene Datei, dass ein neuer Anbieter dazugekommen ist. Du kannst auch verschachtelte Ordner anlegen lassen, etwa „nach Jahr, darin nach Monat“, oder **Keep current names** einschalten, wenn PDFs nur verschoben werden sollen.
 
-### 4. Prüfe die vorgeschlagenen Namen
+Die Sortierung gilt für neu ankommende Dateien. Wenn du das Template später änderst, werden bereits verarbeitete PDFs nicht neu sortiert.
 
-Sieh dir die Liste der neuen Namen an, bevor du sie anwendest. Gerade bei PDFs ist das wichtig, weil es oft rechtliche oder finanzielle Dokumente sind. Achte darauf, dass die Titel stimmen und genau genug sind, um ähnliche Dokumente zu unterscheiden, zum Beispiel zwei Kontoauszüge desselben Monats von Giro- und Tagesgeldkonto.
+![Zush-Ordnersortierung unter macOS mit PDFs in vorgeschlagenen Ordnern](/images/showcase/macos/folder-sorting-light.webp)
 
-### 5. Wende den Stapel an
+## Woher die PDFs kommen
 
-Bestätige die Umbenennung. [Zush](/de) protokolliert jede Änderung, sodass du jede Datei auf ihren ursprünglichen Namen zurücksetzen kannst, falls ein Titel falsch ist oder du den alten Namen noch brauchst. Mehr dazu in der [Undo-Dokumentation](/docs/undo-history).
+**Scannerfreigabe.** Stell die Funktion „Scan in Ordner“ oder die Netzwerkfreigabe deines Scanners auf den überwachten Ordner ein. Zush liest auch reine Bildscans ohne Textebene. Die Scannereinstellungen erklärt die Anleitung [gescannte Dokumente automatisch umbenennen](/de/blog/gescannte-dokumente-automatisch-umbenennen).
 
-### 6. Schalte die Ordnerüberwachung ein
+**E-Mail-Anhänge.** Lass dein Mailprogramm oder deinen Browser PDF-Anhänge in `PDF-Eingang` statt in Downloads speichern. Willst du lieber Downloads selbst überwachen, lass den PDF-Filter an. Für das erste Aufräumen helfen die Downloads-Anleitungen für [Mac](/blog/how-to-organize-downloads-folder-mac) und [Windows](/blog/organize-downloads-folder-windows) (beide Englisch).
 
-Öffne **Monitor**, füge den Eingangsordner hinzu, nimm PDF als Dateityp auf und weise das Template zu, das du getestet hast. Die Bedienung erklärt die [Anleitung zur Ordnerüberwachung](/docs/folder-monitoring), das Template baust du mit dem [Leitfaden zu Naming Blocks](/docs/naming-blocks). Starte mit einem eigenen Ordner wie `PDF-Eingang` statt mit dem ganzen Downloads-Ordner.
+**Externe Festplatte.** Zush für Mac kann einen Ordner auf einer externen Festplatte überwachen und macht weiter, sobald die Platte wieder angeschlossen ist. Seit Mac 3.23.1 wartet Monitor auch, wenn sein Zielordner offline ist, zum Beispiel auf einer getrennten Festplatte, und benennt die wartenden Dateien um, sobald sie wieder da ist. Dateien, die sich in der Zwischenzeit geändert haben, werden neu analysiert. Mit derselben Version versucht Monitor Dateien auf einer kurz unterbrochenen Netzwerkfreigabe erneut und überspringt Dateien, die es nicht lesen kann, statt anzuhalten.
 
-Wichtig: Monitor wendet Änderungen automatisch an und hat keinen Schalter für eine Prüfung vor dem Umbenennen. Erledigte Umbenennungen siehst du unter **Activity** und kannst sie dort rückgängig machen. Zush muss laufen, damit neue Dateien verarbeitet werden.
+## Ausnahmen prüfen, bevor die Überwachung allein läuft
 
-## Ein Rezept für deinen PDF-Eingang
+- **Falsches Datum:** Vergleiche den Namen mit dem Datum auf der PDF. Nimm **Detected Date** statt **Created Date**, wenn der Downloadtag keine Bedeutung hat.
+- **Zwei ähnliche Dokumente:** Ergänze einen Block, der sie unterscheidet, etwa **Invoice Number** oder die Kontonummer. Zwei Auszüge derselben Bank aus demselben Monat brauchen das.
+- **Unlesbarer Scan:** Scanne neu oder benenne die Datei von Hand. Ein plausibler Titel für eine verschwommene Seite ist schlechter als gar keiner.
+- **Sammel-PDF:** Eine PDF mit Brief, Formular und Rechnung bekommt einen einzigen Namen. Teile sie vorher, wenn du jeden Teil wiederfinden musst.
+- **Neuer Absender oder neues Layout:** Teste erneut in AI Rename, sobald ein neuer Anbieter oder ein umgestalteter Kontoauszug ankommt.
 
-Dieses Beispiel trennt neu eingehende Dokumente von deinem bestehenden Archiv. Es ist ein Vorschlag, keine eingebaute Regel.
+## Ausnahmen per Rechtsklick mit Rename with Zush korrigieren
 
-| Einstellung | Startwert | Warum |
+Für eine einzelne PDF, die ein anderes Template braucht, musst du Zush nicht öffnen. Wähle die Datei aus, klick mit der rechten Maustaste, wähle **Rename with Zush** und dann **Smart** oder eines deiner Templates. Die Einrichtung erklärt [Quick Rename](/docs/quick-rename).
+
+- **Mac (3.24.0):** im Finder. Schalte es in den Zush-Einstellungen unter **Quick Rename** ein und aktiviere dann die Zush-Erweiterung in den Systemeinstellungen. Für Dateien in iCloud Drive, Dropbox, Google Drive oder OneDrive funktioniert das Finder-Menü nicht.
+- **Windows (3.19.5.0):** im Kontextmenü des Explorers, in der Version aus dem Microsoft Store.
+
+Quick Rename setzt den Namen sofort, genau wie Monitor. Wenn du einen Vorschlag erst prüfen willst, nimm AI Rename. In beiden Fällen erscheint die Änderung unter Activity.
+
+## Mac und Windows: wo Dateien landen und wie du sie findest
+
+| | Mac | Windows |
 |---|---|---|
-| Überwachter Ordner | Ein eigener `PDF-Eingang` | Beschränkt den Ablauf auf Dokumente, die du umbenennen willst |
-| Dateityp | PDF | Hält Installer, Bilder und Archive aus dem Ablauf heraus |
-| Template | Document Type + Title, für Rechnungen zusätzlich Vendor | Nutzt Angaben, die die eingehenden Dokumente beschreiben |
-| Datum | Ein geprüftes Dokumentdatum, wo nötig | Erstell- und Downloaddatum weichen oft vom Datum auf dem Dokument ab |
-| Erster Test | Kopien von 10 bis 20 typischen PDFs | Testet Scans, Exporte und Ausnahmen, bevor das Archiv drankommt |
-| Endgültige Ablage | Deine bestehenden Ordner für Finanzen, Versicherung oder Kunden | Zush benennt um; das Ablegen ist ein eigener Schritt |
+| Einrichtung von Monitor | Monitor-Bildschirm, gleiche Schritte | Monitor-Bildschirm, gleiche Schritte |
+| Wo umbenannte PDFs landen | Im überwachten Ordner oder im Sortierziel und seinen Unterordnern | Genauso |
+| Suche | Spotlight und Finder-Suche. Ein Template kann zusätzlich Finder-Tags und Spotlight-Metadaten setzen | Windows-Suche und das Suchfeld im Explorer. Zush kann Titel, Beschreibung und Stichwörter in die Eigenschaften der PDF schreiben |
+| Umbenennen per Rechtsklick | Finder, Mac 3.24.0, in den Einstellungen einschalten | Explorer, Windows 3.19.5.0, Version aus dem Microsoft Store |
+| Rückgängig machen | Activity | Activity |
 
-Sollen neue PDFs auch gleich in Unterordner wandern, aktiviere im Template die [KI-Ordnersortierung](/docs/folder-sorting). Dann werden neue Dateien im überwachten Ordner umbenannt und gruppiert, etwa nach Anbieter oder Monat. Bereits verarbeitete Dateien bleiben, wo sie sind.
+Was die Suche findet, hängt davon ab, ob das Betriebssystem den Ordner indiziert. Was Zush auf welcher Plattform schreibt, steht in der Dokumentation zu [Metadaten und Tags](/docs/metadata-tags).
 
-Landet heute alles in einem gemischten Downloads-Ordner, räume ihn zuerst auf: [Downloads auf dem Mac organisieren](/blog/how-to-organize-downloads-folder-mac) oder [Downloads unter Windows organisieren](/blog/organize-downloads-folder-windows) (beide Englisch). Dokumente, die du von Hand prüfen musst, legst du außerhalb des überwachten Ordners ab, bis das Namensproblem gelöst ist.
+## Was es kostet
 
-### Ausnahmen prüfen, bevor die Überwachung allein läuft
-
-- **Falsches Datum:** Vergleiche das ausgelesene Datum mit dem PDF, nicht mit dem Erstelldatum der Datei. Beim Kontoauszug zählt das Ende des Abrechnungszeitraums, nicht der Tag des Downloads.
-- **Zwei ähnliche Dokumente:** Ergänze eine verlässliche Rechnungsnummer, Vertragsnummer oder den Absender, damit die Namen unterscheidbar bleiben. Prüfe jede vorgeschlagene Namenskollision.
-- **Unlesbarer Scan:** Scanne neu oder benenne die Datei von Hand, statt dich auf einen plausibel klingenden Titel zu verlassen.
-- **Sammel-PDF:** Wenn ein PDF mehrere unabhängige Dokumente enthält, etwa einen Brief der Krankenkasse mit Beitragsbescheid und Formular, prüf, ob der Name das Dokument beschreibt, das du später suchst. Solche Dateien brauchen manchmal manuelle Vorarbeit.
-
-Teste erneut, sobald ein neuer Anbieter oder ein neues Layout dazukommt. Ein Muster, das für den monatlichen Kontoauszug funktioniert, passt nicht automatisch zu jeder eingehenden PDF.
-
-## Typische Anwendungsfälle
-
-### Rechnungen und Belege
-
-In der Buchhaltung entstehen viele schlecht benannte PDFs: Lieferantenrechnungen, Quittungen, Reisekosten, Zahlungsbestätigungen. Automatisches Umbenennen erzeugt Namen wie `2026-10-05_telekom_rechnung_oktober.pdf`. Bei der Belegsuche für die Steuerberaterin tippst du dann „telekom“ in die Suche, statt 40 Dateien zu öffnen.
-
-### Verträge und Versicherungen
-
-Mietverträge, Arbeitsverträge, Versicherungspolicen und Kündigungsbestätigungen kommen per E-Mail, per Post und über Kundenportale. Ein Ordner voller `Dokument.pdf` und `scan_001.pdf` ist im Ernstfall ein Problem. Mit KI werden daraus Namen wie `2026-01-01_huk_kfz-versicherung_police.pdf` oder `2026-03-01_arbeitsvertrag_aenderung_teilzeit.pdf`.
-
-### Steuer und Finanzen
-
-Für die Steuererklärung sammelst du Lohnsteuerbescheinigung, Kontoauszüge, Spendenquittungen, Handwerkerrechnungen und Nachweise der Krankenkasse. Wenn die Hälfte `scan_003.pdf` und die andere Hälfte `Kontoauszug.pdf` heißt, wird die Vorbereitung zäh. Mit KI entstehen Namen wie `2025_lohnsteuerbescheinigung_arbeitgeber-musterfirma.pdf` und `2026-01-31_ing_kontoauszug_girokonto_januar.pdf`. Wie du die Ablage dafür aufbaust, zeigt [Steuerunterlagen digital organisieren](/de/blog/steuerunterlagen-digital-organisieren).
-
-### Selbstständige und Agenturen
-
-Freelancer bekommen Dokumente von vielen Kunden, oft mit denselben nichtssagenden Namen. Zwei Kunden schicken `Vertrag.pdf`, drei Lieferanten schicken `Rechnung.pdf`. Die KI liest den Inhalt und vergibt für jede Datei einen eindeutigen, beschreibenden Namen. Auch Exporte aus DATEV oder lexoffice lassen sich so mit Zeitraum und Inhalt benennen, bevor sie im Kundenordner landen.
-
-## Ordner überwachen für dauerhafte Ordnung
-
-Ein einmaliger Stapel beseitigt den Rückstand. Die Ordnerüberwachung verhindert, dass er zurückkommt. Das ist der Unterschied zwischen Aufräumen und Ordnung halten.
-
-Überwache die Ordner, in denen sich PDFs am stärksten sammeln:
-
-- **Downloads:** Kontoauszüge, Rechnungen aus Kundenportalen, gespeicherte E-Mail-Anhänge
-- **Scannerausgabe:** der Zielordner deines Dokumentenscanners
-- **Anhangsordner:** falls du E-Mail-Anhänge an einem festen Ort speicherst
-- **Cloud-Ordner:** iCloud oder OneDrive, die PDFs aus geteilten Laufwerken erhalten
-
-Jede neue PDF in einem überwachten Ordner wird analysiert und automatisch umbenannt. Aus `Rechnung.pdf` wird `2026-11-02_vodafone_rechnung_kabel-internet_november.pdf`, bevor du den Ordner überhaupt öffnest.
-
-## KI-Umbenennung im Vergleich zu anderen Methoden
-
-| Methode | Stärken | Schwächen |
-|---|---|---|
-| Manuell umbenennen | Volle Kontrolle | Langsam bei großen oder wiederkehrenden Stapeln |
-| Stapelumbenennung im Finder oder Explorer | Schnell bei einfachen Mustern | Kennt den Inhalt nicht |
-| OCR plus manuelle Prüfung | Genaue Texterkennung | Benennen musst du trotzdem selbst |
-| Skripte mit regulären Ausdrücken | Automatisierbar | Versteht die Bedeutung des Dokuments nicht |
-| Automatisches Umbenennen mit KI | Kennt den Inhalt, arbeitet stapelweise, automatisierbar | Sonderfälle brauchen eine Prüfung |
-
-Die [Stapelumbenennung im Finder](https://support.apple.com/guide/mac-help/rename-files-folders-and-disks-on-mac-mchlp1144/mac) kann Text ersetzen, Text ergänzen oder ein Namensformat setzen. Das hilft, wenn die vorhandenen Namen schon eine Struktur haben. Eine inhaltsbasierte Umbenennung passt besser, wenn die nützlichen Angaben im PDF stehen und nicht im aktuellen Dateinamen.
-
-Der eigentliche Vorteil der KI ist die Verbindung von Inhaltsverständnis und Automatisierung. OCR liefert dir Text, aber die Entscheidung über den Namen bleibt bei dir oder einer starren Regel. Ein inhaltsbasierter Ablauf liest Dokumenttyp, Absender, Datum und Betreff aus und setzt sie in ein wiederholbares Muster ein.
-
-## Gute Dateinamen für PDFs
-
-### Der wichtigste Suchbegriff gehört nach vorn
-
-Setz das an den Anfang, wonach du suchen würdest. Suchst du nach dem Anbieter, beginnt der Name mit dem Anbieter. Suchst du nach dem Dokumenttyp, steht der vorn. Das erste Wort zählt beim schnellen Überfliegen am meisten.
-
-### Unter 60 Zeichen bleiben
-
-Lang genug, um eindeutig zu sein, kurz genug, um im Finder, im Explorer und in der Anhangsvorschau vollständig sichtbar zu bleiben. `2026-10_telekom_rechnung_oktober.pdf` ist gut. `rechnung-der-telekom-deutschland-gmbh-fuer-den-festnetzanschluss-im-monat-oktober-2026.pdf` ist es nicht.
-
-### Datum bei wiederkehrenden Dokumenten
-
-Monatsrechnungen, Kontoauszüge, Gehaltsabrechnungen und Quartalsberichte profitieren von einem vorangestellten Datum. Einmalige Dokumente wie ein unterschriebener Vertrag brauchen es meist nicht.
-
-### Umlaute und Leerzeichen vermeiden
-
-Schreib `ae`, `oe`, `ue` und `ss` statt Umlauten und ß, und trenne Wörter mit Bindestrichen oder Unterstrichen. Leerzeichen und Sonderzeichen machen in Terminal, Cloud-Sync und beim Versand an andere Systeme oft Ärger. Einen vollständigen Rahmen findest du in [Konventionen für Dateinamen](/de/blog/dateibenennung-konventionen-best-practices).
-
-## So startest du
-
-Nimm deinen unordentlichsten PDF-Ordner, meist Downloads oder den Scannerordner, öffne ihn im [KI-PDF-Umbenenner](/de/rename-pdf-with-ai) und teste das Namensmuster an einem typischen Stapel. Die kostenlose Version enthält 50 Umbenennungen, damit kannst du den Ablauf prüfen, bevor du ein größeres Archiv angehst.
-
-FREE enthält 50 Umbenennungen, die sich Cloud AI, BYOK und Offline AI teilen. Wenn PDFs umbenennen für dich zur Routine wird, hebt PRO diese Grenze auf, wahlweise für $10 im Monat oder einmalig für $48.
-
-Wenn du noch überlegst, welches Werkzeug zu deinen Dokumenten passt, vergleicht [die besten KI-Tools zur Dokumentenorganisation](/de/blog/best-ai-document-organizers-de) Zush mit Paperless-ngx, DEVONthink und anderen.
-
-Schluss damit, PDFs zu öffnen, nur um herauszufinden, was drinsteht.
+Die kostenlose Version enthält 50 Umbenennungen, die sich alle vier KI-Modi teilen: Zush Cloud AI, BYOK, Ollama und LM Studio. Das reicht für den Test in AI Rename und ein paar echte Dateien in Monitor. PRO hebt die Grenze auf, für $10 im Monat oder einmalig $48. Details stehen auf der [Preisseite](/pricing).
 
 ## FAQ
 
-### Kann man PDF-Dateien automatisch nach Inhalt umbenennen?
+### Fragt Zush nach, bevor es eine neue PDF in einem überwachten Ordner umbenennt?
 
-Ja. Ein inhaltsbasierter Umbenenner liest auswählbaren Text oder analysiert das sichtbare Dokument, zieht Angaben wie Absender, Datum, Dokumenttyp und Betreff heraus und erzeugt daraus einen Dateinamen nach einem gespeicherten Muster. Prüfe einen kleinen Stapel, bevor du die unbeaufsichtigte Ordnerüberwachung einschaltest.
+Nein. Monitor hat keinen Schalter für eine Prüfung vor dem Umbenennen. Es setzt den Namen, sobald die PDF ankommt, und protokolliert die Änderung unter Activity, wo du sie rückgängig machen kannst. Deshalb testest du das Template vorher an Kopien in AI Rename, wo du jeden Namen siehst, bevor er angewendet wird.
 
-### Welches Namensmuster ist für wiederkehrende PDFs am sichersten?
+### Benennt Monitor auch die PDFs um, die schon im Ordner liegen?
 
-Nutze nur Angaben, die in jedem Dokument verlässlich vorkommen. Für Rechnungen ist `datum_anbieter_dokumenttyp` leichter zu prüfen als ein langer generierter Titel. Behalte die Dateiendung, prüfe Namenskollisionen und stell sicher, dass sich jede Umbenennung rückgängig machen lässt.
+Monitor ist für neu ankommende Dateien gedacht. PDFs, die schon im Ordner lagen, schickst du einmal mit demselben Template durch AI Rename. So kannst du die Namen des Rückstands prüfen.
 
-### Reicht OCR, um gescannte PDFs automatisch umzubenennen?
+### Können verschiedene Eingangsordner verschiedene Namensregeln haben?
 
-OCR macht aus Pixeln Text, entscheidet aber nicht, welche Wörter in den Dateinamen gehören. Ein automatischer Ablauf braucht zusätzlich das Auslesen der Angaben, ein Namensmuster, eine Lösung für Namenskollisionen und eine Regel für Dokumente, bei denen die Erkennung unsicher ist.
+Ja. Jeder überwachte Ordner hat sein eigenes Template. Ein Scannerordner kann das Rechnungs-Setup nutzen, ein Vertragsordner ein Template, das auf Kunde und Dokumenttyp aufbaut. Nur den KI-Modus teilen sie sich.
 
-### Funktioniert das auch mit ZUGFeRD- und XRechnung-PDFs?
+### Was passiert, wenn die Festplatte mit meinem überwachten Ordner abgesteckt wird?
 
-Bei ZUGFeRD liest Zush das PDF, also die sichtbare Rechnung, und benennt die Datei danach um. Die eingebettete XML-Datei bleibt dabei unverändert, weil nur der Dateiname geändert wird. Eine reine XRechnung ohne PDF-Ansicht ist eine XML-Datei; teste sie vorher an einem Beispiel.
+Auf dem Mac bleibt der Ordner eingerichtet, und Monitor macht weiter, sobald die Festplatte wieder angeschlossen ist. Ist der Sortierzielordner offline, wartet Monitor und benennt die wartenden PDFs um, sobald er wieder erreichbar ist. Dateien auf einer getrennten Festplatte können bis dahin nicht verarbeitet werden.
 
-### Sollte ich den Downloads-Ordner selbst überwachen?
+### Kann ich PDFs nur in Anbieterordner sortieren, die ich schon habe?
 
-Nur wenn die meisten Dateien darin zum selben Ablauf gehören. Liegen in Downloads Installer, Bilder, Archive und private Dokumente durcheinander, leg einen engeren Eingangsordner wie `PDF-Eingang` an und überwache diesen. Der kleinere Umfang verhindert versehentliche Umbenennungen und macht die Kontrolle schneller.
+Ja. Schalte **Existing folders only** in den Sortiereinstellungen des Templates ein. PDFs landen dann nur in bestehenden Ordnern, und alles, was zu keinem passt, bleibt liegen, bis du dich darum kümmerst.
+
+### Muss Zush geöffnet sein, damit Monitor arbeitet?
+
+Ja. Zush muss laufen, damit Monitor neue PDFs verarbeitet.

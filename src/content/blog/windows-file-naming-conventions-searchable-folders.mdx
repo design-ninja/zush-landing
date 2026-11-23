@@ -1,6 +1,6 @@
 ---
-title: "Windows File Naming Conventions for Searchable Folders"
-description: "Use practical Windows file naming conventions that make folders easier to scan in File Explorer and easier to find again in Windows Search."
+title: "Windows File Naming Rules: Characters, Length, Search"
+description: "Characters and names Windows blocks, the 260-character path limit, how File Explorer sorts numbers, OneDrive rules, and how to search by file name."
 date: "2026-04-23"
 slug: "windows-file-naming-conventions-searchable-folders"
 platform: "windows"
@@ -8,132 +8,146 @@ topic: "naming"
 tags:
   - "File Naming"
   - "File Explorer"
-tldr: "The best Windows naming convention is descriptive, consistent, and easy to scan in File Explorer: lowercase words, safe separators, ISO dates when needed, and no vague labels like final-v2-copy."
-reviewed: "2026-09-28"
+tldr: 'Windows file names cannot contain < > : " / \ | ? *, cannot be a reserved device name such as CON or NUL, and should not end with a space or period. Classic paths stop at 260 characters (MAX_PATH), names are case-insensitive, and File Explorer sorts digits by numeric value.'
+reviewed: "2026-11-23"
 ---
-import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: a searchable Windows file naming convention combines descriptive subject, date in `YYYY-MM-DD` when chronology matters, and consistent kebab-case. Avoid spaces and special characters that break Windows Search, command-line scripts, and cloud sync.
+Windows file naming rules are the limits Windows puts on file and folder names: no `< > : " / \ | ? *` characters, no reserved device names such as `CON` or `NUL`, no space or period at the end, and a classic path limit of 260 characters. Windows also treats names as case-insensitive, and File Explorer sorts the digits in a name by their numeric value.
 
-A good file naming convention on Windows should do two things well:
+The rules below come from Microsoft's documentation, linked in each section. Breaking one usually shows up as an error when you save, a file File Explorer can't handle, or a OneDrive sync failure. For general conventions such as dates, separators and version numbers, read the [file naming conventions guide](/blog/file-naming-conventions-best-practices). This page covers what is specific to Windows.
 
-1. look clean in File Explorer
-2. make files easier to find with Windows Search later
+## Characters Windows does not allow
 
-That sounds obvious, but most folders break down because filenames are inconsistent, vague, or stuffed with version noise. A naming convention only works if it is easy enough to use every day.
+Microsoft's [Naming Files, Paths, and Namespaces](https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file) reference lists nine reserved characters that can't appear in a file or folder name:
 
-If your real challenge is that filenames are too bad to clean up manually, use [AI file renamer for Windows](/windows) to automate the descriptive part first. If your main issue is Downloads clutter, also read [How to Organize Your Downloads Folder on Windows](/blog/organize-downloads-folder-windows).
+`<` `>` `:` `"` `/` `\` `|` `?` `*`
 
-<BlogProductIntro
-  title="Want the convention applied, not just documented?"
-  description="Zush for Windows builds filenames from reusable Naming Blocks and applies them across folders, so File Explorer and Windows Search stay predictable."
-  links={[
-    { href: '/windows', label: 'AI file renamer for Windows' },
-    { href: '/batch-rename-files', label: 'Batch rename files' },
-    { href: '/ai-file-organizer', label: 'AI file organizer' },
-    { href: '/docs/naming-blocks', label: 'Naming Blocks' },
-  ]}
-/>
+Control characters are also out: the NUL character (value 0) and the characters with values 1 through 31. Anything else in the current code page is allowed, including Unicode and accented letters. Spaces, hyphens, underscores and parentheses are all valid.
 
-## Sort mixed files into folders with AI
+Dates and times are the usual trap. `11/23/2026` contains slashes, and `14:30` contains a colon. Write `2026-11-23` and `14-30` instead.
 
-[Zush](/ai-file-sorter) can give supported files descriptive names and group them into real folders by content in the same batch. **AI folder sorting works on Mac and Windows.** Leave **Folder rules** empty for Auto grouping, or describe the groups in plain language. For mixed files, try:
+## Reserved names: CON, PRN, AUX, NUL, COM and LPT
 
-> Group invoices by company and receipts by month.
+These names are reserved for devices and can't be used as file names: `CON`, `PRN`, `AUX`, `NUL`, `COM1` to `COM9`, and `LPT1` to `LPT9`. Microsoft also lists `COM¹`, `COM²`, `COM³`, `LPT¹`, `LPT²` and `LPT³`, because Windows reads the superscript digits as numbers.
 
-Choose the destination root, optionally enable **Reuse existing folders**, and review the names and groups before applying. Save the tested setup in a Template for Monitor; it can process new arrivals directly inside a watched folder. Naming Blocks control filenames separately from Folder rules.
+An extension does not help. Microsoft notes that `NUL.txt` and `NUL.tar.gz` are both equivalent to `NUL`. In practice this catches short abbreviations: `con.docx` for "conference" or `aux.pdf` for "auxiliary". A longer name such as `con-notes.docx` is fine, because the rule covers the exact name followed by an extension.
 
-![Zush for Windows previewing content-based folder groups and proposed filenames before Rename & sort](/images/showcase/windows/folder-sorting-light.webp)
+## No trailing spaces or periods
 
-Follow the [step-by-step Windows sorting guide](/blog/sort-files-into-folders-with-ai-windows) or see the [folder sorting documentation](/docs/folder-sorting) and [30 example Folder rules](/blog/ai-folder-sorting-prompts).
+Microsoft's rule is direct: don't end a file or folder name with a space or a period. The file system underneath may accept such a name, but the Windows shell and user interface do not, so a name like that created by a script may not work in File Explorer.
 
-## Rules that work well on Windows
+A period at the start is fine. `.temp` is a valid name.
 
-### 1. Put the description first when the subject matters most
+## How long can a Windows file name be?
 
-For many work files, the most important thing is what the file actually is.
+The limit is on the full path, not only the name. In the Windows API, [MAX_PATH](https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation) is 260 characters: the drive letter, a colon, a backslash, up to 256 characters of folders and file name, and an invisible terminating null character.
 
-Examples:
+Each single component, meaning one folder name or the file name, has its own limit reported by the volume. Microsoft says this value is commonly 255 characters. Apps that use the `\\?\` prefix with the Unicode APIs can reach paths of about 32,767 characters.
 
-- `client-onboarding-checklist.docx`
-- `march-electricity-bill.pdf`
-- `product-roadmap-q3.pptx`
+A deep folder tree is the usual cause. `C:\Users\you\OneDrive - Company\Clients\Northwind\2026\Contracts\Signed\...` uses a large share of the 260 characters before the file name starts.
 
-### 2. Use ISO dates when time matters
+### How to enable long paths in Windows 10 and 11
 
-If chronology matters, use `YYYY-MM-DD`. That keeps the folder sorted correctly alphabetically and chronologically.
+Starting with Windows 10, version 1607, you can remove the MAX_PATH limit for many file functions:
 
-Examples:
+- Set the registry value `LongPathsEnabled` to `1` (type `REG_DWORD`) under `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem`, or
+- Enable the Group Policy **Computer Configuration > Administrative Templates > System > Filesystem > Enable Win32 long paths**.
 
-- `2026-04-23-vendor-invoice.pdf`
-- `2026-04-23-quarterly-board-summary.pptx`
+A reboot may be needed. The catch is that this only affects apps whose manifest declares them `longPathAware`. Microsoft states that this "isn't a change that will affect all applications." If other people or other programs open the files, keep paths under 260 characters.
 
-### 3. Pick one separator and stay consistent
+## Report.pdf and report.pdf are the same name
 
-Hyphens are the easiest default. Underscores are fine if your team already uses them. What matters is consistency.
+Microsoft's guidance is to not assume case sensitivity: `OSCAR`, `Oscar` and `oscar` count as the same name. NTFS can support case-sensitive names, but that is not the default. On a normal Windows folder you can't keep `Report.pdf` and `report.pdf` side by side, so use a real difference such as a version number or date.
 
-### 4. Use explicit versions instead of “final”
+## How File Explorer sorts numbers
 
-`final` is not a versioning system. Use `v2`, `v3`, `v4` or dated versions when files evolve.
+By default, File Explorer sorts file names by increasing number value, so `file2` comes before `file10`. The policy reference for [Turn off numerical sorting in File Explorer](https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-admx-windowsexplorer#nostrcmplogical) gives the example `3 < 22 < 111`. If an administrator enables that policy, Explorer sorts digit by digit instead: `111 < 22 < 3`, the way Windows 2000 and earlier did.
 
-### 5. Avoid meaningless prefixes
+Zero-padding works in both modes. `scan-002.pdf` and `scan-010.pdf` sort correctly whether the comparison is numeric or plain text, and so do tools outside Explorer that compare characters one by one. The same reasoning is why `YYYY-MM-DD` dates sort in date order.
 
-Strings like `copy`, `new`, `doc`, `scan`, and `image` are not informative unless they are the actual subject of the file.
+## OneDrive and SharePoint naming restrictions
 
-## Naming patterns by workflow
+Microsoft's [OneDrive and SharePoint restrictions](https://support.microsoft.com/en-us/office/restrictions-and-limitations-in-onedrive-and-sharepoint-64883a5d-228e-48f5-b3d2-eb39e07630fa) block the same nine characters as Windows. They add a few names Windows itself accepts:
 
-### Documents and PDFs
+- `.lock`, `_vti_` and `desktop.ini`
+- `COM0` and `LPT0`, along with the usual `CON`, `PRN`, `AUX`, `NUL`, `COM1` to `COM9` and `LPT1` to `LPT9`
+- any file name starting with `~$`
+- names with a leading or trailing space
 
-`YYYY-MM-DD_subject_type.ext`
+The OneDrive sync app can rename some of these files for you. Per [Why has my filename changed?](https://support.microsoft.com/onedrive/why-has-my-filename-changed), it replaces each invalid character with an underscore. Path length limits vary by app and Office version, and Microsoft documents them separately.
 
-Example:
+## Windows naming rules at a glance
 
-`2026-04-23-signed-vendor-agreement.pdf`
+| Rule | Example that fails | Fix |
+| --- | --- | --- |
+| No reserved characters | `invoice 11/23/2026.pdf` | `invoice 2026-11-23.pdf` |
+| No colon in times | `call-notes 14:30.docx` | `call-notes-14-30.docx` |
+| No reserved device names | `con.docx`, `nul.txt` | `conference-notes.docx` |
+| No trailing space or period | `meeting-notes.` | `meeting-notes.txt` |
+| Full path under 260 characters | a 280-character path in a deep folder tree | shorter folder names, fewer levels |
+| Names are case-insensitive | `Report.pdf` and `report.pdf` in one folder | `report-v1.pdf`, `report-v2.pdf` |
+| Pad numbers to one width | `scan-2.pdf`, `scan-10.pdf` | `scan-002.pdf`, `scan-010.pdf` |
+| OneDrive blocks `~$` and leading spaces | `~$budget.xlsx`, ` invoice.pdf` | `budget.xlsx`, `invoice.pdf` |
 
-### Screenshots
+## How to search by file name in File Explorer
 
-`subject-context.ext`
+Windows Search uses [Advanced Query Syntax](https://learn.microsoft.com/en-us/windows/win32/search/-search-3x-advancedquerysyntax) (AQS). You type `property:value` into the File Explorer search box to narrow results. Microsoft's [AQS keyword reference](https://learn.microsoft.com/en-us/windows/win32/lwef/-search-2x-wds-aqsreference) lists these properties for all file kinds:
 
-Example:
+- `filename:` or `file:` for the file name
+- `ext:` or `fileext:` for the extension, as in `ext:.pdf`
+- `datemodified:` or `modified:`, as in `modified:last week`
+- `kind:`, `size:` and `folder:`
 
-`stripe-dashboard-revenue-trend.png`
+Some queries that work with descriptive names:
 
-### Photos and visual assets
+- `filename:northwind ext:.pdf`
+- `filename:contract modified:last week`
+- `filename:invoice NOT filename:draft`
+- `"purchase order"` for an exact phrase
 
-`subject-location-or-context.ext`
+`AND`, `OR` and `NOT` must be uppercase. Two dots set a range, as in `date:11/13/21..11/15/21`. In Windows 7 and later, keywords are recognized in the Windows display language only, so `filename:` works on English Windows.
 
-Example:
+A `filename:` search only matches words in the name. A file called `scan0042.pdf` gives search nothing to work with.
 
-`client-event-speaker-stage.jpg`
+## Naming patterns that stay searchable
 
-## Why this matters for Windows Search
+Combine the Windows limits with a few habits:
 
-Windows Search gets much more useful when the filename contains the nouns you would actually search later. If the file is called `document.pdf`, search has almost nothing to work with. If it is called `signed-vendor-agreement-acme.pdf`, the filename carries real retrieval value.
+- Put the words you will search for in the name: client, vendor, document type.
+- Write dates as `YYYY-MM-DD`. They contain no slashes and sort in date order.
+- Pad sequence numbers to the same width.
+- Keep folder names short so the full path stays well under 260 characters.
 
-That is why naming conventions are not just cosmetic. They are retrieval infrastructure.
+A pattern such as `YYYY-MM-DD_client_document-type.ext` gives `2026-11-23_northwind_purchase-order.pdf`: underscores between fields, hyphens inside a field, and no reserved characters. The [file naming conventions guide](/blog/file-naming-conventions-best-practices) has more templates.
 
-## Where AI fits
+## Applying a naming pattern with Zush
 
-The hard part is often not the pattern. The hard part is writing the descriptive part quickly and consistently across real files.
+[Zush for Windows](/windows) reads the content of each file and builds the new name from [Naming Blocks](/docs/naming-blocks), so a pattern like the one above can be applied to a whole batch. Save the setup as a [Template](/docs/templates) to reuse it. Zush runs on Windows 10 and 11 and is available from the Microsoft Store.
 
-That is where AI renaming helps. It can identify the subject of a screenshot, PDF, or image and produce the descriptive core of the filename. Then you keep the convention stable on top.
+Since version 3.19.5.0, the Microsoft Store version also adds [Rename with Zush](/docs/quick-rename) to the File Explorer right-click menu. Select files, choose **Smart** or one of your Templates, and the files are renamed without opening the Zush window.
 
-![Naming Blocks editor in Zush for Windows](/images/showcase/windows/naming-blocks-light.webp)
+![The Windows 11 File Explorer context menu with Rename with Zush open, showing Smart and a list of Templates](/images/docs/quick-rename/explorer-context-menu-1200.webp)
 
-For the practical Windows workflow, continue with [How to Rename Files with AI on Windows](/blog/rename-files-with-ai-windows-guide). If you want the automation layer too, read [Auto Rename Files on Windows](/blog/auto-rename-files-windows-guide).
-
-To apply a convention to files you already have, see [how to batch rename files in Windows 11](/blog/batch-rename-files-windows-11).
+You get 50 free AI renames. After that, Zush costs $10/month or $48 one-time.
 
 ## FAQ
 
-### Should I include spaces in Windows filenames?
+### Which characters are not allowed in Windows file names?
 
-You can, but hyphens or underscores tend to be cleaner for consistency, easier to scan, and friendlier for scripts and copied paths.
+The nine reserved characters are `<`, `>`, `:`, `"`, `/`, `\`, `|`, `?` and `*`. Control characters with values 0 through 31 are also not allowed. Spaces, hyphens, underscores and Unicode letters are fine.
 
-### Do I need dates in every filename?
+### What is the maximum file name length in Windows?
 
-No. Use dates only when chronology matters. Otherwise the subject should usually lead.
+The full path is limited to 260 characters (MAX_PATH) unless long paths are enabled and the app supports them. A single file or folder name is commonly limited to 255 characters. Long paths can be enabled on Windows 10, version 1607, and later through the `LongPathsEnabled` registry value or the "Enable Win32 long paths" Group Policy.
 
-### What is the fastest way to fix a messy folder that already exists?
+### Does File Explorer sort file10 before file2?
 
-Use AI-assisted batch renaming to generate descriptive filenames first, then apply one naming convention consistently going forward.
+Not by default. File Explorer sorts by numeric value, so `file2` comes first. It sorts `file10` first only when the "Turn off numerical sorting in File Explorer" policy is enabled. Zero-padded names such as `file02` and `file10` sort correctly either way.
+
+### Can I name a file CON or NUL on Windows?
+
+No. `CON`, `PRN`, `AUX`, `NUL`, `COM1` to `COM9` and `LPT1` to `LPT9` are reserved device names, and adding an extension such as `NUL.txt` does not make them valid.
+
+### Why won't OneDrive sync a file that Windows accepts?
+
+OneDrive and SharePoint block some names Windows allows: `.lock`, `_vti_`, `COM0`, `LPT0`, names starting with `~$`, and names with a leading space. Rename the file, or let the OneDrive sync app replace invalid characters with underscores.

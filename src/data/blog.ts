@@ -10,6 +10,7 @@ import {
   type BlogPlatform,
   type BlogTopic,
 } from '@/data/blogSchema';
+import { LOCALE_META, type Locale } from '@/i18n/config';
 
 const DEFAULT_BLOG_LOCALE: BlogLocale = 'en';
 
@@ -348,6 +349,26 @@ export async function getTranslatedPosts(): Promise<BlogPost[]> {
       (entry: BlogEntry) => entry.data.locale !== DEFAULT_BLOG_LOCALE,
     ),
   ).map(toBlogPost);
+}
+
+/** Translated posts of one locale, newest first. Feeds `/<locale>/blog`. */
+export async function getTranslatedPostsForLocale(locale: BlogLocale): Promise<BlogPost[]> {
+  if (locale === DEFAULT_BLOG_LOCALE) return [];
+  return getLocalizedPosts(locale);
+}
+
+/** Locales that have at least one translated post, so `/<locale>/blog` exists. */
+export async function getTranslatedBlogLocales(): Promise<BlogLocale[]> {
+  const locales = new Set<BlogLocale>();
+  for (const post of await getTranslatedPosts()) locales.add(post.locale);
+  return [...locales];
+}
+
+/** Blog list for a page's locale: `/<locale>/blog` when that locale has translations, else `/blog`. */
+export async function getBlogIndexPath(locale: BlogLocale): Promise<string> {
+  if (locale === DEFAULT_BLOG_LOCALE) return '/blog';
+  const locales = await getTranslatedBlogLocales();
+  return locales.includes(locale) ? `/${LOCALE_META[locale as Locale].slug}/blog` : '/blog';
 }
 
 /** Translations of one English post, keyed by their locale. */

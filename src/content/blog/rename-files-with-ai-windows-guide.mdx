@@ -1,6 +1,6 @@
 ---
-title: "How to Rename Files with AI on Windows (2026 Step-by-Step)"
-description: "Learn how to rename screenshots, videos, PDFs, photos, and documents with AI on Windows, from one-time batch cleanup to ongoing folder automation."
+title: "Rename Files with AI on Windows: Right-Click & Batch (2026)"
+description: "Rename files with AI on Windows 10 and 11: right-click Rename with Zush in File Explorer or review a batch in AI Rename. 50 free renames, undo in Activity."
 date: "2026-04-23"
 slug: "rename-files-with-ai-windows-guide"
 platform: "windows"
@@ -9,115 +9,162 @@ tags:
   - "AI File Renaming"
   - "Screenshots"
   - "File Explorer"
-tldr: "AI file renaming on Windows works best when the app can analyze content, preview names, rename in batch, and keep an undo history. The practical workflow is simple: select files, review descriptive names, apply, and then automate high-clutter folders."
-reviewed: "2026-08-08"
+tldr: "Zush renames files on Windows 10 and 11 from what is inside them. Right-click files in File Explorer and choose Rename with Zush (Smart, Screenshots or a Template) to rename in the background, or add a folder to AI Rename to review every name before you click Rename. Activity undoes either. 50 AI renames are free, then $10/month or $48 once."
+reviewed: "2026-11-23"
 featuredOrder: 2
 ---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: rename files with AI on Windows by installing [Zush](/windows) from the Microsoft Store, dropping a folder into the AI Rename tab, reviewing the suggested content-aware names, and applying. Works for screenshots, videos, PDFs, photos, and documents.
+Zush renames files on Windows 10 and 11 by reading what is inside them: the text of a scanned PDF, what a screenshot shows, the rows of a spreadsheet, the frames of a video. Install it from the Microsoft Store, then right-click files in File Explorer and choose **Rename with Zush**, or add a folder to **AI Rename** to review the names first; the first 50 AI renames are free, and PRO costs $10 a month or $48 once.
 
-Most Windows folders suffer from the same problem: filenames are technically valid but practically useless. Screenshots are timestamps, PDFs are scanner counters, downloads are whatever the source site decided, and exported office files stack up as `copy`, `final`, and `new`.
+This guide follows the Windows app screen by screen, starting with the File Explorer right-click menu added in Windows version 3.19.5.0 on November 19, 2026. If you want to compare F2, PowerRename and PowerShell first, read [how to batch rename files in Windows 11](/blog/batch-rename-files-windows-11). For how AI renaming works in general, see the [AI file renaming guide](/blog/rename-files-with-ai-guide).
 
-AI file renaming fixes that by naming files based on what they contain instead of what random system generated them. An image can become `client-dashboard-revenue-chart.png`. A PDF can become `signed-vendor-agreement-april-2026.pdf`. A spreadsheet can become `q2-forecast-board-review.xlsx`.
+<BlogCTA
+  placement='early'
+  platform='windows'
+  title='Rename files from the File Explorer menu'
+  description='Zush for Windows reads PDFs, scans, screenshots, spreadsheets and videos and names each file by its content. 50 free AI renames, no account.'
+/>
 
-If you want the Windows product page first, go to [AI file renamer for Windows](/windows). If you want the comparison before the tutorial, read [Windows AI renamer comparison](/blog/best-ai-file-renamer-tools-windows-compared).
+## 1. Right-click rename in File Explorer
+
+**Rename with Zush** renames the selected files without opening the Zush window. You pick a naming setup from a submenu, and the new names appear in File Explorer when processing finishes.
+
+### Steps
+
+1. Select one or more supported files in File Explorer. Select files, not a folder.
+2. Right-click the selection and choose **Rename with Zush**.
+3. Pick **Smart**, **Screenshots** or one of your own Templates from the submenu.
+4. Wait for processing. The new names appear in File Explorer and in **Activity**.
+
+### What each choice does
+
+- **Smart** uses the default setup saved in **Templates → Smart Rename**: its Naming Blocks, language and metadata settings.
+- **Screenshots** is a built-in Template for screen captures.
+- **Your Templates** apply their own pattern. A `{Created Date}_{Vendor}_{Amount}` Template for receipts and a Screenshots Template for captures can sit side by side, and you choose per selection.
+
+The rename uses whichever [AI mode](/docs/ai-modes) is active in Settings: Zush Cloud AI, your own key (BYOK), Ollama or LM Studio.
+
+### No preview, so check Activity
+
+The right-click rename applies names straight away. There is no review step. To check or reverse the result:
+
+1. Open Zush and go to **Activity**.
+2. Find the file. Activity lists the original name next to the new one.
+3. Choose **Undo** for that file, or **Undo All** to reverse the saved history.
+
+If another file now holds the original name, use **Restore with New Name** so nothing gets overwritten. Details are in [undo history](/docs/undo-history).
+
+![Zush Activity on Windows listing renamed files with their original and new names and an Undo control](/images/showcase/windows/activity-light.webp)
+
+### Which version has it
+
+The File Explorer menu ships in the Microsoft Store version of Zush, from version 3.19.5.0. Zush has to be running for the menu to work. If you prefer the keyboard, turn on **Quick Rename Shortcut** in **Preferences**: it renames up to 10 selected files at a time with the Smart setup. The full steps are in the [Quick Rename docs](/docs/quick-rename).
+
+## 2. Batch rename in AI Rename, with a review step
+
+Use AI Rename when you want to read every proposed name before anything changes, or when the folder is new to you and you have not tested a Template on it yet.
+
+1. Open Zush and go to **AI Rename**. Drag in files or a whole folder from File Explorer, the Desktop, Downloads or OneDrive.
+2. Choose the naming setup. Pick a Template from the Template row, or build a pattern with [Naming Blocks](/docs/naming-blocks) such as Created Date, Title, Client, Vendor or Document Type.
+3. Wait for the suggestions. Each file shows its current name and the proposed one.
+4. Double-click any suggested name to edit it. Regenerate a single file if its suggestion misses.
+5. Click **Rename**. Only checked files are renamed.
+6. If you change your mind, open **Activity** and undo one file or the whole batch.
+
+A manual batch holds up to 1,000 files. On Free, files beyond your remaining free renames stay in the list as **Awaiting PRO** and are analyzed after you upgrade.
+
+![Zush AI Rename on Windows with a mixed batch of files and a proposed new name for each one](/images/showcase/windows/batch-rename-light.webp)
+
+### Save the setup as a Template
+
+Once a pattern works, save it in **Templates**. The same Template then appears in the right-click submenu, in AI Rename and in Monitor, so a naming rule you tested with a preview is the one that runs without one.
+
+![The Zush Templates screen on Windows with Smart Rename and built-in Templates such as Screenshots](/images/showcase/windows/templates-light.webp)
+
+### Exact copies found while renaming
+
+Turn on **Detect duplicate files** in a Template's **Processing** settings, or use the button at the right of the Template row in AI Rename. Zush compares file contents in the batch. When two files are identical byte for byte, one is the original and the rest are copies, whatever they are called. You choose what happens to the copies:
+
+- **Keep as is**: copies are unchecked, so Rename skips them.
+- **Mark in name**: each copy takes the original's new name plus a DUPLICATE mark.
+- **Move to Trash**: on Windows, copies go to the Recycle Bin when you click Rename. Undo in Activity brings them back as long as the Recycle Bin has not been emptied.
+
+Copies are never sent to the AI, so they do not use renames. Only exact copies count: two separate scans of the same page are different files. More in [duplicate detection](/docs/duplicates).
+
+![Zush AI Rename with Move to Trash selected, showing exact copies marked to go to the Recycle Bin](/images/showcase/windows/duplicates-trash-light.webp)
+
+## 3. Which tool to use when
+
+| Tool | Use it when | Reads file content | Preview | Undo |
+|---|---|---|---|---|
+| File Explorer F2 | You want `Name (1)`, `Name (2)` for a few files | No | No | Ctrl+Z right after |
+| PowerRename | Every file needs the same find-and-replace or regex change | No | Yes | Ctrl+Z in File Explorer |
+| Zush AI Rename | Each file needs its own name and you want to review the batch | Yes | Yes | Activity |
+| Zush right-click | You trust a Template and want a few files renamed now | Yes | No | Activity |
+| Zush Monitor | New files keep landing in the same folder | Yes | No | Activity |
+
+Monitor watches a folder you choose and applies the Template assigned to it as files arrive. Zush must stay running. Test the Template in AI Rename first, since Monitor has no review step. Setup is in [folder monitoring](/docs/folder-monitoring), and the folders worth starting with are covered in [auto rename files on Windows](/blog/auto-rename-files-windows-guide).
+
+![The Zush Monitor screen on Windows listing watched folders and the Template assigned to each](/images/showcase/windows/monitor-light.webp)
+
+## 4. Before and after: one mixed Windows folder
+
+These are example results from a single batch run with the Smart setup. Your names depend on the content, the Template and the AI mode.
+
+| Before | What Zush reads | After |
+|---|---|---|
+| `VID_20261103_181544.mp4` | Video frames and speech | `kitchen-faucet-cartridge-replacement.mp4` |
+| `SCAN0007.pdf` | Text on the scanned page | `2026-10-29_city-water-utility_bill_october.pdf` |
+| `Book1 (3).xlsx` | Sheet contents | `2027-marketing-budget-by-quarter.xlsx` |
+| `Screenshot 2026-11-20 093412.png` | On-screen text and layout | `teams-meeting-invite-design-review.png` |
+| `Book1 (3) - Copy.xlsx` | Identical bytes to the file above | Marked, skipped or moved to the Recycle Bin |
+
+The last row shows duplicate detection at work. The copy does not count as a rename.
+
+## 5. Guides for specific folders
+
+- Screenshots: [rename screenshots automatically on Windows](/blog/rename-screenshots-automatically-windows)
+- PDFs and scans: [rename PDF files with AI on Windows](/blog/rename-pdf-files-with-ai-windows)
+- Downloads: [organize your Downloads folder on Windows](/blog/organize-downloads-folder-windows)
+- Repeated downloads: [find duplicate files in Downloads](/blog/duplicate-files-downloads-folder)
+- Naming rules: [Windows file naming conventions](/blog/windows-file-naming-conventions-searchable-folders)
+- Other apps: [Windows AI renamer comparison](/blog/best-ai-file-renamer-tools-windows-compared)
 
 <BlogProductIntro
-  title="Want to follow along on Windows?"
-  description="Zush for Windows installs from the Microsoft Store and renames screenshots, PDFs, photos, and videos by content, with batch preview and undo."
+  title="Try it on one folder"
+  description="Zush for Windows installs from the Microsoft Store. Rename from the File Explorer menu or review a batch in AI Rename, and undo either in Activity."
   links={[
     { href: '/windows', label: 'AI file renamer for Windows' },
-    { href: '/', label: 'AI file renamer' },
-    { href: '/batch-rename-files', label: 'Batch rename files' },
+    { href: '/docs/quick-rename', label: 'Quick Rename docs' },
+    { href: '/pricing', label: 'Pricing' },
     { href: '/docs/get-started', label: 'Get started' },
   ]}
 />
 
-## What the workflow looks like
-
-On Windows, the useful workflow has four parts:
-
-1. pick files or a folder in one action
-2. let the app analyze image or document content
-3. review the proposed names before applying them
-4. keep an undo history in case a batch needs to be reverted
-
-That is the difference between a real desktop tool and a demo. The point is not just to generate names. The point is to make the rename safe enough to use on work folders. Before processing a large archive, use the [safe batch rename workflow](/blog/how-to-safely-batch-rename-files) to test the naming convention, check extensions and collisions, and confirm the recovery path.
-
-![AI file renaming workflow in Zush for Windows showing a mixed batch of documents and images ready for review](/images/showcase/windows/batch-rename-light.webp)
-
-## Step by step with Zush
-
-### Step 1: open the files you want to rename
-
-Start with the folder that hurts the most. Usually that is Downloads, screenshots, scans, or export folders.
-
-### Step 2: let the app analyze content
-
-For images, AI reads objects, scenes, visible text, and context. For videos, it uses sampled frames and subtitle context when available. For PDFs and documents, it uses extracted text to understand what the file is actually about.
-
-### Step 3: review the proposed filenames
-
-The best names are descriptive, short, and searchable. You want names that still make sense three months from now in File Explorer and Windows Search.
-
-### Step 4: rename in batch
-
-Apply the rename once you like the preview. A proper Windows workflow should let you process a mixed folder instead of forcing separate tools for each file type.
-
-### Step 5: automate the folders that keep filling up
-
-Once the one-time cleanup is done, the real win is automation. Monitoring the folders where clutter keeps arriving is what turns cleanup into a stable system.
-
-## Where AI renaming helps most on Windows
-
-### Screenshots
-
-Windows screenshots are usually date-heavy and context-free. AI can name them by what they show, which is much more useful later. If screenshots are your main issue, go straight to [How to Rename Screenshots Automatically on Windows](/blog/rename-screenshots-automatically-windows).
-
-### PDFs and scanned files
-
-Scans, contracts, receipts, invoices, and exported PDFs often carry the worst filenames. AI renaming helps because the app can look inside the document instead of just replacing text patterns. For the document-specific workflow, see [How to Rename PDF Files with AI on Windows](/blog/rename-pdf-files-with-ai-windows).
-
-### Downloads and export folders
-
-These folders create recurring clutter. Once you can monitor them, the mess stops regenerating. For the bigger cleanup system, read [How to Organize Your Downloads Folder on Windows](/blog/organize-downloads-folder-windows).
-
-### Videos and screen recordings
-
-Windows work folders often contain `.mp4`, `.mov`, `.m2ts`, and `.ts` files from screen recorders, cameras, and export tools. AI video renaming is useful when the file name is just a timestamp or camera counter. For the broader video workflow, read [How to Rename Video Files with AI](/blog/rename-video-files-with-ai).
-
-## Why Windows users should care about naming conventions too
-
-AI is not a replacement for a naming convention. It is a way to produce the descriptive part consistently and faster. If your team or your personal archive needs a stable pattern, pair AI renaming with a simple rule set for dates, separators, and versions. The best Windows-specific naming guidance is in [Windows File Naming Conventions for Searchable Folders](/blog/windows-file-naming-conventions-searchable-folders).
-
-## Practical recommendation
-
-For most people on Windows, the best setup is:
-
-- use [AI file renamer for Windows](/windows) for one-time cleanup and daily rename work
-- start with batch rename on the folders that already hurt
-- then add folder monitoring to downloads, screenshots, or export folders
-- keep the naming pattern descriptive and consistent
-
-That combination gives you a system instead of a one-off cleanup sprint.
-
-Comparing tools? See the [best file renamers for Windows 11](/blog/best-file-renamer-windows-11) and the [best AI file organizers for Windows](/blog/best-ai-file-organizers-windows).
-
 ## FAQ
 
-### Does this work only for photos?
+### Can I rename files from the right-click menu?
 
-No. The Windows workflow matters most when screenshots, videos, PDFs, documents, and photos land in the same folders. That is why mixed-format support is more important than image-only demos.
+Yes. In the Microsoft Store version of Zush (3.19.5.0 or newer), select files in File Explorer, right-click, choose **Rename with Zush**, then **Smart**, **Screenshots** or one of your Templates. Zush renames them in the background without opening its window. The result appears in Activity, where you can undo it.
 
-### Do I need the Microsoft Store version?
+### Why doesn't Rename with Zush do anything?
 
-For Zush, yes, that is the main Windows distribution path today. It keeps install and updates simple. You can open the current app page from [AI file renamer for Windows](/windows).
+Check that Zush is running and an AI mode is turned on. Select files rather than a folder, and make sure the format is [supported](/docs/supported-file-types). If you are on Free, check that you have free renames left.
+
+### Does the right-click rename use my 50 free renames?
+
+Yes. Free renames are shared across every way of renaming in Zush and every AI mode, including Ollama and LM Studio. PRO removes the limit: $10 a month or $48 as a one-time purchase. See [pricing](/pricing).
+
+### Can I pick a different Template for each folder?
+
+Yes. The right-click submenu lists every Template, so you pick one per selection. In AI Rename you choose from the Template row, and in Monitor each watched folder has its own Template.
 
 ### Can I just use PowerRename instead?
 
-For pattern work, yes. [PowerRename](https://learn.microsoft.com/en-us/windows/powertoys/powerrename) ships with PowerToys and handles search-and-replace, regex, and date or attribute variables across a File Explorer selection — if every file needs the same transform, it is the faster tool and it is free. It reads filenames and attributes, not file contents, so it cannot give two identically named scans different descriptive names. That is the split covered in the [PowerRename alternative comparison](/windows).
+For pattern work, yes. [PowerRename](https://learn.microsoft.com/en-us/windows/powertoys/powerrename) ships with PowerToys and handles search-and-replace, regex, and date or attribute variables across a File Explorer selection. If every file needs the same change, it is the faster tool, and it is free. It reads filenames and attributes, not file contents, so it cannot give two identically named scans different descriptive names. That split is covered in the [PowerRename alternative comparison](/blog/best-file-renamer-windows-11).
 
-### Is batch rename enough on its own?
+### Will Zush delete my duplicate files?
 
-For backlog cleanup, yes. For recurring clutter, no. The more durable setup is folder monitoring after the initial cleanup.
+Only if you choose **Move to Trash**, and only for files that are byte-for-byte identical. On Windows the copies go to the Recycle Bin, and Undo in Activity restores them to their original folders until the Recycle Bin is emptied.

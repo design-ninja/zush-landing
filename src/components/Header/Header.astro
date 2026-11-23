@@ -13,6 +13,7 @@ import {
   type Locale,
 } from '@/i18n/config';
 import { getCopy } from '@/i18n/copy';
+import { getBlogIndexPath } from '@/data/blog';
 import appLinkStyles from '@/components/AppLink/AppLink.module.scss';
 import logoStyles from '@/components/Logo/Logo.module.scss';
 import type { HeaderWidth } from './types';
@@ -64,7 +65,7 @@ const faqHref = `${basePath}#faq`;
 const homeHref = getLocalizedPath('/', locale);
 const macHref = getLocalizedPath('/mac', locale);
 const windowsHref = getLocalizedPath('/windows', locale);
-const blogHref = '/blog';
+const blogHref = await getBlogIndexPath(locale);
 // The platform pages lead the nav so every page links to them from the
 // header, not only from the footer: they are the product pages search engines
 // should pick for "AI file renamer for Mac/Windows". Features stays reachable

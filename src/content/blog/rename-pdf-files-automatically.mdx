@@ -1,6 +1,6 @@
 ---
-title: "How to Auto-Rename Incoming PDFs with Folder Monitoring"
-description: "Automatically rename incoming PDF files by content with AI folder monitoring. Set naming patterns, preview results, and keep invoices and scans searchable."
+title: "Auto Rename PDF Files as They Arrive (Mac and Windows)"
+description: "Automatically rename incoming PDFs by content: set up Zush Monitor on Mac or Windows, sort them into vendor folders, and undo any change in Activity."
 date: "2026-03-23"
 slug: "rename-pdf-files-automatically"
 platform: "general"
@@ -9,32 +9,24 @@ tags:
   - "Automation"
   - "File Organization"
   - "PDFs & Documents"
-tldr: "For PDFs that keep arriving, monitor the destination folder, generate names from document content, review the naming pattern on a test batch, and keep rollback available."
-reviewed: "2026-09-05"
+tldr: "Add your PDF intake folder to Zush Monitor, limit it to PDF files, and assign a Template you tested in AI Rename. Each new PDF is then renamed from its content with no review step, can be sorted into folders such as Finance/Vendor, and every change can be undone in Activity."
+reviewed: "2026-11-23"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: automatically rename PDF files by monitoring the folder where they arrive, reading each document for useful fields, and applying a consistent filename such as `2026-03_acme_invoice-1048.pdf`. Test the rule on 10 to 20 files first, review the proposed names, then enable continuous folder monitoring.
+Zush Monitor watches a folder on Mac or Windows and renames each new PDF from what the document says, so `scan_0042.pdf` becomes something like `2026-11-03_acme-supply_invoice_INV-10234.pdf`. Monitor applies the name as soon as the file arrives, without a review step, and lists every change in Activity, where you can undo it.
 
-This workflow is for recurring PDFs: scanner output, downloaded statements, saved email attachments, client forms, and reports that keep appearing under names such as `scan_001.pdf` or `document (7).pdf`. It prevents the backlog instead of cleaning it up again every month.
+This guide covers that one job: PDFs that keep landing in the same place, from a scanner, an email client, or an external drive. For other PDF tasks, start elsewhere:
 
-## Choose the right PDF workflow
+- A one-time backlog you want to review file by file: [rename PDFs with AI on Mac](/blog/rename-pdf-files-with-ai-mac) or [on Windows](/blog/rename-pdf-files-with-ai-windows). The Mac guide also covers filename rules and how AI renaming compares with Finder, OCR, and scripts.
+- Invoice and receipt naming fields such as vendor, amount, and period: the [invoice renaming guide](/blog/automatically-rename-invoices-ai).
+- Scanner settings and OCR: the [scanned document guide](/blog/rename-scanned-documents-automatically).
 
-| Your goal | Best next step |
-|---|---|
-| Rename a one-time batch on a Mac | Follow the [Mac AI PDF renaming workflow](/blog/rename-pdf-files-with-ai-mac) |
-| Rename every new PDF placed in a folder | Continue with this automatic folder workflow |
-| Check PDF support and download the app | Open [Zush for PDF renaming](/rename-pdf-with-ai) |
-| Rename invoices using vendor, date, and amount fields | Use the [automatic invoice renaming guide](/blog/automatically-rename-invoices-ai) |
-
-The distinction matters. A one-time batch needs careful review; an automatic workflow also needs a stable naming pattern, a monitored intake folder, and a safe way to handle exceptions.
-
-![Zush AI rename results on macOS showing content-aware filenames for mixed files](/images/showcase/macos/batch-rename-light.webp)
-
+![Zush Monitor on macOS with a watched folder and its Template](/images/showcase/macos/monitor-light.webp)
 
 <BlogProductIntro
-  title="Running the same PDF cleanup every week?"
-  description="Zush monitors the folder your PDFs land in and renames invoices, contracts, and scans by content as they arrive, so the cleanup stops being a routine."
+  title="PDFs piling up under names like scan_0042.pdf?"
+  description="Zush watches the folder your PDFs land in and renames each one by its content when it arrives, on Mac and Windows."
   links={[
     { href: '/rename-pdf-with-ai', label: 'Try 50 PDF renames free' },
     { href: '/docs/folder-monitoring', label: 'Set up folder monitoring' },
@@ -42,192 +34,131 @@ The distinction matters. A one-time batch needs careful review; an automatic wor
   ]}
 />
 
-## What the intake folder needs to handle
+## Set up automatic PDF renaming in Monitor
 
-Incoming PDFs can contain selectable text, scanned page images, or both. Test the formats your source actually produces: a browser statement, an email attachment, and scanner output can require different naming fields even when all three end in `.pdf`.
+The setup is the same in Zush for Mac and Zush for Windows.
 
-For scanner settings and the choice between OCR and visual analysis, use the [scanned document guide](/blog/rename-scanned-documents-automatically). For invoices, use the [invoice naming workflow](/blog/automatically-rename-invoices-ai). This guide focuses on keeping the recurring intake consistent after that first test.
+### 1. Add the intake folder in Monitor
 
-## Before and after examples
+Create a folder that only receives the documents you want renamed, such as `PDF Inbox` or your scanner's output folder. Open **Monitor** in Zush and add it. A narrow folder is easier to check than all of Downloads, which also collects installers, images, and archives.
 
-| Before | After |
+### 2. Limit it to PDF
+
+In the monitored folder's options, include PDF and leave other file types out. The same options control subfolders and filename filters, so you can also restrict Monitor to names that start with your scanner's prefix, such as `Scan`.
+
+### 3. Choose a Template
+
+Click the Template button next to the folder and pick the Template Monitor should use. A Template holds the [Naming Blocks](/docs/naming-blocks) that build each name, plus any custom prompt and folder sorting settings. Each monitored folder can have its own Template.
+
+A pattern that works for mixed business PDFs:
+
+```text
+{Detected Date}_{Vendor}_{Document Type}_{Title}
+```
+
+**Detected Date** is the date printed in the document, which is usually the one you want. **Created Date** is when the file was made or downloaded. For invoices, the [Invoices template guide](/docs/templates/invoices) adds **Invoice Number** and **Amount**. Zush for Mac 3.25.0 also includes a built-in **Financial Statements** template that names bank, card, mortgage, loan, and investment statements by date, bank, account holder, and account number. Since Mac 3.23.2, Zush Cloud AI names invoices more specifically, with the vendor and the billing period.
+
+### 4. Check the AI mode
+
+The AI mode is a global setting in Settings, so it applies to every monitored folder. Zush has four: Zush Cloud AI (no key needed), BYOK with your own Gemini, OpenRouter, OpenAI, or Claude key, Ollama, and LM Studio. Ollama and LM Studio keep the analysis on your computer, which matters if you would rather not send bank statements or contracts to a cloud service. See [AI modes](/docs/ai-modes) for the differences.
+
+### 5. Dry-run the Template on copies in AI Rename
+
+Monitor does not show suggestions before it renames, so test first. Copy 10 to 20 representative PDFs into a scratch folder, open **AI Rename**, select the same Template, and add the copies. AI Rename shows every proposed name before anything changes. Include the awkward cases: a scanned page, a statement with two dates, two invoices from the same vendor. Adjust the Template until the names are right.
+
+### 6. Turn Monitor on
+
+Turn monitoring on for the folder and keep Zush running. From then on, each new PDF directly in that folder is analyzed and renamed. Open **Activity** to see what changed and [undo a rename](/docs/undo-history) if a name is wrong.
+
+![Zush Monitor on Windows with a watched folder and its Template](/images/showcase/windows/monitor-light.webp)
+
+## Sort incoming PDFs into folders automatically
+
+A Monitor Template can also move each renamed PDF into a subfolder. Turn on **Folder sorting** in the Template, choose a destination folder, and write a folder rule in plain language. See [AI folder sorting](/docs/folder-sorting) for every option.
+
+Example: you want each supplier's documents in `Finance/<Vendor>`.
+
+| Template setting | Value |
 |---|---|
-| `scan_001.pdf` | `electric-bill-march-2026-pacific-gas.pdf` |
-| `download.pdf` | `employment-contract-senior-developer.pdf` |
-| `attachment (3).pdf` | `invoice-acme-consulting-feb-2026.pdf` |
-| `document.pdf` | `w9-tax-form-freelancer-llc.pdf` |
-| `IMG_9218.pdf` | `restaurant-receipt-dinner-march-15.pdf` |
-| `report.pdf` | `q1-2026-quarterly-sales-report.pdf` |
-| `Scan 20260323.pdf` | `apartment-lease-renewal-agreement.pdf` |
-| `a4f2e8c1.pdf` | `conference-speaker-agreement-2026.pdf` |
+| Destination folder | `Finance` |
+| Folder sorting | Custom |
+| Folder rule | Group invoices and statements by company and use the company name for each folder. |
 
-Every renamed file is searchable in Spotlight and identifiable at a glance when you open the folder.
-
-![Zush AI rename results showing PDF files with descriptive before and after names](/images/showcase/macos/batch-rename-light.webp)
-
-![Zush Rename rules dialog for prompt-guided PDF filenames on Mac](/images/showcase/macos/custom-prompts-light.webp)
-
-## Step-by-step: automatic PDF renaming with Zush
-
-### 1. Start with your worst folder
-
-Most people have one folder that contains the bulk of their poorly named PDFs. It might be Downloads, a scanner output directory, a tax documents folder, or a client project directory. Start there.
-
-### 2. Open the folder in Zush
-
-Load the folder in [the AI PDF renamer](https://zushapp.com/rename-pdf-with-ai). The app identifies all PDF files and prepares them for batch processing.
-
-### 3. Choose your naming pattern
-
-Select a pattern that fits your organizational style:
-
-- <code>{'{title}'}</code> for straightforward descriptive names
-- <code>{'{date}_{title}'}</code> for folders where chronological order matters
-- <code>{'{category}_{title}'}</code> for sorting by document type
-- <code>{'{date}_{category}_{title}'}</code> for maximum structure
-
-Examples of what each pattern produces:
-
-| Pattern | Result |
+| Arrives in PDF Inbox | Ends up as |
 |---|---|
-| <code>{'{title}'}</code> | `electric-bill-march-2026.pdf` |
-| <code>{'{date}_{title}'}</code> | `2026-03-15_electric-bill-march-2026.pdf` |
-| <code>{'{category}_{title}'}</code> | `invoice_electric-bill-march-2026.pdf` |
-| <code>{'{date}_{category}_{title}'}</code> | `2026-03-15_invoice_electric-bill-march-2026.pdf` |
+| `scan_0042.pdf` | `Finance/Acme Supply/2026-11-03_acme-supply_invoice_INV-10234.pdf` |
+| `Statement.pdf` | `Finance/First National Bank/2026-10-31_first-national-bank_statement_october.pdf` |
+| `download (7).pdf` | `Finance/Cloudflare/2026-11-01_cloudflare_invoice_CF-88112.pdf` |
 
-### 4. Preview the proposed names
+If you already keep one folder per vendor, turn on **Existing folders only** (Mac 3.24.0, Windows 3.19.5.0). Files then go only into folders that already exist, and a PDF that fits none of them stays where it is. In a monitored inbox, that leftover file is your signal that a new vendor arrived. You can also ask for nested folders, such as "by year, then by month inside each year", or turn on **Keep current names** if you only want PDFs moved.
 
-Review the list of new names before applying. The preview step is important for PDFs because these files often represent legal or financial documents. Make sure the AI-generated titles are accurate and specific enough to distinguish similar documents.
+Sorting applies to new arrivals. Changing the Template later does not reorganize PDFs that were already processed.
 
-### 5. Apply the batch rename
+![Zush folder sorting on macOS with PDFs grouped into proposed folders](/images/showcase/macos/folder-sorting-light.webp)
 
-Confirm and rename. [Zush](/) logs every change so you can revert any file to its original name if the generated title is incorrect or if you need the original filename for reference.
+## Where the PDFs come from
 
-### 6. Enable folder monitoring
+**Scanner share.** Point the scanner's "scan to folder" or network share at the monitored folder. Zush also reads image-only scans that have no text layer. The [scanned document guide](/blog/rename-scanned-documents-automatically) covers scanner settings.
 
-Open **Monitor**, add the intake folder, include PDF files, and assign the Template you tested. Use the [folder monitoring setup](/docs/folder-monitoring) for the controls and the [Naming Blocks guide](/docs/naming-blocks) to configure the Template. Start with a dedicated `PDF Inbox` rather than all of Downloads.
+**Email downloads.** Set your mail app or browser to save PDF attachments into `PDF Inbox` instead of Downloads. If you would rather monitor Downloads itself, keep the PDF-only filter on. The Downloads guides for [Mac](/blog/how-to-organize-downloads-folder-mac) and [Windows](/blog/organize-downloads-folder-windows) help with a first cleanup.
 
-## A PDF intake recipe you can reuse
+**External drive.** Zush for Mac can monitor a folder on an external drive and resumes when the drive reconnects. Since Mac 3.23.1, Monitor also waits when its destination folder is offline, for example on a disconnected drive, and renames the waiting files once the drive is back. Files that changed while it waited are analyzed again. The same release made Monitor keep retrying files on a network share that drops for a moment and skip files it cannot read instead of stopping.
 
-This example separates incoming documents from your existing archive. It is a suggested setup, not a built-in routing rule.
+## Check exceptions before you leave it running
 
-| Setting | Starting choice | Why |
+- **Wrong date:** compare the name with the date printed on the PDF. Use **Detected Date** rather than **Created Date** when the download day is meaningless.
+- **Two similar documents:** add a block that tells them apart, such as **Invoice Number** or the account number. Two statements from one bank in the same month need it.
+- **Unreadable scan:** rescan it or name it by hand. A plausible title on a blurry page is worse than no title.
+- **Mixed packet:** a single PDF holding a letter, a form, and an invoice gets one name. Split it first if you need to find each part.
+- **New sender or layout:** test again in AI Rename when a new supplier or a redesigned statement starts arriving.
+
+## Fix exceptions with right-click Rename with Zush
+
+For a single PDF that needs a different Template, you don't have to open Zush. Select the file, right-click, choose **Rename with Zush**, then **Smart** or one of your Templates. See [Quick Rename](/docs/quick-rename) for setup.
+
+- **Mac (3.24.0):** in Finder. Turn it on in Zush Settings under **Quick Rename**, then enable the Zush extension in System Settings. The Finder menu does not work for files in iCloud Drive, Dropbox, Google Drive, or OneDrive.
+- **Windows (3.19.5.0):** in the File Explorer context menu, in the Microsoft Store version.
+
+Quick Rename applies the name right away, like Monitor. If you want to review a suggestion first, use AI Rename. Either way, the change shows up in Activity.
+
+## Mac and Windows: where files land and how you find them
+
+| | Mac | Windows |
 |---|---|---|
-| Watched folder | A dedicated `PDF Inbox` | Limits the workflow to documents you intend to rename |
-| Included type | PDF | Keeps unrelated downloads outside the rename workflow |
-| Template | Document Type + Title; add Vendor for invoices | Uses fields that describe the incoming documents |
-| Date choice | A verified document date when needed | File creation and download dates can differ from the printed date |
-| First test | Copies of 10 to 20 representative PDFs | Tests scans, exports, and naming exceptions before using the archive |
-| Final destination | Your existing client, finance, or project folder | Zush renames files; moving them is a separate step |
+| Monitor setup | Monitor screen, same steps | Monitor screen, same steps |
+| Where renamed PDFs land | The monitored folder, or the sorting destination and its subfolders | The same |
+| Search | Spotlight and Finder search. A Template can also add Finder tags and Spotlight metadata | Windows Search and the File Explorer search box. Zush can write title, description, and keywords into the PDF's properties |
+| Right-click renaming | Finder, Mac 3.24.0, turned on in Settings | File Explorer, Windows 3.19.5.0, Microsoft Store version |
+| Undo | Activity | Activity |
 
-If intake currently happens in a mixed Downloads folder, do the [Downloads cleanup and triage](/blog/how-to-organize-downloads-folder-mac) first. Keep documents needing manual review outside the watched folder until their naming issue is resolved.
+Search results depend on whether the folder is indexed by the operating system. The [metadata and tags docs](/docs/metadata-tags) list what Zush writes on each platform.
 
-### Check exceptions before leaving the monitor running
+## What it costs
 
-- **Wrong date:** compare the extracted document date with the PDF, not the file's creation time.
-- **Two similar documents:** add a reliable invoice number, party, or subject so the names remain distinguishable; inspect any proposed collision.
-- **Unreadable scan:** rescan or review it manually rather than relying on a plausible generated title.
-- **Mixed document packet:** check that the name describes the file you need to retrieve; one PDF containing several unrelated documents may need manual preparation.
-
-Test again when a new supplier or document layout starts arriving. A pattern that works for one monthly statement may not suit every incoming PDF.
-
-## Use cases
-
-### Invoices and receipts
-
-Accounting workflows generate a lot of PDFs with poor names: vendor invoices, client receipts, expense reports, payment confirmations. Automatic renaming produces filenames like `vendor-office-depot-invoice-march-2026.pdf` so you can search "office depot" in Spotlight during an audit instead of opening 40 files.
-
-### Contracts and legal documents
-
-Law firms and legal departments deal with contracts, agreements, filings, and correspondence that arrive from courts, opposing counsel, clients, and internal teams. A folder where every file is `document.pdf` or `scan_001.pdf` is a liability. AI renaming turns those into descriptive names like `nda-client-onboarding-acme-corp.pdf` or `settlement-agreement-draft-v3.pdf`.
-
-For additional PDF-specific strategies on Mac, read [Rename PDFs with AI on Mac](/rename-pdf-with-ai).
-
-### Academic papers and research
-
-Students and researchers download papers with filenames that range from DOI strings to `download (14).pdf`. A research folder with 200 papers under generic names is almost unusable without a reference manager. AI renaming produces titles like `neural-network-pruning-efficiency-2025.pdf` that make the folder browsable on its own.
-
-### Tax and financial documents
-
-Tax season means gathering W-2s, 1099s, bank statements, mortgage documents, and charitable donation receipts into one place. When half of them are named `scan_003.pdf` and the other half are `statement.pdf`, preparation is painful. AI renaming produces organized filenames like `w2-employer-techcorp-2025.pdf` and `bank-statement-checking-january-2026.pdf`.
-
-### Client project management
-
-Freelancers and agencies receive documents from multiple clients, often with overlapping generic names. Two different clients both send `contract.pdf`. Three vendors all submit `invoice.pdf`. AI renaming disambiguates by reading the content and generating unique, descriptive names for each file.
-
-
-## Folder monitoring for continuous automation
-
-One-time batch renaming clears the backlog. Folder monitoring prevents it from returning. This is the difference between cleaning up and staying organized.
-
-Set up monitoring on the folders where PDFs accumulate most:
-
-- **Downloads folder**: Browser downloads, email saves, and web form submissions
-- **Scanner output**: The destination directory for your document scanner
-- **Email attachment folder**: If you save attachments to a specific location
-- **Cloud sync folders**: Directories that receive PDFs from shared drives or synced services
-
-Each new PDF that arrives in a monitored folder is analyzed and renamed automatically. You never see `download.pdf` in your folder because it becomes `vendor-proposal-web-redesign.pdf` before you even look at it.
-
-For more approaches to keeping your files organized automatically, see [How to Automate File Organization on macOS](/blog/automate-file-organization-macos).
-
-## AI renaming vs other PDF management approaches
-
-| Approach | Strengths | Weaknesses |
-|---|---|---|
-| Manual renaming | Full control | Slow for large or recurring batches |
-| Finder batch rename | Fast for simple patterns | No content awareness |
-| OCR + manual review | Accurate text extraction | Still requires manual naming |
-| Shell scripts with regex | Automatable | Cannot understand document meaning |
-| AI automatic renaming | Content-aware, batch capable, automatable | Requires review for edge cases |
-
-Apple's [Finder batch rename controls](https://support.apple.com/guide/mac-help/rename-files-folders-and-disks-on-mac-mchlp1144/mac) can replace text, add text, or change a filename format. Those rules are useful when the existing names already contain structure. Content-aware renaming is the better fit when the useful fields are inside the PDF rather than in its current filename.
-
-The key advantage of AI is that it combines content understanding with automation. OCR gives you text but still leaves the naming decision to a person or a rule. A content-aware workflow can extract the document type, party, date, and subject, then place those fields into one repeatable pattern.
-
-## Best practices for PDF filenames
-
-### Lead with the most searchable term
-
-Put the term you would search for first. If you would search for the vendor name, start with that. If you would search for the document type, lead with that. The first word in a filename carries the most weight in quick scanning.
-
-### Keep names under 60 characters
-
-Long enough to be specific, short enough to display fully in Finder columns and email attachment previews. `invoice-acme-consulting-march-2026.pdf` is good. `invoice-from-acme-consulting-incorporated-for-professional-services-rendered-during-the-month-of-march-2026.pdf` is not.
-
-### Use dates for recurring documents
-
-Monthly invoices, quarterly reports, annual tax documents, and weekly meeting notes benefit from date prefixes. One-off documents like contracts or signed agreements usually do not need them.
-
-### Separate words with hyphens
-
-Hyphens are universally safe across operating systems, readable in URLs, and produce clean filenames. Avoid spaces, which cause issues in Terminal and some sharing workflows.
-
-For a broader naming framework, see [File Naming Conventions Best Practices](/blog/file-naming-conventions-best-practices).
-
-
-## Getting started
-
-Pick your worst PDF folder (usually Downloads or the scanner output directory), open it in the [AI PDF renamer](/rename-pdf-with-ai), and test the naming pattern on a representative batch. The free tier includes 50 renames, so you can validate the workflow before applying it to a larger archive.
-
-FREE includes 50 renames shared across Cloud AI, BYOK, and Offline AI. If PDF renaming becomes a regular need, PRO removes that limit with either a $10/month plan or a $48 one-time plan.
-
-Stop opening PDFs just to find out what they are.
+The free tier includes 50 renames shared across all four AI modes: Zush Cloud AI, BYOK, Ollama, and LM Studio. That is enough to run the AI Rename dry run and watch Monitor handle a few real arrivals. PRO removes the limit for $10 a month or $48 once. Details are on the [pricing page](/pricing).
 
 ## FAQ
 
-### Can PDF files be renamed automatically from their contents?
+### Does Zush ask before renaming a new PDF in a monitored folder?
 
-Yes. A content-aware renamer can read selectable text or analyze the visible document, extract fields such as vendor, date, document type, and subject, then generate a filename from a saved pattern. Review a small batch before enabling unattended folder monitoring.
+No. Monitor has no review-before-rename switch. It applies the name when the PDF arrives and records the change in Activity, where you can undo it. That is why the Template should be tested on copies in AI Rename first, where you do see every name before applying.
 
-### What is the safest naming pattern for recurring PDFs?
+### Does Monitor rename the PDFs that are already in the folder?
 
-Use only fields that appear reliably in every document. For invoices, `date_vendor_document-type` is easier to validate than a long generated title. Keep the original extension, preview collisions, and make sure the rename history can be rolled back.
+Monitor is built for new arrivals. For PDFs that were already sitting in the folder, run them once through AI Rename with the same Template, so you can review the names of the backlog.
 
-### Is OCR enough to rename scanned PDFs automatically?
+### Can different intake folders use different naming rules?
 
-OCR turns pixels into text, but it does not decide which words belong in the filename. An automatic renaming workflow still needs field extraction, a naming pattern, collision handling, and a review policy for low-confidence documents.
+Yes. Each monitored folder has its own Template. A scanner folder can use the Invoices setup while a contracts folder uses a Template built around client and document type. The AI mode is the one setting they share.
 
-### Should the Downloads folder itself be monitored?
+### What happens if the drive with my monitored folder is unplugged?
 
-Monitor Downloads only if most incoming files belong to the same workflow. If Downloads contains installers, images, archives, and private documents, create a narrower intake folder such as `PDF Inbox` and monitor that instead. The smaller scope reduces accidental renames and makes review faster.
+On Mac, the folder stays configured, and Monitor resumes when the drive reconnects. If the sorting destination is offline, Monitor waits and renames the waiting PDFs once it is back. Files on a disconnected drive cannot be processed until then.
+
+### Can I sort PDFs only into vendor folders I already have?
+
+Yes. Turn on **Existing folders only** in the Template's folder sorting settings. PDFs go only into existing folders, and anything that matches none of them stays in place for you to handle.
+
+### Does Zush need to be open for Monitor to work?
+
+Yes. Zush has to be running for Monitor to process new PDFs.

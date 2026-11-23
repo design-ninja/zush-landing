@@ -55,6 +55,7 @@ if (!post.translationOf) {
 const localeMeta = LOCALE_META[post.locale as Locale];
 const basePath = `/${localeMeta.slug}`;
 const blogPath = `${basePath}/blog/${post.slug}`;
+const blogIndexPath = `${basePath}/blog`;
 const englishPath = `/blog/${post.translationOf}`;
 
 const relatedPosts = await getTranslatedRelatedPosts(post);
@@ -97,9 +98,9 @@ const jsonLd =
     ? []
     : [
         buildBlogPostingJsonLd(post, canonicalUrl, localeMeta.lang),
-        // No localized blog index exists, so the trail is home > post.
         buildBreadcrumbJsonLd(post.title, canonicalUrl, [
           { name: getBlogPostCopy(post.locale).breadcrumbHome, item: getCanonicalUrl(basePath) },
+          { name: getBlogPostCopy(post.locale).breadcrumbBlog, item: getCanonicalUrl(blogIndexPath) },
         ]),
         ...(faq.length > 0 ? [buildFAQPageJsonLd(faq)] : []),
       ];
@@ -122,6 +123,7 @@ const translationLink: TranslationLink | undefined = englishDetails
   jsonLd={jsonLd}
   chromeLocale={post.locale as Locale}
   chromeBasePath={basePath}
+  blogIndexHref={blogIndexPath}
   alternates={alternates}
   languagePaths={languagePaths}
   translationLink={translationLink}

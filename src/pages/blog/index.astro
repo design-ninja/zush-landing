@@ -7,9 +7,11 @@ import {
   getAllTags,
   getBlogIndexSections,
   getRecentBlogPosts,
+  getTranslatedBlogLocales,
 } from '@/data/blog';
+import { LOCALE_META, type Locale } from '@/i18n/config';
 import { PRIMARY_AUTHOR } from '@/data/author';
-import { getSeoForPath, SITE_ORIGIN, toIsoDateTime } from '@/seo/config';
+import { getCanonicalUrl, getSeoForPath, SITE_ORIGIN, toIsoDateTime } from '@/seo/config';
 import { SOFTWARE_REF } from '@/seo/entity';
 import headingStyles from '@/components/Heading/Heading.module.scss';
 import textStyles from '@/components/Text/Text.module.scss';
@@ -18,6 +20,23 @@ import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module
 import styles from '@/views/Blog/BlogList.module.scss';
 
 const seo = getSeoForPath('/blog');
+// `/blog` and the translated lists (`/de/blog` …) form one hreflang cluster.
+const translatedBlogLocales = await getTranslatedBlogLocales();
+const blogAlternates = translatedBlogLocales.length > 0
+  ? [
+      { hreflang: 'en', href: getCanonicalUrl('/blog') },
+      ...translatedBlogLocales.map((locale) => ({
+        hreflang: LOCALE_META[locale as Locale].lang,
+        href: getCanonicalUrl(`/${LOCALE_META[locale as Locale].slug}/blog`),
+      })),
+    ]
+  : undefined;
+const blogLanguagePaths: Partial<Record<Locale, string>> = {
+  en: '/blog',
+  ...Object.fromEntries(
+    translatedBlogLocales.map((locale) => [locale, `/${LOCALE_META[locale as Locale].slug}/blog`]),
+  ),
+};
 const sections = await getBlogIndexSections();
 const recentPosts = await getRecentBlogPosts(6);
 const allTags = await getAllTags();
@@ -132,7 +151,13 @@ const jsonLd = {
 };
 ---
 
-<BaseLayout seo={seo} disableTopOffset={true} jsonLd={jsonLd}>
+<BaseLayout
+  seo={seo}
+  disableTopOffset={true}
+  jsonLd={jsonLd}
+  alternates={blogAlternates}
+  languagePaths={blogLanguagePaths}
+>
   <section class={[styles.BlogList, styles.BlogList_underHeader, styles.BlogList_glowTopRight].join(' ')}>
     <div class={styles.BlogList__Container}>
       <div class={sectionHeaderStyles.SectionHeader}>

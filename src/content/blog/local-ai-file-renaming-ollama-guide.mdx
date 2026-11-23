@@ -1,147 +1,165 @@
 ---
-title: "Local AI File Renaming: Private, Offline, No Cloud Uploads"
-description: "How local AI file renaming keeps files on your own machine: when offline mode is worth the tradeoff, what it handles well, and where cloud AI is still stronger."
+title: "Rename Files with Ollama or LM Studio on Windows (2026)"
+description: "Set up Ollama or LM Studio on Windows 10 or 11 and rename files by content with a local model in Zush. Requirements, setup steps, fixes, and limits."
 date: "2026-04-28"
 slug: "local-ai-file-renaming-ollama-guide"
-platform: "general"
+platform: "windows"
 topic: "local-ai"
 tags:
   - "AI File Renaming"
   - "Ollama"
-tldr: "Local AI file renaming uses a model on your own computer to analyze supported files and suggest descriptive filenames, so analysis content stays on device instead of going to a cloud service or a third-party AI provider. It trades some quality and speed for privacy and predictable cost."
-reviewed: "2026-09-24"
+tldr: "On Windows, install Ollama or LM Studio, choose it under AI Modes in Zush, pick a vision-capable model, and click Test. Analysis then runs on your PC, and Zush does not fall back to the cloud while a local mode is selected. Free includes 50 AI renames; PRO ($10/month or $48 one-time) removes the limit."
+reviewed: "2026-11-23"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: local AI file renaming runs the model that reads your files on your own computer, so nothing about their content is sent anywhere. You give up some quality and speed against the best cloud models, and you gain privacy, offline capability, and no per-file provider cost.
+To rename files with a local AI model on Windows, install Ollama or LM Studio, open **AI Modes** in [Zush for Windows](/windows), select that server and a vision-capable model, then click **Test**. While Ollama or LM Studio is selected, supported file analysis runs on your PC with no silent switch to cloud AI, and the first 50 AI renames are free; PRO costs $10 a month or $48 once and removes the limit.
 
-Most file renaming tools fall into two camps: rule-based batch rename utilities and cloud AI tools. Rule-based tools are reliable but blind. Cloud AI tools can understand screenshots, videos, PDFs, photos, and documents, but they require an internet connection and a provider request.
-
-Local AI file renaming is a third path. Instead of sending analysis content to a cloud model, a desktop app asks a model running on your own computer to describe the file and propose a useful name. In [Zush](/), open **Settings → AI Modes → Ollama** to use the [Ollama](https://ollama.com/download) runtime, or choose LM Studio for another local route.
-
-This page is the decision guide — whether local processing is the right mode for your files at all. If you have already decided and want the commands, follow the [step-by-step Ollama setup for Mac](/blog/rename-files-with-ollama-mac) or the shorter [Offline AI setup reference](/docs/offline-ai). For the product surface, see [File Renamer for Mac and Windows](/) or [AI file renamer for Mac](/mac). If you are comparing local-first tools, read [Zush vs AI Renamer](/blog/zush-vs-airenamer).
+This guide covers the Windows setup only. To decide between cloud and local first, read [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming). On a Mac, follow [Use Ollama to rename files on Mac](/blog/rename-files-with-ollama-mac).
 
 <BlogProductIntro
-  title="Need renaming that never leaves your machine?"
-  description="Zush connects to local Ollama models to rename PDFs, screenshots, and photos on device, which keeps confidential files off third-party servers."
+  title="Want file names from a model on your own PC?"
+  description="Zush for Windows connects to Ollama or LM Studio, so supported files are analyzed locally while a local mode is selected."
   links={[
+    { href: '/windows', label: 'AI file renamer for Windows' },
     { href: '/offline-ai-file-renamer', label: 'Offline AI renamer' },
-    { href: '/', label: 'AI file renamer' },
-    { href: '/mac', label: 'AI file renamer for Mac' },
-    { href: '/docs/offline-ai', label: 'Offline AI docs' },
+    { href: '/docs/local-ai', label: 'Local AI docs' },
+    { href: '/docs/offline-ai', label: 'Ollama setup docs' },
   ]}
 />
 
-## What local AI file renaming means
+## What local mode means in Zush
 
-Local AI file renaming means the model that analyzes the file runs on your machine. The file still needs to be converted into an analysis-friendly form, such as an image preview, sampled video frame, extracted document text, or a compact visual representation. The difference is where that analysis happens.
+Zush has four AI modes: Zush Cloud AI, BYOK, Ollama, and LM Studio. Only one is active at a time, and it applies everywhere in the app: AI Rename, Quick Rename, and Monitor.
 
-With cloud AI, the analysis payload goes to a remote AI provider. With BYOK, it goes to the provider you chose using your own API key. With Ollama selected under **Settings → AI Modes**, Zush talks to the local service and supported file analysis is processed by the model on your device.
+With Ollama or LM Studio selected, Zush prepares a preview, extracted text, or metadata from each file and sends it to the server on your own PC. The default addresses are `http://127.0.0.1:11434` for Ollama and `http://127.0.0.1:1234` for LM Studio. If the local server is down, the rename fails instead of quietly going to the cloud. Licensing and update checks can still use the network. Local models do not get raw audio for transcription, so recordings are named from their text, metadata, and visual previews ([audio and video notes](/docs/audio-video)).
 
-That matters most for:
+One Ollama detail matters here: Ollama also offers cloud models, which run on Ollama's servers. Their names end in `:cloud`. If you want analysis to stay on your PC, install a model without that suffix.
 
-- private client folders
-- internal screenshots
-- invoices, contracts, and scanned paperwork
-- research folders where internet access is limited
-- users who want predictable costs after installing a model
+## Requirements on Windows
 
-Local AI is not magic and it is not always the fastest option. It is a privacy and control tradeoff. You choose the model, you store it locally, and your hardware determines speed.
+| | Zush for Windows | Ollama for Windows | LM Studio on Windows |
+|---|---|---|---|
+| Windows version | Windows 10 or 11 | Windows 10 22H2 or newer, Home or Pro | Not listed; x64 and ARM (Snapdragon X Elite) supported |
+| Memory | 4 GB minimum; more recommended for local models | Not listed | At least 16 GB recommended |
+| CPU | Not listed | Not listed | AVX2 required on x64 |
+| GPU | Not listed | NVIDIA driver 551.61 or newer for NVIDIA cards; ROCm v7 or a Vulkan-capable Radeon driver for AMD | At least 4 GB of dedicated VRAM recommended |
+| Disk | About 200 to 250 MB for the app | At least 4 GB for the install, plus space for models | Not listed |
 
-## How Zush uses Ollama
+Sources: [Zush install requirements](/docs/install-update), [Ollama Windows docs](https://docs.ollama.com/windows), [LM Studio system requirements](https://lmstudio.ai/docs/app/system-requirements). Ollama models can take tens to hundreds of GB; the `OLLAMA_MODELS` environment variable moves them to another drive.
 
-Ollama is a local runtime for downloading and running AI models. Zush does not bundle a model into the app. Instead, you install Ollama, pull a compatible vision model, then choose that model under **Settings → AI Modes → Ollama**.
+## Set up Ollama on Windows
 
-The typical flow is:
+You don't need PowerShell for this route.
 
-1. Install Ollama from the official [Ollama download page](https://ollama.com/download).
-2. Pull a vision-capable model in Terminal.
-3. Open Zush and select Ollama under **Settings → AI Modes**.
-4. Refresh the model list and choose the local model.
-5. Test the connection before renaming important folders.
+1. Open Zush **Settings → AI Modes** and choose **Ollama**.
+2. If you see **Download Ollama**, click it. It opens the official download page. Run the installer (it installs to your user folder and doesn't need administrator rights), then return to Zush.
+3. If you see **Start Ollama**, click it and wait for the local server to come up.
+4. If no model is installed, Zush shows **Download** with the suggested model's name. Click it and watch the progress. **Cancel** stops the download.
+5. When the download and connection check finish, Zush selects the model and turns on Ollama mode.
+6. If you already had models installed, Zush shows a **Model** picker instead. Pick one that can read images (the picker labels them), then click **Test**.
 
-Each of those five steps is written out, with the Terminal commands and the checks that catch a misconfigured install, in [how to rename files with Ollama on Mac](/blog/rename-files-with-ollama-mac). The condensed reference is the [Ollama Setup Guide](/docs/offline-ai). Zush currently defaults to [`qwen3.5:4b`](https://ollama.com/library/qwen3.5) for this setup.
+To use a different model, install it yourself in PowerShell with `ollama pull` followed by the model name, then refresh the model list in Zush. See the [Ollama setup docs](/docs/offline-ai) for alternatives and their commands.
 
-## Which model should you start with?
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/showcase/windows/offline-ai-light.webp" alt="Zush for Windows AI Modes page with a Start Ollama button under Ollama and LM Studio selected, showing a model picker, the host http://127.0.0.1:1234, and Connection OK after Test." width="2560" height="1440" loading="lazy" decoding="async" />
+  <figcaption>AI Modes on Windows: Ollama waiting to be started, LM Studio connected and tested.</figcaption>
+</figure>
 
-For file renaming, the model needs to do more than chat. It needs to understand visual content, screenshots, charts, document previews, or images. That is why vision-capable models matter.
+## Set up LM Studio on Windows
 
-Start with the model used by the current Zush default:
+1. Install [LM Studio](https://lmstudio.ai/) and download a vision-capable model in it.
+2. In Zush, open **AI Modes** and choose **LM Studio**. If LM Studio isn't running, start it from Zush. Since Windows version 3.19.2.0, starting LM Studio from Zush also starts its local server. You can also turn on **Start Server** in LM Studio's **Developer** tab.
+3. Keep the host at `http://127.0.0.1:1234` unless you changed it in LM Studio.
+4. Refresh the model list and pick a model. Zush lists only models that LM Studio reports as vision-capable.
+5. Click **Test** and wait for **Connection OK**.
 
-| Model | Best fit | Why it is useful |
-|---|---|---|
-| `qwen3.5:4b` | Screenshots, images, and document previews | Current Zush default for the Ollama connection path |
+## Choosing a model
 
-Smaller models usually respond faster and use less memory. Larger models can produce better descriptions, but only if your machine can run them comfortably. For naming files, fast and consistent is often better than slow and verbose.
+A file renamer needs a model that can read images such as screenshots, scans, and document previews. Text-only models can't, so both Zush pickers filter or label vision models.
 
-## What local AI is good at
+Start with what Zush offers. In Ollama mode, that's the model on the Download button and the **Recommended models** link; in LM Studio, it's whatever vision model you've loaded. If you want to try others, the [Ollama setup docs](/docs/offline-ai) and [LM Studio docs](/docs/lm-studio) list options. Families such as Qwen-VL and Gemma 3 are examples of vision-capable models, not a Zush default.
 
-Local AI works well when the file has visible or extractable context and the requested filename does not require deep outside knowledge.
+Smaller models answer faster and use less memory; larger ones may describe files better if your PC can hold them. Windows versions 3.18.0.0 and 3.19.5.0 made small local models more reliable, so a small model is a fair first try.
 
-Good examples:
+## Your first local batch
 
-| Original filename | Local AI can suggest |
+Don't point a new model at your whole archive. Test it first:
+
+1. Pick a folder with 10 to 20 files.
+2. Mix the types: screenshots, photos, and a few PDFs.
+3. Add them to **AI Rename** and run the analysis with your local mode selected.
+4. Review every proposed name before you click Rename.
+5. If names are too long or too vague, adjust the Template or custom prompt and run it again.
+6. Move to larger folders only once the names match your style.
+
+Names like these are a realistic target for a good vision model (examples, not guaranteed output):
+
+| Original filename | A local model might suggest |
 |---|---|
-| `Screenshot 2026-04-28 at 09.41.22.png` | `stripe-dashboard-april-revenue-chart.png` |
-| `IMG_4821.HEIC` | `desk-setup-laptop-coffee-morning-light.heic` |
+| `Screenshot 2026-11-20 141104.png` | `stripe-dashboard-november-revenue-chart.png` |
+| `IMG_4821.jpg` | `desk-setup-laptop-coffee-morning-light.jpg` |
 | `scan_014.pdf` | `signed-rental-agreement-april-2026.pdf` |
 | `export-final-v2.xlsx` | `q2-budget-forecast-department-review.xlsx` |
 
-The best use cases are high-volume folders where names are currently meaningless but the content itself is clear. Screenshots, downloaded images, scanned paperwork, and recurring export folders are the obvious starting points.
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/showcase/windows/batch-rename-light.webp" alt="Zush on Windows AI Rename list showing original filenames next to proposed titles before Rename is clicked." width="2560" height="1440" loading="lazy" decoding="async" />
+  <figcaption>AI Rename shows each proposed name before anything changes on disk.</figcaption>
+</figure>
 
-If your main pain is ongoing clutter, pair local AI with folder monitoring. For the bigger automation workflow, read [Folder Monitoring for Automatic File Renaming](/blog/folder-monitoring-automatic-file-renaming).
+If a name is wrong after renaming, open **Activity**. You can undo one file or use **Undo All**; undo restores the original name and folder as long as the file still exists ([undo history](/docs/undo-history)).
 
-## Where local AI has limits
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/showcase/windows/activity-light.webp" alt="Zush for Windows Activity list with original and new filenames and an undo button on each row." width="2560" height="1440" loading="lazy" decoding="async" />
+  <figcaption>Activity keeps the old and new names, with undo per file.</figcaption>
+</figure>
 
-Cloud models still tend to be stronger at difficult visual reasoning, messy screenshots, and unusual document layouts. Local models also depend heavily on memory, CPU, GPU, and model size. If your Mac or PC is under load, a local batch can feel slow.
+## Using a local model with Monitor and File Explorer
 
-Expect these tradeoffs:
+Once the batch looks right, the same AI mode covers automatic renaming. Both options apply names without a preview, so test the Template in AI Rename first:
 
-- local processing may be slower than cloud processing
-- quality can vary more by model
-- the first setup requires downloading several GB of model files
-- unsupported file types may still need cloud processing or extracted text
-- an offline workflow still needs local disk space and a running Ollama service
+- **Monitor** watches folders such as Downloads or Screenshots and renames new files with the Template you assign. It applies names without a review step, and Zush has to be running. Keep Ollama or LM Studio running as well, because Zush won't switch to the cloud when the local server is off. See [folder monitoring](/docs/folder-monitoring).
+- **Rename with Zush** in the File Explorer right-click menu was added in Windows version 3.19.5.0 and is available in the Microsoft Store version. Select files, right-click, choose **Rename with Zush**, then **Smart** or one of your Templates. It renames in the background with your current AI mode. The keyboard shortcut does the same for up to 10 selected files at a time. See [Quick Rename](/docs/quick-rename).
 
-That is why Zush exposes separate AI routes: Zush Cloud AI, BYOK, LM Studio, and Ollama. Use a local route when privacy matters, BYOK when you want your own cloud provider, and Zush Cloud AI when you want the simplest setup. For API-key workflows, see [BYOK AI File Renaming with Your Own API Key](/blog/byok-ai-file-renaming-unlimited). For the full decision framework, read [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming). If you're choosing an app for local AI, [local AI file organizers compared](/blog/local-ai-file-organizers-compared) shows which ones use Ollama or LM Studio and which bundle their own model.
+## Troubleshooting
 
-## Recommended workflow
+| Symptom | Likely cause | Fix |
+|---|---|---|
+| Zush shows **Start Ollama**, or Test fails | The Ollama server isn't running | Click **Start Ollama**, or open Ollama from the Start menu |
+| LM Studio Test fails | LM Studio's server is off, or the host was changed | Start LM Studio from Zush or turn on **Start Server** in its Developer tab; check the host is `http://127.0.0.1:1234` |
+| The model list is empty | No model is installed or loaded, or the model can't read images | Download or load a vision-capable model, then refresh the list in Zush |
+| A model you installed is missing | The list wasn't refreshed, or the host address is wrong | Click refresh; in PowerShell, `ollama list` shows what Ollama has installed |
+| Model download fails | Connection dropped or the drive is full | Free up space (or move models with `OLLAMA_MODELS`) and try again |
+| Renaming is very slow | The model runs on the CPU or is too large for your memory | Try a smaller vision model, close memory-heavy apps, and check your GPU driver meets Ollama's minimum |
+| A file type fails | The model can't read that input | Test a supported file with a vision model and check the server logs (`%LOCALAPPDATA%\Ollama\server.log` for Ollama) |
 
-Do not start by turning local AI loose on your entire archive. Start with a controlled folder and verify naming quality.
+More fixes are in the [local AI docs](/docs/local-ai).
 
-1. Pick a folder with 10 to 20 files.
-2. Use mixed examples: screenshots, photos, and a few PDFs.
-3. Select Ollama in Zush and run the test batch.
-4. Review every proposed name before applying.
-5. Adjust your custom prompt if the names are too long or too generic.
-6. Expand to larger folders only after the output matches your style.
+## Limits
 
-Good local AI filenames should be short, searchable, and boring in the best way. They should describe the file clearly without turning into a sentence. For naming rules, read [File Naming Conventions: Best Practices for Searchable Files](/blog/file-naming-conventions-best-practices).
-
-## Should you use local AI, cloud AI, or BYOK?
-
-Use local AI when privacy, offline access, or provider independence matters more than maximum speed.
-
-Use cloud AI when you want the strongest quality with the least setup.
-
-Use BYOK when you want cloud quality and direct control over provider billing. FREE shares a 50-rename limit across all modes; PRO removes it.
-
-For many people, the practical answer is not one route forever. Use Zush Cloud AI for everyday speed, BYOK for your chosen cloud provider, and Ollama or LM Studio for sensitive folders. Zush is built around that choice instead of forcing every workflow through one model.
+- The free plan includes 50 AI renames, shared across all four modes. A local model doesn't give you extra free renames.
+- A batch in AI Rename can hold up to 1,000 files on Free too, but only the first 50 are renamed. The rest wait as **Awaiting PRO**.
+- PRO costs $10 a month or $48 one-time and removes the limit in every mode ([pricing](/pricing)).
+- Local quality depends on the model, the file, and your hardware. For complex mixed folders, cloud models are usually the simpler option; [local AI file organizers compared](/blog/local-ai-file-organizers-compared) covers how other apps handle this.
 
 ## FAQ
 
-### Does local AI file renaming require the internet?
+### Do I need to open a port in Windows Firewall?
 
-Initial setup requires downloading Ollama and a model. After that, Ollama mode can process supported files with the local model running on your device. Cloud and BYOK routes still require internet.
+No, not for this setup. Zush and the server run on the same PC and talk through the local address `127.0.0.1`. Ports and firewall rules only matter if you want other computers on your network to reach the server, which Zush doesn't need.
 
-### Is Ollama built into Zush?
+### Do I need a GPU?
 
-No. Ollama is a separate local runtime. You install Ollama, download a model, then connect Zush to the local service through **Settings → AI Modes → Ollama**.
+No, but it helps. Ollama warns that large models are slow without a strong GPU. It supports NVIDIA and AMD Radeon cards on Windows, and LM Studio recommends at least 4 GB of dedicated VRAM. On CPU only, use a small vision model.
 
-### Does this work on Windows?
+### Does local AI work in both the Microsoft Store and portable versions?
 
-Zush for Windows is live, but this article remains focused on the Mac Ollama workflow. Use the current [AI file renamer for Windows](/windows) page for Windows release details and platform-specific local-model availability.
+Ollama and LM Studio modes are part of Zush for Windows. The File Explorer **Rename with Zush** menu is listed for the Microsoft Store version. The portable ZIP is updated by downloading a newer release ([install and update](/docs/install-update)).
 
-### Is local AI always more private?
+### Does it work offline after setup?
 
-For supported Ollama processing, analysis content is handled by the local model instead of Zush cloud or a third-party AI provider. Zush may still contact backend services for licensing, updates, support, or non-content operational checks. See the [privacy policy](/privacy-policy) for the full data handling language.
+Yes for the analysis. You need internet to install Ollama or LM Studio and to download a model. After that, local modes can analyze files offline. Licensing and update checks use the network when it's available.
+
+### Can I switch back to cloud AI later?
+
+Yes. Choose another mode in **AI Modes** at any time. Your Templates keep their naming and sorting settings, because they don't store an AI provider. See [AI modes](/docs/ai-modes).
