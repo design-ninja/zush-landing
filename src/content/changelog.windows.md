@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.19.6.0] - 2026-11-23
+
+### Added
+- A Financial Statements template for bank, card, mortgage, loan and investment statements. Files are named by statement date, institution, account holder and account number.
+
+### Improved
+- The template editor asks before closing with unsaved changes, so you can save them, discard them or keep editing. This includes changes to rename rules and to a template's name, description, icon and color.
+- The rename rules help text now explains that rules apply to every file in the template and should describe how to name files, not give a name.
+- Folder rules can now be up to 5,000 characters long, up from 2,000.
+- The Smart Metadata section now explains what is saved to renamed files and where it appears in File Explorer.
+
+### Changed
+- Client Meeting Notes, Store Orders & Shipping and Travel Bookings are no longer included in new installs. If you already have them, they stay.
+
+
 ## [3.19.5.0] - 2026-11-19
 
 ### Added
