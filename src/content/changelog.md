@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.26.0] - 2026-11-24
+### New
+- Zush can add a file's AI description to its Spotlight comment, so Spotlight finds files by what's in them. Turn on Make files searchable in Spotlight. Undo puts back the comment the file had before.
+- In the version downloaded from zushapp.com, the description also shows as the file's comment in Finder's Get Info window once you allow Zush to control Finder.
+- Rename rules and folder rules can now be up to 5,000 characters.
+### Improved
+- AI names keep useful details from the original file name, such as a part, chapter or episode number, a version, a status like final or signed, and the account a file was saved from.
+- If you close the template editor with unsaved changes, Zush asks whether to save them.
+- If a template or the Smart Rename settings can't be saved, Zush says so and keeps your changes.
+- The rename rules field explains that its rules apply to every file the template renames.
+### Fixed
+- Office documents saved in the newer format but named .xls or .ppt are now read correctly.
+- Folder monitoring no longer touches files inside packages such as .xcarchive.
+- When a folder that sorting planned to create already exists, the files wait for a new plan instead of failing.
+
 ## [3.25.0] - 2026-11-22
 ### New
 - The new Financial Statements template names bank, card, mortgage, loan and investment statements by date, bank, account holder and account number.
