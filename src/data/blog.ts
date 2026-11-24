@@ -238,7 +238,23 @@ export function formatBlogDate(value: string | Date, dateLocale = 'en-US'): stri
   }
 }
 
+// Every prerendered page lists blog posts (header, footer, related posts), and
+// getCollection returns fresh entry objects on each call, so without this the
+// build re-segmented every post body about 370,000 times. The key includes the
+// content digest, so an edited post in dev is never served stale.
+const blogPostByContent = new Map<string, BlogPost>();
+
 function toBlogPost(entry: BlogEntry): BlogPost {
+  const key = `${entry.id}\u0000${entry.digest ?? entry.body ?? ''}`;
+  let post = blogPostByContent.get(key);
+  if (!post) {
+    post = buildBlogPost(entry);
+    blogPostByContent.set(key, post);
+  }
+  return post;
+}
+
+function buildBlogPost(entry: BlogEntry): BlogPost {
   const sanitizedBody = sanitizeBody(entry.body);
   const wordCount = countWords(sanitizedBody, entry.data.locale);
   const reviewedDateValue = entry.data.reviewed ?? entry.data.date;
