@@ -34,6 +34,9 @@ Zush is not offered in some countries. To enforce this, Zush backend compares th
 
 Email addresses you enter in website forms, in checkout, or in the app for activation are checked against a list of addresses used in an attempt from an unavailable country, and are added to that list when such an attempt occurs. Records of denied requests contain the operation, time, and country signals, not the email address, and are deleted after 90 days. Addresses on the list are kept to enforce this policy; you can contact us to review or delete them.
 
+**1.7 App Settings and Usage Analytics**
+To diagnose problems and improve features, the apps tell Zush backend which AI mode is enabled (Zush Cloud AI, BYOK, Ollama, or LM Studio). They also send anonymous product analytics events to TelemetryDeck, for example which features are used and whether an analysis, rename, or setup step completed or failed. These records are linked to the anonymous device identifier. They do not include file contents, file names, folder paths, custom prompt text, or the names and tags Zush suggests. In local AI modes, this means we can see that a local mode is in use, but not what you process with it.
+
 ### 2. How We Use Your Information
 
 We use the collected information to:
