@@ -11,7 +11,7 @@ tags:
   - "Rinomina file con IA"
   - "Confronti tra strumenti"
 tldr: "Entrambe le app rinominano in base al contenuto su Mac e Windows, e dalla v4.1.2 RenameClick gestisce i video MP4, MOV, M4V e 3GP. Scegli Zush per MKV e sottotitoli incorporati, RAW e file di design, Rename History persistente con annullamento del lotto e una licenza una tantum da $48 che include l'IA cloud gestita su un massimo di 3 dispositivi. Scegli RenameClick per un modello locale incluso, uno spazio di lavoro AI Search o un server MCP per gli agenti IA."
-reviewed: "2026-11-17"
+reviewed: "2026-11-25"
 featuredOrder: 5
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -22,7 +22,7 @@ import BlogSources from '@/components/blog/BlogSources.astro';
 
 Risposta rapida: scegli [Zush](/) se le tue cartelle mescolano foto RAW, file di design, video MKV e documenti, o se vuoi che ogni lotto resti annullabile anche dopo un riavvio. La sua licenza una tantum da $48 include l'IA cloud gestita, quindi funziona dal primo giorno senza scaricare modelli. Scegli RenameClick se vuoi un modello locale incluso, la ricerca per contenuto dei file o un server MCP che permette agli agenti IA di eseguire le rinomine. Ora RenameClick gestisce anche i formati video più comuni, quindi il video da solo non è più il fattore decisivo.
 
-**Come abbiamo verificato:** articolo scritto dal produttore di [Zush](/). Prezzi, funzioni e valutazioni dei concorrenti sono stati controllati sui siti dei produttori e sugli store ufficiali il 17 novembre 2026 ([fonti in fondo](#sources-and-how-we-checked)). È un confronto tra funzioni documentate, non un test di laboratorio.
+**Come abbiamo verificato:** articolo scritto dal produttore di [Zush](/). Il 25 novembre 2026 abbiamo eseguito Zush e RenameClick su Windows 11 con gli stessi 30 file ([risultati più sotto](#provati-fianco-a-fianco-su-windows)). Prezzi, funzioni e valutazioni sono stati controllati sui siti dei produttori e sugli store ufficiali il 17 novembre 2026 ([fonti in fondo](#sources-and-how-we-checked)).
 
 Vuoi valutare più strumenti oltre a questi due? Leggi [le alternative a RenameClick](/blog/renameclick-alternatives).
 
@@ -57,6 +57,24 @@ Vuoi valutare più strumenti oltre a questi due? Leggi [le alternative a RenameC
     { href: '/docs/supported-file-types', label: 'Tipi di file supportati' },
   ]}
 />
+
+## Provati fianco a fianco su Windows
+
+Il 25 novembre 2026 abbiamo dato a Zush, RenameClick e altri quattro rinominatori con IA gli stessi 30 file su Windows 11 (ARM64, in una macchina virtuale): 20 documenti di uso quotidiano, 4 dei quali scansioni senza livello di testo, più foto RAW, JPG e HEIC. Ogni app ha girato con le impostazioni predefinite, e un valutatore separato ha giudicato i nomi dei file senza sapere quale app li avesse creati. I punteggi seguono la nostra [griglia pubblicata](/methodology); i [file di partenza, tutti i nomi e i punteggi](/benchmarks/windows-ai-renamers-2026-11-25/README.md) sono pubblici.
+
+| | Zush | RenameClick |
+|---|---|---|
+| File rinominati (su 30) | <BlogHighlight>30</BlogHighlight> | 27; i 3 file RAW sono stati saltati senza alcun messaggio |
+| Prima del primo nome con l'IA | Niente da configurare | La tua chiave API o un modello locale da 4 GB |
+| Tempo per dare un nome al set | Circa 22 secondi | Circa 2 minuti (27 file, con una chiave OpenAI) |
+| Annullare il lotto | <BlogHighlight>Undo All, tutti e 30 ripristinati</BlogHighlight> | Undo ha annullato il lotto |
+| Ordinare in cartelle 33 file con 3 copie | <BlogHighlight>33 ordinati, 3 copie su 3 segnate</BlogHighlight> | 21 ordinati, 7 lasciati fuori; badge dei duplicati sugli originali |
+| Punteggio su 100 | <BlogHighlight>94,8</BlogHighlight> | 70,2 |
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/renameclick-sort-preview.webp" alt="Anteprima dell'ordinamento di RenameClick con badge DUPLICATE sui file e alcuni documenti ancora segnati Needs your choice." width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>RenameClick nel nostro test: alcuni documenti sono rimasti da collocare a mano.</figcaption>
+</figure>
 
 ## Zush
 
@@ -116,7 +134,7 @@ Zush elenca 11 varianti RAW (CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, S
 
 ## Annullamento e ripristino
 
-È la differenza pratica più grande. Lo spazio di lavoro Rename standard di RenameClick conserva fino a 10 voci di annullamento in memoria e le cancella quando l'app si riavvia. Auto Flow invece conserva i record idonei anche dopo un riavvio.
+Lo spazio di lavoro Rename standard di RenameClick conserva fino a 10 voci di annullamento in memoria e le cancella quando l'app si riavvia; nel nostro test il suo Undo ha annullato un intero lotto di 27 file con un'unica azione. Auto Flow invece conserva i record idonei anche dopo un riavvio.
 
 Zush conserva una [Rename History](/docs/undo-history) persistente per ogni lotto. Undo All ripristina il lotto, elenca gli eventuali conflitti (ad esempio un nuovo file che ora usa il vecchio nome) e offre di ripristinare con un nuovo nome. Anche le copie duplicate che Zush ha spostato nel Cestino durante AI Rename vengono ripristinate da Undo.
 

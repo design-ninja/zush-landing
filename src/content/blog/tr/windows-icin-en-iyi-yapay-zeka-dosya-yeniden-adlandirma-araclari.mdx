@@ -10,8 +10,8 @@ topic: "comparisons"
 tags:
   - "AI Dosyasını Yeniden Adlandırma"
   - "Takım Karşılaştırmaları"
-tldr: "Windows için genel olarak en iyisi: Zush. Microsoft Store'dan kurulur, hesap, kart ya da API anahtarı olmadan 50 dosyayı ücretsiz yeniden adlandırır; tek seferlik $48'lık lisansı en fazla 3 PC ya da Mac'te yönetilen bulut yapay zekâsının yanı sıra BYOK, Ollama ve LM Studio'yu içerir. Her grup önizlenir ve toplu geri almalı Rename History'de saklanır. E-posta ekleri için FilesDesk, pakete dahil yerel model için RenameClick, $19'lık yerel lisans için AI Renamer, belge şablonları için Renamer.ai, kurallar için NameQuick uygundur."
-reviewed: "2026-11-17"
+tldr: "Windows için genel olarak en iyisi: Zush; altı yapay zekâ yeniden adlandırıcıyı aynı 30 dosyayla sınadığımız testte 100 üzerinden 94,8 puan aldı (ikinci sıradaki NameQuick 73,0 aldı). Microsoft Store'dan kurulur, hesap, kart ya da API anahtarı olmadan 50 dosyayı ücretsiz yeniden adlandırır; tek seferlik $48'lık lisansı en fazla 3 PC ya da Mac'te yönetilen bulut yapay zekâsının yanı sıra BYOK, Ollama ve LM Studio'yu içerir. Her grup önizlenir ve toplu geri almalı Rename History'de saklanır. E-posta ekleri için FilesDesk, pakete dahil yerel model için RenameClick, $19'lık yerel lisans için AI Renamer, belge şablonları için Renamer.ai, kurallar için NameQuick uygundur."
+reviewed: "2026-11-25"
 featuredOrder: 1
 ---
 
@@ -23,7 +23,7 @@ import BlogSources from '@/components/blog/BlogSources.astro';
 
 **Windows'ta önerimiz [Zush](/windows)**: Microsoft Store'dan kurulur, hesap, kart ya da API anahtarı olmadan 50 ücretsiz yeniden adlandırma verir ve tek seferlik $48'lık lisansı en fazla 3 cihazda yönetilen bulut yapay zekâsını içerir. Bir yapay zekâ yeniden adlandırıcı (yapay zekâ dosya yeniden adlandırıcı) her dosyanın içindekini okur ve onun için açıklayıcı bir dosya adı yazar. FilesDesk, RenameClick, AI Renamer, Renamer.ai ve NameQuick ise aşağıda listelenen daha dar durumlara uyar.
 
-**Nasıl kontrol ettik:** Bu yazı [Zush](/) geliştiricisi tarafından yazıldı. Rakiplerin fiyatları, özellikleri ve puanları 17 Kasım 2026'da üretici sitelerinde ve resmî mağazalarda kontrol edildi ([kaynaklar aşağıda](#sources-and-how-we-checked)). Bu yazı belgelenmiş özellikleri karşılaştırır; bir laboratuvar testi değildir.
+**Nasıl kontrol ettik:** Bu yazı [Zush](/) geliştiricisi tarafından yazıldı. 25 Kasım 2026'da altı uygulamanın hepsini Windows 11'e kurduk ve her birine aynı 30 dosyayı verdik ([test sonuçları aşağıda](#altı-uygulamayı-aynı-30-dosyayla-test-ettik)). Fiyatlar, özellikler ve puanlar 17 Kasım 2026'da üretici sitelerinde ve resmî mağazalarda kontrol edildi ([kaynaklar aşağıda](#sources-and-how-we-checked)).
 
 ## Bir bakışta 7 Windows yapay zekâ yeniden adlandırıcısı
 
@@ -31,11 +31,37 @@ import BlogSources from '@/components/blog/BlogSources.astro';
 |---|---|---|---|---|---|---|
 | <BlogHighlight>**1. Zush**</BlogHighlight> | 50 yapay zekâ yeniden adlandırması; hesap, kart ya da anahtar yok | Aylık $10 veya tek seferlik $48 | Evet, iki planda da | Evet | Kalıcı Rename History, toplu geri alma | Hemen çalışmasını ve bir kez ödemeyi istiyorsanız |
 | 2. FilesDesk | 15 kredi, oturum açma | Aylık $8 veya $20; Self-Managed $40 | Yalnızca abonelikler | Watch Folders + Watch Inbox | Geçmiş + geri alma | E-posta eklerinin de yeniden adlandırılması gerekiyorsa |
-| 3. RenameClick | Ayda 100 yeniden adlandırma ya da taşıma | Lifetime $36 + KDV | Hayır: yerel model ya da kendi anahtarınız | Auto Flow, uygulama açıkken | Bellekte 10 kayıt | Ollama olmadan pakete dahil bir yerel model istiyorsanız |
-| 4. AI Renamer | 10 bulut kredisi, Google ile oturum açma | Local $19; 200 kredi başına $10 | Ayrı satılıyor | Watch Folder beta, uygulama açıkken, alt klasörler yok | Belgelenmemiş | En ucuz yerel lisansı ya da Linux'u istiyorsanız |
+| 3. RenameClick | Ayda 100 yeniden adlandırma ya da taşıma | Lifetime $36 + KDV | Hayır: yerel model ya da kendi anahtarınız | Auto Flow, uygulama açıkken | Son işlemi geri alma; geçmiş bellekte | Ollama olmadan pakete dahil bir yerel model istiyorsanız |
+| 4. AI Renamer | 10 bulut kredisi, Google ile oturum açma | Local $19; 200 kredi başına $10 | Ayrı satılıyor | Watch Folder beta, uygulama açıkken, alt klasörler yok | Testimizde yok | En ucuz yerel lisansı ya da Linux'u istiyorsanız |
 | 5. Renamer.ai | Ayda 25 dosya | Aylık $9.95–$99.95 | Evet, kullanıma göre | Magic Folders | Geri alma | Belge yeniden adlandırıyorsanız ve ücretsiz yerel mod istiyorsanız |
-| 6. NameQuick | 30 Managed yeniden adlandırma, kart yok | Aylık $12'den; Self-Managed $69 | Yalnızca Managed planlar | İzlenen klasörler | Geçmiş + geri alma (dosya taşındıysa başarısız olabilir) | Bir kural motoru istiyorsanız |
+| 6. NameQuick | 30 Managed yeniden adlandırma, kart yok | Aylık $12'den; Self-Managed $69 | Yalnızca Managed planlar | İzlenen klasörler | Geçmiş, dosya dosya geri alma | Bir kural motoru istiyorsanız |
 | 7. Kendin yap PowerShell/Python | Ücretsiz yazılım | API ya da model maliyetleriniz | Siz kurarsınız | Siz kurarsınız | Siz kurarsınız | İş akışını kurmak işinizin bir parçasıysa |
+
+## Altı uygulamayı aynı 30 dosyayla test ettik
+
+25 Kasım 2026'da her uygulamayı Windows 11 Pro'da (ARM64, sanal makinede) varsayılan ayarlarıyla çalıştırdık. Sette 30 dosya vardı: 4'ü metin katmanı olmayan taranmış PDF olmak üzere 20 gündelik belge, ayrıca 3 RAW, 4 JPG ve 3 HEIC fotoğraf. Her sonuç [yayımladığımız puanlama ölçütleriyle](/methodology) puanlandı; ayrı bir değerlendirici de her dosya adını hangi uygulamanın ürettiğini bilmeden puanladı. [Tüm veriler, girdiler ve her ad](/benchmarks/windows-ai-renamers-2026-11-25/README.md) herkese açık.
+
+| Uygulama | Yeniden adlandırılan dosya (30'dan) | İlk sonuçtan önce hesap ya da anahtar | Metin katmanı olmayan taramalar | Tüm grubu geri alma | Puan / 100 |
+|---|---|---|---|---|---|
+| <BlogHighlight>**Zush**</BlogHighlight> | **30** | **Gerekmiyor** | **4'te 4** | **Tek tıkla, 30'u da geri geldi** | **94,8** |
+| NameQuick | 30 | Gerekmiyor | 4'te 4 | Dosya başına (30 işlem) | 73,0 |
+| RenameClick | 27, RAW atlandı | Kendi API anahtarınız | 4'te 4 | Tek işlem | 70,2 |
+| Renamer.ai (web) | 25, RAW reddedildi | Hesap | 4'te 4 | Yeniden adlandırılmış kopyaları indirirsiniz | 56,8 |
+| FilesDesk | 15, ücretsiz krediler; RAW ve HEIC dışarıda kaldı | Hesap | 4'te 4 | Dosya başına | 52,5 |
+| AI Renamer | 10, tüm metin belgeleri başarısız oldu | Google hesabı | 4'te 1 | Yok | 37,2 |
+
+Öne çıkanlar:
+
+- **Zush** 30 dosyanın hepsini yaklaşık 22 saniyede adlandırdı ve adları 2 saniyeden kısa sürede uyguladı. Undo All, 30 özgün adın hepsini 0,6 saniyede geri getirdi; bunu dosya dosya kontrol ettik. Günlük dille yazılmış tek bir Custom AI Block, 20 belge adının 16'sına belgede basılı tarihi ekledi. 3'ü kopya olan 33 dosyada Sort into folders her dosyayı bir klasöre yerleştirdi ve 3 kopyanın hepsini işaretledi.
+- **NameQuick** her dosyaya iyi bir ad verdi, ama ilk kurulum adımı yalnızca ilk 10 dosyayı aldı. Kalan 20 dosya izlenen bir klasörden geçti ve 30 adın hepsi neredeyse üç dakika sürdü. Geri almak için her dosyaya ayrı ayrı tıklamak gerekti.
+- **RenameClick**'in kendi yapay zekâsı yok; bu yüzden API anahtarınıza ya da 4 GB'lık yerel bir modele ihtiyaç duyuyor. Ayırma açıkken 33 dosyanın 21'ini taşıdı ve yinelenen rozetini özgün dosyalara koydu.
+- **Renamer.ai** üç RAW fotoğraf yüzünden seçimin tamamını reddetti. Masaüstü uygulaması bizim makinemizde açılmadı, bu yüzden web uygulamasını kullandık.
+- **FilesDesk** ve **AI Renamer** set bitmeden ücretsiz kredilerini tükettiler; AI Renamer'da ise hiç geri alma yok.
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/zush-sort-into-folders-duplicates.webp" alt="Windows'ta Zush, Rename and sort öncesinde klasörlere gruplanmış yeniden adlandırılan dosyaları önizliyor; birebir bir kopya, özgününün yanında DUPLICATE olarak işaretli." width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>Zush, yeniden adlandırılan dosyaları klasörlere gruplar ve hiçbir şey taşınmadan önce birebir kopyaları işaretler.</figcaption>
+</figure>
 
 Mac mi kullanıyorsunuz? [Mac yapay zekâ yeniden adlandırıcı sıralamasına](/blog/best-ai-file-renamer-tools-mac-compared) bakın. Linux, web ve API araçları için de [10 yapay zekâ yeniden adlandırıcının platformlar arası özetine](/blog/best-ai-file-renamer-tools-2026) bakın.
 
@@ -115,6 +141,18 @@ PowerRename gibi kalıp araçları seçilen her dosyaya tek bir kural uygular. B
 
 <BlogCTA placement='inline' platform='windows' />
 
+Testimizde taramalar ve RAW dahil 30 dosyanın hepsini yeniden adlandırdı ve 100 üzerinden 94,8 puan aldı. Bir Custom AI Block'a ya da klasör kurallarına yazdığınız talimatlar kalıp değil, düz cümlelerdir:
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/zush-custom-ai-block-date.webp" alt="Zush'ta New Custom AI Block penceresi; her dosyada basılı ana tarihi bulup YYYY-MM-DD biçiminde döndürmesini isteyen sade İngilizce bir talimat." width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>Zush'ta bir Custom AI Block: tek bir cümle her belge adına basılı tarihi ekler.</figcaption>
+</figure>
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/zush-folder-rules-prompt.webp" alt="Zush'ta Folder rules penceresi; Bills & Invoices, Work & Pay ve Travel gibi sekiz klasörü ve her birine neyin girdiğini anlatan bir paragraf." width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>Zush'ta Folder rules: klasörlerinizi bir paragrafla anlatın; 33 test dosyasının 32'si kuralların gösterdiği yere gitti.</figcaption>
+</figure>
+
 Tek bir lisans Windows ve Mac arasında en fazla 3 cihazı kapsar. [Templates'i dışa aktarıp](/docs/template-import-export) başka bir bilgisayarda içe aktarabilirsiniz. Dosyaları klasörlerde de gruplamak için [Windows'ta dosyaları yapay zekâyla klasörlere ayırma](/blog/sort-files-into-folders-with-ai-windows) yazısına bakın.
 
 ![Windows için Zush, Rename & sort öncesinde içeriğe dayalı klasör gruplarını ve önerilen dosya adlarını önizliyor](/images/showcase/windows/folder-sorting-light.webp)
@@ -123,11 +161,25 @@ Tek bir lisans Windows ve Mac arasında en fazla 3 cihazı kapsar. [Templates'i 
 
 FilesDesk Windows ve Mac'te çalışır ve Microsoft Store'da listelenir. Watch Folders, Gmail, iCloud ya da IMAP'ten gelen ekleri yeniden adlandıran bir Watch Inbox, şablonlar ve geri almalı geçmiş sunar. Oturum açtıktan sonra 15 ücretsiz krediyle başlarsınız. Yönetilen yapay zekâ yalnızca abonelikle sunulur: 500 kredi için aylık $8 ya da 2.000 kredi için aylık $20 (yıllık $80 veya $200); her yapay zekâ ad önerisi 1 kredi harcar, bir dosyayı yeniden çalıştırmak bir kredi daha harcar. $40'lık Self-Managed lisansı kendi anahtarınızı ya da yerel bir modeli (Ollama, LM Studio, vLLM) kullanır, 1 cihaza bağlanır, bir yıllık güncelleme içerir ve 3 günlük iade süresi vardır.
 
+**Testimizde:** önce oturum açmak gerekti. FilesDesk tüm RAW ve HEIC fotoğrafları sessizce dışarıda bıraktı; 24 dosya seçiliyken de grubu 15 ücretsiz krediye indirene kadar başlamayı reddetti. Geri alma dosya dosya çalışıyor.
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/filesdesk-not-enough-credits.webp" alt="Windows'ta FilesDesk, Not enough credits mesajını gösteriyor: 24 dosya seçili ama yalnızca 15 kredi kaldı." width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>Seçim ücretsiz kredilerden büyük olduğunda FilesDesk tüm grubu durdurur.</figcaption>
+</figure>
+
 **Şu durumda FilesDesk'i seçin:** e-posta eklerinin geldikçe yeniden adlandırılmasını istiyorsanız. **Zayıf yanı:** tek seferlik lisans yönetilen yapay zekâyı içermez. [Zush ve FilesDesk](/blog/zush-vs-filesdesk) yazısına bakın.
 
 ## 3. RenameClick
 
-RenameClick (artık rename.click adresinde, sürüm 4.1.2) pakete yerel bir model ekler ve Ollama, LM Studio ya da kendi bulut anahtarınızla da çalışır. Sürüm 4.1.2, MP4, MOV, M4V ve 3GP için video desteği ekledi; MKV, WebM ve AVI desteklenmiyor, kamera RAW ya da tasarım dosyaları da öyle. Auto Flow, uygulama açıkken dosyaları yeniden adlandırır ve taşır. Ücretsiz sürüm ayda 100 yeniden adlandırma ya da taşımaya izin verir; Lifetime lisans doğrudan satılan sürümlerde en fazla 3 cihaz için $36 + KDV'dir.
+RenameClick (rename.click; Microsoft Store'dan 4.1.4 sürümünü test ettik) pakete yerel bir model ekler ve Ollama, LM Studio ya da kendi bulut anahtarınızla da çalışır. Sürüm 4.1.2, MP4, MOV, M4V ve 3GP için video desteği ekledi; MKV, WebM ve AVI desteklenmiyor, kamera RAW ya da tasarım dosyaları da öyle. Auto Flow, uygulama açıkken dosyaları yeniden adlandırır ve taşır. Ücretsiz sürüm ayda 100 yeniden adlandırma ya da taşımaya izin verir; Lifetime lisans doğrudan satılan sürümlerde en fazla 3 cihaz için $36 + KDV'dir.
+
+**Testimizde:** bir OpenAI anahtarı ekleyene kadar yapay zekâ hiçbir şey yapmadı. Üç RAW dosyayı bir mesaj göstermeden atladı ve diğer 27 dosyayı yaklaşık iki dakikada adlandırdı; Undo tüm grubu geri aldı. Ayırma açıkken 33 dosyanın 21'ini taşıdı, 7 belgeyi ise ayrılmamış ve yeniden adlandırılmamış bıraktı.
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/renameclick-sort-preview.webp" alt="RenameClick ayırma önizlemesi; dosyalarda DUPLICATE rozetleri var ve bazı belgeler hâlâ Needs your choice olarak işaretli." width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>RenameClick, yerleştiremediği dosyalar için bir klasör seçmenizi ister.</figcaption>
+</figure>
 
 **Şu durumda RenameClick'i seçin:** Ollama kurmadan yerel yapay zekâ istiyorsanız. **Zayıf yanı:** pakete dahil model yaklaşık 4 GB'lık bir indirme ve 16 GB RAM öneriliyor; Undo da yeniden başlatınca silinen 10 kaydı bellekte tutuyor. [Zush ve RenameClick](/blog/zush-vs-renameclick) yazısına bakın.
 
@@ -135,19 +187,40 @@ RenameClick (artık rename.click adresinde, sürüm 4.1.2) pakete yerel bir mode
 
 AI Renamer (airenamer.app), Windows, Mac ve Linux için bir masaüstü uygulamasıdır. Sürüm 1.9.0, yalnızca uygulama açıkken çalışan ve alt klasörleri atlayan bir Watch Folder (beta) ekledi; sürüm 1.10.0 video, ses, RAW, HEIC, Office ve EPUB ekledi. Local Mode, kendi anahtarınız, Ollama ya da LM Studio ile tek seferlik $19'dur; bulut kredileri 200 kredi başına $10'dır ve Google ile oturum açtıktan sonra 10 kredi ücretsizdir. İade belirtilmemiş ve kredi satın alımları kesin.
 
-Onu, GitHub'daki ücretsiz, GPL-3.0 lisanslı ve ilgisiz bir komut satırı aracı olan [`ozgrozer/ai-renamer`](https://github.com/ozgrozer/ai-renamer) ile karıştırmayın.
+Aynı geliştirici GitHub'da ücretsiz, GPL-3.0 lisanslı bir komut satırı aracı olan [`ozgrozer/ai-renamer`](https://github.com/ozgrozer/ai-renamer)'ı da yayımlıyor; masaüstü uygulaması kendi yükleyicileri olan ayrı bir üründür.
 
-**Şu durumda AI Renamer'ı seçin:** en ucuz tek seferlik yerel lisansı istiyorsanız ya da Linux'a ihtiyacınız varsa. **Zayıf yanı:** hiçbir geri alma belgelemiyor. [Zush ve AI Renamer](/blog/zush-vs-airenamer) yazısına bakın.
+**Testimizde:** uygulama bir Google oturum açma ekranıyla açılıyor. Her metin belgesi (PDF, Word, Excel, RTF, TXT) kırmızı bir çubukla ve hiçbir açıklama olmadan başarısız oldu; başarısız 20 dosyayı elle kaldırana kadar Rename All devre dışı kaldı. Adlar varsayılan olarak 25 karakterde kesiliyor; History eski ve yeni adları listeliyor ama geri alma yolu sunmuyor.
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/airenamer-failed-documents.webp" alt="Windows'ta AI Renamer; bir fotoğraf yeniden adlandırılmış, Book1.xlsx ve CV_final_v2.pdf gibi birkaç belge kırmızı hata çubuklarıyla işaretli." width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>AI Renamer: metin belgeleri hata mesajı olmadan başarısız oldu.</figcaption>
+</figure>
+
+**Şu durumda AI Renamer'ı seçin:** en ucuz tek seferlik yerel lisansı istiyorsanız ya da Linux'a ihtiyacınız varsa. **Zayıf yanı:** geri alma yok. [Zush ve AI Renamer](/blog/zush-vs-airenamer) yazısına bakın.
 
 ## 5. Renamer.ai
 
 Renamer.ai; Windows ve Mac uygulamaları ve bir web arayüzü olan, belgelere odaklı bir yeniden adlandırıcıdır. Microsoft Store'da değil. Magic Folders, şablonlar, OCR, önizleme ve geri alma dahil; yerel mod ücretsiz Starter planı (ayda 25 dosya) dahil her katmanda mevcut. Bulut planları Pro aylık $9.95 (200 dosya), Power $29.95 (1.000) ve Ultimate $99.95'tir (5.000); yıllık faturalandırmada %15 daha ucuz. BYOK yalnızca Ultimate'ta. Biçim listesinde kamera RAW, PSD, Sketch ya da Figma yok.
 
+**Testimizde:** Windows masaüstü uygulaması (5.0.8) açılışta kayıtlı bir oturum açma hatasıyla durdu; bu yüzden hesap oluşturup web uygulamasını kullandık. NEF, ARW ve CR3'ü reddetti, bu da seçimin tamamını düşürdü; 25 dosyalık bir yüklemeden 15'ini yeniden adlandırdı, 10'unu ise bir şey söylemeden atladı. Belge adları ayrıntılıydı. Web uygulaması dosyalarınızı yükler ve indirmeniz için yeniden adlandırılmış kopyalarını geri verir.
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/renamerai-raw-not-supported.webp" alt="Renamer.ai web uygulamasında Unsupported extensions mesajı: NEF, ARW, CR3 dosya türleri desteklenmiyor." width="1600" height="669" loading="lazy" decoding="async" />
+  <figcaption>Renamer.ai kamera RAW dosyalarını kabul etmiyor.</figcaption>
+</figure>
+
 **Şu durumda Renamer.ai'ı seçin:** çoğunlukla belge yeniden adlandırıyorsanız ve ücretsiz yerel işleme istiyorsanız. **Zayıf yanı:** tek seferlik lisans yok; yani yönetilen bulutta yeniden adlandırma aylık bir sayaçtır. [Zush ve Renamer.ai](/blog/zush-vs-renamer-ai) ya da [Renamer.ai alternatifleri](/blog/renamer-ai-alternatives) yazılarına bakın.
 
 ## 6. NameQuick
 
-NameQuick, Windows'ta (x64 yükleyici; ARM bilgisayarlar öykünme kullanır) ve Mac'te Watch Folders, Rules, içerik araması ve geri almayla çalışır. Güncel sürüm 3.0.57. E-posta ya da kart olmadan 30 Managed yeniden adlandırma verir; 70 yeniden adlandırmalı 14 günlük Managed deneme kart isterken Self-Managed deneme istemez. Managed planlar aylık $12'den başlar; yeniden adlandırma paketleri 500 adet için $19, 1.500 adet için $39'dır ve 12 ay geçerlidir. Self-Managed tek bir bilgisayar için tek seferlik $69'dur; ömür boyu güncellemeler ve 14 günlük iade içerir; yapay zekâ maliyetleri ayrıdır.
+NameQuick, Windows'ta (x64 yükleyici; ARM bilgisayarlar öykünme kullanır) ve Mac'te Watch Folders, Rules, içerik araması ve geri almayla çalışır. Microsoft Store'dan 3.0.59 sürümünü test ettik. E-posta ya da kart olmadan 30 Managed yeniden adlandırma verir; 70 yeniden adlandırmalı 14 günlük Managed deneme kart isterken Self-Managed deneme istemez. Managed planlar aylık $12'den başlar; yeniden adlandırma paketleri 500 adet için $19, 1.500 adet için $39'dır ve 12 ay geçerlidir. Self-Managed tek bir bilgisayar için tek seferlik $69'dur; ömür boyu güncellemeler ve 14 günlük iade içerir; yapay zekâ maliyetleri ayrıdır.
+
+**Testimizde:** NameQuick hesap istemedi ve 30 dosyanın hepsini doğru adlandırdı; belgelerin çoğuna tarih ekledi. Ancak ilk kurulum adımı yalnızca ilk 10 dosyayı aldı, kalan 20'si izlenen bir klasörden geçti; böylece 30 adın hepsi yaklaşık 167 saniye sürdü. "Undo last run" tek bir dosyayı geri yükledi; geri kalanı History'de her biri için ayrı bir tıklama gerektirdi.
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/namequick-history-undo.webp" alt="NameQuick History; yeniden adlandırılmış belgeleri her dosya için bir Undo düğmesiyle listeliyor." width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>NameQuick History: geri alma dosya dosya çalışıyor.</figcaption>
+</figure>
 
 **Şu durumda NameQuick'i seçin:** yapay zekâ adlandırmanın üzerine bir kural motoru istiyorsanız. **Zayıf yanı:** tek seferlik lisans tek bir bilgisayarı kapsar ve yönetilen yapay zekâ içermez. [Zush ve NameQuick](/blog/zush-vs-namequick) yazısına bakın.
 
@@ -165,7 +238,7 @@ Kendi iş akışınızı kurabilirsiniz: dosyaları okuyun, metni ya da görsell
 | Cihazlar | 3, Windows + Mac | Üretici belirtmiyor | En fazla 3 (doğrudan satılan sürümler) | 1 cihaz | 1 bilgisayar |
 | Güncellemeler | Gelecekteki tüm güncellemeler | Üretici belirtmiyor | Ömür boyu | 1 yıl | Ömür boyu |
 | İade | 14 gün | Belirtilmemiş | Yalnızca yasanın gerektirdiği yerlerde | 3 gün | 14 gün |
-| Geçmiş / geri alma | Kalıcı, toplu geri alma | Belgelenmemiş | Bellekte, 10 kayıt | Geçmiş + geri alma | Geçmiş + geri alma |
+| Geçmiş / geri alma | Kalıcı, toplu geri alma | Testimizde yok | Son işlemi geri alma, bellekte | Dosya başına geri alma | Dosya başına geri alma |
 
 ## Kaynaklar ve nasıl kontrol ettik
 
@@ -179,11 +252,11 @@ Yapay zekâ yeniden adlandırma yazılımı her dosyanın içeriğini (belge met
 
 ### Windows için en iyi yapay zekâ dosya yeniden adlandırıcı hangisi?
 
-Önerimiz Zush. Microsoft Store'dan kurulur, hesap, kart ya da API anahtarı olmadan 50 ücretsiz yapay zekâ yeniden adlandırması verir ve tek seferlik $48'lık lisansı en fazla 3 cihazda yönetilen bulut yapay zekâsını, BYOK'u, Ollama'yı ve LM Studio'yu içerir. Her grup önizlenir ve toplu geri almalı Rename History'de saklanır. FilesDesk, RenameClick, AI Renamer, Renamer.ai ve NameQuick her biri daha dar ihtiyaçlara uyar.
+Önerimiz Zush. Microsoft Store'dan kurulur, hesap, kart ya da API anahtarı olmadan 50 ücretsiz yapay zekâ yeniden adlandırması verir ve tek seferlik $48'lık lisansı en fazla 3 cihazda yönetilen bulut yapay zekâsını, BYOK'u, Ollama'yı ve LM Studio'yu içerir. Her grup önizlenir ve toplu geri almalı Rename History'de saklanır. Altı uygulamayı aynı 30 dosyayla sınadığımız testte 30 dosyanın hepsini yeniden adlandırdı ve 100 üzerinden 94,8 puan aldı. FilesDesk, RenameClick, AI Renamer, Renamer.ai ve NameQuick her biri daha dar ihtiyaçlara uyar.
 
 ### Renamer.ai ile AI Renamer aynı şey mi?
 
-Hayır. Renamer.ai (renamer.ai), Windows, Mac ve web için abonelikli bir yeniden adlandırıcıdır; planları aylık $9.95 ile $99.95 arasındadır ve her katmanda yerel mod sunar. AI Renamer (airenamer.app) ise tek seferlik $19'lık Local Mode'u ve $10'lık bulut kredi paketleri olan bir masaüstü uygulamasıdır. Üçüncü bir proje olan GitHub'daki `ozgrozer/ai-renamer` komut satırı aracı ücretsizdir ve ikisiyle de ilgisi yoktur.
+Hayır. Renamer.ai (renamer.ai), Windows, Mac ve web için abonelikli bir yeniden adlandırıcıdır; planları aylık $9.95 ile $99.95 arasındadır ve her katmanda yerel mod sunar. AI Renamer (airenamer.app) ise tek seferlik $19'lık Local Mode'u ve $10'lık bulut kredi paketleri olan bir masaüstü uygulamasıdır. GitHub'daki ücretsiz `ozgrozer/ai-renamer` komut satırı aracı AI Renamer ile aynı geliştiriciden gelir, ama ayrı bir projedir.
 
 ### Tek seferlik $48'lık bir lisans daha ucuz bir lisanstan daha mı değerli?
 

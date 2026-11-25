@@ -11,7 +11,7 @@ tags:
   - "AI文件重命名"
   - "工具比较"
 tldr: "两款应用都能在 Mac 和 Windows 上按内容重命名，RenameClick 自 v4.1.2 起也能处理 MP4、MOV、M4V 和 3GP 视频。如果你需要 MKV 和内嵌字幕、RAW 和设计文件、带批量撤销的持久 Rename History，以及包含托管云端 AI、最多可用于 3 台设备的 $48 一次性许可证，就选 Zush。如果你想要自带的本地模型、AI Search 工作区或供 AI 代理使用的 MCP 服务器，就选 RenameClick。"
-reviewed: "2026-11-17"
+reviewed: "2026-11-25"
 featuredOrder: 5
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -22,7 +22,7 @@ import BlogSources from '@/components/blog/BlogSources.astro';
 
 快速结论：如果你的文件夹里混杂着 RAW 照片、设计文件、MKV 视频和文档，或者你希望每一批操作在重启后仍可撤销，就选 [Zush](/)。它的 $48 一次性许可证包含托管云端 AI，所以第一天就能用，不需要下载模型。如果你想要自带的本地模型、按文件内容搜索，或者一个能让 AI 代理执行重命名的 MCP 服务器，就选 RenameClick。RenameClick 现在也能处理常见的视频格式，所以单凭视频已经不再是决定因素。
 
-**我们如何核查：** 本文由 [Zush](/) 的开发者撰写。竞品的价格、功能和评分均于 2026 年 11 月 17 日在厂商官网和官方应用商店核查（[来源见下文](#sources-and-how-we-checked)）。本文比较的是有文档记载的功能，并非实验室测试。
+**我们如何核查：** 本文由 [Zush](/) 的开发者撰写。2026 年 11 月 25 日，我们在 Windows 11 上用同样的 30 个文件运行了 Zush 和 RenameClick（[结果见下文](#在-windows-上并排实测)）。价格、功能和评分均于 2026 年 11 月 17 日在厂商官网和官方应用商店核查（[来源见下文](#sources-and-how-we-checked)）。
 
 想看更多工具，而不只是这两款？请看 [RenameClick 替代品](/blog/renameclick-alternatives)。
 
@@ -57,6 +57,24 @@ import BlogSources from '@/components/blog/BlogSources.astro';
     { href: '/docs/supported-file-types', label: '支持的文件类型' },
   ]}
 />
+
+## 在 Windows 上并排实测
+
+2026 年 11 月 25 日，我们在 Windows 11（ARM64，虚拟机）上给 Zush、RenameClick 和另外四款 AI 重命名工具同样的 30 个文件：20 份日常文档（其中 4 份是没有文字层的扫描件），以及 RAW、JPG 和 HEIC 照片。每款应用都使用默认设置，另有一位独立评分者在不知道名称出自哪款应用的情况下为文件名打分。评分依据我们[公开的评分标准](/methodology)；[输入文件、所有名称和得分](/benchmarks/windows-ai-renamers-2026-11-25/README.md)均已公开。
+
+| | Zush | RenameClick |
+|---|---|---|
+| 已重命名文件（共 30 个） | <BlogHighlight>30</BlogHighlight> | 27；3 个 RAW 文件被跳过，没有任何提示 |
+| 生成第一个 AI 名称之前 | 无需任何设置 | 你自己的 API 密钥或 4 GB 本地模型 |
+| 为整组文件命名的时间 | 约 22 秒 | 约 2 分钟（27 个文件，使用 OpenAI 密钥） |
+| 撤销整批 | <BlogHighlight>Undo All，30 个全部恢复</BlogHighlight> | 撤销恢复了整批 |
+| 把含 3 个副本的 33 个文件分到文件夹 | <BlogHighlight>33 个已分类，3 个副本全部标出</BlogHighlight> | 21 个已分类，7 个未分类；重复标记打在原文件上 |
+| 得分（满分 100） | <BlogHighlight>94.8</BlogHighlight> | 70.2 |
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/renameclick-sort-preview.webp" alt="RenameClick 分类预览，部分文件带有 DUPLICATE 标记，一些文档仍标着 Needs your choice。" width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>我们测试中的 RenameClick：部分文档需要你手动安排位置。</figcaption>
+</figure>
 
 ## Zush
 
@@ -116,7 +134,7 @@ Zush 列出了 11 种 RAW 变体（CR2、CR3、NEF、ARW、DNG、ORF、RAF、RW2
 
 ## 撤销和恢复
 
-这是实际使用中最大的差距。RenameClick 的标准 Rename 工作区在内存中最多保存 10 条撤销记录，应用重启后就会清空。它的 Auto Flow 会在重启后保留符合条件的记录。
+RenameClick 的标准 Rename 工作区在内存中最多保存 10 条撤销记录，应用重启后就会清空；在我们的测试中，它的撤销一次就恢复了整批 27 个文件。它的 Auto Flow 会在重启后保留符合条件的记录。
 
 Zush 为每一批操作保存持久的 [Rename History](/docs/undo-history)。Undo All 会还原整批操作，列出所有冲突（例如某个新文件现在占用了旧名称），并提供以新名称恢复的选项。Zush 在 AI Rename 过程中移到废纸篓的重复副本，也能通过 Undo 恢复。
 

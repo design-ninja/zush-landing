@@ -216,6 +216,20 @@ const sourceLinks = [
   { href: CRUNCHBASE_URL, label: 'Crunchbase', external: true },
 ];
 
+const BENCHMARK_LINE: Record<Locale, { text: string; link: string }> = {
+  en: { text: "In a 30-file test of six AI renamers on Windows, Zush scored 94.8 out of 100.", link: "See the test" },
+  fr: { text: "Dans un test de six outils IA de renommage sur 30 fichiers sous Windows, Zush a obtenu 94,8 sur 100.", link: "Voir le test" },
+  de: { text: "In einem Test von sechs KI-Umbenennern mit 30 Dateien unter Windows erreichte Zush 94,8 von 100 Punkten.", link: "Zum Test" },
+  es: { text: "En una prueba de seis renombradores con IA con 30 archivos en Windows, Zush obtuvo 94,8 de 100.", link: "Ver la prueba" },
+  'pt-br': { text: "Em um teste de seis renomeadores com IA com 30 arquivos no Windows, o Zush fez 94,8 de 100.", link: "Ver o teste" },
+  it: { text: "In un test di sei strumenti IA su 30 file in Windows, Zush ha ottenuto 94,8 su 100.", link: "Vedi il test" },
+  nl: { text: "In een test van zes AI-hernoemers met 30 bestanden op Windows scoorde Zush 94,8 van de 100.", link: "Bekijk de test" },
+  tr: { text: "Windows’ta altı yapay zeka adlandırıcının 30 dosyayla test edildiği karşılaştırmada Zush 100 üzerinden 94,8 aldı.", link: "Testi gör" },
+  ja: { text: "Windows で6つの AI リネームツールを30ファイルで比較したテストで、Zush は100点中94.8点でした。", link: "テストを見る" },
+  ko: { text: "Windows에서 6개 AI 이름 변경 도구를 30개 파일로 비교한 테스트에서 Zush는 100점 만점에 94.8점을 받았습니다.", link: "테스트 보기" },
+  'zh-cn': { text: "在 Windows 上用 30 个文件对比六款 AI 重命名工具的测试中，Zush 得分 94.8（满分 100）。", link: "查看测试" },
+};
+const benchmark = BENCHMARK_LINE[locale] ?? BENCHMARK_LINE.en;
 const visibleFacts = variant === 'control' ? controlFacts : facts;
 const showFacts = variant !== 'intro' && variant !== 'sources';
 const showSources = variant === 'all' || variant === 'sources';
@@ -285,6 +299,13 @@ const sectionClass = [
           );
         })}
       </dl>
+    )}
+
+    {showFactsTitle && (
+      <Text as="p" color="subtle" align="center" className={styles.EvidenceSignals__Benchmark}>
+        {benchmark.text}{' '}
+        <a href={localizedHref('/methodology') + '#evidence-status'}>{benchmark.link}</a>
+      </Text>
     )}
 
     {showSources && (

@@ -11,7 +11,7 @@ tags:
   - "AI 파일 이름 바꾸기"
   - "도구 비교"
 tldr: "두 앱 모두 Mac과 Windows에서 내용으로 이름을 바꾸며, RenameClick도 v4.1.2부터 MP4, MOV, M4V, 3GP 동영상을 처리합니다. MKV와 내장 자막, RAW와 디자인 파일, 묶음 단위 실행 취소가 되는 영구 Rename History, 그리고 최대 3대에서 관리형 클라우드 AI를 포함하는 $48 1회 결제 라이선스가 필요하면 Zush를 고르세요. 내장 로컬 모델, AI Search 작업 공간, AI 에이전트용 MCP 서버가 필요하면 RenameClick을 고르세요."
-reviewed: "2026-11-17"
+reviewed: "2026-11-25"
 featuredOrder: 5
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -22,7 +22,7 @@ import BlogSources from '@/components/blog/BlogSources.astro';
 
 짧은 답: 폴더에 RAW 사진, 디자인 파일, MKV 동영상, 문서가 섞여 있거나, 재시작 후에도 모든 묶음을 되돌릴 수 있어야 한다면 [Zush](/)를 고르세요. $48 1회 결제 라이선스에 관리형 클라우드 AI가 포함되므로 모델을 내려받지 않고 첫날부터 쓸 수 있습니다. 내장 로컬 모델, 파일 내용 검색, AI 에이전트가 이름 변경을 실행하는 MCP 서버가 필요하다면 RenameClick을 고르세요. 이제 RenameClick도 일반적인 동영상 형식을 처리하므로 동영상만으로는 결정이 나지 않습니다.
 
-**확인 방법:** 이 글은 [Zush](/) 제작사가 썼습니다. 경쟁 제품의 가격, 기능, 평점은 2026년 11월 17일에 각 제조사 사이트와 공식 스토어에서 확인했습니다([아래 출처](#sources-and-how-we-checked)). 실험실 테스트가 아니라 문서로 확인된 기능을 비교한 글입니다.
+**확인 방법:** 이 글은 [Zush](/) 제작사가 썼습니다. 2026년 11월 25일에 Windows 11에서 Zush와 RenameClick에 같은 파일 30개를 넣어 실행했습니다([아래 결과](#windows에서-나란히-테스트한-결과)). 가격, 기능, 평점은 2026년 11월 17일에 각 제조사 사이트와 공식 스토어에서 확인했습니다([아래 출처](#sources-and-how-we-checked)).
 
 두 도구만이 아니라 여러 도구를 살펴보고 있다면 [RenameClick 대안](/blog/renameclick-alternatives)을 보세요.
 
@@ -57,6 +57,24 @@ import BlogSources from '@/components/blog/BlogSources.astro';
     { href: '/docs/supported-file-types', label: '지원 파일 형식' },
   ]}
 />
+
+## Windows에서 나란히 테스트한 결과
+
+2026년 11월 25일에 Windows 11(ARM64, 가상 머신)에서 Zush, RenameClick, 그리고 다른 AI 이름 변경 도구 4개에 같은 파일 30개를 넣었습니다. 일상 문서 20개(그중 4개는 텍스트 레이어가 없는 스캔본)와 RAW, JPG, HEIC 사진입니다. 모든 앱은 기본 설정으로 실행했고, 별도 채점자가 어느 앱이 만든 이름인지 모르는 상태에서 파일 이름을 채점했습니다. 점수는 [공개한 채점 기준](/methodology)을 따르며, [입력 파일, 모든 이름, 점수](/benchmarks/windows-ai-renamers-2026-11-25/README.md)를 공개해 두었습니다.
+
+| | Zush | RenameClick |
+|---|---|---|
+| 이름을 바꾼 파일(30개 중) | <BlogHighlight>30</BlogHighlight> | 27, RAW 파일 3개는 메시지 없이 건너뜀 |
+| 첫 AI 이름 전에 필요한 것 | 설정할 것 없음 | 본인 API 키 또는 4 GB 로컬 모델 |
+| 세트 전체 이름 짓는 시간 | 약 22초 | 약 2분(파일 27개, OpenAI 키 사용) |
+| 묶음 실행 취소 | <BlogHighlight>Undo All, 30개 모두 복원</BlogHighlight> | Undo로 묶음 전체가 되돌아감 |
+| 사본 3개가 섞인 파일 33개를 폴더로 분류 | <BlogHighlight>33개 분류, 사본 3개 모두 표시</BlogHighlight> | 21개 분류, 7개 미분류, 중복 배지는 원본에 표시 |
+| 100점 만점 점수 | <BlogHighlight>94.8</BlogHighlight> | 70.2 |
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/renameclick-sort-preview.webp" alt="파일에 DUPLICATE 배지가 붙어 있고 일부 문서는 아직 Needs your choice로 표시된 RenameClick 분류 미리 보기" width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>테스트에서 RenameClick은 일부 문서를 직접 정리하도록 남겨 두었습니다.</figcaption>
+</figure>
 
 ## Zush
 
@@ -116,7 +134,7 @@ Zush는 RAW 변형 11가지(CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, SR
 
 ## 실행 취소와 복구
 
-실제로 가장 큰 차이입니다. RenameClick의 기본 Rename 작업 공간은 실행 취소 항목을 메모리에 최대 10개까지 보관하고 앱을 재시작하면 지웁니다. Auto Flow는 해당 기록을 재시작 후에도 유지합니다.
+RenameClick의 기본 Rename 작업 공간은 실행 취소 항목을 메모리에 최대 10개까지 보관하고 앱을 재시작하면 지웁니다. 테스트에서는 Undo 한 번으로 파일 27개 묶음 전체가 되돌아갔습니다. Auto Flow는 해당 기록을 재시작 후에도 유지합니다.
 
 Zush는 모든 묶음에 대해 영구 [Rename History](/docs/undo-history)를 남깁니다. Undo All은 묶음을 복원하면서 충돌(예: 새 파일이 이제 이전 이름을 쓰고 있는 경우)을 나열하고 새 이름으로 복원하도록 제안합니다. AI Rename 중에 Zush가 휴지통으로 옮긴 중복 사본도 Undo로 복원됩니다.
 

@@ -10,8 +10,8 @@ topic: "comparisons"
 tags:
   - "AI 파일 이름 바꾸기"
   - "도구 비교"
-tldr: "Windows 종합 1위는 Zush입니다. Microsoft Store에서 설치하고, 계정, 카드, API 키 없이 파일 50개를 무료로 이름 바꿀 수 있으며, $48 1회 결제 라이선스에 관리형 클라우드 AI와 BYOK, Ollama, LM Studio가 PC나 Mac 최대 3대용으로 포함됩니다. 모든 묶음은 미리 보고, 묶음 단위 실행 취소가 되는 Rename History에 남습니다. 이메일 첨부 파일에는 FilesDesk, 내장 로컬 모델에는 RenameClick, $19 로컬 라이선스에는 AI Renamer, 문서 템플릿에는 Renamer.ai, 규칙에는 NameQuick이 맞습니다."
-reviewed: "2026-11-17"
+tldr: "Windows 종합 1위는 Zush입니다. 같은 파일 30개로 AI 이름 변경 도구 6개를 테스트한 결과 100점 만점에 94.8점을 받았습니다(2위 NameQuick은 73.0점). Microsoft Store에서 설치하고, 계정, 카드, API 키 없이 파일 50개를 무료로 이름 바꿀 수 있으며, $48 1회 결제 라이선스에 관리형 클라우드 AI와 BYOK, Ollama, LM Studio가 PC나 Mac 최대 3대용으로 포함됩니다. 모든 묶음은 미리 보고, 묶음 단위 실행 취소가 되는 Rename History에 남습니다. 이메일 첨부 파일에는 FilesDesk, 내장 로컬 모델에는 RenameClick, $19 로컬 라이선스에는 AI Renamer, 문서 템플릿에는 Renamer.ai, 규칙에는 NameQuick이 맞습니다."
+reviewed: "2026-11-25"
 featuredOrder: 1
 ---
 
@@ -23,7 +23,7 @@ import BlogSources from '@/components/blog/BlogSources.astro';
 
 **Windows에서 저희 추천은 [Zush](/windows)입니다.** Microsoft Store에서 설치하고, 계정, 카드, API 키 없이 이름 변경 50회가 무료이며, $48 1회 결제 라이선스에 최대 3대용 관리형 클라우드 AI가 포함됩니다. AI 이름 변경 도구(AI 파일 리네이머)는 파일마다 안의 내용을 읽고 설명형 파일 이름을 씁니다. FilesDesk, RenameClick, AI Renamer, Renamer.ai, NameQuick은 아래에 정리한 더 좁은 경우에 맞습니다.
 
-**확인 방법:** 이 글은 [Zush](/) 제작사가 썼습니다. 경쟁 제품의 가격, 기능, 평점은 2026년 11월 17일에 각 제조사 사이트와 공식 스토어에서 확인했습니다([아래 출처](#sources-and-how-we-checked)). 실험실 테스트가 아니라 문서로 확인된 기능을 비교한 글입니다.
+**확인 방법:** 이 글은 [Zush](/) 제작사가 썼습니다. 2026년 11월 25일에 6개 앱을 모두 Windows 11에 설치하고 각 앱에 같은 파일 30개를 넣었습니다([아래 테스트 결과](#같은-파일-30개로-6개-앱을-모두-테스트했습니다)). 가격, 기능, 평점은 2026년 11월 17일에 각 제조사 사이트와 공식 스토어에서 확인했습니다([아래 출처](#sources-and-how-we-checked)).
 
 ## Windows AI 이름 변경 도구 7종 한눈에 보기
 
@@ -31,11 +31,37 @@ import BlogSources from '@/components/blog/BlogSources.astro';
 |---|---|---|---|---|---|---|
 | <BlogHighlight>**1. Zush**</BlogHighlight> | AI 이름 변경 50회, 계정·카드·키 불필요 | 월 $10 또는 1회 $48 | 예, 두 요금제 모두 | 예 | 영구 Rename History, 묶음 단위 실행 취소 | 지금 바로 쓰고 한 번만 결제하고 싶을 때 |
 | 2. FilesDesk | 크레딧 15개, 로그인 필요 | 월 $8 또는 $20, Self-Managed $40 | 구독에만 | Watch Folders + Watch Inbox | 기록 + 실행 취소 | 이메일 첨부 파일 이름도 바꿔야 할 때 |
-| 3. RenameClick | 월 100회 이름 변경 또는 이동 | 평생 $36 + VAT | 아니요: 로컬 모델 또는 본인 키 | Auto Flow, 앱 실행 중에만 | 메모리에 10개 항목 | Ollama 없이 내장 로컬 모델을 원할 때 |
-| 4. AI Renamer | 클라우드 크레딧 10개, Google 로그인 | Local $19, 200 크레딧당 $10 | 별도 판매 | Watch Folder 베타, 앱 실행 중, 하위 폴더 제외 | 문서화되지 않음 | 가장 저렴한 로컬 라이선스나 Linux가 필요할 때 |
+| 3. RenameClick | 월 100회 이름 변경 또는 이동 | 평생 $36 + VAT | 아니요: 로컬 모델 또는 본인 키 | Auto Flow, 앱 실행 중에만 | 마지막 작업 실행 취소, 기록은 메모리에 | Ollama 없이 내장 로컬 모델을 원할 때 |
+| 4. AI Renamer | 클라우드 크레딧 10개, Google 로그인 | Local $19, 200 크레딧당 $10 | 별도 판매 | Watch Folder 베타, 앱 실행 중, 하위 폴더 제외 | 테스트에서 없음 | 가장 저렴한 로컬 라이선스나 Linux가 필요할 때 |
 | 5. Renamer.ai | 월 25개 파일 | 월 $9.95~$99.95 | 예, 사용량제 | Magic Folders | 실행 취소 | 문서 이름을 바꾸고 무료 로컬 모드를 원할 때 |
-| 6. NameQuick | Managed 이름 변경 30회, 카드 불필요 | 월 $12부터, Self-Managed $69 | Managed 요금제에만 | 감시 폴더 | 기록 + 실행 취소(파일을 옮긴 경우 실패할 수 있음) | 규칙 엔진을 원할 때 |
+| 6. NameQuick | Managed 이름 변경 30회, 카드 불필요 | 월 $12부터, Self-Managed $69 | Managed 요금제에만 | 감시 폴더 | 기록, 파일 하나씩 실행 취소 | 규칙 엔진을 원할 때 |
 | 7. 직접 만드는 PowerShell/Python | 무료 소프트웨어 | API나 모델 비용 | 직접 구축 | 직접 구축 | 직접 구축 | 파이프라인 구축이 업무의 일부일 때 |
+
+## 같은 파일 30개로 6개 앱을 모두 테스트했습니다
+
+2026년 11월 25일에 Windows 11 Pro(ARM64, 가상 머신)에서 모든 앱을 기본 설정으로 실행했습니다. 테스트 세트는 파일 30개로, 일상 문서 20개(그중 4개는 텍스트 레이어가 없는 스캔 PDF)와 RAW 사진 3개, JPG 4개, HEIC 3개입니다. 결과는 [공개한 채점 기준](/methodology)으로 점수를 매겼고, 별도 채점자가 어느 앱이 만든 이름인지 모르는 상태에서 파일 이름을 하나하나 채점했습니다. [전체 데이터, 입력 파일, 모든 이름](/benchmarks/windows-ai-renamers-2026-11-25/README.md)을 공개해 두었습니다.
+
+| 앱 | 이름을 바꾼 파일(30개 중) | 첫 결과 전에 필요한 계정이나 키 | 텍스트 없는 스캔본 | 묶음 전체 실행 취소 | 점수 / 100 |
+|---|---|---|---|---|---|
+| <BlogHighlight>**Zush**</BlogHighlight> | **30** | **없음** | **4개 중 4개** | **클릭 한 번, 30개 모두 복원** | **94.8** |
+| NameQuick | 30 | 없음 | 4개 중 4개 | 파일별(작업 30번) | 73.0 |
+| RenameClick | 27, RAW 건너뜀 | 본인 API 키 | 4개 중 4개 | 작업 한 번 | 70.2 |
+| Renamer.ai(웹) | 25, RAW 거부 | 계정 | 4개 중 4개 | 이름 바뀐 사본을 내려받음 | 56.8 |
+| FilesDesk | 15, 무료 크레딧, RAW와 HEIC 제외 | 계정 | 4개 중 4개 | 파일별 | 52.5 |
+| AI Renamer | 10, 텍스트 문서 모두 실패 | Google 계정 | 4개 중 1개 | 없음 | 37.2 |
+
+눈에 띈 점:
+
+- **Zush**는 파일 30개의 이름을 약 22초 만에 짓고 2초도 안 걸려 적용했습니다. Undo All은 원래 이름 30개를 0.6초 만에 모두 되돌렸고, 파일마다 직접 확인했습니다. 평범한 영어 문장으로 쓴 Custom AI Block 하나로 문서 20개 중 16개의 이름에 문서에 인쇄된 날짜를 넣었습니다. 사본 3개가 섞인 파일 33개에서는 Sort into folders가 모든 파일을 폴더에 넣고 사본 3개를 모두 표시했습니다.
+- **NameQuick**은 모든 파일에 좋은 이름을 붙였지만 온보딩에서는 처음 10개만 받았습니다. 나머지 20개는 감시 폴더로 처리했고, 30개 이름이 모두 나오기까지 3분 가까이 걸렸습니다. 되돌리려면 파일마다 한 번씩 클릭해야 했습니다.
+- **RenameClick**은 자체 AI가 없어서 본인 API 키나 4 GB 로컬 모델이 필요합니다. 분류를 켜자 파일 33개 중 21개를 옮겼고, 중복 배지는 원본에 붙였습니다.
+- **Renamer.ai**는 RAW 사진 3개 때문에 선택 전체를 거부했습니다. 테스트 PC에서 데스크톱 앱이 실행되지 않아 웹 앱을 썼습니다.
+- **FilesDesk**와 **AI Renamer**는 세트를 끝내기 전에 무료 크레딧이 떨어졌고, AI Renamer에는 실행 취소가 아예 없습니다.
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/zush-sort-into-folders-duplicates.webp" alt="Rename and sort를 누르기 전에 이름이 바뀐 파일을 폴더별로 묶고, 원본 옆의 정확한 사본에 DUPLICATE 표시를 한 Windows용 Zush 미리 보기" width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>Zush는 파일을 옮기기 전에 이름이 바뀐 파일을 폴더별로 묶고 정확한 사본을 표시합니다.</figcaption>
+</figure>
 
 Mac을 쓰신다면 [Mac AI 이름 변경 도구 순위](/blog/best-ai-file-renamer-tools-mac-compared)를 보세요. Linux, 웹, API 도구까지 보려면 [AI 이름 변경 도구 10종 크로스플랫폼 개요](/blog/best-ai-file-renamer-tools-2026)를 보세요.
 
@@ -115,6 +141,18 @@ PowerRename 같은 패턴 도구는 선택한 모든 파일에 규칙 하나를 
 
 <BlogCTA placement='inline' platform='windows' />
 
+테스트에서 Zush는 스캔본과 RAW를 포함해 파일 30개의 이름을 모두 바꿨고 100점 만점에 94.8점을 받았습니다. Custom AI Block이나 폴더 규칙에 쓰는 내용은 패턴이 아니라 평범한 문장입니다.
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/zush-custom-ai-block-date.webp" alt="각 파일에 인쇄된 주요 날짜를 찾아 YYYY-MM-DD 형식으로 돌려 달라는 평범한 영어 지시가 들어간 Zush New Custom AI Block 대화 상자" width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>Zush의 Custom AI Block: 문장 하나로 모든 문서 이름에 인쇄된 날짜를 넣습니다.</figcaption>
+</figure>
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/zush-folder-rules-prompt.webp" alt="Bills & Invoices, Work & Pay, Travel 등 폴더 8개와 각 폴더에 들어갈 파일을 한 문단으로 적은 Zush Folder rules 대화 상자" width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>Zush의 Folder rules: 폴더를 한 문단으로 설명하면 테스트 파일 33개 중 32개가 규칙대로 들어갔습니다.</figcaption>
+</figure>
+
 라이선스 하나로 Windows와 Mac을 합쳐 최대 3대에서 쓸 수 있습니다. [Templates를 내보내](/docs/template-import-export) 다른 컴퓨터에서 가져올 수 있습니다. 파일을 폴더로도 묶으려면 [Windows에서 AI로 파일을 폴더에 분류하기](/blog/sort-files-into-folders-with-ai-windows)를 참고하세요.
 
 ![Rename & sort를 적용하기 전에 내용 기반 폴더 그룹과 제안된 파일 이름을 미리 보여 주는 Windows용 Zush 화면](/images/showcase/windows/folder-sorting-light.webp)
@@ -123,11 +161,25 @@ PowerRename 같은 패턴 도구는 선택한 모든 파일에 규칙 하나를 
 
 FilesDesk는 Windows와 Mac에서 동작하며 Microsoft Store에 올라와 있습니다. Watch Folders, Gmail·iCloud·IMAP 첨부 파일 이름을 바꾸는 Watch Inbox, 템플릿, 실행 취소가 되는 기록이 있습니다. 로그인하면 무료 크레딧 15개로 시작합니다. 관리형 AI는 구독 전용입니다. 500 크레딧 월 $8 또는 2,000 크레딧 월 $20(연 $80 또는 $200)이며, AI 이름 제안 1개당 1 크레딧이고 같은 파일을 다시 실행하면 크레딧을 또 씁니다. $40 Self-Managed 라이선스는 본인 키나 로컬 모델(Ollama, LM Studio, vLLM)을 쓰고, 기기 1대에 묶이며, 1년 업데이트가 포함되고, 환불 기간은 3일입니다.
 
+**테스트 결과:** 먼저 로그인해야 했습니다. FilesDesk는 RAW와 HEIC 사진을 아무 안내 없이 모두 뺐고, 파일 24개를 선택하자 무료 크레딧 15개에 맞게 묶음을 줄일 때까지 시작하지 않았습니다. 실행 취소는 파일 하나씩만 됩니다.
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/filesdesk-not-enough-credits.webp" alt="파일 24개를 선택했지만 크레딧이 15개만 남았다는 Not enough credits 메시지가 뜬 Windows용 FilesDesk" width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>FilesDesk는 선택한 파일이 무료 크레딧보다 많으면 묶음 전체를 멈춥니다.</figcaption>
+</figure>
+
 **FilesDesk를 고를 때:** 이메일 첨부 파일이 도착하는 대로 이름을 바꾸고 싶을 때. **약점:** 1회 결제 라이선스에 관리형 AI가 포함되지 않습니다. [Zush vs FilesDesk](/blog/zush-vs-filesdesk)를 참고하세요.
 
 ## 3. RenameClick
 
-RenameClick(현재 rename.click, 4.1.2 버전)은 로컬 모델을 내장하고 Ollama, LM Studio, 본인의 클라우드 키로도 동작합니다. 4.1.2 버전에서 MP4, MOV, M4V, 3GP 동영상 지원이 추가됐지만 MKV, WebM, AVI는 지원하지 않고 카메라 RAW나 디자인 파일도 지원하지 않습니다. Auto Flow는 앱이 실행 중일 때 파일 이름을 바꾸고 옮깁니다. 무료 요금제는 월 100회 이름 변경 또는 이동을 허용하고, Lifetime은 직접 배포 빌드 기준 최대 3대에 $36 + VAT입니다.
+RenameClick(rename.click, Microsoft Store의 4.1.4 버전으로 테스트)은 로컬 모델을 내장하고 Ollama, LM Studio, 본인의 클라우드 키로도 동작합니다. 4.1.2 버전에서 MP4, MOV, M4V, 3GP 동영상 지원이 추가됐지만 MKV, WebM, AVI는 지원하지 않고 카메라 RAW나 디자인 파일도 지원하지 않습니다. Auto Flow는 앱이 실행 중일 때 파일 이름을 바꾸고 옮깁니다. 무료 요금제는 월 100회 이름 변경 또는 이동을 허용하고, Lifetime은 직접 배포 빌드 기준 최대 3대에 $36 + VAT입니다.
+
+**테스트 결과:** OpenAI 키를 추가하기 전까지 AI가 아무것도 하지 않았습니다. RAW 파일 3개는 메시지 없이 건너뛰고 나머지 27개의 이름을 약 2분 만에 지었으며, Undo로 묶음 전체가 되돌아갔습니다. 분류를 켜자 파일 33개 중 21개를 옮겼고, 문서 7개는 분류도 이름 변경도 하지 않은 채 남겼습니다.
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/renameclick-sort-preview.webp" alt="파일에 DUPLICATE 배지가 붙어 있고 일부 문서는 아직 Needs your choice로 표시된 RenameClick 분류 미리 보기" width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>RenameClick은 자리를 정하지 못한 파일의 폴더를 직접 고르게 합니다.</figcaption>
+</figure>
 
 **RenameClick을 고를 때:** Ollama 설정 없이 로컬 AI를 원할 때. **약점:** 내장 모델 다운로드가 약 4 GB이고 RAM 16 GB를 권장하며, Undo는 메모리에 10개 항목만 보관하고 재시작하면 지워집니다. [Zush vs RenameClick](/blog/zush-vs-renameclick)을 참고하세요.
 
@@ -135,19 +187,40 @@ RenameClick(현재 rename.click, 4.1.2 버전)은 로컬 모델을 내장하고 
 
 AI Renamer(airenamer.app)는 Windows, Mac, Linux용 데스크톱 앱입니다. 1.9.0 버전에서 앱이 열려 있을 때만 동작하고 하위 폴더를 건너뛰는 Watch Folder(베타)가 추가됐고, 1.10.0 버전에서 동영상, 오디오, RAW, HEIC, Office, EPUB이 추가됐습니다. Local Mode는 본인 키, Ollama, LM Studio로 쓰는 1회 $19이고, 클라우드 크레딧은 200개당 $10이며 Google 로그인 후 10개가 무료입니다. 환불 규정은 없고 크레딧 구매는 환불되지 않습니다.
 
-GitHub의 무료 GPL-3.0 명령줄 도구인 [`ozgrozer/ai-renamer`](https://github.com/ozgrozer/ai-renamer)와 혼동하지 마세요. 무관한 프로젝트입니다.
+같은 개발자가 GitHub에 무료 GPL-3.0 명령줄 도구인 [`ozgrozer/ai-renamer`](https://github.com/ozgrozer/ai-renamer)도 공개하고 있습니다. 데스크톱 앱은 자체 설치 프로그램이 있는 별개 제품입니다.
 
-**AI Renamer를 고를 때:** 가장 저렴한 1회 결제 로컬 라이선스를 원하거나 Linux가 필요할 때. **약점:** 실행 취소가 문서화돼 있지 않습니다. [Zush vs AI Renamer](/blog/zush-vs-airenamer)를 참고하세요.
+**테스트 결과:** 앱을 열면 Google 로그인 화면부터 나옵니다. 텍스트 문서(PDF, Word, Excel, RTF, TXT)는 모두 설명 없이 빨간 막대만 보이며 실패했고, 실패한 파일 20개를 직접 지울 때까지 Rename All이 비활성 상태였습니다. 이름은 기본적으로 25자에서 잘리고, History에는 이전 이름과 새 이름만 나올 뿐 되돌릴 방법이 없습니다.
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/airenamer-failed-documents.webp" alt="사진 한 장은 이름이 바뀌었고 Book1.xlsx, CV_final_v2.pdf 같은 문서 여러 개에 빨간 실패 막대가 표시된 Windows용 AI Renamer" width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>AI Renamer: 텍스트 문서가 오류 메시지 없이 실패했습니다.</figcaption>
+</figure>
+
+**AI Renamer를 고를 때:** 가장 저렴한 1회 결제 로컬 라이선스를 원하거나 Linux가 필요할 때. **약점:** 실행 취소가 없습니다. [Zush vs AI Renamer](/blog/zush-vs-airenamer)를 참고하세요.
 
 ## 5. Renamer.ai
 
 Renamer.ai는 Windows와 Mac 앱, 웹 인터페이스가 있는 문서 중심 이름 변경 도구입니다. Microsoft Store에는 없습니다. Magic Folders, 템플릿, OCR, 미리 보기, 실행 취소가 포함되고, 무료 Starter 요금제(월 25개 파일)를 포함한 모든 요금제에서 로컬 모드를 쓸 수 있습니다. 클라우드 요금제는 Pro 월 $9.95(200개), Power $29.95(1,000개), Ultimate $99.95(5,000개)이며 연간 결제 시 15% 저렴합니다. BYOK는 Ultimate 전용입니다. 형식 목록에는 카메라 RAW, PSD, Sketch, Figma가 없습니다.
 
+**테스트 결과:** Windows 데스크톱 앱(5.0.8)은 저장된 로그인 오류로 실행 단계에서 멈춰서, 계정을 만든 뒤 웹 앱을 썼습니다. NEF, ARW, CR3를 거부해 선택 전체가 빠졌고, 파일 25개를 올리자 15개만 이름을 바꾸고 10개는 아무 안내 없이 건너뛰었습니다. 문서 이름은 자세했습니다. 웹 앱은 파일을 업로드받은 뒤 이름이 바뀐 사본을 내려받게 합니다.
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/renamerai-raw-not-supported.webp" alt="Unsupported extensions: NEF, ARW, CR3 파일 형식은 지원하지 않는다는 Renamer.ai 웹 앱 메시지" width="1600" height="669" loading="lazy" decoding="async" />
+  <figcaption>Renamer.ai는 카메라 RAW 파일을 받지 않습니다.</figcaption>
+</figure>
+
 **Renamer.ai를 고를 때:** 주로 문서 이름을 바꾸고 무료 로컬 처리를 원할 때. **약점:** 1회 결제 라이선스가 없어서 관리형 클라우드 이름 변경은 월간 사용량제입니다. [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai)나 [Renamer.ai 대안](/blog/renamer-ai-alternatives)을 참고하세요.
 
 ## 6. NameQuick
 
-NameQuick은 Windows(x64 설치 프로그램, ARM PC는 에뮬레이션 사용)와 Mac에서 동작하며 Watch Folders, Rules, 내용 검색, 실행 취소를 제공합니다. 현재 버전은 3.0.57입니다. 이메일이나 카드 없이 Managed 이름 변경 30회를 주고, 70회가 포함된 14일 Managed 체험에는 카드가 필요하지만 Self-Managed 체험에는 필요 없습니다. Managed 요금제는 월 $12부터이고, 이름 변경 팩은 500회 $19 또는 1,500회 $39이며 12개월 유효합니다. Self-Managed는 컴퓨터 1대용 1회 $69로 평생 업데이트와 14일 환불이 있고, AI 비용은 별도입니다.
+NameQuick은 Windows(x64 설치 프로그램, ARM PC는 에뮬레이션 사용)와 Mac에서 동작하며 Watch Folders, Rules, 내용 검색, 실행 취소를 제공합니다. Microsoft Store의 3.0.59 버전으로 테스트했습니다. 이메일이나 카드 없이 Managed 이름 변경 30회를 주고, 70회가 포함된 14일 Managed 체험에는 카드가 필요하지만 Self-Managed 체험에는 필요 없습니다. Managed 요금제는 월 $12부터이고, 이름 변경 팩은 500회 $19 또는 1,500회 $39이며 12개월 유효합니다. Self-Managed는 컴퓨터 1대용 1회 $69로 평생 업데이트와 14일 환불이 있고, AI 비용은 별도입니다.
+
+**테스트 결과:** NameQuick은 계정 없이 파일 30개 모두에 정확한 이름을 붙였고, 대부분의 문서에 날짜를 넣었습니다. 다만 온보딩은 처음 10개만 받아서 나머지 20개는 감시 폴더로 처리했고, 30개 이름이 모두 나오기까지 약 167초가 걸렸습니다. "Undo last run"은 파일 하나만 복원했고, 나머지는 History에서 하나씩 클릭해야 했습니다.
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/namequick-history-undo.webp" alt="이름이 바뀐 문서 목록에 파일마다 Undo 버튼이 있는 NameQuick History" width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>NameQuick History: 실행 취소는 파일 하나씩 됩니다.</figcaption>
+</figure>
 
 **NameQuick을 고를 때:** AI 이름 짓기 위에 규칙 엔진을 원할 때. **약점:** 1회 결제 라이선스는 컴퓨터 1대용이고 관리형 AI가 없습니다. [Zush vs NameQuick](/blog/zush-vs-namequick)을 참고하세요.
 
@@ -165,7 +238,7 @@ NameQuick은 Windows(x64 설치 프로그램, ARM PC는 에뮬레이션 사용)�
 | 기기 | 3대, Windows + Mac | 제조사 미기재 | 최대 3대(직접 배포 빌드) | 1대 | 컴퓨터 1대 |
 | 업데이트 | 이후 모든 업데이트 | 제조사 미기재 | 평생 | 1년 | 평생 |
 | 환불 | 14일 | 미기재 | 법이 요구하는 경우에만 | 3일 | 14일 |
-| 기록 / 실행 취소 | 영구, 묶음 단위 실행 취소 | 문서화되지 않음 | 메모리, 10개 항목 | 기록 + 실행 취소 | 기록 + 실행 취소 |
+| 기록 / 실행 취소 | 영구, 묶음 단위 실행 취소 | 테스트에서 없음 | 마지막 작업 실행 취소, 메모리 | 파일별 실행 취소 | 파일별 실행 취소 |
 
 ## 출처와 확인 방법
 
@@ -179,11 +252,11 @@ AI 이름 변경 소프트웨어는 파일마다 내용(문서 텍스트, 이미
 
 ### Windows에서 가장 좋은 AI 파일 이름 변경 도구는?
 
-저희 추천은 Zush입니다. Microsoft Store에서 설치하고, 계정, 카드, API 키 없이 AI 이름 변경 50회를 무료로 제공하며, $48 1회 결제 라이선스에 관리형 클라우드 AI, BYOK, Ollama, LM Studio가 최대 3대용으로 포함됩니다. 모든 묶음은 미리 보고, 묶음 단위 실행 취소가 되는 Rename History에 남습니다. FilesDesk, RenameClick, AI Renamer, Renamer.ai, NameQuick은 각각 더 좁은 필요에 맞습니다.
+저희 추천은 Zush입니다. Microsoft Store에서 설치하고, 계정, 카드, API 키 없이 AI 이름 변경 50회를 무료로 제공하며, $48 1회 결제 라이선스에 관리형 클라우드 AI, BYOK, Ollama, LM Studio가 최대 3대용으로 포함됩니다. 모든 묶음은 미리 보고, 묶음 단위 실행 취소가 되는 Rename History에 남습니다. 같은 파일 30개로 6개 앱을 비교한 테스트에서 30개 모두 이름을 바꿨고 100점 만점에 94.8점을 받았습니다. FilesDesk, RenameClick, AI Renamer, Renamer.ai, NameQuick은 각각 더 좁은 필요에 맞습니다.
 
 ### Renamer.ai와 AI Renamer는 같은 제품인가요?
 
-아니요. Renamer.ai(renamer.ai)는 Windows, Mac, 웹용 구독형 이름 변경 도구로, 요금제는 월 $9.95~$99.95이고 모든 요금제에 로컬 모드가 있습니다. AI Renamer(airenamer.app)는 1회 $19 Local Mode와 $10 클라우드 크레딧 팩이 있는 데스크톱 앱입니다. 세 번째 프로젝트인 GitHub의 `ozgrozer/ai-renamer` 명령줄 도구는 무료이며 둘과 무관합니다.
+아니요. Renamer.ai(renamer.ai)는 Windows, Mac, 웹용 구독형 이름 변경 도구로, 요금제는 월 $9.95~$99.95이고 모든 요금제에 로컬 모드가 있습니다. AI Renamer(airenamer.app)는 1회 $19 Local Mode와 $10 클라우드 크레딧 팩이 있는 데스크톱 앱입니다. GitHub의 무료 `ozgrozer/ai-renamer` 명령줄 도구는 AI Renamer와 같은 개발자가 만들었지만 별개 프로젝트입니다.
 
 ### $48 1회 결제 라이선스가 더 저렴한 라이선스보다 가치가 있나요?
 

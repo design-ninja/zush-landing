@@ -11,7 +11,7 @@ tags:
   - "AI Dosyasını Yeniden Adlandırma"
   - "Takım Karşılaştırmaları"
 tldr: "İki uygulama da Mac ve Windows'ta dosyaları içeriğe göre yeniden adlandırır; RenameClick v4.1.2'den bu yana MP4, MOV, M4V ve 3GP videoları da işler. MKV ve gömülü altyazılar, RAW ve tasarım dosyaları, toplu geri almalı kalıcı Rename History ve en fazla 3 cihazda yönetilen bulut yapay zekâsını içeren tek seferlik $48'lık lisans için Zush'u seçin. Pakete dahil yerel model, AI Search çalışma alanı ya da yapay zekâ ajanları için bir MCP sunucusu istiyorsanız RenameClick'i seçin."
-reviewed: "2026-11-17"
+reviewed: "2026-11-25"
 featuredOrder: 5
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -22,7 +22,7 @@ import BlogSources from '@/components/blog/BlogSources.astro';
 
 Kısa cevap: Klasörlerinizde RAW fotoğraflar, tasarım dosyaları, MKV videolar ve belgeler karışık duruyorsa ya da her grubun yeniden başlatmadan sonra da geri alınabilir kalmasını istiyorsanız [Zush](/)'u seçin. Tek seferlik $48'lık lisansı yönetilen bulut yapay zekâsını içerir; bu yüzden model indirmeden ilk gün çalışır. Pakete dahil yerel bir model, dosya içeriğine göre arama ya da yapay zekâ ajanlarının yeniden adlandırma çalıştırmasını sağlayan bir MCP sunucusu istiyorsanız RenameClick'i seçin. RenameClick artık yaygın video biçimlerini de işliyor; yani tek başına video artık belirleyici etken değil.
 
-**Nasıl kontrol ettik:** Bu yazı [Zush](/) geliştiricisi tarafından yazıldı. Rakiplerin fiyatları, özellikleri ve puanları 17 Kasım 2026'da üretici sitelerinde ve resmî mağazalarda kontrol edildi ([kaynaklar aşağıda](#sources-and-how-we-checked)). Bu yazı belgelenmiş özellikleri karşılaştırır; bir laboratuvar testi değildir.
+**Nasıl kontrol ettik:** Bu yazı [Zush](/) geliştiricisi tarafından yazıldı. 25 Kasım 2026'da Zush ve RenameClick'i Windows 11'de aynı 30 dosyayla çalıştırdık ([sonuçlar aşağıda](#windowsta-yan-yana-test-ettik)). Fiyatlar, özellikler ve puanlar 17 Kasım 2026'da üretici sitelerinde ve resmî mağazalarda kontrol edildi ([kaynaklar aşağıda](#sources-and-how-we-checked)).
 
 Yalnızca bu ikisi yerine birkaç araca mı bakıyorsunuz? [RenameClick alternatifleri](/blog/renameclick-alternatives) yazısına göz atın.
 
@@ -57,6 +57,24 @@ Yalnızca bu ikisi yerine birkaç araca mı bakıyorsunuz? [RenameClick alternat
     { href: '/docs/supported-file-types', label: 'Desteklenen dosya türleri' },
   ]}
 />
+
+## Windows'ta yan yana test ettik
+
+25 Kasım 2026'da Zush'a, RenameClick'e ve diğer dört yapay zekâ yeniden adlandırıcıya Windows 11'de (ARM64, sanal makinede) aynı 30 dosyayı verdik: 4'ü metin katmanı olmayan tarama olmak üzere 20 gündelik belge, ayrıca RAW, JPG ve HEIC fotoğraflar. Her uygulama varsayılan ayarlarıyla çalıştı; ayrı bir değerlendirici de dosya adlarını hangi uygulamanın ürettiğini bilmeden puanladı. Puanlar [yayımladığımız puanlama ölçütlerine](/methodology) dayanıyor; [girdiler, her ad ve puanlar](/benchmarks/windows-ai-renamers-2026-11-25/README.md) herkese açık.
+
+| | Zush | RenameClick |
+|---|---|---|
+| Yeniden adlandırılan dosya (30'dan) | <BlogHighlight>30</BlogHighlight> | 27; 3 RAW dosya mesaj gösterilmeden atlandı |
+| İlk yapay zekâ adından önce | Kurulacak bir şey yok | Kendi API anahtarınız ya da 4 GB'lık yerel bir model |
+| Setin adlandırılma süresi | Yaklaşık 22 saniye | Yaklaşık 2 dakika (27 dosya, OpenAI anahtarıyla) |
+| Grubu geri alma | <BlogHighlight>Undo All, 30'u da geri geldi</BlogHighlight> | Undo grubu geri aldı |
+| 3'ü kopya olan 33 dosyayı klasörlere ayırma | <BlogHighlight>33'ü ayrıldı, 3 kopyanın 3'ü işaretlendi</BlogHighlight> | 21'i ayrıldı, 7'si ayrılmadan kaldı; yinelenen rozeti özgün dosyalarda |
+| 100 üzerinden puan | <BlogHighlight>94,8</BlogHighlight> | 70,2 |
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/renameclick-sort-preview.webp" alt="RenameClick ayırma önizlemesi; dosyalarda DUPLICATE rozetleri var ve bazı belgeler hâlâ Needs your choice olarak işaretli." width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>Testimizde RenameClick: bazı belgeler elle yerleştirmeniz için bırakıldı.</figcaption>
+</figure>
 
 ## Zush
 
@@ -116,7 +134,7 @@ Zush 11 RAW çeşidini (CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, SR2), 
 
 ## Geri alma ve kurtarma
 
-En büyük pratik fark burada. RenameClick'in standart Rename çalışma alanı bellekte en fazla 10 geri alma kaydı tutar ve uygulama yeniden başladığında bunları siler. Auto Flow ise uygun kayıtları yeniden başlatmalar boyunca korur.
+RenameClick'in standart Rename çalışma alanı bellekte en fazla 10 geri alma kaydı tutar ve uygulama yeniden başladığında bunları siler; testimizde Undo, 27 dosyalık bir grubun tamamını tek işlemle geri aldı. Auto Flow ise uygun kayıtları yeniden başlatmalar boyunca korur.
 
 Zush her grup için kalıcı bir [Rename History](/docs/undo-history) tutar. Undo All grubu geri yükler, çakışmaları listeler (örneğin eski adı artık kullanan yeni bir dosya) ve yeni bir adla geri yüklemeyi önerir. Zush'un AI Rename sırasında Çöp Sepeti'ne taşıdığı yinelenen kopyaları da Undo geri getirir.
 

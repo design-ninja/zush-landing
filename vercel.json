@@ -9,6 +9,11 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/benchmarks/ai-file-renamer-simulation-2026/:path*",
+      "destination": "/methodology",
+      "permanent": true
+    },
+    {
       "source": "/videos/:file(.+\\.mp4)",
       "destination": "https://sjzrgmvinyxjzvshfvjy.storage.supabase.co/storage/v1/object/public/landing-media/videos/:file",
       "permanent": false

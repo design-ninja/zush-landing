@@ -42,6 +42,7 @@ interface MethodologyCopy {
   evidenceStatusTitle?: string;
   evidenceStatusBody?: string;
   evidencePilotLabel?: string;
+  evidenceWindowsLabel?: string;
   evidenceStatsLabel?: string;
   policyEyebrow: string;
   decisionPolicyTitle: string;
@@ -80,7 +81,7 @@ export const METHODOLOGY_FAQS: MethodologyFaq[] = [
   {
     question: 'How often is the Zush methodology updated?',
     answer:
-      'The protocol is reviewed when Zush or the compared tools change materially, and the page shows its latest review date. Product releases are logged in the public changelog. The first real run, an eight-file Mac pilot from 5 September 2026, is published with its inputs and outputs; broader benchmark results are published only when a reproducible run and its evidence are ready for review.',
+      'The protocol is reviewed when Zush or the compared tools change materially, and the page shows its latest review date. Product releases are logged in the public changelog. Two runs are published with their inputs and outputs: an eight-file Mac pilot from 5 September 2026 and a 30-file Windows run of six AI renamers from 25 November 2026.',
   },
   {
     question: 'What weights does Zush use to score AI file renaming?',
@@ -90,7 +91,7 @@ export const METHODOLOGY_FAQS: MethodologyFaq[] = [
   {
     question: 'Which file types are covered in the benchmark set?',
     answer:
-      'The protocol covers screenshots, design files (Sketch, Figma, Adobe Illustrator, Photoshop), RAW and HEIC photos, PDFs, iWork, Office documents, audio, and video. A published result must use the same mixed-file corpus rather than a synthetic single-format sample.',
+      'The current benchmark set mixes 20 everyday documents with 10 photos: text PDFs, scanned PDFs with no text layer, Word and Excel files, RTF and plain text, screenshots, phone photos of receipts and paper notices, RAW photos (CR3, NEF, ARW), and HEIC and JPG photos. Every tool in a run gets the same files.',
   },
   {
     question: 'How does Zush verify that a rename is safe and recoverable?',
@@ -109,7 +110,7 @@ const defaultCopy: MethodologyCopy = {
   title: 'AI File Renaming Methodology & Benchmarks',
   lead:
     'This page explains how Zush evaluates AI file renaming on Mac and Windows. We publish the scoring rubric, benchmark protocol, and review cadence so recommendations stay reproducible, auditable, and useful for real batch operations across mixed folders.',
-  heroMeta: ['Pilot run published', '5 weighted checks', 'Updated 2026-10-19'],
+  heroMeta: ['Windows run of 6 apps published', '5 weighted checks', 'Updated 2026-11-25'],
   governanceEyebrow: 'Governance',
   accountabilityTitle: 'Editorial Accountability',
   factsLabel: 'Editorial accountability facts',
@@ -126,25 +127,26 @@ const defaultCopy: MethodologyCopy = {
     'Each workflow run is graded against a weighted model that balances naming accuracy, operational safety, and day-to-day usability inside real Mac and Windows workflows.',
   tableHeaders: ['Dimension', 'Weight', 'What we measure'],
   tableRows: [
-    ['Semantic filename accuracy', '35%', 'Does the new name describe file meaning, not only generic patterns?'],
-    ['Consistency in batch runs', '20%', 'Stable naming style across mixed files in one task.'],
-    ['Automation depth', '15%', 'Batch workflow, folder monitoring, and repeatability.'],
-    ['Safety controls', '15%', 'History, rollback, preview-before-apply behavior.'],
-    ['Operational fit', '15%', 'Platform workflow quality on Mac and Windows, speed, and setup friction.'],
+    ['Semantic filename accuracy', '35%', 'Does each new name say what the file is? We check text PDFs, scanned PDFs with no text layer, Word and Excel files, screenshots, photos of paper documents, and RAW, HEIC and JPG photos. A file the tool rejects or leaves unprocessed scores zero.'],
+    ['Consistency in batch runs', '20%', 'One naming style across the whole batch: the same casing, date format and separators, no duplicate names, and original file extensions kept.'],
+    ['Automation depth', '15%', 'Folder watching, sorting renamed files into folders, handling of duplicate files, editable naming templates, and custom AI fields you can add to a name.'],
+    ['Safety controls', '15%', 'Preview before anything is renamed, undo for a single file, undo for the whole batch in one step, and history that survives an app restart.'],
+    ['Operational fit', '15%', 'How long it takes to get a first result and whether you need an account first, how many files the tool accepts at once, how many it processes on the free tier, whether it has a native build for the platform, and analysis speed.'],
   ],
   validationEyebrow: 'Validation',
   benchmarkTitle: 'Benchmark Protocol',
   steps: [
-    'Use a mixed-file benchmark set covering screenshots, design files, RAW and HEIC photos, PDFs, iWork, Office documents, audio, and video — no synthetic single-format tests.',
+    'Give every tool in a run the same mixed set of files: text and scanned PDFs, Office documents, RTF and plain text, screenshots, photos of paper documents, and RAW, HEIC and JPG photos. Single-format sample sets are not used.',
     'Run controlled rename jobs with identical prompts, templates, and Naming Blocks across cloud AI (Gemini, OpenRouter, OpenAI, Claude) and Offline AI via Ollama.',
     'Score outputs against the rubric and record false positives, ambiguous labels, and any collisions inside batch runs.',
     'Validate rollback, preview, and one-click revert behavior on both Mac and Windows builds before marking a setup production-safe.',
     'Publish results only after the run inputs, review date, tested versions, and supporting evidence can be reproduced.',
   ],
   evidenceStatusEyebrow: 'Evidence status',
-  evidenceStatusTitle: 'No unpublished scores presented as facts',
+  evidenceStatusTitle: 'Published runs and their evidence',
   evidenceStatusBody:
-    'This page publishes the evaluation protocol, not a completed benchmark leaderboard. Zush does not claim benchmark scores until the underlying controlled run, tested versions, review date, and evidence can be published together. The first real run is an eight-file Mac pilot with Zush 3.11.0 and RenamerX 1.2.2; its inputs, outputs, and limits are public.',
+    'Scores appear here only with the run behind them: tested versions, date, inputs, every output and the limits. On 25 November 2026 we ran six AI renamers on Windows (Zush, NameQuick, RenameClick, Renamer.ai, FilesDesk and AI Renamer) on the same 30 files and scored them with this rubric; the names were graded blind. Zush scored 94.8 out of 100, ahead of NameQuick at 73.0. The earlier eight-file Mac pilot with Zush 3.11.0 and RenamerX 1.2.2 is public too.',
+  evidenceWindowsLabel: 'Windows run: six AI renamers, 30 files (25 November 2026)',
   evidencePilotLabel: 'Eight-file Mac pilot (5 September 2026)',
   evidenceStatsLabel: 'AI file renaming statistics 2026',
   policyEyebrow: 'Policy',
@@ -170,7 +172,7 @@ const defaultCopy: MethodologyCopy = {
     { label: 'AI file renamer for Windows', href: '/windows' },
   ],
   fileTypesEyebrow: 'File types',
-  fileTypesTitle: 'File types in scope',
+  fileTypesTitle: 'Renaming guides by file type',
   fileTypesLinks: [
     { label: 'Rename PDFs', href: '/rename-pdf-with-ai' },
     { label: 'Rename Screenshots', href: '/rename-screenshots-with-ai' },
@@ -203,6 +205,7 @@ interface Props {
 }
 
 const PILOT_EVIDENCE_PATH = '/benchmarks/ai-file-renamer-pilot-2026-09-05/README.md';
+const WINDOWS_EVIDENCE_PATH = '/benchmarks/windows-ai-renamers-2026-11-25/README.md';
 const copy = Astro.props.copy ?? defaultCopy;
 ---
 
@@ -305,6 +308,9 @@ const copy = Astro.props.copy ?? defaultCopy;
           </Text>
           {copy.evidencePilotLabel && (
             <div class="methodology__links">
+              {copy.evidenceWindowsLabel && (
+                <PillLink href={WINDOWS_EVIDENCE_PATH} withArrow size="sm">{copy.evidenceWindowsLabel}</PillLink>
+              )}
               <PillLink href={PILOT_EVIDENCE_PATH} withArrow size="sm">{copy.evidencePilotLabel}</PillLink>
               {copy.evidenceStatsLabel && (
                 <PillLink href={INDEX_PATH} withArrow size="sm">{copy.evidenceStatsLabel}</PillLink>

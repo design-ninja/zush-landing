@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Zush's $48 one-time license includes managed Zush Cloud AI, BYOK and local models, unlimited renames, all future updates and up to 3 devices. FilesDesk's managed AI is a credit subscription that needs a sign-in; its $40 Self-Managed license is BYOK or local only, binds to one device, and includes 1 year of updates. FilesDesk adds Watch Inbox and vLLM."
-reviewed: "2026-11-17"
+reviewed: "2026-11-25"
 ---
 
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -19,7 +19,7 @@ import BlogSources from '@/components/blog/BlogSources.astro';
 
 Quick answer: choose [Zush](/) if you want one payment that includes managed cloud AI, unlimited renames, and precise naming control. <BlogHighlight>$48 one-time</BlogHighlight> covers Zush Cloud AI, BYOK, and local models on up to 3 Mac or Windows devices, and the first 50 renames need no account. Choose FilesDesk if you want email attachments from Gmail, iCloud, or IMAP renamed automatically (Watch Inbox), or you run vLLM. Its managed AI is a credit subscription with a sign-in, and its $40 lifetime license is your own key or local model only.
 
-**How we checked:** Written by the maker of [Zush](/). Competitor prices, features and ratings were checked on vendor sites and official stores on November 17, 2026 ([sources below](#sources-and-how-we-checked)). This compares documented features, not a lab test.
+**How we checked:** Written by the maker of [Zush](/). On November 25, 2026 we ran Zush and FilesDesk on Windows 11 with the same 30 files ([results below](#tested-side-by-side-on-windows)). Prices, features and ratings were checked on vendor sites and official stores on November 17, 2026 ([sources below](#sources-and-how-we-checked)).
 
 ## TL;DR comparison
 
@@ -52,6 +52,24 @@ Quick answer: choose [Zush](/) if you want one payment that includes managed clo
     { href: '/pricing', label: 'Pricing' },
   ]}
 />
+
+## Tested side by side on Windows
+
+On November 25, 2026 we gave Zush, FilesDesk and four other AI renamers the same 30 files on Windows 11 (ARM64, in a virtual machine): 20 everyday documents, 4 of them scans with no text layer, plus RAW, JPG and HEIC photos. Every app ran with its default settings, and a separate grader scored the filenames without knowing which app made them. Scores use our [published rubric](/methodology); the [inputs, every name and the scores](/benchmarks/windows-ai-renamers-2026-11-25/README.md) are public.
+
+| | Zush | FilesDesk |
+|---|---|---|
+| Account before the first result | <BlogHighlight>None</BlogHighlight> | Browser sign-in |
+| Files accepted (of 30) | <BlogHighlight>30</BlogHighlight> | 24; RAW and HEIC photos were dropped without a message |
+| Files renamed on the free tier | <BlogHighlight>30 (50 free renames)</BlogHighlight> | 15; with 24 selected it refused to start |
+| Scans without a text layer | 4 of 4 | 4 of 4 |
+| Undo the batch | <BlogHighlight>Undo All, one click</BlogHighlight> | One file at a time |
+| Score out of 100 | <BlogHighlight>94.8</BlogHighlight> | 52.5 |
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/filesdesk-not-enough-credits.webp" alt="FilesDesk on Windows showing the message Not enough credits: 24 files selected but only 15 credits left." width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>FilesDesk in our test: the batch stops when it is larger than the free credits.</figcaption>
+</figure>
 
 ## Zush
 

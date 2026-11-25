@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "AI Renamer Desktop caught up fast in November 2026: a Watch Folder beta, plus video, audio, RAW, HEIC, Office and EPUB support and Linux builds. Pick Zush for persistent Rename History with batch undo, a $48 license that includes managed cloud AI on 3 devices across Mac and Windows, and a first run with no sign-in. Pick AI Renamer for the $19 local license or Linux. The open-source ai-renamer CLI is a separate project."
-reviewed: "2026-11-17"
+reviewed: "2026-11-25"
 featuredOrder: 4
 ---
 
@@ -20,9 +20,9 @@ import BlogSources from '@/components/blog/BlogSources.astro';
 
 Quick answer: **[Zush](/) is the better pick for most people on Mac and Windows**, because every batch stays reversible in Rename History, the $48 one-time price includes managed cloud AI, and the first rename needs no sign-in. Pick AI Renamer Desktop for the cheapest one-time license ($19, your own key or a local model) or for Linux.
 
-**How we checked:** Written by the maker of [Zush](/). Competitor prices, features and ratings were checked on vendor sites and official stores on November 17, 2026 ([sources below](#sources-and-how-we-checked)). This compares documented features, not a lab test.
+**How we checked:** Written by the maker of [Zush](/). On November 25, 2026 we ran Zush and AI Renamer on Windows 11 with the same 30 files ([results below](#tested-side-by-side-on-windows)). Prices, features and ratings were checked on vendor sites and official stores on November 17, 2026 ([sources below](#sources-and-how-we-checked)).
 
-Both apps now watch folders and handle video, RAW and Office files, so the decision is about recovery, what the license covers, and platform. Two unrelated products also share the name. **AI Renamer Desktop** is a commercial app at airenamer.app. **AI Renamer CLI** is `ozgrozer/ai-renamer` on GitHub, a free GPL-3.0 Node.js tool. Both are compared below.
+Both apps now watch folders and handle video, RAW and Office files, so the decision is about recovery, what the license covers, and platform. Two products from the same developer share the name. **AI Renamer Desktop** is a commercial app at airenamer.app. **AI Renamer CLI** is `ozgrozer/ai-renamer` on GitHub, a free GPL-3.0 Node.js tool. Both are compared below.
 
 ## Zush vs AI Renamer at a glance
 
@@ -50,6 +50,24 @@ Both apps now watch folders and handle video, RAW and Office files, so the decis
     { href: '/docs/supported-file-types', label: 'Supported file types' },
   ]}
 />
+
+## Tested side by side on Windows
+
+On November 25, 2026 we gave Zush, AI Renamer and four other AI renamers the same 30 files on Windows 11 (ARM64, in a virtual machine): 20 everyday documents, 4 of them scans with no text layer, plus RAW, JPG and HEIC photos. Every app ran with its default settings, and a separate grader scored the filenames without knowing which app made them. Scores use our [published rubric](/methodology); the [inputs, every name and the scores](/benchmarks/windows-ai-renamers-2026-11-25/README.md) are public.
+
+| | Zush | AI Renamer |
+|---|---|---|
+| Account before the first result | <BlogHighlight>None</BlogHighlight> | Google sign-in |
+| Files renamed (of 30) | <BlogHighlight>30</BlogHighlight> | 10 (its free credits); every text document failed |
+| Scans without a text layer | <BlogHighlight>4 of 4</BlogHighlight> | 1 of 4 |
+| Applying names | One click | Rename All stayed disabled until 20 failed files were removed by hand |
+| Undo | <BlogHighlight>Undo All, all 30 restored</BlogHighlight> | None; names were restored by hand |
+| Score out of 100 | <BlogHighlight>94.8</BlogHighlight> | 37.2 |
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/airenamer-failed-documents.webp" alt="AI Renamer on Windows with a photo renamed and several documents such as Book1.xlsx and CV_final_v2.pdf marked with red failure bars." width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>AI Renamer in our test: text documents failed without an error message.</figcaption>
+</figure>
 
 ## Zush
 
@@ -92,7 +110,7 @@ It fits developers who want a scriptable terminal step. For everyday file manage
 
 This is the clearest difference between the two desktop apps. Zush's [Rename History](/docs/undo-history) is stored on disk, so you can revert a batch days later, after restarts. Undo All flags conflicts, such as a new file now using an old name, and offers to restore under a new name. Duplicate copies moved to the Trash during AI Rename come back with Undo too.
 
-AI Renamer keeps a History list of what was renamed but documents no way to reverse it. If 5% of a 500-file batch comes out wrong, plan to fix those by hand, or test on copies first.
+AI Renamer keeps a History list of what was renamed but has no way to reverse it; in our test we restored the names by hand. If 5% of a 500-file batch comes out wrong, plan to fix those by hand, or test on copies first.
 
 ## Folder monitoring
 
@@ -160,7 +178,7 @@ With Ollama or LM Studio, both apps keep analysis on your computer. AI Renamer's
 
 ### Are AI Renamer Desktop and the AI Renamer CLI from the same company?
 
-No. The CLI is `ozgrozer/ai-renamer` on GitHub, licensed GPL-3.0. The desktop app at airenamer.app is a separate commercial product. They share a name but not a codebase, pricing or support, so check which one a review or tutorial is talking about.
+Yes, the same developer. The GitHub account ozgrozer publishes both the free GPL-3.0 CLI (`ozgrozer/ai-renamer`) and the desktop app's installers (`ozgrozer/airenamer-releases`). They are separate products with different features and pricing, so check which one a review or tutorial is talking about.
 
 ### Does AI Renamer run on Linux?
 

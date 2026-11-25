@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Zush's $48 one-time license includes managed Zush Cloud AI, BYOK and local models, unlimited renames, and up to 3 Mac or Windows devices. NameQuick Managed counts a rename when it is suggested; its $69 Self-Managed license is BYOK or local only on one computer. NameQuick is stronger for email invoice import, content search and MLX."
-reviewed: "2026-11-17"
+reviewed: "2026-11-25"
 featuredOrder: 3
 ---
 
@@ -21,7 +21,7 @@ import BlogSources from '@/components/blog/BlogSources.astro';
 
 Quick answer: choose [Zush](/) if you want a one-time license that includes managed cloud AI. <BlogHighlight>$48 one-time</BlogHighlight> (or $10/month) covers unlimited renames in every mode on up to 3 Mac or Windows devices, and the first 50 renames need no account, card, or API key. Choose NameQuick if you mostly rename documents and want email invoice import, a local content-search index, or MLX on Apple Silicon. Its Managed plans count a rename when it is suggested, and its $69 Self-Managed license is your own key or local model only, on one computer.
 
-**How we checked:** Written by the maker of [Zush](/). Competitor prices, features and ratings were checked on vendor sites and official stores on November 17, 2026 ([sources below](#sources-and-how-we-checked)). This compares documented features, not a lab test.
+**How we checked:** Written by the maker of [Zush](/). On November 25, 2026 we ran Zush and NameQuick on Windows 11 with the same 30 files ([results below](#tested-side-by-side-on-windows)). Prices, features and ratings were checked on vendor sites and official stores on November 17, 2026 ([sources below](#sources-and-how-we-checked)).
 
 ## TL;DR comparison
 
@@ -55,6 +55,26 @@ Quick answer: choose [Zush](/) if you want a one-time license that includes mana
     { href: '/docs/byok', label: 'BYOK setup' },
   ]}
 />
+
+## Tested side by side on Windows
+
+On November 25, 2026 we gave Zush, NameQuick and four other AI renamers the same 30 files on Windows 11 (ARM64, in a virtual machine): 20 everyday documents, 4 of them scans with no text layer, plus RAW, JPG and HEIC photos. Every app ran with its default settings, and a separate grader scored the filenames without knowing which app made them. Scores use our [published rubric](/methodology); the [inputs, every name and the scores](/benchmarks/windows-ai-renamers-2026-11-25/README.md) are public.
+
+| | Zush | NameQuick |
+|---|---|---|
+| Files renamed (of 30) | 30 | 30 |
+| Files taken in one go | <BlogHighlight>All 30</BlogHighlight> | 10 in onboarding, 20 more through a watched folder |
+| Time to name the set | <BlogHighlight>About 22 seconds</BlogHighlight> | About 167 seconds |
+| Undo the batch | <BlogHighlight>Undo All, all 30 restored in 0.6 s</BlogHighlight> | "Undo last run" restored 1 file; 29 more clicks |
+| Naming style | One style for the whole batch | Mixed upper and lower case |
+| Score out of 100 | <BlogHighlight>94.8</BlogHighlight> | 73.0 |
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/namequick-history-undo.webp" alt="NameQuick History listing renamed documents with an Undo button per file." width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>NameQuick History in our test: undo works one file at a time.</figcaption>
+</figure>
+
+NameQuick's names were accurate, and it added dates to most documents without setup; with a one-line Custom AI Block Zush added printed dates to 16 of 20 documents.
 
 ## Zush
 

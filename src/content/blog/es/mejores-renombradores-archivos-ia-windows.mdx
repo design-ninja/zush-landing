@@ -8,8 +8,8 @@ topic: "comparisons"
 tags:
   - "Cambio de nombre de archivos AI"
   - "Comparaciones de herramientas"
-tldr: "El mejor en general para Windows: Zush. Se instala desde Microsoft Store, renombra 50 archivos gratis sin cuenta, tarjeta ni clave de API, y su licencia de pago único de $48 incluye IA gestionada en la nube más BYOK, Ollama y LM Studio en hasta 3 PC o Mac. Cada lote se revisa antes y queda en Rename History con deshacer por lotes. FilesDesk encaja con adjuntos de correo, RenameClick con un modelo local incluido, AI Renamer con una licencia local de $19, Renamer.ai con plantillas de documentos y NameQuick con reglas."
-reviewed: "2026-11-17"
+tldr: "El mejor en general para Windows: Zush, que obtuvo 94,8 sobre 100 en nuestra prueba de seis renombradores con IA con los mismos 30 archivos (NameQuick quedó segundo con 73,0). Se instala desde Microsoft Store, renombra 50 archivos gratis sin cuenta, tarjeta ni clave de API, y su licencia de pago único de $48 incluye IA gestionada en la nube más BYOK, Ollama y LM Studio en hasta 3 PC o Mac. Cada lote se revisa antes y queda en Rename History con deshacer por lotes. FilesDesk encaja con adjuntos de correo, RenameClick con un modelo local incluido, AI Renamer con una licencia local de $19, Renamer.ai con plantillas de documentos y NameQuick con reglas."
+reviewed: "2026-11-25"
 featuredOrder: 1
 locale: "es"
 translationOf: "best-ai-file-renamer-tools-windows-compared"
@@ -23,7 +23,7 @@ import BlogSources from '@/components/blog/BlogSources.astro';
 
 **En Windows, nuestra elección es [Zush](/windows)**: se instala desde Microsoft Store, da 50 renombrados gratis sin cuenta, tarjeta ni clave de API, y su licencia de pago único de $48 incluye IA gestionada en la nube en hasta 3 dispositivos. Un renombrador con IA lee lo que hay dentro de cada archivo y le escribe un nombre descriptivo. FilesDesk, RenameClick, AI Renamer, Renamer.ai y NameQuick encajan en casos más concretos, que verás a continuación.
 
-**Cómo lo comprobamos:** escrito por el creador de [Zush](/). Los precios, funciones y valoraciones de la competencia se revisaron en las webs de los fabricantes y en las tiendas oficiales el 17 de noviembre de 2026 ([fuentes más abajo](#sources-and-how-we-checked)). Esto compara funciones documentadas, no es una prueba de laboratorio.
+**Cómo lo comprobamos:** escrito por el creador de [Zush](/). El 25 de noviembre de 2026 instalamos las seis apps en Windows 11 y les dimos a todas los mismos 30 archivos ([resultados de la prueba más abajo](#probamos-los-seis-con-los-mismos-30-archivos)). Los precios, funciones y valoraciones se revisaron en las webs de los fabricantes y en las tiendas oficiales el 17 de noviembre de 2026 ([fuentes más abajo](#sources-and-how-we-checked)).
 
 ## Los 7 renombradores con IA para Windows de un vistazo
 
@@ -31,11 +31,37 @@ import BlogSources from '@/components/blog/BlogSources.astro';
 |---|---|---|---|---|---|---|
 | <BlogHighlight>**1. Zush**</BlogHighlight> | 50 renombrados con IA, sin cuenta, tarjeta ni clave | $10/mes o $48 pago único | Sí, en los dos planes | Sí | Rename History persistente, deshacer por lotes | Quieres que funcione ya y pagar una sola vez |
 | 2. FilesDesk | 15 créditos, con inicio de sesión | $8 o $20/mes; $40 Self-Managed | Solo en suscripciones | Watch Folders + Watch Inbox | Historial + deshacer | También quieres renombrar adjuntos de correo |
-| 3. RenameClick | 100 renombrados o movimientos al mes | $36 + IVA Lifetime | No: modelo local o clave propia | Auto Flow, mientras la app está abierta | 10 entradas en memoria | Quieres un modelo local incluido, sin Ollama |
-| 4. AI Renamer | 10 créditos en la nube, inicio de sesión con Google | $19 Local; $10 por 200 créditos | Se vende aparte | Watch Folder beta, con la app abierta, sin subcarpetas | No documentado | Quieres la licencia local más barata o Linux |
+| 3. RenameClick | 100 renombrados o movimientos al mes | $36 + IVA Lifetime | No: modelo local o clave propia | Auto Flow, mientras la app está abierta | Deshacer la última acción; historial en memoria | Quieres un modelo local incluido, sin Ollama |
+| 4. AI Renamer | 10 créditos en la nube, inicio de sesión con Google | $19 Local; $10 por 200 créditos | Se vende aparte | Watch Folder beta, con la app abierta, sin subcarpetas | Ninguno en nuestra prueba | Quieres la licencia local más barata o Linux |
 | 5. Renamer.ai | 25 archivos al mes | $9.95–$99.95/mes | Sí, por uso | Magic Folders | Deshacer | Renombras documentos y quieres modo local gratis |
-| 6. NameQuick | 30 renombrados Managed, sin tarjeta | Desde $12/mes; $69 Self-Managed | Solo en los planes Managed | Carpetas vigiladas | Historial + deshacer (puede fallar si el archivo se movió) | Quieres un motor de reglas |
+| 6. NameQuick | 30 renombrados Managed, sin tarjeta | Desde $12/mes; $69 Self-Managed | Solo en los planes Managed | Carpetas vigiladas | Historial, deshacer archivo por archivo | Quieres un motor de reglas |
 | 7. PowerShell/Python a medida | Software gratuito | Lo que cueste tu API o tu modelo | Lo construyes tú | Lo construyes tú | Lo construyes tú | Construir el flujo forma parte de tu trabajo |
+
+## Probamos los seis con los mismos 30 archivos
+
+El 25 de noviembre de 2026 ejecutamos cada app en Windows 11 Pro (ARM64, en una máquina virtual) con su configuración predeterminada. El conjunto tenía 30 archivos: 20 documentos cotidianos, 4 de ellos PDF escaneados sin capa de texto, más 3 fotos RAW, 4 JPG y 3 HEIC. Cada resultado se puntuó con nuestra [rúbrica publicada](/methodology), y un evaluador independiente puntuó cada nombre de archivo sin saber qué app lo había generado. Los [datos completos, los archivos de entrada y todos los nombres](/benchmarks/windows-ai-renamers-2026-11-25/README.md) son públicos.
+
+| App | Archivos renombrados (de 30) | Cuenta o clave antes del primer resultado | Escaneos sin texto | Deshacer el lote entero | Puntuación / 100 |
+|---|---|---|---|---|---|
+| <BlogHighlight>**Zush**</BlogHighlight> | **30** | **Ninguna** | **4 de 4** | **Un clic, los 30 restaurados** | **94,8** |
+| NameQuick | 30 | Ninguna | 4 de 4 | Por archivo (30 acciones) | 73,0 |
+| RenameClick | 27, RAW omitidos | Tu propia clave de API | 4 de 4 | Una acción | 70,2 |
+| Renamer.ai (web) | 25, RAW rechazados | Cuenta | 4 de 4 | Descarga copias renombradas | 56,8 |
+| FilesDesk | 15, créditos gratis; RAW y HEIC descartados | Cuenta | 4 de 4 | Por archivo | 52,5 |
+| AI Renamer | 10, fallaron todos los documentos de texto | Cuenta de Google | 1 de 4 | Ninguno | 37,2 |
+
+Lo que más nos llamó la atención:
+
+- **Zush** nombró los 30 archivos en unos 22 segundos y aplicó los nombres en menos de 2 segundos. Undo All devolvió los 30 nombres originales en 0,6 segundos, y lo comprobamos archivo por archivo. Con un solo Custom AI Block escrito en lenguaje corriente, añadió la fecha impresa a 16 de los 20 nombres de documentos. Con 33 archivos que incluían 3 copias, Sort into folders colocó cada archivo en una carpeta y marcó las 3 copias.
+- **NameQuick** nombró bien todos los archivos, pero el proceso de bienvenida solo tomó los 10 primeros. Los otros 20 pasaron por una carpeta vigilada, y los 30 nombres tardaron casi tres minutos. Deshacerlos supuso un clic por archivo.
+- **RenameClick** no trae IA propia, así que necesita tu clave de API o un modelo local de 4 GB. Con la clasificación activada, movió 21 de 33 archivos y puso su etiqueta de duplicado en los originales.
+- **Renamer.ai** rechazó toda la selección por culpa de tres fotos RAW. Su app de escritorio no arrancó en nuestro equipo, así que usamos la app web.
+- **FilesDesk** y **AI Renamer** se quedaron sin créditos gratis antes de terminar el conjunto, y AI Renamer no tiene ningún deshacer.
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/zush-sort-into-folders-duplicates.webp" alt="Zush en Windows mostrando la vista previa de archivos renombrados agrupados en carpetas, con una copia exacta marcada como DUPLICATE junto al original, antes de Rename and sort." width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>Zush agrupa los archivos renombrados en carpetas y marca las copias exactas antes de mover nada.</figcaption>
+</figure>
 
 ¿Usas Mac? Consulta la [clasificación de renombradores con IA para Mac](/blog/best-ai-file-renamer-tools-mac-compared). Para herramientas de Linux, web y API, consulta la [visión multiplataforma de 10 renombradores con IA](/blog/best-ai-file-renamer-tools-2026).
 
@@ -115,6 +141,18 @@ Las herramientas de patrones como PowerRename aplican una sola regla a todos los
 
 <BlogCTA placement='inline' platform='windows' />
 
+En nuestra prueba renombró los 30 archivos, escaneos y RAW incluidos, y obtuvo 94,8 sobre 100. Lo que escribes en un Custom AI Block o en las reglas de carpetas son frases normales, no patrones:
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/zush-custom-ai-block-date.webp" alt="Diálogo New Custom AI Block de Zush con una instrucción en inglés sencillo para encontrar la fecha principal impresa en cada archivo y devolverla como YYYY-MM-DD." width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>Un Custom AI Block en Zush: una sola frase añade la fecha impresa al nombre de cada documento.</figcaption>
+</figure>
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/zush-folder-rules-prompt.webp" alt="Diálogo Folder rules de Zush con un párrafo que nombra ocho carpetas, como Bills & Invoices, Work & Pay y Travel, y lo que va en cada una." width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>Reglas de carpetas en Zush: describes tus carpetas en un párrafo, y 32 de los 33 archivos de prueba acabaron donde decían las reglas.</figcaption>
+</figure>
+
 Una licencia cubre hasta 3 dispositivos entre Windows y Mac. Puedes [exportar Templates](/docs/template-import-export) e importarlos en otro ordenador. Para agrupar además los archivos en carpetas, consulta [clasificar archivos en carpetas con IA en Windows](/blog/sort-files-into-folders-with-ai-windows).
 
 ![Zush en Windows mostrando la vista previa de nombres y grupos de carpetas por contenido antes de Rename & sort](/images/showcase/windows/folder-sorting-light.webp)
@@ -123,11 +161,25 @@ Una licencia cubre hasta 3 dispositivos entre Windows y Mac. Puedes [exportar Te
 
 FilesDesk funciona en Windows y Mac y aparece en Microsoft Store. Tiene Watch Folders, una Watch Inbox que renombra adjuntos de Gmail, iCloud o IMAP, plantillas e historial con deshacer. Empiezas con 15 créditos gratis tras iniciar sesión. La IA gestionada solo está en suscripción: $8 al mes por 500 créditos o $20 al mes por 2.000 ($80 o $200 al año), a 1 crédito por cada sugerencia de nombre con IA; volver a procesar un archivo gasta otro crédito. La licencia Self-Managed de $40 usa tu propia clave o un modelo local (Ollama, LM Studio, vLLM), se vincula a 1 dispositivo, incluye un año de actualizaciones y tiene un plazo de reembolso de 3 días.
 
+**En nuestra prueba:** primero hubo que iniciar sesión. FilesDesk dejó fuera sin avisar todas las fotos RAW y HEIC, y con 24 archivos seleccionados se negó a empezar hasta que redujimos el lote a sus 15 créditos gratis. Deshacer funciona archivo por archivo.
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/filesdesk-not-enough-credits.webp" alt="FilesDesk en Windows mostrando el mensaje Not enough credits: 24 archivos seleccionados pero solo quedan 15 créditos." width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>FilesDesk detiene todo el lote cuando la selección supera los créditos gratis.</figcaption>
+</figure>
+
 **Elige FilesDesk si** quieres que los adjuntos de correo se renombren a medida que llegan. **Punto débil:** la licencia de pago único no incluye IA gestionada. Consulta [Zush vs FilesDesk](/blog/zush-vs-filesdesk).
 
 ## 3. RenameClick
 
-RenameClick (ahora en rename.click, versión 4.1.2) incluye un modelo local y también funciona con Ollama, LM Studio o tu propia clave en la nube. La versión 4.1.2 añadió vídeo para MP4, MOV, M4V y 3GP; MKV, WebM y AVI no son compatibles, como tampoco los RAW de cámara ni los archivos de diseño. Auto Flow renombra y mueve archivos mientras la app está abierta. El plan gratuito permite 100 renombrados o movimientos al mes; Lifetime cuesta $36 + IVA para hasta 3 dispositivos en las versiones directas.
+RenameClick (rename.click; probamos la 4.1.4 de Microsoft Store) incluye un modelo local y también funciona con Ollama, LM Studio o tu propia clave en la nube. La versión 4.1.2 añadió vídeo para MP4, MOV, M4V y 3GP; MKV, WebM y AVI no son compatibles, como tampoco los RAW de cámara ni los archivos de diseño. Auto Flow renombra y mueve archivos mientras la app está abierta. El plan gratuito permite 100 renombrados o movimientos al mes; Lifetime cuesta $36 + IVA para hasta 3 dispositivos en las versiones directas.
+
+**En nuestra prueba:** la IA no hizo nada hasta que añadimos una clave de OpenAI. Se saltó los tres archivos RAW sin ningún mensaje y nombró los otros 27 en unos dos minutos; Undo revirtió el lote entero. Con la clasificación activada, movió 21 de 33 archivos y dejó 7 documentos sin clasificar ni renombrar.
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/renameclick-sort-preview.webp" alt="Vista previa de clasificación de RenameClick con etiquetas DUPLICATE en varios archivos y algunos documentos todavía marcados como Needs your choice." width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>RenameClick te pide elegir carpeta para los archivos que no pudo colocar.</figcaption>
+</figure>
 
 **Elige RenameClick si** quieres IA local sin configurar Ollama. **Punto débil:** el modelo incluido es una descarga de unos 4 GB con 16 GB de RAM recomendados, y Undo guarda 10 entradas en memoria que se borran al reiniciar. Consulta [Zush vs RenameClick](/blog/zush-vs-renameclick).
 
@@ -135,19 +187,40 @@ RenameClick (ahora en rename.click, versión 4.1.2) incluye un modelo local y ta
 
 AI Renamer (airenamer.app) es una app de escritorio para Windows, Mac y Linux. La versión 1.9.0 añadió una Watch Folder (beta) que solo funciona con la app abierta y no entra en subcarpetas; la versión 1.10.0 añadió vídeo, audio, RAW, HEIC, Office y EPUB. Local Mode cuesta $19 de pago único con tu propia clave, Ollama o LM Studio; los créditos en la nube cuestan $10 por 200, con 10 gratis tras iniciar sesión con Google. No se indica política de reembolso y las compras de créditos son definitivas.
 
-No lo confundas con [`ozgrozer/ai-renamer`](https://github.com/ozgrozer/ai-renamer), una herramienta de línea de comandos gratuita con licencia GPL-3.0 en GitHub que es un proyecto sin relación.
+El mismo desarrollador publica [`ozgrozer/ai-renamer`](https://github.com/ozgrozer/ai-renamer), una herramienta de línea de comandos gratuita con licencia GPL-3.0 en GitHub; la app de escritorio es un producto aparte con sus propios instaladores.
 
-**Elige AI Renamer si** quieres la licencia local de pago único más barata o necesitas Linux. **Punto débil:** no documenta ningún deshacer. Consulta [Zush vs AI Renamer](/blog/zush-vs-airenamer).
+**En nuestra prueba:** la app se abre en una pantalla de inicio de sesión con Google. Todos los documentos de texto (PDF, Word, Excel, RTF, TXT) fallaron con una barra roja y sin explicación, y Rename All siguió desactivado hasta que quitamos a mano los 20 archivos fallidos. Por defecto, los nombres se cortan a 25 caracteres, y la pestaña History muestra los nombres antiguos y nuevos sin ninguna forma de deshacer.
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/airenamer-failed-documents.webp" alt="AI Renamer en Windows con una foto renombrada y varios documentos, como Book1.xlsx y CV_final_v2.pdf, marcados con barras rojas de error." width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>AI Renamer: los documentos de texto fallaron sin ningún mensaje de error.</figcaption>
+</figure>
+
+**Elige AI Renamer si** quieres la licencia local de pago único más barata o necesitas Linux. **Punto débil:** no tiene ningún deshacer. Consulta [Zush vs AI Renamer](/blog/zush-vs-airenamer).
 
 ## 5. Renamer.ai
 
 Renamer.ai es un renombrador centrado en documentos, con apps para Windows y Mac y una interfaz web. No está en Microsoft Store. Incluye Magic Folders, plantillas, OCR, vista previa y deshacer, y el modo local está disponible en todos los planes, incluido el plan gratuito Starter (25 archivos al mes). Los planes en la nube son Pro $9.95 al mes (200 archivos), Power $29.95 (1.000) y Ultimate $99.95 (5.000), un 15 % menos con facturación anual. BYOK es exclusivo de Ultimate. Su lista de formatos no incluye ningún RAW de cámara, PSD, Sketch ni Figma.
 
+**En nuestra prueba:** la app de escritorio para Windows (5.0.8) se detuvo al arrancar con un error de inicio de sesión guardado, así que usamos la app web tras crear una cuenta. Rechazó NEF, ARW y CR3, lo que tumbó toda la selección, y de una subida de 25 archivos renombró 15 y omitió 10 sin avisar. Los nombres de los documentos eran detallados. La app web sube tus archivos y te devuelve copias renombradas para descargar.
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/renamerai-raw-not-supported.webp" alt="Mensaje de la app web de Renamer.ai Unsupported extensions: los tipos de archivo NEF, ARW y CR3 no son compatibles." width="1600" height="669" loading="lazy" decoding="async" />
+  <figcaption>Renamer.ai no acepta archivos RAW de cámara.</figcaption>
+</figure>
+
 **Elige Renamer.ai si** sobre todo renombras documentos y quieres procesamiento local gratuito. **Punto débil:** no hay licencia de pago único, así que el renombrado con la nube gestionada es un contador mensual. Consulta [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai) o las [alternativas a Renamer.ai](/blog/renamer-ai-alternatives).
 
 ## 6. NameQuick
 
-NameQuick funciona en Windows (instalador x64; los PC ARM usan emulación) y Mac, con Watch Folders, Rules, búsqueda por contenido y deshacer. La versión actual es la 3.0.57. Da 30 renombrados Managed sin correo ni tarjeta; la prueba Managed de 14 días con 70 renombrados pide tarjeta, mientras que la prueba Self-Managed no. Los planes Managed empiezan en $12 al mes, con paquetes de renombrados de $19 por 500 o $39 por 1.500, válidos 12 meses. Self-Managed cuesta $69 de pago único para un ordenador, con actualizaciones de por vida y reembolso en 14 días; los costes de IA van aparte.
+NameQuick funciona en Windows (instalador x64; los PC ARM usan emulación) y Mac, con Watch Folders, Rules, búsqueda por contenido y deshacer. Probamos la 3.0.59 de Microsoft Store. Da 30 renombrados Managed sin correo ni tarjeta; la prueba Managed de 14 días con 70 renombrados pide tarjeta, mientras que la prueba Self-Managed no. Los planes Managed empiezan en $12 al mes, con paquetes de renombrados de $19 por 500 o $39 por 1.500, válidos 12 meses. Self-Managed cuesta $69 de pago único para un ordenador, con actualizaciones de por vida y reembolso en 14 días; los costes de IA van aparte.
+
+**En nuestra prueba:** NameQuick no pidió cuenta y nombró con precisión los 30 archivos, con fechas en la mayoría de los documentos. Eso sí, su proceso de bienvenida solo tomó los 10 primeros archivos y los otros 20 pasaron por una carpeta vigilada, así que los 30 nombres tardaron unos 167 segundos. "Undo last run" restauró un archivo; el resto necesitó un clic por archivo en History.
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/namequick-history-undo.webp" alt="Historial de NameQuick con documentos renombrados y un botón Undo para cada archivo." width="1600" height="756" loading="lazy" decoding="async" />
+  <figcaption>Historial de NameQuick: deshacer funciona archivo por archivo.</figcaption>
+</figure>
 
 **Elige NameQuick si** quieres un motor de reglas encima de los nombres con IA. **Punto débil:** la licencia de pago único cubre un ordenador y no incluye IA gestionada. Consulta [Zush vs NameQuick](/blog/zush-vs-namequick).
 
@@ -165,7 +238,7 @@ Puedes construir tu propio flujo: leer archivos, enviar texto o imágenes a un m
 | Dispositivos | 3, Windows + Mac | El fabricante no lo indica | Hasta 3 (versiones directas) | 1 dispositivo | 1 ordenador |
 | Actualizaciones | Todas las futuras | El fabricante no lo indica | De por vida | 1 año | De por vida |
 | Reembolso | 14 días | No se indica | Solo donde la ley lo exige | 3 días | 14 días |
-| Historial / deshacer | Persistente, deshacer por lotes | No documentado | En memoria, 10 entradas | Historial + deshacer | Historial + deshacer |
+| Historial / deshacer | Persistente, deshacer por lotes | Ninguno en nuestra prueba | Deshacer la última acción, en memoria | Deshacer por archivo | Deshacer por archivo |
 
 ## Fuentes y cómo lo comprobamos
 
@@ -179,11 +252,11 @@ Un software renombrador con IA lee el contenido de cada archivo (el texto del do
 
 ### ¿Cuál es el mejor renombrador de archivos con IA para Windows?
 
-Nuestra elección es Zush. Se instala desde Microsoft Store, da 50 renombrados con IA gratis sin cuenta, tarjeta ni clave de API, y su licencia de pago único de $48 incluye IA gestionada en la nube, BYOK, Ollama y LM Studio en hasta 3 dispositivos. Cada lote se revisa antes y queda en Rename History con deshacer por lotes. FilesDesk, RenameClick, AI Renamer, Renamer.ai y NameQuick encajan cada uno con necesidades más concretas.
+Nuestra elección es Zush. Se instala desde Microsoft Store, da 50 renombrados con IA gratis sin cuenta, tarjeta ni clave de API, y su licencia de pago único de $48 incluye IA gestionada en la nube, BYOK, Ollama y LM Studio en hasta 3 dispositivos. Cada lote se revisa antes y queda en Rename History con deshacer por lotes. En nuestra prueba de seis apps con los mismos 30 archivos, renombró los 30 y obtuvo 94,8 sobre 100. FilesDesk, RenameClick, AI Renamer, Renamer.ai y NameQuick encajan cada uno con necesidades más concretas.
 
 ### ¿Renamer.ai es lo mismo que AI Renamer?
 
-No. Renamer.ai (renamer.ai) es un renombrador por suscripción para Windows, Mac y web, con planes de $9.95 a $99.95 al mes y modo local en todos los planes. AI Renamer (airenamer.app) es una app de escritorio con un Local Mode de pago único de $19 y paquetes de créditos en la nube de $10. Un tercer proyecto, la herramienta de línea de comandos `ozgrozer/ai-renamer` de GitHub, es gratuito y no tiene relación con ninguno de los dos.
+No. Renamer.ai (renamer.ai) es un renombrador por suscripción para Windows, Mac y web, con planes de $9.95 a $99.95 al mes y modo local en todos los planes. AI Renamer (airenamer.app) es una app de escritorio con un Local Mode de pago único de $19 y paquetes de créditos en la nube de $10. La herramienta de línea de comandos gratuita `ozgrozer/ai-renamer` de GitHub es del mismo desarrollador que AI Renamer, pero es un proyecto aparte.
 
 ### ¿Una licencia de pago único de $48 vale más que una más barata?
 

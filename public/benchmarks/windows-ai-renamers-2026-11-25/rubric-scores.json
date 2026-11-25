@@ -1,0 +1,277 @@
+{
+ "weights": {
+  "accuracy": 0.35,
+  "consistency": 0.2,
+  "automation": 0.15,
+  "safety": 0.15,
+  "fit": 0.15
+ },
+ "checks": {
+  "consistency": {
+   "labels": [
+    "one casing style",
+    "one date format",
+    "no duplicate names",
+    "extensions kept",
+    "no names cut off"
+   ],
+   "zush": [
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "namequick": [
+    0,
+    0,
+    2,
+    2,
+    2
+   ],
+   "renameclick": [
+    2,
+    0,
+    2,
+    2,
+    2
+   ],
+   "filesdesk": [
+    2,
+    0,
+    2,
+    2,
+    2
+   ],
+   "renamerai": [
+    2,
+    0,
+    2,
+    2,
+    2
+   ],
+   "airenamer": [
+    2,
+    2,
+    2,
+    2,
+    0
+   ]
+  },
+  "automation": {
+   "labels": [
+    "folder watching",
+    "sorting into folders",
+    "duplicate handling",
+    "editable naming templates",
+    "custom AI fields"
+   ],
+   "zush": [
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "namequick": [
+    2,
+    1,
+    0,
+    2,
+    0
+   ],
+   "renameclick": [
+    2,
+    1,
+    1,
+    2,
+    0
+   ],
+   "filesdesk": [
+    2,
+    2,
+    0,
+    2,
+    0
+   ],
+   "renamerai": [
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "airenamer": [
+    2,
+    0,
+    0,
+    1,
+    0
+   ]
+  },
+  "safety": {
+   "labels": [
+    "preview before rename",
+    "undo one file",
+    "undo whole batch in one step",
+    "history view",
+    "full restore verified by sha256"
+   ],
+   "zush": [
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "namequick": [
+    2,
+    2,
+    0,
+    2,
+    2
+   ],
+   "renameclick": [
+    2,
+    0,
+    2,
+    1,
+    1
+   ],
+   "filesdesk": [
+    2,
+    2,
+    0,
+    2,
+    2
+   ],
+   "renamerai": [
+    2,
+    0,
+    0,
+    2,
+    2
+   ],
+   "airenamer": [
+    2,
+    0,
+    0,
+    2,
+    0
+   ]
+  },
+  "fit": {
+   "labels": [
+    "no account or key before first result",
+    "native build for the platform (ARM64)",
+    "takes all 30 files in one go",
+    "free tier covers the 30-file set",
+    "all names ready within 60 s (1 pt within 180 s)"
+   ],
+   "zush": [
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "namequick": [
+    2,
+    0,
+    1,
+    2,
+    1
+   ],
+   "renameclick": [
+    1,
+    0,
+    1,
+    2,
+    1
+   ],
+   "filesdesk": [
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   "renamerai": [
+    0,
+    0,
+    0,
+    1,
+    1
+   ],
+   "airenamer": [
+    0,
+    0,
+    2,
+    0,
+    0
+   ]
+  }
+ },
+ "scores": {
+  "zush": {
+   "accuracy": 8.5,
+   "namesGraded": 30,
+   "accuracyPoints": 51,
+   "consistency": 10,
+   "automation": 10,
+   "safety": 10,
+   "fit": 10,
+   "total": 94.8
+  },
+  "namequick": {
+   "accuracy": 9.3,
+   "namesGraded": 30,
+   "accuracyPoints": 56,
+   "consistency": 6,
+   "automation": 5,
+   "safety": 8,
+   "fit": 6,
+   "total": 73
+  },
+  "renameclick": {
+   "accuracy": 8.2,
+   "namesGraded": 27,
+   "accuracyPoints": 49,
+   "consistency": 8,
+   "automation": 6,
+   "safety": 6,
+   "fit": 5,
+   "total": 70.2
+  },
+  "filesdesk": {
+   "accuracy": 4,
+   "namesGraded": 15,
+   "accuracyPoints": 24,
+   "consistency": 8,
+   "automation": 6,
+   "safety": 8,
+   "fit": 1,
+   "total": 52.5
+  },
+  "renamerai": {
+   "accuracy": 7.8,
+   "namesGraded": 25,
+   "accuracyPoints": 47,
+   "consistency": 8,
+   "automation": 1,
+   "safety": 6,
+   "fit": 2,
+   "total": 56.8
+  },
+  "airenamer": {
+   "accuracy": 2.2,
+   "namesGraded": 10,
+   "accuracyPoints": 13,
+   "consistency": 8,
+   "automation": 3,
+   "safety": 4,
+   "fit": 2,
+   "total": 37.2
+  }
+ }
+}

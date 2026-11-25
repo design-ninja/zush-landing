@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Renamer.ai is a document-first renamer with desktop and web apps, local mode on every plan, and monthly file allowances from 25 (free) to 5,000 files; bring-your-own-key is only on the $99.95/month Ultimate plan. Zush costs $48 once with no file cap, includes managed cloud AI plus BYOK and local models, and covers RAW, design files and video. Both have folder monitoring and undo."
-reviewed: "2026-11-17"
+reviewed: "2026-11-25"
 featuredOrder: 2
 ---
 
@@ -20,7 +20,7 @@ import BlogSources from '@/components/blog/BlogSources.astro';
 
 Quick answer: pick [Zush](/) if you want to pay once, rename without a monthly file cap, use your own API key without an expensive tier, or handle RAW photos, design files and video. Pick Renamer.ai if you mostly rename documents and scans and want a web app you can use without installing anything. Both have local AI, folder monitoring, templates and undo, so those are not deciding factors.
 
-**How we checked:** Written by the maker of [Zush](/). Competitor prices, features and ratings were checked on vendor sites and official stores on November 17, 2026 ([sources below](#sources-and-how-we-checked)). This compares documented features, not a lab test.
+**How we checked:** Written by the maker of [Zush](/). On November 25, 2026 we ran Zush and Renamer.ai on Windows 11 with the same 30 files ([results below](#tested-side-by-side-on-windows)). Prices, features and ratings were checked on vendor sites and official stores on November 17, 2026 ([sources below](#sources-and-how-we-checked)).
 
 ## Zush vs Renamer.ai at a glance
 
@@ -52,6 +52,26 @@ Quick answer: pick [Zush](/) if you want to pay once, rename without a monthly f
     { href: '/docs/pricing-limits', label: 'Pricing and limits' },
   ]}
 />
+
+## Tested side by side on Windows
+
+On November 25, 2026 we gave Zush, Renamer.ai and four other AI renamers the same 30 files on Windows 11 (ARM64, in a virtual machine): 20 everyday documents, 4 of them scans with no text layer, plus RAW, JPG and HEIC photos. Every app ran with its default settings, and a separate grader scored the filenames without knowing which app made them. Scores use our [published rubric](/methodology); the [inputs, every name and the scores](/benchmarks/windows-ai-renamers-2026-11-25/README.md) are public.
+
+| | Zush | Renamer.ai |
+|---|---|---|
+| Windows desktop app on our machine | <BlogHighlight>Native ARM64, ran normally</BlogHighlight> | 5.0.8 stopped at launch with a saved sign-in error; web app used |
+| Account before the first result | <BlogHighlight>None</BlogHighlight> | Required |
+| RAW photos (CR3, NEF, ARW) | <BlogHighlight>3 of 3 named</BlogHighlight> | Rejected, and the whole selection with them |
+| Files renamed (of 30) | <BlogHighlight>30</BlogHighlight> | 25 (its monthly free allowance); a 25-file upload renamed 15 and skipped 10 silently |
+| Scans without a text layer | 4 of 4 | 4 of 4 |
+| Score out of 100 | <BlogHighlight>94.8</BlogHighlight> | 56.8 |
+
+<figure class="markdown-figure">
+  <img class="markdown-image markdown-image--screenshot" src="/images/benchmarks/windows-ai-renamers-2026-11-25/renamerai-raw-not-supported.webp" alt="Renamer.ai web app message Unsupported extensions: the file types NEF, ARW, CR3 are not supported." width="1600" height="669" loading="lazy" decoding="async" />
+  <figcaption>Renamer.ai in our test: camera RAW files are not accepted.</figcaption>
+</figure>
+
+Renamer.ai's document names were detailed and accurate. In the web app the originals stay untouched and you download renamed copies; Zush renames the files in place and can undo the batch.
 
 ## Zush
 

@@ -165,6 +165,20 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
   },
 };
 
+const WINDOWS_BENCHMARK_FAQ: Record<Locale, FAQCopyItem> = {
+  en: { question: "How does Zush compare with other AI file renamers on Windows?", answer: "In our November 2026 test of six AI renamers on the same 30 files on Windows 11, Zush scored 94.8 out of 100, ahead of NameQuick (73.0), RenameClick (70.2), Renamer.ai (56.8), FilesDesk (52.5) and AI Renamer (37.2). It renamed all 30 files, including scans and RAW photos, with no account, and Undo All restored the whole batch. The test data is public on the Methodology page." },
+  fr: { question: "Comment Zush se compare-t-il aux autres outils IA de renommage sur Windows ?", answer: "Lors de notre test de novembre 2026, six outils ont renommé les mêmes 30 fichiers sous Windows 11 : Zush a obtenu 94,8 sur 100, devant NameQuick (73,0), RenameClick (70,2), Renamer.ai (56,8), FilesDesk (52,5) et AI Renamer (37,2). Il a renommé les 30 fichiers, scans et photos RAW compris, sans compte, et Undo All a restauré tout le lot. Les données sont publiques sur la page Méthodologie." },
+  de: { question: "Wie schneidet Zush im Vergleich zu anderen KI-Umbenennern unter Windows ab?", answer: "In unserem Test vom November 2026 haben sechs KI-Umbenenner dieselben 30 Dateien unter Windows 11 bearbeitet: Zush erreichte 94,8 von 100 Punkten, vor NameQuick (73,0), RenameClick (70,2), Renamer.ai (56,8), FilesDesk (52,5) und AI Renamer (37,2). Zush hat alle 30 Dateien umbenannt, auch Scans und RAW-Fotos, ohne Konto, und Undo All hat den ganzen Stapel wiederhergestellt. Die Testdaten sind auf der Methodik-Seite öffentlich." },
+  es: { question: "¿Cómo se compara Zush con otros renombradores con IA en Windows?", answer: "En nuestra prueba de noviembre de 2026, seis renombradores con IA procesaron los mismos 30 archivos en Windows 11: Zush obtuvo 94,8 de 100, por delante de NameQuick (73,0), RenameClick (70,2), Renamer.ai (56,8), FilesDesk (52,5) y AI Renamer (37,2). Renombró los 30 archivos, incluidos escaneos y fotos RAW, sin cuenta, y Undo All restauró todo el lote. Los datos de la prueba son públicos en la página de Metodología." },
+  'pt-br': { question: "Como o Zush se compara a outros renomeadores com IA no Windows?", answer: "No nosso teste de novembro de 2026, seis renomeadores com IA receberam os mesmos 30 arquivos no Windows 11: o Zush fez 94,8 de 100, à frente de NameQuick (73,0), RenameClick (70,2), Renamer.ai (56,8), FilesDesk (52,5) e AI Renamer (37,2). Ele renomeou os 30 arquivos, incluindo digitalizações e fotos RAW, sem conta, e o Undo All restaurou o lote inteiro. Os dados do teste são públicos na página de Metodologia." },
+  it: { question: "Come si confronta Zush con altri strumenti IA per rinominare file su Windows?", answer: "Nel nostro test di novembre 2026 sei strumenti IA hanno rinominato gli stessi 30 file su Windows 11: Zush ha ottenuto 94,8 su 100, davanti a NameQuick (73,0), RenameClick (70,2), Renamer.ai (56,8), FilesDesk (52,5) e AI Renamer (37,2). Ha rinominato tutti i 30 file, scansioni e foto RAW comprese, senza account, e Undo All ha ripristinato l’intero batch. I dati del test sono pubblici nella pagina Metodologia." },
+  nl: { question: "Hoe verhoudt Zush zich tot andere AI-bestandshernoemers op Windows?", answer: "In onze test van november 2026 kregen zes AI-hernoemers dezelfde 30 bestanden op Windows 11: Zush scoorde 94,8 van de 100, voor NameQuick (73,0), RenameClick (70,2), Renamer.ai (56,8), FilesDesk (52,5) en AI Renamer (37,2). Het hernoemde alle 30 bestanden, ook scans en RAW-foto’s, zonder account, en Undo All herstelde de hele batch. De testgegevens staan openbaar op de pagina Methodologie." },
+  tr: { question: "Zush, Windows’taki diğer yapay zeka dosya adlandırıcılarla nasıl karşılaştırılır?", answer: "Kasım 2026’daki testimizde altı yapay zeka adlandırıcısı Windows 11’de aynı 30 dosyayı işledi: Zush 100 üzerinden 94,8 puan aldı ve NameQuick (73,0), RenameClick (70,2), Renamer.ai (56,8), FilesDesk (52,5) ve AI Renamer’ın (37,2) önüne geçti. Taramalar ve RAW fotoğraflar dahil 30 dosyanın tamamını hesap gerektirmeden yeniden adlandırdı ve Undo All tüm toplu işlemi geri aldı. Test verileri Metodoloji sayfasında herkese açık." },
+  ja: { question: "Windows で Zush は他の AI ファイルリネームツールと比べてどうですか？", answer: "2026年11月、Windows 11 で6つの AI リネームツールに同じ30ファイルを処理させたテストで、Zush は100点中94.8点でした。NameQuick（73.0）、RenameClick（70.2）、Renamer.ai（56.8）、FilesDesk（52.5）、AI Renamer（37.2）を上回りました。スキャンや RAW 写真を含む30ファイルすべてをアカウントなしでリネームし、Undo All で一括して元に戻せました。テストデータは方法論ページで公開しています。" },
+  ko: { question: "Windows에서 Zush는 다른 AI 파일 이름 변경 도구와 비교해 어떤가요?", answer: "2026년 11월 Windows 11에서 6개 AI 이름 변경 도구에 같은 30개 파일을 처리하게 한 테스트에서 Zush는 100점 만점에 94.8점을 받아 NameQuick(73.0), RenameClick(70.2), Renamer.ai(56.8), FilesDesk(52.5), AI Renamer(37.2)를 앞섰습니다. 스캔 문서와 RAW 사진을 포함한 30개 파일을 계정 없이 모두 이름 변경했고, Undo All로 전체 작업을 되돌렸습니다. 테스트 데이터는 방법론 페이지에 공개되어 있습니다." },
+  'zh-cn': { question: "在 Windows 上，Zush 与其他 AI 文件重命名工具相比如何？", answer: "在我们 2026 年 11 月的测试中，六款 AI 重命名工具在 Windows 11 上处理了同样的 30 个文件：Zush 获得 94.8 分（满分 100），领先 NameQuick（73.0）、RenameClick（70.2）、Renamer.ai（56.8）、FilesDesk（52.5）和 AI Renamer（37.2）。它无需账户就重命名了全部 30 个文件，包括扫描件和 RAW 照片，并可通过 Undo All 一次撤销整批操作。测试数据公开在方法论页面。" },
+};
+
 export function getPlatformFaqCopy(
   locale: Locale,
   platform: Platform,
@@ -174,6 +188,10 @@ export function getPlatformFaqCopy(
   const organization = ORGANIZATION_FEATURES[locale];
   return {
     ...copy,
-    items: [{ question: organization.sortingQuestion, answer: organization.sortingAnswer }, ...copy.items],
+    items: [
+      { question: organization.sortingQuestion, answer: organization.sortingAnswer },
+      ...(platform === 'windows' ? [WINDOWS_BENCHMARK_FAQ[locale] ?? WINDOWS_BENCHMARK_FAQ.en] : []),
+      ...copy.items,
+    ],
   };
 }
