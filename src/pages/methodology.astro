@@ -36,6 +36,33 @@ const jsonLd = {
       author: { '@id': `${PRIMARY_AUTHOR.url}#person` },
     },
     {
+      '@type': 'Dataset',
+      '@id': `${SITE_ORIGIN}/benchmarks/windows-ai-renamers-2026-11-25/#dataset`,
+      name: 'AI file renamers on Windows: six apps, one 30-file set',
+      description:
+        'Zush, NameQuick, RenameClick, Renamer.ai, FilesDesk and AI Renamer each renamed the same 20 documents and 10 photos on Windows 11 on 25 November 2026. Includes every old and new filename, blind accuracy grades, rubric checks and total scores (Zush 94.8, NameQuick 73.0, RenameClick 70.2, Renamer.ai 56.8, FilesDesk 52.5, AI Renamer 37.2).',
+      url: `${SITE_ORIGIN}/benchmarks/windows-ai-renamers-2026-11-25/README.md`,
+      isBasedOn: `${pageUrl}#about`,
+      temporalCoverage: '2026-11-25',
+      datePublished: '2026-11-25',
+      creator: ORGANIZATION_REF,
+      publisher: ORGANIZATION_REF,
+      isAccessibleForFree: true,
+      keywords: ['AI file renamer', 'Windows', 'benchmark', 'file renaming'],
+      distribution: [
+        {
+          '@type': 'DataDownload',
+          encodingFormat: 'text/csv',
+          contentUrl: `${SITE_ORIGIN}/benchmarks/windows-ai-renamers-2026-11-25/results.csv`,
+        },
+        {
+          '@type': 'DataDownload',
+          encodingFormat: 'application/json',
+          contentUrl: `${SITE_ORIGIN}/benchmarks/windows-ai-renamers-2026-11-25/rubric-scores.json`,
+        },
+      ],
+    },
+    {
       '@type': 'FAQPage',
       '@id': `${pageUrl}#faq`,
       mainEntity: METHODOLOGY_FAQS.map((faq) => ({
