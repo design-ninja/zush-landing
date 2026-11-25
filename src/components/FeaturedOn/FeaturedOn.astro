@@ -209,10 +209,32 @@ const catalogs = [
     href: 'https://fazier.com',
     icon: '/images/featured-on/fazier.png',
   },
+  // ToolPotion makes its link to zushapp.com dofollow only while this badge links back.
+  {
+    name: 'ToolPotion',
+    href: 'https://toolpotion.ai/en/ai-apps/zush',
+    icon: '/images/featured-on/toolpotion.png',
+  },
 ];
+
+// Non-English homepages display only major software review and distribution
+// platforms; reciprocal directory verification bots check the root `/` URL.
+const LOCALIZED_TRUSTED_CATALOGS = new Set([
+  'G2',
+  'Trustpilot',
+  'Product Hunt',
+  'Capterra',
+  'SourceForge',
+  'Homebrew',
+  'Softpedia',
+  'AlternativeTo',
+]);
 
 const { locale = DEFAULT_LOCALE } = Astro.props as Props;
 const title = titleByLocale[locale] ?? titleByLocale.en!;
+const visibleCatalogs = locale === DEFAULT_LOCALE
+  ? catalogs
+  : catalogs.filter((catalog) => LOCALIZED_TRUSTED_CATALOGS.has(catalog.name));
 ---
 
 <section class={styles.FeaturedOn} aria-labelledby='featured-on-title'>
@@ -220,7 +242,7 @@ const title = titleByLocale[locale] ?? titleByLocale.en!;
     <h2 id='featured-on-title' class={styles.FeaturedOn__Title}>{title}</h2>
 
     <div class={styles.FeaturedOn__Items}>
-      {catalogs.map((catalog) => (
+      {visibleCatalogs.map((catalog) => (
         <a
           href={catalog.href}
           class={`${styles.FeaturedOnItem} ${catalog.modifier ?? ''}`}

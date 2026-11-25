@@ -65,7 +65,7 @@ export const BLOG_PUBLIC_TAGS: Record<BlogPublicTagSlug, BlogPublicTagMeta> = {
       'Finding and clearing copies: content matching, the (1) and copy suffixes, duplicate finders, and cleanup during a rename',
     seoTitle: 'Duplicate File Guides for Mac & Windows — Zush Blog',
     seoDescription:
-      'How to find duplicate files by content rather than by name on Mac and Windows: Terminal and PowerShell commands, the apps worth paying for, and clearing copies during a rename.',
+      'Find duplicate files by content on Mac and Windows: Terminal and PowerShell hash checks, duplicate finders compared, and safe cleanup before renaming.',
   },
   photos: {
     slug: 'photos',
@@ -110,7 +110,7 @@ export const BLOG_PUBLIC_TAGS: Record<BlogPublicTagSlug, BlogPublicTagMeta> = {
       'Guides for naming PDFs, scans, invoices, contracts, and document-heavy workflows',
     seoTitle: 'PDF & Document Naming Guides — Zush Blog',
     seoDescription:
-      'Browse Zush guides for naming PDFs, scanned files, invoices, contracts, and other document workflows.',
+      'Guides for naming PDFs, scanned files, invoices, receipts, and contracts on Mac and Windows with searchable formats, automation, and AI.',
   },
   'tool-comparisons': {
     slug: 'tool-comparisons',
@@ -164,7 +164,7 @@ export const BLOG_PUBLIC_TAGS: Record<BlogPublicTagSlug, BlogPublicTagMeta> = {
       'Windows File Explorer naming, search, and folder organization workflows',
     seoTitle: 'Windows File Explorer Naming & Search Guides — Zush Blog',
     seoDescription:
-      'Windows File Explorer guides for naming files, improving searchability, and organizing folders more effectively.',
+      'Windows 11 and 10 File Explorer guides for batch renaming files, fixing search, handling naming limits, and organizing messy desktop folders.',
   },
   'image-formats': {
     slug: 'image-formats',

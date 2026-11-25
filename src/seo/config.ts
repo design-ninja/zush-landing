@@ -25,7 +25,6 @@ import {
 } from '@/constants';
 import { getPrimaryAuthorJsonLd, PRIMARY_AUTHOR } from '@/data/author';
 import { buildAppAggregateRatingJsonLd } from '@/seo/appRating';
-import { buildSoftpediaReviewJsonLd } from '@/seo/softpediaReview';
 import { ORGANIZATION_REF, WEBSITE_REF, ZUSH_BRAND_ALTERNATE_NAMES } from '@/seo/entity';
 import { PRO_PRICING } from '@/constants/pricing';
 
@@ -152,7 +151,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/ai-file-sorter': {
     title: 'AI File Sorter for Mac & Windows: Sort by Your Rules | Zush',
     description:
-      'Sort files into folders with AI on Mac and Windows. Describe the folders in plain language or use Auto. Zush reads, renames, and files each document, photo, and video.',
+      'Sort files into folders with AI on Mac and Windows. Use Auto or plain-language rules to read, rename, and file documents, photos, and videos.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:
@@ -413,7 +412,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/rename-movies-and-tv-shows': {
     title: 'TV Show & Movie Renamer for Mac & Windows | Zush',
     description:
-      'Rename TV episodes and movies on Mac or Windows for Plex, Jellyfin, and Infuse. Check real titles, preview every filename, and optionally sort by show and season.',
+      'Rename TV episodes and movies on Mac or Windows for Plex, Jellyfin, and Infuse. Check real titles, preview names, and sort into season folders.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:
@@ -612,7 +611,6 @@ export const HOME_JSON_LD = {
         `${SITE_ORIGIN}/images/showcase/windows/batch-rename-light.webp`,
       ],
       ...buildAppAggregateRatingJsonLd(),
-      ...buildSoftpediaReviewJsonLd(),
       offers: [
         {
           '@type': 'Offer',

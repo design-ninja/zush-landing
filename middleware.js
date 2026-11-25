@@ -16,9 +16,10 @@ const PRICING_HIDDEN_MAX_AGE_SECONDS = 60 * 60 * 24;
 const CHECKOUT_AVAILABILITY_URL = `${
   globalThis.process?.env?.PUBLIC_SUPABASE_URL || 'https://sjzrgmvinyxjzvshfvjy.supabase.co'
 }/functions/v1/checkout-availability`;
-const CHECKOUT_AVAILABILITY_TTL_MS = 10 * 60 * 1000;
+const CHECKOUT_AVAILABILITY_TTL_MS = 60 * 60 * 1000;
+const CHECKOUT_AVAILABILITY_STALE_MS = 10 * 60 * 1000;
 const CHECKOUT_AVAILABILITY_RETRY_MS = 60 * 1000;
-const CHECKOUT_AVAILABILITY_TIMEOUT_MS = 1000;
+const CHECKOUT_AVAILABILITY_TIMEOUT_MS = 400;
 const FULL_PAGE_TIMEOUT_MS = 5000;
 const PRICING_PAGE_PATTERN = /^\/(?:[a-z]{2}(?:-[a-z]{2})?\/)?pricing\/?$/;
 // Search crawlers always get the pricing page: prices are already public in
@@ -70,13 +71,8 @@ function getVisitorCountry(request) {
   return country?.toUpperCase();
 }
 
-// Unknown or failed lookups keep pricing visible: checkout itself re-checks
-// the buyer's country on the backend.
-function isCheckoutAvailable(country) {
-  const cached = checkoutAvailabilityCache.get(country);
-  if (cached && cached.expiresAt > Date.now()) return cached.available;
-
-  const lookup = fetch(
+function fetchCheckoutAvailability(country) {
+  return fetch(
     `${CHECKOUT_AVAILABILITY_URL}?country=${encodeURIComponent(country)}`,
     { signal: AbortSignal.timeout(CHECKOUT_AVAILABILITY_TIMEOUT_MS) },
   )
@@ -88,17 +84,36 @@ function isCheckoutAvailable(country) {
     })
     .catch(() => null)
     .then((available) => {
+      const now = Date.now();
       checkoutAvailabilityCache.set(country, {
         available: available ?? true,
-        expiresAt: Date.now() + (available === null
-          ? CHECKOUT_AVAILABILITY_RETRY_MS
-          : CHECKOUT_AVAILABILITY_TTL_MS),
+        staleAt: now + (available === null ? CHECKOUT_AVAILABILITY_RETRY_MS : CHECKOUT_AVAILABILITY_STALE_MS),
+        expiresAt: now + (available === null ? CHECKOUT_AVAILABILITY_RETRY_MS : CHECKOUT_AVAILABILITY_TTL_MS),
+        refreshing: false,
       });
       return available ?? true;
     });
+}
+
+// Unknown or failed lookups keep pricing visible: checkout itself re-checks
+// the buyer's country on the backend.
+function isCheckoutAvailable(country) {
+  const now = Date.now();
+  const cached = checkoutAvailabilityCache.get(country);
+  if (cached && cached.expiresAt > now) {
+    if (typeof cached.available === 'boolean' && cached.staleAt <= now && !cached.refreshing) {
+      cached.refreshing = true;
+      void fetchCheckoutAvailability(country);
+    }
+    return cached.available;
+  }
+
+  const lookup = fetchCheckoutAvailability(country);
   checkoutAvailabilityCache.set(country, {
     available: lookup,
-    expiresAt: Date.now() + CHECKOUT_AVAILABILITY_TIMEOUT_MS,
+    staleAt: now + CHECKOUT_AVAILABILITY_TIMEOUT_MS,
+    expiresAt: now + CHECKOUT_AVAILABILITY_TIMEOUT_MS,
+    refreshing: true,
   });
   return lookup;
 }

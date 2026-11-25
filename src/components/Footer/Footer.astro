@@ -15,6 +15,7 @@ import {
   DEFAULT_LOCALE,
   getLocalesForRoute,
   getLocalizedPath,
+  isSeoExcludedLocalizedRoute,
   type Locale,
   type LocalizedRoute,
 } from '@/i18n/config';
@@ -46,7 +47,12 @@ const linkClass = [appLinkStyles.AppLink, styles.Footer__Link].join(' ');
 const socialLinkClass = [appLinkStyles.AppLink, styles.Footer__SocialLink].join(' ');
 const brandClass = [appLinkStyles.AppLink, styles.Footer__Brand].join(' ');
 const footerHref = (route: LocalizedRoute) =>
-  getLocalizedPath(route, getLocalesForRoute(route).includes(locale) ? locale : DEFAULT_LOCALE);
+  getLocalizedPath(
+    route,
+    !isSeoExcludedLocalizedRoute(route) && getLocalesForRoute(route).includes(locale)
+      ? locale
+      : DEFAULT_LOCALE,
+  );
 const appStoreVisibleLabel = `${copy.appStoreKicker} ${copy.appStoreLabel}`;
 const microsoftStoreVisibleLabel = `${copy.microsoftStoreKicker} ${copy.microsoftStoreLabel}`;
 const homebrewLabel = copy.productLinks.homebrew;
@@ -66,7 +72,9 @@ const professionLinks = localizedContent
   ? LOCALIZED_PROFESSION_KEYS.map((key) => {
       const page = localizedContent.professions[key];
       return {
-        href: getLocalizedPath(page.path, locale),
+        href: isSeoExcludedLocalizedRoute(page.path)
+          ? page.path
+          : getLocalizedPath(page.path, locale),
         label: page.pageTitle,
       };
     })

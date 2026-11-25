@@ -31,12 +31,34 @@ const EXCLUDED_CONTENT_SOURCES = new Set([
   join(SRC_DIR, 'i18n', 'config.ts'),
   join(SRC_DIR, 'content', 'changelog.md'),
   join(SRC_DIR, 'content', 'changelog.windows.md'),
+  join(SRC_DIR, 'data', 'blog.ts'),
+  join(SRC_DIR, 'data', 'releasesManifest.json'),
+  join(SRC_DIR, 'data', 'author.ts'),
+  join(SRC_DIR, 'views', 'Legal', 'Legal.tsx'),
+]);
+
+// Shared layout chrome imported by every page. Do not traverse through these
+// files when computing a page's lastmod: otherwise a tweak in Footer's blog
+// helper or shared i18n copy restamps every static route on the site.
+const NON_TRAVERSED_SHARED_FILES = new Set([
+  join(SRC_DIR, 'layouts', 'BaseLayout.astro'),
+  join(SRC_DIR, 'components', 'Header', 'Header.astro'),
+  join(SRC_DIR, 'components', 'Footer', 'Footer.astro'),
+  join(SRC_DIR, 'components', 'PromoBar', 'PromoBar.astro'),
+  join(SRC_DIR, 'components', 'PostHogAnalytics.astro'),
+  join(SRC_DIR, 'components', 'ScrollToTopButton', 'ScrollToTopButton.astro'),
+  join(SRC_DIR, 'seo', 'config.ts'),
+  join(SRC_DIR, 'seo', 'entity.ts'),
 ]);
 
 // Page-specific markup that holds copy inline rather than importing it, so it
 // cannot be discovered through the content-module rule above.
 const EXTRA_ROUTE_DEPENDENCIES: Record<string, string[]> = {
   '/': [join(SRC_DIR, 'components', 'HomePage', 'HomePageContent.astro')],
+  '/pricing': [join(SRC_DIR, 'constants', 'pricing.ts')],
+  '/privacy-policy': [join(SRC_DIR, 'content', 'privacy.md')],
+  '/terms-of-service': [join(SRC_DIR, 'content', 'tos.md')],
+  '/refund-policy': [join(SRC_DIR, 'content', 'refund.md')],
   '/mac': [join(SRC_DIR, 'components', 'PlatformLandingPage', 'PlatformLandingPage.astro')],
   '/windows': [join(SRC_DIR, 'components', 'PlatformLandingPage', 'PlatformLandingPage.astro')],
   '/methodology': [join(SRC_DIR, 'components', 'MethodologyPage', 'MethodologyPage.astro')],
@@ -109,10 +131,10 @@ function collectContentDependencies(entryFile: string): string[] {
     const next: string[] = [];
     for (const file of frontier) {
       for (const imported of getDirectImports(file)) {
-        if (visited.has(imported)) continue;
+        if (visited.has(imported) || NON_TRAVERSED_SHARED_FILES.has(imported)) continue;
         visited.add(imported);
         if (isContentSource(imported)) dependencies.add(imported);
-        next.push(imported);
+        if (!EXCLUDED_CONTENT_SOURCES.has(imported)) next.push(imported);
       }
     }
     frontier = next;
@@ -464,11 +486,17 @@ export async function GET() {
       alternateLinks: blogIndexCluster,
     };
   });
+  const latestEnglishBlogDate = posts
+    .map(getBlogPostLastModifiedDate)
+    .sort((a, b) => new Date(b).getTime() - new Date(a).getTime())[0];
   const staticEntriesWithRoutes = staticEntries.map((entry) => {
     const route = entry.loc.replace(SITE_ORIGIN, '') || '/';
+    const updatedEntry = (route === '/blog' || route === '/blog/archive') && latestEnglishBlogDate
+      ? { ...entry, lastmod: getLatestDate(entry.lastmod, latestEnglishBlogDate) }
+      : entry;
     return route === '/blog' && blogIndexCluster
-      ? { ...entry, route, alternateLinks: blogIndexCluster }
-      : { ...entry, route };
+      ? { ...updatedEntry, route, alternateLinks: blogIndexCluster }
+      : { ...updatedEntry, route };
   });
 
   const urls = [...staticEntriesWithRoutes, ...localizedEntries, ...blogEntries, ...translatedBlogEntries, ...translatedBlogIndexEntries, ...tagEntries, ...docsEntries]

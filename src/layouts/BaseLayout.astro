@@ -177,6 +177,9 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preload" href={interLatinFontUrl} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={manropeLatinFontUrl} as="font" type="font/woff2" crossorigin />
+    {isHomePage && (
+      <link rel="preload" as="image" href="/videos/posters/demo-light.webp" fetchpriority="high" />
+    )}
     <meta name="color-scheme" content={forcedTheme ?? 'light dark'} />
 
     {/* The desktop apps open the browser checkout with their `checkout_session`
