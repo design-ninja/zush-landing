@@ -33,7 +33,7 @@ export const BLOG_INDEX_COPY: Record<Exclude<Locale, 'en'>, BlogIndexCopy> = {
   es: {
     title: 'Blog de Zush en español: renombrar y organizar archivos',
     description:
-      'Guías y comparativas en español para renombrar archivos con IA, ordenarlos en carpetas y organizar tu Mac o tu PC con Windows.',
+      'Guías prácticas y comparativas en español para renombrar archivos con IA, ordenarlos en carpetas y organizar tu Mac o PC con Windows paso a paso.',
     intro: 'Todos los artículos disponibles en español, del más reciente al más antiguo. Hay más guías en el blog en inglés.',
     allPostsHeading: 'Todos los artículos en español',
     englishBlogLink: 'Abrir el blog en inglés',
@@ -41,7 +41,7 @@ export const BLOG_INDEX_COPY: Record<Exclude<Locale, 'en'>, BlogIndexCopy> = {
   'pt-br': {
     title: 'Blog do Zush em português: renomear e organizar arquivos',
     description:
-      'Guias e comparativos em português para renomear arquivos com IA, organizá-los em pastas e arrumar seu Mac ou PC com Windows.',
+      'Guias práticos e comparativos em português para renomear arquivos com IA, organizá-los em pastas e manter seu Mac ou PC com Windows em ordem.',
     intro: 'Todos os artigos disponíveis em português, do mais recente ao mais antigo. Há mais guias no blog em inglês.',
     allPostsHeading: 'Todos os artigos em português',
     englishBlogLink: 'Abrir o blog em inglês',
@@ -49,7 +49,7 @@ export const BLOG_INDEX_COPY: Record<Exclude<Locale, 'en'>, BlogIndexCopy> = {
   it: {
     title: 'Blog di Zush in italiano: rinominare e ordinare i file',
     description:
-      'Guide e confronti in italiano per rinominare i file con l’IA, ordinarli in cartelle e organizzare un Mac o un PC Windows.',
+      'Guide pratiche e confronti in italiano per rinominare file con l’IA, ordinarli in cartelle e organizzare il tuo Mac o PC Windows senza fatica.',
     intro: 'Tutti gli articoli disponibili in italiano, dal più recente. Altre guide sono sul blog in inglese.',
     allPostsHeading: 'Tutti gli articoli in italiano',
     englishBlogLink: 'Apri il blog in inglese',

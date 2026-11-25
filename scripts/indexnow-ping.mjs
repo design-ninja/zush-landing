@@ -123,9 +123,14 @@ const GLOBAL_COPY_PREFIXES = [];
 
 // Keep in sync with LOCALES in src/i18n/config.ts (minus the default locale).
 const LOCALE_SLUGS = ['fr', 'de', 'es', 'pt-br', 'it', 'nl', 'tr', 'ja', 'ko', 'zh-cn'];
+const LOCALE_SLUG_SET = new Set(LOCALE_SLUGS);
 
 function routeOf(url) {
   return new URL(url).pathname.replace(/\/$/, '') || '/';
+}
+
+function selectExact(urls, route) {
+  return urls.filter((url) => routeOf(url) === route);
 }
 
 function applyStabilizationGuard(urls, now = Date.now()) {
@@ -149,7 +154,8 @@ function selectBySuffix(urls, route) {
   return urls.filter((url) => wanted.has(routeOf(url)));
 }
 
-function urlsForChangedFiles(files, sitemapUrls) {
+// Exported for scripts/tests/indexnow-ping.test.mjs.
+export function urlsForChangedFiles(files, sitemapUrls) {
   const selected = new Set();
   const add = (list) => list.forEach((url) => selected.add(url));
 
@@ -165,20 +171,28 @@ function urlsForChangedFiles(files, sitemapUrls) {
     const page = path.match(/^src\/pages\/(.+)\.astro$/);
     if (page) {
       const name = page[1].replace(/\/index$/, '');
+      if (name.includes('[')) continue;
       add(selectBySuffix(sitemapUrls, name === 'index' ? '/' : `/${name}`));
       continue;
     }
 
     const blog = path.match(/^src\/content\/blog\/(.+)\.mdx?$/);
     if (blog) {
-      add(selectBySuffix(sitemapUrls, `/blog/${blog[1]}`));
-      add(selectBySuffix(sitemapUrls, '/blog'));
+      const segments = blog[1].split('/');
+      if (segments.length === 2 && LOCALE_SLUG_SET.has(segments[0])) {
+        add(selectExact(sitemapUrls, `/${segments[0]}/blog/${segments[1]}`));
+        add(selectExact(sitemapUrls, `/${segments[0]}/blog`));
+      } else {
+        add(selectExact(sitemapUrls, `/blog/${blog[1]}`));
+        add(selectExact(sitemapUrls, '/blog'));
+      }
       continue;
     }
 
     const docs = path.match(/^src\/content\/docs\/(.+)\.mdx?$/);
     if (docs) {
-      add(selectBySuffix(sitemapUrls, `/docs/${docs[1]}`.replace(/\/index$/, '')));
+      const normalized = docs[1].replace(/^docs\//, '').replace(/\/index$/, '');
+      add(selectExact(sitemapUrls, normalized ? `/docs/${normalized}` : '/docs'));
     }
     // Shared components, layouts and styles are deliberately ignored: they
     // touch nearly every page, and submitting all of them on every deploy is

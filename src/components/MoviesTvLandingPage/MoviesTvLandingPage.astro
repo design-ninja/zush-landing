@@ -24,7 +24,7 @@ const posters = [breakingBadPoster, bladeRunnerPoster, frierenPoster];
 
 <div class={styles.Page} data-cine-page>
   <section class={styles.Hero} aria-labelledby='movies-tv-title'>
-    <Image src={cinemaCity} alt='' class={styles.Hero__Backdrop} widths={[800, 1200, 1600]} sizes='100vw' format='webp' quality={80} loading='eager' fetchpriority='high' />
+    <Image src={cinemaCity} alt='Cinematic city skyline backdrop' aria-hidden='true' class={styles.Hero__Backdrop} widths={[800, 1200, 1600]} sizes='100vw' format='webp' quality={80} loading='eager' fetchpriority='high' />
     <div class={styles.Hero__Scrim} aria-hidden='true'></div>
     <div class={styles.Hero__Inner}>
       <div class={styles.Hero__Copy}>
@@ -94,7 +94,7 @@ const posters = [breakingBadPoster, bladeRunnerPoster, frierenPoster];
   </section>
 
   <section id='how' class={styles.Workflow} aria-labelledby='how-title'>
-    <Image src={cinemaDesert} alt='' class={styles.Workflow__Backdrop} widths={[800, 1200]} sizes='100vw' format='webp' quality={76} loading='lazy' />
+    <Image src={cinemaDesert} alt='Cinematic desert landscape backdrop' aria-hidden='true' class={styles.Workflow__Backdrop} widths={[800, 1200]} sizes='100vw' format='webp' quality={76} loading='lazy' />
     <div class={styles.Container}>
       <GuidedRenameDemo client:visible />
     </div>
@@ -117,7 +117,7 @@ const posters = [breakingBadPoster, bladeRunnerPoster, frierenPoster];
   </section>
 
   <section class={styles.Final} aria-labelledby='final-title'>
-    <Image src={cinemaCoast} alt='' class={styles.Final__Backdrop} widths={[800, 1200]} sizes='100vw' format='webp' quality={76} loading='lazy' />
+    <Image src={cinemaCoast} alt='Cinematic coastline backdrop' aria-hidden='true' class={styles.Final__Backdrop} widths={[800, 1200]} sizes='100vw' format='webp' quality={76} loading='lazy' />
     <div class={styles.Container}>
       <h2 id='final-title'>Your library.<span>Ready to roll.</span></h2>
       <p>{MOVIES_TV_FINAL_LINE}</p>
