@@ -47,7 +47,7 @@ const { locale = DEFAULT_LOCALE } = Astro.props as Props;
 const copy = copyByLocale[locale] ?? copyByLocale.en!;
 ---
 
-<section id='reviews' class={styles.Testimonials} aria-labelledby='testimonials-title'>
+<section id='reviews' class={styles.Testimonials} aria-labelledby='testimonials-title' data-lastmod-ignore>
   <div class={styles.Testimonials__Container}>
     <div class={`${sectionHeaderStyles.SectionHeader}`}>
       <Heading id='testimonials-title' as='h2' className={sectionHeaderStyles.SectionHeader__Title}>

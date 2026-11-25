@@ -131,7 +131,7 @@ const posts = await getFeaturedPostsByPlatform(platform, 3);
 ---
 
 {posts.length > 0 && (
-  <section class={styles.PlatformGuides}>
+  <section class={styles.PlatformGuides} data-lastmod-ignore>
     <div class={styles.PlatformGuides__Container}>
       <Heading as='h2' align='center'>
         {copy.title}

@@ -12,7 +12,7 @@ const TrustSignals = ({
   description = 'How we score, update, and back up every claim on this page.',
 }: TrustSignalsProps) => {
   return (
-    <section className={b.Section} aria-labelledby="trust-signals-title">
+    <section className={b.Section} aria-labelledby="trust-signals-title" data-lastmod-ignore="">
       <SectionHeader id="trust-signals-title" title={title} description={description} />
 
       <div className={b.Columns}>

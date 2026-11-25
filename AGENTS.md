@@ -18,5 +18,6 @@
 
 - Run checks appropriate to the changes locally before pushing. Use `[skip ci]` in the release commit message when those checks have passed; do not disable or re-enable workflows for a release.
 - Vercel publishes `main` independently of GitHub Actions. Wait for the exact pushed commit to reach production READY and verify the live site.
+- Landing and localized pages take their sitemap `lastmod` from their rendered text (`scripts/sitemap-content-lastmod.mjs`, record in `scripts/sitemap-content-lastmod.json`). After a copy, page or component change, run `pnpm build` then `pnpm seo:lastmod` (both included in `pnpm check:seo`) and commit the updated JSON with the change. Mark new shared blocks inside `<main>` (pricing, reviews, badges, CTAs, post lists) with `data-lastmod-ignore` so they do not restamp every page.
 - After every successful production publication, run `pnpm seo:indexnow:deployed` locally. It checks that local HEAD is deployed, finds the previous successful production commit, and submits only changed URLs. Use `--dry-run` to review the selection.
 - IndexNow Actions is a manual fallback only (`workflow_dispatch`). Do not restore its `deployment_status` trigger: GitHub ignores `[skip ci]` for that event. Do not dispatch it unless the user authorizes running Actions.

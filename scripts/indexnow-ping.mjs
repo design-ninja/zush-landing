@@ -13,10 +13,9 @@
  * Bing asks that only changed URLs be submitted — resubmitting the full
  * sitemap on every deploy erodes trust in the key and can get pings ignored.
  *
- * Sitemap lastmod alone under-reports: it is computed per route from that
- * route's own source file and deliberately ignores shared files, so edits to
- * src/i18n or src/seo change what a page renders without moving its lastmod.
- * --changed-files closes that gap by mapping changed sources back to routes.
+ * Sitemap lastmod covers landing and localized pages by their rendered text
+ * (scripts/sitemap-content-lastmod.mjs) and blog posts and docs by their own
+ * files. --changed-files adds the pages and posts a commit touched directly.
  *
  * The lastmod cutoff is INDEXNOW_SINCE — the commit time of the previously
  * deployed production commit, supplied by .github/workflows/indexnow.yml.
@@ -115,9 +114,12 @@ async function getRecentlyChangedUrls() {
   return changed.map((entry) => entry.loc);
 }
 
-// Shared copy: every rendered page reads from these, except the MDX-driven
-// docs, which Starlight builds from its own content collection.
-const GLOBAL_COPY_PREFIXES = ['src/i18n/', 'src/seo/'];
+// Shared copy used to map to every page here. Landing and localized pages now
+// take their sitemap lastmod from their rendered text
+// (scripts/sitemap-content-lastmod.mjs), so a copy edit moves only the pages
+// it changed and the lastmod cutoff already selects them. Mapping src/i18n or
+// src/seo to the whole sitemap would resubmit ~500 URLs for a one-page edit.
+const GLOBAL_COPY_PREFIXES = [];
 
 // Keep in sync with LOCALES in src/i18n/config.ts (minus the default locale).
 const LOCALE_SLUGS = ['fr', 'de', 'es', 'pt-br', 'it', 'nl', 'tr', 'ja', 'ko', 'zh-cn'];

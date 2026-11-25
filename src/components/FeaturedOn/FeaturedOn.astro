@@ -237,7 +237,7 @@ const visibleCatalogs = locale === DEFAULT_LOCALE
   : catalogs.filter((catalog) => LOCALIZED_TRUSTED_CATALOGS.has(catalog.name));
 ---
 
-<section class={styles.FeaturedOn} aria-labelledby='featured-on-title'>
+<section class={styles.FeaturedOn} aria-labelledby='featured-on-title' data-lastmod-ignore>
   <div class={styles.FeaturedOn__Container}>
     <h2 id='featured-on-title' class={styles.FeaturedOn__Title}>{title}</h2>
 
