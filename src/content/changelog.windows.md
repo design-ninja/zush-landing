@@ -1,5 +1,30 @@
 # Changelog
 
+## [3.19.7.0] - 2026-11-26
+
+### Added
+- Rename with Zush in the File Explorer context menu now works on folders. Right-click one or more folders, or folders and files together, and Zush renames the files directly inside them. Files in subfolders stay as they are, and a large folder is renamed up to the batch limit. Available in the Microsoft Store version.
+- A Reanalyze button in AI Rename runs the analysis again for files that failed because of a timeout, a network problem or a server error.
+
+### Improved
+- Text, Markdown, JSON, CSV and Word files now show a preview of their text in AI Rename instead of a placeholder.
+- Undo All removes the empty folders that sorting created for the files it puts back. Folders that were there before, or that still hold files, stay.
+- The Undo All and Clear Activity confirmations show how many entries they will affect, not just the ones loaded on screen.
+- Diagnostic reports no longer include file paths or file names.
+
+### Fixed
+- After monitoring paused because of an AI provider error, saving settings could discard the files that were waiting, and monitoring stayed off after a restart.
+- A brief "too many requests" response could show the upgrade prompt and use up the free renames left.
+- Files added to AI Rename near the end of an analysis could stay waiting.
+- Monitoring and AI Rename could both try to rename the same file.
+- Undo All could list files it had already put back as needing review.
+- With the desktop in focus, the shortcut could rename a file selected in a File Explorer window in the background.
+- Undo could stay unavailable for a file if Zush closed while it was saving the file's title and description.
+- Zush could close when checking a Gemini or Claude API key that contained a line break, when files were dragged in from some apps, or when reading some damaged files.
+- Offline speech recognition could fail on a valid file while antivirus software briefly held a temporary file.
+- Memory use grew each time you went back to AI Rename or AI Modes.
+
+
 ## [3.19.6.0] - 2026-11-23
 
 ### Added
