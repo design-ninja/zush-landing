@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.19.8.0] - 2026-11-26
+
+### Improved
+- Videos and multi-page PDFs are shown to the AI as larger frames laid out in their own shape instead of small squares, so it sees more detail.
+- Adding many videos uses much less memory: Zush decodes at most three videos at a time, and AI tags for a list are prepared one file at a time in the background. Rename then only analyzes the files that are not done yet.
+
+### Fixed
+- Zush could freeze and close after adding videos on some graphics drivers. If the video decoder crashes, Zush now uses the File Explorer thumbnail for videos from then on.
+- A Microsoft Store update closed Zush as not responding and left it closed until the next sign-in. Zush now closes properly for the update and asks Windows to start it again in the tray afterwards.
+- Crash reports from the Microsoft Store version were never sent, even with crash reporting allowed.
+- When Offline AI ran out of time on every file while sorting a folder, the error did not say that the model had timed out.
+
+
 ## [3.19.7.0] - 2026-11-26
 
 ### Added
