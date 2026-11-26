@@ -4,6 +4,11 @@ import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
 const faqItems = [
   {
+    question: 'How do I automatically rename screenshots on Mac and Windows with AI?',
+    answer:
+      'Use Zush on macOS 15+ or Windows 10/11 and enable folder monitoring on your Screenshots folder (macOS Desktop/Screenshots or Windows Pictures\\Screenshots). Zush uses AI vision to read the visible app, UI, error message, or page and replaces timestamp names like Screenshot 2026-09-01.png in about 2 seconds per file, with full Rename History undo. You get 50 free renames with no account required, plus optional offline AI via Ollama or LM Studio.',
+  },
+  {
     question: 'What does an AI screenshot renamer do?',
     answer:
       'An AI screenshot renamer reads the visible app, page, text, chart, error, or conversation in each capture and turns a timestamp filename into a descriptive name. Zush can process an existing batch or monitor a screenshot folder for new captures.',
@@ -82,7 +87,7 @@ const RenameScreenshotsWithAI = () => (
     h1Accent="Rename Screenshots"
     category="screenshot"
     definitionTitle="What Is AI Screenshot Renaming?"
-    definitionText="Zush replaces generic screenshot timestamps with searchable names based on the app, page, error, chart, or conversation shown. Batch rename an existing archive or monitor a screenshot folder on Mac or Windows for new captures."
+    definitionText="Zush is an AI screenshot renamer for Mac and Windows that replaces generic timestamp names with searchable titles based on the visible app, page, error, chart, or conversation. Batch rename an existing screenshot archive or monitor macOS Screenshots and Windows Pictures\\Screenshots automatically—50 free renames, preview and undo, cloud or offline AI."
     showcaseSlides={[
       {
         files: [

@@ -17,7 +17,14 @@ function FileRow({ file, preview, index }: { file: typeof files[number]; preview
   return (
     <div className={styles.FileRow} style={{ animationDelay: `${index * 120}ms` }}>
       <span className={styles.Checkbox}><Check size={10} strokeWidth={3} /></span>
-      <img src={file.poster} alt={file.posterAlt} />
+      <img
+        src={file.poster}
+        alt={file.posterAlt}
+        width={file.posterWidth}
+        height={file.posterHeight}
+        loading='lazy'
+        decoding='async'
+      />
       <div className={styles.FileRow__Names}>
         <span className={styles.FileRow__Original}>{file.original}</span>
         {preview && <span className={styles.FileRow__Preview}><span aria-hidden='true'>→</span> {file.renamed}</span>}
@@ -32,18 +39,24 @@ const files = [
     original: 'Breaking.Bad.S02E03.720p.HDTV.x264-CTU.mkv',
     renamed: 'Breaking Bad (2008) - S02E03 - Bit by a Dead Bee.mkv',
     poster: breakingBadPoster.src,
+    posterWidth: breakingBadPoster.width,
+    posterHeight: breakingBadPoster.height,
     posterAlt: 'Breaking Bad season 2 poster',
   },
   {
     original: 'Breaking.Bad.S02E04.720p.HDTV.x264-CTU.mkv',
     renamed: 'Breaking Bad (2008) - S02E04 - Down.mkv',
     poster: breakingBadPoster.src,
+    posterWidth: breakingBadPoster.width,
+    posterHeight: breakingBadPoster.height,
     posterAlt: 'Breaking Bad season 2 poster',
   },
   {
     original: 'Blade.Runner.2049.2017.2160p.UHD.BluRay.x265.mkv',
     renamed: 'Blade Runner 2049 (2017).mkv',
     poster: bladeRunnerPoster.src,
+    posterWidth: bladeRunnerPoster.width,
+    posterHeight: bladeRunnerPoster.height,
     posterAlt: 'Blade Runner 2049 poster',
   },
 ] as const;
@@ -92,7 +105,7 @@ export default function GuidedRenameDemo() {
       <div className={styles.Window}>
         <div className={styles.Window__Bar}>
           <span className={styles.Window__Lights} aria-hidden='true'><i /><i /><i /></span>
-          <img className={styles.Window__Logo} src='/logo-96.webp' width='28' height='28' alt='Zush app icon' />
+          <img className={styles.Window__Logo} src='/logo-96.webp' width='28' height='28' loading='lazy' decoding='async' alt='Zush app icon' />
           <span>Zush AI</span>
         </div>
         <div className={styles.App}>

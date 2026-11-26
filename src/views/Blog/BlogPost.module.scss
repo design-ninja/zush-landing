@@ -171,6 +171,9 @@
     top: 6rem;
     max-height: calc(100vh - 7.5rem);
     min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
 
     @include tablet {
       display: none;
@@ -181,9 +184,69 @@
   &__TocInner {
     padding-left: 1.25rem;
     border-left: 1px solid var(--border);
-    max-height: inherit;
+    min-height: 0;
     overflow-y: auto;
     overscroll-behavior: contain;
+  }
+
+  &__SidebarCta {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem 1.125rem;
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+    background: var(--surface-subtle, var(--card));
+  }
+
+  &__SidebarCtaTitle {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--foreground);
+  }
+
+  &__SidebarCtaButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 0.875rem;
+    border-radius: $radius-sm;
+    background: var(--primary);
+    color: var(--primary-foreground, #fff);
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+  }
+
+  &__SidebarCtaIcon {
+    display: inline-flex;
+    align-items: center;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  &__SidebarCtaHint {
+    margin: 0;
+    font-size: 0.75rem;
+    line-height: 1.45;
+    color: var(--muted-foreground);
   }
 
   // Qualified so it outweighs the shared Text size class on the element.

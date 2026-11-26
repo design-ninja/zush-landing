@@ -669,9 +669,9 @@ export const HOME_VIDEO_JSON_LD = {
   name: 'Zush AI batch file renaming workflow on Mac',
   description:
     'A Zush demo showing mixed files analyzed by AI, reviewed with content-aware filename suggestions, and renamed as a batch on macOS.',
-  thumbnailUrl: `${SITE_ORIGIN}/videos/posters/hero-batch-rename-mac-window-light.webp`,
+  thumbnailUrl: `${SITE_ORIGIN}/videos/posters/demo-light.webp`,
   uploadDate: '2026-06-20T10:17:47+07:00',
-  contentUrl: mediaUrl('/videos/hero/zush-batch-rename-mac-window-light.mp4'),
+  contentUrl: mediaUrl('/videos/demo-light.mp4'),
   embedUrl: `${SITE_ORIGIN}/`,
   publisher: {
     '@id': `${SITE_ORIGIN}/#organization`,

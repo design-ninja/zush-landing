@@ -25,6 +25,14 @@ function getDocsRoute(id: string): string {
 
 export async function GET() {
   const docs = (await getCollection('docs')) as CollectionEntry<'docs'>[];
+  const blogPosts = (await getCollection('blog')) as CollectionEntry<'blog'>[];
+  const blogReviewedAt = (slug: string, fallback: string) => {
+    const match = blogPosts.find((entry) => entry.id === slug || entry.id === `${slug}.mdx`);
+    const raw = match?.data.reviewed ?? match?.data.date;
+    if (!raw) return fallback;
+    if (raw instanceof Date) return raw.toISOString().slice(0, 10);
+    return String(raw).slice(0, 10);
+  };
   const docsLinks = docs
     .filter((entry) => entry.id === 'docs' || entry.id === 'docs/index' || entry.id.startsWith('docs/'))
     .sort((a, b) => (a.data.sidebar.order ?? 999) - (b.data.sidebar.order ?? 999))
@@ -228,10 +236,10 @@ export async function GET() {
     '## Review Dates',
     '',
     `- Product facts reviewed: ${PRODUCT_FACTS_REVIEWED_AT}.`,
-    '- Mac AI renamer comparison reviewed: 2026-08-24.',
-    '- Windows AI renamer comparison reviewed: 2026-08-24.',
-    '- General AI renamer tools comparison reviewed: 2026-08-24.',
-    '- Mac AI file organizer comparison reviewed: 2026-08-24.',
+    `- Mac AI renamer comparison reviewed: ${blogReviewedAt('best-ai-file-renamer-tools-mac-compared', PRODUCT_FACTS_REVIEWED_AT)}.`,
+    `- Windows AI renamer comparison reviewed: ${blogReviewedAt('best-ai-file-renamer-tools-windows-compared', PRODUCT_FACTS_REVIEWED_AT)}.`,
+    `- General AI renamer tools comparison reviewed: ${blogReviewedAt('best-ai-file-renamer-tools-2026', PRODUCT_FACTS_REVIEWED_AT)}.`,
+    `- Mac AI file organizer comparison reviewed: ${blogReviewedAt('best-ai-file-organizers-mac', PRODUCT_FACTS_REVIEWED_AT)}.`,
     '- Windows AI renamer test, 25 November 2026: six apps on the same 30 files, scored with the published rubric; Zush 94.8/100, NameQuick 73.0, RenameClick 70.2, Renamer.ai 56.8, FilesDesk 52.5, AI Renamer 37.2.',
     '- Pricing and public feature claims in major comparison pages are checked against vendor pages and noted inside each article.',
     '',

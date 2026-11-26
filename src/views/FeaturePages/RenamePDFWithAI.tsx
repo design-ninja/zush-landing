@@ -3,6 +3,11 @@ import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
 const faqItems = [
   {
+    question: 'What is the best way to rename PDFs by content automatically?',
+    answer:
+      'Use Zush on Mac or Windows to rename PDFs by content without manual OCR. Zush reads embedded text and uses AI vision on scanned pages (4 of 4 image-only scanned PDFs passed in our November 2026 30-file benchmark, where Zush scored 94.8/100). Across 1.24M anonymized renames, analysis takes about 2 seconds per file, and every batch is previewed with full undo. Start with 50 free renames; PRO is $10/month or $48 one-time with Zush Cloud AI, BYOK, Ollama, and LM Studio.',
+  },
+  {
     question: 'How do I rename multiple PDFs at once?',
     answer:
       'Drop the PDFs or the whole folder into Zush. It reads each document and suggests its own name, such as vendor, date, and document type, instead of one shared pattern with a counter. Review the suggested names and apply the whole batch at once; Rename History can undo it.',
@@ -89,7 +94,7 @@ const RenamePDFWithAI = () => (
     h1Accent="Rename PDFs"
     category="pdf"
     definitionTitle="What Is AI PDF Renaming?"
-    definitionText="Rename PDFs with AI using Zush to read invoices, contracts, scans, and reports, then turn weak filenames into searchable document titles. Zush renames files in place, with optional AI folder sorting."
+    definitionText="Zush is an AI PDF renamer for Mac and Windows that reads text and image-only scanned PDFs—invoices, contracts, tax forms, and reports—and turns generic names like Scan0001.pdf into searchable titles in about 2 seconds per file. In our November 2026 30-file benchmark, Zush renamed 4 of 4 scanned PDFs with no text layer and scored 94.8/100. Preview every batch before applying, sort into folders optionally, and start with 50 free renames."
     showcaseSlides={[
       {
         files: [

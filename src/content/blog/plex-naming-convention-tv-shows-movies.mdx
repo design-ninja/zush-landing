@@ -13,6 +13,7 @@ tldr: "Keep movies and TV shows in separate Plex libraries. Name films Movie Tit
 reviewed: "2026-10-07"
 ---
 
+import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 **Quick answer:** Give Plex separate `Movies` and `TV Shows` library roots. A movie can be `Blade Runner 2049 (2017).mkv`. A TV episode should include its show name and season/episode number, such as `Breaking Bad (2008) - S02E03 - Bit by a Dead Bee.mkv`, inside the show's `Season 02` folder. Plex's [movie](https://support.plex.tv/articles/naming-and-organizing-your-movie-media-files/) and [TV show](https://support.plex.tv/articles/naming-and-organizing-your-tv-show-files/) guides describe both the filenames and the folder layout.
@@ -23,6 +24,13 @@ If Plex shows the wrong title or cannot find an episode, check the path as well 
   <img class="markdown-image markdown-image--screenshot" src="/images/blog/plex-naming/movies-tv-template.png" alt="Zush AI Rename with the Movies & TV template selected and its Media Title naming block visible." width="1420" height="1108" loading="lazy" decoding="async" />
   <figcaption>In Zush, select the Movies & TV template before adding a batch. Its Media Title block produces a movie or episode name from the recognized title.</figcaption>
 </figure>
+
+<BlogCTA
+  placement='early'
+  platform='general'
+  title='Rename Movies & TV shows for Plex automatically'
+  description='Use Zush’s Movies & TV template to match episodes with TheTVDB, preview Plex-ready filenames and season folders, and undo any batch. 50 free renames, no signup.'
+/>
 
 ## The folder layout Plex expects
 

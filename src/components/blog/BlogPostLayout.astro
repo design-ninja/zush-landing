@@ -7,6 +7,7 @@ import BlogBreadcrumbs from '@/components/blog/BlogBreadcrumbs.astro';
 import RenameTaskExample from '@/components/RenameTaskExample/RenameTaskExample.astro';
 import { RENAME_TASK_EXAMPLES } from '@/data/renameTaskExamples';
 import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogOSIcon from '@/components/blog/BlogOSIcon.astro';
 import BlogMarkdownH2 from '@/components/blog/BlogMarkdownH2.astro';
 import BlogMarkdownH3 from '@/components/blog/BlogMarkdownH3.astro';
 import BlogMarkdownH4 from '@/components/blog/BlogMarkdownH4.astro';
@@ -19,7 +20,10 @@ import { formatBlogDate, normalizeTagSlug, type BlogEntry, type BlogPost } from 
 import { getBlogPublicTagSlug } from '@/data/blogTaxonomy';
 import { BLOG_PLATFORM_LABELS } from '@/data/blogSchema';
 import { getBlogPostCopy } from '@/i18n/blogPost';
-import { SOFTPEDIA_REVIEW_URL, WINDOWS_STORE_US_URL } from '@/constants';
+import { getBlogCtaCopy } from '@/i18n/blogCtaCopy';
+import { getCopy } from '@/i18n/copy';
+import { SOFTPEDIA_REVIEW_URL, WINDOWS_STORE_PROTOCOL_URL, WINDOWS_STORE_US_URL } from '@/constants';
+import { getDownloadUrl, getOSLabel, getShortRequirements } from '@/utils/download';
 import type { SeoMeta } from '@/seo/config';
 import type { Locale } from '@/i18n/config';
 import headingStyles from '@/components/Heading/Heading.module.scss';
@@ -71,6 +75,14 @@ const {
 } = Astro.props;
 
 const copy = getBlogPostCopy(post.locale);
+const localizedCta = getBlogCtaCopy(post.locale);
+const sidebarDownloadLabel = post.locale === 'en' ? 'Download Zush' : getCopy(post.locale).header.download;
+const sidebarTitle = (osLabel: string) =>
+  localizedCta?.titles.early.replace('{os}', osLabel)
+  ?? `Batch rename files with AI on ${osLabel}`;
+const sidebarHint = (os: 'mac' | 'windows') =>
+  localizedCta?.hint.replace('{requirements}', getShortRequirements(os))
+  ?? `Free · 50 AI renames · ${getShortRequirements(os)} · No signup`;
 const isDefaultLocale = post.locale === 'en';
 const taskExample = isDefaultLocale ? RENAME_TASK_EXAMPLES[`/blog/${post.slug}`] : undefined;
 const { Content, headings } = await render(entry);
@@ -246,6 +258,63 @@ const breadcrumbItems = [
                   </a>
                 ))}
               </nav>
+            </div>
+            <div
+              class={styles.BlogPost__SidebarCta}
+              data-lastmod-ignore
+              data-blog-cta-os={post.platform === 'windows' ? 'windows' : 'mac'}
+              data-blog-cta-platform={post.platform === 'general' ? 'general' : undefined}
+            >
+              <p
+                class={styles.BlogPost__SidebarCtaTitle}
+                data-blog-cta-title={post.platform === 'general' ? '' : undefined}
+                data-title-mac={post.platform === 'general' ? sidebarTitle('Mac') : undefined}
+                data-title-windows={post.platform === 'general' ? sidebarTitle('Windows') : undefined}
+              >
+                {sidebarTitle(getOSLabel(post.platform === 'windows' ? 'windows' : 'mac'))}
+              </p>
+              <a
+                class={styles.BlogPost__SidebarCtaButton}
+                href={getDownloadUrl(post.platform === 'windows' ? 'windows' : 'mac')}
+                data-blog-cta-link={post.platform === 'general' ? '' : undefined}
+                data-href-mac={post.platform === 'general' ? getDownloadUrl('mac') : undefined}
+                data-href-windows={post.platform === 'general' ? getDownloadUrl('windows') : undefined}
+                data-store-app-url-windows={post.platform === 'general' ? WINDOWS_STORE_PROTOCOL_URL : undefined}
+                data-store-os={post.platform === 'windows' ? 'windows' : undefined}
+                data-store-app-url={post.platform === 'windows' ? WINDOWS_STORE_PROTOCOL_URL : undefined}
+                data-download-os={post.platform === 'windows' ? 'windows' : 'mac'}
+                data-download-source='blog-cta-sidebar'
+                data-download-channel={post.platform === 'windows' ? 'microsoft-store' : 'direct'}
+                data-article-cta
+                data-article-cta-label='Download'
+                data-article-cta-placement='download-sidebar'
+                rel={post.platform === 'windows' ? 'noopener noreferrer' : undefined}
+                target={post.platform === 'windows' ? '_blank' : undefined}
+              >
+                {post.platform === 'general' ? (
+                  <>
+                    <span class={styles.BlogPost__SidebarCtaIcon} data-blog-cta-icon='mac'>
+                      <BlogOSIcon os='mac' />
+                    </span>
+                    <span class={styles.BlogPost__SidebarCtaIcon} data-blog-cta-icon='windows' hidden>
+                      <BlogOSIcon os='windows' />
+                    </span>
+                  </>
+                ) : (
+                  <span class={styles.BlogPost__SidebarCtaIcon}>
+                    <BlogOSIcon os={post.platform === 'windows' ? 'windows' : 'mac'} />
+                  </span>
+                )}
+                <span>{sidebarDownloadLabel}</span>
+              </a>
+              <p
+                class={styles.BlogPost__SidebarCtaHint}
+                data-blog-cta-hint={post.platform === 'general' ? '' : undefined}
+                data-hint-mac={post.platform === 'general' ? sidebarHint('mac') : undefined}
+                data-hint-windows={post.platform === 'general' ? sidebarHint('windows') : undefined}
+              >
+                {sidebarHint(post.platform === 'windows' ? 'windows' : 'mac')}
+              </p>
             </div>
           </aside>
         )}

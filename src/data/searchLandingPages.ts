@@ -755,7 +755,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     category: 'general',
     definitionTitle: 'What Is an AI File Organizer?',
     definitionText:
-      `Zush is an AI file organizer for Mac and Windows. It reads each file, from PDFs and scans to photos, video, and audio (${SUPPORTED_FORMAT_COUNT} formats), sorts it into folders by content or by rules you write in plain language, and gives it a name you can search for. You review every name and folder before anything moves, and undo restores both. The first 50 AI renames are free with no account or card; PRO is $10 a month or $48 once for up to 3 devices. The AI runs in the Zush cloud, through your own API key, or on your computer with Ollama or LM Studio.`,
+      `Zush is an AI file organizer for Mac (macOS 15+) and Windows (10 & 11). It reads each file—PDFs, scans, photos, screenshots, video, and audio (${SUPPORTED_FORMAT_COUNT} formats)—sorts it into folders by content or plain-language rules, and gives it a searchable name in about 2 seconds per file. In our November 2026 30-file benchmark, Zush scored 94.8/100 and sorted mixed folders while flagging exact duplicates. You review every name and folder before anything moves, and undo restores both. Start with 50 free AI renames (no account or card); PRO is $10/month or $48 once for up to 3 devices across Zush Cloud AI, BYOK, Ollama, and LM Studio.`,
     showcaseSlides: sharedSlides,
     faqItems: fileOrganizerFaq,
     comparison: {
@@ -863,7 +863,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     category: 'general',
     definitionTitle: 'What Is an AI File Sorter?',
     definitionText:
-      'Zush is an AI file sorter for Mac and Windows. Describe the folders you want in plain language, such as “Group invoices by company and receipts by month,” or let Auto group files by content. Zush reads each file, renames it, and moves it into the right folder after you review the plan.',
+      'Zush is an AI file sorter for Mac and Windows that automatically organizes messy Downloads, Desktop, and project folders. Describe the folders you want in plain language (up to 2,000 characters), such as “Group invoices by company and receipts by month,” or let Auto group files by content. Zush reads each file, renames it, and moves it into the right folder after you review the plan—with Monitor for newly arriving files, 50 free renames, and full batch undo.',
     showcaseSlides: fileSorterSlides,
     faqItems: fileSorterFaq,
     comparison: {
@@ -1093,7 +1093,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     directAnswerSection: {
       heading: 'How do you automatically rename invoice PDFs?',
       answer:
-        'Use Zush to read each invoice, extract the fields your filing system needs, and build the filename from a reusable template. It handles text PDFs and scanned invoices, shows every proposed name before applying, and keeps the batch in rename history.',
+        'Use Zush on Mac or Windows to read each text or scanned invoice PDF, extract vendor, date, invoice number, and amount, and build consistent filenames from a reusable Template. In our November 2026 30-file benchmark, Zush renamed 4 of 4 scanned PDFs with no text layer and scored 94.8/100; across 1.24M anonymized renames, analysis averages about 2 seconds per file. Every batch is previewed with full undo, starts with 50 free renames (no signup), and supports offline AI via Ollama or LM Studio for sensitive bookkeeping folders.',
       steps: [
         'Add invoice PDFs or point folder monitoring at the folder where new invoices arrive.',
         'Build a template from vendor, date, invoice number, amount, and any custom field you need.',
