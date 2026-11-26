@@ -1,7 +1,7 @@
 ---
 title: Metadata and Tags
 description: Use Zush AI metadata, Finder tags, and descriptions so renamed photos, PDFs, and documents are easier to browse, filter, and search on Mac and Windows.
-lastUpdated: 2026-10-25
+lastUpdated: 2026-11-26
 sidebar:
   order: 24
   label: Metadata and tags
@@ -10,7 +10,7 @@ sidebar:
 Zush can generate useful tags and metadata alongside filenames where the workflow and file type support it. This helps when filenames need to stay short but the folder still benefits from extra context. Use [custom prompts](/docs/custom-prompts) to guide the tags you want.
 
 <figure>
-  <img src="/images/showcase/macos/naming-light-1600.webp" alt="The Zush Smart Metadata settings with Finder tags and Spotlight metadata controls." width="1600" height="900" loading="lazy" decoding="async" />
+  <img src="/images/showcase/macos/naming-light-1600.webp" alt="The Zush Smart Metadata settings with the Add Finder tags and Make files searchable in Spotlight toggles." width="1600" height="900" loading="lazy" decoding="async" />
   <figcaption>Smart Metadata can add extra local context when the filename should stay concise.</figcaption>
 </figure>
 
@@ -37,12 +37,23 @@ Zush can generate useful tags and metadata alongside filenames where the workflo
 
 | Platform | What Zush writes |
 | --- | --- |
-| Mac | Optional Finder tags and Spotlight metadata, using the settings in Smart Rename or the selected Template. |
+| Mac | Optional Finder tags. With **Make files searchable in Spotlight**, the AI description is saved as the file's comment, which Spotlight indexes. In the version downloaded from zushapp.com, Finder also shows it in Get Info once you allow Zush to control Finder. Both use the settings in Smart Rename or the selected Template. |
 | Windows | Title, description, and keywords where supported: PNG, JPEG/TIFF photos, PDF, and supported Office documents. Storage depends on the format. |
+
+Undo on Mac puts back the tags and comment the file had before.
 
 Windows does not use Finder tags or Spotlight. Files outside its supported metadata formats can still be renamed, but do not receive the same metadata. Zush does not create a new metadata sidecar as a substitute for those unsupported formats.
 
 Search results also depend on your operating system and whether the folder is indexed. For filename-first search workflows, use the [searchable filenames guide](/docs/file-search).
+
+## Review Finder tags before renaming (Mac)
+
+<figure>
+  <img src="/images/showcase/macos/finder-tags-light-1600.webp" alt="The Zush AI Rename list with the Finder tags popover open for one file, showing its tags, an Add tag field, and a Done button." width="1600" height="900" loading="lazy" decoding="async" />
+  <figcaption>The tag count next to a file opens its Finder tags, so you can edit them before renaming.</figcaption>
+</figure>
+
+When the Template or Smart Rename settings add Finder tags, each analyzed file in the [batch rename](/docs/batch-rename-files) list shows a tag icon with the number of tags next to its menu. Hover over it to see the tags. Click it to remove a tag or type a new one. Zush writes the edited tags when you rename the batch. Regenerating a name replaces your edited tags with new AI tags.
 
 ## Related docs
 

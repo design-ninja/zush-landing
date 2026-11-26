@@ -88,6 +88,8 @@ const features = [
   { id: 'duplicates-mark', fixture: 'duplicates-mark', landingOnly: true, isolated: true },
   { id: 'duplicates-trash', fixture: 'duplicates-trash', landingOnly: true, isolated: true },
   { id: 'duplicates-template', fixture: 'duplicates-template', landingOnly: true, isolated: true },
+  // AI Rename with the Finder tags popover open over the first row.
+  { id: 'finder-tags', fixture: 'finder-tags', captureZushExtras: true, popoverGroup: true, landingOnly: true, isolated: true },
 ];
 const realAnalysisFixtures = new Set([
   'batch-rename',
@@ -791,6 +793,23 @@ function captureWindowsForFeature(feature, captureDir) {
     if (promptWindowCapture) {
       return [{ ...promptWindowCapture, role: 'main' }];
     }
+  }
+
+  // Capturing a popover's window id returns the window and its popover as one
+  // image, which can be wider than the window when the popover overhangs it.
+  if (feature.popoverGroup) {
+    const mainCapture = captures.find((capture) => capture.role === 'main');
+    const groupCapture = captures
+      .filter((capture) => capture.role === 'extra')
+      .find(
+        (capture) =>
+          capture.size.width >= mainCapture.size.width - 8 &&
+          capture.size.height >= mainCapture.size.height - 8,
+      );
+    if (!groupCapture) {
+      throw new Error('The popover must be open before capture');
+    }
+    return [{ ...groupCapture, role: 'main', window: mainCapture.window }];
   }
 
   return captures;

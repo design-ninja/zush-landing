@@ -1,7 +1,7 @@
 ---
 title: Templates for Reusable File Renaming Workflows
 description: Create, edit, and apply Zush Templates for repeatable AI file renaming in batch rename, Smart Rename, and folder monitoring workflows.
-lastUpdated: 2026-10-25
+lastUpdated: 2026-11-26
 sidebar:
   order: 20
   label: Templates
@@ -9,7 +9,7 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Templates save a complete renaming setup so you do not have to rebuild the same workflow every time. A Template can control the filename structure, AI instructions, language, date format, Finder tags, Spotlight metadata, and the settings used by monitored folders.
+Templates save a complete renaming setup so you do not have to rebuild the same workflow every time. A Template can control the filename structure, AI instructions, language, date format, Finder tags, Spotlight search, and the settings used by monitored folders.
 
 Use Templates when the same kind of files arrive again and again: screenshots, receipts, client deliverables, design exports, photos, videos, audio files, meeting notes, legal documents, or a Downloads folder that needs regular cleanup.
 
@@ -51,7 +51,7 @@ Open Smart Rename when you want to change the default behavior for general file 
 | Block formatting | Case style, word separators, block order, and separators between blocks |
 | Localization | Language and date format used in generated names |
 | [Custom prompts](/docs/custom-prompts) | The instructions Zush uses when generating AI parts of a filename |
-| Smart Metadata | Finder tags and Spotlight metadata added to renamed files |
+| Smart Metadata | Finder tags and the AI description saved as each renamed file's comment for Spotlight |
 | Folder sorting | Destination, automatic or custom folder rules, existing-folder reuse, and keeping current filenames |
 
 The [AI mode](/docs/ai-modes), provider keys, and local model connection are global settings. Templates do not save a separate AI mode. Monitor's source folder, subfolder scope, and filename filters are configured on the monitored folder itself.
