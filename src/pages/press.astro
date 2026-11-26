@@ -156,7 +156,7 @@ const productLinks = [
                   <img
                     class={styles.Press__AssetImg}
                     src={video.posters.light}
-                    alt=''
+                    alt={`${name} video preview`}
                     loading='lazy'
                     width={video.width}
                     height={video.height}
@@ -191,7 +191,7 @@ const productLinks = [
                       <img
                         class={styles.Press__ShotImg}
                         src={atWidth(shot.light, 640)}
-                        alt=''
+                        alt={`Zush ${group.title.replace(' screenshots', '')} — ${shot.name} (light theme)`}
                         loading='lazy'
                         width='640'
                         height='360'
@@ -206,7 +206,7 @@ const productLinks = [
                       <img
                         class={styles.Press__ShotImg}
                         src={atWidth(shot.dark, 640)}
-                        alt=''
+                        alt={`Zush ${group.title.replace(' screenshots', '')} — ${shot.name} (dark theme)`}
                         loading='lazy'
                         width='640'
                         height='360'
