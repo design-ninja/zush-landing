@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.27.0] - 2026-11-26
+### New
+- Right-click a folder in Finder and choose Rename with Zush to rename the files inside it. Files in subfolders stay as they are.
+- See and edit each file's Finder tags in the file list before you rename.
+### Improved
+- Cloud AI analysis is faster, and a slow reply switches to a backup service sooner.
+- Large batches of videos use less memory.
+- Rename & sort keeps the list grouped by folder while files are renamed.
+- Activation errors are clearer, and Zush asks you to check your internet connection only when the connection is the problem.
+- More of the app is translated, including privacy prompts, icon tooltips and color names.
+### Fixed
+- Undo All no longer lists files it has already put back.
+- Names with extensions such as .tar.gz keep the full extension when the name is already taken.
+- Tags and descriptions now reach files that were renamed while Zush was still reading them, and tags you edited stay.
+- Folder monitoring tries interrupted sorting again instead of reporting it as failed.
+- Fixed a crash when reading location data from some videos.
+
 ## [3.26.0] - 2026-11-24
 ### New
 - Zush can add a file's AI description to its Spotlight comment, so Spotlight finds files by what's in them. Turn on Make files searchable in Spotlight. Undo puts back the comment the file had before.
