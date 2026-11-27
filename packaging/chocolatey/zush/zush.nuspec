@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>zush</id>
+    <version>3.19.8.0</version>
+    <packageSourceUrl>https://github.com/design-ninja/zush-landing/tree/main/packaging/chocolatey/zush</packageSourceUrl>
+    <owners>zushapp</owners>
+    <title>Zush</title>
+    <authors>lirikpro</authors>
+    <projectUrl>https://zushapp.com</projectUrl>
+    <iconUrl>https://zushapp.com/logo.png</iconUrl>
+    <copyright>Copyright (c) 2026 lirik. All rights reserved.</copyright>
+    <licenseUrl>https://zushapp.com/terms-of-service</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://zushapp.com/docs</docsUrl>
+    <bugTrackerUrl>https://zush.canny.io</bugTrackerUrl>
+    <releaseNotes>https://github.com/design-ninja/zush-windows-releases/releases/tag/v3.19.8.0</releaseNotes>
+    <tags>ai ai-rename batch-rename bulk-rename file-renamer rename-files file-organizer pdf-renamer photo-renamer screenshot-renamer ollama productivity</tags>
+    <summary>AI file renamer and organizer for Windows. Renames PDFs, screenshots, photos, videos, audio and Office documents by what they contain.</summary>
+    <description><![CDATA[Zush is an AI file renamer and organizer for Windows (and Mac). It reads what is inside each file and suggests a descriptive name, so `IMG_2842.png`, `Scan_001.pdf` or `Document (3).docx` become names you can search for. You see every new name before anything changes, and Undo restores the originals.
+
+## Features
+
+- Rename PDFs, scans, invoices, receipts and Office documents by their content
+- Rename screenshots, photos (including RAW and HEIC), videos and audio files
+- Batch rename whole folders, or watch a folder and rename new files as they arrive
+- Sort files into folders automatically or by rules written in plain English
+- Templates and Naming Blocks for dates, document fields, metadata and custom text
+- Names in many languages, or in the language of the file
+- Cloud AI, your own API key (BYOK), or local models through Ollama or LM Studio
+
+## Commercial software
+
+Zush is commercial software. It is free to install and includes 50 free AI renames, shared across Cloud AI, BYOK, Ollama and LM Studio, with no time limit. Every feature (templates, Naming Blocks, custom prompts, local AI) works on the free tier. After 50 renames, a PRO plan is needed to keep renaming: $10 per month or $48 one-time, bought from the app or at [zushapp.com](https://zushapp.com/#pricing). No license key is entered at install time.
+
+## Package notes
+
+- Installs the official portable build from [GitHub releases](https://github.com/design-ninja/zush-windows-releases/releases): ARM64 on ARM devices, x64 otherwise. It is self-contained and needs no separate .NET runtime.
+- Installs to `%ChocolateyInstall%\lib\zush\tools\app`. The location cannot be changed.
+- Adds a Start menu shortcut and a `zush` command that opens the app.
+- Requires Windows 10 version 2004 (build 19041) or later.
+]]></description>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
