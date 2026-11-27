@@ -56,7 +56,7 @@ export const home = {
     },
     "templates": {
       "title": "Modelli",
-      "description": "Salva configurazioni riutilizzabili per screenshot, spese, tracce audio, clienti, legale, viaggi e cartelle monitorate."
+      "description": "Salva configurazioni riutilizzabili per screenshot, spese, tracce audio, clienti, legale e cartelle monitorate."
     },
     "namingBlocks": {
       "title": "Blocchi di denominazione",
@@ -107,7 +107,7 @@ export const home = {
     "templateNames": [
       "Screenshot",
       "Tracce audio",
-      "Note cliente"
+      "Spese contabili"
     ],
     "namingBlockLabels": [
       "{date}",
@@ -251,7 +251,7 @@ export const home = {
     ],
     "priceEyebrow": "Modelli riutilizzabili",
     "priceTitle": "Una configurazione per ogni cartella",
-    "priceDescription": "Salva le regole di denominazione per screenshot, spese, brani musicali, note dei clienti, documenti legali, prenotazioni di viaggio e cartelle monitorate.",
+    "priceDescription": "Salva le regole di denominazione per screenshot, spese, brani musicali, documenti legali e cartelle monitorate.",
     "priceLabel": "11 inclusi",
     "speedEyebrow": "Velocissimo",
     "speedTitle": "Rinomine in pochi secondi",

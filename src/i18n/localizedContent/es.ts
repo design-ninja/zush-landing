@@ -56,7 +56,7 @@ export const home = {
     },
     "templates": {
       "title": "Plantillas",
-      "description": "Guarda configuraciones reutilizables para capturas, gastos, pistas de música, clientes, documentos legales, viajes y carpetas supervisadas."
+      "description": "Guarda configuraciones reutilizables para capturas, gastos, pistas de música, clientes, documentos legales y carpetas supervisadas."
     },
     "namingBlocks": {
       "title": "Bloques de nombres",
@@ -107,7 +107,7 @@ export const home = {
     "templateNames": [
       "Capturas",
       "Pistas de música",
-      "Notas de cliente"
+      "Gastos contables"
     ],
     "namingBlockLabels": [
       "{date}",
@@ -251,7 +251,7 @@ export const home = {
     ],
     "priceEyebrow": "Plantillas reutilizables",
     "priceTitle": "Una configuración para cada carpeta",
-    "priceDescription": "Guarda reglas de nombres para capturas, gastos, pistas de música, notas de clientes, documentos legales, reservas de viaje y carpetas supervisadas.",
+    "priceDescription": "Guarda reglas de nombres para capturas, gastos, pistas de música, documentos legales y carpetas supervisadas.",
     "priceLabel": "11 incluidas",
     "speedEyebrow": "Muy rápido",
     "speedTitle": "Renombrados en segundos",

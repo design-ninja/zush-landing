@@ -56,7 +56,7 @@ export const home = {
     },
     "templates": {
       "title": "템플릿",
-      "description": "스크린샷, 지출, 음악 트랙, 고객 작업, 법무, 여행, 모니터링 폴더용 이름 변경 설정을 재사용합니다."
+      "description": "스크린샷, 지출, 음악 트랙, 고객 작업, 법무, 모니터링 폴더용 이름 변경 설정을 재사용합니다."
     },
     "namingBlocks": {
       "title": "이름 블록",
@@ -107,7 +107,7 @@ export const home = {
     "templateNames": [
       "스크린샷",
       "음악 트랙",
-      "고객 미팅 노트"
+      "회계 지출"
     ],
     "namingBlockLabels": [
       "{date}",
@@ -251,7 +251,7 @@ export const home = {
     ],
     "priceEyebrow": "재사용 가능한 템플릿",
     "priceTitle": "모든 폴더에 대해 하나의 설정",
-    "priceDescription": "스크린샷, 비용, 음악 트랙, 고객 메모, 법률 파일, 여행 예약 및 모니터링되는 폴더에 대한 명명 규칙을 저장하세요.",
+    "priceDescription": "스크린샷, 비용, 음악 트랙, 법률 파일 및 모니터링되는 폴더에 대한 명명 규칙을 저장하세요.",
     "priceLabel": "11개 내장",
     "speedEyebrow": "매우 빠름",
     "speedTitle": "몇 초 만에 이름 변경",

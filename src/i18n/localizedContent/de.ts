@@ -56,7 +56,7 @@ export const home: HomeCopy = {
     },
     "templates": {
       "title": "Vorlagen",
-      "description": "Speichere wiederverwendbare Umbenennungskonfigurationen für Bildschirmfotos, Ausgaben, Musik, Kundenarbeit, Rechtsdokumente, Reisen und überwachte Ordner."
+      "description": "Speichere wiederverwendbare Umbenennungskonfigurationen für Bildschirmfotos, Ausgaben, Musik, Kundenarbeit, Rechtsdokumente und überwachte Ordner."
     },
     "namingBlocks": {
       "title": "Namensbausteine",
@@ -107,7 +107,7 @@ export const home: HomeCopy = {
     "templateNames": [
       "Bildschirmfotos",
       "Musiktitel",
-      "Kunden-Meetingnotizen"
+      "Buchhaltungsbelege"
     ],
     "namingBlockLabels": [
       "{date}",
@@ -251,7 +251,7 @@ export const home: HomeCopy = {
     ],
     "priceEyebrow": "Wiederverwendbare Templates",
     "priceTitle": "Eine Konfiguration für jeden Ordner",
-    "priceDescription": "Speichere Benennungsregeln für Bildschirmfotos, Ausgaben, Musiktitel, Kundennotizen, Rechtsdokumente, Reisebuchungen und überwachte Ordner.",
+    "priceDescription": "Speichere Benennungsregeln für Bildschirmfotos, Ausgaben, Musiktitel, Rechtsdokumente und überwachte Ordner.",
     "priceLabel": "11 enthalten",
     "speedEyebrow": "Superschnell",
     "speedTitle": "Umbenennung in Sekunden",
