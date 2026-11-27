@@ -5,6 +5,7 @@ import FAQ from '@/components/FAQ';
 import { getSeoForPath, toIsoDateTime, SITE_ORIGIN } from '@/seo/config';
 import { getPrimaryAuthorJsonLd, PRIMARY_AUTHOR } from '@/data/author';
 import { ORGANIZATION_REF, SOFTWARE_REF } from '@/seo/entity';
+import { WINDOWS_RENAMERS_ARCHIVE } from '@/data/datasetArchives';
 
 const seo = getSeoForPath('/methodology');
 const pageUrl = `${SITE_ORIGIN}/methodology`;
@@ -22,7 +23,7 @@ const jsonLd = {
         'Public methodology for AI file renaming on Mac and Windows: scoring rubric, benchmark protocol, decision policy, and published pilot evidence.',
       inLanguage: 'en',
       datePublished: toIsoDateTime('2026-01-15'),
-      dateModified: toIsoDateTime('2026-11-25'),
+      dateModified: toIsoDateTime('2026-11-27'),
       isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
       mainEntity: SOFTWARE_REF,
       breadcrumb: {
@@ -42,6 +43,9 @@ const jsonLd = {
       description:
         'Zush, NameQuick, RenameClick, Renamer.ai, FilesDesk and AI Renamer each renamed the same 20 documents and 10 photos on Windows 11 on 25 November 2026. Includes every old and new filename, blind accuracy grades, rubric checks and total scores (Zush 94.8, NameQuick 73.0, RenameClick 70.2, Renamer.ai 56.8, FilesDesk 52.5, AI Renamer 37.2).',
       url: `${SITE_ORIGIN}/benchmarks/windows-ai-renamers-2026-11-25/README.md`,
+      identifier: WINDOWS_RENAMERS_ARCHIVE.doiUrl,
+      sameAs: [WINDOWS_RENAMERS_ARCHIVE.zenodoUrl, WINDOWS_RENAMERS_ARCHIVE.huggingFaceUrl],
+      license: 'https://creativecommons.org/licenses/by/4.0/',
       isBasedOn: `${pageUrl}#about`,
       temporalCoverage: '2026-11-25',
       datePublished: '2026-11-25',

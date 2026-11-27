@@ -4,6 +4,7 @@ import Heading from '@/components/Heading';
 import Text from '@/components/Text';
 import PillLink from '@/components/PillLink';
 import { INDEX_PATH } from '@/data/fileRenamingIndex';
+import { WINDOWS_RENAMERS_ARCHIVE } from '@/data/datasetArchives';
 
 export interface MethodologyFaq {
   question: string;
@@ -43,6 +44,7 @@ interface MethodologyCopy {
   evidenceStatusBody?: string;
   evidencePilotLabel?: string;
   evidenceWindowsLabel?: string;
+  evidenceWindowsArchiveLabel?: string;
   evidenceStatsLabel?: string;
   policyEyebrow: string;
   decisionPolicyTitle: string;
@@ -110,7 +112,7 @@ const defaultCopy: MethodologyCopy = {
   title: 'AI File Renaming Methodology & Benchmarks',
   lead:
     'This page explains how Zush evaluates AI file renaming on Mac and Windows. We publish the scoring rubric, benchmark protocol, and review cadence so recommendations stay reproducible, auditable, and useful for real batch operations across mixed folders.',
-  heroMeta: ['Windows run of 6 apps published', '5 weighted checks', 'Updated 2026-11-25'],
+  heroMeta: ['Windows run of 6 apps published', '5 weighted checks', 'Updated 2026-11-27'],
   governanceEyebrow: 'Governance',
   accountabilityTitle: 'Editorial Accountability',
   factsLabel: 'Editorial accountability facts',
@@ -147,6 +149,7 @@ const defaultCopy: MethodologyCopy = {
   evidenceStatusBody:
     'Scores appear here only with the run behind them: tested versions, date, inputs, every output and the limits. On 25 November 2026 we ran six AI renamers on Windows (Zush, NameQuick, RenameClick, Renamer.ai, FilesDesk and AI Renamer) on the same 30 files and scored them with this rubric; the names were graded blind. Zush scored 94.8 out of 100, ahead of NameQuick at 73.0. The earlier eight-file Mac pilot with Zush 3.11.0 and RenamerX 1.2.2 is public too.',
   evidenceWindowsLabel: 'Windows run: six AI renamers, 30 files (25 November 2026)',
+  evidenceWindowsArchiveLabel: 'Windows run on Zenodo (DOI 10.5281/zenodo.24574947)',
   evidencePilotLabel: 'Eight-file Mac pilot (5 September 2026)',
   evidenceStatsLabel: 'AI file renaming statistics 2026',
   policyEyebrow: 'Policy',
@@ -310,6 +313,9 @@ const copy = Astro.props.copy ?? defaultCopy;
             <div class="methodology__links">
               {copy.evidenceWindowsLabel && (
                 <PillLink href={WINDOWS_EVIDENCE_PATH} withArrow size="sm">{copy.evidenceWindowsLabel}</PillLink>
+              )}
+              {copy.evidenceWindowsArchiveLabel && (
+                <PillLink href={WINDOWS_RENAMERS_ARCHIVE.doiUrl} withArrow size="sm">{copy.evidenceWindowsArchiveLabel}</PillLink>
               )}
               <PillLink href={PILOT_EVIDENCE_PATH} withArrow size="sm">{copy.evidencePilotLabel}</PillLink>
               {copy.evidenceStatsLabel && (

@@ -19,6 +19,7 @@ import {
   SPEED_BY_BATCH,
   SPEED_BY_TYPE,
 } from '@/data/fileRenamingIndex';
+import { INDEX_ARCHIVE } from '@/data/datasetArchives';
 import { ORGANIZATION_REF } from '@/seo/entity';
 import { getSeoForPath, SITE_ORIGIN, toIsoDateTime } from '@/seo/config';
 import styles from '@/views/FileRenamingIndex/FileRenamingIndex.module.scss';
@@ -35,7 +36,7 @@ const updatedLabel = new Date(`${INDEX_UPDATED}T00:00:00Z`).toLocaleDateString('
   timeZone: 'UTC',
 });
 
-const citation = `Zush File Renaming Index 2026, ${pageUrl} (data: ${INDEX_PERIOD.label}).`;
+const citation = `Zush File Renaming Index 2026, ${pageUrl} (data: ${INDEX_PERIOD.label}). https://doi.org/${INDEX_ARCHIVE.doi}`;
 
 const faqs = [
   {
@@ -98,6 +99,8 @@ const jsonLd = {
       description:
         'Aggregated, anonymized statistics on AI file renaming from the Zush app for Mac and Windows: files renamed, file type mix, batch sizes, AI analysis speed, manual edits of AI-suggested names, and rename reliability.',
       url: pageUrl,
+      identifier: INDEX_ARCHIVE.doiUrl,
+      sameAs: [INDEX_ARCHIVE.zenodoUrl, INDEX_ARCHIVE.huggingFaceUrl],
       creator: ORGANIZATION_REF,
       publisher: ORGANIZATION_REF,
       datePublished: INDEX_PUBLISHED,
@@ -289,6 +292,9 @@ const jsonLd = {
               <AppLink href={INDEX_CSV_PATH} variant='legal'>Download all figures (CSV)</AppLink>
               <AppLink href='mailto:support@zushapp.com' variant='legal'>Ask for a breakdown</AppLink>
             </div>
+            <Text as='p' color='subtle' className={styles.Index__Copy}>
+              The same data is archived on Zenodo with the DOI <AppLink href={INDEX_ARCHIVE.doiUrl} variant='legal'>{INDEX_ARCHIVE.doi}</AppLink> and mirrored as a <AppLink href={INDEX_ARCHIVE.huggingFaceUrl} variant='legal'>Hugging Face dataset</AppLink>.
+            </Text>
           </div>
         </section>
 
